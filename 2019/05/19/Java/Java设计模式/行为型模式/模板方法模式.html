@@ -1,0 +1,254 @@
+<hr>
+<p>title: 模板方法模式<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2020-01-04 22:12:44<br>
+tags:</p>
+<ul>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h2 id="模板方法模式"><a class="header-anchor" href="#模板方法模式">¶</a>模板方法模式</h2>
+<h3 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h3>
+<blockquote>
+<p>Define the skeleton of an algorithm in an operation,deferring some steps to subclasses.Template Method lets subclasses redefine certain steps of an algorithm without changing the algorithm’s structure.<br>
+定义一个操作中的算法的框架，而将一些步骤延迟到子类中。使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。</p>
+</blockquote>
+<h3 id="代码实现"><a class="header-anchor" href="#代码实现">¶</a>代码实现</h3>
+<h4 id="准备"><a class="header-anchor" href="#准备">¶</a>准备</h4>
+<p>我们先抽象出一个汽车类，将汽车需要的动作都抽象进来，然后定义一个算法骨架，将这些抽象的动作组织起来，形成一个动作流程。由于这些动作是抽象的，我们需要具体实现这些动作，当我们创建一个实现类的对象，我们就会继承这个算法骨架，这就让我们的实现类只需要实现动作就行了，不需要再自定义动作流程。</p>
+<h4 id="模板方法模式-v2"><a class="header-anchor" href="#模板方法模式-v2">¶</a>模板方法模式</h4>
+<ol>
+<li>创建一个汽车抽象类，抽象出所有汽车都需要的共同动作，并将所有共同动作组织成一个使用流程。</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 我们可以将汽车类中的方法分为动作流程方法和各个动作方法
+ * 汽车抽象类定义了一个算法框架，各个抽象动作方法就是抽象出来的各个需要使用的动作,动作流程方法run就是一个算法骨架，用来描述动作流程。
+ * 当各个抽象的动作方法被子类实现，run这个算法骨架就能执行相应的子类的动作
+ *
+ * 也就是说，相关动作被抽象出来，延迟到子类实现，而调用这些动作的算法骨架就在抽象类中，我们创建一个子类对象时，我们就能直接使用抽象类中定义的算法骨架，这个算法骨架就是模板
+ */
+public abstract class Car {
+
+    /**
+     * 汽车动作被设计为protected,只需要被子类访问，外界不能访问，这样就只将run方法暴露
+     */
+    
+    /* 汽车启动 */
+    protected abstract void start();
+
+    /* 汽车停止 */
+    protected abstract void stop();
+
+    /* 按喇叭 */
+    protected abstract void alarm();
+
+    /* 汽车引擎启动 */
+    protected abstract void engineBoom();
+
+    /* 汽车运行过程模板 */
+    public void run(){
+        /* 汽车启动起来 */
+        this.start();
+        /* 汽车引擎开始启动，汽车开始运行 */
+        this.engineBoom();
+        /* 然后就开始跑了，遇到障碍，就按喇叭 */
+        this.alarm();
+        /* 于是停止下来 */
+        this.stop();
+    }
+}
+</code></pre>
+<ol start="2">
+<li>然后实现一个东风汽车这个实现类，这个实现类只需要实现汽车抽象类的抽象动作。我们使用东风汽车时需要调用的使用方法就通过继承汽车抽象类继承下来了。</li>
+</ol>
+<pre><code class="language-Java">
+/**
+ * 东风汽车是汽车的一个具体实现，汽车这个抽象类为东风汽车这个具体类提供了一个模板。
+ */
+public class DongFeng extends Car {
+    @Override
+    public void start() {
+        System.out.println(&quot;东风启动起来了&quot;);
+    }
+
+    @Override
+    public void stop() {
+        System.out.println(&quot;东风停下来了&quot;);
+    }
+
+    @Override
+    public void alarm() {
+        System.out.println(&quot;东风拉起汽笛&quot;);
+    }
+
+    @Override
+    public void engineBoom() {
+        System.out.println(&quot;东风引擎启动起来了&quot;);
+    }
+}
+</code></pre>
+<ol start="3">
+<li>场景实现类,我们只需要创建东风汽车这个对象，就能调用汽车抽象类中的run方法。</li>
+</ol>
+<pre><code class="language-Java">public class App { 
+    /**
+     * 模板方法场景类
+     * @param args
+     */
+    public static void main(String[] args) {
+        DongFeng dongFeng = new DongFeng();
+        dongFeng.run();
+    }
+}
+</code></pre>
+<h4 id="模板方法模式的扩展"><a class="header-anchor" href="#模板方法模式的扩展">¶</a>模板方法模式的扩展</h4>
+<blockquote>
+<p>在抽象类中实现一个钩子函数，这个钩子函数能够被子类重写，我们通过更改子类重写的钩子函数结果，覆盖父类的钩子函数结果，从而改变父类中的动作逻辑，改变结果。</p>
+</blockquote>
+<ol>
+<li>创建一个汽车抽象类，这个抽象类中有一个钩子函数实现。在实现逻辑中加入了一个判断，通过判断钩子函数的结果走不同的逻辑。</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 我们可以将汽车类中的方法分为动作流程方法和各个动作方法
+ * 汽车抽象类定义了一个算法框架，各个抽象动作方法就是抽象出来的各个需要使用的动作,动作流程方法run就是一个算法骨架，用来描述动作流程。
+ * 当各个抽象的动作方法被子类实现，run这个算法骨架就能执行相应的子类的动作
+ *
+ * 也就是说，相关动作被抽象出来，延迟到子类实现，而调用这些动作的算法骨架就在抽象类中，我们创建一个子类对象时，我们就能直接使用抽象类中定义的算法骨架，这个算法骨架就是模板
+ */
+public abstract class Car {
+
+    /**
+     * 汽车动作被设计为protected,只需要被子类访问，外界不能访问，这样就只将run方法暴露
+     */
+
+    /* 汽车启动 */
+    protected abstract void start();
+
+    /* 汽车停止 */
+    protected abstract void stop();
+
+    /* 按喇叭 */
+    protected abstract void alarm();
+
+    /* 汽车引擎启动 */
+    protected abstract void engineBoom();
+
+    /* 汽车运行过程模板 */
+    public void run(){
+        /* 汽车启动起来 */
+        this.start();
+        /* 汽车引擎开始启动，汽车开始运行 */
+        this.engineBoom();
+        /* 然后就开始跑了，遇到障碍，就按喇叭 */
+        if (isAlarm()){
+            this.alarm();
+        }
+        /* 于是停止下来 */
+        this.stop();
+    }
+
+    /**
+     * 在这里定义一个钩子函数，钩子函数能影响模板方法的执行
+     * 这个函数能被子类覆盖，设置为子类的值
+     * 子类能通过该钩子函数影响父类，从影响最终执行结果
+     * @return
+     */
+    protected boolean isAlarm(){
+        return true ;
+    }
+}
+</code></pre>
+<ol start="2">
+<li>创建一个子类实现，这个子类将父类的钩子函数重写，并让我们能更改钩子函数的结果。</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 东风汽车是汽车的一个具体实现，汽车这个抽象类为东风汽车这个具体类提供了一个模板。
+ */
+public class DongFeng extends Car {
+    private boolean alarmFlag = true ;
+
+    @Override
+    public void start() {
+        System.out.println(&quot;东风启动起来了&quot;);
+    }
+
+    @Override
+    public void stop() {
+        System.out.println(&quot;东风停下来了&quot;);
+    }
+
+    @Override
+    public void alarm() {
+        System.out.println(&quot;东风拉起汽笛&quot;);
+    }
+
+    @Override
+    public void engineBoom() {
+        System.out.println(&quot;东风引擎启动起来了&quot;);
+    }
+
+    /**
+     * 这个就是子类重写的父类方法
+     * @return
+     */
+    protected boolean isAlarm(){
+        return this.alarmFlag ;
+    }
+
+    /**
+     * 我们可以通过这个方法来影响执行结果
+     * @param flag
+     */
+    public void setAlarm(boolean flag){
+        this.alarmFlag = flag ;
+    }
+}
+</code></pre>
+<ol start="3">
+<li>最后的场景实现类,我们能通过set方法更改父类中的逻辑，从而改变结果。</li>
+</ol>
+<pre><code class="language-Java">public class App { 
+    /**
+     * 模板方法扩展
+     * @param args
+     */
+    public static void main(String[] args) {
+        DongFeng dongFeng = new DongFeng();
+        dongFeng.setAlarm(false);
+        dongFeng.run();
+    }
+}
+</code></pre>
+<h3 id="应用场景"><a class="header-anchor" href="#应用场景">¶</a>应用场景</h3>
+<ol>
+<li>多个子类共有方法时，并且逻辑相同。</li>
+<li>重要、复杂的核心算法设计为模板在父类实现，细节部分有子类实现。</li>
+<li></li>
+</ol>
+<h3 id="模板方法模式优缺点"><a class="header-anchor" href="#模板方法模式优缺点">¶</a>模板方法模式优缺点</h3>
+<h4 id="优点"><a class="header-anchor" href="#优点">¶</a>优点</h4>
+<ol>
+<li>封装不变部分，扩展可变部分；就是将不变部分封装到抽象类中，可变部分就通过继承来继续扩展。不变部分能被继承子类调用。</li>
+<li>提取公共代码，便于维护。子类继承的是每个子类的特性，而每个子类都需要的公共代码就封装在抽象类中。</li>
+<li>行为由父类控制，子类实现。父类将行为抽象，让子类具体按照自己的特征实现。</li>
+</ol>
+<h4 id="缺点"><a class="header-anchor" href="#缺点">¶</a>缺点</h4>
+<ol>
+<li>模板方法模式颠倒了子类和父类的作用。父类本来只负责声明抽象的部分，子类实现这些抽象部分，其他具体实现由子类自己实现，子类不会对父类产生影响。但是模板方法下，父类不仅需要声明抽象行为，还有具体实现，子类只需要实现抽象部分，这样子类会对父类产生影响。</li>
+</ol>

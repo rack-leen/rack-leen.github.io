@@ -1,0 +1,1462 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>第 26 章 正则表达式 | 开源世界旅行手册</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./36.html" />
+    
+    
+    <link rel="prev" href="./34.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="8.14"
+        data-chapter-title="第 26 章 正则表达式"
+        data-filepath="35.md"
+        data-basepath="."
+        data-revision="Sun Aug 07 2016 03:29:50 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/os-world-trip" target="blank" class="custom-link">开源世界旅行手册</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        开源世界旅行手册
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        授权
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        致谢
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        序言
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        更新纪录
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        导读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        如何写作科技文档
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="8.html">
+            
+                
+                    <a href="./8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        部分 I. 气候
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="9.html">
+            
+                
+                    <a href="./9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        第 1 章 GUI? CLI?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="10.html">
+            
+                
+                    <a href="./10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        第 2 章 UNIX 缩写风格
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="11.html">
+            
+                
+                    <a href="./11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        第 3 章 版本号的迷雾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="12.html">
+            
+                
+                    <a href="./12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        第 4 章   Vim 还是 Emacs
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="13.html">
+            
+                
+                    <a href="./13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        第 5 章   DocBook 还是 TeX
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="14.html">
+            
+                
+                    <a href="./14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.6.</b>
+                        
+                        第 6 章 完全用 Gnu/Linux 工作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.7" data-path="15.html">
+            
+                
+                    <a href="./15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.7.</b>
+                        
+                        第 7 章 病毒
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.8" data-path="16.html">
+            
+                
+                    <a href="./16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.8.</b>
+                        
+                        第 8 章 磁盘 分区
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.9" data-path="17.html">
+            
+                
+                    <a href="./17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.9.</b>
+                        
+                        第 9 章 文件系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.10" data-path="18.html">
+            
+                
+                    <a href="./18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.10.</b>
+                        
+                        第 10 章   发行版介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.11" data-path="19.html">
+            
+                
+                    <a href="./19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.11.</b>
+                        
+                        第 11 章   编程语言
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.12" data-path="20.html">
+            
+                
+                    <a href="./20.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.12.</b>
+                        
+                        第 12 章 无根的根：无名师的 Unix 心传
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="21.html">
+            
+                
+                    <a href="./21.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        部分 II. 地理
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="22.html">
+            
+                
+                    <a href="./22.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        第 13 章 基础知识
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="23.html">
+            
+                
+                    <a href="./23.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        第 14 章 命令系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="24.html">
+            
+                
+                    <a href="./24.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        第 15 章 基本系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="25.html">
+            
+                
+                    <a href="./25.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        第 16 章 软件管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="26.html">
+            
+                
+                    <a href="./26.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        第 17 章 核心工具集
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="27.html">
+            
+                
+                    <a href="./27.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.6.</b>
+                        
+                        第 18 章 编译工具链
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.7" data-path="28.html">
+            
+                
+                    <a href="./28.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.7.</b>
+                        
+                        第 19 章 图形界面
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.8" data-path="29.html">
+            
+                
+                    <a href="./29.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.8.</b>
+                        
+                        第 20 章 国际化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.9" data-path="30.html">
+            
+                
+                    <a href="./30.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.9.</b>
+                        
+                        第 21 章   内核
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.10" data-path="31.html">
+            
+                
+                    <a href="./31.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.10.</b>
+                        
+                        第 22 章 Grub
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.11" data-path="32.html">
+            
+                
+                    <a href="./32.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.11.</b>
+                        
+                        第 23 章 服务器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.12" data-path="33.html">
+            
+                
+                    <a href="./33.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.12.</b>
+                        
+                        第 24 章 Vim 编辑器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.13" data-path="34.html">
+            
+                
+                    <a href="./34.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.13.</b>
+                        
+                        第 25 章 Emacs 入门
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="8.14" data-path="35.html">
+            
+                
+                    <a href="./35.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.14.</b>
+                        
+                        第 26 章 正则表达式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.15" data-path="36.html">
+            
+                
+                    <a href="./36.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.15.</b>
+                        
+                        第 27 章 docbook 指南
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.16" data-path="37.html">
+            
+                
+                    <a href="./37.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.16.</b>
+                        
+                        第 28 章 Git 版本控制系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.17" data-path="38.html">
+            
+                
+                    <a href="./38.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.17.</b>
+                        
+                        第 29 章 ConTeXt 入门指南
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="39.html">
+            
+                
+                    <a href="./39.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        部分 III. 景观
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="40.html">
+            
+                
+                    <a href="./40.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        第 30 章 终极 Shell -- ZSH
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="41.html">
+            
+                
+                    <a href="./41.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        第 31 章 完美工作站 Archlinux
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="42.html">
+            
+                
+                    <a href="./42.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        第 32 章 组织你的意念：Emacs org mode
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="43.html">
+            
+                
+                    <a href="./43.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        第 33 章   Zsh+screen
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="44.html">
+            
+                
+                    <a href="./44.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                        第 34 章   gentoo stage3
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" data-path="45.html">
+            
+                
+                    <a href="./45.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        第 35 章   硬件问题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="46.html">
+            
+                
+                    <a href="./46.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.7.</b>
+                        
+                        第 36 章   网络设置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.8" data-path="47.html">
+            
+                
+                    <a href="./47.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.8.</b>
+                        
+                        第 37 章   自制 LiveCD
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.9" data-path="48.html">
+            
+                
+                    <a href="./48.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.9.</b>
+                        
+                        第 38 章 awesome
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.10" data-path="49.html">
+            
+                
+                    <a href="./49.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.10.</b>
+                        
+                        第 39 章 openbox 工作环境
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.11" data-path="50.html">
+            
+                
+                    <a href="./50.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.11.</b>
+                        
+                        第 40 章   Emacs muse
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.12" data-path="51.html">
+            
+                
+                    <a href="./51.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.12.</b>
+                        
+                        第 41 章   写作工具链
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.13" data-path="52.html">
+            
+                
+                    <a href="./52.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.13.</b>
+                        
+                        第 42 章 使用 lftp
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.14" data-path="53.html">
+            
+                
+                    <a href="./53.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.14.</b>
+                        
+                        第 43 章   Firefox 使用技巧
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.15" data-path="54.html">
+            
+                
+                    <a href="./54.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.15.</b>
+                        
+                        第 44 章   FVWM
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="55.html">
+            
+                
+                    <a href="./55.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        部分 IV. 地质
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="56.html">
+            
+                
+                    <a href="./56.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        第 45 章 Unix
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="57.html">
+            
+                
+                    <a href="./57.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        第 46 章   Gnu
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="58.html">
+            
+                
+                    <a href="./58.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        第 47 章 软件业自由之神——Richard Stallman
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="59.html">
+            
+                
+                    <a href="./59.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        第 48 章 Linux
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="60.html">
+            
+                
+                    <a href="./60.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.5.</b>
+                        
+                        第 49 章 GNOME与KDE的战争
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="61.html">
+            
+                
+                    <a href="./61.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.6.</b>
+                        
+                        第 50 章   Vim Emacs
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7" data-path="62.html">
+            
+                
+                    <a href="./62.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.7.</b>
+                        
+                        第 51 章   年代纪
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8" data-path="63.html">
+            
+                
+                    <a href="./63.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.8.</b>
+                        
+                        第 52 章 我的选择
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.9" data-path="64.html">
+            
+                
+                    <a href="./64.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.9.</b>
+                        
+                        第 53 章   补遗
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >开源世界旅行手册</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="&#x7B2C;-26-&#x7AE0;-&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;">&#x7B2C; 26 &#x7AE0; &#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;</h2>
+<p><strong>&#x76EE;&#x5F55;</strong></p>
+<p><a href="ch26.html#id3119846"></a></p>
+<p><a href="ch26s02.html">&#x7B80;&#x4ECB;</a></p>
+<p><a href="ch26s03.html">&#x8FD0;&#x7B97;&#x4F18;&#x5148;&#x7EA7;</a></p>
+<p><a href="ch26s04.html">&#x8F6C;&#x4E49;&#x7B26;</a></p>
+<p><a href="ch26s05.html">&#x5B57;&#x7B26;&#x7C7B;</a></p>
+<p><a href="ch26s06.html">&#x9650;&#x5B9A;&#x7B26;</a></p>
+<p><a href="ch26s06.html#id3120652">&#x8D2A;&#x5A6A;&#x4E0E;&#x61D2;&#x60F0;</a></p>
+<p><a href="ch26s07.html">&#x5206;&#x652F;&#x6761;&#x4EF6;</a></p>
+<p><a href="ch26s08.html">&#x5206;&#x7EC4;&#x3001;&#x6355;&#x83B7;</a></p>
+<p><a href="ch26s08.html#id3120847">&#x5206;&#x7EC4;</a></p>
+<p><a href="ch26s08.html#id3120909">&#x6355;&#x83B7;</a></p>
+<p><a href="ch26s09.html">&#x96F6;&#x5BBD;&#x65AD;&#x8A00;</a></p>
+<p><a href="ch26s09.html#id3121214">&#x8D1F;&#x5411;&#x96F6;&#x5BBD;&#x65AD;&#x8A00;</a></p>
+<h2 id="&#x7B80;&#x4ECB;">&#x7B80;&#x4ECB;</h2>
+<p>&#x5BF9;&#x4E8E;&#x6587;&#x672C;&#x5185;&#x5BB9;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x901A;&#x5E38;&#x4F7F;&#x7528;&#x4EA4;&#x4E92;&#x65B9;&#x5F0F;&#xFF0C;&#x624B;&#x5DE5;&#x8C03;&#x6574;&#xFF1B;&#x4F46;&#x5982;&#x679C;&#x4F60;&#x5BF9;&#x6E90;&#x6587;&#x672C;&#x6BD4;&#x8F83;&#x4E86;&#x89E3;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x81EA;&#x52A8;&#x5316;&#x7684;&#x6279;&#x91CF;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6548;&#x7387;&#x9AD8;&#x3001;&#x8FC5;&#x901F;&#x5FEB;</p>
+<p>&#x6279;&#x91CF;&#x5904;&#x7406;&#xFF0C;&#x8981;&#x6C42;&#x6839;&#x636E;&#x4E00;&#x5B9A;&#x89C4;&#x5219;&#xFF0C;&#x5339;&#x914D;&#x6E90;&#x6587;&#x672C;&#x4E2D;&#x7684;&#x5B57;&#x7B26;&#xFF0C;&#x8F6C;&#x6362;&#x4E3A;&#x76EE;&#x6807;&#x6587;&#x672C;&#xFF0C;&#x8FD9;&#x5C31;&#x8981;&#x7528;&#x5230;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;</p>
+<p>&#x6700;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x4F7F;&#x7528;<code>regular</code>&#x8FDB;&#x884C;&#x5339;&#x914D;&#xFF0C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>`regular` expression
+</code></pre><p>&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x6709;&#x8BB8;&#x591A;&#x53D8;&#x79CD;&#xFF1A;glob &#x8868;&#x8FBE;&#x5F0F;&#x3001;&#x57FA;&#x672C;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x3001;perl &#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x3001;emacs &#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x2026;&#x2026;</p>
+<p>&#x5982;<a href="ch14s06.html#glob" title="&#x901A;&#x914D;&#x7B26;">&#x201C;&#x901A;&#x914D;&#x7B26;&#x201D;&#x4E00;&#x8282;</a>&#x4E2D;&#x4ECB;&#x7ECD;&#x7684;&#x4E3A;&#x6700;&#x7B80;&#x5355;&#x7684; glob &#x8868;&#x8FBE;&#x5F0F;</p>
+<h2 id="&#x8FD0;&#x7B97;&#x4F18;&#x5148;&#x7EA7;">&#x8FD0;&#x7B97;&#x4F18;&#x5148;&#x7EA7;</h2>
+<p>&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x4E0E;&#x6570;&#x5B66;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x4E0D;&#x540C;&#x5728;&#x4E8E;&#xFF0C;&#x6570;&#x5B66;&#x8868;&#x8FBE;&#x5F0F;&#x6267;&#x884C;&#x6570;&#x5B66;&#x8FD0;&#x7B97;&#xFF0C;&#x800C;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x6267;&#x884C;&#x5B57;&#x7B26;&#x8FD0;&#x7B97;&#xFF1B;&#x76F8;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x6309;&#x4E00;&#x5B9A;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x8FDB;&#x884C;&#x8FD0;&#x7B97;</p>
+<table>
+<thead>
+<tr>
+<th>&#x8FD0;&#x7B97;&#x7B26;</th>
+<th>&#x64CD;&#x4F5C;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\</td>
+<td>&#x8F6C;&#x4E49;&#x7B26;</td>
+</tr>
+<tr>
+<td>()</td>
+<td>&#x6355;&#x83B7;&#x3001;&#x5339;&#x914D;&#x3001;&#x65AD;&#x8A00;</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>&#x5B57;&#x7B26;&#x7C7B;</td>
+</tr>
+<tr>
+<td>*+?</td>
+<td>&#x9650;&#x5B9A;&#x7B26;</td>
+</tr>
+<tr>
+<td>{}</td>
+<td>&#x8303;&#x56F4;</td>
+</tr>
+<tr>
+<td>^$</td>
+<td>&#x4F4D;&#x7F6E;&#x548C;&#x987A;&#x5E8F;</td>
+</tr>
+<tr>
+<td>|</td>
+<td>&#x6216;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x8F6C;&#x4E49;&#x7B26;">&#x8F6C;&#x4E49;&#x7B26;</h2>
+<p>&#x5982;&#x679C;&#x6E90;&#x6587;&#x672C;&#x4E2D;&#x51FA;&#x73B0;&#x4E86;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x7684;&#x8FD0;&#x7B97;&#x7B26;&#xFF0C;&#x5982;<code>(</code>&#xFF0C;&#x4F7F;&#x7528; <code>(</code> &#x65E0;&#x6CD5;&#x5339;&#x914D;&#x4E0B;&#x5217;&#x6587;&#x672C;&#x4E2D;&#x7684;&#x62EC;&#x5F27;&#xFF0C;&#x8FD9;&#x65F6;&#x8981;&#x4F7F;&#x7528; <code>\</code> &#x8FDB;&#x884C;&#x8F6C;&#x4E49;&#x3002;&#x7528; <code>\(</code>&#x5339;&#x914D;[<a href="ch26s04.html#ftn.id3119995">48</a>]:</p>
+<pre><code>`(`regular expression)
+</code></pre><p>&#x5728;&#x6587;&#x672C;&#x4E2D;&#x5339;&#x914D;<a href="ch26s03.html" title="&#x8FD0;&#x7B97;&#x4F18;&#x5148;&#x7EA7;">&#x201C;&#x8FD0;&#x7B97;&#x4F18;&#x5148;&#x7EA7;&#x201D;&#x4E00;&#x8282;</a>&#x4E2D;&#x7684;&#x6240;&#x6709;&#x8FD0;&#x7B97;&#x7B26;&#xFF0C;&#x90FD;&#x8981;&#x7528;&#x8FD9;&#x79CD;&#x5F62;&#x5F0F;&#xFF1A;</p>
+<pre><code>\&#x8FD0;&#x7B97;&#x7B26;
+</code></pre><p>&#x5728;&#x6587;&#x672C;&#x4E2D;&#x5339;&#x914D;<code>\</code>&#x672C;&#x8EAB;&#xFF0C;&#x8981;&#x7528; <code>\\</code></p>
+<p>&#x975E;&#x8FD0;&#x7B97;&#x7B26;&#x524D;&#x4F7F;&#x7528; <code>\</code> &#xFF0C;&#x5219;&#x6709;&#x7279;&#x6B8A;&#x7684;&#x610F;&#x4E49;&#xFF0C;&#x4F8B;&#x5982;<code>\n</code>&#x5339;&#x914D;&#x4E00;&#x4E2A;&#x6362;&#x884C;&#x7B26;&#x3002;&#x5E38;&#x7528;&#x8F6C;&#x4E49;&#x5B57;&#x7B26;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x8F6C;&#x4E49;&#x5B57;&#x7B26;</th>
+<th>&#x6DB5;&#x4E49;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x5E38;&#x89C4;&#x5339;&#x914D;</td>
+<td>.</td>
+<td>&#x5339;&#x914D;&#x9664;&#x6362;&#x884C;&#x7B26;&#x4EE5;&#x5916;&#x7684;&#x4EFB;&#x610F;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>&#x5339;&#x914D;&#x5B57;&#x6BCD;&#x6216;&#x6570;&#x5B57;&#x6216;&#x4E0B;&#x5212;&#x7EBF;&#x6216;&#x6C49;&#x5B57;</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>&#x5339;&#x914D;&#x4EFB;&#x610F;&#x7684;&#x7A7A;&#x767D;&#x7B26;</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>&#x5339;&#x914D;&#x6570;&#x5B57;</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>&#x5339;&#x914D;&#x5355;&#x8BCD;&#x7684;&#x5F00;&#x59CB;&#x6216;&#x7ED3;&#x675F;&#xFF0C;&#x5728;&#x5B57;&#x7B26;&#x7C7B;&#x91CC;&#x4EE3;&#x8868;&#x9000;&#x683C;</td>
+</tr>
+<tr>
+<td>^</td>
+<td>&#x5339;&#x914D;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5F00;&#x59CB;&#xFF0C;&#x5728;&#x5B57;&#x7B26;&#x7C7B;&#x91CC;&#x8868;&#x793A;&#x201D;&#x975E;&#x201C;</td>
+</tr>
+<tr>
+<td>$</td>
+<td>&#x5339;&#x914D;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x7ED3;&#x675F;</td>
+</tr>
+<tr>
+<td>&#x53CD;&#x5411;&#x5339;&#x914D;</td>
+<td>\W</td>
+<td>&#x5339;&#x914D;&#x4EFB;&#x610F;&#x4E0D;&#x662F;&#x5B57;&#x6BCD;&#xFF0C;&#x6570;&#x5B57;&#xFF0C;&#x4E0B;&#x5212;&#x7EBF;&#xFF0C;&#x6C49;&#x5B57;&#x7684;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>&#x5339;&#x914D;&#x4EFB;&#x610F;&#x4E0D;&#x662F;&#x7A7A;&#x767D;&#x7B26;&#x7684;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>&#x5339;&#x914D;&#x4EFB;&#x610F;&#x975E;&#x6570;&#x5B57;&#x7684;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>&#x5339;&#x914D;&#x4E0D;&#x662F;&#x5355;&#x8BCD;&#x5F00;&#x5934;&#x6216;&#x7ED3;&#x675F;&#x7684;&#x4F4D;&#x7F6E;</td>
+</tr>
+<tr>
+<td>[^aeiou]</td>
+<td>&#x5339;&#x914D;&#x9664;&#x4E86; aeiou &#x8FD9;&#x51E0;&#x4E2A;&#x5B57;&#x6BCD;&#x4EE5;&#x5916;&#x7684;&#x4EFB;&#x610F;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td>&#x7279;&#x6B8A;&#x5B57;&#x7B26;</td>
+<td>\a</td>
+<td>&#x62A5;&#x8B66;&#x5B57;&#x7B26;(&#x6253;&#x5370;&#x5B83;&#x7684;&#x6548;&#x679C;&#x662F;&#x7535;&#x8111;&#x5600;&#x4E00;&#x58F0;)</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>&#x5236;&#x8868;&#x7B26;&#xFF0C;Tab</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>&#x56DE;&#x8F66;</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>&#x5782;&#x76F4;&#x5236;&#x8868;&#x7B26;</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>&#x6362;&#x9875;&#x7B26;</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>&#x6362;&#x884C;&#x7B26;</td>
+</tr>
+<tr>
+<td>\e</td>
+<td>Escape</td>
+</tr>
+<tr>
+<td>\0nn</td>
+<td>ASCII &#x4EE3;&#x7801;&#x4E2D;&#x516B;&#x8FDB;&#x5236;&#x4EE3;&#x7801;&#x4E3A; nn &#x7684;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td>\xnn</td>
+<td>ASCII &#x4EE3;&#x7801;&#x4E2D;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x4EE3;&#x7801;&#x4E3A; nn &#x7684;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td>\unnnn</td>
+<td>Unicode &#x4EE3;&#x7801;&#x4E2D;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x4EE3;&#x7801;&#x4E3A; nnnn &#x7684;&#x5B57;&#x7B26;</td>
+</tr>
+<tr>
+<td>\cN</td>
+<td>ASCII &#x63A7;&#x5236;&#x5B57;&#x7B26;&#x3002;&#x6BD4;&#x5982; \cC &#x4EE3;&#x8868; Ctrl+C</td>
+</tr>
+<tr>
+<td>\A</td>
+<td>&#x5B57;&#x7B26;&#x4E32;&#x5F00;&#x5934;(&#x7C7B;&#x4F3C;^&#xFF0C;&#x4F46;&#x4E0D;&#x53D7;&#x5904;&#x7406;&#x591A;&#x884C;&#x9009;&#x9879;&#x7684;&#x5F71;&#x54CD;)</td>
+</tr>
+<tr>
+<td>\Z</td>
+<td>&#x5B57;&#x7B26;&#x4E32;&#x7ED3;&#x5C3E;&#x6216;&#x884C;&#x5C3E;(&#x4E0D;&#x53D7;&#x5904;&#x7406;&#x591A;&#x884C;&#x9009;&#x9879;&#x7684;&#x5F71;&#x54CD;)</td>
+</tr>
+<tr>
+<td>\z</td>
+<td>&#x5B57;&#x7B26;&#x4E32;&#x7ED3;&#x5C3E;(&#x7C7B;&#x4F3C;$&#xFF0C;&#x4F46;&#x4E0D;&#x53D7;&#x5904;&#x7406;&#x591A;&#x884C;&#x9009;&#x9879;&#x7684;&#x5F71;&#x54CD;)</td>
+</tr>
+<tr>
+<td>\G</td>
+<td>&#x5F53;&#x524D;&#x641C;&#x7D22;&#x7684;&#x5F00;&#x5934;</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<blockquote>
+<p>[<a href="ch26s04.html#id3119995">48</a>] &#x5728; Emacs &#x548C; Vim &#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x6B63;&#x597D;&#x53CD;&#x8FC7;&#x6765;&#xFF0C;&#x4F7F;&#x7528;<code>\(</code>&#x8868;&#x793A;&#x5206;&#x7EC4;&#xFF0C;&#x7528;<code>(</code>&#x5339;&#x914D;&#x5B57;&#x7B26;</p>
+</blockquote>
+<h2 id="&#x5B57;&#x7B26;&#x7C7B;">&#x5B57;&#x7B26;&#x7C7B;</h2>
+<p>&#x8981;&#x60F3;&#x5339;&#x914D;&#x6570;&#x5B57;&#x3001;&#x5B57;&#x6BCD;&#x3001;&#x7A7A;&#x767D;&#x5F88;&#x5BB9;&#x6613;&#xFF0C;&#x56E0;&#x4E3A;&#x5DF2;&#x7ECF;&#x6709;&#x4E86;&#x5BF9;&#x5E94;&#x8FD9;&#x4E9B;&#x5B57;&#x7B26;&#x96C6;&#x5408;&#x7684;&#x8F6C;&#x4E49;&#x7B26;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x5339;&#x914D;&#x6CA1;&#x6709;&#x9884;&#x5B9A;&#x4E49;&#x7684;&#x5B57;&#x7B26;&#x96C6;&#x5408;(&#x6BD4;&#x5982;&#x5143;&#x97F3;&#x5B57;&#x6BCD; a&#x3001;e&#x3001;i&#x3001;o&#x3001;u)&#xFF0C;&#x5E94;&#x8BE5;&#x600E;&#x4E48;&#x529E;&#xFF1F;</p>
+<p>&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x5141;&#x8BB8;&#x4F60;&#x81EA;&#x5B9A;&#x4E49;&#x5B57;&#x7B26;&#x7C7B;&#xFF0C;&#x5728;&#x65B9;&#x62EC;&#x53F7;&#x91CC;&#x5217;&#x51FA;&#x5B83;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;</p>
+<pre><code>[aeiou]
+</code></pre><p>&#x9884;&#x5B9A;&#x4E49;&#x7684;&#x5B57;&#x7B26;&#x96C6;&#x5408;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x5B57;&#x7B26;&#x7C7B;&#x8868;&#x793A;&#xFF0C;&#x5982; <code>\d</code> &#x7B49;&#x4EF7;&#x4E8E; <code>[0-9]</code></p>
+<p>&#x6709;&#x4E9B;&#x8FD0;&#x7B97;&#x7B26;&#xFF0C;&#x5728;&#x5B57;&#x7B26;&#x7C7B;&#x4E2D;&#x4F7F;&#x7528;&#x4F1A;&#x6709;&#x53E6;&#x4E00;&#x79CD;&#x610F;&#x4E49;&#xFF0C;&#x4F8B;&#x5982;<code>^</code>&#x8868;&#x793A;&#x201C;&#x5B57;&#x7B26;&#x4E32;&#x5F00;&#x59CB;&#x201D;&#xFF0C;&#x4F46;&#x5728;&#x5B57;&#x7B26;&#x7C7B;&#x4E2D;&#x5374;&#x8868;&#x793A; &#x201C;&#x975E;&#x201D;&#xFF0C;&#x4EE5;<code>expression</code>&#x4E3A;&#x4F8B;&#xFF0C;&#x4F7F;&#x7528;<code>[exp]</code>&#x5339;&#x914D;&#xFF1A;</p>
+<pre><code>`exp`r`e`ssion
+</code></pre><p>&#x4F7F;&#x7528;<code>[^exp]</code>&#x5339;&#x914D;(&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x975E; e&#x3001;x&#x3001;p &#x7684;&#x5B57;&#x7B26;)&#xFF1A;</p>
+<pre><code>exp`r`e`ssion`
+</code></pre><p>&#x800C;&#x4F7F;&#x7528;<code>^[exp]</code>&#x5339;&#x914D;(&#x4EE5; e&#x3001;x &#x6216; p &#x8D77;&#x59CB;&#x7684;&#x5B57;&#x7B26;&#x4E32;)&#xFF1A;</p>
+<pre><code>`e`xpression
+</code></pre><h2 id="&#x9650;&#x5B9A;&#x7B26;">&#x9650;&#x5B9A;&#x7B26;</h2>
+<p>&#x5728;&#x4E0A;&#x4E00;&#x5C0F;&#x8282;&#x4E2D;&#x7684;&#x8868;&#x683C;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053; <code>.</code> &#x53EF;&#x4EE5;&#x5339;&#x914D;&#x9664;&#x6362;&#x884C;&#x7B26;&#x4EE5;&#x5916;&#x7684;&#x4EFB;&#x610F;&#x5B57;&#x7B26;&#xFF0C;&#x4F7F;&#x7528;<code>.</code>&#x5339;&#x914D;&#x4E0B;&#x5217;&#x6587;&#x672C;&#xFF1A;</p>
+<pre><code>expression
+</code></pre><p>&#x4F46;&#x662F;<code>.</code>&#x6BCF;&#x6B21;&#x53EA;&#x5339;&#x914D;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x4E00;&#x6B21;&#x5339;&#x914D;&#x591A;&#x4E2A;&#xFF0C;&#x5219;&#x8981;&#x4F7F;&#x7528;&#x9650;&#x5B9A;&#x7B26;</p>
+<table>
+<thead>
+<tr>
+<th>&#x9650;&#x5B9A;&#x7B26;</th>
+<th>&#x4F5C;&#x7528;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>&#x5339;&#x914D;&#x96F6;&#x6B21;&#x6216;&#x591A;&#x6B21;</td>
+</tr>
+<tr>
+<td>+</td>
+<td>&#x5339;&#x914D;&#x4E00;&#x6B21;&#x6216;&#x591A;&#x6B21;</td>
+</tr>
+<tr>
+<td>?</td>
+<td>&#x5339;&#x914D;&#x96F6;&#x6B21;&#x6216;&#x4E00;&#x6B21;</td>
+</tr>
+<tr>
+<td>{3}</td>
+<td>&#x5339;&#x914D;&#x4E09;&#x6B21;</td>
+</tr>
+<tr>
+<td>{3,5}</td>
+<td>&#x5339;&#x914D;&#x4E09;&#x5230;&#x4E94;&#x6B21;</td>
+</tr>
+<tr>
+<td>{3,}</td>
+<td>&#x5339;&#x914D;&#x4E09;&#x6B21;&#x6216;&#x4EE5;&#x4E0A;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x4E0B;&#x9762;&#x901A;&#x8FC7;&#x5B9E;&#x4F8B;&#x4E86;&#x89E3;&#x9650;&#x5B9A;&#x7B26;&#x7684;&#x533A;&#x522B;&#x3002; <code>es</code> &#x7684;&#x5339;&#x914D;&#x7ED3;&#x679C;</p>
+<pre><code>expr`es`sion
+</code></pre><p><code>es+</code> &#x7684;&#x5339;&#x914D;&#x7ED3;&#x679C;(e&#xFF0C;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A; s)</p>
+<pre><code>expr`ess`ion
+</code></pre><p><code>es*</code> &#x7684;&#x5339;&#x914D;&#x7ED3;&#x679C;(e&#xFF0C;&#x96F6;&#x6216;&#x591A;&#x4E2A; s)</p>
+<pre><code>`e`xpr`ess`ion
+</code></pre><p><code>es?</code> &#x7684;&#x5339;&#x914D;&#x7ED3;&#x679C;(e&#xFF0C;&#x96F6;&#x6216;&#x4E00;&#x4E2A; s)</p>
+<pre><code>`e`xpr`es`sion
+</code></pre><h3 id="&#x8D2A;&#x5A6A;&#x4E0E;&#x61D2;&#x60F0;">&#x8D2A;&#x5A6A;&#x4E0E;&#x61D2;&#x60F0;</h3>
+<p>&#x4F7F;&#x7528;&#x9650;&#x5B9A;&#x7B26;&#x8FDB;&#x884C;&#x5339;&#x914D;&#x65F6;&#xFF0C;&#x9ED8;&#x8BA4;&#x5339;&#x914D;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x7684;&#x5B57;&#x7B26;&#x3002;&#x65E0;&#x8BBA;&#x7528; <code>.*</code> &#x8FD8;&#x662F; <code>.+</code> &#x5339;&#x914D;&#x4E0B;&#x5217;&#x6587;&#x672C;&#xFF0C;&#x90FD;&#x4F1A;&#x5339;&#x914D;&#x5168;&#x90E8;</p>
+<pre><code>`expression`
+</code></pre><p>&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x79F0;&#x4E3A;&#x201C;&#x8D2A;&#x5A6A;&#x6A21;&#x5F0F;&#x201D;&#x3002;&#x5728;&#x9650;&#x5B9A;&#x7B26;&#x4E4B;&#x540E;&#x52A0; <code>?</code> &#x5219;&#x5339;&#x914D;&#x5C3D;&#x53EF;&#x80FD;&#x5C11;&#x7684;&#x5B57;&#x7B26;&#xFF0C;&#x79F0;&#x4E3A;&#x201C;&#x61D2;&#x60F0;&#x6A21;&#x5F0F;&#x201D;[<a href="ch26s06.html#ftn.id3120698">49</a>]</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x4F7F;&#x7528;&#x8D2A;&#x5A6A;&#x6A21;&#x5F0F;<code>a.+b</code>&#x5339;&#x914D;&#xFF1A;</p>
+<pre><code>`aaabab`
+</code></pre><p>&#x4F7F;&#x7528;&#x61D2;&#x60F0;&#x6A21;&#x5F0F;<code>a.+?b</code>&#x5339;&#x914D;&#xFF1A;</p>
+<pre><code>`aaab`ab
+</code></pre><hr>
+<blockquote>
+<p>[<a href="ch26s06.html#id3120698">49</a>] <code>.+</code> &#x5339;&#x914D;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x4EFB;&#x610F;&#x5B57;&#x7B26;&#xFF0C;&#x5728;&#x8D2A;&#x5A6A;&#x6A21;&#x5F0F;&#x4E2D;&#xFF0C;&#x5B83;&#x5339;&#x914D;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x7684;&#x5B57;&#x7B26;&#xFF1B;&#x800C;&#x61D2;&#x60F0;&#x6A21;&#x5F0F;&#x4E2D;(<code>.+?</code>)&#xFF0C;&#x5219;&#x53EA;&#x5339;&#x914D;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#xFF1B;<code>.{3,5}</code>&#x5728;&#x8D2A;&#x5A6A;&#x6A21;&#x5F0F;&#x4E2D;&#x5C3D;&#x53EF;&#x80FD;&#x5339;&#x914D;5&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x5728;&#x61D2;&#x60F0;&#x6A21;&#x5F0F;&#x4E2D;(<code>.{3,5}?</code>)&#x53EA;&#x5339;&#x914D;3&#x4E2A;&#x5B57;&#x7B26;&#xFF1B;<code>?</code> &#x548C; <code>*</code> &#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x5339;&#x914D;&#x96F6;&#x6B21;&#x7684;&#x9650;&#x5B9A;&#x7B26;&#xFF0C;&#x5728;&#x61D2;&#x60F0;&#x6A21;&#x5F0F;&#x4E0B;&#x4E0D;&#x5339;&#x914D;&#x4EFB;&#x4F55;&#x5B57;&#x7B26;(<code>.*?</code>&#x3001;<code>.??</code>)</p>
+</blockquote>
+<h2 id="&#x5206;&#x652F;&#x6761;&#x4EF6;">&#x5206;&#x652F;&#x6761;&#x4EF6;</h2>
+<p><code>|</code> &#x8868;&#x793A;&#x201C;&#x6216;&#x201D;&#xFF0C;&#x4F7F;&#x7528;&#x5B83;&#x8FDB;&#x884C;&#x5206;&#x652F;&#x9009;&#x62E9;</p>
+<p>&#x4F8B;&#x5982;<code>[a-z]+|\d+</code>&#x5339;&#x914D;&#x5355;&#x8BCD;&#x6216;&#x6570;&#x5B57;&#xFF1A;</p>
+<pre><code>expression 123
+</code></pre><h2 id="&#x5206;&#x7EC4;&#x3001;&#x6355;&#x83B7;">&#x5206;&#x7EC4;&#x3001;&#x6355;&#x83B7;</h2>
+<h3 id="&#x5206;&#x7EC4;">&#x5206;&#x7EC4;</h3>
+<p>&#x4F7F;&#x7528;<code>(&#x8868;&#x8FBE;&#x5F0F;)</code>&#x5BF9;&#x8868;&#x8FBE;&#x5F0F;&#x8FDB;&#x884C;&#x5206;&#x7EC4;&#xFF0C;&#x4F8B;&#x5982;&#x4F7F;&#x7528;<code>(\d{3}\.){2}</code>&#x5339;&#x914D;&#x4E0B;&#x9762;&#x4F8B;&#x5B50;&#x4E2D;&#x7684;&#x6570;&#x5B57;&#xFF1A;</p>
+<pre><code>abc`123.456.`def
+</code></pre><p><code>\d{3}</code>&#x8868;&#x793A;&#x4E09;&#x4E2A;&#x6570;&#x5B57;&#xFF0C;<code>(\d{3}\.)</code>&#x8868;&#x793A;&#x4E09;&#x4E2A;&#x6570;&#x5B57;&#x52A0;&#x201C;<code>.</code>&#x201D;&#x4E3A;&#x4E00;&#x7EC4;&#xFF0C;<code>{2}</code>&#x8868;&#x793A;&#x8FD9;&#x4E00;&#x7EC4;&#x5185;&#x5BB9;&#x91CD;&#x590D;&#x4E24;&#x6B21;</p>
+<h3 id="&#x6355;&#x83B7;">&#x6355;&#x83B7;</h3>
+<p>&#x5728;&#x5BF9;&#x8868;&#x8FBE;&#x5F0F;&#x8FDB;&#x884C;&#x5206;&#x7EC4;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x6355;&#x83B7;&#x6587;&#x672C;&#x5230;&#x81EA;&#x52A8;&#x547D;&#x540D;&#x7684;&#x7EC4;&#x91CC;&#xFF0C;&#x4F7F;&#x7528; <code>\1 \2 &#x2026;&#x2026;</code> &#x540E;&#x5411;&#x5F15;&#x7528;&#x7EC4;</p>
+<p>&#x4F8B;&#x5982;&#x7528;<code>([a-z]*)\ (\d*)</code>&#x5339;&#x914D;&#x4E0B;&#x5217;&#x6587;&#x672C;&#xFF0C;<code>([a-z]*)</code>&#x4E3A;<code>\1</code>&#x7EC4;&#xFF0C;<code>(\d*)</code>&#x4E3A;<code>\2</code>&#x7EC4;</p>
+<pre><code>kardinal 1234567
+</code></pre><p>&#x4F7F;&#x7528;<code>\2\ \1</code>&#x66FF;&#x6362;<code>([a-z]*)\ (\d*)</code>&#xFF0C;&#x53EF;&#x4EE5;&#x6539;&#x53D8;&#x4E24;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x987A;&#x5E8F;</p>
+<pre><code>1234567 kardinal
+</code></pre><p>&#x5982;&#x679C;&#x5206;&#x7EC4;&#x8F83;&#x591A;&#xFF0C;&#x8BA1;&#x6570;&#x53EF;&#x80FD;&#x4F1A;&#x4E0D;&#x592A;&#x65B9;&#x4FBF;&#xFF0C;&#x53EF;&#x4EE5;&#x7ED9;&#x5206;&#x7EC4;&#x6307;&#x5B9A;&#x540D;&#x79F0;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code>(?&lt;**name**&gt;[a-z]*)\ (?&lt;**num**&gt;\d*)    
+      \k&lt;**num**&gt;\ \k&lt;**name**&gt; (?#&#x4F7F;&#x7528;&#x201C;`\k&lt;name&gt;`&#x201D;&#x540E;&#x5411;&#x5F15;&#x7528;)
+</code></pre><p>&#x4F7F;&#x7528;<code>(?:&#x8868;&#x8FBE;&#x5F0F;)</code>&#xFF0C;&#x5219;&#x53EA;&#x662F;&#x5206;&#x7EC4;&#xFF0C;&#x800C;&#x4E0D;&#x6355;&#x83B7;&#xFF0C;&#x4E0B;&#x9762;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;<code>(\d*)</code>&#x4E3A;<code>\1</code>&#x7EC4;</p>
+<pre><code>(?:[a-z]*)\ (\d*)
+</code></pre><h2 id="&#x96F6;&#x5BBD;&#x65AD;&#x8A00;">&#x96F6;&#x5BBD;&#x65AD;&#x8A00;</h2>
+<p>&#x76EE;&#x524D;&#x4E3A;&#x6B62;&#xFF0C;&#x6211;&#x4EEC;&#x5B66;&#x5230;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x5339;&#x914D;&#xFF0C;&#x90FD;&#x662F;&#x6709;&#x201C;&#x5BBD;&#x5EA6;&#x201D;&#x7684;&#xFF0C;&#x4F7F;&#x7528; <code>\w+&#x3002;</code> &#x5339;&#x914D;&#x4E0B;&#x9762;&#x6587;&#x672C;&#xFF0C;&#x4F1A;&#x5C06; <code>&#x3002;</code> &#x4E00;&#x540C;&#x5339;&#x914D;&#xFF1A;</p>
+<pre><code>regular&#x3002; 
+expression&#x3002;
+</code></pre><p>&#x5982;&#x679C;&#x4E0D;&#x60F3;&#x5339;&#x914D;&#x7B26;&#x53F7;&#xFF0C;&#x53EA;&#x5339;&#x914D;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#xFF0C;&#x5C31;&#x8981;&#x7528;&#x5230;&#x201C;&#x96F6;&#x5BBD;&#x65AD;&#x8A00;&#x201D;(&#x5339;&#x914D;&#x5BBD;&#x5EA6;&#x4E3A;&#x96F6;&#xFF0C;&#x6EE1;&#x8DB3;&#x4E00;&#x5B9A;&#x7684; &#x6761;&#x4EF6;/&#x65AD;&#x8A00;)&#xFF0C;&#x96F6;&#x5BBD;&#x65AD;&#x8A00;&#x4F7F;&#x7528; <strong>(?=&#x8868;&#x8FBE;&#x5F0F;)</strong> &#x7684;&#x8BED;&#x6CD5;&#xFF0C;&#x4F8B;&#x5982; <code>\w+(?=&#x3002;)</code>&#xFF0C;&#x5176;&#x4E2D; <code>(?=&#x3002;)</code> &#x8868;&#x793A; <code>&#x3002;</code> &#x524D;&#x9762;&#x7684;&#x4F4D;&#x7F6E;(&#x5148;&#x884C;&#x65AD;&#x8A00;)</p>
+<pre><code>`regular`&#x3002; 
+`expression`&#x3002;
+</code></pre><p>&#x5982;&#x679C;&#x9700;&#x8981;&#x5339;&#x914D;&#x540E;&#x9762;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x5982;&#xFF1A;</p>
+<pre><code>&#x3002;`regular` 
+&#x3002;`expression`
+</code></pre><p>&#x5219;&#x8981;&#x7528;&#x5230;&#x540E;&#x53D1;&#x65AD;&#x8A00; <code>(?&amp;lt;=&#x3002;)</code> &#xFF0C;&#x4F7F;&#x7528; <code>(?&amp;lt;=&#x3002;)\w+</code> &#x5F97;&#x5230;&#x4E0A;&#x9762;&#x7684;&#x5339;&#x914D;&#x7ED3;&#x679C;</p>
+<p>&#x4F7F;&#x7528; <code>(?&amp;lt;=&amp;lt;b&amp;gt;).*(?=&amp;lt;/b&amp;gt;)</code> &#x5339;&#x914D;&#x6807;&#x7B7E;&#x4E2D;&#x7684;&#x5185;&#x5BB9;</p>
+<pre><code>&lt;b&gt;`&#x7C97;&#x4F53;`&lt;/b&gt;
+</code></pre><h3 id="&#x8D1F;&#x5411;&#x96F6;&#x5BBD;&#x65AD;&#x8A00;">&#x8D1F;&#x5411;&#x96F6;&#x5BBD;&#x65AD;&#x8A00;</h3>
+<p>&#x8D1F;&#x5411;&#x96F6;&#x5BBD;&#x65AD;&#x8A00; <strong>(?!&#x8868;&#x8FBE;&#x5F0F;)</strong> &#x4E5F;&#x662F;&#x5339;&#x914D;&#x4E00;&#x4E2A;&#x96F6;&#x5BBD;&#x5EA6;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x4E2A;&#x4F4D;&#x7F6E;&#x7684;&#x201C;&#x65AD;&#x8A00;&#x201D;&#x53D6;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x53CD;&#x503C;&#xFF0C;&#x4F8B;&#x5982; <code>(?!&#x8868;&#x8FBE;&#x5F0F;)</code> &#x8868;&#x793A; <code>&#x8868;&#x8FBE;&#x5F0F;</code> &#x524D;&#x9762;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x5982;&#x679C; <code>&#x8868;&#x8FBE;&#x5F0F;</code> &#x4E0D;&#x6210;&#x7ACB; &#xFF0C;&#x5339;&#x914D;&#x8FD9;&#x4E2A;&#x4F4D;&#x7F6E;&#xFF1B;&#x5982;&#x679C; <code>&#x8868;&#x8FBE;&#x5F0F;</code> &#x6210;&#x7ACB;&#xFF0C;&#x5219;&#x4E0D;&#x5339;&#x914D;&#xFF1A;</p>
+<pre><code>`expression` 
+`expression`&#xFF0C;
+`expression`&#xFF1B;
+expression&#x3002;
+</code></pre><p>&#x4EE5;&#x4E0A;&#x4E3A;&#x4F7F;&#x7528; <code>.+n(?!&#x3002;)</code> &#x7684;&#x5339;&#x914D;&#x7ED3;&#x679C;&#x3002;&#x6CE8;&#x610F;&#x4E0E; <code>.+n[^&#x3002;]</code> &#x5339;&#x914D;&#x7684;&#x533A;&#x522B;</p>
+<pre><code>expression
+`expression&#xFF0C;`
+`expression&#xFF1B;`
+expression&#x3002;
+</code></pre><p>&#x540C;&#x6837;&#xFF0C;&#x8D1F;&#x5411;&#x96F6;&#x5BBD;&#x65AD;&#x8A00;&#x4E5F;&#x6709;&#x201C;&#x5148;&#x884C;&#x201D;&#x548C;&#x201C;&#x540E;&#x53D1;&#x201D;&#x4E24;&#x79CD;&#xFF0C;&#x8D1F;&#x5411;&#x96F6;&#x5BBD;&#x540E;&#x53D1;&#x65AD;&#x8A00;&#x4E3A; <strong>(?&lt;!&#x8868;&#x8FBE;&#x5F0F;)</strong></p>
+<p>&#x4F7F;&#x7528; <code>(?&amp;lt;![&amp;lt;/])para(?!&amp;gt;)</code> &#x5339;&#x914D;&#x4E0B;&#x9762;&#x6587;&#x672C;</p>
+<pre><code>&lt;para&gt;`para`&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x6BB5;&#x843D;&lt;/para&gt;
+</code></pre><ul>
+<li><code>(?&amp;lt;![&amp;lt;/])</code> &#x8868;&#x793A; <code>para</code> &#x5DE6;&#x8FB9;&#x4E0D;&#x80FD;&#x4E3A; <code>&amp;lt;</code> &#x6216; <code>/</code> &#xFF1B;<code>(?!&amp;gt;)</code> &#x8868;&#x793A; <code>para</code> &#x53F3;&#x8FB9;&#x4E0D;&#x80FD;&#x4E3A; <code>&amp;gt;</code></li>
+</ul>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./34.html" class="navigation navigation-prev " aria-label="Previous page: 第 25 章 Emacs 入门"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./36.html" class="navigation navigation-next " aria-label="Next page: 第 27 章 docbook 指南"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

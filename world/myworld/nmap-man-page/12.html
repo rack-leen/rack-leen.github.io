@@ -1,0 +1,497 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>十二、 防火墙/IDS 躲避和哄骗 | Nmap 参考指南</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./13.html" />
+    
+    
+    <link rel="prev" href="./11.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="12"
+        data-chapter-title="十二、 防火墙/IDS 躲避和哄骗"
+        data-filepath="12.md"
+        data-basepath="."
+        data-revision="Mon Apr 18 2016 02:36:16 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/nmap-man-page" target="blank" class="custom-link">Nmap 参考指南</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="1.html">
+            
+                
+                    <a href="./1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        一、 描述
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        二、 译注
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        三、 选项概要
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        四、 目标说明
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        五、 主机发现
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        六、 端口扫描基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        七、 端口扫描技术
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="8.html">
+            
+                
+                    <a href="./8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        八、 端口说明和扫描顺序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="9.html">
+            
+                
+                    <a href="./9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        九、 服务和版本探测
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="10.html">
+            
+                
+                    <a href="./10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        十、 操作系统探测
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="11.html">
+            
+                
+                    <a href="./11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        十一、 时间和性能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="12" data-path="12.html">
+            
+                
+                    <a href="./12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        十二、 防火墙/IDS 躲避和哄骗
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="13.html">
+            
+                
+                    <a href="./13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        十三、 输出
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="14.html">
+            
+                
+                    <a href="./14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        十四、 其它选项
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="15.html">
+            
+                
+                    <a href="./15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        十五、 运行时的交互
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="16.html">
+            
+                
+                    <a href="./16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        十六、 实例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="17.html">
+            
+                
+                    <a href="./17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        十七、 Bugs
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18" data-path="18.html">
+            
+                
+                    <a href="./18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.</b>
+                        
+                        十八、 作者
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19" data-path="19.html">
+            
+                
+                    <a href="./19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.</b>
+                        
+                        十九、 法律事项(版权、许可证、担保(缺)、出口限制)
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >Nmap 参考指南</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="&#x5341;&#x4E8C;&#x3001;-&#x9632;&#x706B;&#x5899;ids-&#x8EB2;&#x907F;&#x548C;&#x54C4;&#x9A97;">&#x5341;&#x4E8C;&#x3001; &#x9632;&#x706B;&#x5899;/IDS &#x8EB2;&#x907F;&#x548C;&#x54C4;&#x9A97;</h2>
+<p>&#x5F88;&#x591A; Internet &#x5148;&#x9A71;&#x4EEC;&#x8BBE;&#x60F3;&#x4E86;&#x4E00;&#x4E2A;&#x5168;&#x7403;&#x5F00;&#x653E;&#x7684;&#x7F51;&#x7EDC;&#xFF0C;&#x4F7F;&#x7528;&#x5168;&#x5C40;&#x7684; IP &#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF0C;&#x4F7F;&#x5F97;&#x4EFB;&#x4F55;&#x4E24;&#x4E2A;&#x8282; &#x70B9;&#x4E4B;&#x95F4;&#x90FD;&#x6709;&#x865A;&#x62DF;&#x8FDE;&#x63A5;&#x3002;&#x8FD9;&#x4F7F;&#x5F97;&#x4E3B;&#x673A;&#x95F4;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x771F;&#x6B63;&#x7684;&#x5BF9;&#x7B49;&#x4F53;&#xFF0C;&#x76F8;&#x4E92;&#x95F4;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x548C;&#x83B7;&#x53D6;&#x4FE1;&#x606F;&#x3002;&#x4EBA; &#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x5DE5;&#x4F5C;&#x65F6;&#x8BBF;&#x95EE;&#x5BB6;&#x91CC;&#x6240;&#x6709;&#x7684;&#x7CFB;&#x7EDF;&#x3001;&#x8C03;&#x8282;&#x7A7A;&#x8C03;&#x6E29;&#x5EA6;&#x3001;&#x4E3A;&#x63D0;&#x524D;&#x5230;&#x6765;&#x7684;&#x5BA2;&#x4EBA;&#x5F00;&#x95E8;&#x3002;&#x968F;&#x540E;&#xFF0C;&#x8FD9;&#x4E9B;&#x5168; &#x7403;&#x8FDE;&#x63A5;&#x7684;&#x8BBE;&#x60F3;&#x53D7;&#x5230;&#x4E86;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x77ED;&#x7F3A;&#x548C;&#x5B89;&#x5168;&#x8003;&#x8651;&#x7684;&#x9650;&#x5236;&#x3002;&#x5728; 90 &#x5E74;&#x4EE3;&#x65E9;&#x671F;&#xFF0C;&#x5404;&#x79CD;&#x673A;&#x6784;&#x5F00;&#x59CB;&#x90E8;&#x7F72;&#x9632;&#x706B; &#x5899;&#x6765;&#x5B9E;&#x73B0;&#x51CF;&#x5C11;&#x8FDE;&#x63A5;&#x7684;&#x76EE;&#x7684;&#xFF0C;&#x5927;&#x578B;&#x7F51;&#x7EDC;&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x3001;NAT &#x548C;&#x5305;&#x8FC7;&#x6EE4;&#x5668;&#x4E0E;&#x672A;&#x8FC7;&#x6EE4;&#x7684; Internet &#x9694;&#x79BB;&#x3002;&#x4E0D; &#x53D7;&#x9650;&#x7684;&#x4FE1;&#x606F;&#x6D41;&#x88AB;&#x4E25;&#x683C;&#x63A7;&#x5236;&#x7684;&#x53EF;&#x4FE1;&#x901A;&#x4FE1;&#x901A;&#x9053;&#x4FE1;&#x606F;&#x6D41;&#x6240;&#x66FF;&#x4EE3;&#x3002;</p>
+<p>&#x7C7B;&#x4F3C;&#x9632;&#x706B;&#x5899;&#x7684;&#x7F51;&#x7EDC;&#x9694;&#x79BB;&#x4F7F;&#x5F97;&#x5BF9;&#x7F51;&#x7EDC;&#x7684;&#x641C;&#x7D22;&#x66F4;&#x52A0;&#x56F0;&#x96BE;&#xFF0C;&#x968F;&#x610F;&#x7684;&#x641C;&#x7D22;&#x53D8;&#x5F97;&#x4E0D;&#x518D;&#x7B80;&#x5355;&#x3002;&#x7136;&#x800C;&#xFF0C;Nmap &#x63D0; &#x4F9B;&#x4E86;&#x5F88;&#x591A;&#x7279;&#x6027;&#x7528;&#x4E8E;&#x7406;&#x89E3;&#x8FD9;&#x4E9B;&#x590D;&#x6742;&#x7684;&#x7F51;&#x7EDC;&#xFF0C;&#x5E76;&#x4E14;&#x68C0;&#x9A8C;&#x8FD9;&#x4E9B;&#x8FC7;&#x6EE4;&#x5668;&#x662F;&#x5426;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x3002;&#x6B64;&#x5916;&#xFF0C;Nmap &#x63D0;&#x4F9B; &#x4E86;&#x7ED5;&#x8FC7;&#x67D0;&#x4E9B;&#x8F83;&#x5F31;&#x7684;&#x9632;&#x8303;&#x673A;&#x5236;&#x7684;&#x624B;&#x6BB5;&#x3002;&#x68C0;&#x9A8C;&#x7F51;&#x7EDC;&#x5B89;&#x5168;&#x72B6;&#x6001;&#x6700;&#x6709;&#x6548;&#x7684;&#x65B9;&#x6CD5;&#x4E4B;&#x4E00;&#x662F;&#x5C1D;&#x8BD5;&#x54C4;&#x9A97;&#x7F51;&#x7EDC;&#xFF0C;&#x5C06; &#x81EA;&#x5DF1;&#x60F3;&#x8C61;&#x6210;&#x4E00;&#x4E2A;&#x653B;&#x51FB;&#x8005;&#xFF0C;&#x4F7F;&#x7528;&#x672C;&#x8282;&#x63D0;&#x4F9B;&#x7684;&#x6280;&#x672F;&#x6765;&#x653B;&#x51FB;&#x81EA;&#x5DF1;&#x7684;&#x7F51;&#x7EDC;&#x3002;&#x5982;&#x4F7F;&#x7528; FTP bounce &#x626B;&#x63CF;&#x3001;Idle &#x626B;&#x63CF;&#x3001;&#x5206;&#x7247;&#x653B;&#x51FB;&#x6216;&#x5C1D;&#x8BD5;&#x7A7F;&#x900F;&#x81EA;&#x5DF1;&#x7684;&#x4EE3;&#x7406;&#x3002;</p>
+<p>&#x9664;&#x9650;&#x6B62;&#x7F51;&#x7EDC;&#x7684;&#x884C;&#x4E3A;&#x5916;&#xFF0C;&#x4F7F;&#x7528;&#x5165;&#x4FB5;&#x68C0;&#x6D4B;&#x7CFB;&#x7EDF;(IDS)&#x7684;&#x516C;&#x53F8;&#x4E5F;&#x4E0D;&#x65AD;&#x589E;&#x52A0;&#x3002;&#x7531;&#x4E8E; Nmap &#x5E38;&#x7528;&#x4E8E;&#x653B;&#x51FB;&#x524D;&#x671F; &#x7684;&#x626B;&#x63CF;&#xFF0C;&#x56E0;&#x6B64;&#x6240;&#x6709;&#x4E3B;&#x6D41;&#x7684; IDS &#x90FD;&#x5305;&#x542B;&#x4E86;&#x68C0;&#x6D4B; Nmap &#x626B;&#x63CF;&#x7684;&#x89C4;&#x5219;&#x3002;&#x73B0;&#x5728;&#xFF0C;&#x8FD9;&#x4E9B;&#x4EA7;&#x54C1;&#x53D8;&#x5F62;&#x4E3A;&#x5165;&#x4FB5;&#x9884;&#x9632; &#x7CFB;&#x7EDF;(IPS)&#xFF0C;&#x53EF;&#x4EE5;&#x4E3B;&#x52A8;&#x5730;&#x963B;&#x6B62;&#x53EF;&#x7591;&#x7684;&#x6076;&#x610F;&#x884C;&#x4E3A;&#x3002;&#x4E0D;&#x5E78;&#x7684;&#x662F;&#xFF0C;&#x7F51;&#x7EDC;&#x7BA1;&#x7406;&#x5458;&#x548C; IDS &#x5382;&#x5546;&#x901A;&#x8FC7;&#x5206;&#x6790;&#x62A5;&#x6587; &#x6765;&#x68C0;&#x6D4B;&#x6076;&#x610F;&#x884C;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;&#x8270;&#x82E6;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x6709;&#x8010;&#x5FC3;&#x548C;&#x6280;&#x672F;&#x7684;&#x653B;&#x51FB;&#x8005;&#xFF0C;&#x5728;&#x7279;&#x5B9A; Nmap &#x9009;&#x9879;&#x7684;&#x5E2E;&#x52A9;&#x4E0B;&#xFF0C;&#x5E38;&#x5E38; &#x53EF;&#x4EE5;&#x4E0D;&#x88AB; IDS &#x68C0;&#x6D4B;&#x5230;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x7BA1;&#x7406;&#x5458;&#x5FC5;&#x987B;&#x5E94;&#x4ED8;&#x5927;&#x91CF;&#x7684;&#x8BEF;&#x62A5;&#x7ED3;&#x679C;&#xFF0C;&#x6B63;&#x5E38;&#x7684;&#x884C;&#x4E3A;&#x88AB;&#x8BEF;&#x5224;&#x800C;&#x88AB;&#x6539;&#x53D8;&#x6216; &#x963B;&#x6B62;&#x3002;</p>
+<p>&#x6709;&#x65F6;&#xFF0C;&#x4EBA;&#x4EEC;&#x5EFA;&#x8BAE; Nmap &#x4E0D;&#x5E94;&#x8BE5;&#x63D0;&#x4F9B;&#x8EB2;&#x95ED;&#x9632;&#x706B;&#x5899;&#x89C4;&#x5219;&#x6216;&#x54C4;&#x9A97; IDS &#x7684;&#x529F;&#x80FD;&#xFF0C;&#x8FD9;&#x4E9B;&#x529F;&#x80FD;&#x53EF;&#x80FD;&#x4F1A;&#x88AB;&#x653B;&#x51FB;&#x8005; &#x6EE5;&#x7528;&#xFF0C;&#x7136;&#x800C;&#x7BA1;&#x7406;&#x5458;&#x5374;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x8FD9;&#x4E9B;&#x529F;&#x80FD;&#x6765;&#x589E;&#x5F3A;&#x5B89;&#x5168;&#x6027;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x653B;&#x51FB;&#x7684;&#x65B9;&#x6CD5;&#x4ECD;&#x53EF;&#x88AB;&#x653B;&#x51FB;&#x8005;&#x5229;&#x7528; &#x4ED6;&#x4EEC;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x5176;&#x5B83;&#x5DE5;&#x5177;&#x6216; Nmap &#x7684;&#x8865;&#x4E01;&#x7A0B;&#x5E8F;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x7BA1;&#x7406;&#x5458;&#x53D1;&#x73B0;&#x653B;&#x51FB;&#x8005;&#x7684;&#x5DE5;&#x4F5C;&#x66F4;&#x52A0;&#x56F0;&#x96BE;&#xFF0C;&#x76F8;&#x6BD4;&#x8F83; &#x91C7;&#x53D6;&#x63AA;&#x65BD;&#x6765;&#x9884;&#x9632;&#x6267;&#x884C; FTP Bounce &#x653B;&#x51FB;&#x7684;&#x5DE5;&#x5177;&#x800C;&#x8A00;&#xFF0C;&#x90E8;&#x7F72;&#x5148;&#x8FDB;&#x7684;&#x3001;&#x6253;&#x8FC7;&#x8865;&#x4E01;&#x7684; FTP &#x670D;&#x52A1;&#x5668;&#x66F4;&#x52A0;&#x6709; &#x6548;&#x3002;</p>
+<p>Nmap &#x4E0D;&#x63D0;&#x4F9B;&#x68C0;&#x6D4B;&#x548C;&#x7834;&#x574F;&#x9632;&#x706B;&#x5899;&#x53CA; IDS &#x7CFB;&#x7EDF;&#x7684;&#x9B54;&#x5F39;(&#x6216; Nmap &#x9009;&#x9879;)&#xFF0C;&#x5B83;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x6280;&#x672F;&#x548C;&#x7ECF;&#x9A8C;&#xFF0C;&#x8FD9;&#x8D85; &#x51FA;&#x4E86;&#x672C;&#x53C2;&#x8003;&#x624B;&#x518C;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x4E0B;&#x9762;&#x63CF;&#x8FF0;&#x4E86;&#x76F8;&#x5173;&#x7684;&#x9009;&#x9879;&#x548C;&#x5B8C;&#x6210;&#x7684;&#x5DE5;&#x4F5C;&#x3002;</p>
+<p><code>-f</code> (&#x62A5;&#x6587;&#x5206;&#x6BB5;); <code>--mtu</code> (&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684; MTU)</p>
+<p>-f &#x9009;&#x9879;&#x8981;&#x6C42;&#x626B;&#x63CF;&#x65F6;(&#x5305;&#x633A; ping &#x626B;&#x63CF;)&#x4F7F;&#x7528; &#x5C0F;&#x7684; IP &#x5305;&#x5206;&#x6BB5; &#x5176;&#x601D;&#x8DEF;&#x662F;&#x5C06; TCP &#x5934;&#x5206;&#x6BB5;&#x5728;&#x51E0;&#x4E2A; &#x5305;&#x4E2D;&#xFF0C;&#x4F7F;&#x5F97;&#x5305;&#x8FC7;&#x6EE4;&#x5668;&#x3001; IDS &#x4EE5;&#x53CA;&#x5176;&#x5B83;&#x5DE5;&#x5177;&#x7684;&#x68C0;&#x6D4B;&#x66F4;&#x52A0;&#x56F0;&#x96BE;&#x3002;&#x5FC5;&#x987B;&#x5C0F;&#x5FC3;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#xFF0C;&#x6709; &#x4E9B;&#x7CFB; &#x7EDF;&#x5728;&#x5904;&#x7406;&#x8FD9;&#x4E9B;&#x5C0F;&#x5305;&#x65F6;&#x5B58;&#x5728;&#x95EE;&#x9898;&#xFF0C;&#x4F8B;&#x5982;&#x65E7;&#x7684;&#x7F51;&#x7EDC;&#x55C5;&#x63A2;&#x5668; Sniffit &#x5728;&#x63A5;&#x6536; &#x5230;&#x7B2C;&#x4E00;&#x4E2A;&#x5206; &#x6BB5;&#x65F6;&#x4F1A;&#x7ACB;&#x523B;&#x51FA;&#x73B0;&#x5206;&#x6BB5;&#x9519;&#x8BEF;&#x3002;&#x8BE5;&#x9009;&#x9879;&#x4F7F;&#x7528;&#x4E00;&#x6B21;&#xFF0C;Nmap &#x5728; IP &#x5934;&#x540E;&#x5C06;&#x5305;&#x5206;&#x6210; 8 &#x4E2A;&#x5B57;&#x8282;&#x6216;&#x66F4;&#x5C0F; &#x56E0;&#x6B64;&#xFF0C;&#x4E00;&#x4E2A; 20 &#x5B57;&#x8282;&#x7684; TCP &#x5934;&#x4F1A;&#x88AB;&#x5206;&#x6210; 3 &#x4E2A; &#x5305;&#xFF0C;&#x5176;&#x4E2D; 2 &#x4E2A;&#x5305;&#x5206;&#x522B;&#x6709; TCP &#x5934;&#x7684; 8 &#x4E2A;&#x5B57;&#x8282;&#xFF0C; &#x53E6; 1 &#x4E2A;&#x5305;&#x6709; TCP &#x5934;&#x7684;&#x5269;&#x4E0B; 4 &#x4E2A;&#x5B57; &#x8282; &#x5F53;&#x7136; &#x6BCF;&#x4E2A;&#x5305;&#x90FD;&#x6709;&#x4E00;&#x4E2A; IP &#x5934; &#x518D;&#x6B21;&#x4F7F;&#x7528;-f &#x53EF;&#x4F7F;&#x7528; 16 &#x5B57;&#x8282;&#x7684;&#x5206;&#x6BB5;(&#x51CF;&#x5C11;&#x5206;&#x6BB5;&#x6570;&#x91CF;)&#x3002;&#x4F7F;&#x7528;--mtu &#x9009;&#x9879;&#x53EF; &#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x504F;&#x79FB;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x4F7F;&#x7528;&#x65F6;&#x4E0D;&#x9700;&#x8981;-f &#x504F;&#x79FB;&#x91CF;&#x5FC5;&#x987B; &#x662F; 8 &#x7684;&#x500D;&#x6570;&#x3002;&#x5305;&#x8FC7;&#x6EE4;&#x5668;&#x548C;&#x9632;&#x706B;&#x5899;&#x5BF9;&#x6240;&#x6709;&#x7684; IP &#x5206;&#x6BB5;&#x6392;&#x961F;&#xFF0C;&#x5982; Linux &#x6838;&#x5FC3;&#x4E2D;&#x7684; CONFIG_IP_ALWAYS_DEFRAG &#x914D;&#x7F6E;&#x9879;&#xFF0C;&#x5206;&#x6BB5;&#x5305;&#x4E0D;&#x4F1A;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x3002;&#x4E00;&#x4E9B;&#x7F51;&#x7EDC;&#x65E0;&#x6CD5; &#x627F;&#x53D7;&#x8FD9;&#x6837;&#x6240;&#x5E26; &#x6765;&#x7684;&#x6027;&#x80FD;&#x51B2;&#x51FB;&#xFF0C;&#x4F1A;&#x5C06;&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x7981;&#x6B62;&#x3002;&#x5176;&#x5B83;&#x7981;&#x6B62;&#x7684;&#x539F;&#x56E0;&#x6709;&#x5206;&#x6BB5; &#x5305;&#x4F1A;&#x901A;&#x8FC7;&#x4E0D;&#x540C;&#x7684;&#x8DEF;&#x7531;&#x8FDB;&#x5165;&#x7F51; &#x7EDC;&#x3002;&#x4E00;&#x4E9B;&#x6E90;&#x7CFB;&#x7EDF;&#x5728;&#x5185;&#x6838;&#x4E2D;&#x5BF9;&#x53D1;&#x9001;&#x7684;&#x62A5;&#x6587;&#x8FDB;&#x884C; &#x5206;&#x6BB5;&#xFF0C;&#x4F7F;&#x7528; iptables &#x8FDE;&#x63A5;&#x8DDF;&#x8E2A;&#x6A21;&#x5757;&#x7684; Linux &#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x3002;&#x5F53;&#x4F7F;&#x7528;&#x7C7B;&#x4F3C; Ethereal &#x7684;&#x55C5;&#x63A2;&#x5668;&#x65F6;&#xFF0C;&#x626B;&#x63CF;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x53D1;&#x9001;&#x7684;&#x62A5;&#x6587;&#x8981;&#x5206;&#x6BB5;&#x3002;&#x5982; &#x679C;&#x4E3B;&#x673A;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4F1A;&#x4EA7; &#x751F;&#x95EE;&#x9898; &#x5C1D;&#x8BD5;&#x4F7F;&#x7528;--send-eth &#x9009;&#x9879;&#x4EE5;&#x907F;&#x5F00; IP &#x5C42;&#x800C;&#x76F4;&#x63A5; &#x53D1;&#x9001;&#x539F;&#x59CB;&#x7684; &#x4EE5;&#x592A;&#x7F51;&#x5E27;&#x3002;</p>
+<p><code>-D &lt;decoy1 [&#xFF0C;decoy2][&#xFF0C;ME]&#xFF0C;...&gt;</code> (&#x4F7F;&#x7528;&#x8BF1;&#x9975;&#x9690;&#x853D;&#x626B;&#x63CF;)</p>
+<p>&#x4E3A;&#x4F7F;&#x8BF1;&#x9975;&#x626B;&#x63CF;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x8FDC;&#x7A0B;&#x4E3B;&#x673A;&#x8BA4;&#x4E3A;&#x662F;&#x8BF1;&#x9975;&#x5728;&#x626B;&#x63CF;&#x76EE;&#x6807;&#x7F51;&#x7EDC;&#x3002; IDS &#x53EF;&#x80FD;&#x4F1A;&#x62A5;&#x4E2A;&#x67D0; &#x4E2A; IP &#x7684; 5-10 &#x4E2A;&#x7AEF;&#x53E3;&#x626B;&#x63CF;&#xFF0C;&#x4F46;&#x5E76;&#x4E0D;&#x77E5;&#x9053;&#x54EA;&#x4E2A; IP &#x5728;&#x626B;&#x63CF;&#x4EE5;&#x53CA; &#x54EA;&#x4E9B;&#x4E0D;&#x662F;&#x8BF1;&#x9975;&#x3002;&#x4F46;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F; &#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8DEF;&#x7531;&#x8DDF;&#x8E2A;&#x3001;&#x54CD;&#x5E94;&#x4E22;&#x5F03;&#x4EE5;&#x53CA;&#x5176;&#x5B83;&#x4E3B;&#x52A8; &#x673A;&#x5236;&#x5728;&#x89E3;&#x51B3;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x79CD;&#x5E38;&#x7528;&#x7684;&#x9690;&#x85CF;&#x81EA;&#x8EAB; IP &#x5730;&#x5740;&#x7684;&#x6709;&#x6548;&#x6280;&#x672F;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x9017;&#x53F7;&#x5206;&#x9694;&#x6BCF;&#x4E2A;&#x8BF1;&#x9975;&#x4E3B;&#x673A;&#xFF0C;&#x4E5F;&#x53EF;&#x7528;&#x81EA;&#x5DF1;&#x7684;&#x771F;&#x5B9E; IP &#x4F5C;&#x4E3A;&#x8BF1;&#x9975;&#xFF0C;&#x8FD9;&#x65F6;&#x53EF;&#x4F7F;&#x7528; ME &#x9009;&#x9879;&#x8BF4;&#x660E; &#x5982;&#x679C;&#x5728;&#x7B2C; 6 &#x4E2A;&#x4F4D;&#x7F6E;&#x6216; &#x66F4;&#x540E;&#x7684;&#x4F4D;&#x7F6E;&#x4F7F;&#x7528; ME &#x9009;&#x9879;&#xFF0C;&#x4E00;&#x4E9B;&#x5E38;&#x7528; &#x7AEF;&#x53E3;&#x626B;&#x63CF;&#x68C0;&#x6D4B;&#x5668;(&#x5982; Solar Designer&apos;s excellent scanlogd)&#x5C31;&#x4E0D;&#x4F1A;&#x62A5;&#x544A; &#x8FD9;&#x4E2A;&#x771F;&#x5B9E; IP &#x5982;&#x679C;&#x4E0D;&#x4F7F;&#x7528; ME &#x9009;&#x9879; Nmap &#x5C06; &#x771F;&#x5B9E; IP &#x653E;&#x5728;&#x4E00;&#x4E2A;&#x968F;&#x673A;&#x7684;&#x4F4D;&#x7F6E;</p>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x4F5C;&#x4E3A;&#x8BF1;&#x9975;&#x7684;&#x4E3B;&#x673A;&#x987B;&#x5728;&#x5DE5;&#x4F5C;&#x72B6;&#x6001;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x5BFC;&#x81F4;&#x76EE;&#x6807;&#x4E3B;&#x673A;&#x7684; SYN &#x6D2A;&#x6C34;&#x653B;&#x51FB;&#x3002; &#x5982;&#x679C;&#x5728;&#x7F51; &#x7EDC;&#x4E2D;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x4E3B;&#x673A;&#x5728;&#x5DE5;&#x4F5C;&#xFF0C;&#x90A3;&#x5C31;&#x5F88;&#x5BB9;&#x6613;&#x786E;&#x5B9A;&#x54EA;&#x4E2A;&#x4E3B;&#x673A;&#x5728;&#x626B;&#x63CF;&#x3002;&#x4E5F;&#x53EF; &#x4F7F;&#x7528; IP &#x5730;&#x5740;&#x4EE3;&#x66FF;&#x4E3B; &#x673A;&#x540D;(&#x88AB;&#x8BF1;&#x9A97;&#x7684;&#x7F51;&#x7EDC;&#x5C31;&#x4E0D;&#x53EF;&#x80FD;&#x5728;&#x540D;&#x5B57;&#x670D;&#x52A1;&#x5668;&#x65E5;&#x5FD7;&#x4E2D;&#x53D1;&#x73B0;)&#x3002;</p>
+<p>&#x8BF1;&#x9975;&#x53EF;&#x7528;&#x5728;&#x521D;&#x59CB;&#x7684; ping &#x626B;&#x63CF;(ICMP&#x3001;SYN&#x3001;ACK &#x7B49;)&#x9636;&#x6BB5;&#x6216;&#x771F;&#x6B63;&#x7684;&#x7AEF;&#x53E3;&#x626B;&#x63CF; &#x9636;&#x6BB5;&#x3002;&#x8BF1;&#x9975;&#x4E5F; &#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x8FDC;&#x7A0B;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x68C0;&#x6D4B;(-O)&#x3002;&#x5728;&#x8FDB;&#x884C;&#x7248; &#x672C;&#x68C0;&#x6D4B;&#x6216; TCP &#x8FDE;&#x63A5;&#x626B;&#x63CF;&#x65F6;&#xFF0C;&#x8BF1;&#x9975;&#x65E0;&#x6548;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x8FC7;&#x591A;&#x7684;&#x8BF1;&#x9975;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x4EF7;&#x503C;&#xFF0C;&#x53CD;&#x800C;&#x5BFC;&#x81F4;&#x626B;&#x63CF;&#x53D8;&#x6162;&#x5E76;&#x4E14;&#x7ED3;&#x679C;&#x4E0D;&#x51C6;&#x786E;&#x3002; &#x6B64;&#x5916;&#xFF0C;&#x4E00;&#x4E9B; ISP &#x4F1A; &#x8FC7;&#x6EE4;&#x54C4;&#x9A97;&#x7684;&#x62A5;&#x6587;&#xFF0C;&#x4F46;&#x5F88;&#x591A;&#x5BF9;&#x6B3A;&#x9A97; IP &#x5305;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x9650;&#x5236;&#x3002;</p>
+<p><code>-S &lt;IP_Address&gt;</code> (&#x6E90;&#x5730;&#x5740;&#x54C4;&#x9A97;)</p>
+<p>&#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Nmap &#x53EF;&#x80FD;&#x65E0;&#x6CD5;&#x786E;&#x5B9A;&#x4F60;&#x7684;&#x6E90;&#x5730;&#x5740;(&#x5982;&#x679C;&#x8FD9;&#x6837;&#xFF0C;Nmap &#x4F1A;&#x7ED9;&#x51FA; &#x63D0;&#x793A;)&#x3002;&#x6B64;&#x65F6;&#xFF0C; &#x4F7F;&#x7528;-S &#x9009;&#x9879;&#x5E76;&#x8BF4;&#x660E;&#x6240;&#x9700;&#x53D1;&#x9001;&#x5305;&#x7684;&#x63A5;&#x53E3; IP &#x5730;&#x5740;&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x6807;&#x5FD7;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x7528;&#x5904;&#x662F;&#x54C4;&#x9A97;&#x6027;&#x7684;&#x626B;&#x63CF;&#xFF0C;&#x4F7F;&#x5F97;&#x76EE;&#x6807;&#x8BA4;&#x4E3A;&#x662F;&#x53E6; &#x4E00;&#x4E2A;&#x5730;&#x5740;&#x5728;&#x8FDB;&#x884C;&#x626B;&#x63CF;&#x3002;&#x53EF;&#x4EE5; &#x60F3;&#x8C61;&#x67D0;&#x4E00;&#x4E2A;&#x7ADE;&#x4E89;&#x5BF9;&#x624B;&#x5728;&#x4E0D;&#x65AD;&#x626B;&#x63CF;&#x67D0;&#x4E2A;&#x516C;&#x53F8;&#xFF01; -e &#x9009;&#x9879;&#x5E38;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x7528;&#xFF0C;&#x4E5F;&#x53EF;&#x91C7;&#x7528;-P0 &#x9009;&#x9879;&#x3002;</p>
+<p><code>-e &lt;interface&gt;</code> (&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684;&#x63A5;&#x53E3;)</p>
+<p>&#x544A;&#x8BC9; Nmap &#x4F7F;&#x7528;&#x54EA;&#x4E2A;&#x63A5;&#x53E3;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x62A5;&#x6587;&#xFF0C;Nmap &#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x81EA;&#x52A8;&#x68C0;&#x6D4B;&#xFF0C; &#x5982;&#x679C;&#x68C0;&#x6D4B;&#x4E0D;&#x51FA;&#x4F1A;&#x7ED9; &#x51FA;&#x63D0;&#x793A;&#x3002;</p>
+<p><code>--source-port &lt;portnumber&gt;; -g &lt;portnumber&gt;</code> (&#x6E90;&#x7AEF;&#x53E3;&#x54C4;&#x9A97;)</p>
+<p>&#x4EC5;&#x4F9D;&#x8D56;&#x4E8E;&#x6E90;&#x7AEF;&#x53E3;&#x53F7;&#x5C31;&#x4FE1;&#x4EFB;&#x6570;&#x636E;&#x6D41;&#x662F;&#x4E00;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x9519;&#x8BEF;&#x914D;&#x7F6E;&#xFF0C;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x975E;&#x5E38;&#x597D;&#x7406;&#x89E3;&#x3002;&#x4F8B;&#x5982;&#x4E00;&#x4E2A;&#x7BA1;&#x7406;&#x5458;&#x90E8;&#x7F72;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x9632;&#x706B;&#x5899;&#xFF0C;&#x4F46;&#x62DB;&#x6765;&#x4E86;&#x5F88;&#x591A;&#x7528;&#x6237;&#x7684;&#x4E0D;&#x6EE1;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x4EEC;&#x7684;&#x5E94;&#x7528;&#x505C;&#x6B62;&#x5DE5;&#x4F5C;&#x4E86;&#x3002;&#x53EF;&#x80FD;&#x662F;&#x7531;&#x4E8E;&#x5916;&#x90E8;&#x7684; UDP DNS &#x670D;&#x52A1;&#x5668;&#x54CD;&#x5E94;&#x65E0;&#x6CD5;&#x8FDB;&#x5165;&#x7F51;&#x7EDC;&#xFF0C;&#x800C;&#x5BFC;&#x81F4; DNS &#x7684;&#x5D29;&#x6E83;&#x3002;FTP &#x662F; &#x53E6;&#x4E00;&#x4E2A;&#x5E38;&#x89C1;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x5728; FTP &#x4F20;&#x8F93;&#x65F6;&#xFF0C;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x5C1D;&#x8BD5;&#x548C;&#x5185;&#x90E8;&#x7528;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x4EE5;&#x4F20;&#x8F93;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x5BF9;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x6709;&#x5B89;&#x5168;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x5E94;&#x7528;&#x7EA7;&#x4EE3;&#x7406;&#x6216;&#x534F;&#x8BAE;&#x5206;&#x6790;&#x9632;&#x706B;&#x5899;&#x6A21;&#x5757;&#x3002;&#x4F46;&#x4E5F;&#x5B58;&#x5728;&#x4E00;&#x4E9B; &#x4E0D;&#x5B89;&#x5168;&#x7684;&#x65B9;&#x6848;&#x3002;&#x6CE8;&#x610F;&#x5230; DNS &#x54CD;&#x5E94;&#x6765;&#x81EA;&#x4E8E; 53 &#x7AEF;&#x53E3;&#xFF0C;FTP &#x8FDE;&#x63A5;&#x6765;&#x81EA;&#x4E8E; 20 &#x7AEF;&#x53E3;&#xFF0C;&#x5F88;&#x591A;&#x7BA1;&#x7406;&#x5458;&#x4F1A; &#x6389;&#x5165;&#x4E00;&#x4E2A;&#x9677;&#x9631;&#xFF0C;&#x5373;&#x5141;&#x8BB8;&#x6765;&#x81EA;&#x4E8E;&#x8FD9;&#x4E9B;&#x7AEF;&#x53E3;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x5165;&#x7F51;&#x7EDC;&#x3002;&#x4ED6;&#x4EEC;&#x8BA4;&#x4E3A;&#x8FD9;&#x4E9B;&#x7AEF;&#x53E3;&#x91CC;&#x4E0D;&#x4F1A;&#x6709;&#x503C;&#x5F97;&#x6CE8;&#x610F;&#x7684;&#x653B;&#x51FB;&#x548C;&#x6F0F;&#x6D1E;&#x5229;&#x7528;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x7BA1;&#x7406;&#x5458;&#x6216;&#x8BB8;&#x8BA4;&#x4E3A;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x77ED;&#x671F;&#x7684;&#x63AA;&#x65BD;&#xFF0C;&#x76F4;&#x81F3;&#x4ED6;&#x4EEC;&#x91C7;&#x53D6; &#x66F4;&#x5B89;&#x5168;&#x7684;&#x65B9;&#x6848;&#x3002;&#x4F46;&#x4ED6;&#x4EEC;&#x5FFD;&#x89C6;&#x4E86;&#x5B89;&#x5168;&#x7684;&#x5347;&#x7EA7;&#x3002;</p>
+<p>&#x4E0D;&#x4EC5;&#x4EC5;&#x662F;&#x5DE5;&#x4F5C;&#x91CF;&#x8FC7;&#x591A;&#x7684;&#x7F51;&#x7EDC;&#x7BA1;&#x7406;&#x5458;&#x6389;&#x5165;&#x8FD9;&#x79CD;&#x9677;&#x9631;&#xFF0C;&#x5F88;&#x591A;&#x4EA7;&#x54C1;&#x672C;&#x8EAB;&#x4E5F;&#x4F1A;&#x6709;&#x8FD9;&#x7C7B;&#x4E0D;&#x5B89;&#x5168;&#x7684;&#x9690; &#x60A3;&#xFF0C;&#x751A;&#x81F3;&#x662F;&#x5FAE;&#x8F6F;&#x7684;&#x4EA7;&#x54C1;&#x3002;Windows 2000 &#x548C; Windows XP &#x4E2D;&#x5305;&#x542B;&#x7684; IPsec &#x8FC7;&#x6EE4;&#x5668;&#x4E5F;&#x5305;&#x542B;&#x4E86;&#x4E00; &#x4E9B;&#x9690;&#x542B;&#x89C4;&#x5219;&#xFF0C;&#x5141;&#x8BB8;&#x6240;&#x6709;&#x6765;&#x81EA; 88 &#x7AEF;&#x53E3;(Kerberos)&#x7684; TCP &#x548C; UDP &#x6570;&#x636E;&#x6D41;&#x3002;&#x53E6;&#x4E00;&#x4E2A;&#x5E38;&#x89C1;&#x7684;&#x4F8B;&#x5B50; &#x662F; Zone Alarm &#x4E2A;&#x4EBA;&#x9632;&#x706B;&#x5899;&#x5230; 2.1.25 &#x7248;&#x672C;&#x4ECD;&#x7136;&#x5141;&#x8BB8;&#x6E90;&#x7AEF;&#x53E3; 53(DNS)&#x6216; 67(DHCP)&#x7684; UDP &#x5305; &#x8FDB;&#x5165;&#x3002;</p>
+<p>Nmap &#x63D0;&#x4F9B;&#x4E86;-g &#x548C;--source-port &#x9009;&#x9879;(&#x5B83;&#x4EEC;&#x662F;&#x7B49;&#x4EF7;&#x7684;)&#xFF0C;&#x7528;&#x4E8E;&#x5229;&#x7528;&#x4E0A;&#x8FF0;&#x5F31;&#x70B9;&#x3002;&#x53EA;&#x9700;&#x8981;&#x63D0;&#x4F9B; &#x4E00;&#x4E2A;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C;Nmap &#x5C31;&#x53EF;&#x4EE5;&#x4ECE;&#x8FD9;&#x4E9B;&#x7AEF;&#x53E3;&#x53D1;&#x9001;&#x6570;&#x636E;&#x3002;&#x4E3A;&#x4F7F;&#x7279;&#x5B9A;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#xFF0C;Nmap &#x5FC5; &#x987B;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x7AEF;&#x53E3;&#x53F7;&#x3002; DNS &#x8BF7;&#x6C42;&#x4F1A;&#x5FFD;&#x7565;--source-port &#x9009;&#x9879;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A; Nmap &#x4F9D;&#x9760;&#x7CFB;&#x7EDF;&#x5E93; &#x6765;&#x5904;&#x7406;&#x3002;&#x5927;&#x90E8;&#x5206; TCP &#x626B;&#x63CF;&#xFF0C;&#x5305;&#x62EC; SYN &#x626B;&#x63CF;&#xFF0C;&#x53EF;&#x4EE5;&#x5B8C;&#x5168;&#x652F;&#x6301;&#x8FD9;&#x4E9B;&#x9009;&#x9879;&#xFF0C;UDP &#x626B;&#x63CF;&#x540C;&#x6837;&#x5982;&#x6B64;</p>
+<p><code>--data-length &lt;number&gt;</code> (&#x53D1;&#x9001;&#x62A5;&#x6587;&#x65F6; &#x9644;&#x52A0;&#x968F;&#x673A;&#x6570;&#x636E;)</p>
+<p>&#x6B63;&#x5E38;&#x60C5;&#x51B5;&#x4E0B; Nmap &#x53D1;&#x9001;&#x6700;&#x5C11;&#x7684;&#x62A5;&#x6587; &#x53EA;&#x542B;&#x4E00;&#x4E2A;&#x5305;&#x5934; &#x56E0;&#x6B64; TCP &#x5305;&#x901A;&#x5E38; &#x662F; 40 &#x5B57;&#x8282; ICMP ECHO &#x8BF7;&#x6C42;&#x53EA;&#x6709; 28 &#x5B57;&#x8282;&#x3002;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x544A;&#x8BC9; Nmap &#x5728;&#x53D1;&#x9001;&#x7684;&#x62A5;&#x6587;&#x4E0A; &#x9644;&#x52A0;&#x6307;&#x5B9A;&#x6570;&#x91CF;&#x7684;&#x968F;&#x673A;&#x5B57;&#x8282;&#x3002;&#x64CD;&#x4F5C; &#x7CFB;&#x7EDF;&#x68C0;&#x6D4B;(-O)&#x5305;&#x4E0D;&#x53D7;&#x5F71;&#x54CD;&#xFF0C; &#x4F46;&#x5927;&#x90E8;&#x5206; ping &#x548C;&#x7AEF;&#x53E3;&#x626B;&#x63CF;&#x5305;&#x53D7;&#x5F71;&#x54CD;&#xFF0C;&#x8FD9;&#x4F1A;&#x4F7F;&#x5904;&#x7406;&#x53D8;&#x6162;&#xFF0C;&#x4F46; &#x5BF9;&#x626B;&#x63CF;&#x7684;&#x5F71;&#x54CD;&#x8F83;&#x5C0F;&#x3002;</p>
+<p><code>--ttl &lt;value&gt;</code> (&#x8BBE;&#x7F6E; IP time-to-live &#x57DF;)</p>
+<p>&#x8BBE;&#x7F6E; IPv4 &#x62A5;&#x6587;&#x7684; time-to-live &#x57DF;&#x4E3A;&#x6307;&#x5B9A;&#x7684;&#x503C;&#x3002;</p>
+<p><code>--randomize-hosts</code> (&#x5BF9;&#x76EE;&#x6807;&#x4E3B;&#x673A;&#x7684;&#x987A;&#x5E8F;&#x968F;&#x673A;&#x6392;&#x5217;)</p>
+<p>&#x544A;&#x8BC9; Nmap &#x5728;&#x626B;&#x63CF;&#x4E3B;&#x673A;&#x524D;&#x5BF9;&#x6BCF;&#x4E2A;&#x7EC4;&#x4E2D;&#x7684;&#x4E3B;&#x673A;&#x968F;&#x673A;&#x6392;&#x5217;&#xFF0C;&#x6700;&#x591A;&#x53EF;&#x8FBE; 8096 &#x4E2A;&#x4E3B;&#x673A;&#x3002;&#x8FD9;&#x4F1A;&#x4F7F;&#x5F97; &#x626B;&#x63CF;&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x7F51;&#x7EDC;&#x76D1;&#x63A7;&#x7CFB;&#x7EDF;&#x6765;&#x8BF4;&#x53D8;&#x5F97;&#x4E0D;&#x662F;&#x5F88; &#x660E;&#x663E;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x914D;&#x5408;&#x503C;&#x8F83;&#x5C0F;&#x7684;&#x65F6;&#x95F4;&#x9009;&#x9879;&#x65F6;&#x66F4; &#x6709;&#x6548;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x5BF9;&#x4E00;&#x4E2A;&#x8F83;&#x5927; &#x7684;&#x7EC4;&#x8FDB;&#x884C;&#x968F;&#x673A;&#x6392;&#x5217;&#xFF0C;&#x9700;&#x8981;&#x589E;&#x5927; nmap.h &#x6587;&#x4EF6;&#x4E2D; PING_GROUP_SZ &#x7684;&#x503C;&#xFF0C;&#x5E76;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#x3002;&#x53E6;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x662F;&#x4F7F;&#x7528;&#x5217;&#x8868;&#x626B;&#x63CF; (-sL -n -oN filename)&#xFF0C;&#x4EA7;&#x751F;&#x76EE;&#x6807; IP &#x7684;&#x5217;&#x8868;&#xFF0C; &#x4F7F;&#x7528; Perl &#x811A;&#x672C;&#x8FDB;&#x884C;&#x968F;&#x673A;&#x5316;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;-iL &#x63D0;&#x4F9B;&#x7ED9; Nmap&#x3002;</p>
+<p><code>--spoof-mac &lt;mac address&#xFF0C;prefix&#xFF0C;or vendor name&gt;</code> (MAC &#x5730;&#x5740;&#x54C4;&#x9A97;)</p>
+<p>&#x8981;&#x6C42; Nmap &#x5728;&#x53D1;&#x9001;&#x539F;&#x4EE5;&#x592A;&#x7F51;&#x5E27;&#x65F6;&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684; MAC &#x5730;&#x5740; &#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x9690;&#x542B;&#x4E86; --send-eth &#x9009;&#x9879; &#x4EE5;&#x4FDD;&#x8BC1; Nmap &#x771F;&#x6B63;&#x53D1;&#x9001;&#x4EE5;&#x592A;&#x7F51;&#x5305;&#x3002;MAC &#x5730;&#x5740;&#x6709;&#x51E0; &#x79CD;&#x683C;&#x5F0F;&#x3002;&#x5982;&#x679C;&#x7B80;&#x5355;&#x5730;&#x4F7F;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x201C;0&#x201D;&#xFF0C; Nmap &#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x5B8C;&#x5168;&#x968F;&#x673A;&#x7684; MAC &#x5730;&#x5740; &#x5982;&#x679C;&#x7ED9;&#x5B9A;&#x7684;&#x5B57;&#x7B26;&#x54C1;&#x662F;&#x4E00;&#x4E2A; 16 &#x8FDB;&#x5236;&#x5076;&#x6570;(&#x4F7F;&#x7528;:&#x5206;&#x9694;) Nmap &#x5C06;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A; MAC &#x5730;&#x5740;&#x3002; &#x5982;&#x679C;&#x662F;&#x5C0F;&#x4E8E; 12 &#x7684; 16 &#x8FDB;&#x5236;&#x6570;&#x5B57;&#xFF0C;Nmap &#x4F1A;&#x968F;&#x673A;&#x586B;&#x5145;&#x5269;&#x4E0B;&#x7684; 6 &#x4E2A;&#x5B57;&#x8282;&#x3002;&#x5982;&#x679C;&#x53C2;&#x6570;&#x4E0D;&#x662F; 0 &#x6216; 16 &#x8FDB; &#x5236;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;Nmap &#x5C06;&#x901A;&#x8FC7; nmap-mac-prefixes &#x67E5;&#x627E; &#x5382;&#x5546; &#x7684;&#x540D;&#x79F0;(&#x5927;&#x5C0F;&#x5199;&#x533A;&#x5206;)&#xFF0C;&#x5982;&#x679C;&#x627E;&#x5230;&#x5339;&#x914D;&#xFF0C;Nmap &#x5C06;&#x4F7F;&#x7528;&#x5382;&#x5546;&#x7684; OUI(3 &#x5B57;&#x8282;&#x524D;&#x7F00;)&#xFF0C;&#x7136;&#x540E; &#x968F;&#x673A; &#x586B;&#x5145;&#x5269;&#x4F59;&#x7684; 3 &#x4E2A;&#x8282;&#x5B57;&#x3002;&#x6B63;&#x786E;&#x7684;--spoof-mac &#x53C2;&#x6570;&#x6709;&#xFF0C; Apple&#xFF0C; 0&#xFF0C;01:02:03:04:05:06&#xFF0C; deadbeefcafe&#xFF0C;0020F2&#xFF0C; &#x548C; Cisco.</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./11.html" class="navigation navigation-prev " aria-label="Previous page: 十一、 时间和性能"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./13.html" class="navigation navigation-next " aria-label="Next page: 十三、 输出"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

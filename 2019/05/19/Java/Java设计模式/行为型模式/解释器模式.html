@@ -1,0 +1,292 @@
+<hr>
+<p>title: 解释器模式<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2019-5-19 22:13:50<br>
+tags:</p>
+<ul>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h2 id="解释器模式"><a class="header-anchor" href="#解释器模式">¶</a>解释器模式</h2>
+<h3 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h3>
+<blockquote>
+<p>Given a language,define a representation for its grammar along with an interpreter that uses the representation to interpret sentences in the language<br>
+给定一门语言，定义它的文法的一种表示，并定义一个解释器，该解释器使用该表示来解释语言中的句子。</p>
+</blockquote>
+<h3 id="解释器模式示意图"><a class="header-anchor" href="#解释器模式示意图">¶</a>解释器模式示意图</h3>
+<p><img src="%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F.png" alt="解释器模式"></p>
+<h3 id="流程"><a class="header-anchor" href="#流程">¶</a>流程</h3>
+<ol>
+<li>定义一个总的抽象表达式类，是所有表达式的父类。表达式又分为变量表达式和符号表达式。</li>
+<li>变量表达式需要输入公式变量与数字的映射关系，通过映射关系用公式变量取出对应的具体数字，将具体数字套入公式。</li>
+<li>抽象符号表达式类是所有符号运算类的父类，符号运算包括加减乘除的运算规则。</li>
+<li>通过客户端提供公式以及公式变量与数字的映射关系，将这两个输入计算器对象中，按多态性来根据公式符号选择需要的符号解释器，将公式变量与数字的映射关系输入变量解释器，将对应的数字套入结果表达式中，获取最终结果。</li>
+</ol>
+<h3 id="代码实现"><a class="header-anchor" href="#代码实现">¶</a>代码实现</h3>
+<h4 id="表达式"><a class="header-anchor" href="#表达式">¶</a>表达式</h4>
+<ol>
+<li>抽象表达式Expression</li>
+</ol>
+<pre><code class="language-Java">package org.example.interpreter;
+
+import java.util.HashMap;
+
+/**
+ * 抽象表达式，用来组合不同种类的解释器，形成一个表达式。
+ * 每种解释器就是一个算术因子，是加减乘除需要的算术因子。
+ */
+public abstract class Expression {
+    /**
+     * @param var String是表达式中的值，Integer是表达式中值的索引值
+     * @return 返回表达式计算出的值
+     */
+    public abstract int interpreter(HashMap&lt;String , Integer&gt; var);
+}
+</code></pre>
+<ol start="2">
+<li>变量表达式VarExpression</li>
+</ol>
+<pre><code class="language-Java">package org.example.interpreter;
+
+import java.util.HashMap;
+
+public class VarExpression extends Expression {
+    private String key ;
+
+    public VarExpression(String key){
+        this.key = key ;
+    }
+    /**
+     * 用来从输入的变量中获取变量在表达式中的位置
+     * @param var String是表达式中的值，Integer是表达式中值的索引值
+     * @return
+     */
+    @Override
+    public int interpreter(HashMap&lt;String, Integer&gt; var) {
+        return var.get(key);
+    }
+}
+</code></pre>
+<ol start="3">
+<li>抽象符号表达式</li>
+</ol>
+<pre><code class="language-Java">package org.example.interpreter;
+
+import java.util.HashMap;
+
+/**
+ * 符号解释器，用来解释表达式中的运算符号
+ */
+public abstract class SymbolExpression extends Expression {
+    protected Expression left ;
+    protected Expression right ;
+
+    public SymbolExpression(Expression left , Expression right){
+        this.left = left ;
+        this.right = right ;
+    }
+}
+</code></pre>
+<ol start="4">
+<li>加法表达式</li>
+</ol>
+<pre><code class="language-Java">package org.example.interpreter;
+
+import java.util.HashMap;
+
+public class AddExpression extends SymbolExpression {
+    /**
+     * 从抽象符号表达式中继承计算的左值和右值
+     * @param left
+     * @param right
+     */
+    public AddExpression(Expression left, Expression right) {
+        super(left, right);
+    }
+
+    @Override
+    public int interpreter(HashMap&lt;String, Integer&gt; var) {
+        return super.left.interpreter(var) + super.right.interpreter(var);
+    }
+}
+</code></pre>
+<ol start="5">
+<li>减法表达式</li>
+</ol>
+<pre><code class="language-Java">package org.example.interpreter;
+
+import java.util.HashMap;
+
+/**
+ * 减法解释器
+ */
+public class SubExpression extends SymbolExpression{
+
+    /**
+     * 从抽象符号表达式中继承计算的左值和右值
+     * @param left
+     * @param right
+     */
+    public SubExpression(Expression left, Expression right) {
+        super(left, right);
+    }
+
+    @Override
+    public int interpreter(HashMap&lt;String, Integer&gt; var) {
+        return super.left.interpreter(var) - super.right.interpreter(var);
+    }
+}
+</code></pre>
+<ol start="5">
+<li>乘法表达式</li>
+</ol>
+<pre><code class="language-Java">package org.example.interpreter;
+
+import java.util.HashMap;
+
+/**
+ * 乘法解释器
+ */
+public class MulExpression extends SymbolExpression {
+
+    /**
+     * 从抽象符号表达式中继承计算的左值和右值
+     * @param left
+     * @param right
+     */
+    public MulExpression(Expression left, Expression right) {
+        super(left, right);
+    }
+
+    @Override
+    public int interpreter(HashMap&lt;String, Integer&gt; var) {
+        return super.left.interpreter(var) * super.right.interpreter(var) ;
+    }
+}
+</code></pre>
+<ol start="6">
+<li>除法表达式</li>
+</ol>
+<pre><code class="language-Java">package org.example.interpreter;
+
+import java.util.HashMap;
+
+public class DivExpression extends SymbolExpression {
+
+    public DivExpression(Expression left, Expression right) {
+        super(left, right);
+    }
+
+    @Override
+    public int interpreter(HashMap&lt;String, Integer&gt; var) {
+        return super.left.interpreter(var) / super.right.interpreter(var) ;
+    }
+}
+</code></pre>
+<h4 id="计算器"><a class="header-anchor" href="#计算器">¶</a>计算器</h4>
+<pre><code class="language-Java">package org.example.interpreter;
+
+import java.util.HashMap;
+import java.util.Stack;
+
+public class Calculator {
+    private Expression expression ;
+    public Calculator(String expStr){
+        Stack&lt;Expression&gt; stack = new Stack&lt;&gt;();
+        Expression left = null ;
+        Expression right = null ;
+
+        System.out.println(expStr);
+        char[] array = expStr.toCharArray();
+        for (int i=0 ; i&lt;array.length ; i++){
+            switch (array[i]){
+                case '+' :
+                    left = stack.pop(); // 如果现在是+这个符号，表示前面有一个数已经入栈，这个已经入栈的数就是左值
+                    right = new VarExpression(String.valueOf(array[++i])); //获取符号后面的数值作为右值
+                    stack.push(new AddExpression(left , right)); // 将计算结果压栈
+                    break;
+                case '-' :
+                    left = stack.pop();
+                    right = new VarExpression(String.valueOf(array[++i]));
+                    stack.push(new SubExpression(left , right)) ;
+                    break;
+                case '*' :
+                    left = stack.pop();
+                    right = new VarExpression(String.valueOf(array[++i]));
+                    stack.push(new MulExpression(left , right)) ;
+                    break;
+                case '/' :
+                    left = stack.pop() ;
+                    right = new VarExpression(String.valueOf(array[++i]));
+                    stack.push(new DivExpression(left , right)) ;
+                    break;
+                default:
+                    stack.push(new VarExpression(String.valueOf(array[i]))) ;
+                    break;
+            }
+        }
+        this.expression = stack.pop() ; // 将最终的运算结果赋值
+    }
+
+    public int run(HashMap&lt;String , Integer&gt; var){
+        return this.expression.interpreter(var) ;
+    }
+}
+</code></pre>
+<h4 id="场景实现"><a class="header-anchor" href="#场景实现">¶</a>场景实现</h4>
+<pre><code class="language-Java">public class App {
+    /**
+     * 解释器模式
+     * @param args
+     */
+    public static void main(String[] args) {
+        /* 公式变量与数字的映射关系 */
+        HashMap&lt;String, Integer&gt; map = new HashMap&lt;&gt;();
+        map.put(&quot;a&quot; , 100);
+        map.put(&quot;b&quot; , 20);
+        map.put(&quot;c&quot; , 30);
+        /* 需要的公式模板 */
+        String expStr = &quot;a+b-c&quot;;
+        Calculator calculator = new Calculator(expStr);
+        System.out.println(calculator.run(map));
+    }
+}
+</code></pre>
+<h3 id="应用场景"><a class="header-anchor" href="#应用场景">¶</a>应用场景</h3>
+<ol>
+<li>重复发生的问题，规则不同，但是有相同的元素，久可以使用解释器模式。</li>
+<li>一个简单语法需要解释。如果是复杂语法，会导致类膨胀。</li>
+</ol>
+<h3 id="解释器模式的优缺点"><a class="header-anchor" href="#解释器模式的优缺点">¶</a>解释器模式的优缺点</h3>
+<h4 id="优点"><a class="header-anchor" href="#优点">¶</a>优点</h4>
+<ol>
+<li>解释器是一个简单的语法分析工具，优点是扩展性，修改语法规则只需要修改对应的符号表达式就行了。</li>
+</ol>
+<h4 id="缺点"><a class="header-anchor" href="#缺点">¶</a>缺点</h4>
+<ol>
+<li>会引起类膨胀，每种语法都会产生一个规则类，语法规则很复杂时会产生很多规则类。</li>
+<li>解释器模式采用递归调用，使用栈。调试非常麻烦。</li>
+<li>解释器模式使用递归和栈，效率很低。</li>
+</ol>
+<h4 id="注意事项"><a class="header-anchor" href="#注意事项">¶</a>注意事项</h4>
+<ol>
+<li>不要在重要模块使用解释器模式，这样会导致很难维护。</li>
+<li>解释器模式在实际中很少使用,主要在数据分析工具、报表设计工具、科学计算工具使用。</li>
+<li>可以使用Expression4J,MESP,Jep开源解析工具来代替自己写解释器模式。</li>
+</ol>

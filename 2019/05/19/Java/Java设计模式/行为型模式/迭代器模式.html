@@ -1,0 +1,215 @@
+<hr>
+<p>title: 迭代器模式<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2019-5-19 22:13:33<br>
+tags:</p>
+<ul>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h2 id="迭代器模式"><a class="header-anchor" href="#迭代器模式">¶</a>迭代器模式</h2>
+<h3 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h3>
+<blockquote>
+<p>Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.<br>
+它提供一种方法访问一个容器对象中各个元素，而又不需暴露该对象的内部细节</p>
+</blockquote>
+<h3 id="迭代器模式示意图"><a class="header-anchor" href="#迭代器模式示意图">¶</a>迭代器模式示意图</h3>
+<p><img src="%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F.png" alt="迭代器模式"></p>
+<h3 id="流程"><a class="header-anchor" href="#流程">¶</a>流程</h3>
+<ol>
+<li>创建一个容器，用来存储元素</li>
+<li>创建一个迭代器，用来迭代容器中的对象</li>
+<li>最终通过迭代器，我们能将容器中的所有对象迭代出来</li>
+</ol>
+<h3 id="代码实现"><a class="header-anchor" href="#代码实现">¶</a>代码实现</h3>
+<h4 id="准备"><a class="header-anchor" href="#准备">¶</a>准备</h4>
+<p>我们现在模拟map容器的元素迭代。</p>
+<h4 id="迭代器"><a class="header-anchor" href="#迭代器">¶</a>迭代器</h4>
+<ol>
+<li>抽象迭代器</li>
+</ol>
+<pre><code class="language-Java">package org.example.iterator;
+
+/**
+ * 迭代器接口，java有现成的迭代器模式，每个java中的容器(map,set,list)都是用迭代器模式实现的
+ */
+public interface Iterator {
+    /* 判断下一个迭代元素是否存在 */
+    public boolean hasNext();
+    /* 获取下一个迭代元素 */
+    public Object next();
+    /* 溢出当前迭代n元素 */
+    public boolean remove();
+}
+</code></pre>
+<ol start="2">
+<li>具体迭代器</li>
+</ol>
+<pre><code class="language-Java">package org.example.iterator;
+import java.util.Vector;
+
+/**
+ * 具体迭代器
+ */
+public class ConcreteIterator implements Iterator {
+    /* 用来存放需要迭代的集合 */
+    private Vector vector = new Vector() ;
+    /* 当前迭代所在游标处 */
+    public int cursor = 0 ;
+
+    /**
+     * 将输入的需要迭代的集合存放到当前类的容器中，用于迭代
+     * @param vector
+     */
+    public ConcreteIterator(Vector vector){
+        this.vector = vector ;
+    }
+
+    /**
+     * 判断是否有下一个迭代元素
+     * @return
+     */
+    @Override
+    public boolean hasNext() {
+        /* 如果当前游标所在的位置已经是集合末尾，表示没有下一个迭代元素 */
+        if (this.cursor == this.vector.size()){
+            return false ;
+        }else {
+            return true ;
+        }
+    }
+
+    /**
+     * 用来获取下一个迭代元素
+     * @return
+     */
+    @Override
+    public Object next() {
+        Object result = null ;
+        /* 如果下一个迭代元素存在，就返回下一个迭代元素 */
+        if (this.hasNext()){
+            result = this.vector.get(this.cursor++) ;
+        }else {
+            result = null ;
+        }
+        return result ;
+    }
+
+    /**
+     * 移出当前迭代的元素，移出方法使用容器实现的移除方法
+     * @return
+     */
+    @Override
+    public boolean remove() {
+        this.vector.remove(this.cursor);
+        return true;
+    }
+}
+</code></pre>
+<h4 id="容器"><a class="header-anchor" href="#容器">¶</a>容器</h4>
+<ol>
+<li>抽象容器</li>
+</ol>
+<pre><code class="language-Java">package org.example.iterator;
+
+/**
+ * 抽象容器
+ */
+public interface Aggregate {
+    /* 将元素增加到容器中 */
+    public void add(Object object);
+    /* 将指定元素移出容器 */
+    public void remove(Object object);
+    /* 用来迭代容器中的元素 */
+    public Iterator iterator() ;
+}
+</code></pre>
+<ol start="2">
+<li>具体容器</li>
+</ol>
+<pre><code class="language-Java">package org.example.iterator;
+
+import java.util.Vector;
+
+/**
+ * 具体容器
+ */
+public class ConcreteAggregate implements Aggregate {
+    /* 用来存放使用add的元素对象 */
+    private Vector vector = new Vector() ;
+
+    /**
+     * 用来增加object到容器中
+     * @param object
+     */
+    @Override
+    public void add(Object object) {
+        this.vector.add(object);
+    }
+
+    /**
+     * 将元素object从容器中移除
+     * @param object
+     */
+    @Override
+    public void remove(Object object) {
+        this.vector.remove(object);
+    }
+
+    /**
+     * 容器的迭代器,创建一个迭代器对象，获取一个迭代器，用来迭代容器中的元素
+     * @return
+     */
+    @Override
+    public Iterator iterator() {
+        return new ConcreteIterator(vector);
+    }
+}
+</code></pre>
+<h4 id="场景实现"><a class="header-anchor" href="#场景实现">¶</a>场景实现</h4>
+<pre><code class="language-Java">public class App {
+    /**
+     * 迭代器模式，使用方式和map迭代器相同
+     * @param args
+     */
+    public static void main(String[] args) {
+        /**
+         * 创建容器对象，将元素加入容器
+         */
+        ConcreteAggregate aggregate = new ConcreteAggregate();
+        aggregate.add(&quot;a&quot;);
+        aggregate.add(&quot;b&quot;);
+        aggregate.add(&quot;c&quot;);
+
+        /* 从容器中获取迭代器对象 */
+        Iterator iterator = aggregate.iterator();
+        /* 通过迭代器来进行元素迭代 */
+        while (iterator.hasNext()){
+            Object next = iterator.next();
+            System.out.println(next);
+        }
+
+    }
+}
+</code></pre>
+<h3 id="应用场景"><a class="header-anchor" href="#应用场景">¶</a>应用场景</h3>
+<ol>
+<li>迭代器模式应用的非常普遍，比如java里面的list,map等容器都用迭代器模式来迭代元素。迭代模式已经成为开发中最普遍的工具。</li>
+<li>在java开发中，直接用java提供的Iterator久可以满足我们的迭代器模式的需求。</li>
+</ol>

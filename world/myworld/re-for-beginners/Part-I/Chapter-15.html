@@ -1,0 +1,1815 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>对C-Strings的简单处理 · 逆向工程入门指南</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="author" content="wizardforcel">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-comment/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Chapter-16.html" />
+    
+    
+    <link rel="prev" href="Chapter-14.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.gitbook.com/book/wizardforcel/re-for-beginners" target="_blank" class="custom-link">逆向工程入门指南</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    逆向工程入门指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="part1.html">
+            
+                <a href="part1.html">
+            
+                    
+                    Part I 代码模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="Chapter-01.html">
+            
+                <a href="Chapter-01.html">
+            
+                    
+                    CPU简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="Chapter-02.html">
+            
+                <a href="Chapter-02.html">
+            
+                    
+                    最简单的函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="Chapter-03.html">
+            
+                <a href="Chapter-03.html">
+            
+                    
+                    Hello,world!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="Chapter-04.html">
+            
+                <a href="Chapter-04.html">
+            
+                    
+                    函数的开始和结束
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="Chapter-05.html">
+            
+                <a href="Chapter-05.html">
+            
+                    
+                    栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="Chapter-06.html">
+            
+                <a href="Chapter-06.html">
+            
+                    
+                    printf()与参数处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="Chapter-07.html">
+            
+                <a href="Chapter-07.html">
+            
+                    
+                    scanf()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="Chapter-08.html">
+            
+                <a href="Chapter-08.html">
+            
+                    
+                    访问实参
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="Chapter-09.html">
+            
+                <a href="Chapter-09.html">
+            
+                    
+                    一个或者多个字的返回值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="Chapter-10.html">
+            
+                <a href="Chapter-10.html">
+            
+                    
+                    指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="Chapter-11.html">
+            
+                <a href="Chapter-11.html">
+            
+                    
+                    GOTO操作符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="Chapter-12.html">
+            
+                <a href="Chapter-12.html">
+            
+                    
+                    条件转跳
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="Chapter-13.html">
+            
+                <a href="Chapter-13.html">
+            
+                    
+                    选择结构switch()/case/default
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="Chapter-14.html">
+            
+                <a href="Chapter-14.html">
+            
+                    
+                    循环
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.15" data-path="Chapter-15.html">
+            
+                <a href="Chapter-15.html">
+            
+                    
+                    对C-Strings的简单处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="Chapter-16.html">
+            
+                <a href="Chapter-16.html">
+            
+                    
+                    用其他东西代替算数操作符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="Chapter-17.html">
+            
+                <a href="Chapter-17.html">
+            
+                    
+                    浮点数单元
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="Chapter-18.html">
+            
+                <a href="Chapter-18.html">
+            
+                    
+                    数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.19" data-path="Chapter-19.html">
+            
+                <a href="Chapter-19.html">
+            
+                    
+                    操纵特定的bit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="Chapter-20.html">
+            
+                <a href="Chapter-20.html">
+            
+                    
+                    用线性同余生成器来产生伪随机数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.21" data-path="Chapter-21.html">
+            
+                <a href="Chapter-21.html">
+            
+                    
+                    结构体
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.22" data-path="Chapter-22.html">
+            
+                <a href="Chapter-22.html">
+            
+                    
+                    联合体
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.23" data-path="Chapter-23.html">
+            
+                <a href="Chapter-23.html">
+            
+                    
+                    指向函数的指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.24" data-path="Chapter-24.html">
+            
+                <a href="Chapter-24.html">
+            
+                    
+                    在32位环境中的64位值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.25" data-path="Chapter-25.html">
+            
+                <a href="Chapter-25.html">
+            
+                    
+                    SIMD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.26" data-path="Chapter-26.html">
+            
+                <a href="Chapter-26.html">
+            
+                    
+                    64位化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.27" data-path="Chapter-27.html">
+            
+                <a href="Chapter-27.html">
+            
+                    
+                    使用SIMD来处理浮点数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.28" data-path="Chapter-28.html">
+            
+                <a href="Chapter-28.html">
+            
+                    
+                    关于ARM的特殊细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.29" data-path="Chapter-29.html">
+            
+                <a href="Chapter-29.html">
+            
+                    
+                    关于MIPS的特殊细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../Part-II/part2.html">
+            
+                <a href="../Part-II/part2.html">
+            
+                    
+                    Part II 重要的基础知识
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../Part-II/Chapter-30.html">
+            
+                <a href="../Part-II/Chapter-30.html">
+            
+                    
+                    有符号数的表示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../Part-II/Chapter-31.html">
+            
+                <a href="../Part-II/Chapter-31.html">
+            
+                    
+                    字节序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../Part-II/Chapter-32.html">
+            
+                <a href="../Part-II/Chapter-32.html">
+            
+                    
+                    内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../Part-II/Chapter-33.html">
+            
+                <a href="../Part-II/Chapter-33.html">
+            
+                    
+                    CPU
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../Part-II/Chapter-34.html">
+            
+                <a href="../Part-II/Chapter-34.html">
+            
+                    
+                    哈希函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../Part-III/part3.html">
+            
+                <a href="../Part-III/part3.html">
+            
+                    
+                    Part III 更高级些的例子
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../Part-III/Chapter-35.html">
+            
+                <a href="../Part-III/Chapter-35.html">
+            
+                    
+                    温度转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../Part-III/Chapter-36.html">
+            
+                <a href="../Part-III/Chapter-36.html">
+            
+                    
+                    斐波那契数列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../Part-III/Chapter-37.html">
+            
+                <a href="../Part-III/Chapter-37.html">
+            
+                    
+                    CRC32的计算实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../Part-III/Chapter-38.html">
+            
+                <a href="../Part-III/Chapter-38.html">
+            
+                    
+                    网址的计算实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../Part-III/Chapter-39.html">
+            
+                <a href="../Part-III/Chapter-39.html">
+            
+                    
+                    循环:几个迭代器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../Part-III/Chapter-40.html">
+            
+                <a href="../Part-III/Chapter-40.html">
+            
+                    
+                    Duff’s device
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../Part-III/Chapter-41.html">
+            
+                <a href="../Part-III/Chapter-41.html">
+            
+                    
+                    除以9
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../Part-III/Chapter-42.html">
+            
+                <a href="../Part-III/Chapter-42.html">
+            
+                    
+                    将字符串转化为数字(atoi())
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../Part-III/Chapter-43.html">
+            
+                <a href="../Part-III/Chapter-43.html">
+            
+                    
+                    内联函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../Part-III/Chapter-44.html">
+            
+                <a href="../Part-III/Chapter-44.html">
+            
+                    
+                    C99 的约束
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../Part-III/Chapter-45.md">
+            
+                <span>
+            
+                    
+                    无分支的abs()函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="../Part-III/Chapter-46.md">
+            
+                <span>
+            
+                    
+                    参数可变的函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.13" data-path="../Part-III/Chapter-47.md">
+            
+                <span>
+            
+                    
+                    字符串截取
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.14" data-path="../Part-III/Chapter-48.md">
+            
+                <span>
+            
+                    
+                    toupper()函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.15" data-path="../Part-III/Chapter-49.html">
+            
+                <a href="../Part-III/Chapter-49.html">
+            
+                    
+                    不正确的反汇编代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.16" data-path="../Part-III/Chapter-50.html">
+            
+                <a href="../Part-III/Chapter-50.html">
+            
+                    
+                    花指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.17" data-path="../Part-III/Chapter-51.html">
+            
+                <a href="../Part-III/Chapter-51.html">
+            
+                    
+                    C++
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.18" data-path="../Part-III/Chapter-52.html">
+            
+                <a href="../Part-III/Chapter-52.html">
+            
+                    
+                    负的数组引索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.19" data-path="../Part-III/Chapter-53.html">
+            
+                <a href="../Part-III/Chapter-53.html">
+            
+                    
+                    Windoes 16-bit
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../Part-IV/part4.html">
+            
+                <a href="../Part-IV/part4.html">
+            
+                    
+                    Part IV JAVA
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../Part-IV/Chapter-54.html">
+            
+                <a href="../Part-IV/Chapter-54.html">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../Part-V/part5.html">
+            
+                <a href="../Part-V/part5.html">
+            
+                    
+                    Part V 在代码里面寻找重要又有趣的东西
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../Part-V/Chapter-55.html">
+            
+                <a href="../Part-V/Chapter-55.html">
+            
+                    
+                    可执行文件的识别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../Part-V/Chapter-56.html">
+            
+                <a href="../Part-V/Chapter-56.html">
+            
+                    
+                    和外部世界的交流(win32)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../Part-V/Chapter-57.html">
+            
+                <a href="../Part-V/Chapter-57.html">
+            
+                    
+                    字符串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../Part-V/Chapter-58.html">
+            
+                <a href="../Part-V/Chapter-58.html">
+            
+                    
+                    调用断言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../Part-V/Chapter-59.html">
+            
+                <a href="../Part-V/Chapter-59.html">
+            
+                    
+                    常量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../Part-V/Chapter-60.html">
+            
+                <a href="../Part-V/Chapter-60.html">
+            
+                    
+                    找到真正的指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../Part-V/Chapter-61.html">
+            
+                <a href="../Part-V/Chapter-61.html">
+            
+                    
+                    可疑代码的模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../Part-V/Chapter-62.html">
+            
+                <a href="../Part-V/Chapter-62.html">
+            
+                    
+                    在追踪时使用Magic numbers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../Part-V/Chapter-63.html">
+            
+                <a href="../Part-V/Chapter-63.html">
+            
+                    
+                    其他东西
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../Part-VI/part6.html">
+            
+                <a href="../Part-VI/part6.html">
+            
+                    
+                    Part VI 操作系统的特性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../Part-VI/Chapter-64.html">
+            
+                <a href="../Part-VI/Chapter-64.html">
+            
+                    
+                    参数传递方法(调用规则)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../Part-VI/Chapter-65.html">
+            
+                <a href="../Part-VI/Chapter-65.html">
+            
+                    
+                    本地线程储存区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../Part-VI/Chapter-66.html">
+            
+                <a href="../Part-VI/Chapter-66.html">
+            
+                    
+                    系统调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../Part-VI/Chapter-67.html">
+            
+                <a href="../Part-VI/Chapter-67.html">
+            
+                    
+                    Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../Part-VI/Chapter-68.html">
+            
+                <a href="../Part-VI/Chapter-68.html">
+            
+                    
+                    Windows-NT
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../Part-VII/part7.html">
+            
+                <a href="../Part-VII/part7.html">
+            
+                    
+                    Part VII 工具
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../Part-VII/Chapter-69.html">
+            
+                <a href="../Part-VII/Chapter-69.html">
+            
+                    
+                    反汇编器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../Part-VII/Chapter-70.html">
+            
+                <a href="../Part-VII/Chapter-70.html">
+            
+                    
+                    调试器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../Part-VII/Chapter-71.html">
+            
+                <a href="../Part-VII/Chapter-71.html">
+            
+                    
+                    系统调用的追踪
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../Part-VII/Chapter-72.html">
+            
+                <a href="../Part-VII/Chapter-72.html">
+            
+                    
+                    反编译器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../Part-VII/Chapter-73.html">
+            
+                <a href="../Part-VII/Chapter-73.html">
+            
+                    
+                    其他工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../Part-IX/part9.html">
+            
+                <a href="../Part-IX/part9.html">
+            
+                    
+                    Part IX 逆向文件格式的例子
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../Part-IX/Chapter-84.html">
+            
+                <a href="../Part-IX/Chapter-84.html">
+            
+                    
+                    基本的异或加密
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../Part-IX/Chapter-85.html">
+            
+                <a href="../Part-IX/Chapter-85.html">
+            
+                    
+                    Millenium 的存档文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../Part-IX/Chapter-86.html">
+            
+                <a href="../Part-IX/Chapter-86.html">
+            
+                    
+                    Oracle RDBMS SYM-files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../Part-IX/Chapter-87.html">
+            
+                <a href="../Part-IX/Chapter-87.html">
+            
+                    
+                    Oracle RDBMS MSB-files
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../Afterword/part12.html">
+            
+                <a href="../Afterword/part12.html">
+            
+                    
+                    后记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../Afterword/Chapter-99.html">
+            
+                <a href="../Afterword/Chapter-99.html">
+            
+                    
+                    附录
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../Appendix/Appendix.html">
+            
+                <a href="../Appendix/Appendix.html">
+            
+                    
+                    附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../Appendix/Appendix-A.html">
+            
+                <a href="../Appendix/Appendix-A.html">
+            
+                    
+                    x86
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../Appendix/Appendix-B.html">
+            
+                <a href="../Appendix/Appendix-B.html">
+            
+                    
+                    ARM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../Appendix/Appendix-C.html">
+            
+                <a href="../Appendix/Appendix-C.html">
+            
+                    
+                    MIPS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../Appendix/Appendix-D.html">
+            
+                <a href="../Appendix/Appendix-D.html">
+            
+                    
+                    一些GCC库函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../Appendix/Appendix-E.html">
+            
+                <a href="../Appendix/Appendix-E.html">
+            
+                    
+                    一些MIPS库函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../Appendix/Appendix-F.html">
+            
+                <a href="../Appendix/Appendix-F.html">
+            
+                    
+                    速查表
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../Acronyms-used.html">
+            
+                <a href="../Acronyms-used.html">
+            
+                    
+                    缩略词表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../Glossary.html">
+            
+                <a href="../Glossary.html">
+            
+                    
+                    杂项
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../Idx.html">
+            
+                <a href="../Idx.html">
+            
+                    
+                    快速引索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../Bibliography.html">
+            
+                <a href="../Bibliography.html">
+            
+                    
+                    参考文献
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >对C-Strings的简单处理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7B2C;&#x5341;&#x4E94;&#x7AE0;">&#x7B2C;&#x5341;&#x4E94;&#x7AE0;</h1>
+<h1 id="&#x5BF9;c-strings&#x7684;&#x7B80;&#x5355;&#x5904;&#x7406;">&#x5BF9;C-Strings&#x7684;&#x7B80;&#x5355;&#x5904;&#x7406;</h1>
+<h2 id="151-strlen">15.1 strlen()</h2>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x518D;&#x770B;&#x4E00;&#x773C;&#x5FAA;&#x73AF;&#x7ED3;&#x6784;&#x3002;&#x901A;&#x5E38;&#xFF0C;strlen()&#x51FD;&#x6570;&#x662F;&#x7531;while()&#x6765;&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x8FD9;&#x5C31;&#x662F;MSVC&#x6807;&#x51C6;&#x5E93;&#x4E2D;strlen&#x7684;&#x505A;&#x6CD5;&#xFF1A;</p>
+<pre><code>int my_strlen (const char * str)
+{
+    const char *eos = str;
+    while( *eos++ ) ;
+    return( eos - str - 1 );
+}
+int main()
+{
+    // test
+    return my_strlen(&quot;hello!&quot;);
+};
+</code></pre><h2 id="151-x86">15.1 x86</h2>
+<h4 id="&#x65E0;&#x4F18;&#x5316;&#x7684;-msvc">&#x65E0;&#x4F18;&#x5316;&#x7684; MSVC</h4>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x7F16;&#x8BD1;&#x4E00;&#x4E0B;&#xFF1A;</p>
+<pre><code>_eos$ = -4                  ; size = 4
+_str$ = 8                   ; size = 4
+_strlen PROC
+    push    ebp
+    mov     ebp, esp
+    push    ecx
+    mov     eax, DWORD PTR _str$[ebp]   ; place pointer to string from str
+    mov     DWORD PTR _eos$[ebp], eax   ; place it to local varuable eos
+$LN2@strlen_:
+    mov     ecx, DWORD PTR _eos$[ebp]   ; ECX=eos
+
+    ; take 8-bit byte from address in ECX and place it as 32-bit value to EDX with sign extension
+
+    movsx   edx, BYTE PTR [ecx]
+    mov     eax, DWORD PTR _eos$[ebp]   ; EAX=eos
+    add     eax, 1 ; increment EAX
+    mov     DWORD PTR _eos$[ebp], eax   ; place EAX back to eos
+    test    edx, edx                    ; EDX is zero?
+    je      SHORT $LN1@strlen_          ; yes, then finish loop
+    jmp     SHORT $LN2@strlen_          ; continue loop
+$LN1@strlen_:
+
+    ; here we calculate the difference between two pointers
+
+    mov     eax, DWORD PTR _eos$[ebp]
+    sub     eax, DWORD PTR _str$[ebp]
+    sub     eax, 1                      ; subtract 1 and return result
+    mov     esp, ebp
+    pop     ebp
+    ret     0
+_strlen_ ENDP
+</code></pre><p>&#x6211;&#x4EEC;&#x770B;&#x5230;&#x4E86;&#x4E24;&#x4E2A;&#x65B0;&#x7684;&#x6307;&#x4EE4;&#xFF1A;MOVSX&#xFF08;&#x89C1;13.1.1&#x8282;&#xFF09;&#x548C;TEST&#x3002;</p>
+<p>&#x5173;&#x4E8E;&#x7B2C;&#x4E00;&#x4E2A;&#xFF1A;MOVSX&#x7528;&#x6765;&#x4ECE;&#x5185;&#x5B58;&#x4E2D;&#x53D6;&#x51FA;&#x5B57;&#x8282;&#x7136;&#x540E;&#x628A;&#x5B83;&#x653E;&#x5230;&#x4E00;&#x4E2A;32&#x4F4D;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x3002;MOVSX&#x610F;&#x5473;&#x7740;MOV with Sign-Extent&#xFF08;&#x5E26;&#x7B26;&#x53F7;&#x6269;&#x5C55;&#x7684;MOV&#x64CD;&#x4F5C;&#xFF09;&#x3002;MOVSX&#x64CD;&#x4F5C;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x590D;&#x5236;&#x6E90;&#x662F;&#x8D1F;&#x6570;&#xFF0C;&#x4ECE;&#x7B2C;8&#x5230;&#x7B2C;31&#x7684;&#x4F4D;&#x5C06;&#x88AB;&#x8BBE;&#x4E3A;1&#xFF0C;&#x5426;&#x5219;&#x5C06;&#x88AB;&#x8BBE;&#x4E3A;0&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x89E3;&#x91CA;&#x4E00;&#x4E0B;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x8FD9;&#x4E48;&#x505A;&#x3002;</p>
+<p>C/C++&#x6807;&#x51C6;&#x5C06;char&#xFF08;&#x8BD1;&#x6CE8;&#xFF1A;1&#x5B57;&#x8282;&#xFF09;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;&#x4E3A;&#x6709;&#x7B26;&#x53F7;&#x7684;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6709;2&#x4E2A;&#x503C;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;char&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x662F;int&#xFF08;int&#x4E5F;&#x662F;&#x6709;&#x7B26;&#x53F7;&#x7684;&#xFF09;&#xFF0C;&#x800C;&#x4E14;&#x5B83;&#x7684;&#x521D;&#x503C;&#x662F;-2&#xFF08;&#x88AB;&#x7F16;&#x7801;&#x4E3A;0xFE&#xFF09;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x8FD9;&#x4E2A;&#x503C;&#x62F7;&#x8D1D;&#x5230;int&#xFF08;&#x8BD1;&#x6CE8;&#xFF1A;&#x4E00;&#x822C;&#x662F;4&#x5B57;&#x8282;&#xFF09;&#x4E2D;&#x65F6;&#xFF0C;int&#x7684;&#x503C;&#x5C06;&#x662F;0x000000FE&#xFF0C;&#x8FD9;&#x65F6;&#xFF0C;int&#x7684;&#x503C;&#x5C06;&#x662F;254&#x800C;&#x4E0D;&#x662F;-2&#x3002;&#x56E0;&#x4E3A;&#x5728;&#x6709;&#x7B26;&#x53F7;&#x6570;&#x4E2D;&#xFF0C;-2&#x88AB;&#x7F16;&#x7801;&#x4E3A;0xFFFFFFFE&#x3002; &#x6240;&#x4EE5;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C06;0xFE&#x4ECE;char&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x4E3A;int&#x7C7B;&#x578B;&#xFF0C;&#x90A3;&#x4E48;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x9700;&#x8981;&#x8BC6;&#x522B;&#x5B83;&#x7684;&#x7B26;&#x53F7;&#x5E76;&#x6269;&#x5C55;&#x5B83;&#x3002;&#x8FD9;&#x5C31;&#x662F;MOVSX&#x6240;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#x3002;</p>
+<p>&#x8BF7;&#x53C2;&#x89C1;&#x7AE0;&#x8282;&#x201C;&#x6709;&#x7B26;&#x53F7;&#x6570;&#x8868;&#x793A;&#x65B9;&#x6CD5;&#x201D;&#x3002;&#xFF08;35&#x7AE0;&#xFF09;</p>
+<p>&#x6211;&#x4E0D;&#x592A;&#x786E;&#x5B9A;&#x7F16;&#x8BD1;&#x5668;&#x662F;&#x5426;&#x9700;&#x8981;&#x5C06;char&#x53D8;&#x91CF;&#x5B58;&#x50A8;&#x5728;EDX&#x4E2D;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5176;&#x4E2D;8&#x4F4D;&#xFF08;&#x6211;&#x7684;&#x610F;&#x601D;&#x662F;DL&#x90E8;&#x5206;&#xFF09;&#x3002;&#x663E;&#x7136;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x5206;&#x914D;&#x5668;&#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x5DE5;&#x4F5C;&#x7684;&#x3002;</p>
+<p>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;TEST EDX, EDX&#x3002;&#x5173;&#x4E8E;TEST&#x6307;&#x4EE4;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x9605;&#x8BFB;&#x4E00;&#x4E0B;&#x4F4D;&#x8FD9;&#x4E00;&#x8282;&#xFF08;17&#x7AE0;&#xFF09;&#x3002;&#x4F46;&#x662F;&#x73B0;&#x5728;&#x6211;&#x60F3;&#x8BF4;&#x7684;&#x662F;&#xFF0C;&#x8FD9;&#x4E2A;TEST&#x6307;&#x4EE4;&#x53EA;&#x662F;&#x68C0;&#x67E5;EDX&#x7684;&#x503C;&#x662F;&#x5426;&#x7B49;&#x4E8E;0&#x3002;</p>
+<h4 id="&#x65E0;&#x4F18;&#x5316;&#x7684;-gcc">&#x65E0;&#x4F18;&#x5316;&#x7684; GCC</h4>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x5728;GCC 4.4.1&#x4E0B;&#x6D4B;&#x8BD5;&#xFF1A;</p>
+<pre><code>        public strlen
+strlen  proc near
+
+eos     = dword ptr -4
+arg_0   = dword ptr 8
+
+        push    ebp
+        mov     ebp, esp
+        sub     esp, 10h
+        mov     eax, [ebp+arg_0]
+        mov     [ebp+eos], eax
+
+loc_80483F0:
+        mov     eax, [ebp+eos]
+        movzx   eax, byte ptr [eax]
+        test    al, al
+        setnz   al
+        add     [ebp+eos], 1
+        test    al, al
+        jnz     short loc_80483F0
+        mov     edx, [ebp+eos]
+        mov     eax, [ebp+arg_0]
+        mov     ecx, edx
+        sub     ecx, eax
+        mov     eax, ecx
+        sub     eax, 1
+        leave
+        retn
+strlen  endp
+</code></pre><p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5B83;&#x7684;&#x7ED3;&#x679C;&#x548C;MSVC&#x51E0;&#x4E4E;&#x76F8;&#x540C;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x513F;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5B83;&#x7528;MOVZX&#x4EE3;&#x66FF;&#x4E86;MOVSX&#x3002; MOVZX&#x4EE3;&#x8868;&#x7740;MOV with Zero-Extend&#xFF08;0&#x4F4D;&#x6269;&#x5C55;MOV&#xFF09;&#x3002;&#x8FD9;&#x4E2A;&#x6307;&#x4EE4;&#x5C06;8&#x4F4D;&#x6216;&#x8005;16&#x4F4D;&#x7684;&#x503C;&#x62F7;&#x8D1D;&#x5230;32&#x4F4D;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5269;&#x4F59;&#x4F4D;&#x8BBE;&#x7F6E;&#x4E3A;0&#x3002;&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x8FD9;&#x4E2A;&#x6307;&#x4EE4;&#x6BD4;&#x8F83;&#x65B9;&#x4FBF;&#x7684;&#x539F;&#x56E0;&#x662F;&#x5B83;&#x5C06;&#x4E24;&#x6761;&#x6307;&#x4EE4;&#x7EC4;&#x5408;&#x5230;&#x4E86;&#x4E00;&#x8D77;&#xFF1A;xor eax,eax / mov al, [...]&#x3002;</p>
+<p>&#x53E6;&#x4E00;&#x65B9;&#x9762;&#x6765;&#x8BF4;&#xFF0C;&#x663E;&#x7136;&#x8FD9;&#x91CC;&#x7F16;&#x8BD1;&#x5668;&#x53EF;&#x4EE5;&#x4EA7;&#x751F;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A; mov al, byte ptr [eax] / test al, al&#xFF0C;&#x8FD9;&#x51E0;&#x4E4E;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;EAX&#x9AD8;&#x4F4D;&#x5C06;&#x8FD8;&#x662F;&#x4F1A;&#x6709;&#x968F;&#x673A;&#x7684;&#x6570;&#x503C;&#x5B58;&#x5728;&#x3002; &#x4F46;&#x662F;&#x6211;&#x4EEC;&#x60F3;&#x4E00;&#x60F3;&#x5C31;&#x77E5;&#x9053;&#x4E86;&#xFF0C;&#x8FD9;&#x6B63;&#x662F;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x52A3;&#x52BF;&#x6240;&#x5728;&#x2014;&#x2014;&#x5B83;&#x4E0D;&#x80FD;&#x4EA7;&#x751F;&#x66F4;&#x591A;&#x80FD;&#x8BA9;&#x4EBA;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x4E25;&#x683C;&#x7684;&#x8BF4;&#xFF0C; &#x4E8B;&#x5B9E;&#x4E0A;&#x7F16;&#x8BD1;&#x5668;&#x4E5F;&#x5E76;&#x6CA1;&#x6709;&#x4E49;&#x52A1;&#x4E3A;&#x4EBA;&#x7C7B;&#x4EA7;&#x751F;&#x6613;&#x4E8E;&#x7406;&#x89E3;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
+<p>&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x65B0;&#x6307;&#x4EE4;&#xFF0C;SETNZ&#x3002;&#x8FD9;&#x91CC;&#xFF0C;&#x5982;&#x679C;AL&#x5305;&#x542B;&#x975E;0&#xFF0C; test al, al&#x5C06;&#x8BBE;&#x7F6E;ZF&#x6807;&#x8BB0;&#x4F4D;&#x4E3A;0&#x3002; &#x4F46;&#x662F;SETNZ&#x4E2D;&#xFF0C;&#x5982;&#x679C;ZF == 0&#xFF08;NZ&#x7684;&#x610F;&#x601D;&#x662F;&#x975E;&#x96F6;&#xFF0C;Not Zero&#xFF09;&#xFF0C;AL&#x5C06;&#x8BBE;&#x7F6E;&#x4E3A;1&#x3002;&#x7528;&#x81EA;&#x7136;&#x8BED;&#x8A00;&#x63CF;&#x8FF0;&#x4E00;&#x4E0B;&#xFF0C;&#x5982;&#x679C;AL&#x975E;0&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x8DF3;&#x8F6C;&#x5230;loc_80483F0&#x3002;&#x7F16;&#x8BD1;&#x5668;&#x751F;&#x6210;&#x4E86;&#x5C11;&#x91CF;&#x7684;&#x5197;&#x4F59;&#x4EE3;&#x7801;&#xFF0C;&#x4E0D;&#x8FC7;&#x4E0D;&#x8981;&#x5FD8;&#x4E86;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x628A;&#x4F18;&#x5316;&#x7ED9;&#x5173;&#x4E86;&#x3002;</p>
+<h4 id="&#x3000;&#x4F18;&#x5316;&#x540E;&#x7684;-msvc">&#x3000;&#x4F18;&#x5316;&#x540E;&#x7684; MSVC</h4>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x5728;MSVC 2012&#x4E0B;&#x7F16;&#x8BD1;&#xFF0C;&#x6253;&#x5F00;&#x4F18;&#x5316;&#x9009;&#x9879;/Ox&#xFF1A;</p>
+<p>&#x6E05;&#x5355;15.1: MSVC 2010 /Ox /Ob0</p>
+<pre><code>_str$ = 8               ; size = 4
+_strlen     PROC
+            mov     edx, DWORD PTR _str$[esp-4] ; EDX -&gt; &#x6307;&#x5411;&#x5B57;&#x7B26;&#x7684;&#x6307;&#x9488;
+            mov     eax, edx                    ; &#x79FB;&#x52A8;&#x5230; EAX
+$LL2@strlen:
+            mov     cl, BYTE PTR [eax]          ; CL = *EAX
+            inc     eax                         ; EAX++
+            test    cl, cl                      ; CL==0?
+            jne     SHORT $LL2@strlen           ; &#x5426;&#xFF0C;&#x7EE7;&#x7EED;&#x5FAA;&#x73AF;
+            sub     eax, edx                    ; &#x8BA1;&#x7B97;&#x6307;&#x9488;&#x5DEE;&#x5F02;
+            dec     eax                         ; &#x9012;&#x51CF; EAX
+            ret     0
+_strlen ENDP
+</code></pre><p>&#x73B0;&#x5728;&#x770B;&#x8D77;&#x6765;&#x5C31;&#x66F4;&#x7B80;&#x5355;&#x70B9;&#x4E86;&#x3002;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x53BB;&#x8BF4;&#x7F16;&#x8BD1;&#x5668;&#x80FD;&#x5728;&#x8FD9;&#x4E48;&#x5C0F;&#x7684;&#x51FD;&#x6570;&#x91CC;&#x9762;&#xFF0C;&#x5982;&#x6B64;&#x6709;&#x6548;&#x7387;&#x7684;&#x4F7F;&#x7528;&#x5982;&#x6B64;&#x5C11;&#x7684;&#x672C;&#x5730;&#x53D8;&#x91CF;&#xFF0C;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x800C;&#x5DF2;&#x3002;</p>
+<p>INC / DEC&#x662F;&#x9012;&#x589E; / &#x9012;&#x51CF;&#x6307;&#x4EE4;&#xFF0C;&#x6216;&#x8005;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x7ED9;&#x53D8;&#x91CF;&#x52A0;&#x4E00;&#x6216;&#x8005;&#x51CF;&#x4E00;&#x3002;</p>
+<h4 id="&#x4F18;&#x5316;&#x540E;&#x7684;-msvc--ollydbg">&#x4F18;&#x5316;&#x540E;&#x7684; MSVC + OllyDbg</h4>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;OllyDbg&#x4E2D;&#x8BD5;&#x8BD5;&#x8FD9;&#x4E2A;&#xFF08;&#x4F18;&#x5316;&#x8FC7;&#x7684;&#xFF09;&#x4F8B;&#x5B50;&#x3002;&#x8FD9;&#x513F;&#x6709;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x6700;&#x521D;&#x7684;&#x521D;&#x59CB;&#x5316;&#xFF1A;&#x56FE;15.1&#x3002; &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;OllyDbg</p>
+<p>&#x627E;&#x5230;&#x4E86;&#x4E00;&#x4E2A;&#x5FAA;&#x73AF;&#xFF0C;&#x7136;&#x540E;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x89C2;&#x770B;&#xFF0C;OllyDbg&#x628A;&#x5B83;&#x4EEC;&#x73AF;&#x7ED5;&#x5728;&#x4E00;&#x4E2A;&#x65B9;&#x683C;&#x533A;&#x57DF;&#x4E2D;&#x4E86;&#x3002;&#x5728;EAX&#x4E0A;&#x53F3;&#x952E;&#x70B9;&#x51FB;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x201C;Follow in Dump&#x201D;&#xFF0C;&#x7136;&#x540E;&#x5185;&#x5B58;&#x7A97;&#x53E3;&#x7684;&#x4F4D;&#x7F6E;&#x5C06;&#x4F1A;&#x8DF3;&#x8F6C;&#x5230;&#x5BF9;&#x5E94;&#x4F4D;&#x7F6E;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x770B;&#x5230;&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x4E2A;&#x201C;hello&#xFF01;&#x201D;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002; &#x5728;&#x5B83;&#x4E4B;&#x540E;&#x81F3;&#x5C11;&#x6709;&#x4E00;&#x4E2A;0&#x5B57;&#x8282;&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x662F;&#x968F;&#x673A;&#x7684;&#x6570;&#x636E;&#x3002; &#x5982;&#x679C;OllyDbg&#x53D1;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x5BC4;&#x5B58;&#x5668;&#x662F;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x4F1A;&#x663E;&#x793A;&#x8FD9;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x6309;&#x4E0B;F8&#xFF08;&#x6B65;&#x8FC7;&#xFF09;&#x591A;&#x6B21;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5F53;&#x524D;&#x5730;&#x5740;&#x7684;&#x6E38;&#x6807;&#x5C06;&#x5728;&#x5FAA;&#x73AF;&#x4F53;&#x4E2D;&#x56DE;&#x5230;&#x5F00;&#x59CB;&#x7684;&#x5730;&#x65B9;&#xFF1A;&#x56FE;15.2&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;EAX&#x73B0;&#x5728;&#x5305;&#x542B;&#x6709;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B57;&#x7B26;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x7EE7;&#x7EED;&#x6309;F8&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C;&#x5B8C;&#x6574;&#x4E2A;&#x5FAA;&#x73AF;&#xFF1A;&#x56FE;15.3&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;EAX&#x73B0;&#x5728;&#x5305;&#x542B;&#x7A7A;&#x5B57;&#x7B26;&#xFF08;&#xFF09;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x672B;&#x5C3E;&#x3002;&#x540C;&#x65F6;&#xFF0C;EDX&#x5E76;&#x6CA1;&#x6709;&#x6539;&#x53D8;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x8FD8;&#x662F;&#x6307;&#x5411;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x6700;&#x5F00;&#x59CB;&#x7684;&#x5730;&#x65B9;&#x3002;&#x73B0;&#x5728;&#x5B83;&#x5C31;&#x53EF;&#x4EE5;&#x8BA1;&#x7B97;&#x8FD9;&#x4E24;&#x4E2A;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x5DEE;&#x503C;&#x4E86;&#x3002;</p>
+<p>&#x7136;&#x540E;SUB&#x6307;&#x4EE4;&#x4F1A;&#x88AB;&#x6267;&#x884C;&#xFF1A;&#x56FE;15.4&#x3002; &#x5DEE;&#x503C;&#x4FDD;&#x5B58;&#x5728;EAX&#x4E2D;&#xFF0C;&#x4E3A;7&#x3002; &#x4F46;&#x662F;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x201C;hello!&#x201D;&#x7684;&#x957F;&#x5EA6;&#x662F;6&#xFF0C;&#x8FD9;&#x513F;7&#x662F;&#x56E0;&#x4E3A;&#x5305;&#x542B;&#x4E86;&#x672B;&#x5C3E;&#x7684;&#x3002;&#x4F46;&#x662F;strlen&#xFF08;&#xFF09;&#x51FD;&#x6570;&#x5FC5;&#x987B;&#x8FD4;&#x56DE;&#x975E;0&#x90E8;&#x5206;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x6700;&#x540E;&#x8FD8;&#x662F;&#x8981;&#x7ED9;EAX&#x51CF;&#x53BB;1&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5B83;&#x4F5C;&#x4E3A;&#x8FD4;&#x56DE;&#x503C;&#x8FD4;&#x56DE;&#xFF0C;&#x9000;&#x51FA;&#x51FD;&#x6570;&#x3002;</p>
+<p><img src="img/C15-1.png" alt=""></p>
+<p>&#x56FE;15.1&#xFF1A; &#x7B2C;&#x4E00;&#x6B21;&#x5FAA;&#x73AF;&#x8FED;&#x4EE3;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;</p>
+<p><img src="img/C15-2.png" alt=""></p>
+<p>&#x56FE;15.2&#xFF1A;&#x7B2C;&#x4E8C;&#x6B21;&#x5FAA;&#x73AF;&#x8FED;&#x4EE3;&#x5F00;&#x59CB;&#x4F4D;&#x7F6E;</p>
+<p><img src="img/C15-3.png" alt=""></p>
+<p>&#x56FE;15.3&#xFF1A; &#x73B0;&#x5728;&#x8981;&#x8BA1;&#x7B97;&#x4E8C;&#x8005;&#x7684;&#x5DEE;&#x4E86;</p>
+<p><img src="img/C15-4.png" alt=""></p>
+<p>&#x56FE;15.4&#xFF1A; EAX&#x9700;&#x8981;&#x51CF;&#x4E00;</p>
+<h4 id="&#x4F18;&#x5316;&#x8FC7;&#x7684;gcc">&#x4F18;&#x5316;&#x8FC7;&#x7684;GCC</h4>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x6253;&#x5F00;GCC 4.4.1&#x7684;&#x7F16;&#x8BD1;&#x4F18;&#x5316;&#x9009;&#x9879;&#xFF08;-O3&#xFF09;&#xFF1A;</p>
+<pre><code>        public strlen
+strlen  proc near
+
+arg_0   = dword ptr 8
+
+        push    ebp
+        mov     ebp, esp
+        mov     ecx, [ebp+arg_0]
+        mov     eax, ecx
+
+loc_8048418:
+        movzx   edx, byte ptr [eax]
+        add     eax, 1
+        test    dl, dl
+        jnz     short loc_8048418
+        not     ecx
+        add     eax, ecx
+        pop     ebp
+        retn
+strlen endp
+</code></pre><p>&#x8FD9;&#x513F;GCC&#x548C;MSVC&#x7684;&#x8868;&#x73B0;&#x65B9;&#x5F0F;&#x51E0;&#x4E4E;&#x4E00;&#x6837;&#xFF0C;&#x9664;&#x4E86;MOVZX&#x7684;&#x8868;&#x8FBE;&#x65B9;&#x5F0F;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;MOVZX&#x53EF;&#x80FD;&#x88AB;&#x66FF;&#x6362;&#x4E3A;mov dl, byte ptr [eax]&#x3002;</p>
+<p>&#x53EF;&#x80FD;&#x662F;&#x56E0;&#x4E3A;&#x5BF9;GCC&#x7F16;&#x8BD1;&#x5668;&#x6765;&#x8BF4;&#xFF0C;&#x751F;&#x6210;&#x6B64;&#x79CD;&#x4EE3;&#x7801;&#x4F1A;&#x8BA9;&#x5B83;&#x66F4;&#x5BB9;&#x6613;&#x8BB0;&#x4F4F;&#x6574;&#x4E2A;&#x5BC4;&#x5B58;&#x5668;&#x5DF2;&#x7ECF;&#x5206;&#x914D;&#x7ED9;char&#x53D8;&#x91CF;&#x4E86;&#xFF0C;&#x7136;&#x540E;&#x56E0;&#x6B64;&#x5B83;&#x5C31;&#x53EF;&#x4EE5;&#x786E;&#x8BA4;&#x9AD8;&#x4F4D;&#x5728;&#x4EFB;&#x4F55;&#x65F6;&#x5019;&#x90FD;&#x4E0D;&#x4F1A;&#x6709;&#x4EFB;&#x4F55;&#x5E72;&#x6270;&#x6570;&#x636E;&#x7684;&#x5B58;&#x5728;&#x4E86;&#x3002;</p>
+<p>&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x65B0;&#x7684;&#x64CD;&#x4F5C;&#x7B26;NOT&#x3002;&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x7B26;&#x628A;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x6240;&#x6709;&#x4F4D;&#x5168;&#x90E8;&#x53D6;&#x53CD;&#x3002;&#x53EF;&#x4EE5;&#x8BF4;&#xFF0C;&#x5B83;&#x548C;XOR ECX, 0fffffffh&#x6548;&#x679C;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;NOT&#x548C;&#x63A5;&#x4E0B;&#x6765;&#x7684;ADD&#x6307;&#x4EE4;&#x8BA1;&#x7B97;&#x5DEE;&#x503C;&#x7136;&#x540E;&#x5C06;&#x7ED3;&#x679C;&#x51CF;&#x4E00;&#x3002;&#x5728;&#x6700;&#x5F00;&#x59CB;&#x7684;ECX&#x51FA;&#x5B58;&#x50A8;&#x4E86;str&#x7684;&#x6307;&#x9488;&#xFF0C;&#x7FFB;&#x8F6C;&#x4E4B;&#x540E;&#x4F1A;&#x5C06;&#x5B83;&#x7684;&#x503C;&#x51CF;&#x4E00;&#x3002;</p>
+<p>&#x8BF7;&#x53C2;&#x8003;&#x201C;&#x6709;&#x7B26;&#x53F7;&#x6570;&#x7684;&#x8868;&#x8FBE;&#x65B9;&#x5F0F;&#x201D;&#x3002;&#xFF08;&#x7B2C;35&#x7AE0;&#xFF09;</p>
+<p>&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x5728;&#x51FD;&#x6570;&#x6700;&#x540E;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5FAA;&#x73AF;&#x4F53;&#x540E;&#x9762;&#x5176;&#x5B9E;&#x662F;&#x505A;&#x4E86;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre><code>ecx=str;
+eax=eos;
+ecx=(-ecx)-1;
+eax=eax+ecx
+return eax
+</code></pre><p>&#x8FD9;&#x6837;&#x505A;&#x5176;&#x5B9E;&#x51E0;&#x4E4E;&#x76F8;&#x7B49;&#x4E8E;&#xFF1A;</p>
+<pre><code>ecx=str;
+eax=eos;
+eax=eax-ecx;
+eax=eax-1;
+return eax
+</code></pre><p>&#x4E3A;&#x4EC0;&#x4E48;GCC&#x4F1A;&#x8BA4;&#x4E3A;&#x5B83;&#x66F4;&#x68D2;&#x5462;&#xFF1F;&#x6211;&#x4E0D;&#x80FD;&#x786E;&#x5B9A;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x786E;&#x5B9A;&#x4E0A;&#x4E0B;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x90FD;&#x5E94;&#x8BE5;&#x6709;&#x76F8;&#x540C;&#x7684;&#x6548;&#x7387;&#x3002;</p>
+<h3 id="1512-arm">15.1.2 ARM</h3>
+<h4 id="32-bit-arm">32-bit ARM</h4>
+<h4 id="&#x65E0;&#x4F18;&#x5316;-xcode-llvm--arm&#x6A21;&#x5F0F;">&#x65E0;&#x4F18;&#x5316; Xcode (LLVM) + ARM&#x6A21;&#x5F0F;</h4>
+<p>&#x6E05;&#x5355;15.2: &#x65E0;&#x4F18;&#x5316;&#x7684;Xcode&#xFF08;LLVM&#xFF09;+ ARM&#x6A21;&#x5F0F;</p>
+<pre><code>_strlen
+
+eos     = -8
+str     = -4
+        SUB     SP, SP, #8 ; allocate 8 bytes for local variables
+        STR     R0, [SP,#8+str]
+        LDR     R0, [SP,#8+str]
+        STR     R0, [SP,#8+eos]
+
+loc_2CB8                ; CODE XREF: _strlen+28
+        LDR     R0, [SP,#8+eos]
+        ADD     R1, R0, #1
+        STR     R1, [SP,#8+eos]
+        LDRSB   R0, [R0]
+        CMP     R0, #0
+        BEQ     loc_2CD4
+        B       loc_2CB8
+; ----------------------------------------------------------------
+
+loc_2CD4                ; CODE XREF: _strlen+24
+        LDR     R0, [SP,#8+eos]
+        LDR     R1, [SP,#8+str]
+        SUB     R0, R0, R1 ; R0=eos-str
+        SUB     R0, R0, #1 ; R0=R0-1
+        ADD     SP, SP, #8 ; deallocate 8 bytes for local variables
+        BX      LR
+</code></pre><p>&#x65E0;&#x4F18;&#x5316;&#x7684;LLVM&#x751F;&#x6210;&#x4E86;&#x592A;&#x591A;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x51FD;&#x6570;&#x662F;&#x5982;&#x4F55;&#x5728;&#x6808;&#x4E0A;&#x5904;&#x7406;&#x672C;&#x5730;&#x53D8;&#x91CF;&#x7684;&#x3002;&#x6211;&#x4EEC;&#x7684;&#x51FD;&#x6570;&#x91CC;&#x53EA;&#x6709;&#x4E24;&#x4E2A;&#x672C;&#x5730;&#x53D8;&#x91CF;&#xFF0C;eos&#x548C;str&#x3002;</p>
+<p>&#x5728;&#x8FD9;&#x4E2A;IDA&#x751F;&#x6210;&#x7684;&#x5217;&#x8868;&#x91CC;&#xFF0C;&#x6211;&#x628A;var_8&#x548C;var_4&#x547D;&#x540D;&#x4E3A;&#x4E86;eos&#x548C;str&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x6307;&#x4EE4;&#x53EA;&#x662F;&#x628A;&#x8F93;&#x5165;&#x7684;&#x503C;&#x653E;&#x5230;str&#x548C;eos&#x91CC;&#x3002;</p>
+<p>&#x5FAA;&#x73AF;&#x4F53;&#x4ECE;loc_2CB8&#x6807;&#x7B7E;&#x5904;&#x5F00;&#x59CB;&#x3002;</p>
+<p>&#x5FAA;&#x73AF;&#x4F53;&#x7684;&#x524D;&#x4E09;&#x4E2A;&#x6307;&#x4EE4;&#xFF08;LDR&#x3001;ADD&#x3001;STR&#xFF09;&#x5C06;eos&#x7684;&#x503C;&#x8F7D;&#x5165;R0&#xFF0C;&#x7136;&#x540E;&#x503C;&#x4F1A;&#x52A0;&#x4E00;&#xFF0C;&#x7136;&#x540E;&#x5B58;&#x56DE;&#x6808;&#x4E0A;&#x672C;&#x5730;&#x53D8;&#x91CF;eos&#x3002;</p>
+<p>&#x4E0B;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x201C;LDRSB R0, [R0]&#x201D;&#xFF08;Load Register Signed Byte&#xFF0C;&#x8BFB;&#x53D6;&#x5BC4;&#x5B58;&#x5668;&#x6709;&#x7B26;&#x53F7;&#x5B57;&#xFF09;&#x5C06;&#x4ECE;R0&#x5730;&#x5740;&#x5904;&#x8BFB;&#x53D6;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x5B83;&#x7B26;&#x53F7;&#x6269;&#x5C55;&#x5230;32&#x4F4D;&#x3002;&#x8FD9;&#x6709;&#x70B9;&#x50CF;&#x662F;x86&#x91CC;&#x7684;MOVSX&#x51FD;&#x6570;&#xFF08;&#x89C1;13.1.1&#x8282;&#xFF09;&#x3002;&#x56E0;&#x4E3A;char&#x5728;C&#x6807;&#x51C6;&#x91CC;&#x9762;&#x662F;&#x6709;&#x7B26;&#x53F7;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x7F16;&#x8BD1;&#x5668;&#x4E5F;&#x628A;&#x8FD9;&#x4E2A;&#x5B57;&#x8282;&#x5F53;&#x4F5C;&#x6709;&#x7B26;&#x53F7;&#x6570;&#x3002;&#x6211;&#x5DF2;&#x7ECF;&#x5728;13.1.1&#x8282;&#x5199;&#x4E86;&#x8FD9;&#x4E2A;&#xFF0C;&#x867D;&#x7136;&#x90A3;&#x91CC;&#x662F;&#x76F8;&#x5BF9;x86&#x6765;&#x8BF4;&#x7684;&#x3002; &#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5728;ARM&#x91CC;&#x4F1A;&#x5355;&#x72EC;&#x5206;&#x5272;&#x4F7F;&#x7528;8&#x4F4D;&#x6216;&#x8005;16&#x4F4D;&#x6216;&#x8005;32&#x4F4D;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x5C31;&#x50CF;x86&#x4E00;&#x6837;&#x3002;&#x663E;&#x7136;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;x86&#x6709;&#x4E00;&#x4E2A;&#x6F2B;&#x957F;&#x7684;&#x5386;&#x53F2;&#x4E0A;&#x7684;&#x517C;&#x5BB9;&#x6027;&#x95EE;&#x9898;&#xFF0C;&#x5B83;&#x9700;&#x8981;&#x548C;&#x4ED6;&#x7684;&#x524D;&#x8EAB;&#xFF1A;16&#x4F4D;8086&#x5904;&#x7406;&#x5668;&#x751A;&#x81F3;8&#x4F4D;&#x7684;8080&#x5904;&#x7406;&#x5668;&#x76F8;&#x517C;&#x5BB9;&#x3002;&#x4F46;&#x662F;ARM&#x786E;&#x662F;&#x4ECE;32&#x4F4D;&#x7684;&#x7CBE;&#x7B80;&#x6307;&#x4EE4;&#x96C6;&#x5904;&#x7406;&#x5668;&#x4E2D;&#x53D1;&#x5C55;&#x800C;&#x6210;&#x7684;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x4E3A;&#x4E86;&#x5904;&#x7406;&#x5355;&#x72EC;&#x7684;&#x5B57;&#x8282;&#xFF0C;&#x7A0B;&#x5E8F;&#x5FC5;&#x987B;&#x4F7F;&#x7528;32&#x4F4D;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x3002; &#x6240;&#x4EE5;LDRSB&#x4E00;&#x4E2A;&#x63A5;&#x4E00;&#x4E2A;&#x7684;&#x5C06;&#x7B26;&#x53F7;&#x4ECE;&#x5B57;&#x7B26;&#x4E32;&#x5185;&#x8F7D;&#x5165;R0&#xFF0C;&#x4E0B;&#x4E00;&#x4E2A;CMP&#x548C;BEQ&#x6307;&#x4EE4;&#x5C06;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x8BFB;&#x5165;&#x7684;&#x7B26;&#x53F7;&#x662F;0&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x662F;0&#xFF0C;&#x63A7;&#x5236;&#x6D41;&#x5C06;&#x91CD;&#x65B0;&#x56DE;&#x5230;&#x5FAA;&#x73AF;&#x4F53;&#xFF0C;&#x5982;&#x679C;&#x662F;0&#xFF0C;&#x90A3;&#x4E48;&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#x3002; &#x5728;&#x51FD;&#x6570;&#x6700;&#x540E;&#xFF0C;&#x7A0B;&#x5E8F;&#x4F1A;&#x8BA1;&#x7B97;eos&#x548C;str&#x7684;&#x5DEE;&#xFF0C;&#x7136;&#x540E;&#x51CF;&#x4E00;&#xFF0C;&#x8FD4;&#x56DE;&#x503C;&#x901A;&#x8FC7;R0&#x8FD4;&#x56DE;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5E76;&#x6CA1;&#x6709;&#x4FDD;&#x5B58;&#x5BC4;&#x5B58;&#x5668;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x7531;ARM&#x8C03;&#x7528;&#x65F6;&#x7684;&#x8F6C;&#x6362;&#xFF0C;R0-R3&#x5BC4;&#x5B58;&#x5668;&#x662F;&#x201C;&#x4E34;&#x65F6;&#x5BC4;&#x5B58;&#x5668;&#x201D;&#xFF08;scratch register&#xFF09;&#xFF0C;&#x5B83;&#x4EEC;&#x53EA;&#x662F;&#x4E3A;&#x4E86;&#x4F20;&#x9012;&#x53C2;&#x6570;&#x7528;&#x7684;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x503C;&#x5E76;&#x4E0D;&#x4F1A;&#x5728;&#x51FD;&#x6570;&#x9000;&#x51FA;&#x540E;&#x4FDD;&#x5B58;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x65F6;&#x5019;&#x51FD;&#x6570;&#x4E5F;&#x4E0D;&#x4F1A;&#x518D;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5B83;&#x4EEC;&#x53EF;&#x4EE5;&#x88AB;&#x6211;&#x4EEC;&#x7528;&#x6765;&#x505A;&#x4EFB;&#x4F55;&#x4E8B;&#x60C5;&#xFF0C;&#x800C;&#x8FD9;&#x91CC;&#x5176;&#x4ED6;&#x5BC4;&#x5B58;&#x5668;&#x90FD;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x5230;&#xFF0C;&#x8FD9;&#x4E5F;&#x5C31;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x6211;&#x4EEC;&#x7684;&#x6808;&#x4E0A;&#x4E8B;&#x5B9E;&#x4E0A;&#x4EC0;&#x4E48;&#x90FD;&#x6CA1;&#x6709;&#x7684;&#x539F;&#x56E0;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x63A7;&#x5236;&#x6D41;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7B80;&#x5355;&#x8DF3;&#x8F6C;&#xFF08;BX&#xFF09;&#x6765;&#x8FD4;&#x56DE;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5730;&#x5740;&#x5B58;&#x5728;LR&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x3002;</p>
+<h4 id="&#x4F18;&#x5316;&#x540E;&#x7684;-xcode-llvm--thumb-&#x6A21;&#x5F0F;">&#x4F18;&#x5316;&#x540E;&#x7684; Xcode (LLVM) + thumb &#x6A21;&#x5F0F;</h4>
+<p>&#x6E05;&#x5355;13.3: &#x4F18;&#x5316;&#x540E;&#x7684; Xcode&#xFF08;LLVM&#xFF09; + thumb&#x6A21;&#x5F0F;</p>
+<pre><code>_strlen
+        MOV     R1, R0
+
+loc_2DF6                ; CODE XREF: _strlen+8
+        LDRB.W  R2, [R1],#1
+        CMP     R2, #0
+        BNE     loc_2DF6
+        MVNS    R0, R0
+        ADD     R0, R1
+        BX      LR
+</code></pre><p>&#x5728;&#x4F18;&#x5316;&#x540E;&#x7684;LLVM&#x4E2D;&#xFF0C;&#x4E3A;eos&#x548C;str&#x51C6;&#x5907;&#x7684;&#x6808;&#x4E0A;&#x7A7A;&#x95F4;&#x53EF;&#x80FD;&#x5E76;&#x4E0D;&#x4F1A;&#x5206;&#x914D;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E9B;&#x53D8;&#x91CF;&#x53EF;&#x4EE5;&#x6C38;&#x8FDC;&#x6B63;&#x786E;&#x7684;&#x5B58;&#x50A8;&#x5728;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x3002;&#x5728;&#x5FAA;&#x73AF;&#x4F53;&#x5F00;&#x59CB;&#x4E4B;&#x524D;&#xFF0C;str&#x5C06;&#x4E00;&#x76F4;&#x5B58;&#x50A8;&#x5728;R0&#x4E2D;&#xFF0C;eos&#x5728;R1&#x4E2D;&#x3002;</p>
+<p><code>&quot;LDRB.W R2, [R1],#1&quot;</code>&#x6307;&#x4EE4;&#x4ECE;R1&#x5185;&#x5B58;&#x4E2D;&#x8BFB;&#x53D6;&#x5B57;&#x8282;&#x5230;R2&#x91CC;&#xFF0C;&#x6309;&#x7B26;&#x53F7;&#x6269;&#x5C55;&#x6210;32&#x4F4D;&#x7684;&#x503C;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x4EC5;&#x4EC5;&#x8FD9;&#x6837;&#x3002; &#x5728;&#x6307;&#x4EE4;&#x6700;&#x540E;&#x7684;#1&#x88AB;&#x79F0;&#x4E3A;&#x201C;&#x540E;&#x53D8;&#x5740;&#x201D;&#xFF08;Post-indexed address&#xFF09;&#xFF0C;&#x8FD9;&#x4EE3;&#x8868;&#x7740;&#x5728;&#x5B57;&#x8282;&#x8BFB;&#x53D6;&#x4E4B;&#x540E;&#xFF0C;R1&#x5C06;&#x4F1A;&#x52A0;&#x4E00;&#x3002;&#x8FD9;&#x4E2A;&#x5728;&#x8BFB;&#x53D6;&#x6570;&#x7EC4;&#x65F6;&#x7279;&#x522B;&#x65B9;&#x4FBF;&#x3002;</p>
+<p>&#x5728;x86&#x4E2D;&#x8FD9;&#x91CC;&#x5E76;&#x6CA1;&#x6709;&#x8FD9;&#x6837;&#x7684;&#x5730;&#x5740;&#x5B58;&#x53D6;&#x65B9;&#x5F0F;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x5176;&#x4ED6;&#x5904;&#x7406;&#x5668;&#x4E2D;&#x5374;&#x662F;&#x6709;&#x7684;&#xFF0C;&#x751A;&#x81F3;&#x5728;PDP-11&#x91CC;&#x4E5F;&#x6709;&#x3002;&#x8FD9;&#x662F;PDP-11&#x4E2D;&#x4E00;&#x4E2A;&#x524D;&#x589E;&#x3001;&#x540E;&#x589E;&#x3001;&#x524D;&#x51CF;&#x3001;&#x540E;&#x51CF;&#x7684;&#x4F8B;&#x5B50;&#x3002;&#x8FD9;&#x4E2A;&#x5F88;&#x50CF;&#x662F;C&#x8BED;&#x8A00;&#xFF08;&#x5B83;&#x662F;&#x5728;PDP-11&#x4E0A;&#x5F00;&#x53D1;&#x7684;&#xFF09;&#x4E2D;&#x201C;&#x7F6A;&#x6076;&#x7684;&#x201D;&#x8BED;&#x53E5;&#x5F62;&#x5F0F;ptr++&#x3001;++ptr&#x3001;ptr--&#x3001;--ptr&#x3002;&#x987A;&#x5E26;&#x4E00;&#x63D0;&#xFF0C;C&#x7684;&#x8FD9;&#x4E2A;&#x8BED;&#x6CD5;&#x771F;&#x7684;&#x5F88;&#x96BE;&#x8BA9;&#x4EBA;&#x8BB0;&#x4F4F;&#x3002;&#x4E0B;&#x4E3A;&#x5177;&#x4F53;&#x53D9;&#x8FF0;&#xFF1A;</p>
+<p><img src="img/C15-5.jpg" alt=""></p>
+<p>C&#x8BED;&#x8A00;&#x4F5C;&#x8005;&#x4E4B;&#x4E00;&#x7684;Dennis Ritchie&#x63D0;&#x5230;&#x4E86;&#x8FD9;&#x4E2A;&#x53EF;&#x80FD;&#x662F;&#x7531;&#x4E8E;&#x53E6;&#x4E00;&#x4E2A;&#x4F5C;&#x8005;Ken Thompson&#x5F00;&#x53D1;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x56E0;&#x6B64;&#x8FD9;&#x4E2A;&#x5904;&#x7406;&#x5668;&#x7279;&#x6027;&#x5728;PDP-7&#x4E2D;&#x6700;&#x65E9;&#x51FA;&#x73B0;&#x4E86;&#xFF08;&#x53C2;&#x8003;&#x8D44;&#x6599;[28][29]&#xFF09;&#x3002;&#x56E0;&#x6B64;&#xFF0C;C&#x8BED;&#x8A00;&#x7F16;&#x8BD1;&#x5668;&#x5C06;&#x5728;&#x5904;&#x7406;&#x5668;&#x652F;&#x6301;&#x8FD9;&#x79CD;&#x6307;&#x4EE4;&#x65F6;&#x4F7F;&#x7528;&#x5B83;&#x3002;</p>
+<p>&#x7136;&#x540E;&#x53EF;&#x4EE5;&#x6307;&#x51FA;&#x7684;&#x662F;&#x5FAA;&#x73AF;&#x4F53;&#x7684;CMP&#x548C;BNE&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x6307;&#x4EE4;&#x5C06;&#x4E00;&#x76F4;&#x5904;&#x7406;&#x5230;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x7684;0&#x51FA;&#x73B0;&#x4E3A;&#x6B62;&#x3002;</p>
+<p>MVNS&#xFF08;&#x7FFB;&#x8F6C;&#x6240;&#x6709;&#x4F4D;&#xFF0C;&#x4E5F;&#x5373;x86&#x7684;NOT&#xFF09;&#x6307;&#x4EE4;&#x548C;ADD&#x6307;&#x4EE4;&#x8BA1;&#x7B97;cos-str-1.&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x6307;&#x4EE4;&#x8BA1;&#x7B97;&#x51FA;R0=str+cos&#x3002;&#x8FD9;&#x548C;&#x6E90;&#x7801;&#x91CC;&#x7684;&#x6307;&#x4EE4;&#x6548;&#x679C;&#x4E00;&#x6837;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x4ED6;&#x8981;&#x8FD9;&#x4E48;&#x505A;&#x7684;&#x539F;&#x56E0;&#x6211;&#x5728;13.1.5&#x8282;&#x5DF2;&#x7ECF;&#x8BF4;&#x8FC7;&#x4E86;&#x3002;</p>
+<p>&#x663E;&#x7136;&#xFF0C;LLVM&#xFF0C;&#x5C31;&#x50CF;&#x662F;GCC&#x4E00;&#x6837;&#xFF0C;&#x4F1A;&#x628A;&#x4EE3;&#x7801;&#x53D8;&#x5F97;&#x66F4;&#x77ED;&#x6216;&#x8005;&#x66F4;&#x5FEB;&#x3002;</p>
+<h4 id="&#x4F18;&#x5316;&#x540E;&#x7684;-keil--arm-&#x6A21;&#x5F0F;">&#x4F18;&#x5316;&#x540E;&#x7684; Keil + ARM &#x6A21;&#x5F0F;</h4>
+<p>&#x6E05;&#x5355;15.4: &#x4F18;&#x5316;&#x540E;&#x7684; Keil + ARM&#x6A21;&#x5F0F;</p>
+<pre><code>_strlen
+        MOV     R1, R0
+loc_2C8                 ; CODE XREF: _strlen+14
+        LDRB    R2, [R1],#1
+        CMP     R2, #0
+        SUBEQ   R0, R1, R0
+        SUBEQ   R0, R0, #1
+        BNE     loc_2C8
+        BX      LR
+</code></pre><p>&#x8FD9;&#x4E2A;&#x548C;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x770B;&#x5230;&#x7684;&#x51E0;&#x4E4E;&#x4E00;&#x6837;&#xFF0C;&#x9664;&#x4E86;str-cos-1&#x8FD9;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x5E76;&#x4E0D;&#x5728;&#x51FD;&#x6570;&#x672B;&#x5C3E;&#x8BA1;&#x7B97;&#xFF0C;&#x800C;&#x662F;&#x88AB;&#x8C03;&#x5230;&#x4E86;&#x5FAA;&#x73AF;&#x4F53;&#x4E2D;&#x95F4;&#x3002; &#x53EF;&#x4EE5;&#x56DE;&#x5FC6;&#x4E00;&#x4E0B;-EQ&#x540E;&#x7F00;&#xFF0C;&#x8FD9;&#x4E2A;&#x4EE3;&#x8868;&#x6307;&#x4EE4;&#x4EC5;&#x4EC5;&#x4F1A;&#x5728;CMP&#x6267;&#x884C;&#x4E4B;&#x524D;&#x7684;&#x8BED;&#x53E5;&#x4E92;&#x76F8;&#x76F8;&#x7B49;&#x65F6;&#x624D;&#x4F1A;&#x6267;&#x884C;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5982;&#x679C;R0&#x7684;&#x503C;&#x662F;0&#xFF0C;&#x4E24;&#x4E2A;SUBEQ&#x6307;&#x4EE4;&#x90FD;&#x4F1A;&#x6267;&#x884C;&#xFF0C;&#x7136;&#x540E;&#x7ED3;&#x679C;&#x4F1A;&#x4FDD;&#x5B58;&#x5728;R0&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x3002;</p>
+<h4 id="arm64">ARM64</h4>
+<h4 id="optimizing-gcc-linaro-49">Optimizing GCC (Linaro) 4.9</h4>
+<h4 id="non-optimizing-gcc-linaro-49">Non-optimizing GCC (Linaro) 4.9</h4>
+<h3 id="1513-mips">15.1.3 MIPS</h3>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Chapter-14.html" class="navigation navigation-prev " aria-label="Previous page: 循环">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Chapter-16.html" class="navigation navigation-next " aria-label="Next page: 用其他东西代替算数操作符">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"对C-Strings的简单处理","level":"1.2.15","depth":2,"next":{"title":"用其他东西代替算数操作符","level":"1.2.16","depth":2,"path":"Part-I/Chapter-16.md","ref":"Part-I/Chapter-16.md","articles":[]},"previous":{"title":"循环","level":"1.2.14","depth":2,"path":"Part-I/Chapter-14.md","ref":"Part-I/Chapter-14.md","articles":[]},"dir":"ltr"},"config":{"plugins":["comment"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"comment":{"highlightCommented":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"wizardforcel","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"逆向工程入门指南","language":"zh","links":{"sidebar":{"逆向工程入门指南":"https://www.gitbook.com/book/wizardforcel/re-for-beginners"},"gitbook":true},"gitbook":"*","description":""},"file":{"path":"Part-I/Chapter-15.md","mtime":"2017-01-03T07:50:52.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-03T07:55:06.624Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-comment/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

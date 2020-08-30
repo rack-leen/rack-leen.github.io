@@ -1,0 +1,931 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Ctypes和NumPy | 用 Python 做科学计算</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./22.html" />
+    
+    
+    <link rel="prev" href="./20.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="19"
+        data-chapter-title="Ctypes和NumPy"
+        data-filepath="21.md"
+        data-basepath="."
+        data-revision="Sat Mar 19 2016 09:26:33 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/hyry-studio-scipy" target="blank" class="custom-link">用 Python 做科学计算</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="0.html">
+            
+                
+                    <a href="./0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        用Python做科学计算
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="1.html">
+            
+                
+                    <a href="./1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        软件包的安装和介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        NumPy-快速处理数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        SciPy-数值计算库
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        matplotlib-绘制精美的图表
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Traits-为Python添加类型定义
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        TraitsUI-轻松制作用户界面
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        Chaco-交互式图表
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="8.html">
+            
+                
+                    <a href="./8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        TVTK-三维可视化数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="9.html">
+            
+                
+                    <a href="./9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        Mayavi-更方便的可视化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="10.html">
+            
+                
+                    <a href="./10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        Visual-制作3D演示动画
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="11.html">
+            
+                
+                    <a href="./11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        OpenCV-图像处理和计算机视觉
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="12.html">
+            
+                
+                    <a href="./12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        Traits使用手册
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1" data-path="13.html">
+            
+                
+                    <a href="./13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        定义Traits
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="14.html">
+            
+                
+                    <a href="./14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        Trait事件处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="15.html">
+            
+                
+                    <a href="./15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        设计自己的Trait编辑器
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="16-0.html">
+            
+                
+                    <a href="./16-0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        Visual使用手册
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1" data-path="16.html">
+            
+                
+                    <a href="./16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.1.</b>
+                        
+                        场景窗口
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="17.html">
+            
+                
+                    <a href="./17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        声音的输入输出
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="18.html">
+            
+                
+                    <a href="./18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        数字信号系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="19.html">
+            
+                
+                    <a href="./19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        FFT演示程序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18" data-path="20.html">
+            
+                
+                    <a href="./20.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.</b>
+                        
+                        频域信号处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="19" data-path="21.html">
+            
+                
+                    <a href="./21.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.</b>
+                        
+                        Ctypes和NumPy
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20" data-path="22.html">
+            
+                
+                    <a href="./22.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.</b>
+                        
+                        自适应滤波器和NLMS模拟
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21" data-path="23.html">
+            
+                
+                    <a href="./23.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.</b>
+                        
+                        单摆和双摆模拟
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22" data-path="24.html">
+            
+                
+                    <a href="./24.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.</b>
+                        
+                        分形与混沌
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="23" data-path="25.html">
+            
+                
+                    <a href="./25.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.</b>
+                        
+                        关于本书的编写
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24" data-path="25-1.html">
+            
+                
+                    <a href="./25-1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.</b>
+                        
+                        最近更新
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25" data-path="26-0.html">
+            
+                
+                    <a href="./26-0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.</b>
+                        
+                        源程序集
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="25.1" data-path="26-01.html">
+            
+                
+                    <a href="./26-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.1.</b>
+                        
+                        三角波的FFT演示
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.2" data-path="26.html">
+            
+                
+                    <a href="./26.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.2.</b>
+                        
+                        在traitsUI中使用的matplotlib控件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.3" data-path="27.html">
+            
+                
+                    <a href="./27.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.3.</b>
+                        
+                        CSV文件数据图形化工具
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.4" data-path="28.html">
+            
+                
+                    <a href="./28.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.4.</b>
+                        
+                        NLMS算法的模拟测试
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.5" data-path="29.html">
+            
+                
+                    <a href="./29.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.5.</b>
+                        
+                        三维标量场观察器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.6" data-path="30.html">
+            
+                
+                    <a href="./30.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.6.</b>
+                        
+                        频谱泄漏和hann窗
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.7" data-path="31.html">
+            
+                
+                    <a href="./31.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.7.</b>
+                        
+                        FFT卷积的速度比较
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.8" data-path="32.html">
+            
+                
+                    <a href="./32.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.8.</b>
+                        
+                        二次均衡器设计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.9" data-path="33.html">
+            
+                
+                    <a href="./33.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.9.</b>
+                        
+                        单摆摆动周期的计算
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.10" data-path="34.html">
+            
+                
+                    <a href="./34.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.10.</b>
+                        
+                        双摆系统的动画模拟
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.11" data-path="35.html">
+            
+                
+                    <a href="./35.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.11.</b>
+                        
+                        绘制Mandelbrot集合
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.12" data-path="36.html">
+            
+                
+                    <a href="./36.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.12.</b>
+                        
+                        迭代函数系统的分形
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.13" data-path="37.html">
+            
+                
+                    <a href="./37.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.13.</b>
+                        
+                        绘制L-System的分形图
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >用 Python 做科学计算</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="ctypes&#x548C;numpy">Ctypes&#x548C;NumPy</h1>
+<h2 id="&#x7528;ctypes&#x52A0;&#x901F;&#x8BA1;&#x7B97;">&#x7528;ctypes&#x52A0;&#x901F;&#x8BA1;&#x7B97;</h2>
+<p>Ctypes&#x662F;Python&#x5904;&#x7406;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x5E93;&#x7684;&#x6807;&#x51C6;&#x6269;&#x5C55;&#x6A21;&#x5757;&#xFF0C;&#x5728;Windows&#x4E0B;&#x4F7F;&#x7528;&#x5B83;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8C03;&#x7528;C&#x8BED;&#x8A00;&#x7F16;&#x5199;&#x7684;DLL&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x5E93;&#x3002;&#x7531;&#x4E8E;&#x5BF9;&#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;&#x6CA1;&#x6709;&#x7C7B;&#x578B;&#x548C;&#x8D8A;&#x754C;&#x68C0;&#x67E5;&#xFF0C;&#x56E0;&#x6B64;&#x5982;&#x679C;&#x7F16;&#x5199;&#x7684;&#x4EE3;&#x7801;&#x6709;&#x95EE;&#x9898;&#x7684;&#x8BDD;&#xFF0C;&#x5F88;&#x53EF;&#x80FD;&#x4F1A;&#x9020;&#x6210;&#x7A0B;&#x5E8F;&#x5D29;&#x6E83;&#x3002;&#x5F53;&#x5C06;&#x6570;&#x7EC4;&#x6570;&#x636E;&#x4F7F;&#x7528;&#x6307;&#x9488;&#x4F20;&#x9012;&#x65F6;&#xFF0C;&#x51FA;&#x9519;&#x8BEF;&#x7684;&#x98CE;&#x9669;&#x5C06;&#x66F4;&#x52A0;&#x5927;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x8BA9;&#x7A0B;&#x5E8F;&#x66F4;&#x52A0;&#x5B89;&#x5168;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x7528;Python&#x4EE3;&#x7801;&#x5BF9;Ctypes&#x8C03;&#x7528;&#x8FDB;&#x884C;&#x5305;&#x88C5;&#xFF0C;&#x5728;&#x8C03;&#x7528;Ctypes&#x4E4B;&#x524D;&#xFF0C;&#x5728;Python&#x7EA7;&#x522B;&#x5BF9;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x548C;&#x8D8A;&#x754C;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#x3002;&#x8FD9;&#x6837;&#x505A;&#x4F1A;&#x4F7F;&#x5F97;&#x8C03;&#x7528;&#x63A5;&#x53E3;&#x90E8;&#x5206;&#x6BD4;&#x5176;&#x5B83;&#x7684;&#x4E00;&#x4E9B;&#x624B;&#x5DE5;&#x7F16;&#x5199;&#x7684;&#x6269;&#x5C55;&#x6A21;&#x5757;&#x901F;&#x5EA6;&#x8981;&#x6162;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;C&#x8BED;&#x8A00;&#x7684;&#x4EE3;&#x7801;&#x6BB5;&#x5904;&#x7406;&#x76F8;&#x5F53;&#x591A;&#x7684;&#x6570;&#x636E;&#x7684;&#x8BDD;&#xFF0C;&#x63A5;&#x53E3;&#x8C03;&#x7528;&#x90E8;&#x5206;&#x7684;&#x901F;&#x5EA6;&#x635F;&#x5931;&#x662F;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#x4E0D;&#x8BA1;&#x7684;&#x3002;</p>
+<h2 id="&#x7528;ctypes&#x8C03;&#x7528;dll">&#x7528;ctypes&#x8C03;&#x7528;DLL</h2>
+<p>&#x4E3A;&#x4E86;&#x4F7F;&#x7528;CTypes&#xFF0C;&#x4F60;&#x5FC5;&#x987B;&#x4F9D;&#x6B21;&#x5B8C;&#x6210;&#x4EE5;&#x4E0B;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ul>
+<li>&#x7F16;&#x5199;&#x52A8;&#x6001;&#x8FDE;&#x63A5;&#x5E93;&#x7A0B;&#x5E8F;</li>
+<li>&#x8F7D;&#x5165;&#x52A8;&#x6001;&#x8FDE;&#x63A5;&#x5E93;</li>
+<li>&#x5C06;Python&#x7684;&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x4E3A;ctypes&#x6240;&#x80FD;&#x8BC6;&#x522B;&#x7684;&#x53C2;&#x6570;</li>
+<li>&#x4F7F;&#x7528;ctypes&#x7684;&#x53C2;&#x6570;&#x8C03;&#x7528;&#x52A8;&#x6001;&#x8FDE;&#x63A5;&#x5E93;&#x4E2D;&#x7684;&#x51FD;&#x6570;</li>
+</ul>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x5982;&#x4F55;&#x7528;ctypes&#x8C03;&#x7528;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x5E93;&#x3002;</p>
+<h2 id="numpy&#x5BF9;ctypes&#x7684;&#x652F;&#x6301;">numpy&#x5BF9;ctypes&#x7684;&#x652F;&#x6301;</h2>
+<p>&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x52A8;&#x6001;&#x8FDE;&#x63A5;&#x5E93;&#x7684;&#x8F7D;&#x5165;&#xFF0C;numpy&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x4FBF;&#x6377;&#x51FD;&#x6570;ctypeslib.load_library&#x3002;&#x5B83;&#x6709;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x5E93;&#x7684;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x5E93;&#x6240;&#x5728;&#x7684;&#x8DEF;&#x5F84;&#x3002;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4E00;&#x4E2A;ctypes&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x901A;&#x8FC7;&#x6B64;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5230;&#x52A8;&#x6001;&#x8FDE;&#x63A5;&#x5E93;&#x6240;&#x63D0;&#x4F9B;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;&#x5E93;&#x540D;&#x4E3A;test_sum.dll&#xFF0C;&#x5176;&#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x51FD;&#x6570;mysum :</p>
+<pre><code>double mysum(double a[], long n)
+{
+    double sum = 0;
+    int i;
+    for(i=0;i&lt;n;i++) sum += a[i];
+    return sum;
+}
+</code></pre><p>&#x7684;&#x8BDD;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x8BED;&#x53E5;&#x8F7D;&#x5165;&#x6B64;&#x5E93;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; from ctypes import *
+&gt;&gt;&gt; sum_test = np.ctypeslib.load_library(&quot;sum_test&quot;, &quot;.&quot;)
+&gt;&gt;&gt; print sum_test.mysum
+&lt;_FuncPtr object at 0x037D7210&gt;
+</code></pre><p>&#x8981;&#x6B63;&#x786E;&#x8C03;&#x7528;sum&#x51FD;&#x6570;&#xFF0C;&#x8FD8;&#x5FC5;&#x987B;&#x5BF9;&#x5176;&#x53C2;&#x6570;&#x7C7B;&#x578B;&#x8FDB;&#x884C;&#x8BF4;&#x660E;&#xFF0C;&#x4E0B;&#x9762;&#x7684;&#x8BED;&#x53E5;&#x63CF;&#x8FF0;&#x4E86;sum&#x51FD;&#x6570;&#x7684;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x7C7B;&#x578B;&#x8FDB;&#x884C;&#x63CF;&#x8FF0;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; sum_test.mysum.argtypes = [POINTER(c_double), c_long]
+&gt;&gt;&gt; sum_test.mysum.restype = c_double
+</code></pre><p>&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x8C03;&#x7528;sum&#x51FD;&#x6570;&#x4E86;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; x = np.arange(1, 101, 1.0)
+&gt;&gt;&gt; sum_test.mysum(x.ctypes.data_as(POINTER(c_double)), len(x))
+5050.0
+</code></pre><p>&#x6BCF;&#x6B21;&#x8C03;&#x7528;sum&#x90FD;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x65F6;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x7F16;&#x5199;&#x4E00;&#x4E2A;Python&#x7684;mysum&#x51FD;&#x6570;&#xFF0C;&#x5C06;C&#x8BED;&#x8A00;&#x7684;mysum&#x51FD;&#x6570;&#x5305;&#x88C5;&#x8D77;&#x6765;:</p>
+<pre><code>def mysum(x):
+    return sum_test.mysum(x.ctypes.data_as(POINTER(c_double)), len(x))
+</code></pre><p>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;test_sum.mysum&#x7684;&#x53C2;&#x6570;&#x503C;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x7684;ctypes&#x7C7B;&#x578B;&#x58F0;&#x660E;&#xFF1A;&#x7528;POINTER(c_double)&#x58F0;&#x660E;mysum&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x6307;&#x5411;double&#x7684;&#x6307;&#x9488;&#xFF1B;&#x7136;&#x540E;&#x8C03;&#x7528;&#x6570;&#x7EC4;x&#x7684;x.ctypes.data_as&#x51FD;&#x6570;&#x5C06;x&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x6307;&#x5411;double&#x7684;&#x6307;&#x9488;&#x7C7B;&#x578B;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x6570;&#x7EC4;&#x7684;&#x5143;&#x7D20;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x5B58;&#x50A8;&#x53EF;&#x4EE5;&#x662F;&#x4E0D;&#x8FDE;&#x7EED;&#x7684;&#xFF0C;&#x800C;&#x4E14;&#x53EF;&#x4EE5;&#x662F;&#x591A;&#x7EF4;&#x6570;&#x7EC4;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x6307;&#x671B;&#x524D;&#x9762;&#x7684;mysum&#x51FD;&#x6570;&#x80FD;&#x591F;&#x5904;&#x7406;&#x6240;&#x6709;&#x7684;&#x60C5;&#x51B5;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; x = np.arange(1,11,1.0)
+&gt;&gt;&gt;  mysum(x[::2])
+15.0
+&gt;&gt;&gt; sum(x[::2])
+25.0
+</code></pre><p>&#x7531;&#x4E8E;x[::2]&#x548C;x&#x5171;&#x540C;&#x4E00;&#x5757;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#xFF0C;&#x800C;x[::2]&#x4E2D;&#x7684;&#x5143;&#x7D20;&#x662F;&#x4E0D;&#x8FDE;&#x7EED;&#x7684;&#xFF0C;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x4E4B;&#x95F4;&#x7684;&#x95F4;&#x9694;&#x4E3A;16byptes(2&#x4E2A;double&#x7684;&#x5927;&#x5C0F;)&#x3002;&#x56E0;&#x6B64;&#x5C06;&#x5B83;&#x4F20;&#x9012;&#x7ED9;mysum&#x7684;&#x8BDD;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x8BA1;&#x7B97;&#x7684;&#x662F;x&#x6570;&#x7EC4;&#x4E2D;&#x524D;5&#x9879;&#x7684;&#x548C;&#xFF1A;1+2+3+4+5=15&#xFF0C;&#x800C;&#x5B9E;&#x9645;&#x4E0A;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x7684;&#x7ED3;&#x679C;&#x662F;&#xFF1A;1+3+5+7+9=25&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x5BF9;&#x4F20;&#x9012;&#x7684;&#x6570;&#x7EC4;&#x53C2;&#x6570;&#x8FDB;&#x884C;&#x66F4;&#x52A0;&#x8BE6;&#x7EC6;&#x7684;&#x63CF;&#x8FF0;&#xFF0C;numpy&#x5E93;&#x63D0;&#x4F9B;&#x4E86;ndpointer&#x51FD;&#x6570;&#x3002;ndpointer&#x51FD;&#x6570;&#x5BF9;restype&#x548C;argtypes&#x4E2D;&#x7684;&#x6570;&#x7EC4;&#x53C2;&#x6570;&#x8FDB;&#x884C;&#x63CF;&#x8FF0;&#xFF0C;&#x4ED6;&#x6709;&#x5982;&#x4E0B;4&#x4E2A;&#x53C2;&#x6570;&#xFF1A;</p>
+<ul>
+<li><strong>dtype</strong> : &#x6570;&#x7EC4;&#x7684;&#x5143;&#x7D20;&#x7C7B;&#x578B;</li>
+<li><strong>ndim</strong> : &#x6570;&#x7EC4;&#x7684;&#x7EF4;&#x6570;</li>
+<li><strong>shape</strong> : &#x6570;&#x7EC4;&#x7684;&#x5F62;&#x72B6;&#xFF0C;&#x5404;&#x4E2A;&#x8F74;&#x7684;&#x957F;&#x5EA6;</li>
+<li><strong>flags</strong> : &#x6570;&#x7EC4;&#x7684;&#x6807;&#x5FD7;</li>
+</ul>
+<p>&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code>test_sum.mysum.argtypes = [
+    np.ctypeslib.ndpointer(dtype=np.float64, ndim=1, flags=&quot;C_CONTIGUOUS&quot;),
+    c_long
+]
+</code></pre><p>&#x63CF;&#x8FF0;&#x4E86;sumfunc&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x4E3A;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x7C7B;&#x578B;&#x4E3A;double&#x7684;&#x3001;&#x4E00;&#x7EF4;&#x7684;&#x3001;&#x8FDE;&#x7EED;&#x7684;&#x5143;&#x7D20;&#x6309;C&#x8BED;&#x8A00;&#x89C4;&#x5B9A;&#x6392;&#x5217;&#x7684;&#x6570;&#x7EC4;&#x3002;</p>
+<p>&#x8FD9;&#x65F6;&#x4F20;&#x9012;&#x7ED9;mysum&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x662F;&#x6570;&#x7EC4;&#xFF0C;&#x56E0;&#x6B64;&#x65E0;&#x9700;&#x518D;&#x7F16;&#x5199;&#x4E00;&#x4E2A;Python&#x51FD;&#x6570;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x5305;&#x88C5;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; sum_test.mysum(x,len(x))
+55.0
+&gt;&gt;&gt; sum_test.mysum(x[::2],len(x)/2)
+ArgumentError: argument 1: &lt;type &apos;exceptions.TypeError&apos;&gt;:
+array must have flags [&apos;C_CONTIGUOUS&apos;]
+</code></pre><p>&#x6211;&#x4EEC;&#x6CE8;&#x610F;&#x5230;&#x5982;&#x679C;&#x53C2;&#x6570;&#x6570;&#x7EC4;&#x4E0D;&#x662F;&#x8FDE;&#x7EED;&#x7A7A;&#x95F4;&#x7684;&#x8BDD;&#xFF0C;mysum&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x4F1A;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x9519;&#x8BEF;&#xFF0C;&#x63D0;&#x9192;&#x6211;&#x4EEC;&#x5176;&#x53C2;&#x6570;&#x9700;&#x8981;C&#x8BED;&#x8A00;&#x6392;&#x5217;&#x7684;&#x8FDE;&#x7EED;&#x6570;&#x7EC4;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x5B83;&#x80FD;&#x591F;&#x5904;&#x7406;&#x591A;&#x7EF4;&#x3001;&#x4E0D;&#x8FDE;&#x7EED;&#x7684;&#x6570;&#x7EC4;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x628A;&#x6570;&#x7EC4;&#x7684;shape&#x548C;strides&#x5C5E;&#x6027;&#x90FD;&#x4F20;&#x9012;&#x7ED9;&#x8FC7;&#x53BB;&#x3002;&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x60F3;&#x5199;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x7684;mysum2&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x5BF9;&#x4E8C;&#x7EF4;&#x6570;&#x7EC4;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x6C42;&#x548C;&#x3002;&#x4E0B;&#x9762;&#x662F;C&#x8BED;&#x8A00;&#x7684;&#x7A0B;&#x5E8F;&#xFF1A;</p>
+<pre><code>double mysum2(double a[], int strides[], int shapes[])
+{
+    double sum = 0;
+    int i, j, M, N, S0, S1;
+    M = shape[0]; N=shape[1];
+    S0 = strides[0] / sizeof(double);
+    S1 = strides[1] / sizeof(double);
+
+    for(i=0;i&lt;M;i++){
+        for(j=0;j&lt;N;j++){
+            sum += a[i*S0 + j*S1];
+        }
+    }
+    return sum;
+}
+</code></pre><p>mysum2&#x51FD;&#x6570;&#x6709;3&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;a[]&#x6307;&#x5411;&#x4FDD;&#x5B58;&#x6570;&#x7EC4;&#x6570;&#x636E;&#x7684;&#x5185;&#x5B58;&#x5757;&#xFF1B;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;astrides&#x6307;&#x5411;&#x4FDD;&#x5B58;&#x6570;&#x7EC4;&#x5404;&#x4E2A;&#x8F74;&#x5143;&#x7D20;&#x4E4B;&#x95F4;&#x7684;&#x95F4;&#x9694;(&#x4EE5;byte&#x4E3A;&#x5355;&#x4F4D;)&#xFF1B;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;dims&#x6307;&#x5411;&#x4FDD;&#x5B58;&#x6570;&#x7EC4;&#x5404;&#x4E2A;&#x8F74;&#x957F;&#x5EA6;&#x7684;&#x6570;&#x7EC4;&#x3002;</p>
+<p>&#x7531;&#x4E8E;strides&#x4FDD;&#x5B58;&#x7684;&#x662F;&#x4EE5;byte&#x4E3A;&#x5355;&#x4F4D;&#x7684;&#x95F4;&#x9694;&#x957F;&#x5EA6;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x9664;&#x4EE5;sizeof(double)&#x8BA1;&#x7B97;&#x51FA;&#x4EE5;double&#x4E3A;&#x5355;&#x4F4D;&#x7684;&#x95F4;&#x9694;&#x957F;&#x5EA6;S0&#x548C;S1&#x3002;&#x8FD9;&#x6837;&#x4E8C;&#x7EF4;&#x6570;&#x7EC4;a&#x4E2D;&#x7684;&#x7B2C;i&#x884C;&#x3001;&#x7B2C;j&#x5217;&#x7684;&#x5143;&#x7D20;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;a[i<em>S0 + j</em>S1]&#x6765;&#x5B58;&#x53D6;&#x3002;&#x4E0B;&#x9762;&#x7528;ctypes&#x5BF9;mysum2&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x5305;&#x88C5;&#xFF1A;</p>
+<pre><code>sum_test.mysum2.restype = c_double
+sum_test.mysum2.argtypes = [
+    np.ctypeslib.ndpointer(dtype=np.float64, ndim=2),
+    POINTER(c_int),
+    POINTER(c_int)
+]
+
+def mysum2(x):
+    return sum_test.mysum2(x, x.ctypes.strides, x.ctypes.shape)
+</code></pre><p>&#x5728;mysum2&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x4E3A;&#x4E86;&#x5C06;&#x6570;&#x7EC4;x&#x7684;strides&#x548C;shape&#x5C5E;&#x6027;&#x4F20;&#x9012;&#x7ED9;C&#x8BED;&#x8A00;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;x.ctypes&#x4E2D;&#x63D0;&#x4F9B;&#x7684;strides&#x548C;shape&#x5C5E;&#x6027;&#x3002;&#x6CE8;&#x610F;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x4F20;&#x9012;x.strides&#x548C;x.shape&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E9B;&#x662F;python&#x7684;tuple&#x5BF9;&#x8C61;&#xFF0C;&#x800C;x.ctypes.shape&#x5F97;&#x5230;&#x7684;&#x662F;ctypes&#x5305;&#x88C5;&#x7684;&#x6574;&#x6570;&#x6570;&#x7EC4;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; x = np.zeros((3,4), np.float)
+&gt;&gt;&gt; x.ctypes.shape
+&lt;numpy.core._internal.c_long_Array_2 object at 0x020B4DF0&gt;
+&gt;&gt;&gt; s = x.ctypes.shape
+&gt;&gt;&gt; s[0]
+3
+&gt;&gt;&gt; s[1]
+4
+</code></pre><p>&#x53EF;&#x4EE5;&#x770B;&#x51FA;x.ctypes.shape&#x662F;&#x4E00;&#x4E2A;&#x6709;&#x4E24;&#x4E2A;&#x5143;&#x7D20;&#x7684;C&#x8BED;&#x8A00;&#x957F;&#x6574;&#x578B;&#x6570;&#x7EC4;&#x3002;&#x867D;&#x7136;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;Python&#x4E2D;&#x901A;&#x8FC7;&#x4E0B;&#x6807;&#x8BFB;&#x53D6;&#x5176;&#x5404;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x503C;&#xFF0C;&#x4F46;&#x662F;&#x901A;&#x5E38;&#x5B83;&#x4EEC;&#x662F;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;C&#x8BED;&#x8A00;&#x51FD;&#x6570;&#x7528;&#x7684;&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./20.html" class="navigation navigation-prev " aria-label="Previous page: 频域信号处理"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./22.html" class="navigation navigation-next " aria-label="Next page: 自适应滤波器和NLMS模拟"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

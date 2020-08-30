@@ -1,0 +1,790 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第二十八章 在 Basemap 中绘制坐标 · Matplotlib 入门教程</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="author" content="wizardforcel">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-comment/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="29.html" />
+    
+    
+    <link rel="prev" href="27.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.gitbook.com/book/wizardforcel/matplotlib-intro-tut" target="_blank" class="custom-link">Matplotlib 入门教程</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Python 数据科学入门教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="0.html">
+            
+                <a href="0.html">
+            
+                    
+                    Matplotlib 入门教程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="1.html">
+            
+                <a href="1.html">
+            
+                    
+                    第一章 Matplotlib 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="2.html">
+            
+                <a href="2.html">
+            
+                    
+                    第二章 图例、标题和标签
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="3.html">
+            
+                <a href="3.html">
+            
+                    
+                    第三章 条形图和直方图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="4.html">
+            
+                <a href="4.html">
+            
+                    
+                    第四章 散点图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="5.html">
+            
+                <a href="5.html">
+            
+                    
+                    第五章 堆叠图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="6.html">
+            
+                <a href="6.html">
+            
+                    
+                    第六章 饼图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="7.html">
+            
+                <a href="7.html">
+            
+                    
+                    第七章 从文件加载数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="8.html">
+            
+                <a href="8.html">
+            
+                    
+                    第八章 从网络加载数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="9.html">
+            
+                <a href="9.html">
+            
+                    
+                    第九章 时间戳的转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="10.html">
+            
+                <a href="10.html">
+            
+                    
+                    第十章 基本的自定义
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="11.html">
+            
+                <a href="11.html">
+            
+                    
+                    第十一章 Unix 时间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="12.html">
+            
+                <a href="12.html">
+            
+                    
+                    第十二章 颜色和填充
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="13.html">
+            
+                <a href="13.html">
+            
+                    
+                    第十三章 边框和水平线条
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="14.html">
+            
+                <a href="14.html">
+            
+                    
+                    第十四章 OHLC K 线图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="15.html">
+            
+                <a href="15.html">
+            
+                    
+                    第十五章 样式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="16.html">
+            
+                <a href="16.html">
+            
+                    
+                    第十六章 实时图表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="17.html">
+            
+                <a href="17.html">
+            
+                    
+                    第十七章 注解和文本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="18.html">
+            
+                <a href="18.html">
+            
+                    
+                    第十八章 注解股票图表的最后价格
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.19" data-path="19.html">
+            
+                <a href="19.html">
+            
+                    
+                    第十九章 子图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="20.html">
+            
+                <a href="20.html">
+            
+                    
+                    第二十章 将子图应用于我们的图表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.21" data-path="21.html">
+            
+                <a href="21.html">
+            
+                    
+                    第二十一章 更多指标数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.22" data-path="22.html">
+            
+                <a href="22.html">
+            
+                    
+                    第二十二章 自定义填充、修剪和清除
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.23" data-path="23.html">
+            
+                <a href="23.html">
+            
+                    
+                    第二十三章 共享 X 轴
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.24" data-path="24.html">
+            
+                <a href="24.html">
+            
+                    
+                    第二十四章 多个 Y 轴
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.25" data-path="25.html">
+            
+                <a href="25.html">
+            
+                    
+                    第二十五章 自定义图例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.26" data-path="26.html">
+            
+                <a href="26.html">
+            
+                    
+                    第二十六章 Basemap 地理绘图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.27" data-path="27.html">
+            
+                <a href="27.html">
+            
+                    
+                    第二十七章 Basemap 自定义
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.28" data-path="28.html">
+            
+                <a href="28.html">
+            
+                    
+                    第二十八章 在 Basemap 中绘制坐标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.29" data-path="29.html">
+            
+                <a href="29.html">
+            
+                    
+                    第二十九章 3D 绘图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.30" data-path="30.html">
+            
+                <a href="30.html">
+            
+                    
+                    第三十章 3D 散点图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.31" data-path="31.html">
+            
+                <a href="31.html">
+            
+                    
+                    第三十一章 3D 条形图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.32" data-path="32.html">
+            
+                <a href="32.html">
+            
+                    
+                    第三十二章 总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第二十八章 在 Basemap 中绘制坐标</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7B2C;&#x4E8C;&#x5341;&#x516B;&#x7AE0;-&#x5728;-basemap-&#x4E2D;&#x7ED8;&#x5236;&#x5750;&#x6807;">&#x7B2C;&#x4E8C;&#x5341;&#x516B;&#x7AE0; &#x5728; Basemap &#x4E2D;&#x7ED8;&#x5236;&#x5750;&#x6807;</h1>
+<blockquote>
+<p>&#x539F;&#x6587;&#xFF1A;<a href="https://pythonprogramming.net/basemap-coordinates-plotting-matplotlib-tutorial/" target="_blank">Plotting Coordinates in Basemap with Matplotlib</a></p>
+<p>&#x8BD1;&#x8005;&#xFF1A;<a href="https://github.com/" target="_blank">&#x98DE;&#x9F99;</a></p>
+<p>&#x534F;&#x8BAE;&#xFF1A;<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></p>
+</blockquote>
+<p>&#x6B22;&#x8FCE;&#x9605;&#x8BFB;&#x53E6;&#x4E00;&#x4E2A; Matplotlib Basemap &#x6559;&#x7A0B;&#x3002; &#x5728;&#x672C;&#x6559;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4ECB;&#x7ECD;&#x5982;&#x4F55;&#x7ED8;&#x5236;&#x5355;&#x4E2A;&#x5750;&#x6807;&#xFF0C;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x5728;&#x5730;&#x7406;&#x533A;&#x57DF;&#x4E2D;&#x8FDE;&#x63A5;&#x8FD9;&#x4E9B;&#x5750;&#x6807;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4ECE;&#x4E00;&#x4E9B;&#x57FA;&#x672C;&#x7684;&#x8D77;&#x59CB;&#x6570;&#x636E;&#x5F00;&#x59CB;&#xFF1A;</p>
+<pre><code class="lang-py"><span class="hljs-keyword">from</span> mpl_toolkits.basemap <span class="hljs-keyword">import</span> Basemap
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+m = Basemap(projection=<span class="hljs-string">&apos;mill&apos;</span>,
+            llcrnrlat = <span class="hljs-number">25</span>,
+            llcrnrlon = <span class="hljs-number">-130</span>,
+            urcrnrlat = <span class="hljs-number">50</span>,
+            urcrnrlon = <span class="hljs-number">-60</span>,
+            resolution=<span class="hljs-string">&apos;l&apos;</span>)
+
+m.drawcoastlines()
+m.drawcountries(linewidth=<span class="hljs-number">2</span>)
+m.drawstates(color=<span class="hljs-string">&apos;b&apos;</span>)
+</code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7ED8;&#x5236;&#x5750;&#x6807;&#xFF0C;&#x4ECE;&#x83B7;&#x5F97;&#x5B83;&#x4EEC;&#x7684;&#x5B9E;&#x9645;&#x5750;&#x6807;&#x5F00;&#x59CB;&#x3002; &#x8BB0;&#x4F4F;&#xFF0C;&#x5357;&#x7EAC;&#x548C;&#x897F;&#x7ECF;&#x5750;&#x6807;&#x9700;&#x8981;&#x8F6C;&#x6362;&#x4E3A;&#x8D1F;&#x503C;&#x3002; &#x4F8B;&#x5982;&#xFF0C;&#x7EBD;&#x7EA6;&#x5E02;&#x662F;&#x5317;&#x7EAC;<code>40.7127</code>&#x897F;&#x7ECF;<code>74.0059</code>&#x3002; &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x4E2D;&#x5B9A;&#x4E49;&#x8FD9;&#x4E9B;&#x5750;&#x6807;&#xFF0C;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-py">NYClat, NYClon = <span class="hljs-number">40.7127</span>, <span class="hljs-number">-74.0059</span>
+</code></pre>
+<p>&#x4E4B;&#x540E;&#x6211;&#x4EEC;&#x5C06;&#x8FD9;&#x4E9B;&#x8F6C;&#x6362;&#x4E3A;&#x8981;&#x7ED8;&#x5236;&#x7684;<code>x</code>&#x548C;<code>y</code>&#x5750;&#x6807;&#x3002;</p>
+<pre><code class="lang-py">xpt, ypt = m(NYClon, NYClat)
+</code></pre>
+<p>&#x6CE8;&#x610F;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x5C06;&#x5750;&#x6807;&#x987A;&#x5E8F;&#x7FFB;&#x8F6C;&#x4E3A;<code>lon, lat</code>&#xFF08;&#x7EAC;&#x5EA6;&#xFF0C;&#x7ECF;&#x5EA6;&#xFF09;&#x3002; &#x5750;&#x6807;&#x901A;&#x5E38;&#x4EE5;<code>lat, lon</code>&#x987A;&#x5E8F;&#x7ED9;&#x51FA;&#x3002; &#x7136;&#x800C;&#xFF0C;&#x5728;&#x56FE;&#x5F62;&#x4E2D;&#xFF0C;<code>lat, long</code>&#x8F6C;&#x6362;&#x4E3A;<code>y, x</code>&#xFF0C;&#x6211;&#x4EEC;&#x663E;&#x7136;&#x4E0D;&#x9700;&#x8981;&#x3002; &#x5728;&#x67D0;&#x4E9B;&#x65F6;&#x5019;&#xFF0C;&#x4F60;&#x5FC5;&#x987B;&#x7FFB;&#x8F6C;&#x5B83;&#x4EEC;&#x3002; &#x4E0D;&#x8981;&#x5FD8;&#x8BB0;&#x8FD9;&#x90E8;&#x5206;&#xFF01;</p>
+<p>&#x6700;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7ED8;&#x5236;&#x5982;&#x4E0B;&#x7684;&#x5750;&#x6807;&#xFF1A;</p>
+<pre><code class="lang-py">m.plot(xpt, ypt, <span class="hljs-string">&apos;c*&apos;</span>, markersize=<span class="hljs-number">15</span>)
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x56FE;&#x8868;&#x4E0A;&#x6709;&#x4E00;&#x4E2A;&#x9752;&#x8272;&#x7684;&#x661F;&#xFF0C;&#x5927;&#x5C0F;&#x4E3A; 15&#x3002;&#x66F4;&#x591A;&#x6807;&#x8BB0;&#x7C7B;&#x578B;&#x8BF7;&#x53C2;&#x9605;&#xFF1A;<a href="http://matplotlib.org/api/markers_api.html" target="_blank">Matplotlib &#x6807;&#x8BB0;&#x6587;&#x6863;</a>&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x518D;&#x753B;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#xFF0C;&#x6D1B;&#x6749;&#x77F6;&#xFF0C;&#x52A0;&#x5229;&#x798F;&#x5C3C;&#x4E9A;&#xFF1A;</p>
+<pre><code class="lang-py">LAlat, LAlon = <span class="hljs-number">34.05</span>, <span class="hljs-number">-118.25</span>
+xpt, ypt = m(LAlon, LAlat)
+m.plot(xpt, ypt, <span class="hljs-string">&apos;g^&apos;</span>, markersize=<span class="hljs-number">15</span>)
+</code></pre>
+<p>&#x8FD9;&#x6B21;&#x6211;&#x4EEC;&#x753B;&#x51FA;&#x4E00;&#x4E2A;&#x7EFF;&#x8272;&#x4E09;&#x89D2;&#xFF0C;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x4F1A;&#x751F;&#x6210;&#xFF1A;</p>
+<p><img src="https://pythonprogramming.net/static/images/matplotlib/basemap-plotting-coordinates-matplotlib-tutorial.png" alt=""></p>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x8FDE;&#x63A5;&#x8FD9;&#x4E9B;&#x56FE;&#x5757;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x539F;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x50CF;&#x5176;&#x5B83; Matplotlib &#x56FE;&#x8868;&#x90A3;&#x6837;&#x5B9E;&#x73B0;&#x5B83;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x90A3;&#x4E9B;<code>xpt</code>&#x548C;<code>ypt</code>&#x5750;&#x6807;&#x4FDD;&#x5B58;&#x5230;&#x5217;&#x8868;&#xFF0C;&#x7C7B;&#x4F3C;&#x8FD9;&#x6837;&#x7684;&#x4E1C;&#x897F;&#xFF1A;</p>
+<pre><code class="lang-py">xs = []
+ys = []
+
+NYClat, NYClon = <span class="hljs-number">40.7127</span>, <span class="hljs-number">-74.0059</span>
+xpt, ypt = m(NYClon, NYClat)
+xs.append(xpt)
+ys.append(ypt)
+m.plot(xpt, ypt, <span class="hljs-string">&apos;c*&apos;</span>, markersize=<span class="hljs-number">15</span>)
+
+LAlat, LAlon = <span class="hljs-number">34.05</span>, <span class="hljs-number">-118.25</span>
+xpt, ypt = m(LAlon, LAlat)
+xs.append(xpt)
+ys.append(ypt)
+m.plot(xpt, ypt, <span class="hljs-string">&apos;g^&apos;</span>, markersize=<span class="hljs-number">15</span>)
+
+m.plot(xs, ys, color=<span class="hljs-string">&apos;r&apos;</span>, linewidth=<span class="hljs-number">3</span>, label=<span class="hljs-string">&apos;Flight 98&apos;</span>)
+</code></pre>
+<p>&#x4F1A;&#x751F;&#x6210;&#xFF1A;</p>
+<p><img src="https://pythonprogramming.net/static/images/matplotlib/basemap-plotting-between-coordinates-matplotlib-tutorial.png" alt=""></p>
+<p>&#x592A;&#x68D2;&#x4E86;&#x3002;&#x6709;&#x65F6;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4EE5;&#x5706;&#x5F27;&#x8FDE;&#x63A5;&#x56FE;&#x4E0A;&#x7684;&#x4E24;&#x4E2A;&#x5750;&#x6807;&#x3002;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x5462;&#xFF1F;</p>
+<pre><code class="lang-py">m.drawgreatcircle(NYClon, NYClat, LAlon, LAlat, color=<span class="hljs-string">&apos;c&apos;</span>, linewidth=<span class="hljs-number">3</span>, label=<span class="hljs-string">&apos;Arc&apos;</span>)
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x7684;&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#x4E3A;&#xFF1A;</p>
+<pre><code class="lang-py"><span class="hljs-keyword">from</span> mpl_toolkits.basemap <span class="hljs-keyword">import</span> Basemap
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+
+m = Basemap(projection=<span class="hljs-string">&apos;mill&apos;</span>,
+            llcrnrlat = <span class="hljs-number">25</span>,
+            llcrnrlon = <span class="hljs-number">-130</span>,
+            urcrnrlat = <span class="hljs-number">50</span>,
+            urcrnrlon = <span class="hljs-number">-60</span>,
+            resolution=<span class="hljs-string">&apos;l&apos;</span>)
+
+m.drawcoastlines()
+m.drawcountries(linewidth=<span class="hljs-number">2</span>)
+m.drawstates(color=<span class="hljs-string">&apos;b&apos;</span>)
+<span class="hljs-comment">#m.drawcounties(color=&apos;darkred&apos;)</span>
+<span class="hljs-comment">#m.fillcontinents()</span>
+<span class="hljs-comment">#m.etopo()</span>
+<span class="hljs-comment">#m.bluemarble()</span>
+
+xs = []
+ys = []
+
+NYClat, NYClon = <span class="hljs-number">40.7127</span>, <span class="hljs-number">-74.0059</span>
+xpt, ypt = m(NYClon, NYClat)
+xs.append(xpt)
+ys.append(ypt)
+m.plot(xpt, ypt, <span class="hljs-string">&apos;c*&apos;</span>, markersize=<span class="hljs-number">15</span>)
+
+LAlat, LAlon = <span class="hljs-number">34.05</span>, <span class="hljs-number">-118.25</span>
+xpt, ypt = m(LAlon, LAlat)
+xs.append(xpt)
+ys.append(ypt)
+m.plot(xpt, ypt, <span class="hljs-string">&apos;g^&apos;</span>, markersize=<span class="hljs-number">15</span>)
+
+m.plot(xs, ys, color=<span class="hljs-string">&apos;r&apos;</span>, linewidth=<span class="hljs-number">3</span>, label=<span class="hljs-string">&apos;Flight 98&apos;</span>)
+m.drawgreatcircle(NYClon, NYClat, LAlon, LAlat, color=<span class="hljs-string">&apos;c&apos;</span>, linewidth=<span class="hljs-number">3</span>, label=<span class="hljs-string">&apos;Arc&apos;</span>)
+
+
+plt.legend(loc=<span class="hljs-number">4</span>)
+plt.title(<span class="hljs-string">&apos;Basemap Tutorial&apos;</span>)
+plt.show()
+</code></pre>
+<p>&#x7ED3;&#x679C;&#x4E3A;&#xFF1A;</p>
+<p><img src="https://pythonprogramming.net/static/images/matplotlib/basemap-plot-curved-arc-matplotlib-example-tutorial.png" alt=""></p>
+<p>&#x8FD9;&#x5C31;&#x662F;<code>Basemap</code>&#x7684;&#x5168;&#x90E8;&#x4E86;&#xFF0C;&#x4E0B;&#x4E00;&#x7AE0;&#x5173;&#x4E8E; Matplotlib &#x7684; 3D &#x7ED8;&#x56FE;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="27.html" class="navigation navigation-prev " aria-label="Previous page: 第二十七章 Basemap 自定义">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="29.html" class="navigation navigation-next " aria-label="Next page: 第二十九章 3D 绘图">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第二十八章 在 Basemap 中绘制坐标","level":"1.2.28","depth":2,"next":{"title":"第二十九章 3D 绘图","level":"1.2.29","depth":2,"path":"matplotlib/29.md","ref":"matplotlib/29.md","articles":[]},"previous":{"title":"第二十七章 Basemap 自定义","level":"1.2.27","depth":2,"path":"matplotlib/27.md","ref":"matplotlib/27.md","articles":[]},"dir":"ltr"},"config":{"plugins":["comment"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"comment":{"highlightCommented":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"github":"wizardforcel/matplotlib-intro-tut-zh","theme":"default","author":"wizardforcel","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Matplotlib 入门教程","language":"zh","links":{"sidebar":{"Matplotlib 入门教程":"https://www.gitbook.com/book/wizardforcel/matplotlib-intro-tut"},"gitbook":true},"gitbook":"*","description":"Matplotlib 入门教程"},"file":{"path":"matplotlib/28.md","mtime":"2017-06-16T02:59:19.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-06-16T03:00:06.104Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-comment/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

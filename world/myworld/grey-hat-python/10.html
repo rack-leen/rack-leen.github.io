@@ -1,0 +1,1200 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>3 自己动手写一个 windows 调试器 | 灰帽 Python 之旅</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./11.html" />
+    
+    
+    <link rel="prev" href="./9.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="4"
+        data-chapter-title="3 自己动手写一个 windows 调试器"
+        data-filepath="10.md"
+        data-basepath="."
+        data-revision="Fri Mar 11 2016 03:05:18 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/grey-hat-python" target="blank" class="custom-link">灰帽 Python 之旅</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="0.html">
+            
+                
+                    <a href="./0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="1.html">
+            
+                
+                    <a href="./1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        1 搭建开发环境
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        1.1 操作系统准备
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        1.2  获取和安装 Python2.5
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        1.3  配置 Eclipse 和 PyDev
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        2 调试器设计
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        2.1  通用 CPU 寄存器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        2.2  栈
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="8.html">
+            
+                
+                    <a href="./8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        2.3 调试事件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="9.html">
+            
+                
+                    <a href="./9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        2.4  断点
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="4" data-path="10.html">
+            
+                
+                    <a href="./10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        3 自己动手写一个 windows 调试器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="11.html">
+            
+                
+                    <a href="./11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        3.2 获得 CPU 寄存器状态
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="12.html">
+            
+                
+                    <a href="./12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        3.3 实现调试事件处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="13.html">
+            
+                
+                    <a href="./13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        3.4 全能的断点
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="14.html">
+            
+                
+                    <a href="./14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        4 PyDBG---纯 PYTHON 调试器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="15.html">
+            
+                
+                    <a href="./15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        4.1 扩展断点处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="16.html">
+            
+                
+                    <a href="./16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        4.2 处理访问违例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="17.html">
+            
+                
+                    <a href="./17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        4.3 进程快照
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="18.html">
+            
+                
+                    <a href="./18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        5 IMMUNITY----最好的调试器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="19.html">
+            
+                
+                    <a href="./19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        5.1  安装 Immunity 调试器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="20.html">
+            
+                
+                    <a href="./20.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        5.2 Immunity Debugger 101
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="21.html">
+            
+                
+                    <a href="./21.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        5.3 Exploit 开发
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="22.html">
+            
+                
+                    <a href="./22.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        5.4 搞定反调试机制
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="23.html">
+            
+                
+                    <a href="./23.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        6 HOOKING
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="24.html">
+            
+                
+                    <a href="./24.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        6.1  用 PyDbg 实现 Soft Hooking
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="25.html">
+            
+                
+                    <a href="./25.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        6.2 Hard Hooking
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="26.html">
+            
+                
+                    <a href="./26.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        7 Dll 和代码注入
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="27.html">
+            
+                
+                    <a href="./27.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        7.1 创建远线程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="28.html">
+            
+                
+                    <a href="./28.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        7.2 邪恶的代码
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="29.html">
+            
+                
+                    <a href="./29.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        8 FUZZING
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="30.html">
+            
+                
+                    <a href="./30.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        8.1 Bug 的分类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="31.html">
+            
+                
+                    <a href="./31.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        8.2 File Fuzzer
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="32.html">
+            
+                
+                    <a href="./32.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        8.3 改进你的 Fuzzer
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="33.html">
+            
+                
+                    <a href="./33.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        9 SULLEY
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="34.html">
+            
+                
+                    <a href="./34.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        9.1  安装 Sulley
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="35.html">
+            
+                
+                    <a href="./35.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        9.2 Sulley primitives
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="36.html">
+            
+                
+                    <a href="./36.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        9.3 猎杀 WarFTPD
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="37.html">
+            
+                
+                    <a href="./37.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        10 Fuzzing Windows 驱动
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="38.html">
+            
+                
+                    <a href="./38.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        10.1 驱动通信
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="39.html">
+            
+                
+                    <a href="./39.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        10.2 用 Immunity fuzzing 驱动
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="40.html">
+            
+                
+                    <a href="./40.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.</b>
+                        
+                        10.4 构建 Driver Fuzzer
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="41.html">
+            
+                
+                    <a href="./41.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        11 IDAPYTHON --- IDA 脚本
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="42.html">
+            
+                
+                    <a href="./42.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        11.1  安装 IDAPython
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="43.html">
+            
+                
+                    <a href="./43.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        11.2  IDAPython 函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="44.html">
+            
+                
+                    <a href="./44.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        11.3  脚本例子
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="45.html">
+            
+                
+                    <a href="./45.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        12 PyEmu
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1" data-path="46.html">
+            
+                
+                    <a href="./46.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        12.1 安装 PyEmu
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="47.html">
+            
+                
+                    <a href="./47.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        12.2 PyEmu 一览
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="48.html">
+            
+                
+                    <a href="./48.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        12.3 IDAPyEmu
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >灰帽 Python 之旅</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="3-&#x81EA;&#x5DF1;&#x52A8;&#x624B;&#x5199;&#x4E00;&#x4E2A;-windows-&#x8C03;&#x8BD5;&#x5668;">3 &#x81EA;&#x5DF1;&#x52A8;&#x624B;&#x5199;&#x4E00;&#x4E2A; windows &#x8C03;&#x8BD5;&#x5668;</h1>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x8BB2;&#x89E3;&#x5B8C;&#x4E86;&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#xFF0C;&#x662F;&#x65F6;&#x5019;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x771F;&#x6B63;&#x7684;&#x7684; &#x8C03;&#x8BD5;&#x5668;&#x7684;&#x65F6;&#x5019;&#x4E86;&#x3002;&#x5F53;&#x5FAE;&#x8F6F;&#x5F00;&#x53D1; windows &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4ED6;&#x4EEC;&#x589E;&#x52A0;&#x4E86;&#x4E00; &#x5927;&#x5806;&#x7684;&#x4EE4;&#x4EBA;&#x60CA;&#x559C;&#x7684;&#x8C03;&#x8BD5;&#x51FD;&#x6570;&#x4EE5;&#x5E2E;&#x52A9;&#x5F00;&#x53D1;&#x8005;&#x4EEC;&#x4FDD;&#x8BC1;&#x4EA7;&#x54C1;&#x7684;&#x8D28;&#x91CF;&#x3002;&#x6211; &#x4EEC;&#x5C06;&#x5927;&#x91CF;&#x7684;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x521B;&#x5EFA;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x7EAF; python &#x8C03;&#x8BD5;&#x5668;&#x3002;&#x6709;&#x4E00;&#x70B9;&#x5F88;&#x91CD;&#x8981;&#xFF0C;&#x6211;&#x4EEC;&#x672C;&#x8D28;&#x4E0A;&#x662F;&#x5728;&#x6DF1;&#x5165;&#x7684;&#x5B66;&#x4E60; PyDbg(Pedram Amini&#x2019;s )&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x8FD9;&#x662F;&#x76EE;&#x524D;&#x80FD;&#x627E;&#x5230;&#x7684;&#x6700;&#x7B80;&#x6D01;&#x7684; Windows &#x5E73;&#x53F0;&#x4E0B;&#x7684; Python &#x8C03;&#x8BD5;&#x5668; &#x3002;&#x62DC; Pedram &#x6240;&#x8D50;&#xFF0C;&#x6211;&#x5C3D;&#x53EF;&#x80FD;&#x7528; PyDbg &#x5B8C;&#x6210;&#x4E86;&#x6211;&#x7684;&#x4EE3;&#x7801;&#xFF08;&#x5305;&#x62EC;&#x51FD;&#x6570;&#x540D;&#xFF0C;&#x53D8; &#x91CF;&#xFF0C;&#x7B49;&#x7B49;&#xFF09;&#xFF0C;&#x540C;&#x65F6;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x66F4;&#x5BB9;&#x6613;&#x7684;&#x7528; PyDbg &#x5B9E;&#x73B0;&#x4F60;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x5BF9;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#xFF0C;&#x4F60;&#x9996;&#x5148;&#x5FC5;&#x987B;&#x7528;&#x4E00;&#x4E9B;&#x65B9;&#x6CD5;&#x628A;&#x8C03;&#x8BD5;&#x5668;&#x548C;&#x8FDB;&#x7A0B;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x6211; &#x4EEC;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x8981;&#x4E0D;&#x7136;&#x5C31;&#x662F;&#x88C5;&#x8F7D;&#x4E00;&#x4E2A;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x7136;&#x540E;&#x8FD0;&#x884C;&#x5B83;&#xFF0C;&#x8981;&#x4E0D;&#x7136;&#x5C31;&#x662F;&#x52A8;&#x6001;&#x7684;&#x9644;&#x52A0;&#x5230;&#x4E00;&#x4E2A;&#x8FD0;&#x884C; &#x7684;&#x8FDB;&#x7A0B;&#x3002;Windows &#x7684;&#x8C03;&#x8BD5;&#x63A5;&#x53E3;&#xFF08;Windows debugging API&#xFF09;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x6CD5;&#x5B8C;&#x6210; &#x8FD9;&#x4E24;&#x70B9;&#x3002;</p>
+<p>&#x8FD0;&#x884C;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x548C;&#x9644;&#x52A0;&#x5230;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x6709;&#x7EC6;&#x5FAE;&#x7684;&#x5DEE;&#x522B;&#x3002;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#x7684;&#x4F18;&#x70B9;&#x5728;&#x4E8E;&#x4ED6;&#x80FD;&#x5728;&#x7A0B;&#x5E8F;&#x8FD0; &#x884C;&#x4EFB;&#x4F55;&#x4EE3;&#x7801;&#x4E4B;&#x524D;&#x5B8C;&#x5168;&#x7684;&#x63A7;&#x5236;&#x7A0B;&#x5E8F;&#x3002;&#x8FD9;&#x5728;&#x5206;&#x6790;&#x75C5;&#x6BD2;&#x6216;&#x8005;&#x6076;&#x610F;&#x4EE3;&#x7801;&#x7684;&#x65F6;&#x5019;&#x975E;&#x5E38;&#x6709;&#x7528;&#x3002;&#x9644;&#x52A0;&#x5230;&#x4E00;&#x4E2A; &#x8FDB;&#x7A0B;&#xFF0C;&#x4EC5;&#x4EC5;&#x662F;&#x5F3A;&#x884C;&#x7684;&#x8FDB;&#x5165;&#x4E00;&#x4E2A;&#x5DF2;&#x7ECF;&#x8FD0;&#x884C;&#x4E86;&#x7684;&#x8FDB;&#x7A0B;&#x5185;&#x90E8;&#xFF0C;&#x5B83;&#x5141;&#x8BB8;&#x4F60;&#x8DF3;&#x8FC7;&#x542F;&#x52A8;&#x90E8;&#x5206;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5206;&#x6790; &#x4F60;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x4F60;&#x6B63;&#x5728;&#x5206;&#x6790;&#x7684;&#x5730;&#x65B9;&#x4E5F;&#x5C31;&#x662F;&#x7A0B;&#x5E8F;&#x76EE;&#x524D;&#x6B63;&#x5728;&#x6267;&#x884C;&#x7684;&#x5730;&#x65B9;&#x3002;</p>
+<p>&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4ECE;&#x8C03;&#x8BD5;&#x5668;&#x672C;&#x8EAB;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#xFF08;&#x8C03;&#x8BD5;&#x5668;&#x5C31;&#x662F;&#x7236;&#x8FDB;&#x7A0B;&#xFF0C;&#x5BF9;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B; &#x7684;&#x63A7;&#x5236;&#x6743;&#x9650;&#x66F4;&#x5927;&#xFF09;&#x3002;&#x5728; Windows &#x4E0A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x7528; CreateProcessA()&#x51FD;&#x6570;&#x3002;&#x5C06;&#x7279;&#x5B9A;&#x7684;&#x6807;&#x5FD7;&#x4F20; &#x8FDB;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x4F7F;&#x5F97;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x80FD;&#x591F;&#x88AB;&#x8C03;&#x8BD5;&#x3002;&#x4E00;&#x4E2A; CreateProcessA()&#x8C03;&#x7528;&#x770B;&#x8D77;&#x6765;&#x50CF;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code>BOOL WINAPI CreateProcessA( 
+    LPCSTR lpApplicationName, 
+    LPTSTR lpCommandLine,
+    LPSECURITY_ATTRIBUTES lpProcessAttributes, 
+    LPSECURITY_ATTRIBUTES lpThreadAttributes, 
+    BOOL bInheritHandles,
+    DWORD dwCreationFlags, 
+    LPVOID lpEnvironment, 
+    LPCTSTR lpCurrentDirectory, 
+    LPSTARTUPINFO lpStartupInfo,
+    LPPROCESS_INFORMATION lpProcessInformation
+);
+</code></pre><p>&#x521D;&#x770B;&#x8FD9;&#x4E2A;&#x8C03;&#x7528;&#x76F8;&#x5F53;&#x6050;&#x6016;&#xFF0C;&#x4E0D;&#x8FC7;&#xFF0C;&#x5728;&#x9006;&#x5411;&#x5DE5;&#x7A0B;&#x4E2D;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x628A;&#x5927;&#x7684;&#x90E8;&#x5206;&#x5206;&#x89E3;&#x6210;&#x5C0F;&#x7684;&#x90E8;&#x5206;&#x4EE5;&#x4FBF;&#x7406;&#x89E3;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EA;&#x5173;&#x5FC3;&#x5728;&#x8C03;&#x8BD5;&#x5668;&#x4E2D;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x53C2;&#x6570;&#x3002;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x662F; lpApplicationName,lpCommandLine,dwCreationFlags,lpStartupInfo, &#x548C; lpProcessInformation&#x3002; &#x5269;&#x4F59;&#x7684;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x6210;&#x7A7A;&#x503C;&#xFF08;NULL&#xFF09;&#x3002;&#x5173;&#x4E8E;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x8BE6;&#x7EC6;&#x89E3;&#x91CA;&#x53EF;&#x4EE5;&#x67E5;&#x770B; MSDN(&#x5FAE;&#x8F6F;&#x4E4B;&#x8475; &#x82B1;&#x5B9D;&#x5178;)&#x3002;&#x6700;&#x524D;&#x9762;&#x7684;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x7528;&#x4E8E;&#x8BBE;&#x7F6E;&#xFF0C;&#x9700;&#x8981;&#x6267;&#x884C;&#x7684;&#x7A0B;&#x5E8F;&#x7684;&#x8DEF;&#x5F84;&#x548C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x4F20;&#x9012;&#x7ED9;&#x7A0B;&#x5E8F;&#x7684;&#x53C2; &#x6570;&#x3002;dwCreationFlags &#xFF08;&#x521B;&#x5EFA;&#x6807;&#x8BB0;&#xFF09;&#x53C2;&#x6570;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x7279;&#x5B9A;&#x503C;&#xFF0C;&#x8868;&#x793A;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x7A0B;&#x5E8F;&#x4EE5;&#x88AB;&#x8C03;&#x8BD5;&#x7684;&#x72B6; &#x6001; &#x542F; &#x52A8; &#x3002; &#x6700; &#x540E; &#x4E24; &#x4E2A; &#x53C2; &#x6570; &#x5206; &#x522B; &#x5206; &#x522B; &#x6307; &#x5411; 2 &#x4E2A; &#x7ED3; &#x6784; (STARTUPINFO and PROCESS_INFORMATION) &#xFF0C;&#x4E0D;&#x4EC5;&#x5305;&#x542B;&#x4E86;&#x8FDB;&#x7A0B;&#x5982;&#x4F55;&#x542F;&#x52A8;&#xFF0C;&#x4EE5;&#x53CA;&#x542F;&#x52A8;&#x540E;&#x7684;&#x8BB8;&#x591A;&#x91CD;&#x8981;&#x4FE1;&#x606F; &#x3002;&#xFF08; lpStartupInfo &#xFF1A; STARTUPINFO &#x7ED3; &#x6784; &#xFF0C; &#x7528; &#x4E8E; &#x5728; &#x521B; &#x5EFA; &#x5B50; &#x8FDB; &#x7A0B; &#x65F6; &#x8BBE; &#x7F6E; &#x5404; &#x79CD; &#x5C5E; &#x6027; &#xFF0C; lpProcessInformation&#xFF1A;PROCESS_INFORMATION &#x7ED3;&#x6784;&#xFF0C;&#x7528;&#x6765;&#x5728;&#x8FDB;&#x7A0B;&#x521B;&#x5EFA;&#x540E;&#x63A5;&#x6536;&#x76F8;&#x5173;&#x4FE1;&#x606F; &#xFF0C; &#x8BE5;&#x7ED3;&#x6784;&#x7531;&#x7CFB;&#x7EDF;&#x586B;&#x5199;&#x3002;&#xFF09;</p>
+<p>&#x521B;&#x5EFA;&#x4E24;&#x4E2A; Python &#x6587;&#x4EF6; my_debugger.py &#x548C; my_debugger_defines.py&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7236;&#x7C7B; debugger() &#x63A5; &#x7740; &#x9010; &#x6E10; &#x7684; &#x589E; &#x52A0; &#x5404; &#x79CD; &#x8C03; &#x8BD5; &#x51FD; &#x6570; &#x3002; &#x53E6; &#x5916; &#xFF0C; &#x628A; &#x6240; &#x6709; &#x7684; &#x7ED3; &#x6784; &#xFF0C; &#x8054; &#x5408; &#xFF0C; &#x5E38; &#x91CF; &#x653E; &#x5230; my_debugger_defines.py &#x65B9;&#x4FBF;&#x4EE5;&#x540E;&#x7EF4;&#x62A4;&#x3002;</p>
+<pre><code># my_debugger_defines.py
+from ctypes import *
+# Let&apos;s map the Microsoft types to ctypes for clarity 
+WORD = c_ushort
+DWORD = c_ulong
+LPBYTE = POINTER(c_ubyte) LPTSTR = POINTER(c_char)
+HANDLE = c_void_p
+# Constants
+DEBUG_PROCESS = 0x00000001 
+CREATE_NEW_CONSOLE = 0x00000010
+# Structures for CreateProcessA() function 
+class STARTUPINFO(Structure):
+    _fields_ = [
+        (&quot;cb&quot;, DWORD),
+        (&quot;lpReserved&quot;, LPTSTR), 
+        (&quot;lpDesktop&quot;, LPTSTR),
+        (&quot;lpTitle&quot;, LPTSTR),
+        (&quot;dwX&quot;, DWORD),
+        (&quot;dwY&quot;, DWORD),
+        (&quot;dwXSize&quot;, DWORD),
+        (&quot;dwYSize&quot;, DWORD),
+        (&quot;dwXCountChars&quot;, DWORD), 
+        (&quot;dwYCountChars&quot;, DWORD), 
+        (&quot;dwFillAttribute&quot;,DWORD), 
+        (&quot;dwFlags&quot;, DWORD), 
+        (&quot;wShowWindow&quot;, WORD), 
+        (&quot;cbReserved2&quot;, WORD), 
+        (&quot;lpReserved2&quot;, LPBYTE), 
+        (&quot;hStdInput&quot;, HANDLE), 
+        (&quot;hStdOutput&quot;, HANDLE), 
+        (&quot;hStdError&quot;, HANDLE),
+    ]
+class PROCESS_INFORMATION(Structure):
+    _fields_ = [
+        (&quot;hProcess&quot;, HANDLE), 
+        (&quot;hThread&quot;, HANDLE), 
+        (&quot;dwProcessId&quot;, DWORD), 
+        (&quot;dwThreadId&quot;, DWORD),
+    ]
+# my_debugger.py
+from ctypes import *
+from my_debugger_defines import * 
+kernel32 = windll.kernel32
+class debugger():
+    def init (self): 
+        pass
+    def load(self,path_to_exe):
+        # dwCreation flag determines how to create the process
+        # set creation_flags = CREATE_NEW_CONSOLE if you want
+        # to see the calculator GUI 
+        creation_flags = DEBUG_PROCESS
+        # instantiate the structs
+        startupinfo = STARTUPINFO() 
+        process_information = PROCESS_INFORMATION()
+        # The following two options allow the started process
+        # to be shown as a separate window. This also illustrates
+        # how different settings in the STARTUPINFO struct can affect
+        # the debuggee. 
+        startupinfo.dwFlags = 0x1 
+        startupinfo.wShowWindow = 0x0
+        # We then initialize the cb variable in the STARTUPINFO struct
+        # which is just the size of the struct itself 
+        startupinfo.cb = sizeof(startupinfo)
+        if kernel32.CreateProcessA(path_to_exe,
+                                    None, 
+                                    None, 
+                                    None, 
+                                    None,
+                                    creation_flags, 
+                                    None,
+                                    None, 
+                                    byref(startupinfo),
+                                    byref(process_information)): 
+            print &quot;[*] We have successfully launched the process!&quot; print &quot;[*] PID: %d&quot; % process_information.dwProcessId
+        else:
+            print &quot;[*] Error: 0x%08x.&quot; % kernel32.GetLastError()
+</code></pre><p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5C06;&#x6784;&#x9020;&#x4E00;&#x4E2A;&#x7B80;&#x77ED;&#x7684;&#x6D4B;&#x8BD5;&#x6A21;&#x5757;&#x786E;&#x5B9A;&#x4E00;&#x4E0B;&#x4E00;&#x5207;&#x90FD;&#x80FD;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x3002;&#x8C03;&#x7528; my_test.py&#xFF0C;&#x4FDD; &#x8BC1;&#x524D;&#x9762;&#x7684;&#x6587;&#x4EF6;&#x90FD;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x4E0B;&#x3002;</p>
+<pre><code>#my_test.py
+import my_debugger
+debugger = my_debugger.debugger() debugger.load(&quot;C:\\WINDOWS\\system32\\calc.exe&quot;)
+</code></pre><p>&#x5982;&#x679C;&#x4F60;&#x662F;&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x884C;&#x6216;&#x8005; IDE &#x624B;&#x52A8;&#x8F93;&#x5165;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5C06;&#x4F1A;&#x65B0;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x4E5F;&#x5C31;&#x662F;&#x4F60;&#x952E; &#x5165;&#x7A0B;&#x5E8F;&#x540D;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x8FDB;&#x7A0B; ID&#xFF08;PID&#xFF09;&#xFF0C;&#x6700;&#x540E;&#x7ED3;&#x675F;&#x3002;&#x5982;&#x679C;&#x4F60;&#x7528;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50; calc.exe&#xFF0C;&#x4F60;&#x5C06;&#x770B;&#x4E0D;&#x5230; &#x8BA1;&#x7B97;&#x5668;&#x7684;&#x56FE;&#x5F62;&#x754C;&#x9762;&#x51FA;&#x73B0;&#x3002;&#x56E0;&#x4E3A;&#x8FDB;&#x7A0B;&#x6CA1;&#x6709;&#x628A;&#x754C;&#x9762;&#x7ED8;&#x753B;&#x5230;&#x5C4F;&#x5E55;&#x4E0A;&#xFF0C;&#x5B83;&#x5728;&#x7B49;&#x5F85;&#x8C03;&#x8BD5;&#x5668;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x7684;&#x547D; &#x4EE4;&#x3002;&#x5F88;&#x5FEB;&#x6211;&#x4EEC;&#x5C31;&#x80FD;&#x8BA9;&#x4ED6;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x4E0B;&#x53BB;&#x4E86;&#x3002;&#x4E0D;&#x8FC7;&#x5728;&#x8FD9;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x627E;&#x5230;&#x4E86;&#x5982;&#x4F55;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B; &#x7528;&#x4E8E;&#x8C03;&#x8BD5;&#xFF0C;&#x73B0;&#x5728;&#x8BA9;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x53E6;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#xFF0C;&#x9644;&#x52A0;&#x5230;&#x4E00;&#x4E2A;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;&#x8FDB;&#x7A0B;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x9644;&#x52A0;&#x5230;&#x6307;&#x5B9A;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x5148;&#x5F97;&#x5230;&#x5B83;&#x7684;&#x53E5;&#x67C4;&#x3002;&#x8BB8;&#x591A;&#x540E;&#x9762;&#x5C06;&#x7528;&#x5230;&#x7684;&#x51FD;&#x6570;&#x90FD;&#x9700;&#x8981;&#x53E5;&#x67C4;&#x505A; &#x53C2;&#x6570;&#xFF0C;&#x540C;&#x65F6;&#x6211;&#x4EEC;&#x4E5F;&#x80FD;&#x5728;&#x8C03;&#x8BD5;&#x4E4B;&#x524D;&#x786E;&#x8BA4;&#x662F;&#x5426;&#x6709;&#x6743;&#x9650;&#x8C03;&#x8BD5;&#x5B83;&#xFF08;&#x5982;&#x679C;&#x9644;&#x52A0;&#x90FD;&#x4E0D;&#x884C;&#xFF0C;&#x5C31;&#x522B;&#x63D0;&#x8C03;&#x8BD5;&#x4E86;&#xFF09;&#x3002; &#x8FD9;&#x4E2A;&#x4EFB;&#x52A1;&#x7531; OpenProcess()&#x5B8C;&#x6210;&#xFF0C;&#x6B64;&#x51FD;&#x6570;&#x7531; kernel32.dll &#x5E93;&#x5012;&#x51FA;&#xFF0C;&#x539F;&#x578B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>HANDLE WINAPI OpenProcess( 
+    DWORD dwDesiredAccess, 
+    BOOL bInheritHandle 
+    DWORD dwProcessId
+);
+</code></pre><p>dwDesiredAccess &#x53C2;&#x6570;&#x51B3;&#x5B9A;&#x4E86;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x5BF9;&#x5C06;&#x8981;&#x6253;&#x5F00;&#x7684;&#x8FDB;&#x7A0B;&#x62E5;&#x6709;&#x4EC0;&#x4E48;&#x6837;&#x7684;&#x6743;&#x9650;&#xFF08;&#x5F53;&#x7136;&#x662F; &#x8D8A; &#x5927; &#x8D8A; &#x597D; root is hack &#xFF09;&#x3002; &#x56E0; &#x4E3A; &#x8981; &#x6267; &#x884C; &#x8C03; &#x8BD5; &#xFF0C; &#x6211; &#x4EEC; &#x8BBE; &#x7F6E; &#x6210; PROCESS_ALL_ACCESS &#x3002; bInheritHandle &#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x6210; False&#xFF0C;dwProcessId &#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x6210;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x83B7;&#x5F97;&#x53E5;&#x67C4;&#x7684;&#x8FDB;&#x7A0B; ID &#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x524D;&#x9762;&#x83B7;&#x5F97;&#x7684; PID&#x3002;&#x5982;&#x679C;&#x51FD;&#x6570;&#x6210;&#x529F;&#x6267;&#x884C;&#xFF0C;&#x5C06;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x7684;&#x53E5;&#x67C4;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x7528; DebugActiveProcess()&#x51FD;&#x6570;&#x9644;&#x52A0;&#x5230;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#xFF1A; </p>
+<pre><code>BOOL WINAPI DebugActiveProcess(
+    DWORD dwProcessId
+);
+</code></pre><p>&#x628A;&#x9700;&#x8981; a &#x9644;&#x52A0;&#x7684; PID &#x4F20;&#x5165;&#x3002;&#x4E00;&#x65E6;&#x7CFB;&#x7EDF;&#x8BA4;&#x4E3A;&#x6211;&#x4EEC;&#x6709;&#x6743;&#x9650;&#x8BBF;&#x95EE;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#xFF0C;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x5C31;&#x5047;&#x5B9A; &#x6211;&#x4EEC;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x5DF2;&#x7ECF;&#x51C6;&#x5907;&#x597D;&#x5904;&#x7406;&#x8C03;&#x8BD5;&#x4E8B;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x8FDB;&#x7A0B;&#x7684;&#x63A7;&#x5236;&#x6743;&#x8F6C;&#x79FB;&#x7ED9;&#x8C03;&#x8BD5;&#x5668;&#x3002;&#x8C03;&#x8BD5;&#x5668;&#x63A5;&#x7740;&#x5FAA; &#x73AF;&#x8C03;&#x7528; WaitForDebugEvent()&#x4EE5;&#x4FBF;&#x4FD8;&#x83B7;&#x8C03;&#x8BD5;&#x4E8B;&#x4EF6;&#x3002;&#x51FD;&#x6570;&#x539F;&#x578B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>BOOL WINAPI WaitForDebugEvent(
+    LPDEBUG_EVENT lpDebugEvent, 
+    DWORD dwMilliseconds
+);
+</code></pre><p>&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x6307;&#x5411; DEBUG_EVENT &#x7ED3;&#x6784;&#xFF0C;&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x63CF;&#x8FF0;&#x4E86;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x4E8B;&#x4EF6;&#x3002;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x8BBE; &#x7F6E;&#x6210; INFINITE&#xFF08;&#x65E0;&#x9650;&#x7B49;&#x5F85;&#xFF09;&#xFF0C;&#x8FD9;&#x6837; WaitForDebugEvent() &#x5C31;&#x4E0D;&#x7528;&#x8FD4;&#x56DE;&#xFF0C;&#x4E00;&#x76F4;&#x7B49;&#x5F85;&#x76F4;&#x5230;&#x4E00;&#x4E2A;&#x4E8B; &#x4EF6;&#x4EA7;&#x751F;&#x3002;</p>
+<p>&#x8C03;&#x8BD5;&#x5668;&#x6355;&#x6349;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x90FD;&#x6709;&#x76F8;&#x5173;&#x8054;&#x7684;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x5728;&#x7A0B;&#x5E8F;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x524D;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x4E0D;&#x540C; &#x7684; &#x64CD; &#x4F5C; &#x3002; &#x5F53; &#x5904; &#x7406; &#x51FD; &#x6570; &#x5B8C; &#x6210; &#x4E86; &#x64CD; &#x4F5C; &#xFF0C; &#x6211; &#x4EEC; &#x5E0C; &#x671B; &#x8FDB; &#x7A0B; &#x7EE7; &#x7EED; &#x6267; &#x884C; &#x7528; &#xFF0C; &#x8FD9; &#x65F6; &#x5019; &#x518D; &#x8C03; &#x7528; ContinueDebugEvent()&#x3002;&#x539F;&#x578B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>BOOL WINAPI ContinueDebugEvent( 
+    DWORD dwProcessId,
+    DWORD dwThreadId, 
+    DWORD dwContinueStatus
+);
+</code></pre><p>dwProcessId &#x548C; dwThreadId &#x53C2;&#x6570;&#x7531; DEBUG_EVENT &#x7ED3;&#x6784;&#x91CC;&#x7684;&#x6570;&#x636E;&#x586B;&#x5145;&#xFF0C;&#x5F53;&#x8C03;&#x8BD5;&#x5668;&#x6355;&#x6349; &#x5230;&#x8C03;&#x8BD5;&#x4E8B;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; WaitForDebugEvent()&#x6210;&#x529F;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FDB;&#x7A0B; ID &#x548C;&#x7EBF;&#x7A0B; ID &#x5C31;&#x4EE5; &#x53CA;&#x521D;&#x59CB;&#x5316;&#x597D;&#x4E86;&#x3002;dwContinueStatus &#x53C2;&#x6570;&#x544A;&#x8BC9;&#x8FDB;&#x7A0B;&#x662F;&#x7EE7;&#x7EED;&#x6267;&#x884C;(DBG_CONTINUE)&#xFF0C;&#x8FD8;&#x662F;&#x4EA7;&#x751F;&#x5F02; &#x5E38;(DBG_EXCEPTION_NOT_HANDLED)&#x3002;</p>
+<p>&#x8FD8;&#x5269;&#x4E0B;&#x4E00;&#x4EF6;&#x4E8B;&#x6CA1;&#x505A;&#xFF0C;&#x4ECE;&#x8FDB;&#x7A0B;&#x5206;&#x79BB;&#x51FA;&#x6765;&#xFF1A;&#x628A;&#x8FDB;&#x7A0B; ID &#x4F20;&#x9012;&#x7ED9; DebugActiveProcessStop()&#x3002; &#x73B0;&#x5728;&#x6211;&#x4EEC;&#x628A;&#x8FD9;&#x4E9B;&#x5168;&#x5408;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x6269;&#x5C55;&#x6211;&#x4EEC;&#x7684; my_debugger &#x7C7B;&#xFF0C;&#x8BA9;&#x4ED6;&#x62E5;&#x6709;&#x9644;&#x52A0;&#x548C;&#x5206;&#x79BB;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;&#x529F;&#x80FD;&#x3002;&#x540C;&#x65F6;&#x52A0;&#x4E0A;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x548C;&#x83B7;&#x5F97;&#x8FDB;&#x7A0B;&#x53E5;&#x67C4;&#x7684;&#x80FD;&#x529B;&#x3002;&#x6700;&#x540E;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x4E3B;&#x5FAA;&#x73AF;&#x91CC;&#x5B8C;&#x6210;&#x4E8B; &#x4EF6;&#x5904;&#x7406;&#x51FD;&#x6570;&#x3002;&#x6253;&#x5F00; my_debugger.py &#x952E;&#x5165;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x3002;</p>
+<p>&#x63D0;&#x793A;&#xFF1A;&#x6240;&#x6709;&#x9700;&#x8981;&#x7684;&#x7ED3;&#x6784;,&#x8054;&#x5408;&#x548C;&#x5E38;&#x91CF;&#x90FD;&#x5B9A;&#x4E49;&#x5728;&#x4E86; debugger_defines.py &#x6587;&#x4EF6;&#x91CC;&#xFF0C;&#x5B8C;&#x6574;&#x7684;&#x4EE3;&#x7801;&#x53EF; &#x4EE5;&#x4ECE; <a href="http://www.nostarch.com/ghpython.htm" target="_blank">http://www.nostarch.com/ghpython.htm</a> &#x4E0B;&#x8F7D;&#x3002;</p>
+<pre><code>#my_debugger.py
+from ctypes import *
+from my_debugger_defines import * 
+kernel32 = windll.kernel32
+class debugger():
+    def init (self):
+        self.h_process = None
+        self.pid = None 
+        self.debugger_active = False
+    def load(self,path_to_exe):
+        ...
+        print &quot;[*] We have successfully launched the process!&quot; 
+        print &quot;[*] PID: %d&quot; % process_information.dwProcessId
+        # Obtain a valid handle to the newly created process
+        # and store it for future access
+        self.h_process = self.open_process(process_information.dwProcessId)
+        ...
+    def open_process(self,pid):
+        h_process = kernel32.OpenProcess(PROCESS_ALL_ACCESS,pid,False) 
+        return h_process
+    def attach(self,pid):
+        self.h_process = self.open_process(pid)
+        # We attempt to attach to the process
+        # if this fails we exit the call
+        if kernel32.DebugActiveProcess(pid): 
+            self.debugger_active = True 
+            self.pid = int(pid) 
+            self.run()
+        else:
+            print &quot;[*] Unable to attach to the process.&quot;
+    def run(self):
+        # Now we have to poll the debuggee for
+        # debugging events
+        while self.debugger_active == True: 
+            self.get_debug_event()
+    def get_debug_event(self):
+        debug_event = DEBUG_EVENT() 
+        continue_status= DBG_CONTINUE
+        if kernel32.WaitForDebugEvent(byref(debug_event),INFINITE):
+            # We aren&apos;t going to build any event handlers
+            # just yet. Let&apos;s just resume the process for now. 
+            raw_input(&quot;Press a key to continue...&quot;) 
+            self.debugger_active = False
+            kernel32.ContinueDebugEvent( \ 
+                debug_event.dwProcessId, \ 
+                debug_event.dwThreadId, \ 
+                continue_status )
+    def detach(self):
+        if kernel32.DebugActiveProcessStop(self.pid): 
+            print &quot;[*] Finished debugging. Exiting...&quot; 
+            return True
+        else:
+            print &quot;There was an error&quot; return False
+</code></pre><p>&#x73B0;&#x5728;&#x8BA9;&#x6211;&#x4EEC;&#x4FEE;&#x6539;&#x4E0B;&#x6D4B;&#x8BD5;&#x5957;&#x4EF6;&#x4EE5;&#x4FBF;&#x4F7F;&#x7528;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code>#my_test.py
+import my_debugger
+debugger = my_debugger.debugger()
+pid = raw_input(&quot;Enter the PID of the process to attach to: &quot;) 
+debugger.attach(int(pid))
+debugger.detach()
+</code></pre><p>&#x6309;&#x4EE5;&#x4E0B;&#x7684;&#x6B65;&#x9AA4;&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#xFF08;windows &#x4E0B;&#xFF09;&#xFF1A;</p>
+<ol>
+<li><p>&#x9009;&#x62E9; &#x5F00;&#x59CB;-&gt;&#x8FD0;&#x884C;-&gt;&#x6240;&#x6709;&#x7A0B;&#x5E8F;-&gt;&#x9644;&#x4EF6;-&gt;&#x8BA1;&#x7B97;&#x5668;</p>
+</li>
+<li><p>&#x53F3;&#x51FB;&#x684C;&#x9762;&#x4F4E;&#x7AEF;&#x7684;&#x4EFB;&#x52A1;&#x680F;&#xFF0C;&#x4ECE;&#x9000;&#x51FA;&#x7684;&#x83DC;&#x5355;&#x4E2D;&#x9009;&#x62E9;&#x4EFB;&#x52A1;&#x7BA1;&#x7406;&#x5668;&#x3002;</p>
+</li>
+<li><p>&#x9009;&#x62E9;&#x8FDB;&#x7A0B;&#x9762;&#x677F;.</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x4F60;&#x6CA1;&#x770B;&#x5230; PID &#x680F;&#xFF0C;&#x9009;&#x62E9; &#x67E5;&#x770B;-&gt;&#x9009;&#x62E9;&#x5217;</p>
+</li>
+<li><p>&#x786E;&#x4FDD;&#x8FDB;&#x7A0B;&#x6807;&#x8BC6;&#x7B26;(PID)&#x524D;&#x9762;&#x7684;&#x786E;&#x8BA4;&#x6846;&#x662F;&#x9009;&#x4E2D;&#x7684;&#xFF0C;&#x7136;&#x540E;&#x5355;&#x51FB; OK&#x3002; </p>
+</li>
+<li><p>&#x627E;&#x5230; calc.exe &#x76F8;&#x5173;&#x8054;&#x7684; PID</p>
+</li>
+<li><p>&#x6267;&#x884C; my_test.py &#x540C;&#x65F6;&#x524D;&#x9762;&#x627E;&#x5230;&#x7684; PID &#x4F20;&#x9012;&#x7ED9;&#x5B83;&#x3002;</p>
+</li>
+<li><p>&#x5F53; Press a key to continue...&#x6253;&#x5370;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BD5;&#x7740;&#x64CD;&#x4F5C;&#x8BA1;&#x7B97;&#x5668;&#x7684;&#x754C;&#x9762;&#x3002;&#x4F60;&#x5E94;&#x8BE5;&#x4EC0;&#x4E48;&#x952E;&#x90FD; &#x6309;&#x4E0D;&#x4E86;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x8FDB;&#x7A0B;&#x88AB;&#x8C03;&#x8BD5;&#x5668;&#x6302;&#x8D77;&#x6765;&#x4E86;&#xFF0C;&#x7B49;&#x5F85;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x6307;&#x793A;&#x3002;</p>
+</li>
+<li><p>&#x5728;&#x4F60;&#x7684; Python &#x63A7;&#x5236;&#x53F0;&#x91CC;&#x6309;&#x4EFB;&#x4F55;&#x7684;&#x952E;&#xFF0C;&#x811A;&#x672C;&#x5C06;&#x8F93;&#x51FA;&#x522B;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x70ED;&#x7231;&#x540E;&#x7ED3;&#x675F;&#x3002;</p>
+</li>
+<li><p>&#x73B0;&#x5728;&#x4F60;&#x80FD;&#x591F;&#x64CD;&#x4F5C;&#x8BA1;&#x7B97;&#x5668;&#x4E86;&#x3002;</p>
+</li>
+</ol>
+<p>&#x5982;&#x679C;&#x4E00;&#x5207;&#x90FD;&#x5982;&#x63CF;&#x7ED8;&#x7684;&#x4E00;&#x6837;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#xFF0C;&#x628A;&#x4E0B;&#x9762;&#x4E24;&#x884C;&#x4ECE; my_debugger.py &#x4E2D;&#x6CE8;&#x91CA;&#x6389;&#xFF1A;</p>
+<pre><code># raw_input(&quot;Press any key to continue...&quot;)
+# self.debugger_active = False
+</code></pre><p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x8BB2;&#x89E3;&#x4E86;&#x83B7;&#x53D6;&#x8FDB;&#x7A0B;&#x53E5;&#x67C4;&#x7684;&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#xFF0C;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF0C;&#x9644;&#x52A0;&#x4E00;&#x4E2A;&#x8FD0;&#x884C; &#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x8BA9;&#x6211;&#x4EEC;&#x7ED9;&#x8C03;&#x8BD5;&#x5668;&#x52A0;&#x5165;&#x66F4;&#x591A;&#x9AD8;&#x7EA7;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./9.html" class="navigation navigation-prev " aria-label="Previous page: 2.4  断点"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./11.html" class="navigation navigation-next " aria-label="Next page: 3.2 获得 CPU 寄存器状态"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

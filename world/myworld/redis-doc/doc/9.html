@@ -1,0 +1,3231 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Redis 集群规范 | Redis 中文文档</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.5">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../ref/part2.html" />
+    
+    
+    <link rel="prev" href="../doc/8.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="1.9"
+        data-chapter-title="Redis 集群规范"
+        data-filepath="doc/9.md"
+        data-basepath=".."
+        data-revision="Wed Jan 06 2016 08:30:24 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/redis-doc" target="blank" class="custom-link">Redis 中文文档</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="doc/0.html">
+            
+                
+                    <a href="../doc/0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Redis 文档
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="doc/1.html">
+            
+                
+                    <a href="../doc/1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        键空间通知（keyspace notification）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="doc/2.html">
+            
+                
+                    <a href="../doc/2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        事务（transaction）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="doc/3.html">
+            
+                
+                    <a href="../doc/3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        发布与订阅（pub/sub）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="doc/4.html">
+            
+                
+                    <a href="../doc/4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        复制（Replication）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="doc/5.html">
+            
+                
+                    <a href="../doc/5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        通信协议（protocol）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="doc/6.html">
+            
+                
+                    <a href="../doc/6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        持久化（persistence）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="doc/7.html">
+            
+                
+                    <a href="../doc/7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.</b>
+                        
+                        Sentinel
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="doc/8.html">
+            
+                
+                    <a href="../doc/8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.8.</b>
+                        
+                        集群教程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9" data-path="doc/9.html">
+            
+                
+                    <a href="../doc/9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.9.</b>
+                        
+                        Redis 集群规范
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="ref/part2.html">
+            
+                
+                    <a href="../ref/part2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Redis 命令参考
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="ref/part2-1.html">
+            
+                
+                    <a href="../ref/part2-1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Key（键）
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="ref/12.html">
+            
+                
+                    <a href="../ref/12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.1.</b>
+                        
+                        DEL
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="ref/13.html">
+            
+                
+                    <a href="../ref/13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.2.</b>
+                        
+                        DUMP
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="ref/14.html">
+            
+                
+                    <a href="../ref/14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.3.</b>
+                        
+                        EXISTS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="ref/15.html">
+            
+                
+                    <a href="../ref/15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.4.</b>
+                        
+                        EXPIRE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="ref/16.html">
+            
+                
+                    <a href="../ref/16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.5.</b>
+                        
+                        EXPIREAT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="ref/17.html">
+            
+                
+                    <a href="../ref/17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.6.</b>
+                        
+                        KEYS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="ref/18.html">
+            
+                
+                    <a href="../ref/18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.7.</b>
+                        
+                        MIGRATE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" data-path="ref/19.html">
+            
+                
+                    <a href="../ref/19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.8.</b>
+                        
+                        MOVE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.9" data-path="ref/20.html">
+            
+                
+                    <a href="../ref/20.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.9.</b>
+                        
+                        OBJECT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.10" data-path="ref/21.html">
+            
+                
+                    <a href="../ref/21.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.10.</b>
+                        
+                        PERSIST
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.11" data-path="ref/22.html">
+            
+                
+                    <a href="../ref/22.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.11.</b>
+                        
+                        PEXPIRE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.12" data-path="ref/23.html">
+            
+                
+                    <a href="../ref/23.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.12.</b>
+                        
+                        PEXPIREAT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.13" data-path="ref/24.html">
+            
+                
+                    <a href="../ref/24.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.13.</b>
+                        
+                        PTTL
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.14" data-path="ref/25.html">
+            
+                
+                    <a href="../ref/25.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.14.</b>
+                        
+                        RANDOMKEY
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.15" data-path="ref/26.html">
+            
+                
+                    <a href="../ref/26.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.15.</b>
+                        
+                        RENAME
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.16" data-path="ref/27.html">
+            
+                
+                    <a href="../ref/27.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.16.</b>
+                        
+                        RENAMENX
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.17" data-path="ref/28.html">
+            
+                
+                    <a href="../ref/28.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.17.</b>
+                        
+                        RESTORE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.18" data-path="ref/29.html">
+            
+                
+                    <a href="../ref/29.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.18.</b>
+                        
+                        SORT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.19" data-path="ref/30.html">
+            
+                
+                    <a href="../ref/30.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.19.</b>
+                        
+                        TYPE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.20" data-path="ref/31.html">
+            
+                
+                    <a href="../ref/31.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.20.</b>
+                        
+                        SCAN
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="ref/part2-2.html">
+            
+                
+                    <a href="../ref/part2-2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        String（字符串）
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="ref/32.html">
+            
+                
+                    <a href="../ref/32.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.1.</b>
+                        
+                        APPEND
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="ref/33.html">
+            
+                
+                    <a href="../ref/33.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.2.</b>
+                        
+                        BITCOUNT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="ref/34.html">
+            
+                
+                    <a href="../ref/34.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.3.</b>
+                        
+                        BITOP
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="ref/35.html">
+            
+                
+                    <a href="../ref/35.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.4.</b>
+                        
+                        DECR
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.5" data-path="ref/36.html">
+            
+                
+                    <a href="../ref/36.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.5.</b>
+                        
+                        DECRBY
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.6" data-path="ref/37.html">
+            
+                
+                    <a href="../ref/37.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.6.</b>
+                        
+                        GET
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="ref/38.html">
+            
+                
+                    <a href="../ref/38.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.7.</b>
+                        
+                        GETBIT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.8" data-path="ref/39.html">
+            
+                
+                    <a href="../ref/39.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.8.</b>
+                        
+                        GETRANGE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.9" data-path="ref/40.html">
+            
+                
+                    <a href="../ref/40.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.9.</b>
+                        
+                        GETSET
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.10" data-path="ref/41.html">
+            
+                
+                    <a href="../ref/41.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.10.</b>
+                        
+                        INCR
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.11" data-path="ref/42.html">
+            
+                
+                    <a href="../ref/42.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.11.</b>
+                        
+                        INCRBY
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.12" data-path="ref/43.html">
+            
+                
+                    <a href="../ref/43.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.12.</b>
+                        
+                        INCRBYFLOAT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.13" data-path="ref/44.html">
+            
+                
+                    <a href="../ref/44.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.13.</b>
+                        
+                        MGET
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.14" data-path="ref/45.html">
+            
+                
+                    <a href="../ref/45.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.14.</b>
+                        
+                        MSET
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.15" data-path="ref/46.html">
+            
+                
+                    <a href="../ref/46.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.15.</b>
+                        
+                        MSETNX
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.16" data-path="ref/47.html">
+            
+                
+                    <a href="../ref/47.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.16.</b>
+                        
+                        PSETEX
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.17" data-path="ref/48.html">
+            
+                
+                    <a href="../ref/48.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.17.</b>
+                        
+                        SET
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.18" data-path="ref/49.html">
+            
+                
+                    <a href="../ref/49.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.18.</b>
+                        
+                        SETBIT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.19" data-path="ref/50.html">
+            
+                
+                    <a href="../ref/50.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.19.</b>
+                        
+                        SETEX
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.20" data-path="ref/51.html">
+            
+                
+                    <a href="../ref/51.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.20.</b>
+                        
+                        SETNX
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.21" data-path="ref/52.html">
+            
+                
+                    <a href="../ref/52.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.21.</b>
+                        
+                        SETRANGE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.22" data-path="ref/53.html">
+            
+                
+                    <a href="../ref/53.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.22.</b>
+                        
+                        STRLEN
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="ref/part2-3.html">
+            
+                
+                    <a href="../ref/part2-3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        Hash（哈希表）
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="ref/54.html">
+            
+                
+                    <a href="../ref/54.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.1.</b>
+                        
+                        HDEL
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="ref/55.html">
+            
+                
+                    <a href="../ref/55.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.2.</b>
+                        
+                        HEXISTS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" data-path="ref/56.html">
+            
+                
+                    <a href="../ref/56.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.3.</b>
+                        
+                        HGET
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.4" data-path="ref/57.html">
+            
+                
+                    <a href="../ref/57.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.4.</b>
+                        
+                        HGETALL
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.5" data-path="ref/58.html">
+            
+                
+                    <a href="../ref/58.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.5.</b>
+                        
+                        HINCRBY
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.6" data-path="ref/59.html">
+            
+                
+                    <a href="../ref/59.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.6.</b>
+                        
+                        HINCRBYFLOAT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.7" data-path="ref/60.html">
+            
+                
+                    <a href="../ref/60.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.7.</b>
+                        
+                        HKEYS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.8" data-path="ref/61.html">
+            
+                
+                    <a href="../ref/61.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.8.</b>
+                        
+                        HLEN
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.9" data-path="ref/62.html">
+            
+                
+                    <a href="../ref/62.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.9.</b>
+                        
+                        HMGET
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.10" data-path="ref/63.html">
+            
+                
+                    <a href="../ref/63.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.10.</b>
+                        
+                        HMSET
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.11" data-path="ref/64.html">
+            
+                
+                    <a href="../ref/64.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.11.</b>
+                        
+                        HSET
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.12" data-path="ref/65.html">
+            
+                
+                    <a href="../ref/65.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.12.</b>
+                        
+                        HSETNX
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.13" data-path="ref/66.html">
+            
+                
+                    <a href="../ref/66.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.13.</b>
+                        
+                        HVALS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.14" data-path="ref/67.html">
+            
+                
+                    <a href="../ref/67.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.14.</b>
+                        
+                        HSCAN
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="ref/part2-4.html">
+            
+                
+                    <a href="../ref/part2-4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        List（列表）
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="ref/68.html">
+            
+                
+                    <a href="../ref/68.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.1.</b>
+                        
+                        BLPOP
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="ref/69.html">
+            
+                
+                    <a href="../ref/69.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.2.</b>
+                        
+                        BRPOP
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3" data-path="ref/70.html">
+            
+                
+                    <a href="../ref/70.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.3.</b>
+                        
+                        BRPOPLPUSH
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4" data-path="ref/71.html">
+            
+                
+                    <a href="../ref/71.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.4.</b>
+                        
+                        LINDEX
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.5" data-path="ref/72.html">
+            
+                
+                    <a href="../ref/72.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.5.</b>
+                        
+                        LINSERT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.6" data-path="ref/73.html">
+            
+                
+                    <a href="../ref/73.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.6.</b>
+                        
+                        LLEN
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.7" data-path="ref/74.html">
+            
+                
+                    <a href="../ref/74.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.7.</b>
+                        
+                        LPOP
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.8" data-path="ref/75.html">
+            
+                
+                    <a href="../ref/75.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.8.</b>
+                        
+                        LPUSH
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.9" data-path="ref/76.html">
+            
+                
+                    <a href="../ref/76.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.9.</b>
+                        
+                        LRANGE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.10" data-path="ref/77.html">
+            
+                
+                    <a href="../ref/77.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.10.</b>
+                        
+                        LREM
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.11" data-path="ref/78.html">
+            
+                
+                    <a href="../ref/78.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.11.</b>
+                        
+                        LSET
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.12" data-path="ref/79.html">
+            
+                
+                    <a href="../ref/79.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.12.</b>
+                        
+                        LTRIM
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.13" data-path="ref/80.html">
+            
+                
+                    <a href="../ref/80.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.13.</b>
+                        
+                        RPOP
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.14" data-path="ref/81.html">
+            
+                
+                    <a href="../ref/81.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.14.</b>
+                        
+                        RPOPLPUSH
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.15" data-path="ref/82.html">
+            
+                
+                    <a href="../ref/82.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.15.</b>
+                        
+                        RPUSH
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.16" data-path="ref/83.html">
+            
+                
+                    <a href="../ref/83.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.16.</b>
+                        
+                        RPUSHX
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="ref/part2-5.html">
+            
+                
+                    <a href="../ref/part2-5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        Set（集合）
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="ref/84.html">
+            
+                
+                    <a href="../ref/84.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.1.</b>
+                        
+                        SADD
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.2" data-path="ref/85.html">
+            
+                
+                    <a href="../ref/85.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.2.</b>
+                        
+                        SCARD
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.3" data-path="ref/86.html">
+            
+                
+                    <a href="../ref/86.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.3.</b>
+                        
+                        SDIFF
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.4" data-path="ref/87.html">
+            
+                
+                    <a href="../ref/87.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.4.</b>
+                        
+                        SDIFFSTORE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.5" data-path="ref/88.html">
+            
+                
+                    <a href="../ref/88.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.5.</b>
+                        
+                        SINTER
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.6" data-path="ref/89.html">
+            
+                
+                    <a href="../ref/89.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.6.</b>
+                        
+                        SINTER
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.7" data-path="ref/90.html">
+            
+                
+                    <a href="../ref/90.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.7.</b>
+                        
+                        SINTERSTORE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.8" data-path="ref/91.html">
+            
+                
+                    <a href="../ref/91.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.8.</b>
+                        
+                        SISMEMBER
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.9" data-path="ref/92.html">
+            
+                
+                    <a href="../ref/92.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.9.</b>
+                        
+                        SMEMBERS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.10" data-path="ref/93.html">
+            
+                
+                    <a href="../ref/93.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.10.</b>
+                        
+                        SMOVE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.11" data-path="ref/94.html">
+            
+                
+                    <a href="../ref/94.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.11.</b>
+                        
+                        SPOP
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.12" data-path="ref/95.html">
+            
+                
+                    <a href="../ref/95.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.12.</b>
+                        
+                        SRANDMEMBER
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.13" data-path="ref/96.html">
+            
+                
+                    <a href="../ref/96.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.13.</b>
+                        
+                        SREM
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.14" data-path="ref/97.html">
+            
+                
+                    <a href="../ref/97.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.14.</b>
+                        
+                        SUNION
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.15" data-path="ref/98.html">
+            
+                
+                    <a href="../ref/98.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.15.</b>
+                        
+                        SUNIONSTORE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.16" data-path="ref/99.html">
+            
+                
+                    <a href="../ref/99.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.16.</b>
+                        
+                        SSCAN
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="ref/part2-6.html">
+            
+                
+                    <a href="../ref/part2-6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        SortedSet（有序集合）
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.6.1" data-path="ref/100.html">
+            
+                
+                    <a href="../ref/100.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.1.</b>
+                        
+                        ZADD
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.2" data-path="ref/101.html">
+            
+                
+                    <a href="../ref/101.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.2.</b>
+                        
+                        ZCARD
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.3" data-path="ref/102.html">
+            
+                
+                    <a href="../ref/102.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.3.</b>
+                        
+                        ZCOUNT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.4" data-path="ref/103.html">
+            
+                
+                    <a href="../ref/103.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.4.</b>
+                        
+                        ZINCRBY
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.5" data-path="ref/104.html">
+            
+                
+                    <a href="../ref/104.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.5.</b>
+                        
+                        ZRANGE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.6" data-path="ref/105.html">
+            
+                
+                    <a href="../ref/105.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.6.</b>
+                        
+                        ZRANGEBYSCORE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.7" data-path="ref/106.html">
+            
+                
+                    <a href="../ref/106.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.7.</b>
+                        
+                        ZRANK
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.8" data-path="ref/107.html">
+            
+                
+                    <a href="../ref/107.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.8.</b>
+                        
+                        ZREM
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.9" data-path="ref/108.html">
+            
+                
+                    <a href="../ref/108.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.9.</b>
+                        
+                        ZREMRANGEBYRANK
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.10" data-path="ref/109.html">
+            
+                
+                    <a href="../ref/109.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.10.</b>
+                        
+                        ZREMRANGEBYSCORE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.11" data-path="ref/110.html">
+            
+                
+                    <a href="../ref/110.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.11.</b>
+                        
+                        ZREVRANGE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.12" data-path="ref/111.html">
+            
+                
+                    <a href="../ref/111.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.12.</b>
+                        
+                        ZREVRANGEBYSCORE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.13" data-path="ref/112.html">
+            
+                
+                    <a href="../ref/112.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.13.</b>
+                        
+                        ZREVRANK
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.14" data-path="ref/113.html">
+            
+                
+                    <a href="../ref/113.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.14.</b>
+                        
+                        ZSCORE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.15" data-path="ref/114.html">
+            
+                
+                    <a href="../ref/114.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.15.</b>
+                        
+                        ZUNIONSTORE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.16" data-path="ref/115.html">
+            
+                
+                    <a href="../ref/115.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.16.</b>
+                        
+                        ZINTERSTORE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.17" data-path="ref/116.html">
+            
+                
+                    <a href="../ref/116.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.17.</b>
+                        
+                        ZSCAN
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="ref/part2-7.html">
+            
+                
+                    <a href="../ref/part2-7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                        Pub/Sub（发布/订阅）
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.7.1" data-path="ref/117.html">
+            
+                
+                    <a href="../ref/117.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.1.</b>
+                        
+                        PSUBSCRIBE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.2" data-path="ref/118.html">
+            
+                
+                    <a href="../ref/118.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.2.</b>
+                        
+                        PUBLISH
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.3" data-path="ref/119.html">
+            
+                
+                    <a href="../ref/119.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.3.</b>
+                        
+                        PUBSUB
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.4" data-path="ref/120.html">
+            
+                
+                    <a href="../ref/120.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.4.</b>
+                        
+                        PUNSUBSCRIBE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.5" data-path="ref/121.html">
+            
+                
+                    <a href="../ref/121.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.5.</b>
+                        
+                        SUBSCRIBE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.6" data-path="ref/122.html">
+            
+                
+                    <a href="../ref/122.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.6.</b>
+                        
+                        UNSUBSCRIBE
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="ref/part2-8.html">
+            
+                
+                    <a href="../ref/part2-8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.</b>
+                        
+                        Transaction（事务）
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.8.1" data-path="ref/123.html">
+            
+                
+                    <a href="../ref/123.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.1.</b>
+                        
+                        DISCARD
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8.2" data-path="ref/124.html">
+            
+                
+                    <a href="../ref/124.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.2.</b>
+                        
+                        EXEC
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8.3" data-path="ref/125.html">
+            
+                
+                    <a href="../ref/125.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.3.</b>
+                        
+                        MULTI
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8.4" data-path="ref/126.html">
+            
+                
+                    <a href="../ref/126.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.4.</b>
+                        
+                        UNWATCH
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8.5" data-path="ref/127.html">
+            
+                
+                    <a href="../ref/127.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.5.</b>
+                        
+                        WATCH
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="ref/part2-9.html">
+            
+                
+                    <a href="../ref/part2-9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.</b>
+                        
+                        Script（脚本）
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.9.1" data-path="ref/128.html">
+            
+                
+                    <a href="../ref/128.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.1.</b>
+                        
+                        EVAL
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.2" data-path="ref/129.html">
+            
+                
+                    <a href="../ref/129.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.2.</b>
+                        
+                        EVALSHA
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.3" data-path="ref/130.html">
+            
+                
+                    <a href="../ref/130.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.3.</b>
+                        
+                        SCRIPT EXISTS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.4" data-path="ref/131.html">
+            
+                
+                    <a href="../ref/131.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.4.</b>
+                        
+                        SCRIPT FLUSH
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.5" data-path="ref/132.html">
+            
+                
+                    <a href="../ref/132.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.5.</b>
+                        
+                        SCRIPT KILL
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9.6" data-path="ref/133.html">
+            
+                
+                    <a href="../ref/133.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.6.</b>
+                        
+                        SCRIPT LOAD
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="ref/part2-10.html">
+            
+                
+                    <a href="../ref/part2-10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.</b>
+                        
+                        Connection（连接）
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.10.1" data-path="ref/134.html">
+            
+                
+                    <a href="../ref/134.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.1.</b>
+                        
+                        AUTH
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10.2" data-path="ref/135.html">
+            
+                
+                    <a href="../ref/135.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.2.</b>
+                        
+                        ECHO
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10.3" data-path="ref/136.html">
+            
+                
+                    <a href="../ref/136.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.3.</b>
+                        
+                        PING
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10.4" data-path="ref/137.html">
+            
+                
+                    <a href="../ref/137.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.4.</b>
+                        
+                        QUIT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10.5" data-path="ref/138.html">
+            
+                
+                    <a href="../ref/138.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.10.5.</b>
+                        
+                        SELECT
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="ref/part2-11.html">
+            
+                
+                    <a href="../ref/part2-11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.</b>
+                        
+                        Server（服务器）
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.11.1" data-path="ref/139.html">
+            
+                
+                    <a href="../ref/139.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.1.</b>
+                        
+                        BGREWRITEAOF
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.2" data-path="ref/140.html">
+            
+                
+                    <a href="../ref/140.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.2.</b>
+                        
+                        BGSAVE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.3" data-path="ref/141.html">
+            
+                
+                    <a href="../ref/141.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.3.</b>
+                        
+                        CLIENT GETNAME
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.4" data-path="ref/142.html">
+            
+                
+                    <a href="../ref/142.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.4.</b>
+                        
+                        CLIENT KILL
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.5" data-path="ref/143.html">
+            
+                
+                    <a href="../ref/143.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.5.</b>
+                        
+                        CLIENT LIST
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.6" data-path="ref/144.html">
+            
+                
+                    <a href="../ref/144.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.6.</b>
+                        
+                        CLIENT SETNAME
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.7" data-path="ref/145.html">
+            
+                
+                    <a href="../ref/145.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.7.</b>
+                        
+                        CONFIG GET
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.8" data-path="ref/146.html">
+            
+                
+                    <a href="../ref/146.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.8.</b>
+                        
+                        CONFIG RESETSTAT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.9" data-path="ref/147.html">
+            
+                
+                    <a href="../ref/147.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.9.</b>
+                        
+                        CONFIG REWRITE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.10" data-path="ref/148.html">
+            
+                
+                    <a href="../ref/148.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.10.</b>
+                        
+                        CONFIG SET
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.11" data-path="ref/149.html">
+            
+                
+                    <a href="../ref/149.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.11.</b>
+                        
+                        DBSIZE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.12" data-path="ref/150.html">
+            
+                
+                    <a href="../ref/150.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.12.</b>
+                        
+                        DEBUG OBJECT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.13" data-path="ref/151.html">
+            
+                
+                    <a href="../ref/151.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.13.</b>
+                        
+                        DEBUG SEGFAULT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.14" data-path="ref/152.html">
+            
+                
+                    <a href="../ref/152.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.14.</b>
+                        
+                        FLUSHALL
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.15" data-path="ref/153.html">
+            
+                
+                    <a href="../ref/153.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.15.</b>
+                        
+                        FLUSHDB
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.16" data-path="ref/154.html">
+            
+                
+                    <a href="../ref/154.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.16.</b>
+                        
+                        INFO
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.17" data-path="ref/155.html">
+            
+                
+                    <a href="../ref/155.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.17.</b>
+                        
+                        LASTSAVE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.18" data-path="ref/156.html">
+            
+                
+                    <a href="../ref/156.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.18.</b>
+                        
+                        MONITOR
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.19" data-path="ref/157.html">
+            
+                
+                    <a href="../ref/157.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.19.</b>
+                        
+                        PSYNC
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.20" data-path="ref/158.html">
+            
+                
+                    <a href="../ref/158.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.20.</b>
+                        
+                        SAVE
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.21" data-path="ref/159.html">
+            
+                
+                    <a href="../ref/159.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.21.</b>
+                        
+                        SHUTDOWN
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.22" data-path="ref/160.html">
+            
+                
+                    <a href="../ref/160.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.22.</b>
+                        
+                        SLAVEOF
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.23" data-path="ref/161.html">
+            
+                
+                    <a href="../ref/161.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.23.</b>
+                        
+                        SLOWLOG
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.24" data-path="ref/162.html">
+            
+                
+                    <a href="../ref/162.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.24.</b>
+                        
+                        SYNC
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11.25" data-path="ref/163.html">
+            
+                
+                    <a href="../ref/163.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.11.25.</b>
+                        
+                        TIME
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="about.html">
+            
+                
+                    <a href="../about.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        关于
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Redis 中文文档</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="redis-&#x96C6;&#x7FA4;&#x89C4;&#x8303;">Redis &#x96C6;&#x7FA4;&#x89C4;&#x8303;</h1>
+<p>Note</p>
+<p>&#x672C;&#x6587;&#x6863;&#x7FFB;&#x8BD1;&#x81EA; <a href="http://redis.io/topics/cluster-spec" target="_blank">http://redis.io/topics/cluster-spec</a> &#x3002;</p>
+<h2 id="&#x5F15;&#x8A00;">&#x5F15;&#x8A00;</h2>
+<p>&#x8FD9;&#x4E2A;&#x6587;&#x6863;&#x662F;&#x6B63;&#x5728;&#x5F00;&#x53D1;&#x4E2D;&#x7684; Redis &#x96C6;&#x7FA4;&#x529F;&#x80FD;&#x7684;&#x89C4;&#x8303;&#xFF08;specification&#xFF09;&#x6587;&#x6863;&#xFF0C; &#x6587;&#x6863;&#x5206;&#x4E3A;&#x4E24;&#x4E2A;&#x90E8;&#x5206;&#xFF1A;</p>
+<ul>
+<li>&#x7B2C;&#x4E00;&#x90E8;&#x5206;&#x4ECB;&#x7ECD;&#x76EE;&#x524D;&#x5DF2;&#x7ECF;&#x5728; <code>unstable</code> &#x5206;&#x652F;&#x4E2D;&#x5B9E;&#x73B0;&#x4E86;&#x7684;&#x90A3;&#x4E9B;&#x529F;&#x80FD;&#x3002;</li>
+<li>&#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#x4ECB;&#x7ECD;&#x76EE;&#x524D;&#x4ECD;&#x672A;&#x5B9E;&#x73B0;&#x7684;&#x90A3;&#x4E9B;&#x529F;&#x80FD;&#x3002;</li>
+</ul>
+<p>&#x6587;&#x6863;&#x5404;&#x4E2A;&#x90E8;&#x5206;&#x7684;&#x5185;&#x5BB9;&#x53EF;&#x80FD;&#x4F1A;&#x968F;&#x7740;&#x96C6;&#x7FA4;&#x529F;&#x80FD;&#x7684;&#x8BBE;&#x8BA1;&#x4FEE;&#x6539;&#x800C;&#x53D1;&#x751F;&#x6539;&#x53D8;&#xFF0C; &#x5176;&#x4E2D;&#xFF0C; &#x672A;&#x5B9E;&#x73B0;&#x529F;&#x80FD;&#x53D1;&#x751F;&#x4FEE;&#x6539;&#x7684;&#x51E0;&#x7387;&#x6BD4;&#x5DF2;&#x5B9E;&#x73B0;&#x529F;&#x80FD;&#x53D1;&#x751F;&#x4FEE;&#x6539;&#x7684;&#x51E0;&#x7387;&#x8981;&#x9AD8;&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x89C4;&#x8303;&#x5305;&#x542B;&#x4E86;&#x7F16;&#x5199;&#x5BA2;&#x6237;&#x7AEF;&#x5E93;&#xFF08;client library&#xFF09;&#x6240;&#x9700;&#x7684;&#x5168;&#x90E8;&#x77E5;&#x8BC6;&#xFF0C; &#x4E0D;&#x8FC7;&#x8BF7;&#x6CE8;&#x610F;&#xFF0C; &#x8FD9;&#x91CC;&#x5217;&#x51FA;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x7EC6;&#x8282;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x672A;&#x6765;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x3002;</p>
+<h2 id="&#x4EC0;&#x4E48;&#x662F;-redis-&#x96C6;&#x7FA4;&#xFF1F;">&#x4EC0;&#x4E48;&#x662F; Redis &#x96C6;&#x7FA4;&#xFF1F;</h2>
+<p>Redis &#x96C6;&#x7FA4;&#x662F;&#x4E00;&#x4E2A;&#x5206;&#x5E03;&#x5F0F;&#xFF08;distributed&#xFF09;&#x3001;&#x5BB9;&#x9519;&#xFF08;fault-tolerant&#xFF09;&#x7684; Redis &#x5B9E;&#x73B0;&#xFF0C; &#x96C6;&#x7FA4;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x529F;&#x80FD;&#x662F;&#x666E;&#x901A;&#x5355;&#x673A; Redis &#x6240;&#x80FD;&#x4F7F;&#x7528;&#x7684;&#x529F;&#x80FD;&#x7684;&#x4E00;&#x4E2A;&#x5B50;&#x96C6;&#xFF08;subset&#xFF09;&#x3002;</p>
+<p>Redis &#x96C6;&#x7FA4;&#x4E2D;&#x4E0D;&#x5B58;&#x5728;&#x4E2D;&#x5FC3;&#xFF08;central&#xFF09;&#x8282;&#x70B9;&#x6216;&#x8005;&#x4EE3;&#x7406;&#xFF08;proxy&#xFF09;&#x8282;&#x70B9;&#xFF0C; &#x96C6;&#x7FA4;&#x7684;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x4E3B;&#x8981;&#x8BBE;&#x8BA1;&#x76EE;&#x6807;&#x662F;&#x8FBE;&#x5230;&#x7EBF;&#x6027;&#x53EF;&#x6269;&#x5C55;&#x6027;&#xFF08;linear scalability&#xFF09;&#x3002;</p>
+<p>Redis &#x96C6;&#x7FA4;&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x4E00;&#x81F4;&#x6027;&#xFF08;consistency&#xFF09;&#x800C;&#x727A;&#x7272;&#x4E86;&#x4E00;&#x90E8;&#x5206;&#x5BB9;&#x9519;&#x6027;&#xFF1A; &#x7CFB;&#x7EDF;&#x4F1A;&#x5728;&#x4FDD;&#x8BC1;&#x5BF9;&#x7F51;&#x7EDC;&#x65AD;&#x7EBF;&#xFF08;net split&#xFF09;&#x548C;&#x8282;&#x70B9;&#x5931;&#x6548;&#xFF08;node failure&#xFF09;&#x5177;&#x6709;&#x6709;&#x9650;&#xFF08;limited&#xFF09;&#x62B5;&#x6297;&#x529B;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#xFF0C; &#x5C3D;&#x53EF;&#x80FD;&#x5730;&#x4FDD;&#x6301;&#x6570;&#x636E;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x3002;</p>
+<p>Note</p>
+<p>&#x96C6;&#x7FA4;&#x5C06;&#x8282;&#x70B9;&#x5931;&#x6548;&#x89C6;&#x4E3A;&#x7F51;&#x7EDC;&#x65AD;&#x7EBF;&#x7684;&#x5176;&#x4E2D;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x3002;</p>
+<p>&#x96C6;&#x7FA4;&#x7684;&#x5BB9;&#x9519;&#x529F;&#x80FD;&#x662F;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x4E3B;&#x8282;&#x70B9;&#xFF08;master&#xFF09;&#x548C;&#x4ECE;&#x8282;&#x70B9;&#xFF08;slave&#xFF09;&#x4E24;&#x79CD;&#x89D2;&#x8272;&#xFF08;role&#xFF09;&#x7684;&#x8282;&#x70B9;&#xFF08;node&#xFF09;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF1A;</p>
+<ul>
+<li>&#x4E3B;&#x8282;&#x70B9;&#x548C;&#x4ECE;&#x8282;&#x70B9;&#x4F7F;&#x7528;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#x7684;&#x670D;&#x52A1;&#x5668;&#x5B9E;&#x73B0;&#xFF0C; &#x5B83;&#x4EEC;&#x7684;&#x529F;&#x80FD;&#xFF08;functionally&#xFF09;&#x4E5F;&#x5B8C;&#x5168;&#x4E00;&#x6837;&#xFF0C; &#x4F46;&#x4ECE;&#x8282;&#x70B9;&#x901A;&#x5E38;&#x4EC5;&#x7528;&#x4E8E;&#x66FF;&#x6362;&#x5931;&#x6548;&#x7684;&#x4E3B;&#x8282;&#x70B9;&#x3002;</li>
+<li>&#x4E0D;&#x8FC7;&#xFF0C; &#x5982;&#x679C;&#x4E0D;&#x9700;&#x8981;&#x4FDD;&#x8BC1;&#x201C;&#x5148;&#x5199;&#x5165;&#xFF0C;&#x540E;&#x8BFB;&#x53D6;&#x201D;&#x64CD;&#x4F5C;&#x7684;&#x4E00;&#x81F4;&#x6027;&#xFF08;read-after-write consistency&#xFF09;&#xFF0C; &#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4ECE;&#x8282;&#x70B9;&#x6765;&#x6267;&#x884C;&#x53EA;&#x8BFB;&#x67E5;&#x8BE2;&#x3002;</li>
+</ul>
+<h2 id="redis-&#x96C6;&#x7FA4;&#x5B9E;&#x73B0;&#x7684;&#x529F;&#x80FD;&#x5B50;&#x96C6;">Redis &#x96C6;&#x7FA4;&#x5B9E;&#x73B0;&#x7684;&#x529F;&#x80FD;&#x5B50;&#x96C6;</h2>
+<p>Redis &#x96C6;&#x7FA4;&#x5B9E;&#x73B0;&#x4E86;&#x5355;&#x673A; Redis &#x4E2D;&#xFF0C; &#x6240;&#x6709;&#x5904;&#x7406;&#x5355;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x952E;&#x7684;&#x547D;&#x4EE4;&#x3002;</p>
+<p>&#x9488;&#x5BF9;&#x591A;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x952E;&#x7684;&#x590D;&#x6742;&#x8BA1;&#x7B97;&#x64CD;&#x4F5C;&#xFF0C; &#x6BD4;&#x5982;&#x96C6;&#x5408;&#x7684;&#x5E76;&#x96C6;&#x64CD;&#x4F5C;&#x3001;&#x5408;&#x96C6;&#x64CD;&#x4F5C;&#x6CA1;&#x6709;&#x88AB;&#x5B9E;&#x73B0;&#xFF0C; &#x90A3;&#x4E9B;&#x7406;&#x8BBA;&#x4E0A;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x591A;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x952E;&#x624D;&#x80FD;&#x5B8C;&#x6210;&#x7684;&#x547D;&#x4EE4;&#x4E5F;&#x6CA1;&#x6709;&#x88AB;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x5728;&#x5C06;&#x6765;&#xFF0C; &#x7528;&#x6237;&#x4E5F;&#x8BB8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <a href="../key/migrate.html#migrate">MIGRATE COPY</a> &#x547D;&#x4EE4;&#xFF0C; &#x5728;&#x96C6;&#x7FA4;&#x7684;&#x8BA1;&#x7B97;&#x8282;&#x70B9;&#xFF08;computation node&#xFF09;&#x4E2D;&#x6267;&#x884C;&#x9488;&#x5BF9;&#x591A;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x952E;&#x7684;&#x53EA;&#x8BFB;&#x64CD;&#x4F5C;&#xFF0C; &#x4F46;&#x96C6;&#x7FA4;&#x672C;&#x8EAB;&#x4E0D;&#x4F1A;&#x53BB;&#x5B9E;&#x73B0;&#x90A3;&#x4E9B;&#x9700;&#x8981;&#x5C06;&#x591A;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x952E;&#x5728;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x4E2D;&#x79FB;&#x6765;&#x79FB;&#x53BB;&#x7684;&#x590D;&#x6742;&#x591A;&#x952E;&#x547D;&#x4EE4;&#x3002;</p>
+<p>Redis &#x96C6;&#x7FA4;&#x4E0D;&#x50CF;&#x5355;&#x673A; Redis &#x90A3;&#x6837;&#x652F;&#x6301;&#x591A;&#x6570;&#x636E;&#x5E93;&#x529F;&#x80FD;&#xFF0C; &#x96C6;&#x7FA4;&#x53EA;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684; <code>0</code> &#x53F7;&#x6570;&#x636E;&#x5E93;&#xFF0C; &#x5E76;&#x4E14;&#x4E0D;&#x80FD;&#x4F7F;&#x7528; <a href="../connection/select.html#select">SELECT</a> &#x547D;&#x4EE4;&#x3002;</p>
+<h2 id="redis-&#x96C6;&#x7FA4;&#x534F;&#x8BAE;&#x4E2D;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x5668;">Redis &#x96C6;&#x7FA4;&#x534F;&#x8BAE;&#x4E2D;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x5668;</h2>
+<p>Redis &#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x8282;&#x70B9;&#x6709;&#x4EE5;&#x4E0B;&#x8D23;&#x4EFB;&#xFF1A;</p>
+<ul>
+<li>&#x6301;&#x6709;&#x952E;&#x503C;&#x5BF9;&#x6570;&#x636E;&#x3002;</li>
+<li>&#x8BB0;&#x5F55;&#x96C6;&#x7FA4;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x5305;&#x62EC;&#x952E;&#x5230;&#x6B63;&#x786E;&#x8282;&#x70B9;&#x7684;&#x6620;&#x5C04;&#xFF08;mapping keys to right nodes&#xFF09;&#x3002;</li>
+<li>&#x81EA;&#x52A8;&#x53D1;&#x73B0;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#xFF0C;&#x8BC6;&#x522B;&#x5DE5;&#x4F5C;&#x4E0D;&#x6B63;&#x5E38;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x5E76;&#x5728;&#x6709;&#x9700;&#x8981;&#x65F6;&#xFF0C;&#x5728;&#x4ECE;&#x8282;&#x70B9;&#x4E2D;&#x9009;&#x4E3E;&#x51FA;&#x65B0;&#x7684;&#x4E3B;&#x8282;&#x70B9;&#x3002;</li>
+</ul>
+<p>&#x4E3A;&#x4E86;&#x6267;&#x884C;&#x4EE5;&#x4E0A;&#x5217;&#x51FA;&#x7684;&#x4EFB;&#x52A1;&#xFF0C; &#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x4E0E;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x5EFA;&#x7ACB;&#x8D77;&#x4E86;&#x201C;&#x96C6;&#x7FA4;&#x8FDE;&#x63A5;&#xFF08;cluster bus&#xFF09;&#x201D;&#xFF0C; &#x8BE5;&#x8FDE;&#x63A5;&#x662F;&#x4E00;&#x4E2A; TCP &#x8FDE;&#x63A5;&#xFF0C; &#x4F7F;&#x7528;&#x4E8C;&#x8FDB;&#x5236;&#x534F;&#x8BAE;&#x8FDB;&#x884C;&#x901A;&#x8BAF;&#x3002;</p>
+<p>&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x4F7F;&#x7528; <a href="http://en.wikipedia.org/wiki/Gossip_protocol" target="_blank">Gossip &#x534F;&#x8BAE;</a> &#x6765;&#x8FDB;&#x884C;&#x4EE5;&#x4E0B;&#x5DE5;&#x4F5C;&#xFF1A;</p>
+<ul>
+<li>&#x4F20;&#x64AD;&#xFF08;propagate&#xFF09;&#x5173;&#x4E8E;&#x96C6;&#x7FA4;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4EE5;&#x6B64;&#x6765;&#x53D1;&#x73B0;&#x65B0;&#x7684;&#x8282;&#x70B9;&#x3002;</li>
+<li>&#x5411;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x53D1;&#x9001; <code>PING</code> &#x6570;&#x636E;&#x5305;&#xFF0C;&#x4EE5;&#x6B64;&#x6765;&#x68C0;&#x67E5;&#x76EE;&#x6807;&#x8282;&#x70B9;&#x662F;&#x5426;&#x6B63;&#x5E38;&#x8FD0;&#x4F5C;&#x3002;</li>
+<li>&#x5728;&#x7279;&#x5B9A;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;&#x65F6;&#xFF0C;&#x53D1;&#x9001;&#x96C6;&#x7FA4;&#x4FE1;&#x606F;&#x3002;</li>
+</ul>
+<p>&#x9664;&#x6B64;&#x4E4B;&#x5916;&#xFF0C; &#x96C6;&#x7FA4;&#x8FDE;&#x63A5;&#x8FD8;&#x7528;&#x4E8E;&#x5728;&#x96C6;&#x7FA4;&#x4E2D;&#x53D1;&#x5E03;&#x6216;&#x8BA2;&#x9605;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x96C6;&#x7FA4;&#x8282;&#x70B9;&#x4E0D;&#x80FD;&#x4EE3;&#x7406;&#xFF08;proxy&#xFF09;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#xFF0C; &#x6240;&#x4EE5;&#x5BA2;&#x6237;&#x7AEF;&#x5E94;&#x8BE5;&#x5728;&#x8282;&#x70B9;&#x8FD4;&#x56DE; <code>-MOVED</code> &#x6216;&#x8005; <code>-ASK</code> &#x8F6C;&#x5411;&#xFF08;redirection&#xFF09;&#x9519;&#x8BEF;&#x65F6;&#xFF0C; &#x81EA;&#x884C;&#x5C06;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x8F6C;&#x53D1;&#x81F3;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x5730;&#x5411;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x53D1;&#x9001;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#xFF0C; &#x5E76;&#x53EF;&#x4EE5;&#x5728;&#x6709;&#x9700;&#x8981;&#x65F6;&#xFF0C; &#x6839;&#x636E;&#x8F6C;&#x5411;&#x9519;&#x8BEF;&#x6240;&#x63D0;&#x4F9B;&#x7684;&#x4FE1;&#x606F;&#xFF0C; &#x5C06;&#x547D;&#x4EE4;&#x8F6C;&#x53D1;&#x81F3;&#x6B63;&#x786E;&#x7684;&#x8282;&#x70B9;&#xFF0C; &#x6240;&#x4EE5;&#x5728;&#x7406;&#x8BBA;&#x4E0A;&#x6765;&#x8BF4;&#xFF0C; &#x5BA2;&#x6237;&#x7AEF;&#x662F;&#x65E0;&#x987B;&#x4FDD;&#x5B58;&#x96C6;&#x7FA4;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#x7684;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#xFF0C; &#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x5C06;&#x952E;&#x548C;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x7684;&#x6620;&#x5C04;&#x4FE1;&#x606F;&#x4FDD;&#x5B58;&#x8D77;&#x6765;&#xFF0C; &#x53EF;&#x4EE5;&#x6709;&#x6548;&#x5730;&#x51CF;&#x5C11;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x7684;&#x8F6C;&#x5411;&#x6B21;&#x6570;&#xFF0C; &#x7C4D;&#x6B64;&#x63D0;&#x5347;&#x547D;&#x4EE4;&#x6267;&#x884C;&#x7684;&#x6548;&#x7387;&#x3002;</p>
+<h2 id="&#x952E;&#x5206;&#x5E03;&#x6A21;&#x578B;">&#x952E;&#x5206;&#x5E03;&#x6A21;&#x578B;</h2>
+<p>Redis &#x96C6;&#x7FA4;&#x7684;&#x952E;&#x7A7A;&#x95F4;&#x88AB;&#x5206;&#x5272;&#x4E3A; <code>16384</code> &#x4E2A;&#x69FD;&#xFF08;slot&#xFF09;&#xFF0C; &#x96C6;&#x7FA4;&#x7684;&#x6700;&#x5927;&#x8282;&#x70B9;&#x6570;&#x91CF;&#x4E5F;&#x662F; <code>16384</code> &#x4E2A;&#x3002;</p>
+<p>Note</p>
+<p>&#x63A8;&#x8350;&#x7684;&#x6700;&#x5927;&#x8282;&#x70B9;&#x6570;&#x91CF;&#x4E3A; 1000 &#x4E2A;&#x5DE6;&#x53F3;&#x3002;</p>
+<p>&#x6BCF;&#x4E2A;&#x4E3B;&#x8282;&#x70B9;&#x90FD;&#x8D1F;&#x8D23;&#x5904;&#x7406; <code>16384</code> &#x4E2A;&#x54C8;&#x5E0C;&#x69FD;&#x7684;&#x5176;&#x4E2D;&#x4E00;&#x90E8;&#x5206;&#x3002;</p>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x8BF4;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x5904;&#x4E8E;&#x201C;&#x7A33;&#x5B9A;&#x201D;&#xFF08;stable&#xFF09;&#x72B6;&#x6001;&#x65F6;&#xFF0C; &#x6307;&#x7684;&#x662F;&#x96C6;&#x7FA4;&#x6CA1;&#x6709;&#x5728;&#x6267;&#x884C;&#x91CD;&#x914D;&#x7F6E;&#xFF08;reconfiguration&#xFF09;&#x64CD;&#x4F5C;&#xFF0C; &#x6BCF;&#x4E2A;&#x54C8;&#x5E0C;&#x69FD;&#x90FD;&#x53EA;&#x7531;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;</p>
+<p>Note</p>
+<p>&#x91CD;&#x914D;&#x7F6E;&#x6307;&#x7684;&#x662F;&#x5C06;&#x67D0;&#x4E2A;/&#x67D0;&#x4E9B;&#x69FD;&#x4ECE;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x79FB;&#x52A8;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x3002;</p>
+<p>Note</p>
+<p>&#x4E00;&#x4E2A;&#x4E3B;&#x8282;&#x70B9;&#x53EF;&#x4EE5;&#x6709;&#x4EFB;&#x610F;&#x591A;&#x4E2A;&#x4ECE;&#x8282;&#x70B9;&#xFF0C; &#x8FD9;&#x4E9B;&#x4ECE;&#x8282;&#x70B9;&#x7528;&#x4E8E;&#x5728;&#x4E3B;&#x8282;&#x70B9;&#x53D1;&#x751F;&#x7F51;&#x7EDC;&#x65AD;&#x7EBF;&#x6216;&#x8005;&#x8282;&#x70B9;&#x5931;&#x6548;&#x65F6;&#xFF0C; &#x5BF9;&#x4E3B;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x66FF;&#x6362;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x662F;&#x8D1F;&#x8D23;&#x5C06;&#x952E;&#x6620;&#x5C04;&#x5230;&#x69FD;&#x7684;&#x7B97;&#x6CD5;&#xFF1A;</p>
+<pre><code>HASH_SLOT = CRC16(key) mod 16384
+</code></pre><p>&#x4EE5;&#x4E0B;&#x662F;&#x8BE5;&#x7B97;&#x6CD5;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x53C2;&#x6570;&#xFF1A;</p>
+<ul>
+<li>&#x7B97;&#x6CD5;&#x7684;&#x540D;&#x79F0;: XMODEM (&#x53C8;&#x79F0; ZMODEM &#x6216;&#x8005; CRC-16/ACORN)</li>
+<li>&#x7ED3;&#x679C;&#x7684;&#x957F;&#x5EA6;: 16 &#x4F4D;</li>
+<li>&#x591A;&#x9879;&#x6570;&#xFF08;poly&#xFF09;: 1021 (&#x4E5F;&#x5373;&#x662F; <code>x16 + x12 + x5 + 1</code>)</li>
+<li>&#x521D;&#x59CB;&#x5316;&#x503C;: <code>0000</code></li>
+<li>&#x53CD;&#x5C04;&#x8F93;&#x5165;&#x5B57;&#x8282;&#xFF08;Reflect Input byte&#xFF09;: <code>False</code></li>
+<li>&#x53D1;&#x5C04;&#x8F93;&#x51FA; CRC &#xFF08;Reflect Output CRC&#xFF09;: <code>False</code></li>
+<li>&#x7528;&#x4E8E; CRC &#x8F93;&#x51FA;&#x503C;&#x7684;&#x5F02;&#x6216;&#x5E38;&#x91CF;&#xFF08;Xor constant to output CRC&#xFF09;: <code>0000</code></li>
+<li>&#x8BE5;&#x7B97;&#x6CD5;&#x5BF9;&#x4E8E;&#x8F93;&#x5165; <code>&quot;123456789&quot;</code> &#x7684;&#x8F93;&#x51FA;: <code>31C3</code></li>
+</ul>
+<p>&#x9644;&#x5F55; A &#x4E2D;&#x7ED9;&#x51FA;&#x4E86;&#x96C6;&#x7FA4;&#x6240;&#x4F7F;&#x7528;&#x7684; CRC16 &#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>CRC16 &#x7B97;&#x6CD5;&#x6240;&#x4EA7;&#x751F;&#x7684; 16 &#x4F4D;&#x8F93;&#x51FA;&#x4E2D;&#x7684; 14 &#x4F4D;&#x4F1A;&#x88AB;&#x7528;&#x5230;&#x3002;</p>
+<p>&#x5728;&#x6211;&#x4EEC;&#x7684;&#x6D4B;&#x8BD5;&#x4E2D;&#xFF0C; CRC16 &#x7B97;&#x6CD5;&#x53EF;&#x4EE5;&#x5F88;&#x597D;&#x5730;&#x5C06;&#x5404;&#x79CD;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x952E;&#x5E73;&#x7A33;&#x5730;&#x5206;&#x5E03;&#x5230; <code>16384</code> &#x4E2A;&#x69FD;&#x91CC;&#x9762;&#x3002;</p>
+<h2 id="&#x96C6;&#x7FA4;&#x8282;&#x70B9;&#x5C5E;&#x6027;">&#x96C6;&#x7FA4;&#x8282;&#x70B9;&#x5C5E;&#x6027;</h2>
+<p>&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x5728;&#x96C6;&#x7FA4;&#x4E2D;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x72EC;&#x4E00;&#x65E0;&#x4E8C;&#x7684; ID &#xFF0C; &#x8BE5; ID &#x662F;&#x4E00;&#x4E2A;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x8868;&#x793A;&#x7684; 160 &#x4F4D;&#x968F;&#x673A;&#x6570;&#xFF0C; &#x5728;&#x8282;&#x70B9;&#x7B2C;&#x4E00;&#x6B21;&#x542F;&#x52A8;&#x65F6;&#x7531; <code>/dev/urandom</code> &#x751F;&#x6210;&#x3002;</p>
+<p>&#x8282;&#x70B9;&#x4F1A;&#x5C06;&#x5B83;&#x7684; ID &#x4FDD;&#x5B58;&#x5230;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C; &#x53EA;&#x8981;&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E0D;&#x88AB;&#x5220;&#x9664;&#xFF0C; &#x8282;&#x70B9;&#x5C31;&#x4F1A;&#x4E00;&#x76F4;&#x6CBF;&#x7528;&#x8FD9;&#x4E2A; ID &#x3002;</p>
+<p>&#x8282;&#x70B9; ID &#x7528;&#x4E8E;&#x6807;&#x8BC6;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x3002; &#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x53EF;&#x4EE5;&#x6539;&#x53D8;&#x5B83;&#x7684; IP &#x548C;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C; &#x800C;&#x4E0D;&#x6539;&#x53D8;&#x8282;&#x70B9; ID &#x3002; &#x96C6;&#x7FA4;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x8BC6;&#x522B;&#x51FA; IP/&#x7AEF;&#x53E3;&#x53F7;&#x7684;&#x53D8;&#x5316;&#xFF0C; &#x5E76;&#x5C06;&#x8FD9;&#x4E00;&#x4FE1;&#x606F;&#x901A;&#x8FC7; Gossip &#x534F;&#x8BAE;&#x5E7F;&#x64AD;&#x7ED9;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x77E5;&#x9053;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x662F;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x6709;&#x7684;&#x5173;&#x8054;&#x4FE1;&#x606F;&#xFF0C; &#x5E76;&#x4E14;&#x8282;&#x70B9;&#x4F1A;&#x5C06;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x53D1;&#x9001;&#x7ED9;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#xFF1A;</p>
+<ul>
+<li>&#x8282;&#x70B9;&#x6240;&#x4F7F;&#x7528;&#x7684; IP &#x5730;&#x5740;&#x548C; TCP &#x7AEF;&#x53E3;&#x53F7;&#x3002;</li>
+<li>&#x8282;&#x70B9;&#x7684;&#x6807;&#x5FD7;&#xFF08;flags&#xFF09;&#x3002;</li>
+<li>&#x8282;&#x70B9;&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x7684;&#x54C8;&#x5E0C;&#x69FD;&#x3002;</li>
+<li>&#x8282;&#x70B9;&#x6700;&#x8FD1;&#x4E00;&#x6B21;&#x4F7F;&#x7528;&#x96C6;&#x7FA4;&#x8FDE;&#x63A5;&#x53D1;&#x9001; <code>PING</code> &#x6570;&#x636E;&#x5305;&#xFF08;packet&#xFF09;&#x7684;&#x65F6;&#x95F4;&#x3002;</li>
+<li>&#x8282;&#x70B9;&#x6700;&#x8FD1;&#x4E00;&#x6B21;&#x5728;&#x56DE;&#x590D;&#x4E2D;&#x63A5;&#x6536;&#x5230; <code>PONG</code> &#x6570;&#x636E;&#x5305;&#x7684;&#x65F6;&#x95F4;&#x3002;</li>
+<li>&#x96C6;&#x7FA4;&#x5C06;&#x8BE5;&#x8282;&#x70B9;&#x6807;&#x8BB0;&#x4E3A;&#x4E0B;&#x7EBF;&#x7684;&#x65F6;&#x95F4;&#x3002;</li>
+<li>&#x8BE5;&#x8282;&#x70B9;&#x7684;&#x4ECE;&#x8282;&#x70B9;&#x6570;&#x91CF;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x8BE5;&#x8282;&#x70B9;&#x662F;&#x4ECE;&#x8282;&#x70B9;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x4F1A;&#x8BB0;&#x5F55;&#x4E3B;&#x8282;&#x70B9;&#x7684;&#x8282;&#x70B9; ID &#x3002; &#x5982;&#x679C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x4E3B;&#x8282;&#x70B9;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x4E3B;&#x8282;&#x70B9; ID &#x8FD9;&#x4E00;&#x680F;&#x7684;&#x503C;&#x4E3A; <code>0000000</code> &#x3002;</li>
+</ul>
+<p>&#x4EE5;&#x4E0A;&#x4FE1;&#x606F;&#x7684;&#x5176;&#x4E2D;&#x4E00;&#x90E8;&#x5206;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5411;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x4EFB;&#x610F;&#x8282;&#x70B9;&#xFF08;&#x4E3B;&#x8282;&#x70B9;&#x6216;&#x8005;&#x4ECE;&#x8282;&#x70B9;&#x90FD;&#x53EF;&#x4EE5;&#xFF09;&#x53D1;&#x9001; <code>CLUSTER NODES</code> &#x547D;&#x4EE4;&#x6765;&#x83B7;&#x5F97;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x662F;&#x4E00;&#x4E2A;&#x5411;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x4E3B;&#x8282;&#x70B9;&#x53D1;&#x9001; <code>CLUSTER NODES</code> &#x547D;&#x4EE4;&#x7684;&#x4F8B;&#x5B50;&#xFF0C; &#x8BE5;&#x96C6;&#x7FA4;&#x7531;&#x4E09;&#x4E2A;&#x8282;&#x70B9;&#x7EC4;&#x6210;&#xFF1A;</p>
+<pre><code>$ redis-cli cluster nodes
+d1861060fe6a534d42d8a19aeb36600e18785e04 :0 myself - 0 1318428930 connected 0-1364
+3886e65cc906bfd9b1f7e7bde468726a052d1dae 127.0.0.1:6380 master - 1318428930 1318428931 connected 1365-2729
+d289c575dcbc4bdd2931585fd4339089e461a27d 127.0.0.1:6381 master - 1318428931 1318428931 connected 2730-4095
+</code></pre><p>&#x5728;&#x4E0A;&#x9762;&#x5217;&#x51FA;&#x7684;&#x4E09;&#x884C;&#x4FE1;&#x606F;&#x4E2D;&#xFF0C; &#x4ECE;&#x5DE6;&#x5230;&#x53F3;&#x7684;&#x5404;&#x4E2A;&#x57DF;&#x5206;&#x522B;&#x662F;&#xFF1A; &#x8282;&#x70B9; ID &#xFF0C; IP &#x5730;&#x5740;&#x548C;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C; &#x6807;&#x5FD7;&#xFF08;flag&#xFF09;&#xFF0C; &#x6700;&#x540E;&#x53D1;&#x9001; <code>PING</code> &#x7684;&#x65F6;&#x95F4;&#xFF0C; &#x6700;&#x540E;&#x63A5;&#x6536; <code>PONG</code> &#x7684;&#x65F6;&#x95F4;&#xFF0C; &#x8FDE;&#x63A5;&#x72B6;&#x6001;&#xFF0C; &#x8282;&#x70B9;&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x7684;&#x69FD;&#x3002;</p>
+<h2 id="&#x8282;&#x70B9;&#x63E1;&#x624B;&#xFF08;&#x5DF2;&#x5B9E;&#x73B0;&#xFF09;">&#x8282;&#x70B9;&#x63E1;&#x624B;&#xFF08;&#x5DF2;&#x5B9E;&#x73B0;&#xFF09;</h2>
+<p>&#x8282;&#x70B9;&#x603B;&#x662F;&#x5E94;&#x7B54;&#xFF08;accept&#xFF09;&#x6765;&#x81EA;&#x96C6;&#x7FA4;&#x8FDE;&#x63A5;&#x7AEF;&#x53E3;&#x7684;&#x8FDE;&#x63A5;&#x8BF7;&#x6C42;&#xFF0C; &#x5E76;&#x5BF9;&#x63A5;&#x6536;&#x5230;&#x7684; <code>PING</code> &#x6570;&#x636E;&#x5305;&#x8FDB;&#x884C;&#x56DE;&#x590D;&#xFF0C; &#x5373;&#x4F7F;&#x8FD9;&#x4E2A; <code>PING</code> &#x6570;&#x636E;&#x5305;&#x6765;&#x81EA;&#x4E0D;&#x53EF;&#x4FE1;&#x7684;&#x8282;&#x70B9;&#x3002;</p>
+<p>&#x7136;&#x800C;&#xFF0C; &#x9664;&#x4E86; <code>PING</code> &#x4E4B;&#x5916;&#xFF0C; &#x8282;&#x70B9;&#x4F1A;&#x62D2;&#x7EDD;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x5E76;&#x975E;&#x6765;&#x81EA;&#x96C6;&#x7FA4;&#x8282;&#x70B9;&#x7684;&#x6570;&#x636E;&#x5305;&#x3002;</p>
+<p>&#x8981;&#x8BA9;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x627F;&#x8BA4;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x540C;&#x5C5E;&#x4E8E;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#xFF0C; &#x53EA;&#x6709;&#x4EE5;&#x4E0B;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5411;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x53D1;&#x9001; <code>MEET</code> &#x4FE1;&#x606F;&#xFF0C; &#x6765;&#x5F3A;&#x5236;&#x8BA9;&#x63A5;&#x6536;&#x4FE1;&#x606F;&#x7684;&#x8282;&#x70B9;&#x627F;&#x8BA4;&#x53D1;&#x9001;&#x4FE1;&#x606F;&#x7684;&#x8282;&#x70B9;&#x4E3A;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x4E00;&#x4EFD;&#x5B50;&#x3002; &#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x4EC5;&#x5728;&#x7BA1;&#x7406;&#x5458;&#x663E;&#x5F0F;&#x5730;&#x5411;&#x5B83;&#x53D1;&#x9001; <code>CLUSTER MEET ip port</code> &#x547D;&#x4EE4;&#x65F6;&#xFF0C; &#x624D;&#x4F1A;&#x5411;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x53D1;&#x9001; <code>MEET</code> &#x4FE1;&#x606F;&#x3002;</li>
+<li>&#x53E6;&#x5916;&#xFF0C; &#x5982;&#x679C;&#x4E00;&#x4E2A;&#x53EF;&#x4FE1;&#x8282;&#x70B9;&#x5411;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x4F20;&#x64AD;&#x7B2C;&#x4E09;&#x8005;&#x8282;&#x70B9;&#x7684;&#x4FE1;&#x606F;&#xFF0C; &#x90A3;&#x4E48;&#x63A5;&#x6536;&#x4FE1;&#x606F;&#x7684;&#x90A3;&#x4E2A;&#x8282;&#x70B9;&#x4E5F;&#x4F1A;&#x5C06;&#x7B2C;&#x4E09;&#x8005;&#x8282;&#x70B9;&#x8BC6;&#x522B;&#x4E3A;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x4E00;&#x4EFD;&#x5B50;&#x3002; &#x4E5F;&#x5373;&#x662F;&#x8BF4;&#xFF0C; &#x5982;&#x679C; A &#x8BA4;&#x8BC6; B &#xFF0C; B &#x8BA4;&#x8BC6; C &#xFF0C; &#x5E76;&#x4E14; B &#x5411; A &#x4F20;&#x64AD;&#x5173;&#x4E8E; C &#x7684;&#x4FE1;&#x606F;&#xFF0C; &#x90A3;&#x4E48; A &#x4E5F;&#x4F1A;&#x5C06; C &#x8BC6;&#x522B;&#x4E3A;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x4E00;&#x4EFD;&#x5B50;&#xFF0C; &#x5E76;&#x5C1D;&#x8BD5;&#x8FDE;&#x63A5; C &#x3002;</li>
+</ul>
+<p>&#x8FD9;&#x610F;&#x5473;&#x7740;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5C06;&#x4E00;&#x4E2A;/&#x4E00;&#x4E9B;&#x65B0;&#x8282;&#x70B9;&#x6DFB;&#x52A0;&#x5230;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x4E2D;&#xFF0C; &#x90A3;&#x4E48;&#x8FD9;&#x4E2A;/&#x8FD9;&#x4E9B;&#x65B0;&#x8282;&#x70B9;&#x6700;&#x7EC8;&#x4F1A;&#x548C;&#x96C6;&#x7FA4;&#x4E2D;&#x5DF2;&#x6709;&#x7684;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x8282;&#x70B9;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x3002;</p>
+<p>&#x8FD9;&#x8BF4;&#x660E;&#x53EA;&#x8981;&#x7BA1;&#x7406;&#x5458;&#x4F7F;&#x7528; <code>CLUSTER MEET</code> &#x547D;&#x4EE4;&#x663E;&#x5F0F;&#x5730;&#x6307;&#x5B9A;&#x4E86;&#x53EF;&#x4FE1;&#x5173;&#x7CFB;&#xFF0C; &#x96C6;&#x7FA4;&#x5C31;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x53D1;&#x73B0;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x3002;</p>
+<p>&#x8FD9;&#x79CD;&#x8282;&#x70B9;&#x8BC6;&#x522B;&#x673A;&#x5236;&#x901A;&#x8FC7;&#x9632;&#x6B62;&#x4E0D;&#x540C;&#x7684; Redis &#x96C6;&#x7FA4;&#x56E0;&#x4E3A; IP &#x5730;&#x5740;&#x53D8;&#x66F4;&#x6216;&#x8005;&#x5176;&#x4ED6;&#x7F51;&#x7EDC;&#x4E8B;&#x4EF6;&#x7684;&#x53D1;&#x751F;&#x800C;&#x4EA7;&#x751F;&#x610F;&#x6599;&#x4E4B;&#x5916;&#x7684;&#x8054;&#x5408;&#xFF08;mix&#xFF09;&#xFF0C; &#x4ECE;&#x800C;&#x4F7F;&#x5F97;&#x96C6;&#x7FA4;&#x66F4;&#x5177;&#x5065;&#x58EE;&#x6027;&#x3002;</p>
+<p>&#x5F53;&#x8282;&#x70B9;&#x7684;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x65AD;&#x5F00;&#x65F6;&#xFF0C; &#x5B83;&#x4F1A;&#x4E3B;&#x52A8;&#x8FDE;&#x63A5;&#x5176;&#x4ED6;&#x5DF2;&#x77E5;&#x7684;&#x8282;&#x70B9;&#x3002;</p>
+<h2 id="moved-&#x8F6C;&#x5411;">MOVED &#x8F6C;&#x5411;</h2>
+<p>&#x4E00;&#x4E2A; Redis &#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x5411;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x4EFB;&#x610F;&#x8282;&#x70B9;&#xFF08;&#x5305;&#x62EC;&#x4ECE;&#x8282;&#x70B9;&#xFF09;&#x53D1;&#x9001;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x3002; &#x8282;&#x70B9;&#x4F1A;&#x5BF9;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x8FDB;&#x884C;&#x5206;&#x6790;&#xFF0C; &#x5982;&#x679C;&#x8BE5;&#x547D;&#x4EE4;&#x662F;&#x96C6;&#x7FA4;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x7684;&#x547D;&#x4EE4;&#xFF0C; &#x90A3;&#x4E48;&#x8282;&#x70B9;&#x4F1A;&#x67E5;&#x627E;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x6240;&#x8981;&#x5904;&#x7406;&#x7684;&#x952E;&#x6240;&#x5728;&#x7684;&#x69FD;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x8981;&#x67E5;&#x627E;&#x7684;&#x54C8;&#x5E0C;&#x69FD;&#x6B63;&#x597D;&#x5C31;&#x7531;&#x63A5;&#x6536;&#x5230;&#x547D;&#x4EE4;&#x7684;&#x8282;&#x70B9;&#x8D1F;&#x8D23;&#x5904;&#x7406;&#xFF0C; &#x90A3;&#x4E48;&#x8282;&#x70B9;&#x5C31;&#x76F4;&#x63A5;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x3002;</p>
+<p>&#x53E6;&#x4E00;&#x65B9;&#x9762;&#xFF0C; &#x5982;&#x679C;&#x6240;&#x67E5;&#x627E;&#x7684;&#x69FD;&#x4E0D;&#x662F;&#x7531;&#x8BE5;&#x8282;&#x70B9;&#x5904;&#x7406;&#x7684;&#x8BDD;&#xFF0C; &#x8282;&#x70B9;&#x5C06;&#x67E5;&#x770B;&#x81EA;&#x8EAB;&#x5185;&#x90E8;&#x6240;&#x4FDD;&#x5B58;&#x7684;&#x54C8;&#x5E0C;&#x69FD;&#x5230;&#x8282;&#x70B9; ID &#x7684;&#x6620;&#x5C04;&#x8BB0;&#x5F55;&#xFF0C; &#x5E76;&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x56DE;&#x590D;&#x4E00;&#x4E2A; <code>MOVED</code> &#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x662F;&#x4E00;&#x4E2A; <code>MOVED</code> &#x9519;&#x8BEF;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code>GET x
+
+-MOVED 3999 127.0.0.1:6381
+</code></pre><p>&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x5305;&#x542B;&#x952E; <code>x</code> &#x6240;&#x5C5E;&#x7684;&#x54C8;&#x5E0C;&#x69FD; <code>3999</code> &#xFF0C; &#x4EE5;&#x53CA;&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x69FD;&#x7684;&#x8282;&#x70B9;&#x7684; IP &#x548C;&#x7AEF;&#x53E3;&#x53F7; <code>127.0.0.1:6381</code> &#x3002; &#x5BA2;&#x6237;&#x7AEF;&#x9700;&#x8981;&#x6839;&#x636E;&#x8FD9;&#x4E2A; IP &#x548C;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C; &#x5411;&#x6240;&#x5C5E;&#x7684;&#x8282;&#x70B9;&#x91CD;&#x65B0;&#x53D1;&#x9001;&#x4E00;&#x6B21; <a href="../string/get.html#get">GET</a> &#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF0C; &#x5373;&#x4F7F;&#x5BA2;&#x6237;&#x7AEF;&#x5728;&#x91CD;&#x65B0;&#x53D1;&#x9001; <a href="../string/get.html#get">GET</a> &#x547D;&#x4EE4;&#x4E4B;&#x524D;&#xFF0C; &#x7B49;&#x5F85;&#x4E86;&#x975E;&#x5E38;&#x4E45;&#x7684;&#x65F6;&#x95F4;&#xFF0C; &#x4EE5;&#x81F3;&#x4E8E;&#x96C6;&#x7FA4;&#x53C8;&#x518D;&#x6B21;&#x66F4;&#x6539;&#x4E86;&#x914D;&#x7F6E;&#xFF0C; &#x4F7F;&#x5F97;&#x8282;&#x70B9; <code>127.0.0.1:6381</code> &#x5DF2;&#x7ECF;&#x4E0D;&#x518D;&#x5904;&#x7406;&#x69FD; <code>3999</code> &#xFF0C; &#x90A3;&#x4E48;&#x5F53;&#x5BA2;&#x6237;&#x7AEF;&#x5411;&#x8282;&#x70B9; <code>127.0.0.1:6381</code> &#x53D1;&#x9001; <a href="../string/get.html#get">GET</a> &#x547D;&#x4EE4;&#x7684;&#x65F6;&#x5019;&#xFF0C; &#x8282;&#x70B9;&#x5C06;&#x518D;&#x6B21;&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x8FD4;&#x56DE; <code>MOVED</code> &#x9519;&#x8BEF;&#xFF0C; &#x6307;&#x793A;&#x73B0;&#x5728;&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x69FD; <code>3999</code> &#x7684;&#x8282;&#x70B9;&#x3002;</p>
+<p>&#x867D;&#x7136;&#x6211;&#x4EEC;&#x7528; ID &#x6765;&#x6807;&#x8BC6;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x8282;&#x70B9;&#xFF0C; &#x4F46;&#x662F;&#x4E3A;&#x4E86;&#x8BA9;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8F6C;&#x5411;&#x64CD;&#x4F5C;&#x5C3D;&#x53EF;&#x80FD;&#x5730;&#x7B80;&#x5355;&#xFF0C; &#x8282;&#x70B9;&#x5728; <code>MOVED</code> &#x9519;&#x8BEF;&#x4E2D;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x76EE;&#x6807;&#x8282;&#x70B9;&#x7684; IP &#x548C;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C; &#x800C;&#x4E0D;&#x662F;&#x76EE;&#x6807;&#x8282;&#x70B9;&#x7684; ID &#x3002;</p>
+<p>&#x867D;&#x7136;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#xFF0C; &#x4F46;&#x4E00;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x5E94;&#x8BE5;&#x8BB0;&#x5F55;&#xFF08;memorize&#xFF09;&#x4E0B;&#x201C;&#x69FD; <code>3999</code> &#x7531;&#x8282;&#x70B9; <code>127.0.0.1:6381</code> &#x8D1F;&#x8D23;&#x5904;&#x7406;&#x201C;&#x8FD9;&#x4E00;&#x4FE1;&#x606F;&#xFF0C; &#x8FD9;&#x6837;&#x5F53;&#x518D;&#x6B21;&#x6709;&#x547D;&#x4EE4;&#x9700;&#x8981;&#x5BF9;&#x69FD; <code>3999</code> &#x6267;&#x884C;&#x65F6;&#xFF0C; &#x5BA2;&#x6237;&#x7AEF;&#x5C31;&#x53EF;&#x4EE5;&#x52A0;&#x5FEB;&#x5BFB;&#x627E;&#x6B63;&#x786E;&#x8282;&#x70B9;&#x7684;&#x901F;&#x5EA6;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF0C; &#x5F53;&#x96C6;&#x7FA4;&#x5904;&#x4E8E;&#x7A33;&#x5B9A;&#x72B6;&#x6001;&#x65F6;&#xFF0C; &#x6240;&#x6709;&#x5BA2;&#x6237;&#x7AEF;&#x6700;&#x7EC8;&#x90FD;&#x4F1A;&#x4FDD;&#x5B58;&#x6709;&#x4E00;&#x4E2A;&#x54C8;&#x5E0C;&#x69FD;&#x81F3;&#x8282;&#x70B9;&#x7684;&#x6620;&#x5C04;&#x8BB0;&#x5F55;&#xFF08;map of hash slots to nodes&#xFF09;&#xFF0C; &#x4F7F;&#x5F97;&#x96C6;&#x7FA4;&#x975E;&#x5E38;&#x9AD8;&#x6548;&#xFF1A; &#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5411;&#x6B63;&#x786E;&#x7684;&#x8282;&#x70B9;&#x53D1;&#x9001;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#xFF0C; &#x65E0;&#x987B;&#x8F6C;&#x5411;&#x3001;&#x4EE3;&#x7406;&#x6216;&#x8005;&#x5176;&#x4ED6;&#x4EFB;&#x4F55;&#x53EF;&#x80FD;&#x53D1;&#x751F;&#x5355;&#x70B9;&#x6545;&#x969C;&#xFF08;single point failure&#xFF09;&#x7684;&#x5B9E;&#x4F53;&#xFF08;entiy&#xFF09;&#x3002;</p>
+<p>&#x9664;&#x4E86; <code>MOVED</code> &#x8F6C;&#x5411;&#x9519;&#x8BEF;&#x4E4B;&#x5916;&#xFF0C; &#x4E00;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x8FD8;&#x5E94;&#x8BE5;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x7A0D;&#x540E;&#x4ECB;&#x7ECD;&#x7684; <code>ASK</code> &#x8F6C;&#x5411;&#x9519;&#x8BEF;&#x3002;</p>
+<h2 id="&#x96C6;&#x7FA4;&#x5728;&#x7EBF;&#x91CD;&#x914D;&#x7F6E;&#xFF08;live-reconfiguration&#xFF09;">&#x96C6;&#x7FA4;&#x5728;&#x7EBF;&#x91CD;&#x914D;&#x7F6E;&#xFF08;live reconfiguration&#xFF09;</h2>
+<p>Redis &#x96C6;&#x7FA4;&#x652F;&#x6301;&#x5728;&#x96C6;&#x7FA4;&#x8FD0;&#x884C;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x6DFB;&#x52A0;&#x6216;&#x8005;&#x79FB;&#x9664;&#x8282;&#x70B9;&#x3002;</p>
+<p>&#x5B9E;&#x9645;&#x4E0A;&#xFF0C; &#x8282;&#x70B9;&#x7684;&#x6DFB;&#x52A0;&#x64CD;&#x4F5C;&#x548C;&#x8282;&#x70B9;&#x7684;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x62BD;&#x8C61;&#x6210;&#x540C;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#xFF0C; &#x90A3;&#x5C31;&#x662F;&#xFF0C; &#x5C06;&#x54C8;&#x5E0C;&#x69FD;&#x4ECE;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x79FB;&#x52A8;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF1A;</p>
+<ul>
+<li>&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x65B0;&#x8282;&#x70B9;&#x5230;&#x96C6;&#x7FA4;&#xFF0C; &#x7B49;&#x4E8E;&#x5C06;&#x5176;&#x4ED6;&#x5DF2;&#x5B58;&#x5728;&#x8282;&#x70B9;&#x7684;&#x69FD;&#x79FB;&#x52A8;&#x5230;&#x4E00;&#x4E2A;&#x7A7A;&#x767D;&#x7684;&#x65B0;&#x8282;&#x70B9;&#x91CC;&#x9762;&#x3002;</li>
+<li>&#x4ECE;&#x96C6;&#x7FA4;&#x4E2D;&#x79FB;&#x9664;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C; &#x7B49;&#x4E8E;&#x5C06;&#x88AB;&#x79FB;&#x9664;&#x8282;&#x70B9;&#x7684;&#x6240;&#x6709;&#x69FD;&#x79FB;&#x52A8;&#x5230;&#x96C6;&#x7FA4;&#x7684;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x4E0A;&#x9762;&#x53BB;&#x3002;</li>
+</ul>
+<p>&#x56E0;&#x6B64;&#xFF0C; &#x5B9E;&#x73B0; Redis &#x96C6;&#x7FA4;&#x5728;&#x7EBF;&#x91CD;&#x914D;&#x7F6E;&#x7684;&#x6838;&#x5FC3;&#x5C31;&#x662F;&#x5C06;&#x69FD;&#x4ECE;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x79FB;&#x52A8;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x80FD;&#x529B;&#x3002; &#x56E0;&#x4E3A;&#x4E00;&#x4E2A;&#x54C8;&#x5E0C;&#x69FD;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x4E00;&#x4E9B;&#x952E;&#x7684;&#x96C6;&#x5408;&#xFF0C; &#x6240;&#x4EE5; Redis &#x96C6;&#x7FA4;&#x5728;&#x91CD;&#x54C8;&#x5E0C;&#xFF08;rehash&#xFF09;&#x65F6;&#x771F;&#x6B63;&#x8981;&#x505A;&#x7684;&#xFF0C; &#x5C31;&#x662F;&#x5C06;&#x4E00;&#x4E9B;&#x952E;&#x4ECE;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x79FB;&#x52A8;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x3002;</p>
+<p>&#x8981;&#x7406;&#x89E3; Redis &#x96C6;&#x7FA4;&#x5982;&#x4F55;&#x5C06;&#x69FD;&#x4ECE;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x79FB;&#x52A8;&#x5230;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C; &#x6211;&#x4EEC;&#x9700;&#x8981;&#x5BF9; <code>CLUSTER</code> &#x547D;&#x4EE4;&#x7684;&#x5404;&#x4E2A;&#x5B50;&#x547D;&#x4EE4;&#x8FDB;&#x884C;&#x4ECB;&#x7ECD;&#xFF0C; &#x8FD9;&#x4E9B;&#x547D;&#x7406;&#x8D1F;&#x8D23;&#x7BA1;&#x7406;&#x96C6;&#x7FA4;&#x8282;&#x70B9;&#x7684;&#x69FD;&#x8F6C;&#x6362;&#x8868;&#xFF08;slots translation table&#xFF09;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x662F; <code>CLUSTER</code> &#x547D;&#x4EE4;&#x53EF;&#x7528;&#x7684;&#x5B50;&#x547D;&#x4EE4;&#xFF1A;</p>
+<ul>
+<li><code>CLUSTER ADDSLOTS slot1 [slot2] ... [slotN]</code></li>
+<li><code>CLUSTER DELSLOTS slot1 [slot2] ... [slotN]</code></li>
+<li><code>CLUSTER SETSLOT slot NODE node</code></li>
+<li><code>CLUSTER SETSLOT slot MIGRATING node</code></li>
+<li><code>CLUSTER SETSLOT slot IMPORTING node</code></li>
+</ul>
+<p>&#x6700;&#x5F00;&#x5934;&#x7684;&#x4E24;&#x6761;&#x547D;&#x4EE4; <code>ADDSLOTS</code> &#x548C; <code>DELSLOTS</code> &#x5206;&#x522B;&#x7528;&#x4E8E;&#x5411;&#x8282;&#x70B9;&#x6307;&#x6D3E;&#xFF08;assign&#xFF09;&#x6216;&#x8005;&#x79FB;&#x9664;&#x8282;&#x70B9;&#xFF0C; &#x5F53;&#x69FD;&#x88AB;&#x6307;&#x6D3E;&#x6216;&#x8005;&#x79FB;&#x9664;&#x4E4B;&#x540E;&#xFF0C; &#x8282;&#x70B9;&#x4F1A;&#x5C06;&#x8FD9;&#x4E00;&#x4FE1;&#x606F;&#x901A;&#x8FC7; Gossip &#x534F;&#x8BAE;&#x4F20;&#x64AD;&#x5230;&#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x3002; <code>ADDSLOTS</code> &#x547D;&#x4EE4;&#x901A;&#x5E38;&#x5728;&#x65B0;&#x521B;&#x5EFA;&#x96C6;&#x7FA4;&#x65F6;&#xFF0C; &#x4F5C;&#x4E3A;&#x4E00;&#x79CD;&#x5FEB;&#x901F;&#x5730;&#x5C06;&#x5404;&#x4E2A;&#x69FD;&#x6307;&#x6D3E;&#x7ED9;&#x5404;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x624B;&#x6BB5;&#x6765;&#x4F7F;&#x7528;&#x3002;</p>
+<p><code>CLUSTER SETSLOT slot NODE node</code> &#x5B50;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x5C06;&#x6307;&#x5B9A;&#x7684;&#x69FD; <code>slot</code> &#x6307;&#x6D3E;&#x7ED9;&#x8282;&#x70B9; <code>node</code> &#x3002;</p>
+<p>&#x81F3;&#x4E8E; <code>CLUSTER SETSLOT slot MIGRATING node</code> &#x547D;&#x4EE4;&#x548C; <code>CLUSTER SETSLOT slot IMPORTING node</code> &#x547D;&#x4EE4;&#xFF0C; &#x524D;&#x8005;&#x7528;&#x4E8E;&#x5C06;&#x7ED9;&#x5B9A;&#x8282;&#x70B9; <code>node</code> &#x4E2D;&#x7684;&#x69FD; <code>slot</code> &#x8FC1;&#x79FB;&#x51FA;&#x8282;&#x70B9;&#xFF0C; &#x800C;&#x540E;&#x8005;&#x7528;&#x4E8E;&#x5C06;&#x7ED9;&#x5B9A;&#x69FD; <code>slot</code> &#x5BFC;&#x5165;&#x5230;&#x8282;&#x70B9; <code>node</code> &#xFF1A;</p>
+<ul>
+<li><p>&#x5F53;&#x4E00;&#x4E2A;&#x69FD;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A; <code>MIGRATING</code> &#x72B6;&#x6001;&#x65F6;&#xFF0C; &#x539F;&#x6765;&#x6301;&#x6709;&#x8FD9;&#x4E2A;&#x69FD;&#x7684;&#x8282;&#x70B9;&#x4ECD;&#x7136;&#x4F1A;&#x7EE7;&#x7EED;&#x63A5;&#x53D7;&#x5173;&#x4E8E;&#x8FD9;&#x4E2A;&#x69FD;&#x7684;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#xFF0C; &#x4F46;&#x53EA;&#x6709;&#x547D;&#x4EE4;&#x6240;&#x5904;&#x7406;&#x7684;&#x952E;&#x4ECD;&#x7136;&#x5B58;&#x5728;&#x4E8E;&#x8282;&#x70B9;&#x65F6;&#xFF0C; &#x8282;&#x70B9;&#x624D;&#x4F1A;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x547D;&#x4EE4;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x952E;&#x4E0D;&#x5B58;&#x5728;&#x4E0E;&#x8BE5;&#x8282;&#x70B9;&#xFF0C; &#x90A3;&#x4E48;&#x8282;&#x70B9;&#x5C06;&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; <code>-ASK</code> &#x8F6C;&#x5411;&#xFF08;redirection&#xFF09;&#x9519;&#x8BEF;&#xFF0C; &#x544A;&#x77E5;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C; &#x8981;&#x5C06;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x53D1;&#x9001;&#x5230;&#x69FD;&#x7684;&#x8FC1;&#x79FB;&#x76EE;&#x6807;&#x8282;&#x70B9;&#x3002;</p>
+</li>
+<li><p>&#x5F53;&#x4E00;&#x4E2A;&#x69FD;&#x88AB;&#x8BBE;&#x7F6E;&#x4E3A; <code>IMPORTING</code> &#x72B6;&#x6001;&#x65F6;&#xFF0C; &#x8282;&#x70B9;&#x4EC5;&#x5728;&#x63A5;&#x6536;&#x5230; <code>ASKING</code> &#x547D;&#x4EE4;&#x4E4B;&#x540E;&#xFF0C; &#x624D;&#x4F1A;&#x63A5;&#x53D7;&#x5173;&#x4E8E;&#x8FD9;&#x4E2A;&#x69FD;&#x7684;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x6CA1;&#x6709;&#x5411;&#x8282;&#x70B9;&#x53D1;&#x9001; <code>ASKING</code> &#x547D;&#x4EE4;&#xFF0C; &#x90A3;&#x4E48;&#x8282;&#x70B9;&#x4F1A;&#x4F7F;&#x7528; <code>-MOVED</code> &#x8F6C;&#x5411;&#x9519;&#x8BEF;&#x5C06;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x8F6C;&#x5411;&#x81F3;&#x771F;&#x6B63;&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x69FD;&#x7684;&#x8282;&#x70B9;&#x3002;</p>
+</li>
+</ul>
+<p>&#x4E0A;&#x9762;&#x5173;&#x4E8E; <code>MIGRATING</code> &#x548C; <code>IMPORTING</code> &#x7684;&#x8BF4;&#x660E;&#x6709;&#x4E9B;&#x96BE;&#x61C2;&#xFF0C; &#x8BA9;&#x6211;&#x4EEC;&#x7528;&#x4E00;&#x4E2A;&#x5B9E;&#x9645;&#x7684;&#x5B9E;&#x4F8B;&#x6765;&#x8BF4;&#x660E;&#x4E00;&#x4E0B;&#x3002;</p>
+<p>&#x5047;&#x8BBE;&#x73B0;&#x5728;&#xFF0C; &#x6211;&#x4EEC;&#x6709; A &#x548C; B &#x4E24;&#x4E2A;&#x8282;&#x70B9;&#xFF0C; &#x5E76;&#x4E14;&#x6211;&#x4EEC;&#x60F3;&#x5C06;&#x69FD; <code>8</code> &#x4ECE;&#x8282;&#x70B9; A &#x79FB;&#x52A8;&#x5230;&#x8282;&#x70B9; B &#xFF0C; &#x4E8E;&#x662F;&#x6211;&#x4EEC;&#xFF1A;</p>
+<ul>
+<li>&#x5411;&#x8282;&#x70B9; B &#x53D1;&#x9001;&#x547D;&#x4EE4; <code>CLUSTER SETSLOT 8 IMPORTING A</code></li>
+<li>&#x5411;&#x8282;&#x70B9; A &#x53D1;&#x9001;&#x547D;&#x4EE4; <code>CLUSTER SETSLOT 8 MIGRATING B</code></li>
+</ul>
+<p>&#x6BCF;&#x5F53;&#x5BA2;&#x6237;&#x7AEF;&#x5411;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x53D1;&#x9001;&#x5173;&#x4E8E;&#x54C8;&#x5E0C;&#x69FD; <code>8</code> &#x7684;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C; &#x8FD9;&#x4E9B;&#x8282;&#x70B9;&#x90FD;&#x4F1A;&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x8FD4;&#x56DE;&#x6307;&#x5411;&#x8282;&#x70B9; A &#x7684;&#x8F6C;&#x5411;&#x4FE1;&#x606F;&#xFF1A;</p>
+<ul>
+<li>&#x5982;&#x679C;&#x547D;&#x4EE4;&#x8981;&#x5904;&#x7406;&#x7684;&#x952E;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x4E8E;&#x69FD; <code>8</code> &#x91CC;&#x9762;&#xFF0C; &#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x5C06;&#x7531;&#x8282;&#x70B9; A &#x5904;&#x7406;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x547D;&#x4EE4;&#x8981;&#x5904;&#x7406;&#x7684;&#x952E;&#x672A;&#x5B58;&#x5728;&#x4E8E;&#x69FD; <code>8</code> &#x91CC;&#x9762;&#xFF08;&#x6BD4;&#x5982;&#x8BF4;&#xFF0C;&#x8981;&#x5411;&#x69FD;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x952E;&#xFF09;&#xFF0C; &#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x7531;&#x8282;&#x70B9; B &#x5904;&#x7406;&#x3002;</li>
+</ul>
+<p>&#x8FD9;&#x79CD;&#x673A;&#x5236;&#x5C06;&#x4F7F;&#x5F97;&#x8282;&#x70B9; A &#x4E0D;&#x518D;&#x521B;&#x5EFA;&#x5173;&#x4E8E;&#x69FD; <code>8</code> &#x7684;&#x4EFB;&#x4F55;&#x65B0;&#x952E;&#x3002;</p>
+<p>&#x4E0E;&#x6B64;&#x540C;&#x65F6;&#xFF0C; &#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x5BA2;&#x6237;&#x7AEF; <code>redis-trib</code> &#x4EE5;&#x53CA; Redis &#x96C6;&#x7FA4;&#x914D;&#x7F6E;&#x7A0B;&#x5E8F;&#xFF08;configuration utility&#xFF09;&#x4F1A;&#x5C06;&#x8282;&#x70B9; A &#x4E2D;&#x69FD; <code>8</code> &#x91CC;&#x9762;&#x7684;&#x952E;&#x79FB;&#x52A8;&#x5230;&#x8282;&#x70B9; B &#x3002;</p>
+<p>&#x952E;&#x7684;&#x79FB;&#x52A8;&#x64CD;&#x4F5C;&#x7531;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x547D;&#x4EE4;&#x6267;&#x884C;&#xFF1A;</p>
+<pre><code>CLUSTER GETKEYSINSLOT slot count
+</code></pre><p>&#x4E0A;&#x9762;&#x7684;&#x547D;&#x4EE4;&#x4F1A;&#x8BA9;&#x8282;&#x70B9;&#x8FD4;&#x56DE; <code>count</code> &#x4E2A; <code>slot</code> &#x69FD;&#x4E2D;&#x7684;&#x952E;&#xFF0C; &#x5BF9;&#x4E8E;&#x547D;&#x4EE4;&#x6240;&#x8FD4;&#x56DE;&#x7684;&#x6BCF;&#x4E2A;&#x952E;&#xFF0C; <code>redis-trib</code> &#x90FD;&#x4F1A;&#x5411;&#x8282;&#x70B9; A &#x53D1;&#x9001;&#x4E00;&#x6761; <a href="../key/migrate.html#migrate">MIGRATE</a> &#x547D;&#x4EE4;&#xFF0C; &#x8BE5;&#x547D;&#x4EE4;&#x4F1A;&#x5C06;&#x6240;&#x6307;&#x5B9A;&#x7684;&#x952E;&#x539F;&#x5B50;&#x5730;&#xFF08;atomic&#xFF09;&#x4ECE;&#x8282;&#x70B9; A &#x79FB;&#x52A8;&#x5230;&#x8282;&#x70B9; B &#xFF08;&#x5728;&#x79FB;&#x52A8;&#x952E;&#x671F;&#x95F4;&#xFF0C;&#x4E24;&#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x4F1A;&#x5904;&#x4E8E;&#x963B;&#x585E;&#x72B6;&#x6001;&#xFF0C;&#x4EE5;&#x514D;&#x51FA;&#x73B0;&#x7ADE;&#x4E89;&#x6761;&#x4EF6;&#xFF09;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x4E3A; <a href="../key/migrate.html#migrate">MIGRATE</a> &#x547D;&#x4EE4;&#x7684;&#x8FD0;&#x4F5C;&#x539F;&#x7406;&#xFF1A;</p>
+<pre><code>MIGRATE target_host target_port key target_database id timeout
+</code></pre><p>&#x6267;&#x884C; <a href="../key/migrate.html#migrate">MIGRATE</a> &#x547D;&#x4EE4;&#x7684;&#x8282;&#x70B9;&#x4F1A;&#x8FDE;&#x63A5;&#x5230; <code>target</code> &#x8282;&#x70B9;&#xFF0C; &#x5E76;&#x5C06;&#x5E8F;&#x5217;&#x5316;&#x540E;&#x7684; <code>key</code> &#x6570;&#x636E;&#x53D1;&#x9001;&#x7ED9; <code>target</code> &#xFF0C; &#x4E00;&#x65E6; <code>target</code> &#x8FD4;&#x56DE; <code>OK</code> &#xFF0C; &#x8282;&#x70B9;&#x5C31;&#x5C06;&#x81EA;&#x5DF1;&#x7684; <code>key</code> &#x4ECE;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x5220;&#x9664;&#x3002;</p>
+<p>&#x4ECE;&#x4E00;&#x4E2A;&#x5916;&#x90E8;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x89C6;&#x89D2;&#x6765;&#x770B;&#xFF0C; &#x5728;&#x67D0;&#x4E2A;&#x65F6;&#x95F4;&#x70B9;&#x4E0A;&#xFF0C; &#x952E; <code>key</code> &#x8981;&#x4E48;&#x5B58;&#x5728;&#x4E8E;&#x8282;&#x70B9; A &#xFF0C; &#x8981;&#x4E48;&#x5B58;&#x5728;&#x4E8E;&#x8282;&#x70B9; B &#xFF0C; &#x4F46;&#x4E0D;&#x4F1A;&#x540C;&#x65F6;&#x5B58;&#x5728;&#x4E8E;&#x8282;&#x70B9; A &#x548C;&#x8282;&#x70B9; B &#x3002;</p>
+<p>&#x56E0;&#x4E3A; Redis &#x96C6;&#x7FA4;&#x53EA;&#x4F7F;&#x7528; <code>0</code> &#x53F7;&#x6570;&#x636E;&#x5E93;&#xFF0C; &#x6240;&#x4EE5;&#x5F53; <a href="../key/migrate.html#migrate">MIGRATE</a> &#x547D;&#x4EE4;&#x88AB;&#x7528;&#x4E8E;&#x6267;&#x884C;&#x96C6;&#x7FA4;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C; <code>target_database</code> &#x7684;&#x503C;&#x603B;&#x662F; <code>0</code> &#x3002;</p>
+<p><code>target_database</code> &#x53C2;&#x6570;&#x7684;&#x5B58;&#x5728;&#x662F;&#x4E3A;&#x4E86;&#x8BA9; <a href="../key/migrate.html#migrate">MIGRATE</a> &#x547D;&#x4EE4;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x547D;&#x4EE4;&#xFF0C; &#x4ECE;&#x800C;&#x53EF;&#x4EE5;&#x4F5C;&#x7528;&#x4E8E;&#x96C6;&#x7FA4;&#x4EE5;&#x5916;&#x7684;&#x5176;&#x4ED6;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5BF9; <a href="../key/migrate.html#migrate">MIGRATE</a> &#x547D;&#x4EE4;&#x505A;&#x4E86;&#x4F18;&#x5316;&#xFF0C; &#x4F7F;&#x5F97;&#x5B83;&#x5373;&#x4F7F;&#x5728;&#x4F20;&#x8F93;&#x5305;&#x542B;&#x591A;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x5217;&#x8868;&#x952E;&#x8FD9;&#x6837;&#x7684;&#x590D;&#x6742;&#x6570;&#x636E;&#x65F6;&#xFF0C; &#x4E5F;&#x53EF;&#x4EE5;&#x4FDD;&#x6301;&#x9AD8;&#x6548;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#xFF0C; &#x5C3D;&#x7BA1; <a href="../key/migrate.html#migrate">MIGRATE</a> &#x975E;&#x5E38;&#x9AD8;&#x6548;&#xFF0C; &#x5BF9;&#x4E00;&#x4E2A;&#x952E;&#x975E;&#x5E38;&#x591A;&#x3001;&#x5E76;&#x4E14;&#x952E;&#x7684;&#x6570;&#x636E;&#x91CF;&#x975E;&#x5E38;&#x5927;&#x7684;&#x96C6;&#x7FA4;&#x6765;&#x8BF4;&#xFF0C; &#x96C6;&#x7FA4;&#x91CD;&#x914D;&#x7F6E;&#x8FD8;&#x662F;&#x4F1A;&#x5360;&#x7528;&#x5927;&#x91CF;&#x7684;&#x65F6;&#x95F4;&#xFF0C; &#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x96C6;&#x7FA4;&#x6CA1;&#x529E;&#x6CD5;&#x9002;&#x5E94;&#x90A3;&#x4E9B;&#x5BF9;&#x4E8E;&#x54CD;&#x5E94;&#x65F6;&#x95F4;&#x6709;&#x4E25;&#x683C;&#x8981;&#x6C42;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;</p>
+<h2 id="ask-&#x8F6C;&#x5411;">ASK &#x8F6C;&#x5411;</h2>
+<p>&#x5728;&#x4E4B;&#x524D;&#x4ECB;&#x7ECD; <code>MOVED</code> &#x8F6C;&#x5411;&#x7684;&#x65F6;&#x5019;&#xFF0C; &#x6211;&#x4EEC;&#x8BF4;&#x9664;&#x4E86; <code>MOVED</code> &#x8F6C;&#x5411;&#x4E4B;&#x5916;&#xFF0C; &#x8FD8;&#x6709;&#x53E6;&#x4E00;&#x79CD; <code>ASK</code> &#x8F6C;&#x5411;&#x3002;</p>
+<p>&#x5F53;&#x8282;&#x70B9;&#x9700;&#x8981;&#x8BA9;&#x4E00;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x957F;&#x671F;&#x5730;&#xFF08;permanently&#xFF09;&#x5C06;&#x9488;&#x5BF9;&#x67D0;&#x4E2A;&#x69FD;&#x7684;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x53D1;&#x9001;&#x81F3;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x65F6;&#xFF0C; &#x8282;&#x70B9;&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x8FD4;&#x56DE; <code>MOVED</code> &#x8F6C;&#x5411;&#x3002;</p>
+<p>&#x53E6;&#x4E00;&#x65B9;&#x9762;&#xFF0C; &#x5F53;&#x8282;&#x70B9;&#x9700;&#x8981;&#x8BA9;&#x5BA2;&#x6237;&#x7AEF;&#x4EC5;&#x4EC5;&#x5728;&#x4E0B;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x4E2D;&#x8F6C;&#x5411;&#x81F3;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x65F6;&#xFF0C; &#x8282;&#x70B9;&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x8FD4;&#x56DE; <code>ASK</code> &#x8F6C;&#x5411;&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x8BF4;&#xFF0C; &#x5728;&#x6211;&#x4EEC;&#x4E0A;&#x4E00;&#x8282;&#x5217;&#x4E3E;&#x7684;&#x69FD; <code>8</code> &#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C; &#x56E0;&#x4E3A;&#x69FD; <code>8</code> &#x6240;&#x5305;&#x542B;&#x7684;&#x5404;&#x4E2A;&#x952E;&#x5206;&#x6563;&#x5728;&#x8282;&#x70B9; A &#x548C;&#x8282;&#x70B9; B &#x4E2D;&#xFF0C; &#x6240;&#x4EE5;&#x5F53;&#x5BA2;&#x6237;&#x7AEF;&#x5728;&#x8282;&#x70B9; A &#x4E2D;&#x6CA1;&#x627E;&#x5230;&#x67D0;&#x4E2A;&#x952E;&#x65F6;&#xFF0C; &#x5B83;&#x5E94;&#x8BE5;&#x8F6C;&#x5411;&#x5230;&#x8282;&#x70B9; B &#x4E2D;&#x53BB;&#x5BFB;&#x627E;&#xFF0C; &#x4F46;&#x662F;&#x8FD9;&#x79CD;&#x8F6C;&#x5411;&#x5E94;&#x8BE5;&#x4EC5;&#x4EC5;&#x5F71;&#x54CD;&#x4E00;&#x6B21;&#x547D;&#x4EE4;&#x67E5;&#x8BE2;&#xFF0C; &#x800C;&#x4E0D;&#x662F;&#x8BA9;&#x5BA2;&#x6237;&#x7AEF;&#x6BCF;&#x6B21;&#x90FD;&#x76F4;&#x63A5;&#x53BB;&#x67E5;&#x627E;&#x8282;&#x70B9; B &#xFF1A; &#x5728;&#x8282;&#x70B9; A &#x6240;&#x6301;&#x6709;&#x7684;&#x5C5E;&#x4E8E;&#x69FD; <code>8</code> &#x7684;&#x952E;&#x6CA1;&#x6709;&#x5168;&#x90E8;&#x88AB;&#x8FC1;&#x79FB;&#x5230;&#x8282;&#x70B9; B &#x4E4B;&#x524D;&#xFF0C; &#x5BA2;&#x6237;&#x7AEF;&#x5E94;&#x8BE5;&#x5148;&#x8BBF;&#x95EE;&#x8282;&#x70B9; A &#xFF0C; &#x7136;&#x540E;&#x518D;&#x8BBF;&#x95EE;&#x8282;&#x70B9; B &#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x8FD9;&#x79CD;&#x8F6C;&#x5411;&#x53EA;&#x9488;&#x5BF9; <code>16384</code> &#x4E2A;&#x69FD;&#x4E2D;&#x7684;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x69FD;&#xFF0C; &#x6240;&#x4EE5;&#x8F6C;&#x5411;&#x5BF9;&#x96C6;&#x7FA4;&#x9020;&#x6210;&#x7684;&#x6027;&#x80FD;&#x635F;&#x8017;&#x5C5E;&#x4E8E;&#x53EF;&#x63A5;&#x53D7;&#x7684;&#x8303;&#x56F4;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x4E0A;&#x8FF0;&#x539F;&#x56E0;&#xFF0C; &#x5982;&#x679C;&#x6211;&#x4EEC;&#x8981;&#x5728;&#x67E5;&#x627E;&#x8282;&#x70B9; A &#x4E4B;&#x540E;&#xFF0C; &#x7EE7;&#x7EED;&#x67E5;&#x627E;&#x8282;&#x70B9; B &#xFF0C; &#x90A3;&#x4E48;&#x5BA2;&#x6237;&#x7AEF;&#x5728;&#x5411;&#x8282;&#x70B9; B &#x53D1;&#x9001;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x4E4B;&#x524D;&#xFF0C; &#x5E94;&#x8BE5;&#x5148;&#x53D1;&#x9001;&#x4E00;&#x4E2A; <code>ASKING</code> &#x547D;&#x4EE4;&#xFF0C; &#x5426;&#x5219;&#x8FD9;&#x4E2A;&#x9488;&#x5BF9;&#x5E26;&#x6709; <code>IMPORTING</code> &#x72B6;&#x6001;&#x7684;&#x69FD;&#x7684;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x5C06;&#x88AB;&#x8282;&#x70B9; B &#x62D2;&#x7EDD;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x63A5;&#x6536;&#x5230;&#x5BA2;&#x6237;&#x7AEF; <code>ASKING</code> &#x547D;&#x4EE4;&#x7684;&#x8282;&#x70B9;&#x5C06;&#x4E3A;&#x5BA2;&#x6237;&#x7AEF;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x4E00;&#x6B21;&#x6027;&#x7684;&#x6807;&#x5FD7;&#xFF08;flag&#xFF09;&#xFF0C; &#x4F7F;&#x5F97;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x4E00;&#x6B21;&#x9488;&#x5BF9; <code>IMPORTING</code> &#x72B6;&#x6001;&#x7684;&#x69FD;&#x7684;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x3002;</p>
+<p>&#x4ECE;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x89D2;&#x5EA6;&#x6765;&#x770B;&#xFF0C; <code>ASK</code> &#x8F6C;&#x5411;&#x7684;&#x5B8C;&#x6574;&#x8BED;&#x4E49;&#xFF08;semantics&#xFF09;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x63A5;&#x6536;&#x5230; <code>ASK</code> &#x8F6C;&#x5411;&#xFF0C; &#x90A3;&#x4E48;&#x5C06;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x7684;&#x53D1;&#x9001;&#x5BF9;&#x8C61;&#x8C03;&#x6574;&#x4E3A;&#x8F6C;&#x5411;&#x6240;&#x6307;&#x5B9A;&#x7684;&#x8282;&#x70B9;&#x3002;</li>
+<li>&#x5148;&#x53D1;&#x9001;&#x4E00;&#x4E2A; <code>ASKING</code> &#x547D;&#x4EE4;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x53D1;&#x9001;&#x771F;&#x6B63;&#x7684;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x3002;</li>
+<li>&#x4E0D;&#x5FC5;&#x66F4;&#x65B0;&#x5BA2;&#x6237;&#x7AEF;&#x6240;&#x8BB0;&#x5F55;&#x7684;&#x69FD; <code>8</code> &#x81F3;&#x8282;&#x70B9;&#x7684;&#x6620;&#x5C04;&#xFF1A; &#x69FD; <code>8</code> &#x5E94;&#x8BE5;&#x4ECD;&#x7136;&#x6620;&#x5C04;&#x5230;&#x8282;&#x70B9; A &#xFF0C; &#x800C;&#x4E0D;&#x662F;&#x8282;&#x70B9; B &#x3002;</li>
+</ul>
+<p>&#x4E00;&#x65E6;&#x8282;&#x70B9; A &#x9488;&#x5BF9;&#x69FD; <code>8</code> &#x7684;&#x8FC1;&#x79FB;&#x5DE5;&#x4F5C;&#x5B8C;&#x6210;&#xFF0C; &#x8282;&#x70B9; A &#x5728;&#x518D;&#x6B21;&#x6536;&#x5230;&#x9488;&#x5BF9;&#x69FD; <code>8</code> &#x7684;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C; &#x5C31;&#x4F1A;&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x8FD4;&#x56DE; <code>MOVED</code> &#x8F6C;&#x5411;&#xFF0C; &#x5C06;&#x5173;&#x4E8E;&#x69FD; <code>8</code> &#x7684;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x957F;&#x671F;&#x5730;&#x8F6C;&#x5411;&#x5230;&#x8282;&#x70B9; B &#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF0C; &#x5373;&#x4F7F;&#x5BA2;&#x6237;&#x7AEF;&#x51FA;&#x73B0; Bug &#xFF0C; &#x8FC7;&#x65E9;&#x5730;&#x5C06;&#x69FD; <code>8</code> &#x6620;&#x5C04;&#x5230;&#x4E86;&#x8282;&#x70B9; B &#x4E0A;&#x9762;&#xFF0C; &#x4F46;&#x53EA;&#x8981;&#x8FD9;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x4E0D;&#x53D1;&#x9001; <code>ASKING</code> &#x547D;&#x4EE4;&#xFF0C; &#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x9047;&#x4E0A; <code>MOVED</code> &#x9519;&#x8BEF;&#xFF0C; &#x5E76;&#x5C06;&#x5B83;&#x8F6C;&#x5411;&#x56DE;&#x8282;&#x70B9; A &#x3002;</p>
+<h2 id="&#x5BB9;&#x9519;">&#x5BB9;&#x9519;</h2>
+<h3 id="&#x8282;&#x70B9;&#x5931;&#x6548;&#x68C0;&#x6D4B;">&#x8282;&#x70B9;&#x5931;&#x6548;&#x68C0;&#x6D4B;</h3>
+<p>&#x4EE5;&#x4E0B;&#x662F;&#x8282;&#x70B9;&#x5931;&#x6548;&#x68C0;&#x67E5;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li><p>&#x5F53;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x5411;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x53D1;&#x9001; <a href="../connection/ping.html#ping">PING</a> &#x547D;&#x4EE4;&#xFF0C; &#x4F46;&#x662F;&#x76EE;&#x6807;&#x8282;&#x70B9;&#x672A;&#x80FD;&#x5728;&#x7ED9;&#x5B9A;&#x7684;&#x65F6;&#x9650;&#x5185;&#x8FD4;&#x56DE; <a href="../connection/ping.html#ping">PING</a> &#x547D;&#x4EE4;&#x7684;&#x56DE;&#x590D;&#x65F6;&#xFF0C; &#x90A3;&#x4E48;&#x53D1;&#x9001;&#x547D;&#x4EE4;&#x7684;&#x8282;&#x70B9;&#x4F1A;&#x5C06;&#x76EE;&#x6807;&#x8282;&#x70B9;&#x6807;&#x8BB0;&#x4E3A; <code>PFAIL</code> &#xFF08;possible failure&#xFF0C;&#x53EF;&#x80FD;&#x5DF2;&#x5931;&#x6548;&#xFF09;&#x3002;</p>
+<p>&#x7B49;&#x5F85; <a href="../connection/ping.html#ping">PING</a> &#x547D;&#x4EE4;&#x56DE;&#x590D;&#x7684;&#x65F6;&#x9650;&#x79F0;&#x4E3A;&#x201C;&#x8282;&#x70B9;&#x8D85;&#x65F6;&#x65F6;&#x9650;&#xFF08;node timeout&#xFF09;&#x201D;&#xFF0C; &#x662F;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x9009;&#x9879;&#xFF08;node-wise setting&#xFF09;&#x3002;</p>
+</li>
+<li><p>&#x6BCF;&#x6B21;&#x5F53;&#x8282;&#x70B9;&#x5BF9;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x53D1;&#x9001; <a href="../connection/ping.html#ping">PING</a> &#x547D;&#x4EE4;&#x7684;&#x65F6;&#x5019;&#xFF0C; &#x5B83;&#x90FD;&#x4F1A;&#x968F;&#x673A;&#x5730;&#x5E7F;&#x64AD;&#x4E09;&#x4E2A;&#x5B83;&#x6240;&#x77E5;&#x9053;&#x7684;&#x8282;&#x70B9;&#x7684;&#x4FE1;&#x606F;&#xFF0C; &#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x91CC;&#x9762;&#x7684;&#x5176;&#x4E2D;&#x4E00;&#x9879;&#x5C31;&#x662F;&#x8BF4;&#x660E;&#x8282;&#x70B9;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x88AB;&#x6807;&#x8BB0;&#x4E3A; <code>PFAIL</code> &#x6216;&#x8005; <code>FAIL</code> &#x3002;</p>
+</li>
+<li><p>&#x5F53;&#x8282;&#x70B9;&#x63A5;&#x6536;&#x5230;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x53D1;&#x6765;&#x7684;&#x4FE1;&#x606F;&#x65F6;&#xFF0C; &#x5B83;&#x4F1A;&#x8BB0;&#x4E0B;&#x90A3;&#x4E9B;&#x88AB;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x6807;&#x8BB0;&#x4E3A;&#x5931;&#x6548;&#x7684;&#x8282;&#x70B9;&#x3002; &#x8FD9;&#x79F0;&#x4E3A;&#x5931;&#x6548;&#x62A5;&#x544A;&#xFF08;failure report&#xFF09;&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x8282;&#x70B9;&#x5DF2;&#x7ECF;&#x5C06;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x6807;&#x8BB0;&#x4E3A; <code>PFAIL</code> &#xFF0C; &#x5E76;&#x4E14;&#x6839;&#x636E;&#x8282;&#x70B9;&#x6240;&#x6536;&#x5230;&#x7684;&#x5931;&#x6548;&#x62A5;&#x544A;&#x663E;&#x5F0F;&#xFF0C; &#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x5927;&#x90E8;&#x5206;&#x5176;&#x4ED6;&#x4E3B;&#x8282;&#x70B9;&#x4E5F;&#x8BA4;&#x4E3A;&#x90A3;&#x4E2A;&#x8282;&#x70B9;&#x8FDB;&#x5165;&#x4E86;&#x5931;&#x6548;&#x72B6;&#x6001;&#xFF0C; &#x90A3;&#x4E48;&#x8282;&#x70B9;&#x4F1A;&#x5C06;&#x90A3;&#x4E2A;&#x5931;&#x6548;&#x8282;&#x70B9;&#x7684;&#x72B6;&#x6001;&#x6807;&#x8BB0;&#x4E3A; <code>FAIL</code> &#x3002;</p>
+</li>
+<li><p>&#x4E00;&#x65E6;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x88AB;&#x6807;&#x8BB0;&#x4E3A; <code>FAIL</code> &#xFF0C; &#x5173;&#x4E8E;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x5DF2;&#x5931;&#x6548;&#x7684;&#x4FE1;&#x606F;&#x5C31;&#x4F1A;&#x88AB;&#x5E7F;&#x64AD;&#x5230;&#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#xFF0C; &#x6240;&#x6709;&#x63A5;&#x6536;&#x5230;&#x8FD9;&#x6761;&#x4FE1;&#x606F;&#x7684;&#x8282;&#x70B9;&#x90FD;&#x4F1A;&#x5C06;&#x5931;&#x6548;&#x8282;&#x70B9;&#x6807;&#x8BB0;&#x4E3A; <code>FAIL</code> &#x3002;</p>
+</li>
+</ul>
+<p>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#xFF0C; &#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x8981;&#x5C06;&#x53E6;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x6807;&#x8BB0;&#x4E3A;&#x5931;&#x6548;&#xFF0C; &#x5FC5;&#x987B;&#x5148;&#x8BE2;&#x95EE;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x7684;&#x610F;&#x89C1;&#xFF0C; &#x5E76;&#x4E14;&#x5F97;&#x5230;&#x5927;&#x90E8;&#x5206;&#x4E3B;&#x8282;&#x70B9;&#x7684;&#x540C;&#x610F;&#x624D;&#x884C;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x8FC7;&#x671F;&#x7684;&#x5931;&#x6548;&#x62A5;&#x544A;&#x4F1A;&#x88AB;&#x79FB;&#x9664;&#xFF0C; &#x6240;&#x4EE5;&#x4E3B;&#x8282;&#x70B9;&#x8981;&#x5C06;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x6807;&#x8BB0;&#x4E3A; <code>FAIL</code> &#x7684;&#x8BDD;&#xFF0C; &#x5FC5;&#x987B;&#x4EE5;&#x6700;&#x8FD1;&#x63A5;&#x6536;&#x5230;&#x7684;&#x5931;&#x6548;&#x62A5;&#x544A;&#x4F5C;&#x4E3A;&#x6839;&#x636E;&#x3002;</p>
+<p>&#x5728;&#x4EE5;&#x4E0B;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x4E2D;&#xFF0C; &#x8282;&#x70B9;&#x7684; <code>FAIL</code> &#x72B6;&#x6001;&#x4F1A;&#x88AB;&#x79FB;&#x9664;&#xFF1A;</p>
+<ul>
+<li><p>&#x5982;&#x679C;&#x88AB;&#x6807;&#x8BB0;&#x4E3A; <code>FAIL</code> &#x7684;&#x662F;&#x4ECE;&#x8282;&#x70B9;&#xFF0C; &#x90A3;&#x4E48;&#x5F53;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x91CD;&#x65B0;&#x4E0A;&#x7EBF;&#x65F6;&#xFF0C; <code>FAIL</code> &#x6807;&#x8BB0;&#x5C31;&#x4F1A;&#x88AB;&#x79FB;&#x9664;&#x3002;</p>
+<p>&#x4FDD;&#x6301;&#xFF08;retaning&#xFF09;&#x4ECE;&#x8282;&#x70B9;&#x7684; <code>FAIL</code> &#x72B6;&#x6001;&#x662F;&#x6CA1;&#x6709;&#x610F;&#x4E49;&#x7684;&#xFF0C; &#x56E0;&#x4E3A;&#x5B83;&#x4E0D;&#x5904;&#x7406;&#x4EFB;&#x4F55;&#x69FD;&#xFF0C; &#x4E00;&#x4E2A;&#x4ECE;&#x8282;&#x70B9;&#x662F;&#x5426;&#x5904;&#x4E8E; <code>FAIL</code> &#x72B6;&#x6001;&#xFF0C; &#x51B3;&#x5B9A;&#x4E86;&#x8FD9;&#x4E2A;&#x4ECE;&#x8282;&#x70B9;&#x5728;&#x6709;&#x9700;&#x8981;&#x65F6;&#x80FD;&#x5426;&#x88AB;&#x63D0;&#x5347;&#x4E3A;&#x4E3B;&#x8282;&#x70B9;&#x3002;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x4E3B;&#x8282;&#x70B9;&#x88AB;&#x6253;&#x4E0A; <code>FAIL</code> &#x6807;&#x8BB0;&#x4E4B;&#x540E;&#xFF0C; &#x7ECF;&#x8FC7;&#x4E86;&#x8282;&#x70B9;&#x8D85;&#x65F6;&#x65F6;&#x9650;&#x7684;&#x56DB;&#x500D;&#x65F6;&#x95F4;&#xFF0C; &#x518D;&#x52A0;&#x4E0A;&#x5341;&#x79D2;&#x949F;&#x4E4B;&#x540E;&#xFF0C; &#x9488;&#x5BF9;&#x8FD9;&#x4E2A;&#x4E3B;&#x8282;&#x70B9;&#x7684;&#x69FD;&#x7684;&#x6545;&#x969C;&#x8F6C;&#x79FB;&#x64CD;&#x4F5C;&#x4ECD;&#x672A;&#x5B8C;&#x6210;&#xFF0C; &#x5E76;&#x4E14;&#x8FD9;&#x4E2A;&#x4E3B;&#x8282;&#x70B9;&#x5DF2;&#x7ECF;&#x91CD;&#x65B0;&#x4E0A;&#x7EBF;&#x7684;&#x8BDD;&#xFF0C; &#x90A3;&#x4E48;&#x79FB;&#x9664;&#x5BF9;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x7684; <code>FAIL</code> &#x6807;&#x8BB0;&#x3002;</p>
+</li>
+</ul>
+<p>&#x5728;&#x7B2C;&#x4E8C;&#x79CD;&#x60C5;&#x51B5;&#x4E2D;&#xFF0C; &#x5982;&#x679C;&#x6545;&#x969C;&#x8F6C;&#x79FB;&#x672A;&#x80FD;&#x987A;&#x5229;&#x5B8C;&#x6210;&#xFF0C; &#x5E76;&#x4E14;&#x4E3B;&#x8282;&#x70B9;&#x91CD;&#x65B0;&#x4E0A;&#x7EBF;&#xFF0C; &#x90A3;&#x4E48;&#x96C6;&#x7FA4;&#x5C31;&#x7EE7;&#x7EED;&#x4F7F;&#x7528;&#x539F;&#x6765;&#x7684;&#x4E3B;&#x8282;&#x70B9;&#xFF0C; &#x4ECE;&#x800C;&#x514D;&#x53BB;&#x7BA1;&#x7406;&#x5458;&#x4ECB;&#x5165;&#x7684;&#x5FC5;&#x8981;&#x3002;</p>
+<h3 id="&#x96C6;&#x7FA4;&#x72B6;&#x6001;&#x68C0;&#x6D4B;&#xFF08;&#x5DF2;&#x90E8;&#x5206;&#x5B9E;&#x73B0;&#xFF09;">&#x96C6;&#x7FA4;&#x72B6;&#x6001;&#x68C0;&#x6D4B;&#xFF08;&#x5DF2;&#x90E8;&#x5206;&#x5B9E;&#x73B0;&#xFF09;</h3>
+<p>&#x6BCF;&#x5F53;&#x96C6;&#x7FA4;&#x53D1;&#x751F;&#x914D;&#x7F6E;&#x53D8;&#x5316;&#x65F6;&#xFF08;&#x53EF;&#x80FD;&#x662F;&#x54C8;&#x5E0C;&#x69FD;&#x66F4;&#x65B0;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x662F;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x8FDB;&#x5165;&#x5931;&#x6548;&#x72B6;&#x6001;&#xFF09;&#xFF0C; &#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x4F1A;&#x5BF9;&#x5B83;&#x6240;&#x77E5;&#x9053;&#x7684;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x626B;&#x63CF;&#xFF08;scan&#xFF09;&#x3002;</p>
+<p>&#x4E00;&#x65E6;&#x914D;&#x7F6E;&#x5904;&#x7406;&#x5B8C;&#x6BD5;&#xFF0C; &#x96C6;&#x7FA4;&#x4F1A;&#x8FDB;&#x5165;&#x4EE5;&#x4E0B;&#x4E24;&#x79CD;&#x72B6;&#x6001;&#x7684;&#x5176;&#x4E2D;&#x4E00;&#x79CD;&#xFF1A;</p>
+<ul>
+<li><code>FAIL</code> &#xFF1A; &#x96C6;&#x7FA4;&#x4E0D;&#x80FD;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x3002; &#x5F53;&#x96C6;&#x7FA4;&#x4E2D;&#x6709;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x8FDB;&#x5165;&#x5931;&#x6548;&#x72B6;&#x6001;&#x65F6;&#xFF0C; &#x96C6;&#x7FA4;&#x4E0D;&#x80FD;&#x5904;&#x7406;&#x4EFB;&#x4F55;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#xFF0C; &#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#xFF0C; &#x96C6;&#x7FA4;&#x8282;&#x70B9;&#x90FD;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x56DE;&#x590D;&#x3002;</li>
+<li><code>OK</code> &#xFF1A; &#x96C6;&#x7FA4;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#xFF0C; &#x8D1F;&#x8D23;&#x5904;&#x7406;&#x5168;&#x90E8; <code>16384</code> &#x4E2A;&#x69FD;&#x7684;&#x8282;&#x70B9;&#x4E2D;&#xFF0C; &#x6CA1;&#x6709;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x88AB;&#x6807;&#x8BB0;&#x4E3A; <code>FAIL</code> &#x72B6;&#x6001;&#x3002;</li>
+</ul>
+<p>&#x8FD9;&#x8BF4;&#x660E;&#x5373;&#x4F7F;&#x96C6;&#x7FA4;&#x4E2D;&#x53EA;&#x6709;&#x4E00;&#x90E8;&#x5206;&#x54C8;&#x5E0C;&#x69FD;&#x4E0D;&#x80FD;&#x6B63;&#x5E38;&#x4F7F;&#x7528;&#xFF0C; &#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x4E5F;&#x4F1A;&#x505C;&#x6B62;&#x5904;&#x7406;&#x4EFB;&#x4F55;&#x547D;&#x4EE4;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#x8282;&#x70B9;&#x4ECE;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#x5230;&#x88AB;&#x6807;&#x8BB0;&#x4E3A; <code>FAIL</code> &#x72B6;&#x6001;&#x7684;&#x8FD9;&#x6BB5;&#x65F6;&#x95F4;&#x91CC;&#xFF0C; &#x96C6;&#x7FA4;&#x4ECD;&#x7136;&#x4F1A;&#x6B63;&#x5E38;&#x8FD0;&#x4F5C;&#xFF0C; &#x6240;&#x4EE5;&#x96C6;&#x7FA4;&#x5728;&#x67D0;&#x4E9B;&#x65F6;&#x5019;&#xFF0C; &#x4ECD;&#x7136;&#x6709;&#x53EF;&#x80FD;&#x53EA;&#x80FD;&#x5904;&#x7406;&#x9488;&#x5BF9; <code>16384</code> &#x4E2A;&#x69FD;&#x7684;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x5B50;&#x96C6;&#x7684;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x662F;&#x96C6;&#x7FA4;&#x8FDB;&#x5165; <code>FAIL</code> &#x72B6;&#x6001;&#x7684;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#xFF1A;</p>
+<ol>
+<li>&#x81F3;&#x5C11;&#x6709;&#x4E00;&#x4E2A;&#x54C8;&#x5E0C;&#x69FD;&#x4E0D;&#x53EF;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x69FD;&#x7684;&#x8282;&#x70B9;&#x8FDB;&#x5165;&#x4E86; <code>FAIL</code> &#x72B6;&#x6001;&#x3002;</li>
+<li>&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x5927;&#x90E8;&#x5206;&#x4E3B;&#x8282;&#x70B9;&#x90FD;&#x8FDB;&#x5165;&#x4E0B;&#x7EBF;&#x72B6;&#x6001;&#x3002;&#x5F53;&#x5927;&#x90E8;&#x5206;&#x4E3B;&#x8282;&#x70B9;&#x90FD;&#x8FDB;&#x5165; <code>PFAIL</code> &#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x96C6;&#x7FA4;&#x4E5F;&#x4F1A;&#x8FDB;&#x5165; <code>FAIL</code> &#x72B6;&#x6001;&#x3002;</li>
+</ol>
+<p>&#x7B2C;&#x4E8C;&#x4E2A;&#x68C0;&#x67E5;&#x662F;&#x5FC5;&#x987B;&#x7684;&#xFF0C; &#x56E0;&#x4E3A;&#x8981;&#x5C06;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x4ECE; <code>PFAIL</code> &#x72B6;&#x6001;&#x6539;&#x53D8;&#x4E3A; <code>FAIL</code> &#x72B6;&#x6001;&#xFF0C; &#x5FC5;&#x987B;&#x8981;&#x6709;&#x5927;&#x90E8;&#x5206;&#x4E3B;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x6295;&#x7968;&#x8868;&#x51B3;&#xFF0C; &#x4F46;&#x662F;&#xFF0C; &#x5F53;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x5927;&#x90E8;&#x5206;&#x4E3B;&#x8282;&#x70B9;&#x90FD;&#x8FDB;&#x5165;&#x5931;&#x6548;&#x72B6;&#x6001;&#x65F6;&#xFF0C; &#x5355;&#x51ED;&#x4E00;&#x4E2A;&#x4E24;&#x4E2A;&#x8282;&#x70B9;&#x662F;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x5C06;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x6807;&#x8BB0;&#x4E3A; <code>FAIL</code> &#x72B6;&#x6001;&#x7684;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#xFF0C; &#x6709;&#x4E86;&#x7B2C;&#x4E8C;&#x4E2A;&#x68C0;&#x67E5;&#x6761;&#x4EF6;&#xFF0C; &#x53EA;&#x8981;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x5927;&#x90E8;&#x5206;&#x4E3B;&#x8282;&#x70B9;&#x8FDB;&#x5165;&#x4E86;&#x4E0B;&#x7EBF;&#x72B6;&#x6001;&#xFF0C; &#x90A3;&#x4E48;&#x96C6;&#x7FA4;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x8BF7;&#x6C42;&#x8FD9;&#x4E9B;&#x4E3B;&#x8282;&#x70B9;&#x7684;&#x610F;&#x89C1;&#x4E0B;&#xFF0C; &#x5C06;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x5224;&#x65AD;&#x4E3A; <code>FAIL</code> &#x72B6;&#x6001;&#xFF0C; &#x4ECE;&#x800C;&#x8BA9;&#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x505C;&#x6B62;&#x5904;&#x7406;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x3002;</p>
+<h3 id="&#x4ECE;&#x8282;&#x70B9;&#x9009;&#x4E3E;">&#x4ECE;&#x8282;&#x70B9;&#x9009;&#x4E3E;</h3>
+<p>&#x4E00;&#x65E6;&#x67D0;&#x4E2A;&#x4E3B;&#x8282;&#x70B9;&#x8FDB;&#x5165; <code>FAIL</code> &#x72B6;&#x6001;&#xFF0C; &#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x4E3B;&#x8282;&#x70B9;&#x6709;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x4ECE;&#x8282;&#x70B9;&#x5B58;&#x5728;&#xFF0C; &#x90A3;&#x4E48;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x4ECE;&#x8282;&#x70B9;&#x4F1A;&#x88AB;&#x5347;&#x7EA7;&#x4E3A;&#x65B0;&#x7684;&#x4E3B;&#x8282;&#x70B9;&#xFF0C; &#x800C;&#x5176;&#x4ED6;&#x4ECE;&#x8282;&#x70B9;&#x5219;&#x4F1A;&#x5F00;&#x59CB;&#x5BF9;&#x8FD9;&#x4E2A;&#x65B0;&#x7684;&#x4E3B;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x590D;&#x5236;&#x3002;</p>
+<p>&#x65B0;&#x7684;&#x4E3B;&#x8282;&#x70B9;&#x7531;&#x5DF2;&#x4E0B;&#x7EBF;&#x4E3B;&#x8282;&#x70B9;&#x5C5E;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x4ECE;&#x8282;&#x70B9;&#x4E2D;&#x81EA;&#x884C;&#x9009;&#x4E3E;&#x4EA7;&#x751F;&#xFF0C; &#x4EE5;&#x4E0B;&#x662F;&#x9009;&#x4E3E;&#x7684;&#x6761;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x662F;&#x5DF2;&#x4E0B;&#x7EBF;&#x4E3B;&#x8282;&#x70B9;&#x7684;&#x4ECE;&#x8282;&#x70B9;&#x3002;</li>
+<li>&#x5DF2;&#x4E0B;&#x7EBF;&#x4E3B;&#x8282;&#x70B9;&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x7684;&#x69FD;&#x6570;&#x91CF;&#x975E;&#x7A7A;&#x3002;</li>
+<li>&#x4ECE;&#x8282;&#x70B9;&#x7684;&#x6570;&#x636E;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;&#x53EF;&#x9760;&#x7684;&#xFF0C; &#x4E5F;&#x5373;&#x662F;&#xFF0C; &#x4E3B;&#x4ECE;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x7684;&#x590D;&#x5236;&#x8FDE;&#x63A5;&#xFF08;replication link&#xFF09;&#x7684;&#x65AD;&#x7EBF;&#x65F6;&#x957F;&#x4E0D;&#x80FD;&#x8D85;&#x8FC7;&#x8282;&#x70B9;&#x8D85;&#x65F6;&#x65F6;&#x9650;&#xFF08;node timeout&#xFF09;&#x4E58;&#x4EE5; <code>REDIS_CLUSTER_SLAVE_VALIDITY_MULT</code> &#x5E38;&#x91CF;&#x5F97;&#x51FA;&#x7684;&#x79EF;&#x3002;</li>
+</ul>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x4ECE;&#x8282;&#x70B9;&#x6EE1;&#x8DB3;&#x4E86;&#x4EE5;&#x4E0A;&#x7684;&#x6240;&#x6709;&#x6761;&#x4EF6;&#xFF0C; &#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x4ECE;&#x8282;&#x70B9;&#x5C06;&#x5411;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x4E3B;&#x8282;&#x70B9;&#x53D1;&#x9001;&#x6388;&#x6743;&#x8BF7;&#x6C42;&#xFF0C; &#x8BE2;&#x95EE;&#x5B83;&#x4EEC;&#xFF0C; &#x662F;&#x5426;&#x5141;&#x8BB8;&#x81EA;&#x5DF1;&#xFF08;&#x4ECE;&#x8282;&#x70B9;&#xFF09;&#x5347;&#x7EA7;&#x4E3A;&#x65B0;&#x7684;&#x4E3B;&#x8282;&#x70B9;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x53D1;&#x9001;&#x6388;&#x6743;&#x8BF7;&#x6C42;&#x7684;&#x4ECE;&#x8282;&#x70B9;&#x6EE1;&#x8DB3;&#x4EE5;&#x4E0B;&#x5C5E;&#x6027;&#xFF0C; &#x90A3;&#x4E48;&#x4E3B;&#x8282;&#x70B9;&#x5C06;&#x5411;&#x4ECE;&#x8282;&#x70B9;&#x8FD4;&#x56DE; <code>FAILOVER_AUTH_GRANTED</code> &#x6388;&#x6743;&#xFF0C; &#x540C;&#x610F;&#x4ECE;&#x8282;&#x70B9;&#x7684;&#x5347;&#x7EA7;&#x8981;&#x6C42;&#xFF1A;</p>
+<ul>
+<li>&#x53D1;&#x9001;&#x6388;&#x6743;&#x8BF7;&#x6C42;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x4ECE;&#x8282;&#x70B9;&#xFF0C; &#x5E76;&#x4E14;&#x5B83;&#x6240;&#x5C5E;&#x7684;&#x4E3B;&#x8282;&#x70B9;&#x5904;&#x4E8E; <code>FAIL</code> &#x72B6;&#x6001;&#x3002;</li>
+<li>&#x5728;&#x5DF2;&#x4E0B;&#x7EBF;&#x4E3B;&#x8282;&#x70B9;&#x7684;&#x6240;&#x6709;&#x4ECE;&#x8282;&#x70B9;&#x4E2D;&#xFF0C; &#x8FD9;&#x4E2A;&#x4ECE;&#x8282;&#x70B9;&#x7684;&#x8282;&#x70B9; ID &#x5728;&#x6392;&#x5E8F;&#x4E2D;&#x662F;&#x6700;&#x5C0F;&#x7684;&#x3002;</li>
+<li>&#x8FD9;&#x4E2A;&#x4ECE;&#x8282;&#x70B9;&#x5904;&#x4E8E;&#x6B63;&#x5E38;&#x7684;&#x8FD0;&#x884C;&#x72B6;&#x6001;&#xFF1A; &#x5B83;&#x6CA1;&#x6709;&#x88AB;&#x6807;&#x8BB0;&#x4E3A; <code>FAIL</code> &#x72B6;&#x6001;&#xFF0C; &#x4E5F;&#x6CA1;&#x6709;&#x88AB;&#x6807;&#x8BB0;&#x4E3A; <code>PFAIL</code> &#x72B6;&#x6001;&#x3002;</li>
+</ul>
+<p>&#x4E00;&#x65E6;&#x67D0;&#x4E2A;&#x4ECE;&#x8282;&#x70B9;&#x5728;&#x7ED9;&#x5B9A;&#x7684;&#x65F6;&#x9650;&#x5185;&#x5F97;&#x5230;&#x5927;&#x90E8;&#x5206;&#x4E3B;&#x8282;&#x70B9;&#x7684;&#x6388;&#x6743;&#xFF0C; &#x5B83;&#x5C31;&#x4F1A;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x6545;&#x969C;&#x8F6C;&#x79FB;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<ul>
+<li>&#x901A;&#x8FC7; <code>PONG</code> &#x6570;&#x636E;&#x5305;&#xFF08;packet&#xFF09;&#x544A;&#x77E5;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#xFF0C; &#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x73B0;&#x5728;&#x662F;&#x4E3B;&#x8282;&#x70B9;&#x4E86;&#x3002;</li>
+<li>&#x901A;&#x8FC7; <code>PONG</code> &#x6570;&#x636E;&#x5305;&#x544A;&#x77E5;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#xFF0C; &#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x662F;&#x4E00;&#x4E2A;&#x5DF2;&#x5347;&#x7EA7;&#x7684;&#x4ECE;&#x8282;&#x70B9;&#xFF08;promoted slave&#xFF09;&#x3002;</li>
+<li>&#x63A5;&#x7BA1;&#xFF08;claiming&#xFF09;&#x6240;&#x6709;&#x7531;&#x5DF2;&#x4E0B;&#x7EBF;&#x4E3B;&#x8282;&#x70B9;&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x7684;&#x54C8;&#x5E0C;&#x69FD;&#x3002;</li>
+<li>&#x663E;&#x5F0F;&#x5730;&#x5411;&#x6240;&#x6709;&#x8282;&#x70B9;&#x5E7F;&#x64AD;&#x4E00;&#x4E2A; <code>PONG</code> &#x6570;&#x636E;&#x5305;&#xFF0C; &#x52A0;&#x901F;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x8BC6;&#x522B;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x8FDB;&#x5EA6;&#xFF0C; &#x800C;&#x4E0D;&#x662F;&#x7B49;&#x5F85;&#x5B9A;&#x65F6;&#x7684; <code>PING</code> / <code>PONG</code> &#x6570;&#x636E;&#x5305;&#x3002;</li>
+</ul>
+<p>&#x6240;&#x6709;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x90FD;&#x4F1A;&#x6839;&#x636E;&#x65B0;&#x7684;&#x4E3B;&#x8282;&#x70B9;&#x5BF9;&#x914D;&#x7F6E;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x66F4;&#x65B0;&#xFF0C;&#x7279;&#x522B;&#x5730;&#xFF1A;</p>
+<ul>
+<li>&#x6240;&#x6709;&#x88AB;&#x65B0;&#x7684;&#x4E3B;&#x8282;&#x70B9;&#x63A5;&#x7BA1;&#x7684;&#x69FD;&#x4F1A;&#x88AB;&#x66F4;&#x65B0;&#x3002;</li>
+<li>&#x5DF2;&#x4E0B;&#x7EBF;&#x4E3B;&#x8282;&#x70B9;&#x7684;&#x6240;&#x6709;&#x4ECE;&#x8282;&#x70B9;&#x4F1A;&#x5BDF;&#x89C9;&#x5230; <code>PROMOTED</code> &#x6807;&#x5FD7;&#xFF0C; &#x5E76;&#x5F00;&#x59CB;&#x5BF9;&#x65B0;&#x7684;&#x4E3B;&#x8282;&#x70B9;&#x8FDB;&#x884C;&#x590D;&#x5236;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x5DF2;&#x4E0B;&#x7EBF;&#x7684;&#x4E3B;&#x8282;&#x70B9;&#x91CD;&#x65B0;&#x56DE;&#x5230;&#x4E0A;&#x7EBF;&#x72B6;&#x6001;&#xFF0C; &#x90A3;&#x4E48;&#x5B83;&#x4F1A;&#x5BDF;&#x89C9;&#x5230; <code>PROMOTED</code> &#x6807;&#x5FD7;&#xFF0C; &#x5E76;&#x5C06;&#x81EA;&#x8EAB;&#x8C03;&#x6574;&#x4E3A;&#x73B0;&#x4EFB;&#x4E3B;&#x8282;&#x70B9;&#x7684;&#x4ECE;&#x8282;&#x70B9;&#x3002;</li>
+</ul>
+<p>&#x5728;&#x96C6;&#x7FA4;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#xFF0C; &#x5982;&#x679C;&#x4E00;&#x4E2A;&#x5E26;&#x6709; <code>PROMOTED</code> &#x6807;&#x8BC6;&#x7684;&#x4E3B;&#x8282;&#x70B9;&#x56E0;&#x4E3A;&#x67D0;&#x4E9B;&#x539F;&#x56E0;&#x8F6C;&#x53D8;&#x6210;&#x4E86;&#x4ECE;&#x8282;&#x70B9;&#xFF0C; &#x90A3;&#x4E48;&#x8BE5;&#x8282;&#x70B9;&#x5C06;&#x4E22;&#x5931;&#x5B83;&#x6240;&#x5E26;&#x6709;&#x7684; <code>PROMOTED</code> &#x6807;&#x8BC6;&#x3002;</p>
+<h2 id="&#x53D1;&#x5E03;&#x8BA2;&#x9605;&#xFF08;&#x5DF2;&#x5B9E;&#x73B0;&#xFF0C;&#x4F46;&#x4ECD;&#x7136;&#x9700;&#x8981;&#x6539;&#x5584;&#xFF09;">&#x53D1;&#x5E03;/&#x8BA2;&#x9605;&#xFF08;&#x5DF2;&#x5B9E;&#x73B0;&#xFF0C;&#x4F46;&#x4ECD;&#x7136;&#x9700;&#x8981;&#x6539;&#x5584;&#xFF09;</h2>
+<p>&#x5728;&#x4E00;&#x4E2A; Redis &#x96C6;&#x7FA4;&#x4E2D;&#xFF0C; &#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x4EE5;&#x8BA2;&#x9605;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C; &#x4E5F;&#x53EF;&#x4EE5;&#x5411;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x53D1;&#x9001;&#x4FE1;&#x606F;&#xFF0C; &#x8282;&#x70B9;&#x4F1A;&#x5BF9;&#x5BA2;&#x6237;&#x7AEF;&#x6240;&#x53D1;&#x9001;&#x7684;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x8F6C;&#x53D1;&#x3002;</p>
+<p>&#x5728;&#x76EE;&#x524D;&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C; &#x8282;&#x70B9;&#x4F1A;&#x5C06;&#x63A5;&#x6536;&#x5230;&#x7684;&#x4FE1;&#x606F;&#x5E7F;&#x64AD;&#x81F3;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x8282;&#x70B9;&#xFF0C; &#x5728;&#x5C06;&#x6765;&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C; &#x53EF;&#x80FD;&#x4F1A;&#x4F7F;&#x7528; bloom filter &#x6216;&#x8005;&#x5176;&#x4ED6;&#x7B97;&#x6CD5;&#x6765;&#x4F18;&#x5316;&#x8FD9;&#x4E00;&#x64CD;&#x4F5C;&#x3002;</p>
+<h2 id="&#x9644;&#x5F55;-a&#xFF1A;-crc16-&#x7B97;&#x6CD5;&#x7684;-ansi-&#x5B9E;&#x73B0;&#x53C2;&#x8003;">&#x9644;&#x5F55; A&#xFF1A; CRC16 &#x7B97;&#x6CD5;&#x7684; ANSI &#x5B9E;&#x73B0;&#x53C2;&#x8003;</h2>
+<pre><code>/*
+ * Copyright 2001-2010 Georges Menie (www.menie.org)
+ * Copyright 2010 Salvatore Sanfilippo (adapted to Redis coding style)
+ * All rights reserved.
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in the
+ *       documentation and/or other materials provided with the distribution.
+ *     * Neither the name of the University of California, Berkeley nor the
+ *       names of its contributors may be used to endorse or promote products
+ *       derived from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS&apos;&apos; AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE REGENTS AND CONTRIBUTORS BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/* CRC16 implementation acording to CCITT standards.
+ *
+ * Note by @antirez: this is actually the XMODEM CRC 16 algorithm, using the
+ * following parameters:
+ *
+ * Name                       : &quot;XMODEM&quot;, also known as &quot;ZMODEM&quot;, &quot;CRC-16/ACORN&quot;
+ * Width                      : 16 bit
+ * Poly                       : 1021 (That is actually x^16 + x^12 + x^5 + 1)
+ * Initialization             : 0000
+ * Reflect Input byte         : False
+ * Reflect Output CRC         : False
+ * Xor constant to output CRC : 0000
+ * Output for &quot;123456789&quot;     : 31C3
+ */
+
+static const uint16_t crc16tab[256]= {
+    0x0000,0x1021,0x2042,0x3063,0x4084,0x50a5,0x60c6,0x70e7,
+    0x8108,0x9129,0xa14a,0xb16b,0xc18c,0xd1ad,0xe1ce,0xf1ef,
+    0x1231,0x0210,0x3273,0x2252,0x52b5,0x4294,0x72f7,0x62d6,
+    0x9339,0x8318,0xb37b,0xa35a,0xd3bd,0xc39c,0xf3ff,0xe3de,
+    0x2462,0x3443,0x0420,0x1401,0x64e6,0x74c7,0x44a4,0x5485,
+    0xa56a,0xb54b,0x8528,0x9509,0xe5ee,0xf5cf,0xc5ac,0xd58d,
+    0x3653,0x2672,0x1611,0x0630,0x76d7,0x66f6,0x5695,0x46b4,
+    0xb75b,0xa77a,0x9719,0x8738,0xf7df,0xe7fe,0xd79d,0xc7bc,
+    0x48c4,0x58e5,0x6886,0x78a7,0x0840,0x1861,0x2802,0x3823,
+    0xc9cc,0xd9ed,0xe98e,0xf9af,0x8948,0x9969,0xa90a,0xb92b,
+    0x5af5,0x4ad4,0x7ab7,0x6a96,0x1a71,0x0a50,0x3a33,0x2a12,
+    0xdbfd,0xcbdc,0xfbbf,0xeb9e,0x9b79,0x8b58,0xbb3b,0xab1a,
+    0x6ca6,0x7c87,0x4ce4,0x5cc5,0x2c22,0x3c03,0x0c60,0x1c41,
+    0xedae,0xfd8f,0xcdec,0xddcd,0xad2a,0xbd0b,0x8d68,0x9d49,
+    0x7e97,0x6eb6,0x5ed5,0x4ef4,0x3e13,0x2e32,0x1e51,0x0e70,
+    0xff9f,0xefbe,0xdfdd,0xcffc,0xbf1b,0xaf3a,0x9f59,0x8f78,
+    0x9188,0x81a9,0xb1ca,0xa1eb,0xd10c,0xc12d,0xf14e,0xe16f,
+    0x1080,0x00a1,0x30c2,0x20e3,0x5004,0x4025,0x7046,0x6067,
+    0x83b9,0x9398,0xa3fb,0xb3da,0xc33d,0xd31c,0xe37f,0xf35e,
+    0x02b1,0x1290,0x22f3,0x32d2,0x4235,0x5214,0x6277,0x7256,
+    0xb5ea,0xa5cb,0x95a8,0x8589,0xf56e,0xe54f,0xd52c,0xc50d,
+    0x34e2,0x24c3,0x14a0,0x0481,0x7466,0x6447,0x5424,0x4405,
+    0xa7db,0xb7fa,0x8799,0x97b8,0xe75f,0xf77e,0xc71d,0xd73c,
+    0x26d3,0x36f2,0x0691,0x16b0,0x6657,0x7676,0x4615,0x5634,
+    0xd94c,0xc96d,0xf90e,0xe92f,0x99c8,0x89e9,0xb98a,0xa9ab,
+    0x5844,0x4865,0x7806,0x6827,0x18c0,0x08e1,0x3882,0x28a3,
+    0xcb7d,0xdb5c,0xeb3f,0xfb1e,0x8bf9,0x9bd8,0xabbb,0xbb9a,
+    0x4a75,0x5a54,0x6a37,0x7a16,0x0af1,0x1ad0,0x2ab3,0x3a92,
+    0xfd2e,0xed0f,0xdd6c,0xcd4d,0xbdaa,0xad8b,0x9de8,0x8dc9,
+    0x7c26,0x6c07,0x5c64,0x4c45,0x3ca2,0x2c83,0x1ce0,0x0cc1,
+    0xef1f,0xff3e,0xcf5d,0xdf7c,0xaf9b,0xbfba,0x8fd9,0x9ff8,
+    0x6e17,0x7e36,0x4e55,0x5e74,0x2e93,0x3eb2,0x0ed1,0x1ef0
+};
+
+uint16_t crc16(const char *buf, int len) {
+    int counter;
+    uint16_t crc = 0;
+    for (counter = 0; counter &lt; len; counter++)
+            crc = (crc&lt;&lt;8) ^ crc16tab[((crc&gt;&gt;8) ^ *buf++)&amp;0x00FF];
+    return crc;
+}
+</code></pre>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../doc/8.html" class="navigation navigation-prev " aria-label="Previous page: 集群教程"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../ref/part2.html" class="navigation navigation-next " aria-label="Next page: Redis 命令参考"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

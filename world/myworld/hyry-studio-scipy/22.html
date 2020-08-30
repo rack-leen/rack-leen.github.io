@@ -1,0 +1,1100 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>自适应滤波器和NLMS模拟 | 用 Python 做科学计算</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./23.html" />
+    
+    
+    <link rel="prev" href="./21.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="20"
+        data-chapter-title="自适应滤波器和NLMS模拟"
+        data-filepath="22.md"
+        data-basepath="."
+        data-revision="Sat Mar 19 2016 09:26:33 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/hyry-studio-scipy" target="blank" class="custom-link">用 Python 做科学计算</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="0.html">
+            
+                
+                    <a href="./0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        用Python做科学计算
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="1.html">
+            
+                
+                    <a href="./1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        软件包的安装和介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        NumPy-快速处理数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        SciPy-数值计算库
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        matplotlib-绘制精美的图表
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Traits-为Python添加类型定义
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        TraitsUI-轻松制作用户界面
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        Chaco-交互式图表
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="8.html">
+            
+                
+                    <a href="./8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        TVTK-三维可视化数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="9.html">
+            
+                
+                    <a href="./9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        Mayavi-更方便的可视化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="10.html">
+            
+                
+                    <a href="./10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        Visual-制作3D演示动画
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="11.html">
+            
+                
+                    <a href="./11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        OpenCV-图像处理和计算机视觉
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="12.html">
+            
+                
+                    <a href="./12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        Traits使用手册
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1" data-path="13.html">
+            
+                
+                    <a href="./13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        定义Traits
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="14.html">
+            
+                
+                    <a href="./14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        Trait事件处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="15.html">
+            
+                
+                    <a href="./15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        设计自己的Trait编辑器
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="16-0.html">
+            
+                
+                    <a href="./16-0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        Visual使用手册
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1" data-path="16.html">
+            
+                
+                    <a href="./16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.1.</b>
+                        
+                        场景窗口
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="17.html">
+            
+                
+                    <a href="./17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        声音的输入输出
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="18.html">
+            
+                
+                    <a href="./18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        数字信号系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="19.html">
+            
+                
+                    <a href="./19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        FFT演示程序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18" data-path="20.html">
+            
+                
+                    <a href="./20.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.</b>
+                        
+                        频域信号处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19" data-path="21.html">
+            
+                
+                    <a href="./21.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.</b>
+                        
+                        Ctypes和NumPy
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="20" data-path="22.html">
+            
+                
+                    <a href="./22.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.</b>
+                        
+                        自适应滤波器和NLMS模拟
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21" data-path="23.html">
+            
+                
+                    <a href="./23.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.</b>
+                        
+                        单摆和双摆模拟
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22" data-path="24.html">
+            
+                
+                    <a href="./24.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.</b>
+                        
+                        分形与混沌
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="23" data-path="25.html">
+            
+                
+                    <a href="./25.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.</b>
+                        
+                        关于本书的编写
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24" data-path="25-1.html">
+            
+                
+                    <a href="./25-1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.</b>
+                        
+                        最近更新
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25" data-path="26-0.html">
+            
+                
+                    <a href="./26-0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.</b>
+                        
+                        源程序集
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="25.1" data-path="26-01.html">
+            
+                
+                    <a href="./26-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.1.</b>
+                        
+                        三角波的FFT演示
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.2" data-path="26.html">
+            
+                
+                    <a href="./26.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.2.</b>
+                        
+                        在traitsUI中使用的matplotlib控件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.3" data-path="27.html">
+            
+                
+                    <a href="./27.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.3.</b>
+                        
+                        CSV文件数据图形化工具
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.4" data-path="28.html">
+            
+                
+                    <a href="./28.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.4.</b>
+                        
+                        NLMS算法的模拟测试
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.5" data-path="29.html">
+            
+                
+                    <a href="./29.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.5.</b>
+                        
+                        三维标量场观察器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.6" data-path="30.html">
+            
+                
+                    <a href="./30.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.6.</b>
+                        
+                        频谱泄漏和hann窗
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.7" data-path="31.html">
+            
+                
+                    <a href="./31.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.7.</b>
+                        
+                        FFT卷积的速度比较
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.8" data-path="32.html">
+            
+                
+                    <a href="./32.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.8.</b>
+                        
+                        二次均衡器设计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.9" data-path="33.html">
+            
+                
+                    <a href="./33.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.9.</b>
+                        
+                        单摆摆动周期的计算
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.10" data-path="34.html">
+            
+                
+                    <a href="./34.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.10.</b>
+                        
+                        双摆系统的动画模拟
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.11" data-path="35.html">
+            
+                
+                    <a href="./35.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.11.</b>
+                        
+                        绘制Mandelbrot集合
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.12" data-path="36.html">
+            
+                
+                    <a href="./36.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.12.</b>
+                        
+                        迭代函数系统的分形
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.13" data-path="37.html">
+            
+                
+                    <a href="./37.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.13.</b>
+                        
+                        绘制L-System的分形图
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >用 Python 做科学计算</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x548C;nlms&#x6A21;&#x62DF;">&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x548C;NLMS&#x6A21;&#x62DF;</h1>
+<p>&#x672C;&#x7AE0;&#x5C06;&#x7B80;&#x8981;&#x4ECB;&#x7ECD;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x539F;&#x7406;&#x4EE5;&#x53CA;&#x5176;&#x6700;&#x5E38;&#x7528;&#x7684;&#x7B97;&#x6CD5;NLMS&#xFF0C;&#x5E76;&#x7ED9;NLMS&#x7B97;&#x6CD5;&#x7684;&#x4E24;&#x79CD;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#xFF1A;&#x7528;&#x7EAF;Python&#x7F16;&#x5199;&#xFF0C;&#x548C;&#x7528;ctypes&#x8C03;&#x7528;C&#x8BED;&#x8A00;&#x7F16;&#x5199;&#x3002;&#x6700;&#x540E;&#x5C06;&#x5BF9;NLMS&#x7B97;&#x6CD5;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x7684;&#x5B9E;&#x9A8C;&#x3002;</p>
+<h2 id="&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7B80;&#x4ECB;">&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7B80;&#x4ECB;</h2>
+<p>&#x8FD1;&#x5E74;&#x6765;&#xFF0C;&#x968F;&#x7740;&#x6570;&#x5B57;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x5668;&#x7684;&#x529F;&#x80FD;&#x7684;&#x4E0D;&#x65AD;&#x589E;&#x5F3A;&#xFF0C;&#x81EA;&#x9002;&#x5E94;&#x4FE1;&#x53F7;&#x5904;&#x7406; (adaptive signal process)&#x6D3B;&#x8DC3;&#x5728;&#x566A;&#x58F0;&#x6D88;&#x9664;&#x3001;&#x56DE;&#x58F0;&#x63A7;&#x5236;&#x3001;&#x4FE1;&#x53F7;&#x9884;&#x6D4B;&#x3001;&#x58F0;&#x97F3;&#x5B9A;&#x4F4D;&#x7B49;&#x4F17;&#x591A;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x9886;&#x57DF;&#x3002;</p>
+<p>&#x5C3D;&#x7BA1;&#x5176;&#x5E94;&#x7528;&#x9886;&#x57DF;&#x5341;&#x5206;&#x5E7F;&#x6CDB;&#xFF0C;&#x4F46;&#x57FA;&#x672C;&#x7684;&#x7CFB;&#x7EDF;&#x6784;&#x9020;&#x5927;&#x81F4;&#x53EA;&#x6709;&#x5982;&#x4E0B;&#x51E0;&#x79CD;&#x5206;&#x7C7B;&#x3002;</p>
+<h3 id="&#x7CFB;&#x7EDF;&#x8FA8;&#x8BC6;">&#x7CFB;&#x7EDF;&#x8FA8;&#x8BC6;</h3>
+<p>&#x6240;&#x8C13;&#x7CFB;&#x7EDF;&#x8FA8;&#x8BC6;(system identification)&#xFF0C;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x5BF9;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x8FDB;&#x884C;&#x89C2;&#x6D4B;&#xFF0C;&#x6784;&#x9020;&#x4E00;&#x4E2A;&#x6EE4;&#x6CE2;&#x5668;&#x4F7F;&#x5F97;&#x5B83;&#x5728;&#x540C;&#x6837;&#x7684;&#x8F93;&#x5165;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8F93;&#x51FA;&#x4FE1;&#x53F7;&#x548C;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x76F8;&#x540C;&#x3002;&#x7B80;&#x800C;&#x8A00;&#x4E4B;&#xFF0C;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x89C2;&#x6D4B;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x5BF9;&#x8F93;&#x5165;&#x7684;&#x53CD;&#x5E94;&#xFF0C;&#x63A2;&#x77E5;&#x5176;&#x5185;&#x90E8;&#x60C5;&#x51B5;&#x3002;&#x4E3A;&#x4E86;&#x63A2;&#x77E5;&#x5185;&#x60C5;&#x800C;&#x4F7F;&#x7528;&#x7684;&#x8F93;&#x5165;&#x4FE1;&#x53F7;&#x6211;&#x4EEC;&#x79F0;&#x4E4B;&#x4E3A;&#x53C2;&#x7167;&#x4FE1;&#x53F7;&#x3002;</p>
+<p><img src="img/NLMS_SystemIdentification.png" alt=""></p>
+<p>&#x7CFB;&#x7EDF;&#x8BC6;&#x522B;(System Identification)&#x7684;&#x6846;&#x56FE;</p>
+<p>&#x5982;&#x4E0A;&#x56FE;&#x6240;&#x793A;&#x53C2;&#x7167;&#x4FE1;&#x53F7; x(j)&#x540C;&#x65F6;&#x8F93;&#x5165;&#x5230;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x548C;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;H&#x4E2D;&#xFF0C;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x8F93;&#x51FA;&#x4E3A;y(j)&#xFF0C; &#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x8F93;&#x51FA;&#x4E3A;u(j)&#xFF0C;&#x7531;&#x4E8E;&#x89C2;&#x6D4B;&#x8BEF;&#x5DEE;&#x6216;&#x8005;&#x5916;&#x90E8;&#x566A;&#x58F0;&#x7684;&#x5E72;&#x6270;&#xFF0C;&#x5B9E;&#x9645;&#x89C2;&#x6D4B;&#x5230;&#x7684;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x8F93;&#x51FA;&#x4E3A;d(j)=y(j)+n(j)&#xFF0C;n(j)&#x88AB;&#x79F0;&#x4E3A;&#x5916;&#x90E8;&#x5E72;&#x6270;&#x3002;&#x901A;&#x8FC7;&#x6C42;&#x7684;d(j)&#x548C;u(j)&#x4E4B;&#x95F4;&#x7684;&#x8BEF;&#x5DEE;e(j)=d(j)-u(j)&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;H&#x548C;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x8FD8;&#x6709;&#x591A;&#x5C11;&#x5DEE;&#x522B;&#xFF0C;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x8BEF;&#x5DEE;&#x6211;&#x4EEC;&#x66F4;&#x65B0;H&#x7684;&#x5185;&#x90E8;&#x53C2;&#x6570;&#xFF0C;&#x4F7F;&#x5F97;&#x5B83;&#x66F4;&#x52A0;&#x9760;&#x8FD1;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x3002;</p>
+<p>&#x4E0A;&#x9762;&#x5404;&#x4E2A;&#x516C;&#x5F0F;&#x4E2D;&#x7684;j&#x8868;&#x793A;&#x67D0;&#x4E00;&#x65F6;&#x523B;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x8BA8;&#x8BBA;&#x7684;&#x662F;&#x6570;&#x5B57;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#xFF0C;&#x5DF2;&#x7ECF;&#x5BF9;&#x6240;&#x6709;&#x7684;&#x4FE1;&#x53F7;&#x8FDB;&#x884C;&#x53D6;&#x6837;&#xFF0C;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x628A;j&#x7B80;&#x5355;&#x7684;&#x770B;&#x4F5C;&#x53D6;&#x6837;&#x70B9;&#x7684;&#x4E0B;&#x6807;&#x3002;</p>
+<h3 id="&#x4FE1;&#x53F7;&#x9884;&#x6D4B;">&#x4FE1;&#x53F7;&#x9884;&#x6D4B;</h3>
+<p>&#x6240;&#x8C13;&#x4FE1;&#x53F7;&#x9884;&#x6D4B;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x4FE1;&#x53F7;&#x8FC7;&#x53BB;&#x7684;&#x503C;&#x9884;&#x6D4B;&#xFF08;&#x8BA1;&#x7B97;&#xFF09;&#x73B0;&#x5728;&#x7684;&#x503C;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x4FE1;&#x53F7;&#x9884;&#x6D4B;&#x7684;&#x7CFB;&#x7EDF;&#x6846;&#x56FE;&#x3002;</p>
+<p><img src="img/NLMS_predication.png" alt=""></p>
+<p>&#x4FE1;&#x53F7;&#x9884;&#x6D4B;(Predication)&#x6846;&#x56FE;</p>
+<p>x(j)&#x662F;&#x5F85;&#x9884;&#x6D4B;&#x7684;&#x4FE1;&#x53F7;&#xFF0C;&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x65E0;&#x6CD5;&#x5B8C;&#x7F8E;&#x5730;&#x89C2;&#x6D4B;&#x6B64;&#x4FE1;&#x53F7;&#xFF0C;&#x56E0;&#x6B64;&#x5BFC;&#x5165;&#x4E00;&#x4E2A;&#x5916;&#x90E8;&#x5E72;&#x6270;n(j)&#xFF0C;&#x8FD9;&#x6837;d(j)=x(j)+n(j)&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x89C2;&#x6D4B;&#x5230;&#x7684;&#x5F85;&#x9884;&#x6D4B;&#x4FE1;&#x53F7;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x5EF6;&#x8FDF;&#x5668;&#x5C06;d(j)&#x8FDB;&#x884C;&#x5EF6;&#x65F6;&#x5F97;&#x5230;d(j-D)&#xFF0C;&#x5E76;&#x628A;d(j-D)&#x8F93;&#x5165;&#x5230;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;H&#x4E2D;&#xFF0C;&#x5F97;&#x5230;&#x5176;&#x8F93;&#x51FA;&#x4E3A;u(j)&#xFF0C;u(j)&#x5C31;&#x662F;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x901A;&#x8FC7;&#x5F85;&#x9884;&#x6D4B;&#x4FE1;&#x53F7;&#x8FC7;&#x53BB;&#x7684;&#x503C;&#x9884;&#x6D4B;&#x51FA;&#x7684;&#x73B0;&#x5728;&#x7684;&#x503C;&#xFF0C;&#x8BA1;&#x7B97;&#x89C2;&#x6D4B;&#x503C;d(j)&#x548C;&#x9884;&#x6D4B;&#x503C;u(j)&#x4E4B;&#x95F4;&#x7684;&#x8BEF;&#x5DEE;e(j)=d(j)-u(j)&#xFF0C;&#x901A;&#x8FC7;e(j)&#x66F4;&#x65B0;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;H&#x7684;&#x5185;&#x90E8;&#x7CFB;&#x6570;&#x4F7F;&#x5F97;&#x5176;&#x8F93;&#x51FA;&#x66F4;&#x52A0;&#x63A5;&#x8FD1;d(j)&#x3002;</p>
+<p>&#x5982;&#x679C;x(j)&#x5B58;&#x5728;&#x767D;&#x8272;&#x566A;&#x58F0;&#x7684;&#x6210;&#x5206;&#x548C;&#x5468;&#x671F;&#x4FE1;&#x53F7;&#x7684;&#x6210;&#x5206;&#xFF0C;&#x7531;&#x4E8E;&#x767D;&#x8272;&#x566A;&#x58F0;&#x662F;&#x5B8C;&#x5168;&#x4E0D;&#x81EA;&#x76F8;&#x5173;&#xFF0C;&#x65E0;&#x6CD5;&#x9884;&#x6D4B;&#x7684;&#x4FE1;&#x53F7;&#xFF0C;&#x56E0;&#x6B64;&#x901A;&#x8FC7;&#x8FC7;&#x53BB;&#x7684;&#x503C;x(j-D)&#x6240;&#x80FD;&#x9884;&#x6D4B;&#x7684;&#x53EA;&#x80FD;&#x662F;&#x5176;&#x4E2D;&#x7684;&#x5468;&#x671F;&#x4FE1;&#x53F7;&#x7684;&#x6210;&#x5206;&#x3002;&#x8FD9;&#x6837;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;H&#x7684;&#x8F93;&#x51FA;&#x4FE1;&#x53F7;u(j)&#x5C31;&#x4F1A;&#x4E0E;&#x5468;&#x671F;&#x4FE1;&#x53F7;&#x6210;&#x5206;&#x6E10;&#x6E10;&#x903C;&#x8FD1;&#xFF0C;&#x800C;e(j)&#x5219;&#x662F;&#x5269;&#x4E0B;&#x7684;&#x4E0D;&#x53EF;&#x9884;&#x6D4B;&#x7684;&#x767D;&#x8272;&#x566A;&#x58F0;&#x7684;&#x6210;&#x5206;&#x3002;&#x56E0;&#x6B64;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x4E5F;&#x53EF;&#x4EE5;&#x8FD0;&#x7528;&#x4E8E;&#x566A;&#x58F0;&#x6D88;&#x9664;&#x3002;</p>
+<h3 id="&#x4FE1;&#x53F7;&#x5747;&#x8861;">&#x4FE1;&#x53F7;&#x5747;&#x8861;</h3>
+<p><img src="img/NLMS_equalization.png" alt=""></p>
+<p>&#x4FE1;&#x53F7;&#x5747;&#x8861;(Equalization)&#x6846;&#x56FE;</p>
+<p>&#x5F53;&#x4FE1;&#x53F7;x(j)&#x901A;&#x8FC7;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x4E4B;&#x540E;&#x53D8;&#x6210;y(j)&#xFF0C;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x5BF9;&#x4FE1;&#x53F7;x(j)&#x8FDB;&#x884C;&#x4E86;&#x67D0;&#x79CD;&#x6539;&#x53D8;&#xFF0C;&#x4F7F;&#x5F97;&#x5176;&#x6CE2;&#x5F62;&#x4EA7;&#x751F;&#x6B6A;&#x66F2;&#x3002;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x5747;&#x8861;&#x5668;&#x77EB;&#x6B63;&#x8FD9;&#x79CD;&#x6B6A;&#x66F2;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x901A;&#x8FC7;y(j)&#x91CD;&#x5EFA;&#x539F;&#x59CB;&#x4FE1;&#x53F7;x(j)&#xFF0C;&#x7531;&#x4E8E;&#x56E0;&#x679C;&#x5F8B;&#x8FD8;&#x539F;&#x539F;&#x59CB;&#x4FE1;&#x53F7;x(j)&#x662F;&#x4E0D;&#x53EF;&#x80FD;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x80FD;&#x8FD8;&#x539F;&#x5176;&#x5EF6;&#x65F6;&#x4E86;&#x7684;&#x4FE1;&#x53F7;x(j-D)&#x3002;x(j)&#x548C;x(j-D)&#x9664;&#x4E86;&#x65F6;&#x95F4;&#x4E0A;&#x7684;&#x5EF6;&#x8FDF;&#x4E4B;&#x5916;&#xFF0C;&#x5176;&#x5B83;&#x7279;&#x6027;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5C06;&#x89C2;&#x6D4B;&#x5230;&#x7684;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x8F93;&#x51FA;y(j)+n(j)&#x8F93;&#x5165;&#x5230;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;H&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;H&#x7684;&#x7CFB;&#x6570;&#x66F4;&#x65B0;&#x4F7F;&#x5F97;&#x5176;&#x8F93;&#x51FA;u(j)&#x9010;&#x6E10;&#x903C;&#x8FD1;&#x539F;&#x59CB;&#x4FE1;&#x53F7;&#x7684;&#x5EF6;&#x65F6;x(j-D)&#x3002;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5C31;&#x6784;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x6EE4;&#x6CE2;&#x5668;H&#x4F7F;&#x5F97;&#x5B83;&#x4E0E;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x5377;&#x79EF;&#x6B63;&#x597D;&#x7B49;&#x4E8E;&#x4E00;&#x4E2A;&#x8109;&#x51B2;&#x4F20;&#x9012;&#x51FD;&#x6570;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;H&#x7684;&#x9891;&#x57DF;&#x7279;&#x6027;&#x6070;&#x597D;&#x80FD;&#x62B5;&#x6D88;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x6240;&#x5E26;&#x6765;&#x7684;&#x6539;&#x53D8;&#x3002;</p>
+<h2 id="nlms&#x8BA1;&#x7B97;&#x516C;&#x5F0F;">NLMS&#x8BA1;&#x7B97;&#x516C;&#x5F0F;</h2>
+<p>&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x4E2D;&#x6700;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x4E2A;&#x73AF;&#x8282;&#x5C31;&#x662F;&#x5176;&#x7CFB;&#x6570;&#x7684;&#x66F4;&#x65B0;&#x7B97;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5BF9;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x7CFB;&#x6570;&#x66F4;&#x65B0;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x5C31;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x7684;FIR&#x6EE4;&#x6CE2;&#x5668;&#x4E86;&#x3002;&#x7CFB;&#x6570;&#x66F4;&#x65B0;&#x7B97;&#x6CD5;&#x6709;&#x5F88;&#x591A;&#x79CD;&#x7C7B;&#xFF0C;&#x6700;&#x57FA;&#x672C;&#x3001;&#x5E38;&#x7528;&#x3001;&#x7B80;&#x5355;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x53EB;&#x505A;NLMS(&#x5F52;&#x4E00;&#x5316;&#x6700;&#x5C0F;&#x5747;&#x65B9;)&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x770B;&#x770B;&#x5B83;&#x7684;&#x6570;&#x5B66;&#x516C;&#x5F0F;&#x8868;&#x8FBE;&#xFF1A;</p>
+<p>&#x8BBE;&#x7F6E;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7CFB;&#x6570; <img src="img/32a7c07cb146b74e4b01e93aaa2fe06808e58855.png" alt=""> &#x7684;&#x6240;&#x6709;&#x521D;&#x59CB;&#x503C;&#x4E3A;0, <img src="img/32a7c07cb146b74e4b01e93aaa2fe06808e58855.png" alt=""> &#x7684;&#x957F;&#x5EA6;&#x4E3A;I&#x3002;</p>
+<p><img src="img/7665d729de222230f977f99f9247158baeebc368.png" alt=""></p>
+<p>&#x5BF9;&#x6BCF;&#x4E2A;&#x53D6;&#x6837;&#x503C;&#x8FDB;&#x884C;&#x5982;&#x4E0B;&#x8BA1;&#x7B97;&#xFF0C;&#x5176;&#x4E2D;n=0, 1, 2, ...</p>
+<p><img src="img/8a19dae508bf1908e61517f347d3fd8608559a83.png" alt=""></p>
+<p><img src="img/5773c1e020a1de88d5957055ee23ed51b934b5b6.png" alt=""></p>
+<p><img src="img/cceedf6f5b3d8be6300fa7e9eb23a6b143ba011b.png" alt=""></p>
+<p>&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7CFB;&#x6570; <img src="img/32a7c07cb146b74e4b01e93aaa2fe06808e58855.png" alt=""> &#x662F;&#x4E00;&#x4E2A;&#x957F;&#x5EA6;&#x4E3A;I&#x7684;&#x77E2;&#x91CF;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x957F;&#x5EA6;&#x4E3A;I&#x7684;FIR&#x6EE4;&#x6CE2;&#x5668;&#x3002;&#x5728;&#x65F6;&#x523B;n&#xFF0C;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x6BCF;&#x4E2A;&#x7CFB;&#x6570;&#x5BF9;&#x5E94;&#x7684;&#x8F93;&#x5165;&#x4FE1;&#x53F7;&#x4E3A; <img src="img/5dd5002250a7cc583482afd0cf4b9917ee8068e0.png" alt=""> &#xFF0C;&#x5B83;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x957F;&#x5EA6;&#x4E3A;I&#x7684;&#x77E2;&#x91CF;&#x3002;&#x8FD9;&#x4E24;&#x4E2A;&#x77E2;&#x91CF;&#x7684;&#x70B9;&#x4E58;&#x5373;&#x4E3A;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x8F93;&#x51FA;&#x548C;&#x76EE;&#x6807;&#x4FE1;&#x53F7;d(n)&#x4E4B;&#x95F4;&#x7684;&#x5DEE;&#x4E3A;e(n)&#xFF0C;&#x7136;&#x540E;&#x6839;&#x636E;e(n)&#x548C; <img src="img/5dd5002250a7cc583482afd0cf4b9917ee8068e0.png" alt=""> &#xFF0C; &#x66F4;&#x65B0;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x7CFB;&#x6570;&#x3002;</p>
+<p>&#x6570;&#x5B66;&#x516C;&#x5F0F;&#x603B;&#x662F;&#x4EE4;&#x4EBA;&#x96BE;&#x4EE5;&#x7406;&#x89E3;&#x7684;&#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x4EE5;&#x56FE;&#x793A;&#x4E3A;&#x4F8B;&#x8FDB;&#x884C;&#x8BF4;&#x660E;&#xFF1A;</p>
+<p><img src="img/NLMS_alogrithm_demo.png" alt=""></p>
+<p>NLMS&#x7B97;&#x6CD5;&#x793A;&#x610F;&#x56FE;</p>
+<p>&#x56FE;&#x4E2D;&#x5047;&#x8BBE;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;h&#x7684;&#x957F;&#x5EA6;&#x4E3A;4&#xFF0C;&#x5728;&#x65F6;&#x523B;7&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x8F93;&#x51FA;&#x4E3A;:</p>
+<pre><code>u[7] = h[0]*x[7] + h[1]*x[6] + h[2]*x[5] + h[3]*x[4]
+</code></pre><p>&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x8F93;&#x5165;&#x4FE1;&#x53F7;&#x7684;&#x5E73;&#x65B9;&#x548C;powerX&#x4E3A;:</p>
+<pre><code>powerX = x[4]*x[4] + x[5]*x[5] + x[6]*x[6] + x[7]*x[7]
+</code></pre><p>&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x8F93;&#x51FA;d[7]&#x548C;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x8F93;&#x51FA;u[7]&#x4E4B;&#x95F4;&#x7684;&#x5DEE;&#x4E3A;:</p>
+<pre><code>e[7] = d[7] - u[7]
+</code></pre><p>&#x4F7F;&#x7528;u[7]&#x548C;x[4]..x[7]&#x5BF9;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x7CFB;&#x6570;&#x66F4;&#x65B0;:</p>
+<pre><code>h[4] = h[4] + u * e[7]*x[4]/powerX
+h[4] = h[5] + u * e[7]*x[5]/powerX
+h[4] = h[6] + u * e[7]*x[6]/powerX
+h[4] = h[7] + u * e[7]*x[7]/powerX
+</code></pre><p>&#x5176;&#x4E2D;&#x53C2;&#x6570;u&#x6210;&#x4E3A;&#x66F4;&#x65B0;&#x7CFB;&#x6570;&#xFF0C;&#x4E3A;0&#x5230;1&#x4E4B;&#x95F4;&#x7684;&#x4E00;&#x4E2A;&#x5B9E;&#x6570;&#xFF0C;&#x6B64;&#x503C;&#x8D8A;&#x5927;&#x7CFB;&#x6570;&#x66F4;&#x65B0;&#x7684;&#x901F;&#x5EA6;&#x8D8A;&#x5FEB;&#x3002;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x65F6;&#x523B;i&#x90FD;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x4E0A;&#x8FF0;&#x7684;&#x8BA1;&#x7B97;&#xFF0C;&#x56E0;&#x6B64;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x7CFB;&#x6570;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x53C2;&#x7167;&#x4FE1;&#x53F7;x&#x7684;&#x53D6;&#x6837;&#x90FD;&#x66F4;&#x65B0;&#x4E00;&#x6B21;&#x3002;</p>
+<h2 id="numpy&#x5B9E;&#x73B0;">NumPy&#x5B9E;&#x73B0;</h2>
+<p>&#x6309;&#x7167;&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x7684;NLMS&#x7B97;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x5F88;&#x5BB9;&#x6613;&#x5199;&#x51FA;&#x7528;NumPy&#x5B9E;&#x73B0;&#x7684;NLMS&#x8BA1;&#x7B97;&#x7A0B;&#x5E8F;&#xFF1A;</p>
+<pre><code># -*- coding: utf-8 -*-
+# filename: nlms_numpy.py
+
+import numpy as np
+
+# &#x7528;Numpy&#x5B9E;&#x73B0;&#x7684;NLMS&#x7B97;&#x6CD5;
+# x&#x4E3A;&#x53C2;&#x7167;&#x4FE1;&#x53F7;&#xFF0C;d&#x4E3A;&#x76EE;&#x6807;&#x4FE1;&#x53F7;&#xFF0C;h&#x4E3A;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x521D;&#x503C;
+# step_size&#x4E3A;&#x66F4;&#x65B0;&#x7CFB;&#x6570;
+def nlms(x, d, h, step_size=0.5):
+   i = len(h)
+   size = len(x)
+   # &#x8BA1;&#x7B97;&#x8F93;&#x5165;&#x5230;h&#x4E2D;&#x7684;&#x53C2;&#x7167;&#x4FE1;&#x53F7;&#x7684;&#x4E58;&#x65B9;he
+   power = np.sum( x[i:i-len(h):-1] * x[i:i-len(h):-1] )
+   u = np.zeros(size, dtype=np.float64)
+
+   while True:
+       x_input = x[i:i-len(h):-1]
+       u[i] = np.dot(x_input , h)
+       e = d[i] - u[i]
+       h += step_size * e / power * x_input
+
+       power -= x_input[-1] * x_input[-1] # &#x51CF;&#x53BB;&#x6700;&#x65E9;&#x7684;&#x53D6;&#x6837;
+       i+=1
+       if i &gt;= size: return u
+       power += x[i] * x[i] # &#x589E;&#x52A0;&#x6700;&#x65B0;&#x7684;&#x53D6;&#x6837;
+</code></pre><p>&#x4E3A;&#x4E86;&#x8282;&#x7701;&#x8BA1;&#x7B97;&#x65F6;&#x95F4;&#xFF0C;&#x6211;&#x4EEC;&#x7528;&#x4E00;&#x4E2A;&#x4E34;&#x65F6;&#x53D8;&#x91CF;power&#x4FDD;&#x5B58;&#x8F93;&#x5165;&#x5230;&#x6EE4;&#x6CE2;&#x5668;h&#x4E2D;&#x7684;&#x53C2;&#x7167;&#x4FE1;&#x53F7;x&#x7684;&#x80FD;&#x91CF;&#x3002;&#x5728;&#x5BF9;&#x4E8E;x&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x53D6;&#x6837;&#x7684;&#x5FAA;&#x73AF;&#x4E2D;&#xFF0C;power&#x51CF;&#x53BB;x&#x4E2D;&#x6700;&#x65E9;&#x7684;&#x4E00;&#x4E2A;&#x53D6;&#x6837;&#x503C;&#x7684;&#x4E58;&#x65B9;&#xFF0C;&#x589E;&#x52A0;&#x6700;&#x65B0;&#x7684;&#x4E00;&#x4E2A;&#x53D6;&#x6837;&#x503C;&#x7684;&#x4E58;&#x65B9;&#x3002;&#x8FD9;&#x6837;&#x4E3A;&#x4E86;&#x8BA1;&#x7B97;&#x53C2;&#x7167;&#x4FE1;&#x53F7;&#x7684;&#x80FD;&#x91CF;&#xFF0C;&#x6BCF;&#x6B21;&#x5FAA;&#x73AF;&#x53EA;&#x9700;&#x8981;&#x8BA1;&#x7B97;&#x4E24;&#x6B21;&#x4E58;&#x6CD5;&#x548C;&#x4E24;&#x6B21;&#x52A0;&#x6CD5;&#x5373;&#x53EF;&#x3002;</p>
+<p>nlms&#x51FD;&#x6570;&#x7684;&#x8F93;&#x5165;&#x4E3A;&#x53C2;&#x7167;&#x4FE1;&#x53F7;x&#x3001;&#x76EE;&#x6807;&#x4FE1;&#x53F7;d&#x548C;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x7CFB;&#x6570;h&#x3002;&#x56E0;&#x4E3A;&#x5728;&#x540E;&#x9762;&#x7684;&#x6A21;&#x62DF;&#x8BA1;&#x7B97;&#x4E2D;&#xFF0C;d&#x662F;x&#x548C;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x8109;&#x51B2;&#x54CD;&#x5E94;&#x7684;&#x5377;&#x79EF;&#x800C;&#x8BA1;&#x7B97;&#x7684;&#x6765;&#xFF0C;&#x5B83;&#x7684;&#x957F;&#x5EA6;&#x4F1A;&#x5927;&#x4E8E;x&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x56E0;&#x6B64;&#x5FAA;&#x73AF;&#x4F53;&#x7684;&#x5FAA;&#x73AF;&#x6B21;&#x6570;&#x4EE5;&#x53C2;&#x7167;&#x4FE1;&#x53F7;&#x7684;&#x957F;&#x5EA6;&#x4E3A;&#x57FA;&#x51C6;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x5BF9;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x5404;&#x79CD;&#x5E94;&#x7528;&#x8FDB;&#x884C;&#x6A21;&#x62DF;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x5982;&#x4E0B;&#x7684;&#x51E0;&#x4E2A;&#x8F85;&#x52A9;&#x51FD;&#x6570;&#xFF0C;&#x5B8C;&#x6574;&#x7684;&#x7A0B;&#x5E8F;&#x8BF7;&#x53C2;&#x8003; <a href="example_nlms_test.html"><em>NLMS&#x7B97;&#x6CD5;&#x7684;&#x6A21;&#x62DF;&#x6D4B;&#x8BD5;</em></a> &#x3002;</p>
+<pre><code>def make_path(delay, length):
+   path_length = length - delay
+   h = np.zeros(length, np.float64)
+   h[delay:] = np.random.standard_normal(path_length) * np.exp( np.linspace(0, -4, path_length) )
+   h /= np.sqrt(np.sum(h*h))
+   return h
+</code></pre><p>make_path&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x957F;&#x5EA6;&#x4E3A;length&#xFF0C;&#x6700;&#x5C0F;&#x5EF6;&#x65F6;&#x4E3A;delay&#x7684;&#x6307;&#x6570;&#x8870;&#x51CF;&#x7684;&#x6CE2;&#x5F62;&#x3002;&#x8FD9;&#x79CD;&#x6CE2;&#x5F62;&#x548C;&#x5C01;&#x95ED;&#x7A7A;&#x95F4;&#x7684;&#x58F0;&#x97F3;&#x7684;&#x4F20;&#x9012;&#x51FD;&#x6570;&#x6709;&#x4E9B;&#x7C7B;&#x4F3C;&#x4E4B;&#x5904;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x8BA1;&#x7B97;&#x673A;&#x4E0A;&#x8FDB;&#x884C;&#x58F0;&#x97F3;&#x7684;&#x7B97;&#x6CD5;&#x6A21;&#x62DF;&#x65F6;&#x7ECF;&#x5E38;&#x7528;&#x8FD9;&#x79CD;&#x6CE2;&#x5F62;&#x4F5C;&#x4E3A;&#x7CFB;&#x7EDF;&#x7684;&#x4F20;&#x9012;&#x51FD;&#x6570;&#x3002;:</p>
+<pre><code>def plot_converge(y, u, label=&quot;&quot;):
+    size = len(u)
+    avg_number = 200
+    e = np.power(y[:size] - u, 2)
+    tmp = e[:int(size/avg_number)*avg_number]
+    tmp.shape = -1, avg_number
+    avg = np.average( tmp, axis=1 )
+    pl.plot(np.linspace(0, size, len(avg)), 10*np.log10(avg), linewidth=2.0, label=label)
+
+def diff_db(h0, h):
+   return 10*np.log10(np.sum((h0-h)*(h0-h)) / np.sum(h0*h0))
+</code></pre><p>plot_converge&#x7ED8;&#x5236;&#x4FE1;&#x53F7;y&#x548C;&#x4FE1;&#x53F7;u&#x4E4B;&#x95F4;&#x7684;&#x8BEF;&#x5DEE;&#xFF0C;&#x6BCF;avg_number&#x4E2A;&#x53D6;&#x6837;&#x70B9;&#x5C31;&#x4E0A;&#x4E00;&#x6B21;&#x8BEF;&#x5DEE;&#x7684;&#x4E58;&#x65B9;&#x7684;&#x5E73;&#x5747;&#x503C;&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x7528;plot_converge&#x51FD;&#x6570;&#x7ED8;&#x5236;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x8F93;&#x51FA;y&#x548C;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x8F93;&#x51FA;u&#x4E4B;&#x95F4;&#x7684;&#x8BEF;&#x5DEE;&#x3002;&#x89C2;&#x5BDF;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x662F;&#x5982;&#x4F55;&#x6536;&#x655B;&#x7684;&#xFF0C;&#x4EE5;&#x8BC4;&#x4EF7;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x6536;&#x655B;&#x7279;&#x6027;&#x3002;diff_db&#x51FD;&#x6570;&#x540C;&#x6837;&#x662F;&#x7528;&#x6765;&#x8BC4;&#x4EF7;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x6536;&#x655B;&#x7279;&#x6027;&#xFF0C;&#x4E0D;&#x8FC7;&#x4ED6;&#x662F;&#x76F4;&#x63A5;&#x8BA1;&#x7B97;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x4F20;&#x9012;&#x51FD;&#x6570;h0&#x548C;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x4F20;&#x9012;&#x51FD;&#x6570;h&#x4E4B;&#x95F4;&#x7684;&#x8BEF;&#x5DEE;&#x3002;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x4F1A;&#x770B;&#x5230;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x5F97;&#x5230;&#x7684;&#x6536;&#x655B;&#x503C;&#x662F;&#x76F8;&#x540C;&#x7684;&#x3002;</p>
+<h3 id="&#x7CFB;&#x7EDF;&#x8FA8;&#x8BC6;&#x6A21;&#x62DF;">&#x7CFB;&#x7EDF;&#x8FA8;&#x8BC6;&#x6A21;&#x62DF;</h3>
+<p>&#x6211;&#x4EEC;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x51FD;&#x6570;&#x8C03;&#x7528;nlms&#x7B97;&#x6CD5;&#x5BF9;&#x7CFB;&#x7EDF;&#x8FA8;&#x8BC6;&#x5E94;&#x7528;&#x8FDB;&#x884C;&#x6A21;&#x62DF;&#xFF1A;</p>
+<pre><code>def sim_system_identify(nlms, x, h0, step_size, noise_scale):
+       y = np.convolve(x, h0)
+       d = y + np.random.standard_normal(len(y)) * noise_scale # &#x6DFB;&#x52A0;&#x767D;&#x8272;&#x566A;&#x58F0;&#x7684;&#x5916;&#x90E8;&#x5E72;&#x6270;
+       h = np.zeros(len(h0), np.float64) # &#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x957F;&#x5EA6;&#x548C;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x957F;&#x5EA6;&#x76F8;&#x540C;&#xFF0C;&#x521D;&#x59CB;&#x503C;&#x4E3A;0
+       u = nlms( x, d, h, step_size )
+       return y, u, h
+</code></pre><p><img src="img/NLMS_SystemIdentification.png" alt=""></p>
+<p>&#x7CFB;&#x7EDF;&#x8BC6;&#x522B;(System Identification)&#x7684;&#x6846;&#x56FE;</p>
+<p>&#x6B64;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x5206;&#x522B;&#x4E3A;&#xFF1A;</p>
+<ul>
+<li><strong>nlms</strong> : nlms&#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x51FD;&#x6570;</li>
+<li><strong>x</strong> : &#x53C2;&#x7167;&#x4FE1;&#x53F7;</li>
+<li><strong>h0</strong> : &#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x4F20;&#x9012;&#x51FD;&#x6570;&#xFF0C;&#x867D;&#x7136;&#x662F;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#xFF0C;&#x4F46;&#x662F;&#x8BA1;&#x7B97;&#x673A;&#x6A21;&#x62DF;&#x65F6;&#x5B83;&#x662F;&#x5DF2;&#x77E5;&#x7684;</li>
+<li><strong>step_size</strong> : nlms&#x7B97;&#x6CD5;&#x7684;&#x66F4;&#x65B0;&#x7CFB;&#x6570;</li>
+<li><strong>noise_scale</strong> : &#x5916;&#x90E8;&#x5E72;&#x6270;&#x7684;&#x7CFB;&#x6570;&#xFF0C;&#x6B64;&#x7CFB;&#x6570;&#x51B3;&#x5B9A;&#x5916;&#x90E8;&#x5E72;&#x6270;&#x7684;&#x5927;&#x5C0F;&#xFF0C;0&#x8868;&#x793A;&#x6CA1;&#x6709;&#x5916;&#x90E8;&#x5E72;&#x6270;</li>
+</ul>
+<p>&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x5206;&#x522B;&#x4E3A;&#xFF1A;</p>
+<ul>
+<li><strong>y</strong> : &#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x4E0D;&#x5305;&#x62EC;&#x5916;&#x90E8;&#x5E72;&#x6270;</li>
+<li><strong>u</strong> : &#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x8F93;&#x51FA;</li>
+<li><strong>h</strong> : &#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x6700;&#x7EC8;&#x7684;&#x7CFB;&#x6570;</li>
+</ul>
+<p>&#x6700;&#x540E;&#x6211;&#x4EEC;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x51FD;&#x6570;&#x521B;&#x5EFA;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;h0&#xFF0C; &#x53C2;&#x7167;&#x4FE1;&#x53F7;x&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528;sim_system_identify&#x51FD;&#x6570;&#x5F97;&#x5230;&#x7ED3;&#x679C;&#x5E76;&#x4E14;&#x7ED8;&#x56FE;&#xFF1A;</p>
+<pre><code>def system_identify_test1():
+    h0 = make_path(32, 256) # &#x968F;&#x673A;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x4F20;&#x9012;&#x51FD;&#x6570;
+    x = np.random.standard_normal(10000)  # &#x53C2;&#x7167;&#x4FE1;&#x53F7;&#x4E3A;&#x767D;&#x566A;&#x58F0;
+    y, u, h = sim_system_identify(nlms_numpy.nlms, x, h0, 0.5, 0.1)
+    print diff_db(h0, h)
+    pl.figure( figsize=(8, 6) )
+    pl.subplot(211)
+    pl.subplots_adjust(hspace=0.4)
+    pl.plot(h0, c=&quot;r&quot;)
+    pl.plot(h, c=&quot;b&quot;)
+    pl.title(u&quot;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x548C;&#x6536;&#x655B;&#x540E;&#x7684;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x7CFB;&#x6570;&#x6BD4;&#x8F83;&quot;)
+    pl.subplot(212)
+    plot_converge(y, u)
+    pl.title(u&quot;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x6536;&#x655B;&#x7279;&#x6027;&quot;)
+    pl.xlabel(&quot;Iterations (samples)&quot;)
+    pl.ylabel(&quot;Converge Level (dB)&quot;)
+    pl.show()
+</code></pre><p><img src="img/NLMS_01.png" alt=""></p>
+<p>&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x6536;&#x655B;&#x4E4B;&#x540E;&#x7684;&#x7CFB;&#x6570;&#x548C;&#x6536;&#x655B;&#x901F;&#x5EA6;</p>
+<p>&#x4E0A;&#x90E8;&#x7684;&#x56FE;&#x663E;&#x793A;&#x7684;&#x662F;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;(&#x7EA2;&#x8272;)&#x548C;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;(&#x84DD;&#x8272;)&#x7684;&#x4F20;&#x9012;&#x51FD;&#x6570;&#x7684;&#x7CFB;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x5DF2;&#x7ECF;&#x5341;&#x5206;&#x63A5;&#x8FD1;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x4E86;&#x3002;diff_db(h0, h)&#x7684;&#x8F93;&#x51FA;&#x4E3A;-25.35dB&#x3002;&#x4E0B;&#x90E8;&#x7684;&#x56FE;&#x901A;&#x8FC7;&#x7ED8;&#x5236;y&#x548C;u&#x4E4B;&#x95F4;&#x7684;&#x8BEF;&#x5DEE;&#xFF0C;&#x663E;&#x793A;&#x4E86;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x6536;&#x655B;&#x8FC7;&#x7A0B;&#x3002;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x7ECF;&#x8FC7;&#x7EA6;3000&#x70B9;&#x7684;&#x8BA1;&#x7B97;&#x4E4B;&#x540E;&#xFF0C;&#x6536;&#x655B;&#x8FC7;&#x7A0B;&#x5DF2;&#x7ECF;&#x9971;&#x548C;&#xFF0C;&#x6700;&#x7EC8;&#x7684;&#x8BEF;&#x5DEE;&#x4E3A;-25dB&#x5DE6;&#x53F3;&#xFF0C;&#x548C;diff_db&#x8BA1;&#x7B97;&#x7684;&#x7ED3;&#x679C;&#x4E00;&#x81F4;&#x3002;</p>
+<p>&#x4ECE;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6536;&#x655B;&#x8FC7;&#x7A0B;&#x7684;&#x4E24;&#x4E2A;&#x91CD;&#x8981;&#x7279;&#x6027;&#xFF1A;&#x6536;&#x655B;&#x65F6;&#x95F4;&#x548C;&#x6536;&#x655B;&#x7CBE;&#x5EA6;&#x3002;&#x53C2;&#x7167;&#x4FE1;&#x53F7;&#x7684;&#x7279;&#x6027;&#x3001;&#x5916;&#x90E8;&#x5E72;&#x6270;&#x7684;&#x5927;&#x5C0F;&#x548C;&#x66F4;&#x65B0;&#x7CFB;&#x6570;&#x90FD;&#x4F1A;&#x5F71;&#x54CD;&#x8FD9;&#x4E24;&#x4E2A;&#x7279;&#x6027;&#x3002;&#x4E0B;&#x9762;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x770B;&#x53C2;&#x7167;&#x4FE1;&#x53F7;&#x4E3A;&#x767D;&#x8272;&#x566A;&#x58F0;&#x3001;&#x5916;&#x90E8;&#x5E72;&#x6270;&#x7684;&#x80FD;&#x91CF;&#x56FA;&#x5B9A;&#x65F6;&#xFF0C;&#x66F4;&#x65B0;&#x7CFB;&#x6570;&#x5BF9;&#x5B83;&#x4EEC;&#x5F71;&#x54CD;&#xFF1A;</p>
+<pre><code>def system_identify_test2():
+    h0 = make_path(32, 256) # &#x968F;&#x673A;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x4F20;&#x9012;&#x51FD;&#x6570;
+    x = np.random.standard_normal(20000)  # &#x53C2;&#x7167;&#x4FE1;&#x53F7;&#x4E3A;&#x767D;&#x566A;&#x58F0;
+    pl.figure(figsize=(8,4))
+    for step_size in np.arange(0.1, 1.0, 0.2):
+        y, u, h = sim_system_identify(nlms_numpy.nlms, x, h0, step_size, 0.1)
+        plot_converge(y, u, label=u&quot;&#x3BC;=%s&quot; % step_size)
+    pl.title(u&quot;&#x66F4;&#x65B0;&#x7CFB;&#x6570;&#x548C;&#x6536;&#x655B;&#x7279;&#x6027;&#x7684;&#x5173;&#x7CFB;&quot;)
+    pl.xlabel(&quot;Iterations (samples)&quot;)
+    pl.ylabel(&quot;Converge Level (dB)&quot;)
+    pl.legend()
+    pl.show()
+</code></pre><p><img src="img/NLMS_02.png" alt=""></p>
+<p>&#x66F4;&#x65B0;&#x7CFB;&#x6570;&#x548C;&#x6536;&#x655B;&#x901F;&#x5EA6;&#x7684;&#x5173;&#x7CFB;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x66F4;&#x65B0;&#x7CFB;&#x6570;&#x56FA;&#x5B9A;&#xFF0C;&#x5916;&#x90E8;&#x5E72;&#x6270;&#x80FD;&#x91CF;&#x53D8;&#x5316;&#x65F6;&#x7684;&#x6536;&#x655B;&#x7279;&#x6027;&#xFF1A;</p>
+<pre><code>def system_identify_test3():
+    h0 = make_path(32, 256) # &#x968F;&#x673A;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x4F20;&#x9012;&#x51FD;&#x6570;
+    x = np.random.standard_normal(20000)  # &#x53C2;&#x7167;&#x4FE1;&#x53F7;&#x4E3A;&#x767D;&#x566A;&#x58F0;
+    pl.figure(figsize=(8,4))
+    for noise_scale in [0.05, 0.1, 0.2, 0.4, 0.8]:
+        y, u, h = sim_system_identify(nlms_numpy.nlms, x, h0, 0.5, noise_scale)
+        plot_converge(y, u, label=u&quot;noise=%s&quot; % noise_scale)
+    pl.title(u&quot;&#x5916;&#x90E8;&#x5E72;&#x6270;&#x548C;&#x6536;&#x655B;&#x7279;&#x6027;&#x7684;&#x5173;&#x7CFB;&quot;)
+    pl.xlabel(&quot;Iterations (samples)&quot;)
+    pl.ylabel(&quot;Converge Level (dB)&quot;)
+    pl.legend()
+    pl.show()
+</code></pre><p><img src="img/NLMS_03.png" alt=""></p>
+<p>&#x5916;&#x90E8;&#x5E72;&#x6270;&#x566A;&#x58F0;&#x548C;&#x6536;&#x655B;&#x901F;&#x5EA6;&#x7684;&#x5173;&#x7CFB;</p>
+<p>&#x4ECE;&#x4E0A;&#x9762;&#x7684;&#x56FE;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5F53;&#x5916;&#x90E8;&#x5E72;&#x6270;&#x7684;&#x632F;&#x5E45;&#x589E;&#x52A0;&#x4E00;&#x500D;&#x3001;&#x80FD;&#x80FD;&#x91CF;&#x589E;&#x52A0;6dB&#x65F6;&#xFF0C;&#x6536;&#x655B;&#x7CBE;&#x5EA6;&#x964D;&#x4F4E;6dB&#x3002;&#x800C;&#x7531;&#x4E8E;&#x66F4;&#x65B0;&#x7CFB;&#x6570;&#x76F8;&#x540C;&#xFF0C;&#x6240;&#x4EE5;&#x6536;&#x655B;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x6536;&#x655B;&#x901F;&#x5EA6;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;</p>
+<h3 id="&#x4FE1;&#x53F7;&#x5747;&#x8861;&#x6A21;&#x62DF;">&#x4FE1;&#x53F7;&#x5747;&#x8861;&#x6A21;&#x62DF;</h3>
+<p>&#x5BF9;&#x4E8E;&#x4FE1;&#x53F7;&#x5747;&#x8861;&#x7684;&#x5E94;&#x7528;&#x6211;&#x4EEC;&#x7528;&#x5982;&#x4E0B;&#x7684;&#x7A0B;&#x5E8F;&#x8FDB;&#x884C;&#x6A21;&#x62DF;&#xFF1A;</p>
+<pre><code>def sim_signal_equation(nlms, x, h0, D, step_size, noise_scale):
+    d = x[:-D]
+    x = x[D:]
+    y = np.convolve(x, h0)[:len(x)]
+    h = np.zeros(2*len(h0)+2*D, np.float64)
+    y += np.random.standard_normal(len(y)) * noise_scale
+    u = nlms(y, d, h, step_size)
+    return h
+</code></pre><p><img src="img/NLMS_equalization.png" alt=""></p>
+<p>&#x4FE1;&#x53F7;&#x5747;&#x8861;(Equalization)&#x6846;&#x56FE;</p>
+<p>sim_signal_equation&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#xFF1A;</p>
+<ul>
+<li><strong>nlms</strong> : nlms&#x7B97;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x51FD;&#x6570;</li>
+<li><strong>x</strong> : &#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x8F93;&#x5165;&#x4FE1;&#x53F7;</li>
+<li><strong>h0</strong> : &#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x4F20;&#x9012;&#x51FD;&#x6570;</li>
+<li><strong>D</strong> : &#x5EF6;&#x8FDF;&#x5668;&#x7684;&#x5EF6;&#x65F6;&#x53C2;&#x6570;</li>
+<li><strong>step_size</strong> : nlms&#x7B97;&#x6CD5;&#x7684;&#x66F4;&#x65B0;&#x7CFB;&#x6570;</li>
+<li><strong>noise_scale</strong> : &#x5916;&#x90E8;&#x5E72;&#x6270;&#x7684;&#x7CFB;&#x6570;&#xFF0C;&#x6B64;&#x7CFB;&#x6570;&#x51B3;&#x5B9A;&#x5916;&#x90E8;&#x5E72;&#x6270;&#x7684;&#x5927;&#x5C0F;&#xFF0C;0&#x8868;&#x793A;&#x6CA1;&#x6709;&#x5916;&#x90E8;&#x5E72;&#x6270;</li>
+</ul>
+<p>&#x5728;&#x51FD;&#x6570;&#x4E2D;&#x7684;&#x5404;&#x4E2A;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF1A;</p>
+<ul>
+<li><strong>d</strong> : &#x8F93;&#x5165;&#x4FE1;&#x53F7;&#x7ECF;&#x8FC7;&#x5EF6;&#x8FDF;&#x5668;&#x4E4B;&#x540E;&#x7684;&#x4FE1;&#x53F7;</li>
+<li><strong>y</strong> : &#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x8F93;&#x51FA;</li>
+<li><strong>h</strong> : &#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x7CFB;&#x6570;&#xFF0C;&#x5B83;&#x7684;&#x957F;&#x5EA6;&#x8981;&#x8DB3;&#x591F;&#x957F;&#xFF0C;&#x7A0B;&#x5E8F;&#x4E2D;&#x4F7F;&#x7528; 2&#x500D;&#x5EF6;&#x65F6; + 2&#x500D;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x4F20;&#x9012;&#x51FD;&#x6570;&#x7684;&#x957F;&#x5EA6;</li>
+</ul>
+<p>&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x4E3A;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x6536;&#x655B;&#x540E;&#x7684;&#x7CFB;&#x6570;&#xFF0C;&#x5B83;&#x80FD;&#x591F;&#x5747;&#x8861;h0&#x5BF9;&#x8F93;&#x5165;&#x4FE1;&#x53F7;&#x6240;&#x9020;&#x6210;&#x7684;&#x5F71;&#x54CD;&#x3002;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x7684;&#x51FD;&#x6570;&#x4EA7;&#x751F;&#x6570;&#x636E;&#x3001;&#x8C03;&#x7528;&#x6A21;&#x62DF;&#x51FD;&#x6570;&#x4EE5;&#x53CA;&#x7ED8;&#x5236;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>def signal_equation_test1():
+    h0 = make_path(5, 64)
+    D = 128
+    length = 20000
+    data = np.random.standard_normal(length+D)
+    h = sim_signal_equation(nlms_numpy.nlms, data, h0, D, 0.5, 0.1)
+    pl.figure(figsize=(8,4))
+    pl.plot(h0, label=u&quot;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&quot;)
+    pl.plot(h, label=u&quot;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&quot;)
+    pl.plot(np.convolve(h0, h), label=u&quot;&#x4E8C;&#x8005;&#x5377;&#x79EF;&quot;)
+    pl.title(u&quot;&#x4FE1;&#x53F7;&#x5747;&#x8861;&#x6F14;&#x793A;&quot;)
+    pl.legend()
+    w0, H0 = scipy.signal.freqz(h0, worN = 1000)
+    w, H = scipy.signal.freqz(h, worN = 1000)
+    pl.figure(figsize=(8,4))
+    pl.plot(w0, 20*np.log10(np.abs(H0)), w, 20*np.log10(np.abs(H)))
+    pl.title(u&quot;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x548C;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x632F;&#x5E45;&#x7279;&#x6027;&quot;)
+    pl.xlabel(u&quot;&#x5706;&#x9891;&#x7387;&quot;)
+    pl.ylabel(u&quot;&#x632F;&#x5E45;(dB)&quot;)
+    pl.show()
+</code></pre><p>&#x5982;&#x679C;&#x5EF6;&#x8FDF;&#x5668;&#x7684;&#x5EF6;&#x65F6;D&#x4E0D;&#x591F;&#x7684;&#x8BDD;&#xFF0C;&#x4F1A;&#x7531;&#x4E8E;&#x56E0;&#x679C;&#x5F8B;&#x4F7F;&#x5F97;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x65E0;&#x6CD5;&#x6536;&#x655B;&#x3002;&#x56E0;&#x6B64;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x91C7;&#x7528;&#x7684;D&#x7684;&#x957F;&#x5EA6;&#x4E3A;h0&#x7684;&#x957F;&#x5EA6;&#x7684;2&#x500D;&#x3002;&#x4E0B;&#x56FE;&#x663E;&#x793A;h0, h&#x548C;&#x5B83;&#x4EEC;&#x7684;&#x5377;&#x79EF;&#x3002;&#x6211;&#x4EEC;&#x770B;&#x5230;h0&#x548C;h&#x7684;&#x5377;&#x79EF;&#x6B63;&#x597D;&#x662F;&#x4E00;&#x4E2A;&#x8109;&#x51B2;&#xFF0C;&#x5176;&#x5EF6;&#x65F6;&#x4E3A;&#x6B63;&#x597D;&#x7B49;&#x4E8E;D(128)&#x3002;</p>
+<p><img src="img/NLMS_04.png" alt=""></p>
+<p>&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x548C;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x7EA7;&#x8054;(&#x5377;&#x79EF;)&#x8FD1;&#x4F3C;&#x4E3A;&#x6807;&#x51C6;&#x5EF6;&#x8FDF;</p>
+<p>&#x4E0B;&#x56FE;&#x663E;&#x793A;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x7684;&#x9891;&#x7387;&#x54CD;&#x5E94;(&#x84DD;&#x8272;)&#x548C;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x9891;&#x7387;&#x54CD;&#x5E94;(&#x7EFF;&#x8272;)&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x4E8C;&#x8005;&#x6B63;&#x597D;&#x76F8;&#x53CD;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x5747;&#x8861;&#x4E86;&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x5BF9;&#x4FE1;&#x53F7;&#x7684;&#x5F71;&#x54CD;&#x3002;</p>
+<p><img src="img/NLMS_05.png" alt=""></p>
+<p>&#x672A;&#x77E5;&#x7CFB;&#x7EDF;&#x548C;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x9891;&#x7387;&#x54CD;&#x5E94;&#x6B63;&#x597D;&#x76F8;&#x53CD;</p>
+<h3 id="&#x5377;&#x79EF;&#x9006;&#x8FD0;&#x7B97;">&#x5377;&#x79EF;&#x9006;&#x8FD0;&#x7B97;</h3>
+<p>&#x867D;&#x7136;&#x5377;&#x79EF;&#x8FD0;&#x7B97;&#x6700;&#x7EC8;&#x80FD;&#x5F52;&#x7ED3;&#x4E3A;&#x7B80;&#x5355;&#x7684;&#x52A0;&#x6CD5;&#x548C;&#x4E58;&#x6CD5;&#x8FD0;&#x7B97;&#xFF0C;&#x7136;&#x800C;&#x5377;&#x79EF;&#x7684;&#x9006;&#x8FD0;&#x7B97;&#x5C31;&#x4E0D;&#x662F;&#x5F88;&#x5BB9;&#x6613;&#x8BA1;&#x7B97;&#x4E86;&#x3002;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x4E24;&#x4E2A;&#x7EBF;&#x6027;&#x7CFB;&#x7EDF;h1&#x548C;h2&#x7684;&#x7EA7;&#x8054;h3&#x53EF;&#x4EE5;&#x7528;&#x5B83;&#x4EEC;&#x7684;&#x8109;&#x51B2;&#x54CD;&#x5E94;&#x7684;&#x5377;&#x79EF;&#x8BA1;&#x7B97;&#x6C42;&#x5F97;&#xFF0C;&#x800C;&#x6240;&#x8C13;&#x5377;&#x79EF;&#x7684;&#x9006;&#x8FD0;&#x7B97;&#x53EF;&#x4EE5;&#x60F3;&#x8C61;&#x4E3A;&#x5DF2;&#x77E5;h3&#x548C;h1&#xFF0C;&#x6C42;&#x4E00;&#x4E2A;h2&#x4F7F;&#x5B83;&#x548C;h1&#x7EA7;&#x8054;&#x4E4B;&#x540E;&#x6B63;&#x597D;&#x7B49;&#x4E8E;h3&#x3002;</p>
+<p>&#x6839;&#x636E;&#x5377;&#x79EF;&#x7684;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#x53EF;&#x77E5;&#xFF0C;&#x5982;&#x679C;h1&#x7684;&#x957F;&#x5EA6;&#x4E3A;100&#xFF0C;h3&#x7684;&#x957F;&#x5EA6;&#x4E3A;199&#xFF0C;&#x90A3;&#x4E48;h2&#x7684;&#x957F;&#x5EA6;&#x5219;&#x4E3A;100&#xFF0C;&#x56E0;&#x4E3A;h2&#x7684;&#x6BCF;&#x4E2A;&#x7CFB;&#x6570;&#x90FD;&#x662F;&#x672A;&#x77E5;&#x7684;&#xFF0C;&#x4E8E;&#x662F;&#x5C31;&#x6709;100&#x4E2A;&#x672A;&#x77E5;&#x6570;&#xFF0C;&#x800C;&#x8FD9;100&#x4E2A;&#x672A;&#x77E5;&#x6570;&#x9700;&#x8981;&#x6EE1;&#x8DB3;199&#x4E2A;&#x7EBF;&#x6027;&#x65B9;&#x7A0B;&#xFF1A;h3&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x7CFB;&#x6570;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x65B9;&#x7A0B;&#x4E0E;&#x4E4B;&#x5BF9;&#x5E94;&#x3002;&#x7531;&#x4E8E;&#x65B9;&#x7A0B;&#x6570;&#x5927;&#x4E8E;&#x672A;&#x77E5;&#x6570;&#x7684;&#x4E2A;&#x6570;&#xFF0C;&#x663E;&#x7136;&#x5BF9;&#x4E8E;&#x4EFB;&#x610F;&#x7684;h1&#x548C;h3&#x5E76;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x6709;&#x4E00;&#x4E2A;h2&#x4F7F;&#x5F97;&#x5B83;&#x548C;h1&#x7684;&#x5377;&#x79EF;&#x6B63;&#x597D;&#x7B49;&#x4E8E;h3&#x3002;</p>
+<p>&#x65E2;&#x7136;&#x4E0D;&#x80FD;&#x7CBE;&#x786E;&#x6C42;&#x89E3;&#xFF0C;&#x90A3;&#x4E48;&#x5377;&#x79EF;&#x7684;&#x9006;&#x8FD0;&#x7B97;&#x5C31;&#x53D8;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x8BEF;&#x5DEE;&#x6700;&#x5C0F;&#x5316;&#x7684;&#x4F18;&#x5316;&#x95EE;&#x9898;&#x3002;&#x7528;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x8BA1;&#x7B97;&#x5377;&#x79EF;&#x7684;&#x9006;&#x8FD0;&#x7B97;&#x548C;&#x8BA1;&#x7B97;&#x4FE1;&#x53F7;&#x5747;&#x8861;&#x7C7B;&#x4F3C;&#xFF0C;&#x5C06;&#x767D;&#x8272;&#x566A;&#x58F0;x&#x8F93;&#x5165;&#x5230;h1&#x4E2D;&#x5F97;&#x5230;&#x4FE1;&#x53F7;u&#xFF0C;&#x5C06;x&#x8F93;&#x5165;&#x5230;h3&#x4E2D;&#x5F97;&#x5230;&#x4FE1;&#x53F7;d&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;u&#x4F5C;&#x4E3A;&#x53C2;&#x7167;&#x4FE1;&#x53F7;&#xFF0C;d&#x4F5C;&#x4E3A;&#x76EE;&#x6807;&#x4FE1;&#x53F7;&#x8FDB;&#x884C;NLMS&#x8BA1;&#x7B97;&#xFF0C;&#x6700;&#x7EC8;&#x6536;&#x655B;&#x540E;&#x7684;&#x81EA;&#x9002;&#x5E94;&#x6EE4;&#x6CE2;&#x5668;&#x7684;&#x7CFB;&#x6570;&#x5C31;&#x662F;h2&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x7684;&#x7A0B;&#x5E8F;&#x6A21;&#x62DF;&#x8FD9;&#x4E00;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<pre><code># -*- coding: utf-8 -*-
+import numpy as np
+import pylab as pl
+from nlms_numpy import nlms
+import scipy.signal as signal
+
+def inv_convolve(h1, h3, length):
+    x = np.random.standard_normal(10000)
+    u = signal.lfilter(h1, 1, x)
+    d = signal.lfilter(h3, 1, x)
+    h = np.zeros(length, np.float64)
+    nlms(u, d, h, 0.1)
+    return h
+
+h1 = np.fromfile(&quot;h1.txt&quot;, sep=&quot;\n&quot;)
+h1 /= np.max(h1)
+h3 = np.fromfile(&quot;h3.txt&quot;, sep=&quot;\n&quot;)
+h3 /= np.max(h3)
+
+pl.rc(&apos;legend&apos;, fontsize=10)
+pl.subplot(411)
+pl.plot(h3, label=&quot;h3&quot;)
+pl.plot(h1, label=&quot;h1&quot;)
+pl.legend()
+pl.gca().set_yticklabels([]) 
+for idx, length in enumerate([128, 256, 512]):
+    pl.subplot(412+idx)
+    h2 = inv_convolve(h1, h3, length)
+    pl.plot(np.convolve(h1, h2)[:len(h3)], label=&quot;h1*h2(%s)&quot; % length)
+    pl.legend()
+    pl.gca().set_yticklabels([]) 
+    pl.gca().set_xticklabels([]) 
+
+pl.show()
+</code></pre><p>&#x4E0B;&#x9762;&#x662F;&#x7A0B;&#x5E8F;&#x7684;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#xFF1A;</p>
+<p><img src="img/NLMS_06.png" alt=""></p>
+<p>&#x5377;&#x79EF;&#x9006;&#x8FD0;&#x7B97;&#x6F14;&#x793A;</p>
+<p>&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;h1&#x548C;h3&#x4ECE;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;&#x800C;&#x5F97;&#xFF0C;&#x5B83;&#x4EEC;&#x662F;ANC(&#x80FD;&#x52A8;&#x566A;&#x58F0;&#x63A7;&#x5236;)&#x7CFB;&#x7EDF;&#x4E2D;&#x5B9E;&#x9645;&#x6D4B;&#x91CF;&#x7684;&#x8109;&#x51B2;&#x54CD;&#x5E94;&#x3002;&#x5982;&#x679C;&#x80FD;&#x627E;&#x5230;&#x4E00;&#x4E2A;h2&#x6EE1;&#x8DB3;&#x5377;&#x79EF;&#x6761;&#x4EF6;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x80FD;&#x591F;&#x6709;&#x6548;&#x7684;&#x8FDB;&#x884C;&#x566A;&#x58F0;&#x63A7;&#x5236;&#x3002;</p>
+<p>&#x7A0B;&#x5E8F;&#x8BA1;&#x7B97;&#x51FA;h2&#x7684;&#x957F;&#x5EA6;&#x5206;&#x522B;&#x4E3A;128, 256, 512&#x65F6;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x51FA;h2&#x8D8A;&#x957F;&#x7ED3;&#x679C;&#x8D8A;&#x7CBE;&#x786E;&#x3002;</p>
+<h2 id="dll&#x51FD;&#x6570;&#x7684;&#x7F16;&#x5199;">DLL&#x51FD;&#x6570;&#x7684;&#x7F16;&#x5199;</h2>
+<h2 id="ctypes&#x7684;python&#x63A5;&#x53E3;">ctypes&#x7684;python&#x63A5;&#x53E3;</h2>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./21.html" class="navigation navigation-prev " aria-label="Previous page: Ctypes和NumPy"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./23.html" class="navigation navigation-next " aria-label="Next page: 单摆和双摆模拟"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

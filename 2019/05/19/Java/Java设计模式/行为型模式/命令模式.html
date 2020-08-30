@@ -1,0 +1,167 @@
+<hr>
+<p>title: 命令模式<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2020-01-04 22:12:50<br>
+tags:</p>
+<ul>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h2 id="命令模式"><a class="header-anchor" href="#命令模式">¶</a>命令模式</h2>
+<h3 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h3>
+<blockquote>
+<p>Encapsulate a request as an object,thereby letting you parameterize clients with different requests,queue or log requests,and support undoable operations.<br>
+将一个请求封装成一个对象，从而让你使用不同的请求把客户端参数化，对请求排队或者记录请求日志，可以提供命令的撤销和恢复功能。</p>
+</blockquote>
+<h3 id="命令模式的示意图"><a class="header-anchor" href="#命令模式的示意图">¶</a>命令模式的示意图</h3>
+<h3 id="代码实现"><a class="header-anchor" href="#代码实现">¶</a>代码实现</h3>
+<h4 id="接收者"><a class="header-anchor" href="#接收者">¶</a>接收者</h4>
+<blockquote>
+<p>客户最终调用的角色</p>
+</blockquote>
+<ol>
+<li>抽象接收者</li>
+</ol>
+<pre><code class="language-Java">package org.example.command;
+
+/**
+ * 抽象接收者
+ */
+public abstract class Receiver {
+    /* 接收者需要处理的业务逻辑 */
+    public abstract void receive();
+}
+</code></pre>
+<ol start="2">
+<li>具体接收者</li>
+</ol>
+<pre><code class="language-Java">package org.example.command;
+
+/**
+ * 具体接收者，接收者是命令模式的主体，命令模式最终调用的还是接收者，获取接收者的信息
+ */
+public class ConcreteRecevier1 extends Receiver {
+    @Override
+    public void receive() {
+        System.out.println(&quot;需要执行的命令需求&quot;);
+    }
+}
+</code></pre>
+<h4 id="命令"><a class="header-anchor" href="#命令">¶</a>命令</h4>
+<blockquote>
+<p>调用接收者</p>
+</blockquote>
+<ol>
+<li>抽象命令</li>
+</ol>
+<pre><code class="language-Java">package org.example.command;
+/**
+ * 抽象命令
+ */
+public abstract class Command {
+    /* 执行接收者 */
+    public abstract void execute();
+}
+</code></pre>
+<ol start="2">
+<li>具体命令</li>
+</ol>
+<pre><code class="language-Java">package org.example.command;
+
+/**
+ * 具体命令，是用来执行接收者，获取接收者信息的
+ */
+public class ConcreteCommand1 extends Command {
+    private Receiver receiver ;
+    /* 初始化接收者 */
+    public ConcreteCommand1(Receiver receiver){
+        this.receiver = receiver ;
+    }
+
+    /**
+     * 执行接收者
+     */
+    @Override
+    public void execute() {
+        this.receiver.receive();
+    }
+}
+</code></pre>
+<h4 id="调用者"><a class="header-anchor" href="#调用者">¶</a>调用者</h4>
+<blockquote>
+<p>调用命令</p>
+</blockquote>
+<pre><code class="language-Java">package org.example.command;
+
+/**
+ * 调用者，是调用命令，最终我们需要使用调用者来调用命令，而调用接收者
+ */
+public class Invoker {
+    private Command command ;
+
+    /* 接受命令 */
+    public void setCommand(Command command){
+        this.command = command ;
+    }
+
+    /* 执行命令 */
+    public void action(){
+        this.command.execute();
+    }
+}
+</code></pre>
+<h4 id="场景实现"><a class="header-anchor" href="#场景实现">¶</a>场景实现</h4>
+<pre><code class="language-Java">public class App {
+    /**
+     * 命令模式
+     * @param args
+     */
+    public static void main(String[] args) {
+        /* 创建接收者 */
+        Receiver receiver = new ConcreteRecevier1();
+        /* 创建命令,用来调用接收者 */
+        Command command = new ConcreteCommand1(receiver);
+
+        /* 创建调用者，用来调用命令 */
+        Invoker invoker = new Invoker();
+
+        /* 设置命令 */
+        invoker.setCommand(command);
+
+        /* 执行命令 */
+        invoker.action();
+    }
+}
+</code></pre>
+<h3 id="应用场景"><a class="header-anchor" href="#应用场景">¶</a>应用场景</h3>
+<ol>
+<li>在gui开发中可以采用命令模式。一个按钮点击就是一个命令。</li>
+<li>模拟dos和shell命令也可以采用命令模式。</li>
+</ol>
+<h3 id="命令模式的优缺点"><a class="header-anchor" href="#命令模式的优缺点">¶</a>命令模式的优缺点</h3>
+<h4 id="优点"><a class="header-anchor" href="#优点">¶</a>优点</h4>
+<ol>
+<li>类间解耦。各个角色之间没有依赖关系。</li>
+<li>可扩展性强，命令和接收者都可以扩展。</li>
+<li>命令模式可以与其他模式结合使用。比如结合责任链模式实现命令族解析，结合模板方法模式减少类膨胀问题。</li>
+</ol>
+<h4 id="缺点"><a class="header-anchor" href="#缺点">¶</a>缺点</h4>
+<ol>
+<li>有类膨胀问题。命令和接收者虽然可以无限扩展，但会出现类膨胀。</li>
+</ol>

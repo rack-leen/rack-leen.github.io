@@ -1,0 +1,1943 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>拜占庭问题与算法 · 区块链技术指南</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="yeasy">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-latex-codecogs/latex-codecogs.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-comment/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="availability.html" />
+    
+    
+    <link rel="prev" href="paxos.html" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"repo":"yeasy/blockchain_guide","types":["star","watch"]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://legacy.gitbook.com/book/yeasy/blockchain_guide" target="_blank" class="custom-link">区块链技术指南</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../revision.html">
+            
+                <a href="../revision.html">
+            
+                    
+                    修订记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../contribute.html">
+            
+                <a href="../contribute.html">
+            
+                    
+                    如何贡献
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../01_history/">
+            
+                <a href="../01_history/">
+            
+                    
+                    区块链的诞生
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../01_history/ledger_history.html">
+            
+                <a href="../01_history/ledger_history.html">
+            
+                    
+                    记账科技的千年演化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../01_history/dlt_problem.html">
+            
+                <a href="../01_history/dlt_problem.html">
+            
+                    
+                    分布式记账与区块链
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../01_history/bitcoin.html">
+            
+                <a href="../01_history/bitcoin.html">
+            
+                    
+                    站在前人肩膀上的比特币
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../01_history/business.html">
+            
+                <a href="../01_history/business.html">
+            
+                    
+                    区块链的商业价值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../01_history/summary.html">
+            
+                <a href="../01_history/summary.html">
+            
+                    
+                    本章小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../02_overview/">
+            
+                <a href="../02_overview/">
+            
+                    
+                    核心技术概览
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../02_overview/definition.html">
+            
+                <a href="../02_overview/definition.html">
+            
+                    
+                    定义与原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../02_overview/classify.html">
+            
+                <a href="../02_overview/classify.html">
+            
+                    
+                    技术的演化与分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../02_overview/challenge.html">
+            
+                <a href="../02_overview/challenge.html">
+            
+                    
+                    关键问题和挑战
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../02_overview/vision.html">
+            
+                <a href="../02_overview/vision.html">
+            
+                    
+                    趋势与展望
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../02_overview/misunderstand.html">
+            
+                <a href="../02_overview/misunderstand.html">
+            
+                    
+                    认识上的误区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../02_overview/summary.html">
+            
+                <a href="../02_overview/summary.html">
+            
+                    
+                    本章小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../03_scenario/">
+            
+                <a href="../03_scenario/">
+            
+                    
+                    典型应用场景
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../03_scenario/glance.html">
+            
+                <a href="../03_scenario/glance.html">
+            
+                    
+                    应用场景概览
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../03_scenario/finance.html">
+            
+                <a href="../03_scenario/finance.html">
+            
+                    
+                    金融服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../03_scenario/trust.html">
+            
+                <a href="../03_scenario/trust.html">
+            
+                    
+                    征信管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../03_scenario/ownership.html">
+            
+                <a href="../03_scenario/ownership.html">
+            
+                    
+                    权属管理与溯源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../03_scenario/sharing.html">
+            
+                <a href="../03_scenario/sharing.html">
+            
+                    
+                    资源共享
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../03_scenario/logistics.html">
+            
+                <a href="../03_scenario/logistics.html">
+            
+                    
+                    物流与供应链
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../03_scenario/iot.html">
+            
+                <a href="../03_scenario/iot.html">
+            
+                    
+                    物联网
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../03_scenario/others.html">
+            
+                <a href="../03_scenario/others.html">
+            
+                    
+                    其它场景
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../03_scenario/summary.html">
+            
+                <a href="../03_scenario/summary.html">
+            
+                    
+                    本章小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    分布式系统核心技术
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="problem.html">
+            
+                <a href="problem.html">
+            
+                    
+                    一致性问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="algorithms.html">
+            
+                <a href="algorithms.html">
+            
+                    
+                    共识算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="flp.html">
+            
+                <a href="flp.html">
+            
+                    
+                    FLP 不可能原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="cap.html">
+            
+                <a href="cap.html">
+            
+                    
+                    CAP 原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="acid.html">
+            
+                <a href="acid.html">
+            
+                    
+                    ACID 原则与多阶段提交
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="paxos.html">
+            
+                <a href="paxos.html">
+            
+                    
+                    Paxos 算法与 Raft 算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.7" data-path="bft.html">
+            
+                <a href="bft.html">
+            
+                    
+                    拜占庭问题与算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="availability.html">
+            
+                <a href="availability.html">
+            
+                    
+                    可靠性指标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="summary.html">
+            
+                <a href="summary.html">
+            
+                    
+                    本章小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../05_crypto/">
+            
+                <a href="../05_crypto/">
+            
+                    
+                    密码学与安全技术
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../05_crypto/history.html">
+            
+                <a href="../05_crypto/history.html">
+            
+                    
+                    密码学简史
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../05_crypto/hash.html">
+            
+                <a href="../05_crypto/hash.html">
+            
+                    
+                    Hash 算法与数字摘要
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../05_crypto/algorithm.html">
+            
+                <a href="../05_crypto/algorithm.html">
+            
+                    
+                    加解密算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../05_crypto/signature.html">
+            
+                <a href="../05_crypto/signature.html">
+            
+                    
+                    消息认证码与数字签名
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../05_crypto/cert.html">
+            
+                <a href="../05_crypto/cert.html">
+            
+                    
+                    数字证书
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../05_crypto/pki.html">
+            
+                <a href="../05_crypto/pki.html">
+            
+                    
+                    PKI 体系
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../05_crypto/merkle_trie.html">
+            
+                <a href="../05_crypto/merkle_trie.html">
+            
+                    
+                    Merkle 树结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../05_crypto/bloom_filter.html">
+            
+                <a href="../05_crypto/bloom_filter.html">
+            
+                    
+                    Bloom Filter 结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="../05_crypto/homoencryption.html">
+            
+                <a href="../05_crypto/homoencryption.html">
+            
+                    
+                    同态加密
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.10" data-path="../05_crypto/others.html">
+            
+                <a href="../05_crypto/others.html">
+            
+                    
+                    其它技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.11" data-path="../05_crypto/summary.html">
+            
+                <a href="../05_crypto/summary.html">
+            
+                    
+                    本章小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../06_bitcoin/">
+            
+                <a href="../06_bitcoin/">
+            
+                    
+                    比特币 —— 区块链思想诞生的摇篮
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../06_bitcoin/intro.html">
+            
+                <a href="../06_bitcoin/intro.html">
+            
+                    
+                    比特币项目简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../06_bitcoin/currency.html">
+            
+                <a href="../06_bitcoin/currency.html">
+            
+                    
+                    实体货币到加密数字货币
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../06_bitcoin/design.html">
+            
+                <a href="../06_bitcoin/design.html">
+            
+                    
+                    基本原理和设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../06_bitcoin/mining.html">
+            
+                <a href="../06_bitcoin/mining.html">
+            
+                    
+                    挖矿过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../06_bitcoin/consensus.html">
+            
+                <a href="../06_bitcoin/consensus.html">
+            
+                    
+                    共识机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="../06_bitcoin/lightning_network.html">
+            
+                <a href="../06_bitcoin/lightning_network.html">
+            
+                    
+                    闪电网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="../06_bitcoin/sidechain.html">
+            
+                <a href="../06_bitcoin/sidechain.html">
+            
+                    
+                    侧链
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="../06_bitcoin/other.html">
+            
+                <a href="../06_bitcoin/other.html">
+            
+                    
+                    热点问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="../06_bitcoin/tools.html">
+            
+                <a href="../06_bitcoin/tools.html">
+            
+                    
+                    相关工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.10" data-path="../06_bitcoin/summary.html">
+            
+                <a href="../06_bitcoin/summary.html">
+            
+                    
+                    本章小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../07_ethereum/">
+            
+                <a href="../07_ethereum/">
+            
+                    
+                    以太坊 —— 挣脱加密货币的枷锁
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../07_ethereum/intro.html">
+            
+                <a href="../07_ethereum/intro.html">
+            
+                    
+                    以太坊项目简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../07_ethereum/concept.html">
+            
+                <a href="../07_ethereum/concept.html">
+            
+                    
+                    核心概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../07_ethereum/design.html">
+            
+                <a href="../07_ethereum/design.html">
+            
+                    
+                    主要设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../07_ethereum/tools.html">
+            
+                <a href="../07_ethereum/tools.html">
+            
+                    
+                    相关工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../07_ethereum/install.html">
+            
+                <a href="../07_ethereum/install.html">
+            
+                    
+                    安装客户端
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../07_ethereum/smart_contract.html">
+            
+                <a href="../07_ethereum/smart_contract.html">
+            
+                    
+                    使用智能合约
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../07_ethereum/contract_example.html">
+            
+                <a href="../07_ethereum/contract_example.html">
+            
+                    
+                    智能合约案例：投票
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../07_ethereum/summary.html">
+            
+                <a href="../07_ethereum/summary.html">
+            
+                    
+                    本章小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../08_hyperledger/">
+            
+                <a href="../08_hyperledger/">
+            
+                    
+                    超级账本 —— 面向企业的分布式账本
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../08_hyperledger/intro.html">
+            
+                <a href="../08_hyperledger/intro.html">
+            
+                    
+                    超级账本项目简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../08_hyperledger/community.html">
+            
+                <a href="../08_hyperledger/community.html">
+            
+                    
+                    社区组织结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../08_hyperledger/project.html">
+            
+                <a href="../08_hyperledger/project.html">
+            
+                    
+                    顶级项目介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../08_hyperledger/tools.html">
+            
+                <a href="../08_hyperledger/tools.html">
+            
+                    
+                    开发必备工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../08_hyperledger/contribute.html">
+            
+                <a href="../08_hyperledger/contribute.html">
+            
+                    
+                    贡献代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../08_hyperledger/summary.html">
+            
+                <a href="../08_hyperledger/summary.html">
+            
+                    
+                    本章小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../fabric/">
+            
+                <a href="../fabric/">
+            
+                    
+                    Fabric 部署与管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../fabric/intro.html">
+            
+                <a href="../fabric/intro.html">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../fabric/1.0.html">
+            
+                <a href="../fabric/1.0.html">
+            
+                    
+                    使用 Fabric 1.0 版本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../fabric/sdk-node.html">
+            
+                <a href="../fabric/sdk-node.html">
+            
+                    
+                    使用 Fabric SDK Node
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../fabric/v0.6/">
+            
+                <a href="../fabric/v0.6/">
+            
+                    
+                    Fabric v0.6
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.4.1" data-path="../fabric/v0.6/install.html">
+            
+                <a href="../fabric/v0.6/install.html">
+            
+                    
+                    安装部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4.2" data-path="../fabric/v0.6/usage.html">
+            
+                <a href="../fabric/v0.6/usage.html">
+            
+                    
+                    使用 chaincode
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4.3" data-path="../fabric/v0.6/membersrcv-usage.html">
+            
+                <a href="../fabric/v0.6/membersrcv-usage.html">
+            
+                    
+                    权限管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4.4" data-path="../fabric/v0.6/hyperledger-py.html">
+            
+                <a href="../fabric/v0.6/hyperledger-py.html">
+            
+                    
+                    Python 客户端
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../fabric/summary.html">
+            
+                <a href="../fabric/summary.html">
+            
+                    
+                    小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../app_dev/">
+            
+                <a href="../app_dev/">
+            
+                    
+                    区块链应用开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../app_dev/intro.html">
+            
+                <a href="../app_dev/intro.html">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.2" data-path="../app_dev/chaincode.html">
+            
+                <a href="../app_dev/chaincode.html">
+            
+                    
+                    链上代码工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.3" data-path="../app_dev/chaincode_example01.html">
+            
+                <a href="../app_dev/chaincode_example01.html">
+            
+                    
+                    示例一：信息公证
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.4" data-path="../app_dev/chaincode_example02.html">
+            
+                <a href="../app_dev/chaincode_example02.html">
+            
+                    
+                    示例二：交易资产
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.5" data-path="../app_dev/chaincode_example03.html">
+            
+                <a href="../app_dev/chaincode_example03.html">
+            
+                    
+                    示例三：数字货币发行与管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.6" data-path="../app_dev/chaincode_example04.html">
+            
+                <a href="../app_dev/chaincode_example04.html">
+            
+                    
+                    示例四：学历认证
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.7" data-path="../app_dev/chaincode_example05.html">
+            
+                <a href="../app_dev/chaincode_example05.html">
+            
+                    
+                    示例五：社区能源共享
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13.8" data-path="../app_dev/summary.html">
+            
+                <a href="../app_dev/summary.html">
+            
+                    
+                    小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../fabric_design/">
+            
+                <a href="../fabric_design/">
+            
+                    
+                    Fabric 架构与设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.14.1" data-path="../fabric_design/intro.html">
+            
+                <a href="../fabric_design/intro.html">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.2" data-path="../fabric_design/design.html">
+            
+                <a href="../fabric_design/design.html">
+            
+                    
+                    架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.3" data-path="../fabric_design/protocol.html">
+            
+                <a href="../fabric_design/protocol.html">
+            
+                    
+                    消息协议
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14.4" data-path="../fabric_design/summary.html">
+            
+                <a href="../fabric_design/summary.html">
+            
+                    
+                    小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../baas/">
+            
+                <a href="../baas/">
+            
+                    
+                    区块链服务平台设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="../baas/intro.html">
+            
+                <a href="../baas/intro.html">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="../baas/bluemix.html">
+            
+                <a href="../baas/bluemix.html">
+            
+                    
+                    IBM Bluemix 云区块链服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.3" data-path="../baas/azure.html">
+            
+                <a href="../baas/azure.html">
+            
+                    
+                    微软 Azure 云区块链服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.4" data-path="../baas/cello.html">
+            
+                <a href="../baas/cello.html">
+            
+                    
+                    使用超级账本 Cello 搭建区块链服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.5" data-path="../baas/summary.html">
+            
+                <a href="../baas/summary.html">
+            
+                    
+                    本章小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="../evaluation/">
+            
+                <a href="../evaluation/">
+            
+                    
+                    性能与评测
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.16.1" data-path="../evaluation/intro.html">
+            
+                <a href="../evaluation/intro.html">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.2" data-path="../evaluation/hyperledger.html">
+            
+                <a href="../evaluation/hyperledger.html">
+            
+                    
+                    Hyperledger Fabric v0.6
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.3" data-path="../evaluation/summary.html">
+            
+                <a href="../evaluation/summary.html">
+            
+                    
+                    小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="../appendix/">
+            
+                <a href="../appendix/">
+            
+                    
+                    附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../appendix/terms.html">
+            
+                <a href="../appendix/terms.html">
+            
+                    
+                    术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.2" data-path="../appendix/faq.html">
+            
+                <a href="../appendix/faq.html">
+            
+                    
+                    常见问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.3" data-path="../appendix/golang/">
+            
+                <a href="../appendix/golang/">
+            
+                    
+                    Golang 开发相关
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.3.1" data-path="../appendix/golang/install.html">
+            
+                <a href="../appendix/golang/install.html">
+            
+                    
+                    安装与配置 Golang 环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.3.2" data-path="../appendix/golang/ide.html">
+            
+                <a href="../appendix/golang/ide.html">
+            
+                    
+                    编辑器与 IDE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.3.3" data-path="../appendix/golang/tools.html">
+            
+                <a href="../appendix/golang/tools.html">
+            
+                    
+                    高效开发工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.4" data-path="../appendix/grpc.html">
+            
+                <a href="../appendix/grpc.html">
+            
+                    
+                    ProtoBuf 与 gRPC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.5" data-path="../appendix/resources.html">
+            
+                <a href="../appendix/resources.html">
+            
+                    
+                    参考资源链接
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >拜占庭问题与算法</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x62DC;&#x5360;&#x5EAD;&#x95EE;&#x9898;&#x4E0E;&#x7B97;&#x6CD5;">&#x62DC;&#x5360;&#x5EAD;&#x95EE;&#x9898;&#x4E0E;&#x7B97;&#x6CD5;</h2>
+<p>&#x62DC;&#x5360;&#x5EAD;&#x95EE;&#x9898;&#xFF08;Byzantine Problem&#xFF09;&#x53C8;&#x53EB;&#x62DC;&#x5360;&#x5EAD;&#x5C06;&#x519B;&#xFF08;Byzantine Generals Problem&#xFF09;&#x95EE;&#x9898;&#xFF0C;&#x8BA8;&#x8BBA;&#x7684;&#x662F;&#x5141;&#x8BB8;&#x5B58;&#x5728;&#x5C11;&#x6570;&#x8282;&#x70B9;&#x4F5C;&#x6076;&#xFF08;&#x6D88;&#x606F;&#x53EF;&#x80FD;&#x88AB;&#x4F2A;&#x9020;&#xFF09;&#x573A;&#x666F;&#x4E0B;&#x7684;&#x5982;&#x4F55;&#x8FBE;&#x6210;&#x5171;&#x8BC6;&#x95EE;&#x9898;&#x3002;&#x62DC;&#x5360;&#x5EAD;&#x5BB9;&#x9519;&#xFF08;Byzantine Fault Tolerant&#xFF0C;BFT&#xFF09;&#x8BA8;&#x8BBA;&#x7684;&#x662F;&#x5BB9;&#x5FCD;&#x62DC;&#x5360;&#x5EAD;&#x9519;&#x8BEF;&#x7684;&#x5171;&#x8BC6;&#x7B97;&#x6CD5;&#x3002;</p>
+<h3 id="&#x4E24;&#x5C06;&#x519B;&#x95EE;&#x9898;">&#x4E24;&#x5C06;&#x519B;&#x95EE;&#x9898;</h3>
+<p>&#x62DC;&#x5360;&#x5EAD;&#x95EE;&#x9898;&#x4E4B;&#x524D;&#xFF0C;&#x5B66;&#x672F;&#x754C;&#x5C31;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x4E24;&#x5C06;&#x519B;&#x95EE;&#x9898;&#x7684;&#x8BA8;&#x8BBA;&#xFF08;&#x300A;Some constraints and tradeofis in the design of network communications&#x300B;&#xFF0C;1975 &#x5E74;&#xFF09;&#xFF1A;&#x4E24;&#x4E2A;&#x5C06;&#x519B;&#x8981;&#x901A;&#x8FC7;&#x4FE1;&#x4F7F;&#x6765;&#x8FBE;&#x6210;&#x8FDB;&#x653B;&#x8FD8;&#x662F;&#x64A4;&#x9000;&#x7684;&#x7EA6;&#x5B9A;&#xFF0C;&#x4F46;&#x4FE1;&#x4F7F;&#x53EF;&#x80FD;&#x8FF7;&#x8DEF;&#x6216;&#x88AB;&#x654C;&#x519B;&#x963B;&#x62E6;&#xFF08;&#x6D88;&#x606F;&#x4E22;&#x5931;&#x6216;&#x4F2A;&#x9020;&#xFF09;&#xFF0C;&#x5982;&#x4F55;&#x8FBE;&#x6210;&#x4E00;&#x81F4;&#xFF1F;&#x6839;&#x636E; FLP &#x4E0D;&#x53EF;&#x80FD;&#x539F;&#x7406;&#xFF0C;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x65E0;&#x901A;&#x7528;&#x89E3;&#x3002;</p>
+<h3 id="&#x62DC;&#x5360;&#x5EAD;&#x95EE;&#x9898;">&#x62DC;&#x5360;&#x5EAD;&#x95EE;&#x9898;</h3>
+<p>&#x62DC;&#x5360;&#x5EAD;&#x95EE;&#x9898;&#x6700;&#x65E9;&#x7531; Leslie Lamport &#x7B49;&#x5B66;&#x8005;&#x4E8E; 1982 &#x5E74;&#x5728;&#x8BBA;&#x6587;&#x300A;The Byzantine Generals Problem&#x300B;&#x4E2D;&#x6B63;&#x5F0F;&#x63D0;&#x51FA;&#xFF0C;&#x662F;&#x7528;&#x6765;&#x89E3;&#x91CA;&#x5F02;&#x6B65;&#x7CFB;&#x7EDF;&#x4E2D;&#x5171;&#x8BC6;&#x95EE;&#x9898;&#x7684;&#x4E00;&#x4E2A;&#x865A;&#x6784;&#x6A21;&#x578B;&#x3002;&#x62DC;&#x5360;&#x5EAD;&#x662F;&#x53E4;&#x4EE3;&#x4E1C;&#x7F57;&#x9A6C;&#x5E1D;&#x56FD;&#x7684;&#x9996;&#x90FD;&#xFF0C;&#x7531;&#x4E8E;&#x5730;&#x57DF;&#x5BBD;&#x5E7F;&#xFF0C;&#x5047;&#x8BBE;&#x5176;&#x5B88;&#x536B;&#x8FB9;&#x5883;&#x7684;&#x591A;&#x4E2A;&#x5C06;&#x519B;&#xFF08;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#xFF09;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x4FE1;&#x4F7F;&#x6765;&#x4F20;&#x9012;&#x6D88;&#x606F;&#xFF0C;&#x8FBE;&#x6210;&#x67D0;&#x4E9B;&#x4E00;&#x81F4;&#x51B3;&#x5B9A;&#x3002;&#x4F46;&#x7531;&#x4E8E;&#x5C06;&#x519B;&#x4E2D;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x53DB;&#x5F92;&#xFF08;&#x7CFB;&#x7EDF;&#x4E2D;&#x8282;&#x70B9;&#x51FA;&#x9519;&#xFF09;&#xFF0C;&#x8FD9;&#x4E9B;&#x53DB;&#x5F92;&#x5C06;&#x5411;&#x4E0D;&#x540C;&#x7684;&#x5C06;&#x519B;&#x53D1;&#x9001;&#x4E0D;&#x540C;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x8BD5;&#x56FE;&#x5E72;&#x6270;&#x5171;&#x8BC6;&#x7684;&#x8FBE;&#x6210;&#x3002;</p>
+<p>&#x62DC;&#x5360;&#x5EAD;&#x95EE;&#x9898;&#x5373;&#x8BA8;&#x8BBA;&#x5728;&#x6B64;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5982;&#x4F55;&#x8BA9;&#x5FE0;&#x8BDA;&#x7684;&#x5C06;&#x519B;&#x4EEC;&#x80FD;&#x8FBE;&#x6210;&#x884C;&#x52A8;&#x7684;&#x4E00;&#x81F4;&#x3002;</p>
+<p>&#x5728;&#x5927;&#x591A;&#x6570;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x62DC;&#x5360;&#x5EAD;&#x7684;&#x573A;&#x666F;&#x5E76;&#x4E0D;&#x591A;&#x89C1;&#x3002;&#x7136;&#x800C;&#x5728;&#x7279;&#x5B9A;&#x573A;&#x666F;&#x4E0B;&#x5B58;&#x5728;&#x610F;&#x4E49;&#xFF0C;&#x4F8B;&#x5982;&#x5141;&#x8BB8;&#x533F;&#x540D;&#x53C2;&#x4E0E;&#x7684;&#x7CFB;&#x7EDF;&#xFF08;&#x5982;&#x6BD4;&#x7279;&#x5E01;&#xFF09;&#xFF0C;&#x6216;&#x662F;&#x51FA;&#x73B0;&#x6B3A;&#x8BC8;&#x53EF;&#x80FD;&#x9020;&#x6210;&#x5DE8;&#x5927;&#x635F;&#x5931;&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<h3 id="&#x95EE;&#x9898;&#x7684;&#x89E3;&#x51B3;">&#x95EE;&#x9898;&#x7684;&#x89E3;&#x51B3;</h3>
+<p>&#x8BBA;&#x6587;&#x4E2D;&#x6307;&#x51FA;&#xFF0C;&#x5BF9;&#x4E8E;&#x62DC;&#x5360;&#x5EAD;&#x95EE;&#x9898;&#x6765;&#x8BF4;&#xFF0C;&#x5047;&#x5982;&#x8282;&#x70B9;&#x603B;&#x6570;&#x4E3A; N&#xFF0C;&#x6545;&#x969C;&#x8282;&#x70B9;&#x6570;&#x4E3A; F&#xFF0C;&#x5219;&#x5F53; N &gt;= 3F + 1 &#x65F6;&#xFF0C;&#x95EE;&#x9898;&#x624D;&#x80FD;&#x6709;&#x89E3;&#xFF0C;&#x7531; BFT &#x7B97;&#x6CD5;&#x8FDB;&#x884C;&#x4FDD;&#x8BC1;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;N = 3&#xFF0C;F = 1 &#x65F6;&#x3002;</p>
+<p>&#x82E5;&#x63D0;&#x6848;&#x4EBA;&#x4E0D;&#x662F;&#x53DB;&#x53D8;&#x8005;&#xFF0C;&#x63D0;&#x6848;&#x4EBA;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x63D0;&#x6848;&#x51FA;&#x6765;&#xFF0C;&#x6536;&#x5230;&#x7684;&#x53DB;&#x53D8;&#x8005;&#x53EF;&#x4EE5;&#x5BA3;&#x79F0;&#x6536;&#x5230;&#x7684;&#x662F;&#x76F8;&#x53CD;&#x7684;&#x547D;&#x4EE4;&#x3002;&#x5219;&#x5BF9;&#x4E8E;&#x7B2C;&#x4E09;&#x4E2A;&#x4EBA;&#xFF08;&#x5FE0;&#x8BDA;&#x8005;&#xFF09;&#x4F1A;&#x6536;&#x5230;&#x4E24;&#x4E2A;&#x76F8;&#x53CD;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x65E0;&#x6CD5;&#x5224;&#x65AD;&#x8C01;&#x662F;&#x53DB;&#x53D8;&#x8005;&#xFF0C;&#x5219;&#x7CFB;&#x7EDF;&#x65E0;&#x6CD5;&#x8FBE;&#x5230;&#x4E00;&#x81F4;&#x3002;</p>
+<p>&#x82E5;&#x63D0;&#x6848;&#x4EBA;&#x662F;&#x53DB;&#x53D8;&#x8005;&#xFF0C;&#x53D1;&#x9001;&#x4E24;&#x4E2A;&#x76F8;&#x53CD;&#x7684;&#x63D0;&#x6848;&#x5206;&#x522B;&#x7ED9;&#x53E6;&#x5916;&#x4E24;&#x4EBA;&#xFF0C;&#x53E6;&#x5916;&#x4E24;&#x4EBA;&#x90FD;&#x6536;&#x5230;&#x4E24;&#x4E2A;&#x76F8;&#x53CD;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x65E0;&#x6CD5;&#x5224;&#x65AD;&#x7A76;&#x7ADF;&#x8C01;&#x662F;&#x53DB;&#x53D8;&#x8005;&#xFF0C;&#x5219;&#x7CFB;&#x7EDF;&#x65E0;&#x6CD5;&#x8FBE;&#x5230;&#x4E00;&#x81F4;&#x3002;</p>
+<p>&#x66F4;&#x4E00;&#x822C;&#x7684;&#xFF0C;&#x5F53;&#x63D0;&#x6848;&#x4EBA;&#x4E0D;&#x662F;&#x53DB;&#x53D8;&#x8005;&#xFF0C;&#x63D0;&#x6848;&#x4EBA;&#x63D0;&#x51FA;&#x63D0;&#x6848;&#x4FE1;&#x606F; 1&#xFF0C;&#x5219;&#x5BF9;&#x4E8E;&#x5408;&#x4F5C;&#x8005;&#x6765;&#x770B;&#xFF0C;&#x7CFB;&#x7EDF;&#x4E2D;&#x4F1A;&#x6709; N - F &#x4EFD;&#x786E;&#x5B9A;&#x7684;&#x4FE1;&#x606F; 1&#xFF0C;&#x548C; F &#x4EFD;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x4FE1;&#x606F;&#xFF08;&#x53EF;&#x80FD;&#x4E3A; 0 &#x6216; 1&#xFF0C;&#x5047;&#x8BBE;&#x53DB;&#x53D8;&#x8005;&#x4F1A;&#x5C3D;&#x91CF;&#x5E72;&#x6270;&#x4E00;&#x81F4;&#x7684;&#x8FBE;&#x6210;&#xFF09;&#xFF0C;N &#x2212; F &gt; F&#xFF0C;&#x5373; N &gt; 2F &#x60C5;&#x51B5;&#x4E0B;&#x624D;&#x80FD;&#x8FBE;&#x6210;&#x4E00;&#x81F4;&#x3002;</p>
+<p>&#x5F53;&#x63D0;&#x6848;&#x4EBA;&#x662F;&#x53DB;&#x53D8;&#x8005;&#xFF0C;&#x4F1A;&#x5C3D;&#x91CF;&#x53D1;&#x9001;&#x76F8;&#x53CD;&#x7684;&#x63D0;&#x6848;&#x7ED9; N - F &#x4E2A;&#x5408;&#x4F5C;&#x8005;&#xFF0C;&#x4ECE;&#x6536;&#x5230; 1 &#x7684;&#x5408;&#x4F5C;&#x8005;&#x770B;&#x6765;&#xFF0C;&#x7CFB;&#x7EDF;&#x4E2D;&#x4F1A;&#x5B58;&#x5728; (N - F)/2 &#x4E2A;&#x4FE1;&#x606F; 1&#xFF0C;&#x4EE5;&#x53CA; (N - F)/2 &#x4E2A;&#x4FE1;&#x606F; 0&#xFF1B;&#x4ECE;&#x6536;&#x5230; 0 &#x7684;&#x5408;&#x4F5C;&#x8005;&#x770B;&#x6765;&#xFF0C;&#x7CFB;&#x7EDF;&#x4E2D;&#x4F1A;&#x5B58;&#x5728; (N - F)/2 &#x4E2A;&#x4FE1;&#x606F; 0&#xFF0C;&#x4EE5;&#x53CA; (N - F)/2 &#x4E2A;&#x4FE1;&#x606F; 1&#xFF1B;</p>
+<p>&#x53E6;&#x5916;&#x5B58;&#x5728; F &#x2212; 1 &#x4E2A;&#x4E0D;&#x786E;&#x5B9A;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x5408;&#x4F5C;&#x8005;&#x8981;&#x60F3;&#x8FBE;&#x6210;&#x4E00;&#x81F4;&#xFF0C;&#x5FC5;&#x987B;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x5BF9;&#x6240;&#x83B7;&#x5F97;&#x7684;&#x6D88;&#x606F;&#x8FDB;&#x884C;&#x5224;&#x5B9A;&#xFF0C;&#x8BE2;&#x95EE;&#x5176;&#x4ED6;&#x4EBA;&#x67D0;&#x4E2A;&#x88AB;&#x6000;&#x7591;&#x5BF9;&#x8C61;&#x7684;&#x6D88;&#x606F;&#x503C;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;&#x53D6;&#x591A;&#x6570;&#x6765;&#x4F5C;&#x4E3A;&#x88AB;&#x6000;&#x7591;&#x8005;&#x7684;&#x4FE1;&#x606F;&#x503C;&#x3002;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x53EF;&#x4EE5;&#x8FDB;&#x4E00;&#x6B65;&#x9012;&#x5F52;&#x4E0B;&#x53BB;&#x3002;</p>
+<p>Leslie Lamport &#x7B49;&#x4EBA;&#x5728;&#x8BBA;&#x6587;&#x300A;Reaching agreement in the presence of faults&#x300B;&#x4E2D;&#x8BC1;&#x660E;&#xFF0C;&#x5F53;&#x53DB;&#x53D8;&#x8005;&#x4E0D;&#x8D85;&#x8FC7; 1/3 &#x65F6;&#xFF0C;&#x5B58;&#x5728;&#x6709;&#x6548;&#x7684;&#x62DC;&#x5360;&#x5EAD;&#x5BB9;&#x9519;&#x7B97;&#x6CD5;&#xFF08;&#x6700;&#x574F;&#x9700;&#x8981; F+1 &#x8F6E;&#x4EA4;&#x4E92;&#xFF09;&#x3002;&#x53CD;&#x4E4B;&#xFF0C;&#x5982;&#x679C;&#x53DB;&#x53D8;&#x8005;&#x8FC7;&#x591A;&#xFF0C;&#x8D85;&#x8FC7; 1/3&#xFF0C;&#x5219;&#x65E0;&#x6CD5;&#x4FDD;&#x8BC1;&#x4E00;&#x5B9A;&#x80FD;&#x8FBE;&#x5230;&#x4E00;&#x81F4;&#x7ED3;&#x679C;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#xFF0C;&#x5F53;&#x5B58;&#x5728;&#x591A;&#x4E8E; 1/3 &#x7684;&#x53DB;&#x53D8;&#x8005;&#x65F6;&#xFF0C;&#x6709;&#x6CA1;&#x6709;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x5462;&#xFF1F;</p>
+<p>&#x8BBE;&#x60F3; F &#x4E2A;&#x53DB;&#x53D8;&#x8005;&#x548C; L &#x4E2A;&#x5FE0;&#x8BDA;&#x8005;&#xFF0C;&#x53DB;&#x53D8;&#x8005;&#x6545;&#x610F;&#x4F7F;&#x574F;&#xFF0C;&#x53EF;&#x4EE5;&#x7ED9;&#x51FA;&#x9519;&#x8BEF;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4E0D;&#x54CD;&#x5E94;&#x3002;&#x67D0;&#x4E2A;&#x65F6;&#x5019; F &#x4E2A;&#x53DB;&#x53D8;&#x8005;&#x90FD;&#x4E0D;&#x54CD;&#x5E94;&#xFF0C;&#x5219; L &#x4E2A;&#x5FE0;&#x8BDA;&#x8005;&#x53D6;&#x591A;&#x6570;&#x65E2;&#x80FD;&#x5F97;&#x5230;&#x6B63;&#x786E;&#x7ED3;&#x679C;&#x3002;&#x5F53; F &#x4E2A;&#x53DB;&#x53D8;&#x8005;&#x90FD;&#x7ED9;&#x51FA;&#x4E00;&#x4E2A;&#x6076;&#x610F;&#x7684;&#x63D0;&#x6848;&#xFF0C;&#x5E76;&#x4E14; L &#x4E2A;&#x5FE0;&#x8BDA;&#x8005;&#x4E2D;&#x6709; F &#x4E2A;&#x79BB;&#x7EBF;&#x65F6;&#xFF0C;&#x5269;&#x4E0B;&#x7684; L - F &#x4E2A;&#x5FE0;&#x8BDA;&#x8005;&#x6B64;&#x65F6;&#x65E0;&#x6CD5;&#x5206;&#x522B;&#x662F;&#x5426;&#x6DF7;&#x5165;&#x4E86;&#x53DB;&#x53D8;&#x8005;&#xFF0C;&#x4ECD;&#x7136;&#x8981;&#x786E;&#x4FDD;&#x53D6;&#x591A;&#x6570;&#x80FD;&#x5F97;&#x5230;&#x6B63;&#x786E;&#x7ED3;&#x679C;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;L - F &gt; F&#xFF0C;&#x5373; L &gt; 2F &#x6216; N - F &gt; 2F&#xFF0C;&#x6240;&#x4EE5;&#x7CFB;&#x7EDF;&#x6574;&#x4F53;&#x89C4;&#x6A21; N &#x8981;&#x5927;&#x4E8E; 3F&#x3002;</p>
+<p>&#x80FD;&#x786E;&#x4FDD;&#x8FBE;&#x6210;&#x5171;&#x8BC6;&#x7684;&#x62DC;&#x5360;&#x5EAD;&#x7CFB;&#x7EDF;&#x8282;&#x70B9;&#x6570;&#x81F3;&#x5C11;&#x4E3A; 4&#xFF0C;&#x6B64;&#x65F6;&#x6700;&#x591A;&#x5141;&#x8BB8;&#x51FA;&#x73B0; 1 &#x4E2A;&#x574F;&#x7684;&#x8282;&#x70B9;&#x3002;</p>
+<h3 id="&#x62DC;&#x5360;&#x5EAD;&#x5BB9;&#x9519;&#x7B97;&#x6CD5;">&#x62DC;&#x5360;&#x5EAD;&#x5BB9;&#x9519;&#x7B97;&#x6CD5;</h3>
+<p>&#x62DC;&#x5360;&#x5EAD;&#x5BB9;&#x9519;&#x7B97;&#x6CD5;&#xFF08;Byzantine Fault Tolerant&#xFF09;&#x662F;&#x9762;&#x5411;&#x62DC;&#x5360;&#x5EAD;&#x95EE;&#x9898;&#x7684;&#x5BB9;&#x9519;&#x7B97;&#x6CD5;&#xFF0C;&#x89E3;&#x51B3;&#x7684;&#x662F;&#x5728;&#x7F51;&#x7EDC;&#x901A;&#x4FE1;&#x53EF;&#x9760;&#xFF0C;&#x4F46;&#x8282;&#x70B9;&#x53EF;&#x80FD;&#x6545;&#x969C;&#x548C;&#x4F5C;&#x6076;&#x60C5;&#x51B5;&#x4E0B;&#x5982;&#x4F55;&#x8FBE;&#x6210;&#x5171;&#x8BC6;&#x3002;</p>
+<p>&#x62DC;&#x5360;&#x5EAD;&#x5BB9;&#x9519;&#x7B97;&#x6CD5;&#x6700;&#x65E9;&#x7684;&#x8BA8;&#x8BBA;&#x53EF;&#x4EE5;&#x8FFD;&#x6EAF;&#x5230; Leslie Lamport &#x7B49;&#x4EBA; 1982 &#x5E74; &#x53D1;&#x8868;&#x7684;&#x8BBA;&#x6587;&#x300A;The Byzantine Generals Problem&#x300B;&#xFF0C;&#x4E4B;&#x540E;&#x51FA;&#x73B0;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x6539;&#x8FDB;&#x5DE5;&#x4F5C;&#xFF0C;&#x4EE3;&#x8868;&#x6027;&#x6210;&#x679C;&#x5305;&#x62EC;&#x300A;Optimal Asynchronous Byzantine Agreement&#x300B;&#xFF08;1992 &#x5E74;&#xFF09;&#x3001;&#x300A;Fully Polynomial Byzantine Agreement for n&gt;3t Processors in t+1 Rounds&#x300B;&#xFF08;1998 &#x5E74;&#xFF09;&#x7B49;&#x3002;&#x957F;&#x671F;&#x4EE5;&#x6765;&#xFF0C;&#x62DC;&#x5360;&#x5EAD;&#x95EE;&#x9898;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x90FD;&#x5B58;&#x5728;&#x8FD0;&#x884C;&#x8FC7;&#x6162;&#xFF0C;&#x6216;&#x590D;&#x6742;&#x5EA6;&#x8FC7;&#x9AD8;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x76F4;&#x5230;&#x201C;&#x5B9E;&#x7528;&#x62DC;&#x5360;&#x5EAD;&#x5BB9;&#x9519;&#x7B97;&#x6CD5;&#x201D;&#xFF08;Practical Byzantine Fault Tolerance&#xFF0C;PBFT&#xFF09; &#x7B97;&#x6CD5;&#x7684;&#x63D0;&#x51FA;&#x3002;</p>
+<p>1999 &#x5E74;&#xFF0C;&#x8FD9;&#x4E00;&#x7B97;&#x6CD5;&#x7531; Castro &#x548C; Liskov &#x4E8E;&#x8BBA;&#x6587;&#x300A;Practical Byzantine Fault Tolerance and Proactive Recovery&#x300B;&#x4E2D;&#x63D0;&#x51FA;&#x3002;&#x8BE5;&#x7B97;&#x6CD5;&#x57FA;&#x4E8E;&#x524D;&#x4EBA;&#x5DE5;&#x4F5C;&#xFF08;&#x7279;&#x522B;&#x662F; Paxos &#x76F8;&#x5173;&#x7B97;&#x6CD5;&#xFF0C;&#x56E0;&#x6B64;&#x4E5F;&#x88AB;&#x79F0;&#x4E3A; Byzantine Paxos&#xFF09;&#x8FDB;&#x884C;&#x4E86;&#x4F18;&#x5316;&#xFF0C;&#x9996;&#x6B21;&#x5C06;&#x62DC;&#x5360;&#x5EAD;&#x5BB9;&#x9519;&#x7B97;&#x6CD5;&#x590D;&#x6742;&#x5EA6;&#x4ECE;&#x6307;&#x6570;&#x7EA7;&#x964D;&#x4F4E;&#x5230;&#x4E86;&#x591A;&#x9879;&#x5F0F;&#x7EA7;&#xFF0C;&#x76EE;&#x524D;&#x5DF2;&#x5F97;&#x5230;&#x5E7F;&#x6CDB;&#x5E94;&#x7528;&#x3002;&#x5176;&#x53EF;&#x4EE5;&#x5728;&#x6076;&#x610F;&#x8282;&#x70B9;&#x4E0D;&#x8D85;&#x8FC7;&#x603B;&#x6570; 1/3 &#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x540C;&#x65F6;&#x4FDD;&#x8BC1; Safety &#x548C; Liveness&#x3002;</p>
+<p>PBFT &#x7B97;&#x6CD5;&#x91C7;&#x7528;&#x5BC6;&#x7801;&#x5B66;&#x76F8;&#x5173;&#x6280;&#x672F;&#xFF08;RSA &#x7B7E;&#x540D;&#x7B97;&#x6CD5;&#x3001;&#x6D88;&#x606F;&#x9A8C;&#x8BC1;&#x7F16;&#x7801;&#x548C;&#x6458;&#x8981;&#xFF09;&#x786E;&#x4FDD;&#x6D88;&#x606F;&#x4F20;&#x9012;&#x8FC7;&#x7A0B;&#x65E0;&#x6CD5;&#x88AB;&#x7BE1;&#x6539;&#x548C;&#x7834;&#x574F;&#x3002;</p>
+<p>&#x7B97;&#x6CD5;&#x6574;&#x4F53;&#x7684;&#x57FA;&#x672C;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x9996;&#x5148;&#xFF0C;&#x901A;&#x8FC7;&#x8F6E;&#x6362;&#x6216;&#x968F;&#x673A;&#x7B97;&#x6CD5;&#x9009;&#x51FA;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x4E3A;&#x4E3B;&#x8282;&#x70B9;&#xFF0C;&#x6B64;&#x540E;&#x53EA;&#x8981;&#x4E3B;&#x8282;&#x70B9;&#x4E0D;&#x5207;&#x6362;&#xFF0C;&#x5219;&#x79F0;&#x4E3A;&#x4E00;&#x4E2A;&#x89C6;&#x56FE;&#xFF08;View&#xFF09;&#x3002;</li>
+<li>&#x5728;&#x67D0;&#x4E2A;&#x89C6;&#x56FE;&#x4E2D;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x5C06;&#x8BF7;&#x6C42; <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>REQUEST,operation,timestamp,client</span><span class="token punctuation">&gt;</span></span></code> &#x53D1;&#x9001;&#x7ED9;&#x4E3B;&#x8282;&#x70B9;&#xFF0C;&#x4E3B;&#x8282;&#x70B9;&#x8D1F;&#x8D23;&#x5E7F;&#x64AD;&#x8BF7;&#x6C42;&#x5230;&#x6240;&#x6709;&#x5176;&#x5B83;&#x526F;&#x672C;&#x8282;&#x70B9;&#x3002;</li>
+<li>&#x6240;&#x6709;&#x8282;&#x70B9;&#x5904;&#x7406;&#x5B8C;&#x6210;&#x8BF7;&#x6C42;&#xFF0C;&#x5C06;&#x5904;&#x7406;&#x7ED3;&#x679C; <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>REPLY,view,timestamp,client,id_node,response</span><span class="token punctuation">&gt;</span></span></code> &#x8FD4;&#x56DE;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x3002;&#x5BA2;&#x6237;&#x7AEF;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x6536;&#x5230;&#x4E86;&#x81F3;&#x5C11; f+1 &#x4E2A;&#x6765;&#x81EA;&#x4E0D;&#x540C;&#x8282;&#x70B9;&#x7684;&#x76F8;&#x540C;&#x7ED3;&#x679C;&#xFF0C;&#x4F5C;&#x4E3A;&#x6700;&#x7EC8;&#x7ED3;&#x679C;&#x3002;</li>
+</ul>
+<p>&#x4E3B;&#x8282;&#x70B9;&#x5E7F;&#x64AD;&#x8FC7;&#x7A0B;&#x5305;&#x62EC;&#x4E09;&#x4E2A;&#x9636;&#x6BB5;&#x7684;&#x5904;&#x7406;&#xFF1A;&#x9884;&#x51C6;&#x5907;&#xFF08;Pre-Prepare&#xFF09;&#x3001;&#x51C6;&#x5907;&#xFF08;Prepare&#xFF09;&#x548C;&#x63D0;&#x4EA4;&#xFF08;Commit&#xFF09;&#x3002;&#x9884;&#x51C6;&#x5907;&#x548C;&#x51C6;&#x5907;&#x9636;&#x6BB5;&#x786E;&#x4FDD;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x89C6;&#x56FE;&#x5185;&#x8BF7;&#x6C42;&#x53D1;&#x9001;&#x7684;&#x987A;&#x5E8F;&#x6B63;&#x786E;&#xFF1B;&#x51C6;&#x5907;&#x548C;&#x63D0;&#x4EA4;&#x9636;&#x6BB5;&#x5219;&#x786E;&#x4FDD;&#x5728;&#x4E0D;&#x540C;&#x89C6;&#x56FE;&#x4E4B;&#x95F4;&#x7684;&#x786E;&#x8BA4;&#x8BF7;&#x6C42;&#x662F;&#x4FDD;&#x5E8F;&#x7684;&#x3002;</p>
+<ul>
+<li>&#x9884;&#x51C6;&#x5907;&#x9636;&#x6BB5;&#xFF1A;&#x4E3B;&#x8282;&#x70B9;&#x4E3A;&#x4ECE;&#x5BA2;&#x6237;&#x7AEF;&#x6536;&#x5230;&#x7684;&#x8BF7;&#x6C42;&#x5206;&#x914D;&#x63D0;&#x6848;&#x7F16;&#x53F7;&#xFF0C;&#x7136;&#x540E;&#x53D1;&#x51FA;&#x9884;&#x51C6;&#x5907;&#x6D88;&#x606F; <code>&lt;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>PRE-PREPARE,view,n,digest</span><span class="token punctuation">&gt;</span></span>,message&gt;</code> &#x7ED9;&#x5404;&#x526F;&#x672C;&#x8282;&#x70B9;&#xFF0C;&#x5176;&#x4E2D; message &#x662F;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8BF7;&#x6C42;&#x6D88;&#x606F;&#xFF0C;digest &#x662F;&#x6D88;&#x606F;&#x7684;&#x6458;&#x8981;&#x3002;</li>
+<li>&#x51C6;&#x5907;&#x9636;&#x6BB5;&#xFF1A;&#x526F;&#x672C;&#x8282;&#x70B9;&#x6536;&#x5230;&#x9884;&#x51C6;&#x5907;&#x6D88;&#x606F;&#x540E;&#xFF0C;&#x68C0;&#x67E5;&#x6D88;&#x606F;&#x3002;&#x5982;&#x6D88;&#x606F;&#x5408;&#x6CD5;&#xFF0C;&#x5219;&#x5411;&#x5176;&#x5B83;&#x8282;&#x70B9;&#x53D1;&#x9001;&#x51C6;&#x5907;&#x6D88;&#x606F; <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>PREPARE,view,n,digest,id</span><span class="token punctuation">&gt;</span></span></code>&#xFF0C;&#x5E26;&#x4E0A;&#x81EA;&#x5DF1;&#x7684; id &#x4FE1;&#x606F;&#xFF0C;&#x540C;&#x65F6;&#x63A5;&#x6536;&#x6765;&#x81EA;&#x5176;&#x5B83;&#x8282;&#x70B9;&#x7684;&#x51C6;&#x5907;&#x6D88;&#x606F;&#x3002;&#x6536;&#x5230;&#x51C6;&#x5907;&#x6D88;&#x606F;&#x7684;&#x8282;&#x70B9;&#x5BF9;&#x6D88;&#x606F;&#x540C;&#x6837;&#x8FDB;&#x884C;&#x5408;&#x6CD5;&#x6027;&#x68C0;&#x67E5;&#x3002;&#x9A8C;&#x8BC1;&#x901A;&#x8FC7;&#x5219;&#x628A;&#x8FD9;&#x4E2A;&#x51C6;&#x5907;&#x6D88;&#x606F;&#x5199;&#x5165;&#x6D88;&#x606F;&#x65E5;&#x5FD7;&#x4E2D;&#x3002;&#x96C6;&#x9F50;&#x81F3;&#x5C11; 2f+1 &#x4E2A;&#x9A8C;&#x8BC1;&#x8FC7;&#x7684;&#x6D88;&#x606F;&#x624D;&#x8FDB;&#x5165;&#x51C6;&#x5907;&#x72B6;&#x6001;&#x3002;</li>
+<li>&#x63D0;&#x4EA4;&#x9636;&#x6BB5;&#xFF1A;&#x5E7F;&#x64AD; commit &#x6D88;&#x606F;&#xFF0C;&#x544A;&#x8BC9;&#x5176;&#x5B83;&#x8282;&#x70B9;&#x67D0;&#x4E2A;&#x63D0;&#x6848; n &#x5728;&#x89C6;&#x56FE; v &#x91CC;&#x5DF2;&#x7ECF;&#x5904;&#x4E8E;&#x51C6;&#x5907;&#x72B6;&#x6001;&#x3002;&#x5982;&#x679C;&#x96C6;&#x9F50;&#x81F3;&#x5C11; 2f+1 &#x4E2A;&#x9A8C;&#x8BC1;&#x8FC7;&#x7684; commit &#x6D88;&#x606F;&#xFF0C;&#x5219;&#x8BF4;&#x660E;&#x63D0;&#x6848;&#x901A;&#x8FC7;&#x3002;</li>
+</ul>
+<p>&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x4E0A;&#x8FD8;&#x5305;&#x62EC;&#x89C6;&#x56FE;&#x5207;&#x6362;&#x3001;checkpoint &#x7B49;&#x673A;&#x5236;&#xFF0C;&#x8BFB;&#x8005;&#x53EF;&#x81EA;&#x884C;&#x53C2;&#x8003;&#x8BBA;&#x6587;&#x5185;&#x5BB9;&#xFF0C;&#x5728;&#x6B64;&#x4E0D;&#x518D;&#x8D58;&#x8FF0;&#x3002;</p>
+<p>&#x62DC;&#x5360;&#x5EAD;&#x5BB9;&#x9519;&#x7C7B;&#x7684;&#x7B97;&#x6CD5;&#x56E0;&#x4E3A;&#x8981;&#x8003;&#x8651;&#x6700;&#x6076;&#x610F;&#x7684;&#x5B58;&#x5728;&#x201C;&#x6363;&#x4E71;&#x201D;&#x8005;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5728;&#x5927;&#x89C4;&#x6A21;&#x573A;&#x666F;&#x4E0B;&#x5171;&#x8BC6;&#x6027;&#x80FD;&#x5F80;&#x5F80;&#x4F1A;&#x53D7;&#x5230;&#x5F71;&#x54CD;&#x3002;</p>
+<h3 id="&#x65B0;&#x7684;&#x89E3;&#x51B3;&#x601D;&#x8DEF;">&#x65B0;&#x7684;&#x89E3;&#x51B3;&#x601D;&#x8DEF;</h3>
+<p>&#x62DC;&#x5360;&#x5EAD;&#x95EE;&#x9898;&#x4E4B;&#x6240;&#x4EE5;&#x96BE;&#x89E3;&#xFF0C;&#x5728;&#x4E8E;&#x4EFB;&#x4F55;&#x65F6;&#x5019;&#x7CFB;&#x7EDF;&#x4E2D;&#x90FD;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x591A;&#x4E2A;&#x63D0;&#x6848;&#xFF08;&#x56E0;&#x4E3A;&#x63D0;&#x6848;&#x6210;&#x672C;&#x5F88;&#x4F4E;&#xFF09;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x5927;&#x89C4;&#x6A21;&#x573A;&#x666F;&#x4E0B;&#x8981;&#x5B8C;&#x6210;&#x6700;&#x7EC8;&#x786E;&#x8BA4;&#x7684;&#x8FC7;&#x7A0B;&#x5BB9;&#x6613;&#x53D7;&#x5E72;&#x6270;&#xFF0C;&#x96BE;&#x4EE5;&#x8FBE;&#x6210;&#x5171;&#x8BC6;&#x3002;</p>
+<p>2014 &#x5E74;&#xFF0C;&#x65AF;&#x5766;&#x798F;&#x7684; Christopher Copeland &#x548C; Hongxia Zhong &#x5728;&#x8BBA;&#x6587;&#x300A;Tangaroa: a byzantine fault tolerant raft&#x300B;&#x4E2D;&#x63D0;&#x51FA;&#x5728; Raft &#x7B97;&#x6CD5;&#x57FA;&#x7840;&#x4E0A;&#x501F;&#x9274; PBFT &#x7B97;&#x6CD5;&#x7684;&#x4E00;&#x4E9B;&#x7279;&#x6027;&#xFF08;&#x5305;&#x62EC;&#x7B7E;&#x540D;&#x3001;&#x6076;&#x610F;&#x9886;&#x5BFC;&#x63A2;&#x6D4B;&#x3001;&#x9009;&#x4E3E;&#x6821;&#x9A8C;&#x7B49;&#xFF09;&#x6765;&#x5B9E;&#x73B0;&#x62DC;&#x5360;&#x5EAD;&#x5BB9;&#x9519;&#x6027;&#xFF0C;&#x517C;&#x987E;&#x53EF;&#x5B9E;&#x73B0;&#x6027;&#x548C;&#x9C81;&#x68D2;&#x6027;&#x3002;&#x8BE5;&#x8BBA;&#x6587;&#x4E5F;&#x542F;&#x53D1;&#x4E86; Kadena &#x7B49;&#x9879;&#x76EE;&#x7684;&#x51FA;&#x73B0;&#xFF0C;&#x5B9E;&#x73B0;&#x66F4;&#x597D;&#x6027;&#x80FD;&#x7684;&#x62DC;&#x5360;&#x5EAD;&#x7B97;&#x6CD5;&#x3002;</p>
+<p>2017 &#x5E74;&#xFF0C;MIT &#x8BA1;&#x7B97;&#x673A;&#x79D1;&#x5B66;&#x4E0E;&#x4EBA;&#x5DE5;&#x667A;&#x80FD;&#x5B9E;&#x9A8C;&#x5BA4;&#xFF08;CSAIL&#xFF09;&#x7684; Yossi Gilad &#x548C; Silvio Micali &#x7B49;&#x4EBA;&#x5728;&#x8BBA;&#x6587;&#x300A;Algorand: Scaling Byzantine Agreements for Cryptocurrencies&#x300B;&#x4E2D;&#x9488;&#x5BF9; PBFT &#x7B97;&#x6CD5;&#x5728;&#x5F88;&#x591A;&#x8282;&#x70B9;&#x60C5;&#x51B5;&#x4E0B;&#x6027;&#x80FD;&#x4E0D;&#x4F73;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x63D0;&#x51FA;&#x5148;&#x9009;&#x51FA;&#x5C11;&#x91CF;&#x8BB0;&#x8D26;&#x8282;&#x70B9;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x5229;&#x7528;&#x53EF;&#x9A8C;&#x8BC1;&#x968F;&#x673A;&#x51FD;&#x6570;&#xFF08;Verifiable Random Function&#xFF0C;VRF&#xFF09;&#x6765;&#x968F;&#x673A;&#x9009;&#x53D6;&#x9886;&#x5BFC;&#x8282;&#x70B9;&#xFF0C;&#x907F;&#x514D;&#x5168;&#x7F51;&#x76F4;&#x63A5;&#x505A;&#x5171;&#x8BC6;&#xFF0C;&#x5C06;&#x62DC;&#x5360;&#x5EAD;&#x7B97;&#x6CD5;&#x6269;&#x5C55;&#x5230;&#x4E86;&#x652F;&#x6301;&#x8F83;&#x5927;&#x89C4;&#x6A21;&#x7684;&#x5E94;&#x7528;&#x573A;&#x666F;&#xFF0C;&#x540C;&#x65F6;&#x4FDD;&#x6301;&#x8F83;&#x597D;&#x7684;&#x6027;&#x80FD;&#xFF08;1000+ tps&#xFF09;&#x3002;</p>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x5EB7;&#x5948;&#x5C14;&#x5927;&#x5B66;&#x7684; Rafael Pass &#x548C; Elaine Shi &#x5728;&#x8BBA;&#x6587;&#x300A;The Sleepy Model of Consensus&#x300B;&#x4E2D;&#x8FD8;&#x63A2;&#x8BA8;&#x4E86;&#x5728;&#x52A8;&#x6001;&#x573A;&#x666F;&#xFF08;&#x5927;&#x91CF;&#x8282;&#x70B9;&#x79BB;&#x7EBF;&#x60C5;&#x51B5;&#xFF09;&#x4E0B;&#x5982;&#x4F55;&#x4FDD;&#x969C;&#x5171;&#x8BC6;&#x7684;&#x5B89;&#x5168;&#x6027;&#xFF0C;&#x6240;&#x63D0;&#x51FA;&#x7684; Sleepy Consensus &#x7B97;&#x6CD5;&#x53EF;&#x4EE5;&#x5728;&#x6D3B;&#x8DC3;&#x8BDA;&#x5B9E;&#x8282;&#x70B9;&#x8FBE;&#x5230;&#x4E00;&#x534A;&#x4EE5;&#x4E0A;&#x65F6;&#x786E;&#x4FDD;&#x5B8C;&#x6210;&#x62DC;&#x5360;&#x5EAD;&#x5171;&#x8BC6;&#x3002;</p>
+<p>2018 &#x5E74;&#xFF0C;&#x6E05;&#x534E;&#x5927;&#x5B66;&#x7684; Chenxing Li &#x7B49;&#x5728;&#x8BBA;&#x6587;&#x300A;Scaling Nakamoto Consensus to Thousands of Transactions per Second&#x300B;&#x4E2D;&#x63D0;&#x51FA;&#x4E86; Conflux &#x5171;&#x8BC6;&#x534F;&#x8BAE;&#x3002;&#x8BE5;&#x534F;&#x8BAE;&#x5728; GHOST &#x7B97;&#x6CD5;&#x57FA;&#x7840;&#x4E0A;&#x6539;&#x5584;&#x4E86;&#x5B89;&#x5168;&#x6027;&#xFF0C;&#x9762;&#x5411;&#x516C;&#x6709;&#x533A;&#x5757;&#x94FE;&#x573A;&#x666F;&#x4E0B;&#xFF0C;&#x7406;&#x8BBA;&#x4E0A;&#x80FD;&#x8FBE;&#x5230; 6000+ tps&#x3002;</p>
+<p>&#x6BD4;&#x7279;&#x5E01;&#x7F51;&#x7EDC;&#x5728;&#x8BBE;&#x8BA1;&#x65F6;&#x4F7F;&#x7528;&#x4E86; PoW&#xFF08;Proof of Work&#xFF09;&#x7684;&#x6982;&#x7387;&#x578B;&#x7B97;&#x6CD5;&#x601D;&#x8DEF;&#xFF0C;&#x4ECE;&#x5982;&#x4E0B;&#x4E24;&#x4E2A;&#x89D2;&#x5EA6;&#x89E3;&#x51B3;&#x5927;&#x89C4;&#x6A21;&#x573A;&#x666F;&#x4E0B;&#x7684;&#x62DC;&#x5360;&#x5EAD;&#x5BB9;&#x9519;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x9650;&#x5236;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x6574;&#x4E2A;&#x7F51;&#x7EDC;&#x4E2D;&#x51FA;&#x73B0;&#x63D0;&#x6848;&#x7684;&#x4E2A;&#x6570;&#xFF08;&#x901A;&#x8FC7;&#x5DE5;&#x4F5C;&#x91CF;&#x8BC1;&#x660E;&#x6765;&#x589E;&#x52A0;&#x63D0;&#x6848;&#x6210;&#x672C;&#xFF09;&#xFF1B;&#x5176;&#x6B21;&#x662F;&#x4E22;&#x6389;&#x6700;&#x7EC8;&#x786E;&#x8BA4;&#x7684;&#x7EA6;&#x6570;&#xFF0C;&#x7EA6;&#x5B9A;&#x597D;&#x59CB;&#x7EC8;&#x6CBF;&#x7740;&#x5DF2;&#x77E5;&#x6700;&#x957F;&#x7684;&#x94FE;&#x8FDB;&#x884C;&#x62D3;&#x5C55;&#x3002;&#x5171;&#x8BC6;&#x7684;&#x6700;&#x7EC8;&#x786E;&#x8BA4;&#x662F;&#x6982;&#x7387;&#x610F;&#x4E49;&#x4E0A;&#x7684;&#x5B58;&#x5728;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x5373;&#x4FBF;&#x6709;&#x4EBA;&#x8BD5;&#x56FE;&#x6076;&#x610F;&#x7834;&#x574F;&#xFF0C;&#x4E5F;&#x4F1A;&#x4ED8;&#x51FA;&#x76F8;&#x5E94;&#x7684;&#x7ECF;&#x6D4E;&#x4EE3;&#x4EF7;&#xFF08;&#x8D85;&#x8FC7;&#x6574;&#x4F53;&#x7CFB;&#x7EDF;&#x4E00;&#x534A;&#x7684;&#x5DE5;&#x4F5C;&#x91CF;&#xFF09;&#x3002;</p>
+<p>&#x540E;&#x6765;&#x7684;&#x5404;&#x79CD; PoX &#x7CFB;&#x5217;&#x7B97;&#x6CD5;&#xFF0C;&#x4E5F;&#x90FD;&#x662F;&#x6CBF;&#x7740;&#x8FD9;&#x4E2A;&#x601D;&#x8DEF;&#x8FDB;&#x884C;&#x6539;&#x8FDB;&#xFF0C;&#x91C7;&#x7528;&#x7ECF;&#x6D4E;&#x535A;&#x5F08;&#x6765;&#x5236;&#x7EA6;&#x653B;&#x51FB;&#x8005;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="paxos.html" class="navigation navigation-prev " aria-label="Previous page: Paxos 算法与 Raft 算法">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="availability.html" class="navigation navigation-next " aria-label="Next page: 可靠性指标">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"拜占庭问题与算法","level":"1.7.7","depth":2,"next":{"title":"可靠性指标","level":"1.7.8","depth":2,"path":"04_distributed_system/availability.md","ref":"04_distributed_system/availability.md","articles":[]},"previous":{"title":"Paxos 算法与 Raft 算法","level":"1.7.6","depth":2,"path":"04_distributed_system/paxos.md","ref":"04_distributed_system/paxos.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-autocover","github-buttons","image-captions","latex-codecogs","mathjax","prism","prism-themes","-highlight","comment"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"latex-codecogs":{"type":"gif"},"prism":{},"search":{},"autocover":{"font":{"size":null,"family":"Impact","color":"#000"},"size":{"w":1800,"h":2360},"background":{"color":"#FFF"}},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"prism-themes":{},"github-buttons":{"repo":"yeasy/blockchain_guide","types":["star","watch"]},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"comment":{"highlightCommented":true},"image-captions":{"attributes":{"width":"400"},"caption":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","variable_name":"_pictures"}},"github":"yeasy/blockchain_guide","theme":"default","author":"yeasy","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"index.html#fig1.1.1","level":"1.1","list_caption":"Figure: 区块链原理、设计与应用","alt":"区块链原理、设计与应用","nro":1,"url":"_images/blockchain_book.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"区块链原理、设计与应用","attributes":{"width":"400"},"skip":false,"key":"1.1.1"},{"backlink":"index.html#fig1.1.2","level":"1.1","list_caption":"Figure: coffee","alt":"coffee","nro":2,"url":"_images/coffee.jpeg","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"coffee","attributes":{"width":"400"},"skip":false,"key":"1.1.2"},{"backlink":"01_history/ledger_history.html#fig1.4.1.1","level":"1.4.1","list_caption":"Figure: 账本科技的演化","alt":"账本科技的演化","nro":3,"url":"_images/ledger_history.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"账本科技的演化","attributes":{"width":"400"},"skip":false,"key":"1.4.1.1"},{"backlink":"01_history/ledger_history.html#fig1.4.1.2","level":"1.4.1","list_caption":"Figure: 乌鲁克城的库辛泥板","alt":"乌鲁克城的库辛泥板","nro":4,"url":"_images/kushim.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"乌鲁克城的库辛泥板","attributes":{"width":"400"},"skip":false,"key":"1.4.1.2"},{"backlink":"01_history/dlt_problem.html#fig1.4.2.1","level":"1.4.2","list_caption":"Figure: 方案（一）：简单分布式记账结构","alt":"方案（一）：简单分布式记账结构","nro":5,"url":"_images/dlt-01.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"方案（一）：简单分布式记账结构","attributes":{"width":"400"},"skip":false,"key":"1.4.2.1"},{"backlink":"01_history/dlt_problem.html#fig1.4.2.2","level":"1.4.2","list_caption":"Figure: 方案（二）：带有数字摘要验证的分布式记账","alt":"方案（二）：带有数字摘要验证的分布式记账","nro":6,"url":"_images/dlt-02.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"方案（二）：带有数字摘要验证的分布式记账","attributes":{"width":"400"},"skip":false,"key":"1.4.2.2"},{"backlink":"01_history/dlt_problem.html#fig1.4.2.3","level":"1.4.2","list_caption":"Figure: 方案（三）：带有数字摘要验证的可扩展的分布式记账","alt":"方案（三）：带有数字摘要验证的可扩展的分布式记账","nro":7,"url":"_images/dlt-03.png","index":3,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"方案（三）：带有数字摘要验证的可扩展的分布式记账","attributes":{"width":"400"},"skip":false,"key":"1.4.2.3"},{"backlink":"01_history/dlt_problem.html#fig1.4.2.4","level":"1.4.2","list_caption":"Figure: 区块链结构","alt":"区块链结构","nro":8,"url":"_images/blockchain.png","index":4,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"区块链结构","attributes":{"width":"400"},"skip":false,"key":"1.4.2.4"},{"backlink":"01_history/dlt_problem.html#fig1.4.2.5","level":"1.4.2","list_caption":"Figure: 区块链的三次热潮","alt":"区块链的三次热潮","nro":9,"url":"_images/3-hops.png","index":5,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"区块链的三次热潮","attributes":{"width":"400"},"skip":false,"key":"1.4.2.5"},{"backlink":"01_history/bitcoin.html#fig1.4.3.1","level":"1.4.3","list_caption":"Figure: David Chaum","alt":"David Chaum","nro":10,"url":"_images/David_Chaum.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"David Chaum","attributes":{"width":"400"},"skip":false,"key":"1.4.3.1"},{"backlink":"01_history/bitcoin.html#fig1.4.3.2","level":"1.4.3","list_caption":"Figure: Adam Back","alt":"Adam Back","nro":11,"url":"_images/Adam_Back.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Adam Back","attributes":{"width":"400"},"skip":false,"key":"1.4.3.2"},{"backlink":"01_history/bitcoin.html#fig1.4.3.3","level":"1.4.3","list_caption":"Figure: Wei Dai","alt":"Wei Dai","nro":12,"url":"_images/Wei_Dai.png","index":3,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Wei Dai","attributes":{"width":"400"},"skip":false,"key":"1.4.3.3"},{"backlink":"01_history/bitcoin.html#fig1.4.3.4","level":"1.4.3","list_caption":"Figure: Nick Szabo","alt":"Nick Szabo","nro":13,"url":"_images/Nick_Szabo.png","index":4,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Nick Szabo","attributes":{"width":"400"},"skip":false,"key":"1.4.3.4"},{"backlink":"01_history/business.html#fig1.4.4.1","level":"1.4.4","list_caption":"Figure: 区块链影响的交换过程","alt":"区块链影响的交换过程","nro":14,"url":"_images/application_circle.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"区块链影响的交换过程","attributes":{"width":"400"},"skip":false,"key":"1.4.4.1"},{"backlink":"02_overview/definition.html#fig1.5.1.1","level":"1.5.1","list_caption":"Figure: 区块链结构示例","alt":"区块链结构示例","nro":15,"url":"_images/blockchain_example.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"区块链结构示例","attributes":{"width":"400"},"skip":false,"key":"1.5.1.1"},{"backlink":"02_overview/classify.html#fig1.5.2.1","level":"1.5.2","list_caption":"Figure: 复式记账的账本","alt":"复式记账的账本","nro":16,"url":"_images/ledger.jpg","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"复式记账的账本","attributes":{"width":"400"},"skip":false,"key":"1.5.2.1"},{"backlink":"02_overview/classify.html#fig1.5.2.2","level":"1.5.2","list_caption":"Figure: 信任度和非中心化程度","alt":"信任度和非中心化程度","nro":17,"url":"_images/trust_curve.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"信任度和非中心化程度","attributes":{"width":"400"},"skip":false,"key":"1.5.2.2"},{"backlink":"02_overview/vision.html#fig1.5.4.1","level":"1.5.4","list_caption":"Figure: 计算的历史，笔者于某次技术交流会中提出","alt":"计算的历史，笔者于某次技术交流会中提出","nro":18,"url":"_images/computing_history.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"计算的历史，笔者于某次技术交流会中提出","attributes":{"width":"400"},"skip":false,"key":"1.5.4.1"},{"backlink":"02_overview/vision.html#fig1.5.4.2","level":"1.5.4","list_caption":"Figure: 坚持还是放弃？","alt":"坚持还是放弃？","nro":19,"url":"_images/near_dream.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"坚持还是放弃？","attributes":{"width":"400"},"skip":false,"key":"1.5.4.2"},{"backlink":"05_crypto/algorithm.html#fig1.8.3.1","level":"1.8.3","list_caption":"Figure: 加解密的基本过程","alt":"加解密的基本过程","nro":20,"url":"_images/basic_flow.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"加解密的基本过程","attributes":{"width":"400"},"skip":false,"key":"1.8.3.1"},{"backlink":"05_crypto/algorithm.html#fig1.8.3.2","level":"1.8.3","list_caption":"Figure: TLS 握手协商过程","alt":"TLS 握手协商过程","nro":21,"url":"_images/tls_handshake.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"TLS 握手协商过程","attributes":{"width":"400"},"skip":false,"key":"1.8.3.2"},{"backlink":"05_crypto/merkle_trie.html#fig1.8.7.1","level":"1.8.7","list_caption":"Figure: Merkle 树示例","alt":"Merkle 树示例","nro":22,"url":"_images/Merkle_tree.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Merkle 树示例","attributes":{"width":"400"},"skip":false,"key":"1.8.7.1"},{"backlink":"05_crypto/bloom_filter.html#fig1.8.8.1","level":"1.8.8","list_caption":"Figure: 布隆过滤器","alt":"布隆过滤器","nro":23,"url":"_images/bloom_filter.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"布隆过滤器","attributes":{"width":"400"},"skip":false,"key":"1.8.8.1"},{"backlink":"06_bitcoin/intro.html#fig1.9.1.1","level":"1.9.1","list_caption":"Figure: 比特币项目","alt":"比特币项目","nro":24,"url":"_images/bitcoin_logo.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"比特币项目","attributes":{"width":"400"},"skip":false,"key":"1.9.1.1"},{"backlink":"06_bitcoin/intro.html#fig1.9.1.2","level":"1.9.1","list_caption":"Figure: 比特币汇率历史","alt":"比特币汇率历史","nro":25,"url":"_images/bitcoin_price.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"比特币汇率历史","attributes":{"width":"400"},"skip":false,"key":"1.9.1.2"},{"backlink":"06_bitcoin/design.html#fig1.9.3.1","level":"1.9.3","list_caption":"Figure: 比特币交易的例子","alt":"比特币交易的例子","nro":26,"url":"_images/transaction_example.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"比特币交易的例子","attributes":{"width":"400"},"skip":false,"key":"1.9.3.1"},{"backlink":"06_bitcoin/design.html#fig1.9.3.2","level":"1.9.3","list_caption":"Figure: 比特币区块的例子","alt":"比特币区块的例子","nro":27,"url":"_images/block_example.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"比特币区块的例子","attributes":{"width":"400"},"skip":false,"key":"1.9.3.2"},{"backlink":"06_bitcoin/consensus.html#fig1.9.5.1","level":"1.9.5","list_caption":"Figure: Pow 保证一致性","alt":"Pow 保证一致性","nro":28,"url":"_images/pow.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Pow 保证一致性","attributes":{"width":"400"},"skip":false,"key":"1.9.5.1"},{"backlink":"06_bitcoin/sidechain.html#fig1.9.7.1","level":"1.9.7","list_caption":"Figure: 比特币侧链","alt":"比特币侧链","nro":29,"url":"_images/sidechain.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"比特币侧链","attributes":{"width":"400"},"skip":false,"key":"1.9.7.1"},{"backlink":"06_bitcoin/sidechain.html#fig1.9.7.2","level":"1.9.7","list_caption":"Figure: 侧链双向挂钩的过程","alt":"侧链双向挂钩的过程","nro":30,"url":"_images/sidechain_workflow.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"侧链双向挂钩的过程","attributes":{"width":"400"},"skip":false,"key":"1.9.7.2"},{"backlink":"06_bitcoin/other.html#fig1.9.8.1","level":"1.9.8","list_caption":"Figure: 日益增加的区块容量","alt":"日益增加的区块容量","nro":31,"url":"_images/block_size.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"日益增加的区块容量","attributes":{"width":"400"},"skip":false,"key":"1.9.8.1"},{"backlink":"07_ethereum/intro.html#fig1.10.1.1","level":"1.10.1","list_caption":"Figure: 以太坊项目","alt":"以太坊项目","nro":32,"url":"_images/ethereum_logo.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"以太坊项目","attributes":{"width":"400"},"skip":false,"key":"1.10.1.1"},{"backlink":"07_ethereum/tools.html#fig1.10.4.1","level":"1.10.4","list_caption":"Figure: Mist 浏览器","alt":"Mist 浏览器","nro":33,"url":"_images/mist.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Mist 浏览器","attributes":{"width":"400"},"skip":false,"key":"1.10.4.1"},{"backlink":"07_ethereum/tools.html#fig1.10.4.2","level":"1.10.4","list_caption":"Figure: 以太坊网络上的 Dapp 信息","alt":"以太坊网络上的 Dapp 信息","nro":34,"url":"_images/dapps.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"以太坊网络上的 Dapp 信息","attributes":{"width":"400"},"skip":false,"key":"1.10.4.2"},{"backlink":"08_hyperledger/intro.html#fig1.11.1.1","level":"1.11.1","list_caption":"Figure: 超级账本项目","alt":"超级账本项目","nro":35,"url":"_images/hyperledger_logo.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"超级账本项目","attributes":{"width":"400"},"skip":false,"key":"1.11.1.1"},{"backlink":"08_hyperledger/intro.html#fig1.11.1.2","level":"1.11.1","list_caption":"Figure: Hyperledger 项目快速成长","alt":"Hyperledger 项目快速成长","nro":36,"url":"_images/community_growth.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Hyperledger 项目快速成长","attributes":{"width":"400"},"skip":false,"key":"1.11.1.2"},{"backlink":"08_hyperledger/community.html#fig1.11.2.1","level":"1.11.2","list_caption":"Figure: Hyperledger 社区组织结构","alt":"Hyperledger 社区组织结构","nro":37,"url":"_images/orgnization.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Hyperledger 社区组织结构","attributes":{"width":"400"},"skip":false,"key":"1.11.2.1"},{"backlink":"08_hyperledger/project.html#fig1.11.3.1","level":"1.11.3","list_caption":"Figure: Hyperledger 顶级项目","alt":"Hyperledger 顶级项目","nro":38,"url":"_images/top_projects.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Hyperledger 顶级项目","attributes":{"width":"400"},"skip":false,"key":"1.11.3.1"},{"backlink":"08_hyperledger/project.html#fig1.11.3.2","level":"1.11.3","list_caption":"Figure: Hyperledger Fabric 项目","alt":"Hyperledger Fabric 项目","nro":39,"url":"_images/fabric.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Hyperledger Fabric 项目","attributes":{"width":"400"},"skip":false,"key":"1.11.3.2"},{"backlink":"08_hyperledger/project.html#fig1.11.3.3","level":"1.11.3","list_caption":"Figure: Hyperledger Sawtooth 项目","alt":"Hyperledger Sawtooth 项目","nro":40,"url":"_images/sawtooth.png","index":3,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Hyperledger Sawtooth 项目","attributes":{"width":"400"},"skip":false,"key":"1.11.3.3"},{"backlink":"08_hyperledger/project.html#fig1.11.3.4","level":"1.11.3","list_caption":"Figure: Hyperledger Iroha 项目","alt":"Hyperledger Iroha 项目","nro":41,"url":"_images/iroha.png","index":4,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Hyperledger Iroha 项目","attributes":{"width":"400"},"skip":false,"key":"1.11.3.4"},{"backlink":"08_hyperledger/project.html#fig1.11.3.5","level":"1.11.3","list_caption":"Figure: Hyperledger Explorer 项目","alt":"Hyperledger Explorer 项目","nro":42,"url":"_images/explorer.png","index":5,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Hyperledger Explorer 项目","attributes":{"width":"400"},"skip":false,"key":"1.11.3.5"},{"backlink":"08_hyperledger/project.html#fig1.11.3.6","level":"1.11.3","list_caption":"Figure: Hyperledger Cello 项目","alt":"Hyperledger Cello 项目","nro":43,"url":"_images/cello.png","index":6,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Hyperledger Cello 项目","attributes":{"width":"400"},"skip":false,"key":"1.11.3.6"},{"backlink":"08_hyperledger/project.html#fig1.11.3.7","level":"1.11.3","list_caption":"Figure: Hyperledger Indy 项目","alt":"Hyperledger Indy 项目","nro":44,"url":"_images/indy.png","index":7,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Hyperledger Indy 项目","attributes":{"width":"400"},"skip":false,"key":"1.11.3.7"},{"backlink":"08_hyperledger/project.html#fig1.11.3.8","level":"1.11.3","list_caption":"Figure: Hyperledger Composer 项目","alt":"Hyperledger Composer 项目","nro":45,"url":"_images/composer.png","index":8,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Hyperledger Composer 项目","attributes":{"width":"400"},"skip":false,"key":"1.11.3.8"},{"backlink":"08_hyperledger/project.html#fig1.11.3.9","level":"1.11.3","list_caption":"Figure: Hyperledger Burrow 项目","alt":"Hyperledger Burrow 项目","nro":46,"url":"_images/burrow.png","index":9,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Hyperledger Burrow 项目","attributes":{"width":"400"},"skip":false,"key":"1.11.3.9"},{"backlink":"08_hyperledger/project.html#fig1.11.3.10","level":"1.11.3","list_caption":"Figure: Hyperledger Quilt 项目","alt":"Hyperledger Quilt 项目","nro":47,"url":"_images/quilt.png","index":10,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Hyperledger Quilt 项目","attributes":{"width":"400"},"skip":false,"key":"1.11.3.10"},{"backlink":"08_hyperledger/project.html#fig1.11.3.11","level":"1.11.3","list_caption":"Figure: Hyperledger Caliper 项目","alt":"Hyperledger Caliper 项目","nro":48,"url":"_images/caliper.png","index":11,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Hyperledger Caliper 项目","attributes":{"width":"400"},"skip":false,"key":"1.11.3.11"},{"backlink":"08_hyperledger/project.html#fig1.11.3.12","level":"1.11.3","list_caption":"Figure: Hyperledger Ursa 项目","alt":"Hyperledger Ursa 项目","nro":49,"url":"_images/ursa.png","index":12,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Hyperledger Ursa 项目","attributes":{"width":"400"},"skip":false,"key":"1.11.3.12"},{"backlink":"08_hyperledger/tools.html#fig1.11.4.1","level":"1.11.4","list_caption":"Figure: Jira 任务管理","alt":"Jira 任务管理","nro":50,"url":"_images/jira.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Jira 任务管理","attributes":{"width":"400"},"skip":false,"key":"1.11.4.1"},{"backlink":"08_hyperledger/tools.html#fig1.11.4.2","level":"1.11.4","list_caption":"Figure: Gerrit 代码仓库管理","alt":"Gerrit 代码仓库管理","nro":51,"url":"_images/gerrit.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Gerrit 代码仓库管理","attributes":{"width":"400"},"skip":false,"key":"1.11.4.2"},{"backlink":"08_hyperledger/tools.html#fig1.11.4.3","level":"1.11.4","list_caption":"Figure: RocketChat 在线沟通","alt":"RocketChat 在线沟通","nro":52,"url":"_images/rocket_chat.png","index":3,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"RocketChat 在线沟通","attributes":{"width":"400"},"skip":false,"key":"1.11.4.3"},{"backlink":"08_hyperledger/contribute.html#fig1.11.5.1","level":"1.11.5","list_caption":"Figure: 代码提交流程","alt":"代码提交流程","nro":53,"url":"_images/patchset-lifecycle.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"代码提交流程","attributes":{"width":"400"},"skip":false,"key":"1.11.5.1"},{"backlink":"fabric_design/design.html#fig1.14.2.1","level":"1.14.2","list_caption":"Figure: 示例工作过程","alt":"示例工作过程","nro":54,"url":"_images/dataflow.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"示例工作过程","attributes":{"width":"400"},"skip":false,"key":"1.14.2.1"},{"backlink":"fabric_design/design.html#fig1.14.2.2","level":"1.14.2","list_caption":"Figure: 示例交易过程","alt":"示例交易过程","nro":55,"url":"_images/transaction_flow.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"示例交易过程","attributes":{"width":"400"},"skip":false,"key":"1.14.2.2"},{"backlink":"baas/intro.html#fig1.15.1.1","level":"1.15.1","list_caption":"Figure: 区块链服务参考架构","alt":"区块链服务参考架构","nro":56,"url":"_images/refarch.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"区块链服务参考架构","attributes":{"width":"400"},"skip":false,"key":"1.15.1.1"},{"backlink":"baas/bluemix.html#fig1.15.2.1","level":"1.15.2","list_caption":"Figure: Bluemix 区块链服务仪表盘","alt":"Bluemix 区块链服务仪表盘","nro":57,"url":"_images/bluemix_dashboard.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Bluemix 区块链服务仪表盘","attributes":{"width":"400"},"skip":false,"key":"1.15.2.1"},{"backlink":"baas/bluemix.html#fig1.15.2.2","level":"1.15.2","list_caption":"Figure: 通过 Dashboard 操作链码","alt":"通过 Dashboard 操作链码","nro":58,"url":"_images/bluemix_chaincode.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"通过 Dashboard 操作链码","attributes":{"width":"400"},"skip":false,"key":"1.15.2.2"},{"backlink":"baas/bluemix.html#fig1.15.2.3","level":"1.15.2","list_caption":"Figure: 通过 Dashboard 观察区块链","alt":"通过 Dashboard 观察区块链","nro":59,"url":"_images/bluemix_blockchain.png","index":3,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"通过 Dashboard 观察区块链","attributes":{"width":"400"},"skip":false,"key":"1.15.2.3"},{"backlink":"baas/bluemix.html#fig1.15.2.4","level":"1.15.2","list_caption":"Figure: 通过 Dashboard 获取服务状态","alt":"通过 Dashboard 获取服务状态","nro":60,"url":"_images/bluemix_status.png","index":4,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"通过 Dashboard 获取服务状态","attributes":{"width":"400"},"skip":false,"key":"1.15.2.4"},{"backlink":"baas/azure.html#fig1.15.3.1","level":"1.15.3","list_caption":"Figure: Azure 上的区块链服务","alt":"Azure 上的区块链服务","nro":61,"url":"_images/azure_marketplace.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Azure 上的区块链服务","attributes":{"width":"400"},"skip":false,"key":"1.15.3.1"},{"backlink":"baas/azure.html#fig1.15.3.2","level":"1.15.3","list_caption":"Figure: Azure 区块链配置","alt":"Azure 区块链配置","nro":62,"url":"_images/azure_config.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Azure 区块链配置","attributes":{"width":"400"},"skip":false,"key":"1.15.3.2"},{"backlink":"baas/azure.html#fig1.15.3.3","level":"1.15.3","list_caption":"Figure: Azure 区块链部署结果","alt":"Azure 区块链部署结果","nro":63,"url":"_images/azure_deploy.png","index":3,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Azure 区块链部署结果","attributes":{"width":"400"},"skip":false,"key":"1.15.3.3"},{"backlink":"baas/azure.html#fig1.15.3.4","level":"1.15.3","list_caption":"Figure: Azure 区块链管理界面","alt":"Azure 区块链管理界面","nro":64,"url":"_images/azure_admin.png","index":4,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Azure 区块链管理界面","attributes":{"width":"400"},"skip":false,"key":"1.15.3.4"},{"backlink":"baas/cello.html#fig1.15.4.1","level":"1.15.4","list_caption":"Figure: Cello 典型应用场景","alt":"Cello 典型应用场景","nro":65,"url":"_images/cello.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Cello 典型应用场景","attributes":{"width":"400"},"skip":false,"key":"1.15.4.1"},{"backlink":"baas/cello.html#fig1.15.4.2","level":"1.15.4","list_caption":"Figure: Cello 基本架构","alt":"Cello 基本架构","nro":66,"url":"_images/cello_arch.png","index":2,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Cello 基本架构","attributes":{"width":"400"},"skip":false,"key":"1.15.4.2"},{"backlink":"baas/cello.html#fig1.15.4.3","level":"1.15.4","list_caption":"Figure: Cello 部署拓扑示例","alt":"Cello 部署拓扑示例","nro":67,"url":"_images/cello_deployment_topo.png","index":3,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Cello 部署拓扑示例","attributes":{"width":"400"},"skip":false,"key":"1.15.4.3"},{"backlink":"baas/cello.html#fig1.15.4.4","level":"1.15.4","list_caption":"Figure: Cello Dashboard","alt":"Cello Dashboard","nro":68,"url":"_images/cello_dashboard.png","index":4,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Cello Dashboard","attributes":{"width":"400"},"skip":false,"key":"1.15.4.4"},{"backlink":"baas/cello.html#fig1.15.4.5","level":"1.15.4","list_caption":"Figure: Hosts 页面","alt":"Hosts 页面","nro":69,"url":"_images/cello_dashboard_hosts.png","index":5,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Hosts 页面","attributes":{"width":"400"},"skip":false,"key":"1.15.4.5"},{"backlink":"baas/cello.html#fig1.15.4.6","level":"1.15.4","list_caption":"Figure: 添加主机","alt":"添加主机","nro":70,"url":"_images/cello_dashboard_addhost.png","index":6,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"添加主机","attributes":{"width":"400"},"skip":false,"key":"1.15.4.6"},{"backlink":"baas/cello.html#fig1.15.4.7","level":"1.15.4","list_caption":"Figure: Active Chains 页面","alt":"Active Chains 页面","nro":71,"url":"_images/cello_dashboard_activechains.png","index":7,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Active Chains 页面","attributes":{"width":"400"},"skip":false,"key":"1.15.4.7"},{"backlink":"baas/cello.html#fig1.15.4.8","level":"1.15.4","list_caption":"Figure: 添加链","alt":"添加链","nro":72,"url":"_images/cello_dashboard_addcluster.png","index":8,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"添加链","attributes":{"width":"400"},"skip":false,"key":"1.15.4.8"},{"backlink":"baas/cello.html#fig1.15.4.9","level":"1.15.4","list_caption":"Figure: 登录页面","alt":"登录页面","nro":73,"url":"_images/cello_user_dashboard_login.png","index":9,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"登录页面","attributes":{"width":"400"},"skip":false,"key":"1.15.4.9"},{"backlink":"baas/cello.html#fig1.15.4.10","level":"1.15.4","list_caption":"Figure: Chain列表页面","alt":"Chain列表页面","nro":74,"url":"_images/cello_user_dashboard_chain_list.png","index":10,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Chain列表页面","attributes":{"width":"400"},"skip":false,"key":"1.15.4.10"},{"backlink":"baas/cello.html#fig1.15.4.11","level":"1.15.4","list_caption":"Figure: Chain详情页面","alt":"Chain详情页面","nro":75,"url":"_images/cello_user_dashboard_chain_info.png","index":11,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"Chain详情页面","attributes":{"width":"400"},"skip":false,"key":"1.15.4.11"},{"backlink":"baas/cello.html#fig1.15.4.12","level":"1.15.4","list_caption":"Figure: 智能合约模板列取页面","alt":"智能合约模板列取页面","nro":76,"url":"_images/cello_user_dashboard_chain_code_template.png","index":12,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"智能合约模板列取页面","attributes":{"width":"400"},"skip":false,"key":"1.15.4.12"},{"backlink":"baas/cello.html#fig1.15.4.13","level":"1.15.4","list_caption":"Figure: 智能合约详情页面","alt":"智能合约详情页面","nro":77,"url":"_images/cello_user_dashboard_chain_code_template_info.png","index":13,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"智能合约详情页面","attributes":{"width":"400"},"skip":false,"key":"1.15.4.13"},{"backlink":"baas/cello.html#fig1.15.4.14","level":"1.15.4","list_caption":"Figure: 智能合约操作页面","alt":"智能合约操作页面","nro":78,"url":"_images/cello_user_dashboard_chain_code_operate.png","index":14,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"智能合约操作页面","attributes":{"width":"400"},"skip":false,"key":"1.15.4.14"},{"backlink":"baas/cello.html#fig1.15.4.15","level":"1.15.4","list_caption":"Figure: 智能合约运行列表页面","alt":"智能合约运行列表页面","nro":79,"url":"_images/cello_user_dashboard_chain_code_running.png","index":15,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"智能合约运行列表页面","attributes":{"width":"400"},"skip":false,"key":"1.15.4.15"},{"backlink":"appendix/golang/tools.html#fig1.17.3.3.1","level":"1.17.3.3","list_caption":"Figure: godoc 启动本地网站","alt":"godoc 启动本地网站","nro":80,"url":"../_images/godoc.png","index":1,"caption_template":"图 _PAGE_LEVEL_._PAGE_IMAGE_NUMBER_ - _CAPTION_","label":"godoc 启动本地网站","attributes":{"width":"400"},"skip":false,"key":"1.17.3.3.1"}]},"title":"区块链技术指南","language":"zh","links":{"sidebar":{"区块链技术指南":"https://legacy.gitbook.com/book/yeasy/blockchain_guide"},"gitbook":true},"gitbook":"*","description":"A book to introduce blockchain technologies, including the key techniques, algorithms, usage scenarios, and projects."},"file":{"path":"04_distributed_system/bft.md","mtime":"2019-05-14T08:18:12.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-14T08:18:50.559Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-comment/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

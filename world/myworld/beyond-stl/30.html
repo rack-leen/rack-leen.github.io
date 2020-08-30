@@ -1,0 +1,1872 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>numeric_cast | Beyond the C++ Standard Library 中文版</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./31.html" />
+    
+    
+    <link rel="prev" href="./29.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="9.4"
+        data-chapter-title="numeric_cast"
+        data-filepath="30.md"
+        data-basepath="."
+        data-revision="Mon Feb 01 2016 12:37:45 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/beyond-stl" target="blank" class="custom-link">Beyond the C++ Standard Library 中文版</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="1.html">
+            
+                
+                    <a href="./1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        前言
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Acknowledgments
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        关于作者
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        本书的组织结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Boost的介绍
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        字符串及文本处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="8.html">
+            
+                
+                    <a href="./8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        数 据结构, 容器, 迭代器, 和算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="9.html">
+            
+                
+                    <a href="./9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        函数对象及高级编程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="10.html">
+            
+                
+                    <a href="./10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        泛 型编程与模板元编程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="11.html">
+            
+                
+                    <a href="./11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        数学及数字处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="12.html">
+            
+                
+                    <a href="./12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.</b>
+                        
+                        输入/输出
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="13.html">
+            
+                
+                    <a href="./13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.</b>
+                        
+                        杂项
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="14.html">
+            
+                
+                    <a href="./14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        Part I: 通用库
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="15.html">
+            
+                
+                    <a href="./15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        Library 1. Smart_ptr
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="16.html">
+            
+                
+                    <a href="./16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        Smart_ptr库如何改进你的程序？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="17.html">
+            
+                
+                    <a href="./17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        何时我们需要智能指针？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="18.html">
+            
+                
+                    <a href="./18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        Smart_ptr如何适应标准库？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="19.html">
+            
+                
+                    <a href="./19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        scoped_ptr
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="20.html">
+            
+                
+                    <a href="./20.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        scoped_array
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="21.html">
+            
+                
+                    <a href="./21.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.6.</b>
+                        
+                        shared_ptr
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.7" data-path="22.html">
+            
+                
+                    <a href="./22.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.7.</b>
+                        
+                        shared_array
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.8" data-path="23.html">
+            
+                
+                    <a href="./23.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.8.</b>
+                        
+                        intrusive_ptr
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.9" data-path="24.html">
+            
+                
+                    <a href="./24.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.9.</b>
+                        
+                        weak_ptr
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.10" data-path="25.html">
+            
+                
+                    <a href="./25.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.10.</b>
+                        
+                        Smart_ptr总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="26.html">
+            
+                
+                    <a href="./26.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        Library 2. Conversion
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="27.html">
+            
+                
+                    <a href="./27.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        Conversion 库如何改进你的程序？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="28.html">
+            
+                
+                    <a href="./28.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        polymorphic_cast
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="29.html">
+            
+                
+                    <a href="./29.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        polymorphic_downcast
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="9.4" data-path="30.html">
+            
+                
+                    <a href="./30.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        numeric_cast
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="31.html">
+            
+                
+                    <a href="./31.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                        lexical_cast
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" data-path="32.html">
+            
+                
+                    <a href="./32.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        Conversion 总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="33.html">
+            
+                
+                    <a href="./33.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        Library 3. Utility
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="34.html">
+            
+                
+                    <a href="./34.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        Utility 库如何改进你的程序？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="35.html">
+            
+                
+                    <a href="./35.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        BOOST_STATIC_ASSERT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="36.html">
+            
+                
+                    <a href="./36.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        checked_delete
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="37.html">
+            
+                
+                    <a href="./37.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        noncopyable
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="38.html">
+            
+                
+                    <a href="./38.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.5.</b>
+                        
+                        addressof
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="39.html">
+            
+                
+                    <a href="./39.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.6.</b>
+                        
+                        enable_if
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7" data-path="40.html">
+            
+                
+                    <a href="./40.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.7.</b>
+                        
+                        Utility 总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="41.html">
+            
+                
+                    <a href="./41.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        Library 4. Operators
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="42.html">
+            
+                
+                    <a href="./42.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        Operators库如何改进你的程序？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="43.html">
+            
+                
+                    <a href="./43.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        Operators
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="44.html">
+            
+                
+                    <a href="./44.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.</b>
+                        
+                        用法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="45.html">
+            
+                
+                    <a href="./45.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.4.</b>
+                        
+                        Operators 总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="46.html">
+            
+                
+                    <a href="./46.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        Library 5. Regex
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="47.html">
+            
+                
+                    <a href="./47.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        Regex库如何改进你的程序？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="48.html">
+            
+                
+                    <a href="./48.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        Regex 如何适用于标准库？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="49.html">
+            
+                
+                    <a href="./49.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        Regex
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="50.html">
+            
+                
+                    <a href="./50.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.4.</b>
+                        
+                        用法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="51.html">
+            
+                
+                    <a href="./51.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.</b>
+                        
+                        Regex 总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="52.html">
+            
+                
+                    <a href="./52.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        Part II: 容器及数据结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="53.html">
+            
+                
+                    <a href="./53.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        Library 6. Any
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1" data-path="54.html">
+            
+                
+                    <a href="./54.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.1.</b>
+                        
+                        Any 库如何改进你的程序？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" data-path="55.html">
+            
+                
+                    <a href="./55.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.2.</b>
+                        
+                        Any 如何适用于标准库？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.3" data-path="56.html">
+            
+                
+                    <a href="./56.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.3.</b>
+                        
+                        Any
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.4" data-path="57.html">
+            
+                
+                    <a href="./57.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.4.</b>
+                        
+                        用法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.5" data-path="58.html">
+            
+                
+                    <a href="./58.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.5.</b>
+                        
+                        Any 总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="59.html">
+            
+                
+                    <a href="./59.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        Library 7. Variant
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="15.1" data-path="60.html">
+            
+                
+                    <a href="./60.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.1.</b>
+                        
+                        Variant 库如何改进你的程序？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" data-path="61.html">
+            
+                
+                    <a href="./61.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.2.</b>
+                        
+                        Variant 如何适用于标准库？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.3" data-path="62.html">
+            
+                
+                    <a href="./62.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.3.</b>
+                        
+                        Variant
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.4" data-path="63.html">
+            
+                
+                    <a href="./63.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.4.</b>
+                        
+                        用法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.5" data-path="64.html">
+            
+                
+                    <a href="./64.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.5.</b>
+                        
+                        Variant 总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="65.html">
+            
+                
+                    <a href="./65.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        Library 8. Tuple
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1" data-path="66.html">
+            
+                
+                    <a href="./66.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.1.</b>
+                        
+                        Tuple 库如何改进你的程序？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.2" data-path="67.html">
+            
+                
+                    <a href="./67.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.2.</b>
+                        
+                        Tuple 库如何适用于标准库？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.3" data-path="68.html">
+            
+                
+                    <a href="./68.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.3.</b>
+                        
+                        Tuple
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.4" data-path="69.html">
+            
+                
+                    <a href="./69.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.4.</b>
+                        
+                        用法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.5" data-path="70.html">
+            
+                
+                    <a href="./70.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.5.</b>
+                        
+                        Tuple 总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="71.html">
+            
+                
+                    <a href="./71.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        Part III: 函数对象与高级编程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18" data-path="72.html">
+            
+                
+                    <a href="./72.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.</b>
+                        
+                        Library 9. Bind
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="18.1" data-path="73.html">
+            
+                
+                    <a href="./73.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.1.</b>
+                        
+                        Bind 库如何改进你的程序？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.2" data-path="74.html">
+            
+                
+                    <a href="./74.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.2.</b>
+                        
+                        Bind 如何适用于标准库？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.3" data-path="75.html">
+            
+                
+                    <a href="./75.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.3.</b>
+                        
+                        Bind
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.4" data-path="76.html">
+            
+                
+                    <a href="./76.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.4.</b>
+                        
+                        用法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.5" data-path="77.html">
+            
+                
+                    <a href="./77.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.5.</b>
+                        
+                        Bind 总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="19" data-path="78.html">
+            
+                
+                    <a href="./78.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.</b>
+                        
+                        Library 10. Lambda
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="19.1" data-path="79.html">
+            
+                
+                    <a href="./79.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.1.</b>
+                        
+                        Lambda 库如何改进你的程序？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.2" data-path="80.html">
+            
+                
+                    <a href="./80.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.2.</b>
+                        
+                        Lambda 如何适用于标准库？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.3" data-path="81.html">
+            
+                
+                    <a href="./81.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.3.</b>
+                        
+                        Lambda
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.4" data-path="82.html">
+            
+                
+                    <a href="./82.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.4.</b>
+                        
+                        用法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.5" data-path="83.html">
+            
+                
+                    <a href="./83.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.5.</b>
+                        
+                        Lambda 总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="20" data-path="84.html">
+            
+                
+                    <a href="./84.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.</b>
+                        
+                        Library 11. Function
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="20.1" data-path="85.html">
+            
+                
+                    <a href="./85.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.1.</b>
+                        
+                        Function 库如何改进你的程序？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.2" data-path="86.html">
+            
+                
+                    <a href="./86.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.2.</b>
+                        
+                        Function 如何适用于标准库？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.3" data-path="87.html">
+            
+                
+                    <a href="./87.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.3.</b>
+                        
+                        Function
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.4" data-path="88.html">
+            
+                
+                    <a href="./88.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.4.</b>
+                        
+                        用 法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.5" data-path="89.html">
+            
+                
+                    <a href="./89.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.5.</b>
+                        
+                        Function 总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="21" data-path="90.html">
+            
+                
+                    <a href="./90.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.</b>
+                        
+                        Library 12. Signals
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="21.1" data-path="91.html">
+            
+                
+                    <a href="./91.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.1.</b>
+                        
+                        Signals 库如何改进你的程序？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.2" data-path="92.html">
+            
+                
+                    <a href="./92.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.2.</b>
+                        
+                        Signals 如何适用于标准库？
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.3" data-path="93.html">
+            
+                
+                    <a href="./93.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.3.</b>
+                        
+                        Signals
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.4" data-path="94.html">
+            
+                
+                    <a href="./94.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.4.</b>
+                        
+                        用法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.5" data-path="95.html">
+            
+                
+                    <a href="./95.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.5.</b>
+                        
+                        Signals 总结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >Beyond the C++ Standard Library 中文版</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="numericcast">numeric_cast</h2>
+<h3 id="&#x5934;&#x6587;&#x4EF6;-boostcasthpp">&#x5934;&#x6587;&#x4EF6;: <code>&quot;boost/cast.hpp&quot;</code></h3>
+<p>&#x6574;&#x6570;&#x7C7B;&#x578B;&#x95F4;&#x7684;&#x8F6C;&#x6362;&#x7ECF;&#x5E38;&#x4F1A;&#x4EA7;&#x751F;&#x610F;&#x5916;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x4F8B;&#x5982;&#xFF0C;<code>long</code> &#x53EF;&#x4EE5;&#x62E5;&#x6709;&#x6BD4;<code>short</code>&#x66F4;&#x5927;&#x8303;&#x56F4;&#x7684;&#x503C;&#xFF0C;&#x90A3;&#x4E48;&#x5F53;&#x4ECE; <code>long</code> &#x8D4B;&#x503C;&#x5230;<code>short</code> &#x5E76;&#x4E14; <code>long</code>&#x7684;&#x6570;&#x503C;&#x8D85;&#x51FA;&#x4E86; <code>short</code>&#x7684; &#x8303;&#x56F4;&#x65F6;&#x4F1A;&#x53D1;&#x751F;&#x4EC0;&#x4E48;&#xFF1F;&#x7B54;&#x6848;&#x662F;&#x7ED3;&#x679C;&#x662F;&#x7531;&#x5B9E;&#x73B0;&#x5B9A;&#x4E49;&#x7684;(&#x6BD4;&quot;&#x4F60;&#x4E0D;&#x53EF;&#x80FD;&#x660E;&#x786E;&#x77E5;&#x9053;&quot;&#x597D;&#x542C;&#x4E00;&#x70B9;&#x7684;&#x8BF4;&#x6CD5;)&#x3002;&#x76F8;&#x540C;&#x5927;&#x5C0F;&#x6574;&#x6570;&#x95F4;&#x7684;&#x6709;&#x7B26;&#x53F7;&#x6570;&#x5230;&#x65E0;&#x7B26;&#x53F7;&#x6570;&#x7684;&#x8F6C;&#x6362;&#x662F;&#x597D;&#x7684;&#xFF0C;&#x53EA;&#x8981;&#x6709;&#x7B26;&#x53F7;&#x6570; &#x7684;&#x6570;&#x503C;&#x662F;&#x6B63;&#x7684;&#xFF0C;&#x4F46;&#x5982;&#x679C;&#x6709;&#x7B26;&#x53F7;&#x6570;&#x7684;&#x6570;&#x503C;&#x662F;&#x8D1F;&#x7684;&#x5462;&#xFF1F;&#x5B83;&#x5C06;&#x88AB;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x5927;&#x7684;&#x65E0;&#x7B26;&#x53F7;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E0D;&#x662F;&#x4F60;&#x7684;&#x771F;&#x5B9E;&#x610F;&#x56FE;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x771F;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x4E86;&#x3002;<code>numeric_cast</code> &#x901A;&#x8FC7;&#x6D4B;&#x8BD5;&#x8303;&#x56F4;&#x662F;&#x5426;&#x5408;&#x7406;&#x6765;&#x786E;&#x4FDD;&#x8F6C;&#x6362;&#x7684;&#x6709;&#x6548;&#x6027;&#xFF0C;&#x5F53;&#x8303;&#x56F4;&#x8D85;&#x51FA;&#x65F6;&#x5B83;&#x4F1A;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x3002;</p>
+<p>&#x5728;&#x6211;&#x4EEC;&#x5168;&#x9762;&#x8BA4;&#x8BC6; <code>numeric_cast</code>&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x5F04;&#x6E05;&#x695A;&#x652F;&#x914D;&#x6574;&#x6570;&#x7C7B;&#x578B;&#x7684;&#x8F6C;&#x6362;&#x53CA;&#x63D0;&#x5347;&#x7684;&#x89C4;&#x5219;&#x3002;&#x89C4;&#x5219;&#x6709;&#x5F88;&#x591A;&#x5E76;&#x6709;&#x65F6;&#x5F88;&#x5FAE;&#x5999;&#xFF0C;&#x5373;&#x4F7F;&#x662F;&#x7ECF;&#x9A8C;&#x4E30;&#x5BCC;&#x7684;&#x7A0B;&#x5E8F;&#x5458;&#x4E5F;&#x4F1A;&#x88AB;&#x5B83;&#x4EEC;&#x6B3A;&#x9A97;&#x3002;&#x4E0E;&#x5176;&#x5199;&#x51FA;&#x6240;&#x6709;&#x8FD9;&#x4E9B;&#x89C4;&#x5219;[7]&#x5E76;&#x5C55;&#x5F00;&#x5B83;&#x4EEC;&#xFF0C;&#x6211;&#x66F4;&#x613F;&#x610F;&#x7ED9;&#x51FA;&#x4E00;&#x4E9B;&#x6709;&#x5173;&#x8F6C;&#x6362;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x5B83;&#x4EEC;&#x4F1A;&#x5F15;&#x8D77;&#x672A;&#x5B9A;&#x4E49;&#x6216;&#x4EE4;&#x4EBA;&#x60CA;&#x8BB6;&#x7684;&#x884C;&#x4E3A;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x89E3;&#x91CA;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x8F6C;&#x6362;&#x89C4;&#x5219;&#x3002; </p>
+<pre><code>        [7]. C++&#x6807;&#x51C6;&#x5728;&#xA7;4.5-4.9&#x4E2D;&#x8BA8;&#x8BBA;&#x6570;&#x5B57;&#x7C7B;&#x578B;&#x7684;&#x63D0;&#x5347;&#x53CA;&#x8F6C;&#x6362;&#x3002;
+</code></pre><p>&#x5F53;&#x4ECE;&#x4E00;&#x79CD;&#x6570;&#x5B57;&#x7C7B;&#x578B;&#x8D4B;&#x503C;&#x7ED9;&#x53E6;&#x4E00;&#x79CD;&#x6570;&#x5B57;&#x7C7B;&#x578B;&#x7684;&#x53D8;&#x91CF;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x53D1;&#x751F;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x3002;&#x5728;&#x76EE;&#x6807;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x4FDD;&#x5B58;&#x6E90;&#x7C7B;&#x578B;&#x7684;&#x6240;&#x6709;&#x6570;&#x503C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x79CD;&#x8F6C;&#x6362;&#x662F;&#x5B8C;&#x5168;&#x5B89;&#x5168;&#x7684;&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x662F;&#x4E0D;&#x5B89;&#x5168;&#x7684;&#x3002;&#x4F8B;&#x5982;&#xFF0C;<code>char</code> &#x901A;&#x5E38;&#x4E0D;&#x80FD;&#x4FDD;&#x5B58;<code>int</code>&#x7684;&#x6700;&#x5927;&#x503C;&#xFF0C;&#x6240;&#x4EE5;&#x5F53;&#x4ECE;<code>int</code>&#x5230;<code>char</code>&#x7684;&#x8D4B;&#x503C;&#x53D1;&#x751F;&#x65F6;&#xFF0C;&#x5F88;&#x5927;&#x53EF;&#x80FD;<code>int</code>&#x7684;&#x503C;&#x4E0D;&#x80FD;&#x88AB;&#x8868;&#x793A;&#x4E3A;<code>char</code>. &#x5F53;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x7684;&#x6570;&#x503C;&#x8303;&#x56F4;&#x4E0D;&#x540C;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x786E;&#x8BA4;&#x7528;&#x4E8E;&#x8F6C;&#x6362;&#x7684;&#x5B9E;&#x9645;&#x6570;&#x503C;&#x5728;&#x76EE;&#x6807;&#x7C7B;&#x578B;&#x7684;&#x6709;&#x6548;&#x8303;&#x56F4;&#x4E4B;&#x5185;&#x3002;&#x5426;&#x5219;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x4F1A;&#x8FDB;&#x5165;&#x5B9E;&#x73B0;&#x5B9A;&#x4E49;&#x884C;&#x4E3A;&#x7684;&#x8303;&#x7574;&#xFF1B;&#x90A3;&#x5C31;&#x662F;&#x5728;&#x628A;&#x4E00;&#x4E2A;&#x8D85;&#x51FA;&#x6570;&#x5B57;&#x7C7B;&#x578B;&#x53EF;&#x80FD;&#x7684;&#x6570;&#x503C;&#x8303;&#x56F4;&#x7684;&#x503C;&#x8D4B;&#x7ED9;&#x8FD9;&#x4E2A;&#x6570;&#x5B57;&#x7C7B;&#x578B;&#x65F6;&#x4F1A;&#x53D1;&#x751F;&#x7684;&#x4E8B;&#x60C5;&#x3002;[8] &#x5B9E;&#x73B0;&#x5B9A;&#x4E49;&#x884C;&#x4E3A;&#x610F;&#x5473;&#x7740;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x5730;&#x505A;&#x4EFB;&#x4F55;&#x5B83;&#x60F3;&#x505A;&#x7684;&#xFF1B;&#x4E0D;&#x540C;&#x7684;&#x7CFB;&#x7EDF;&#x53EF;&#x80FD;&#x6709;&#x5B8C;&#x5168;&#x4E0D;&#x540C;&#x7684;&#x884C;&#x4E3A;&#x3002;<code>numeric_cast</code> &#x53EF;&#x4EE5;&#x786E;&#x4FDD;&#x8F6C;&#x6362;&#x662F;&#x6709;&#x6548;&#x7684;&#x3001;&#x5408;&#x6CD5;&#x7684;&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x4E0D;&#x5141;&#x8BB8;&#x8F6C;&#x6362;&#x3002;</p>
+<blockquote>
+<p>[8] &#x65E0;&#x7B26;&#x53F7;&#x6570;&#x4E5F;&#x7B97;&#xFF0C;&#x5C3D;&#x7BA1;&#x5B83;&#x7684;&#x884C;&#x4E3A;&#x662F;&#x6709;&#x5B9A;&#x4E49;&#x7684;&#x3002;</p>
+</blockquote>
+<h3 id="&#x7528;&#x6CD5;">&#x7528;&#x6CD5;</h3>
+<p><code>numeric_cast</code> &#x662F;&#x4E00;&#x4E2A;&#x770B;&#x8D77;&#x6765;&#x8C61;C++&#x7684;&#x8F6C;&#x578B;&#x64CD;&#x4F5C;&#x7B26;&#x7684;&#x51FD;&#x6570;&#x6A21;&#x677F;&#xFF0C;&#x5B83;&#x6CDB;&#x5316;&#x4E86;&#x76EE;&#x6807;&#x7C7B;&#x578B;&#x53CA;&#x6E90;&#x7C7B;&#x578B;&#x3002;&#x6E90;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x4ECE;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x9690;&#x5F0F;&#x63A8;&#x5BFC;&#x5F97;&#x5230;&#x3002;&#x4F7F;&#x7528;<code>numeric_cast</code>, &#x8981;&#x5305;&#x542B;&#x5934;&#x6587;&#x4EF6;<code>&quot;boost/cast.hpp&quot;</code>&#x3002;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x8F6C;&#x6362;&#x4F7F;&#x7528; <code>numeric_cast</code> &#x5B89;&#x5168;&#x5730;&#x5C06; <code>int</code> &#x8F6C;&#x6362;&#x4E3A; <code>char</code>, &#x4EE5;&#x53CA;&#x5C06; <code>double</code> &#x8F6C;&#x6362;&#x4E3A; <code>float</code>.</p>
+<pre><code>char c=boost::numeric_cast&lt;char&gt;(12);
+float f=boost::numeric_cast&lt;float&gt;(3.001);
+</code></pre><p>&#x4E00;&#x4E2A;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x6570;&#x5B57;&#x8F6C;&#x6362;&#x95EE;&#x9898;&#x662F;&#x5C06;&#x6765;&#x81EA;&#x4E00;&#x4E2A;&#x66F4;&#x5BBD;&#x8303;&#x56F4;&#x7684;&#x503C;&#x8D4B;&#x7ED9;&#x8303;&#x56F4;&#x8F83;&#x7A84;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;<a href="../Text/content.html#ch02lev1sec4">numeric_cast</a>&#x5982;&#x4F55;&#x5E2E;&#x5FD9;&#x3002;</p>
+<h3 id="&#x4ECE;&#x8F83;&#x5927;&#x7684;&#x7C7B;&#x578B;&#x5230;&#x8F83;&#x5C0F;&#x7C7B;&#x578B;&#x7684;&#x8D4B;&#x503C;">&#x4ECE;&#x8F83;&#x5927;&#x7684;&#x7C7B;&#x578B;&#x5230;&#x8F83;&#x5C0F;&#x7C7B;&#x578B;&#x7684;&#x8D4B;&#x503C;</h3>
+<p>&#x4ECE;&#x8F83;&#x5927;&#x7684;&#x7C7B;&#x578B;(&#x4F8B;&#x5982;<code>long</code>)&#x5411;&#x8F83;&#x5C0F;&#x7684;&#x7C7B;&#x578B;(&#x4F8B;&#x5982;<code>short</code>)&#x8D4B;&#x503C;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x6570;&#x503C;&#x8FC7;&#x5927;&#x6216;&#x8FC7;&#x5C0F;&#x800C;&#x4E0D;&#x80FD;&#x88AB;&#x76EE;&#x6807;&#x7C7B;&#x578B;&#x6240;&#x8868;&#x793A;&#x3002;&#x5982;&#x679C;&#x8FD9;&#x53D1;&#x751F;&#x4E86;&#xFF0C;&#x7ED3;&#x679C;&#x662F;(&#x662F;&#x7684;&#xFF0C;&#x6B63;&#x5982;&#x4F60;&#x731C;&#x5230;&#x7684;)&#x5B9E;&#x73B0;&#x6240;&#x5B9A;&#x4E49;&#x7684;&#x3002;&#x6211;&#x4EEC;&#x7A0D;&#x540E;&#x5C06;&#x8BA8;&#x8BBA;&#x65E0;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#x7684;&#x6F5C;&#x5728;&#x95EE;&#x9898;&#xFF1B;&#x6211;&#x4EEC;&#x5148;&#x4ECE;&#x6709;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#x5F00;&#x59CB;&#x3002;C++&#x4E2D;&#x6709;&#x56DB;&#x4E2A;&#x5185;&#x5EFA;&#x7684;&#x6709;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#xFF1A;</p>
+<ul>
+<li><p><code>signed char</code></p>
+</li>
+<li><p><code>short int (short)</code></p>
+</li>
+<li><p><code>int</code></p>
+</li>
+<li><p><code>long int (long)</code></p>
+</li>
+</ul>
+<p>&#x6CA1;&#x6709;&#x4EBA;&#x53EF;&#x4EE5;&#x7EDD;&#x5BF9;&#x80AF;&#x5B9A;&#x54EA;&#x4E2A;&#x7C7B;&#x578B;&#x6BD4;&#x5176;&#x5B83;&#x7684;&#x5927;[9]&#xFF0C;&#x4F46;&#x5178;&#x578B;&#x5730;&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x5217;&#x8868;&#x662F;&#x6309;&#x5927;&#x5C0F;&#x9012;&#x589E;&#x7684;&#xFF0C;&#x9664;&#x4E86; <code>int</code> &#x548C; <code>long</code> &#x901A;&#x5E38;&#x5177;&#x6709;&#x76F8;&#x540C;&#x7684;&#x503C;&#x8303;&#x56F4;&#x3002;&#x4F46;&#x5B83;&#x4EEC;&#x90FD;&#x662F;&#x72EC;&#x7ACB;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x5373;&#x4F7F;&#x662F;&#x6709;&#x76F8;&#x540C;&#x7684;&#x5927;&#x5C0F;&#x3002;&#x60F3;&#x67E5;&#x770B;&#x4F60;&#x7684;&#x7CFB;&#x7EDF;&#x4E0A;&#x7684;&#x7C7B;&#x578B;&#x5927;&#x5C0F;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>sizeof(T)</code> &#x6216; <code>std::numeric_limits&amp;lt;T&amp;gt;::max()</code> &#x548C; <code>std::numeric_limits&amp;lt;T&amp;gt;::min()</code>.</p>
+<blockquote>
+<p>[9] &#x5F53;&#x7136;&#xFF0C;&#x6709;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#x4E0E;&#x65E0;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#x7684;&#x8303;&#x56F4;&#x662F;&#x4E0D;&#x540C;&#x7684;&#xFF0C;&#x5373;&#x4F7F;&#x5B83;&#x4EEC;&#x6709;&#x76F8;&#x540C;&#x7684;&#x5927;&#x5C0F;&#x3002;</p>
+</blockquote>
+<p>&#x5F53;&#x628A;&#x4E00;&#x4E2A;&#x6709;&#x7B26;&#x53F7;&#x6574;&#x6570;&#x7C7B;&#x578B;&#x8D4B;&#x7ED9;&#x53E6;&#x4E00;&#x4E2A;&#x65F6;&#xFF0C;C++&#x6807;&#x51C6;&#x8BF4;&#xFF1A;</p>
+<blockquote>
+<p>&quot;&#x82E5;&#x76EE;&#x6807;&#x7C7B;&#x578B;&#x4E3A;&#x6709;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#xFF0C;&#x5728;&#x6570;&#x503C;&#x53EF;&#x4EE5;&#x88AB;&#x76EE;&#x6807;&#x7C7B;&#x578B;&#x8868;&#x793A;&#x65F6;&#xFF0C;&#x503C;&#x4E0D;&#x6539;&#x53D8;&#xFF1B;&#x5426;&#x5219;&#xFF0C;&#x503C;&#x4E3A;&#x5B9E;&#x73B0;&#x5B9A;&#x4E49;&#x3002;&quot;[10]</p>
+<p>&gt; [10] &#x89C1;C++&#x6807;&#x51C6; &#xA7;4.7.3 </p>
+</blockquote>
+<p>&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x6BB5;&#x793A;&#x8303;&#x4E86;&#x770B;&#x8D77;&#x6765;&#x8C61;&#x662F;&#x6B63;&#x786E;&#x7684;&#x8D4B;&#x503C;&#x662F;&#x5982;&#x4F55;&#x5BFC;&#x81F4;&#x5B9E;&#x73B0;&#x5B9A;&#x4E49;&#x7684;&#x6570;&#x503C;&#xFF0C;&#x6700;&#x540E;&#x770B;&#x770B;&#x5982;&#x4F55;&#x901A;&#x8FC7;<code>numeric_cast</code>&#x7684;&#x5E2E;&#x52A9;&#x907F;&#x514D;&#x5B83;&#x4EEC;&#x3002;</p>
+<pre><code>#include &lt;iostream&gt;
+#include &quot;boost/cast.hpp&quot;
+#include &quot;boost/limits.hpp&quot;
+
+int main() {
+  std::cout &lt;&lt; &quot;larger_to_smaller example\n&quot;;
+
+  // &#x6CA1;&#x6709;&#x4F7F;&#x7528;numeric_cast&#x7684;&#x8F6C;&#x6362;
+  long l=std::numeric_limits&lt;short&gt;::max();
+
+  short s=l;
+  std::cout &lt;&lt; &quot;s is: &quot; &lt;&lt; s &lt;&lt; &apos;\n&apos;;
+  s=++l;
+  std::cout &lt;&lt; &quot;s is: &quot; &lt;&lt; s &lt;&lt; &quot;\n\n&quot;;
+
+  // &#x4F7F;&#x7528;numeric_cast&#x7684;&#x8F6C;&#x6362;
+  try {
+    l=std::numeric_limits&lt;short&gt;::max();
+    s=boost::numeric_cast&lt;short&gt;(l);
+    std::cout &lt;&lt; &quot;s is: &quot; &lt;&lt; s &lt;&lt; &apos;\n&apos;;
+    s=boost::numeric_cast&lt;short&gt;(++l);
+    std::cout &lt;&lt; &quot;s is: &quot; &lt;&lt; s &lt;&lt; &apos;\n&apos;;
+  }
+  catch(boost::bad_numeric_cast&amp; e) {
+    std::cout &lt;&lt; e.what() &lt;&lt; &apos;\n&apos;;
+  }
+}
+</code></pre><p>&#x901A;&#x8FC7;&#x4F7F;&#x7528; <code>std::numeric_limits</code>, <code>long l</code> &#x88AB;&#x521D;&#x59CB;&#x5316; <code>short</code> &#x53EF;&#x4EE5;&#x8868;&#x793A;&#x7684;&#x6700;&#x5927;&#x503C;&#x3002;&#x8BE5;&#x503C;&#x88AB;&#x8D4B;&#x7ED9; <code>short s</code> &#x5E76;&#x8F93;&#x51FA;&#x3002;&#x7136;&#x540E;&#xFF0C;<code>l</code> &#x88AB;&#x52A0;&#x4E00;&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x5B83;&#x7684;&#x503C;&#x4E0D;&#x80FD;&#x518D;&#x88AB;<code>short</code>&#x6240;&#x8868;&#x793A;&#xFF1B;&#x5B83;&#x8D85;&#x51FA;&#x4E86; <code>short</code> &#x6240;&#x80FD;&#x8868;&#x793A;&#x7684;&#x8303;&#x56F4;&#x3002;&#x628A; <code>l</code> &#x7684;&#x65B0;&#x503C;&#x8D4B;&#x7ED9; <code>s</code>, <code>s</code> &#x518D;&#x6B21;&#x88AB;&#x8F93;&#x51FA;&#x3002;&#x4F60;&#x53EF;&#x80FD;&#x8981;&#x95EE;&#x8F93;&#x51FA;&#x7684;&#x503C;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#x597D;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x8D4B;&#x503C;&#x7684;&#x7ED3;&#x679C;&#x5C5E;&#x4E8E;&#x5B9E;&#x73B0;&#x5B9A;&#x4E49;&#x7684;&#x884C;&#x4E3A;&#xFF0C;&#x8FD9;&#x53D6;&#x51B3;&#x4E8E;&#x4F60;&#x4F7F;&#x7528;&#x7684;&#x5E73;&#x53F0;&#x3002;&#x5728;&#x6211;&#x7684;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x6211;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#xFF0C;&#x5B83;&#x53D8;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x5927;&#x7684;&#x8D1F;&#x503C;&#xFF0C;&#x5373;&#x5B83;&#x88AB;&#x56DE;&#x7ED5;&#x4E86;&#x3002;&#x5FC5;&#x987B;&#x8FD0;&#x884C;&#x524D;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x624D;&#x77E5;&#x9053;&#x5728;&#x4F60;&#x7684;&#x7CFB;&#x7EDF;&#x4E2D;&#x4F1A;&#x6709;&#x4EC0;&#x4E48;&#x7ED3;&#x679C;[11]&#x3002;&#x63A5;&#x7740;&#xFF0C;&#x518D;&#x6B21;&#x6267;&#x884C;&#x76F8;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x4F46;&#x8FD9;&#x6B21;&#x7528;&#x4E86; <code>numeric_cast</code>. &#x7B2C;&#x4E00;&#x4E2A;&#x8F6C;&#x578B;&#x6210;&#x529F;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x6570;&#x503C;&#x5728;&#x8303;&#x56F4;&#x4E4B;&#x5185;&#x3002;&#x800C;&#x7B2C;&#x4E8C;&#x4E2A;&#x8F6C;&#x578B;&#x5374;&#x4F1A;&#x5931;&#x8D25;&#xFF0C;&#x7ED3;&#x679C;&#x662F;&#x629B;&#x51FA;&#x4E00;&#x4E2A; <code>bad_numeric_cast</code> &#x5F02;&#x5E38;&#x3002;&#x7A0B;&#x5E8F;&#x7684;&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#x3002;</p>
+<blockquote>
+<p>[11] &#x8FD9;&#x79CD;&#x884C;&#x4E3A;&#x548C;&#x7ED3;&#x679C;&#x5728;32&#x4F4D;&#x5E73;&#x53F0;&#x4E0A;&#x5341;&#x5206;&#x5E38;&#x89C1;&#x3002;</p>
+</blockquote>
+<pre><code>larger_to_smaller example
+s is: 32767
+s is: -32768
+
+s is: 32767
+bad numeric cast: loss of range in numeric_cast
+</code></pre><p>&#x6BD4;&#x907F;&#x5F00;&#x5B9E;&#x73B0;&#x5B9A;&#x4E49;&#x884C;&#x4E3A;&#x66F4;&#x4E3A;&#x91CD;&#x8981;&#x7684;&#x662F;&#xFF0C;<code>numeric_cast</code> &#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x907F;&#x514D;&#x4E86;&#x9519;&#x8BEF;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x5F88;&#x96BE;&#x6355;&#x6349;&#x5230;&#x8FD9;&#x4E9B;&#x9519;&#x8BEF;&#x3002;&#x90A3;&#x4E2A;&#x5947;&#x602A;&#x7684;&#x6570;&#x503C;&#x53EF;&#x80FD;&#x88AB;&#x4F20;&#x9001;&#x5230;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x5176;&#x5B83;&#x90E8;&#x5206;&#xFF0C;&#x7A0B;&#x5E8F;&#x53EF;&#x80FD;&#x4F1A;&#x7EE7;&#x7EED;&#x5DE5;&#x4F5C;&#xFF0C;&#x4F46;&#x51E0;&#x4E4E;&#x53EF;&#x4EE5;&#x80AF;&#x5B9A;&#x5C06;&#x4EA7;&#x751F;&#x9519;&#x8BEF;&#x7684;&#x7ED3;&#x679C;&#x3002; &#x5F53;&#x7136;&#xFF0C;&#x8FD9;&#x4EC5;&#x5BF9;&#x4E8E;&#x7279;&#x5B9A;&#x7684;&#x6570;&#x503C;&#x4F1A;&#x53D1;&#x751F;&#x8FD9;&#x6837;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E9B;&#x6570;&#x503C;&#x5F88;&#x5C11;&#x51FA;&#x73B0;&#xFF0C;&#x90A3;&#x4E48;&#x9519;&#x8BEF;&#x5C06;&#x5F88;&#x96BE;&#x88AB;&#x53D1;&#x73B0;&#x3002;&#x8FD9;&#x79CD;&#x9519;&#x8BEF;&#x975E;&#x5E38;&#x9634;&#x9669;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x4EC5;&#x4EC5;&#x5BF9;&#x67D0;&#x4E9B;&#x7279;&#x5B9A;&#x503C;&#x4F1A;&#x53D1;&#x751F;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x603B;&#x4F1A;&#x53D1;&#x751F;&#x3002;</p>
+<p>&#x7CBE;&#x5BBD;&#x6216;&#x53D6;&#x503C;&#x8303;&#x56F4;&#x7684;&#x635F;&#x5931;&#x5E76;&#x4E0D;&#x5E38;&#x89C1;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x786E;&#x5B9A;&#x4E00;&#x4E2A;&#x503C;&#x5BF9;&#x4E8E;&#x76EE;&#x6807;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x8FC7;&#x5927;&#x6216;&#x8FC7;&#x5C0F;&#xFF0C;<code>numeric_cast</code> &#x5C31;&#x662F;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x5DE5;&#x5177;&#x3002;&#x4F60;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x9700;&#x8981;&#x7684;&#x65F6;&#x5019;&#x4F7F;&#x7528; <code>numeric_cast</code> &#xFF1B;&#x7EF4;&#x62A4;&#x7684;&#x7A0B;&#x5E8F;&#x5458;&#x53EF;&#x80FD;&#x6CA1;&#x6709;&#x8C61;&#x4F60;&#x4E00;&#x6837;&#x7684;&#x6D1E;&#x5BDF;&#x529B;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x867D;&#x7136;&#x6211;&#x4EEC;&#x5728;&#x8FD9;&#x91CC;&#x53EA;&#x8BA8;&#x8BBA;&#x4E86;&#x6709;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#xFF0C;&#x4F46;&#x540C;&#x6837;&#x7684;&#x539F;&#x7406;&#x53EF;&#x5E94;&#x7528;&#x4E8E;&#x4E8E;&#x65E0;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#x3002;</p>
+<h3 id="&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#xFF1A;&#x76EE;&#x6807;&#x7C7B;&#x578B;&#x4E3A;&#x65E0;&#x7B26;&#x53F7;&#x6574;&#x6570;">&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#xFF1A;&#x76EE;&#x6807;&#x7C7B;&#x578B;&#x4E3A;&#x65E0;&#x7B26;&#x53F7;&#x6574;&#x6570;</h3>
+<p>&#x65E0;&#x7B26;&#x53F7;&#x6574;&#x6570;&#x7C7B;&#x578B;&#x6709;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x6709;&#x8DA3;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x4EFB;&#x4F55;&#x6570;&#x503C;&#x90FD;&#x6709;&#x53EF;&#x4EE5;&#x5408;&#x6CD5;&#x5730;&#x8D4B;&#x7ED9;&#x5B83;&#x4EEC;&#xFF01;&#x5BF9;&#x4E8E;&#x65E0;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#x800C;&#x8A00;&#xFF0C;&#x65E0;&#x6240;&#x8C13;&#x6B63;&#x6216;&#x8D1F;&#x7684;&#x6EA2;&#x51FA;&#x3002;&#x6570;&#x503C;&#x88AB;&#x7B80;&#x5355;&#x5730;&#x5BF9;&#x76EE;&#x6807;&#x7C7B;&#x578B;&#x6700;&#x5927;&#x503C;&#x52A0;&#x4E00;&#x53D6;&#x6A21;&#x3002;&#x4EC0;&#x4E48;&#x610F;&#x601D;&#xFF1F;&#x770B;&#x770B;&#x4EE5;&#x4E0B;&#x4F8B;&#x5B50;&#x4F1A;&#x66F4;&#x6E05;&#x695A;&#x4E00;&#x4E9B;&#x3002;</p>
+<pre><code>#include &lt;iostream&gt;
+#include &quot;boost/limits.hpp&quot;
+
+int main() {
+  unsigned char c;
+  long l=std::numeric_limits&lt;unsigned char&gt;::max()+14;
+
+  c=l;
+  std::cout &lt;&lt; &quot;c is:       &quot; &lt;&lt; (int)c &lt;&lt; &apos;\n&apos;;
+  long reduced=l%(std::numeric_limits&lt;unsigned char&gt;::max()+1);
+  std::cout &lt;&lt; &quot;reduced is: &quot; &lt;&lt; reduced &lt;&lt; &apos;\n&apos;;
+}
+</code></pre><p>&#x8FD0;&#x884C;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x7684;&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>c is:       13
+reduced is: 13
+</code></pre><p>&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x628A;&#x4E00;&#x4E2A;&#x660E;&#x663E;&#x8D85;&#x51FA;<code>unsigned char</code>&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x7684;&#x6570;&#x503C;&#x8D4B;&#x7ED9;&#x5B83;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8BA1;&#x7B97;&#x5F97;&#x5230;&#x540C;&#x6837;&#x7684;&#x6570;&#x503C;&#x3002;&#x8D4B;&#x503C;&#x7684;&#x52A8;&#x4F5C;&#x53EF;&#x4EE5;&#x7528;&#x8FD9;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#x6765;&#x793A;&#x8303;&#xFF1A;</p>
+<pre><code>long reduced=l%(std::numeric_limits&lt;unsigned char&gt;::max()+1);
+</code></pre><p>&#x8FD9;&#x79CD;&#x884C;&#x4E3A;&#x901A;&#x5E38;&#x88AB;&#x79F0;&#x4E3A;&#x6570;&#x503C;&#x56DE;&#x7ED5;(value wrapping)&#x3002;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x7528;&#x8FD9;&#x4E2A;&#x7279;&#x6027;&#xFF0C;&#x5C31;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x7528; <code>numeric_cast</code>&#x3002;&#x6B64;&#x5916;&#xFF0C;<code>numeric_cast</code> &#x4E5F;&#x4E0D;&#x63A5;&#x53D7;&#x5B83;&#x3002;<code>numeric_cast</code>&#x7684;&#x610F;&#x56FE;&#x662F;&#x6355;&#x6349;&#x9519;&#x8BEF;&#xFF0C;&#x800C;&#x9519;&#x8BEF;&#x5E94;&#x8BE5;&#x662F;&#x56E0;&#x4E3A;&#x7528;&#x6237;&#x7684;&#x8BEF;&#x89E3;&#x800C;&#x5F15;&#x8D77;&#x7684;&#x3002;&#x5982;&#x679C;&#x76EE;&#x6807;&#x7C7B;&#x578B;&#x4E0D;&#x80FD;&#x8868;&#x793A;&#x8D4B;&#x7ED9;&#x5B83;&#x7684;&#x6570;&#x503C;&#xFF0C;&#x5C31;&#x629B;&#x51FA;&#x4E00;&#x4E2A; <code>bad_numeric_cast</code> &#x5F02;&#x5E38;&#x3002;&#x56E0;&#x4E3A;&#x65E0;&#x7B26;&#x53F7;&#x6574;&#x6570;&#x7684;&#x7B97;&#x6CD5;&#x662F;&#x660E;&#x786E;&#x5B9A;&#x4E49;&#x7684;&#xFF0C;&#x4E0D;&#x4F1A;&#x5F15;&#x8D77;&#x7A0B;&#x5E8F;&#x5458;&#x7684;&#x91CD;&#x5927;&#x9519;&#x8BEF;[12]&#x3002;&#x5BF9;&#x4E8E; <code>numeric_cast</code>, &#x91CD;&#x8981;&#x7684;&#x662F;&#x786E;&#x4FDD;&#x83B7;&#x5F97;&#x5B9E;&#x9645;&#x7684;&#x6570;&#x503C;&#x3002;</p>
+<blockquote>
+<p>[12] &#x89C2;&#x70B9;&#x662F;&#xFF1A;&#x5982;&#x679C;&#x4F60;&#x771F;&#x7684;&#x60F3;&#x8981;&#x6570;&#x503C;&#x56DE;&#x7ED5;&#xFF0C;&#x5C31;&#x4E0D;&#x8981;&#x4F7F;&#x7528; <code>numeric_cast</code>.</p>
+</blockquote>
+<h3 id="&#x6709;&#x7B26;&#x53F7;&#x548C;&#x65E0;&#x7B26;&#x53F7;&#x6574;&#x6570;&#x7C7B;&#x578B;&#x7684;&#x6DF7;&#x7528;">&#x6709;&#x7B26;&#x53F7;&#x548C;&#x65E0;&#x7B26;&#x53F7;&#x6574;&#x6570;&#x7C7B;&#x578B;&#x7684;&#x6DF7;&#x7528;</h3>
+<p>&#x6DF7;&#x7528;&#x6709;&#x7B26;&#x53F7;&#x548C;&#x65E0;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#x53EF;&#x80FD;&#x5F88;&#x6709;&#x8DA3;[13]&#xFF0C; &#x7279;&#x522B;&#x662F;&#x6267;&#x884C;&#x7B97;&#x672F;&#x64CD;&#x4F5C;&#x65F6;&#x3002;&#x666E;&#x901A;&#x7684;&#x8D4B;&#x503C;&#x4E5F;&#x4F1A;&#x4EA7;&#x751F;&#x5FAE;&#x5999;&#x7684;&#x95EE;&#x9898;&#x3002;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x95EE;&#x9898;&#x662F;&#x5C06;&#x4E00;&#x4E2A;&#x8D1F;&#x503C;&#x8D4B;&#x7ED9;&#x65E0;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#x3002;&#x7ED3;&#x679C;&#x51E0;&#x4E4E;&#x53EF;&#x4EE5;&#x80AF;&#x5B9A;&#x4E0D;&#x662F;&#x4F60;&#x539F;&#x6765;&#x7684;&#x610F;&#x56FE;&#x3002;&#x53E6;&#x4E00;&#x79CD;&#x60C5;&#x5F62;&#x662F;&#x4ECE;&#x65E0;&#x7B26; &#x53F7;&#x7C7B;&#x578B;&#x5230;&#x540C;&#x6837;&#x5927;&#x5C0F;&#x7684;&#x6709;&#x79F0;&#x53F7;&#x7C7B;&#x578B;&#x7684;&#x8D4B;&#x503C;&#x3002;&#x4E0D;&#x77E5;&#x4EC0;&#x4E48;&#x539F;&#x56E0;&#xFF0C;&#x4EBA;&#x4EEC;&#x603B;&#x662F;&#x4F1A;&#x5F88;&#x5BB9;&#x6613;&#x5FD8;&#x8BB0;&#x65E0;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x6301;&#x6709;&#x6BD4;&#x540C;&#x6837;&#x5927;&#x5C0F;&#x7684;&#x6709;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#x66F4;&#x5927;&#x7684;&#x503C;&#x3002;&#x7279;&#x522B;&#x662F;&#x5728;&#x8868;&#x8FBE;&#x5F0F;&#x6216;&#x51FD;&#x6570;&#x8C03;&#x7528; &#x4E2D;&#x66F4;&#x5BB9;&#x6613;&#x5FD8;&#x8BB0;&#x3002;&#x4EE5;&#x4E0B;&#x4F8B;&#x5B50;&#x793A;&#x8303;&#x4E86;&#x5982;&#x4F55;&#x901A;&#x8FC7;<code>numeric_cast</code>&#x6765;&#x6355;&#x6349;&#x8FD9;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x9519;&#x8BEF;&#x3002;</p>
+<blockquote>
+<p>[13] &#x5F53;&#x7136;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x9AD8;&#x5EA6;&#x4E3B;&#x89C2;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4F60;&#x7684;&#x89C2;&#x70B9;&#x53EF;&#x80FD;&#x4E0D;&#x540C;&#x3002;</p>
+</blockquote>
+<pre><code>#include &lt;iostream&gt;
+#include &quot;boost/limits.hpp&quot;
+#include &quot;boost/cast.hpp&quot;
+
+int main() {
+  unsigned int ui=std::numeric_limits&lt;unsigned int&gt;::max();
+  int i;
+
+  try {
+    std::cout &lt;&lt; &quot;Assignment from unsigned int to signed int\n&quot;;
+    i=boost::numeric_cast&lt;int&gt;(ui);
+  }
+  catch(boost::bad_numeric_cast&amp; e) {
+    std::cout &lt;&lt; e.what() &lt;&lt; &quot;\n\n&quot;;
+  }
+
+  try {
+    std::cout &lt;&lt; &quot;Assignment from signed int to unsigned int\n&quot;;
+    i=-12;
+    ui=boost::numeric_cast&lt;unsigned int&gt;(i);
+  }
+  catch(boost::bad_numeric_cast&amp; e) {
+    std::cout &lt;&lt; e.what() &lt;&lt; &quot;\n\n&quot;;
+  }
+}
+</code></pre><p>&#x8F93;&#x51FA;&#x6E05;&#x6670;&#x5730;&#x8868;&#x660E;&#x4E86;&#x9884;&#x671F;&#x7684;&#x9519;&#x8BEF;&#x3002;</p>
+<pre><code>Assignment from unsigned int to signed int
+bad numeric cast: loss of range in numeric_cast
+Assignment from signed int to unsigned int
+bad numeric cast: loss of range in numeric_cast
+</code></pre><p>&#x57FA;&#x672C;&#x7684;&#x89C4;&#x5219;&#x5F88;&#x7B80;&#x5355;&#xFF1A;&#x65E0;&#x8BBA;&#x4F55;&#x65F6;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x578B;&#x95F4;&#x6267;&#x884C;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#xFF0C;&#x90FD;&#x5E94;&#x8BE5;&#x4F7F;&#x7528; <code>numeric_cast</code>&#x6765;&#x4FDD;&#x8BC1;&#x8F6C;&#x6362;&#x7684;&#x5B89;&#x5168;&#x3002;</p>
+<h3 id="&#x6D6E;&#x70B9;&#x6570;&#x7C7B;&#x578B;">&#x6D6E;&#x70B9;&#x6570;&#x7C7B;&#x578B;</h3>
+<p><code>numeric_cast</code> &#x4E0D;&#x80FD;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x5728;&#x6D6E;&#x70B9;&#x6570;&#x95F4;&#x7684;&#x8F6C;&#x6362;&#x4E2D;&#x907F;&#x514D;&#x7CBE;&#x5EA6;&#x7684;&#x635F;&#x5931;&#x3002;&#x539F;&#x56E0;&#x662F;<code>float</code>, <code>double</code>, &#x548C; <code>long double</code>&#x95F4;&#x7684;&#x8F6C;&#x6362;&#x4E0D;&#x8C61;&#x6574;&#x6570;&#x7C7B;&#x578B;&#x95F4;&#x7684;&#x9690;&#x5F0F;&#x8F6C;&#x6362;&#x90A3;&#x6837;&#x654F;&#x611F;&#x3002;&#x8BB0;&#x4F4F;&#x8FD9;&#x70B9;&#x5F88;&#x91CD;&#x8981;&#xFF0C;&#x56E0;&#x4E3A;&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x8BA4;&#x4E3A;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x5E94;&#x8BE5;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x3002;</p>
+<pre><code>double d=0.123456789123456;
+float f=0.123456;
+
+try {
+  f=boost::numeric_cast&lt;float&gt;(d);
+}
+  catch(boost::bad_numeric_cast&amp; e) {
+    std::cout &lt;&lt; e.what();
+}
+</code></pre><p>&#x8FD0;&#x884C;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x4E0D;&#x4F1A;&#x6709;&#x5F02;&#x5E38;&#x629B;&#x51FA;&#x3002;&#x5728;&#x8BB8;&#x591A;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x4ECE; <code>double</code> &#x5230; <code>float</code> &#x7684;&#x8F6C;&#x6362;&#x90FD;&#x4F1A;&#x5BFC;&#x81F4;&#x7CBE;&#x5EA6;&#x7684;&#x635F;&#x5931;&#xFF0C;&#x867D;&#x7136;C++&#x6807;&#x51C6;&#x6CA1;&#x6709;&#x4FDD;&#x8BC1;&#x4F1A;&#x8FD9;&#x6837;&#x3002;&#x6211;&#x4EEC;&#x6240;&#x80FD;&#x77E5;&#x9053;&#x7684;&#x5C31;&#x662F;&#xFF0C;<code>double</code> &#x81F3;&#x5C11;&#x5177;&#x6709; <code>float</code> &#x7684;&#x7CBE;&#x5EA6;&#x3002;</p>
+<p>&#x4ECE;&#x6D6E;&#x70B9;&#x6570;&#x7C7B;&#x578B;&#x8F6C;&#x4E3A;&#x6574;&#x6570;&#x7C7B;&#x578B;&#x53C8;&#x4F1A;&#x600E;&#x6837;&#x5462;&#xFF1F;&#x5F53;&#x4E00;&#x4E2A;&#x6D6E;&#x70B9;&#x6570;&#x7C7B;&#x578B;&#x88AB;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x7C7B;&#x578B;&#xFF0C;&#x5B83;&#x4F1A;&#x88AB;&#x622A;&#x65AD;&#xFF1B;&#x5C0F;&#x6570;&#x90E8;&#x5206;&#x4F1A;&#x88AB;&#x6254;&#x6389;&#x3002;<code>numeric_cast</code> &#x5BF9;&#x622A;&#x65AD;&#x540E;&#x7684;&#x6570;&#x503C;&#x4E0E;&#x76EE;&#x6807;&#x7C7B;&#x578B;&#x8FDB;&#x884C;&#x76F8;&#x540C;&#x7684;&#x68C0;&#x67E5;&#xFF0C;&#x5C31;&#x8C61;&#x5728;&#x4E24;&#x4E2A;&#x6574;&#x6570;&#x7C7B;&#x578B;&#x95F4;&#x7684;&#x68C0;&#x67E5;&#x4E00;&#x6837;&#x3002;</p>
+<pre><code>double d=127.123456789123456;
+char c;
+std::cout &lt;&lt; &quot;char type maximum: &quot;;
+std::cout &lt;&lt; (int)std::numeric_limits&lt;char&gt;::max() &lt;&lt; &quot;\n\n&quot;;
+
+c=d;
+std::cout &lt;&lt; &quot;Assignment from double to char: \n&quot;;
+std::cout &lt;&lt; &quot;double: &quot; &lt;&lt; d &lt;&lt; &quot;\n&quot;;
+std::cout &lt;&lt; &quot;char:   &quot; &lt;&lt; (int)c &lt;&lt; &quot;\n&quot;;
+
+std::cout &lt;&lt; &quot;Trying the same thing with numeric_cast:\n&quot;;
+
+try {
+  c=boost::numeric_cast&lt;char&gt;(d);
+  std::cout &lt;&lt; &quot;double: &quot; &lt;&lt; d;
+  std::cout &lt;&lt; &quot;char:   &quot; &lt;&lt; (int)c;
+}
+  catch(boost::bad_numeric_cast&amp; e) {
+    std::cout &lt;&lt; e.what();
+}
+</code></pre><p>&#x8C61;&#x524D;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x90A3;&#x6837;&#x8FDB;&#x884C;&#x8303;&#x56F4;&#x68C0;&#x67E5;&#x4EE5;&#x786E;&#x4FDD;&#x6709;&#x6548;&#x7684;&#x8D4B;&#x503C;&#x662F;&#x4E00;&#x4EF6;&#x4EE4;&#x4EBA;&#x754F;&#x7F29;&#x7684;&#x5DE5;&#x4F5C;&#x3002;&#x867D;&#x7136;&#x89C4;&#x5219;&#x770B;&#x8D77;&#x6765;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x5F88;&#x591A;&#x7EC4;&#x5408;&#x8981;&#x88AB;&#x8003;&#x8651;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x6D4B;&#x8BD5;&#x4ECE;&#x6D6E;&#x70B9;&#x6570;&#x5230;&#x6574;&#x6570;&#x7684;&#x4EE3;&#x7801;&#x770B;&#x8D77;&#x6765;&#x5C31;&#x8C61;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code>template &lt;typename INT, typename FLOAT&gt;
+  bool is_valid_assignment(FLOAT f) {
+    return std::numeric_limits&lt;INT&gt;::max() &gt;=
+      static_cast&lt;INT&gt;(f);
+  }
+</code></pre><p>&#x5C3D;&#x7BA1;&#x6211;&#x5DF2;&#x7ECF;&#x63D0;&#x8D77;&#x8FC7;&#x5728;&#x4E00;&#x4E2A;&#x6D6E;&#x70B9;&#x6570;&#x7C7B;&#x578B;&#x88AB;&#x8F6C;&#x6362;&#x65F6;&#xFF0C;&#x5C0F;&#x6570;&#x90E8;&#x5206;&#x4F1A;&#x88AB;&#x4E22;&#x5F03;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x5B9E;&#x73B0;&#x4E2D;&#x8FD8;&#x5F97;&#x5F88;&#x5BB9;&#x6613;&#x5FFD;&#x7565;&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;&#x3002;&#x8FD9;&#x5BF9;&#x4E8E;&#x7B97;&#x672F;&#x7C7B;&#x578B;&#x7684;&#x8F6C;&#x6362;&#x548C;&#x63D0;&#x5347;&#x662F;&#x81EA;&#x7136;&#x7684;&#x3002;&#x53BB;&#x6389; <code>static_cast</code> &#x5C31;&#x53EF;&#x4EE5;&#x6B63;&#x786E;&#x5730;&#x6D4B;&#x8BD5;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x6837; <code>numeric_limits&amp;lt;INT&amp;gt;::max</code> &#x7684;&#x7ED3;&#x679C;&#x4F1A;&#x88AB;&#x8F6C;&#x6362;&#x4E3A;&#x6D6E;&#x70B9;&#x6570;&#x7C7B;&#x578B;[14]&#x3002;&#x5982;&#x679C;&#x662F;&#x6D6E;&#x70B9;&#x6570;&#x7C7B;&#x578B;&#x8F6C;&#x4E3A;&#x6574;&#x6570;&#x7C7B;&#x578B;&#xFF0C;&#x5B83;&#x4F1A;&#x88AB;&#x622A;&#x65AD;&#xFF1B;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x95EE;&#x9898;&#x5728;&#x4E8E;&#x4E22;&#x5931;&#x4E86;&#x5C0F;&#x6570;&#x90E8;&#x5206;&#x3002;</p>
+<blockquote>
+<p>[14] &#x8FD9;&#x662F;&#x6B63;&#x5E38;&#x7684;&#x7B97;&#x672F;&#x8F6C;&#x6362;&#x7ED3;&#x679C;&#x3002;</p>
+</blockquote>
+<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+<p><code>numeric_cast</code> &#x63D0;&#x4F9B;&#x4E86;&#x7B97;&#x672F;&#x7C7B;&#x578B;&#x95F4;&#x9AD8;&#x6548;&#x7684;&#x8303;&#x56F4;&#x68C0;&#x67E5;&#x8F6C;&#x6362;&#x3002;&#x5728;&#x76EE;&#x6807;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x6301;&#x6709;&#x6240;&#x6709;&#x6E90;&#x7C7B;&#x578B;&#x7684;&#x503C;&#x65F6;&#xFF0C;&#x4F7F;&#x7528; <code>numeric_cast</code>&#x6CA1;&#x6709;&#x989D;&#x5916;&#x7684;&#x6548;&#x7387;&#x4EE3;&#x4EF7;&#x3002;&#x5B83;&#x53EA;&#x5728;&#x76EE;&#x6807;&#x7C7B;&#x578B;&#x4EC5;&#x80FD;&#x8868;&#x793A;&#x6E90;&#x7C7B;&#x578B;&#x7684;&#x503C;&#x7684;&#x5B50;&#x96C6;&#x65F6;&#x6709;&#x5F71;&#x54CD;&#x3002;&#x5F53;&#x8F6C;&#x6362;&#x5931;&#x8D25;&#x65F6;&#xFF0C;<code>numeric_cast</code> &#x901A;&#x8FC7;&#x629B;&#x51FA;&#x4E00;&#x4E2A; <code>bad_numeric_cast</code>&#x5F02;&#x5E38;&#x6765;&#x8868;&#x793A;&#x5931;&#x8D25;&#x3002;&#x5BF9;&#x4E8E;&#x6570;&#x503C;&#x7C7B;&#x578B;&#x95F4;&#x7684;&#x8F6C;&#x6362;&#x6709;&#x5F88;&#x591A;&#x590D;&#x6742;&#x7684;&#x89C4;&#x5219;&#xFF0C;&#x786E;&#x4FDD;&#x8F6C;&#x6362;&#x7684;&#x6B63;&#x786E;&#x6027;&#x662F;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x60C5;&#x51B5;&#x65F6;&#x4F7F;&#x7528; <code>numeric_cast</code>:</p>
+<ul>
+<li><p>&#x5728;&#x65E0;&#x7B26;&#x53F7;&#x4E0E;&#x6709;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#x95F4;&#x8FDB;&#x884C;&#x8D4B;&#x503C;&#x6216;&#x6BD4;&#x8F83;&#x65F6;</p>
+</li>
+<li><p>&#x5728;&#x4E0D;&#x540C;&#x5927;&#x5C0F;&#x7684;&#x6574;&#x6570;&#x7C7B;&#x578B;&#x95F4;&#x8FDB;&#x884C;&#x8D4B;&#x503C;&#x6216;&#x6BD4;&#x8F83;&#x65F6;</p>
+</li>
+<li><p>&#x4ECE;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7C7B;&#x578B;&#x5411;&#x4E00;&#x4E2A;&#x6570;&#x503C;&#x53D8;&#x91CF;&#x8D4B;&#x503C;&#xFF0C;&#x4E3A;&#x4E86;&#x9884;&#x9632;&#x8BE5;&#x51FD;&#x6570;&#x672A;&#x6765;&#x7684;&#x53D8;&#x5316;</p>
+</li>
+</ul>
+<p>&#x5728;&#x8FD9;&#x91CC;&#x6CE8;&#x610F;&#x5230;&#x4E00;&#x4E2A;&#x6A21;&#x5F0F;&#x4E86;&#x5417;&#xFF1F;&#x6A21;&#x4EFF;&#x5DF2;&#x6709;&#x7684;&#x8BED;&#x8A00;&#x548C;&#x5E93;&#x7684;&#x540D;&#x5B57;&#x53CA;&#x884C;&#x4E3A;&#x662F;&#x7B80;&#x5316;&#x5B66;&#x4E60;&#x53CA;&#x4F7F;&#x7528;&#x7684;&#x597D;&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x4E5F;&#x9700;&#x8981;&#x4ED4;&#x7EC6; &#x5730;&#x8003;&#x8651;&#x3002;&#x589E;&#x52A0;&#x5185;&#x5EFA;&#x7684;C++&#x8F6C;&#x578B;&#x5C31;&#x8C61;&#x6CBF;&#x7740;&#x72ED;&#x7A84;&#x7684;&#x5C0F;&#x8DEF;&#x884C;&#x8D70;&#xFF1B;&#x4E00;&#x65E6;&#x8FF7;&#x8DEF;&#x4F1A;&#x5E26;&#x6765;&#x5F88;&#x9AD8;&#x7684;&#x4EE3;&#x4EF7;&#x3002;&#x9075;&#x5FAA;&#x8BED;&#x8A00;&#x7684;&#x8BED;&#x6CD5;&#x53CA;&#x8BED;&#x4E49;&#x89C4;&#x5219;&#x624D;&#x662F;&#x8D1F;&#x8D23;&#x4EFB;&#x7684;&#x3002;&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x5BF9;&#x4E8E;&#x521D;&#x5B66;&#x8005;&#xFF0C;&#x5185;&#x5EFA;&#x7684;&#x8F6C; &#x578B;&#x64CD;&#x4F5C;&#x7B26;&#x4E0E;&#x770B;&#x8D77;&#x6765;&#x8C61;&#x8F6C;&#x578B;&#x64CD;&#x4F5C;&#x7B26;&#x7684;&#x51FD;&#x6570;&#x53EF;&#x80FD;&#x5E76;&#x6CA1;&#x6709;&#x4E0D;&#x540C;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x884C;&#x4E3A;&#x9519;&#x8BEF;&#x5C06;&#x4F1A;&#x5BFC;&#x81F4;&#x707E;&#x96BE;&#x3002;<code>numeric_cast</code> &#x6709;&#x7740;&#x4E0E; <code>static_cast</code>, <code>dynamic_cast</code>, &#x548C; <code>reinterpret_cast</code>&#x7C7B;&#x4F3C;&#x7684;&#x8BED;&#x6CD5;&#x548C;&#x8BED;&#x4E49;&#x3002;&#x5982;&#x679C;&#x5B83;&#x770B;&#x8D77;&#x6765;&#x548C;&#x7528;&#x8D77;&#x6765;&#x8C61;&#x8F6C;&#x578B;&#x64CD;&#x4F5C;&#xFF0C;&#x5B83;&#x5C31;&#x662F;&#x8F6C;&#x578B;&#x64CD;&#x4F5C;&#xFF0C;&#x662F;&#x5BF9;&#x8F6C;&#x578B;&#x64CD;&#x4F5C;&#x7684;&#x4E00;&#x4E2A;&#x826F;&#x597D;&#x7684;&#x6269;&#x5C55;&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./29.html" class="navigation navigation-prev " aria-label="Previous page: polymorphic_downcast"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./31.html" class="navigation navigation-next " aria-label="Next page: lexical_cast"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

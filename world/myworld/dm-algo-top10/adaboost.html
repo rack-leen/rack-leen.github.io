@@ -1,0 +1,574 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>AdaBoost | 数据挖掘十大算法详解</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./knn.html" />
+    
+    
+    <link rel="prev" href="./pagerank.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="7"
+        data-chapter-title="AdaBoost"
+        data-filepath="adaboost.md"
+        data-basepath="."
+        data-revision="Thu Feb 11 2016 09:20:12 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/dm-algo-top10" target="blank" class="custom-link">数据挖掘十大算法详解</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="c4.5.html">
+            
+                
+                    <a href="./c4.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        C4.5
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="k-means.html">
+            
+                
+                    <a href="./k-means.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        k-means
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="svm.html">
+            
+                
+                    <a href="./svm.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        SVM
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="svm-1.html">
+            
+                
+                    <a href="./svm-1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        支持向量机
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="svm-2.html">
+            
+                
+                    <a href="./svm-2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        拉格朗日对偶
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="svm-3.html">
+            
+                
+                    <a href="./svm-3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        最优间隔分类器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="svm-4.html">
+            
+                
+                    <a href="./svm-4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        核函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="svm-5.html">
+            
+                
+                    <a href="./svm-5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        SMO算法详解
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="apriori.html">
+            
+                
+                    <a href="./apriori.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Apriori
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="em.html">
+            
+                
+                    <a href="./em.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        EM
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="pagerank.html">
+            
+                
+                    <a href="./pagerank.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        PageRank
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="7" data-path="adaboost.html">
+            
+                
+                    <a href="./adaboost.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        AdaBoost
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="knn.html">
+            
+                
+                    <a href="./knn.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        kNN
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="naive-bayes.html">
+            
+                
+                    <a href="./naive-bayes.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        Naive Bayes
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="cart.html">
+            
+                
+                    <a href="./cart.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        CART
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >数据挖掘十大算法详解</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x6570;&#x636E;&#x6316;&#x6398;&#x7B97;&#x6CD5;&#x5B66;&#x4E60;&#xFF08;&#x516B;&#xFF09;adaboost&#x7B97;&#x6CD5;">&#x6570;&#x636E;&#x6316;&#x6398;&#x7B97;&#x6CD5;&#x5B66;&#x4E60;&#xFF08;&#x516B;&#xFF09;Adaboost&#x7B97;&#x6CD5;</h1>
+<blockquote>
+<p>&#x6765;&#x6E90;&#xFF1A;<a href="http://blog.csdn.net/iemyxie/article/details/40423907" target="_blank">http://blog.csdn.net/iemyxie/article/details/40423907</a></p>
+</blockquote>
+<p>Adaboost&#x662F;&#x4E00;&#x79CD;&#x8FED;&#x4EE3;&#x7B97;&#x6CD5;&#xFF0C;&#x5176;&#x6838;&#x5FC3;&#x601D;&#x60F3;&#x662F;&#x9488;&#x5BF9;&#x540C;&#x4E00;&#x4E2A;&#x8BAD;&#x7EC3;&#x96C6;&#x8BAD;&#x7EC3;&#x4E0D;&#x540C;&#x7684;&#x5206;&#x7C7B;&#x5668;&#xFF08;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x8FD9;&#x4E9B;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x96C6;&#x5408;&#x8D77;&#x6765;&#xFF0C;&#x6784;&#x6210;&#x4E00;&#x4E2A;&#x66F4;&#x5F3A;&#x7684;&#x6700;&#x7EC8;&#x5206;&#x7C7B;&#x5668;&#xFF08;&#x5F3A;&#x5206;&#x7C7B;&#x5668;&#xFF09;&#x3002;Adaboost&#x7B97;&#x6CD5;&#x672C;&#x8EAB;&#x662F;&#x901A;&#x8FC7;&#x6539;&#x53D8;&#x6570;&#x636E;&#x5206;&#x5E03;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x5B83;&#x6839;&#x636E;&#x6BCF;&#x6B21;&#x8BAD;&#x7EC3;&#x96C6;&#x4E4B;&#x4E2D;&#x6BCF;&#x4E2A;&#x6837;&#x672C;&#x7684;&#x5206;&#x7C7B;&#x662F;&#x5426;&#x6B63;&#x786E;&#xFF0C;&#x4EE5;&#x53CA;&#x4E0A;&#x6B21;&#x7684;&#x603B;&#x4F53;&#x5206;&#x7C7B;&#x7684;&#x51C6;&#x786E;&#x7387;&#xFF0C;&#x6765;&#x786E;&#x5B9A;&#x6BCF;&#x4E2A;&#x6837;&#x672C;&#x7684;&#x6743;&#x503C;&#x3002;&#x5C06;&#x4FEE;&#x6539;&#x8FC7;&#x6743;&#x503C;&#x7684;&#x65B0;&#x6570;&#x636E;&#x96C6;&#x9001;&#x7ED9;&#x4E0B;&#x5C42;&#x5206;&#x7C7B;&#x5668;&#x8FDB;&#x884C;&#x8BAD;&#x7EC3;&#xFF0C;&#x6700;&#x540E;&#x5C06;&#x6BCF;&#x6B21;&#x5F97;&#x5230;&#x7684;&#x5206;&#x7C7B;&#x5668;&#x6700;&#x540E;&#x878D;&#x5408;&#x8D77;&#x6765;&#xFF0C;&#x4F5C;&#x4E3A;&#x6700;&#x540E;&#x7684;&#x51B3;&#x7B56;&#x5206;&#x7C7B;&#x5668;&#x3002;</p>
+<p><strong>&#x7B97;&#x6CD5;&#x6982;&#x8FF0;</strong></p>
+<p>1&#x3001;&#x5148;&#x901A;&#x8FC7;&#x5BF9;N&#x4E2A;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x7684;&#x5B66;&#x4E60;&#x5F97;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#xFF1B;
+2&#x3001;&#x5C06;&#x5206;&#x9519;&#x7684;&#x6837;&#x672C;&#x548C;&#x5176;&#x4ED6;&#x7684;&#x65B0;&#x6570;&#x636E;&#x4E00;&#x8D77;&#x6784;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684;N&#x4E2A;&#x7684;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#xFF0C;&#x901A;&#x8FC7;&#x5BF9;&#x8FD9;&#x4E2A;&#x6837;&#x672C;&#x7684;&#x5B66;&#x4E60;&#x5F97;&#x5230;&#x7B2C;&#x4E8C;&#x4E2A;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#xFF1B;
+3&#x3001;&#x5C06;1&#x548C;2&#x90FD;&#x5206;&#x9519;&#x4E86;&#x7684;&#x6837;&#x672C;&#x52A0;&#x4E0A;&#x5176;&#x4ED6;&#x7684;&#x65B0;&#x6837;&#x672C;&#x6784;&#x6210;&#x53E6;&#x4E00;&#x4E2A;&#x65B0;&#x7684;N&#x4E2A;&#x7684;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#xFF0C;&#x901A;&#x8FC7;&#x5BF9;&#x8FD9;&#x4E2A;&#x6837;&#x672C;&#x7684;&#x5B66;&#x4E60;&#x5F97;&#x5230;&#x7B2C;&#x4E09;&#x4E2A;&#x5F31;&#x5206;&#x7C7B;&#x5668;
+4&#x3001;&#x6700;&#x7EC8;&#x7ECF;&#x8FC7;&#x63D0;&#x5347;&#x7684;&#x5F3A;&#x5206;&#x7C7B;&#x5668;&#x3002;&#x5373;&#x67D0;&#x4E2A;&#x6570;&#x636E;&#x88AB;&#x5206;&#x4E3A;&#x54EA;&#x4E00;&#x7C7B;&#x8981;&#x7531;&#x5404;&#x5206;&#x7C7B;&#x5668;&#x6743;&#x503C;&#x51B3;&#x5B9A;&#x3002;</p>
+<p><strong>&#x4E0E;boosting&#x7B97;&#x6CD5;&#x6BD4;&#x8F83;</strong></p>
+<p>1. &#x4F7F;&#x7528;&#x52A0;&#x6743;&#x540E;&#x9009;&#x53D6;&#x7684;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x4EE3;&#x66FF;&#x968F;&#x673A;&#x9009;&#x53D6;&#x7684;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#xFF0C;&#x8FD9;&#x6837;&#x5C06;&#x8BAD;&#x7EC3;&#x7684;&#x7126;&#x70B9;&#x96C6;&#x4E2D;&#x5728;&#x6BD4;&#x8F83;&#x96BE;&#x5206;&#x7684;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x6837;&#x672C;&#x4E0A;&#xFF1B; &#x3000;&#x3000;
+2. &#x5C06;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x8054;&#x5408;&#x8D77;&#x6765;&#xFF0C;&#x4F7F;&#x7528;&#x52A0;&#x6743;&#x7684;&#x6295;&#x7968;&#x673A;&#x5236;&#x4EE3;&#x66FF;&#x5E73;&#x5747;&#x6295;&#x7968;&#x673A;&#x5236;&#x3002;&#x8BA9;&#x5206;&#x7C7B;&#x6548;&#x679C;&#x597D;&#x7684;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x5177;&#x6709;&#x8F83;&#x5927;&#x7684;&#x6743;&#x91CD;&#xFF0C;&#x800C;&#x5206;&#x7C7B;&#x6548;&#x679C;&#x5DEE;&#x7684;&#x5206;&#x7C7B;&#x5668;&#x5177;&#x6709;&#x8F83;&#x5C0F;&#x7684;&#x6743;&#x91CD;&#x3002;  </p>
+<p>&#x4E0E;Boosting&#x7B97;&#x6CD5;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;AdaBoost&#x7B97;&#x6CD5;&#x4E0D;&#x9700;&#x8981;&#x9884;&#x5148;&#x77E5;&#x9053;&#x5F31;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x5B66;&#x4E60;&#x6B63;&#x786E;&#x7387;&#x7684;&#x4E0B;&#x9650;&#x5373;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x8BEF;&#x5DEE;&#xFF0C;&#x5E76;&#x4E14;&#x6700;&#x540E;&#x5F97;&#x5230;&#x7684;&#x5F3A;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x5206;&#x7C7B;&#x7CBE;&#x5EA6;&#x4F9D;&#x8D56;&#x4E8E;&#x6240;&#x6709;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x5206;&#x7C7B;&#x7CBE;&#x5EA6;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x6DF1;&#x5165;&#x6316;&#x6398;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7B97;&#x6CD5;&#x7684;&#x80FD;&#x529B;&#x3002;</p>
+<p><strong>&#x7B97;&#x6CD5;&#x6B65;&#x9AA4;</strong></p>
+<p>1. &#x7ED9;&#x5B9A;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x96C6;S&#xFF0C;&#x5176;&#x4E2D;X&#x548C;Y&#x5206;&#x522B;&#x5BF9;&#x5E94;&#x4E8E;&#x6B63;&#x4F8B;&#x6837;&#x672C;&#x548C;&#x8D1F;&#x4F8B;&#x6837;&#x672C;&#xFF1B;T&#x4E3A;&#x8BAD;&#x7EC3;&#x7684;&#x6700;&#x5927;&#x5FAA;&#x73AF;&#x6B21;&#x6570;&#xFF1B;
+2. &#x521D;&#x59CB;&#x5316;&#x6837;&#x672C;&#x6743;&#x91CD;&#x4E3A;1/n &#xFF0C;&#x5373;&#x4E3A;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x7684;&#x521D;&#x59CB;&#x6982;&#x7387;&#x5206;&#x5E03;&#xFF1B; &#x3000;&#x3000;
+3. &#x7B2C;&#x4E00;&#x6B21;&#x8FED;&#x4EE3;&#xFF1A;(1)&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x7684;&#x6982;&#x7387;&#x5206;&#x5E03;&#x76F8;&#x5F53;&#xFF0C;&#x8BAD;&#x7EC3;&#x5F31;&#x5206;&#x7C7B;&#x5668;;(2)&#x8BA1;&#x7B97;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x9519;&#x8BEF;&#x7387;;(3)&#x9009;&#x53D6;&#x5408;&#x9002;&#x9608;&#x503C;&#xFF0C;&#x4F7F;&#x5F97;&#x8BEF;&#x5DEE;&#x6700;&#x5C0F;&#xFF1B;(4)&#x66F4;&#x65B0;&#x6837;&#x672C;&#x6743;&#x91CD;&#xFF1B; &#x3000;&#x3000;
+&#x7ECF;T&#x6B21;&#x5FAA;&#x73AF;&#x540E;&#xFF0C;&#x5F97;&#x5230;T&#x4E2A;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#xFF0C;&#x6309;&#x66F4;&#x65B0;&#x7684;&#x6743;&#x91CD;&#x53E0;&#x52A0;&#xFF0C;&#x6700;&#x7EC8;&#x5F97;&#x5230;&#x7684;&#x5F3A;&#x5206;&#x7C7B;&#x5668;&#x3002; </p>
+<p>&#x5177;&#x4F53;&#x6B65;&#x9AA4;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>&#x4E00;.&#x6837;&#x672C;</p>
+<pre><code>Given: m examples (x1, y1), &#x2026;, (xm, ym)
+     where xi&#xF0CE;X, yi&#xF0CE;Y={-1, +1}
+     xi&#x8868;&#x793A;X&#x4E2D;&#x7B2C;i&#x4E2A;&#x5143;&#x7D20;&#xFF0C;
+     yi&#x8868;&#x793A;&#x4E0E;xi&#x5BF9;&#x5E94;&#x5143;&#x7D20;&#x7684;&#x5C5E;&#x6027;&#x503C;&#xFF0C;+1&#x8868;&#x793A;xi&#x5C5E;&#x4E8E;&#x67D0;&#x4E2A;&#x5206;&#x7C7B;&#xFF0C;
+     -1&#x8868;&#x793A;xi&#x4E0D;&#x5C5E;&#x4E8E;&#x67D0;&#x4E2A;&#x5206;&#x7C7B;
+</code></pre><p>&#x4E8C;.&#x521D;&#x59CB;&#x5316;&#x8BAD;&#x7EC3;&#x6837;&#x672C;</p>
+<pre><code>xi&#x7684;&#x6743;&#x91CD;D(i) :i=1,&#x2026;&#x2026;&#xFF0C;m;
+     (1).&#x82E5;&#x6B63;&#x8D1F;&#x6837;&#x672C;&#x6570;&#x76EE;&#x4E00;&#x81F4;&#xFF0C;D1(i) = 1/m
+     (2).&#x82E5;&#x6B63;&#x8D1F;&#x6837;&#x672C;&#x6570;&#x76EE;m+, m-&#x5219;&#x6B63;&#x6837;&#x672C;D1(i) = 1/m+&#xFF0C;
+         &#x8D1F;&#x6837;&#x672C;D1(i) = 1/m-
+</code></pre><p><img src="img/20141024105429437.png" alt=""></p>
+<p><strong>&#x5B9E;&#x4F8B;&#x8BE6;&#x89E3;</strong></p>
+<p><img src="img/20141024105559109.png" alt=""></p>
+<p>&#x56FE;&#x4E2D;&#x201C;+&#x201D;&#x548C;&#x201C;-&#x201D;&#x8868;&#x793A;&#x4E24;&#x79CD;&#x7C7B;&#x522B;&#x3002;&#x6211;&#x4EEC;&#x7528;&#x6C34;&#x5E73;&#x6216;&#x8005;&#x5782;&#x76F4;&#x7684;&#x76F4;&#x7EBF;&#x4F5C;&#x4E3A;&#x5206;&#x7C7B;&#x5668;&#x8FDB;&#x884C;&#x5206;&#x7C7B;&#x3002;</p>
+<p>&#x7B97;&#x6CD5;&#x5F00;&#x59CB;&#x524D;&#x9ED8;&#x8BA4;&#x5747;&#x5300;&#x5206;&#x5E03;D&#xFF0C;&#x5171;10&#x4E2A;&#x6837;&#x672C;&#xFF0C;&#x6545;&#x6BCF;&#x4E2A;&#x6837;&#x672C;&#x6743;&#x503C;&#x4E3A;0.1.</p>
+<p>&#x7B2C;&#x4E00;&#x6B21;&#x5206;&#x7C7B;&#xFF1A;</p>
+<p><img src="img/20141024105842156.png" alt=""></p>
+<p>&#x7B2C;&#x4E00;&#x6B21;&#x5212;&#x5206;&#x6709;3&#x4E2A;&#x70B9;&#x5212;&#x5206;&#x9519;&#x8BEF;&#xFF0C;&#x6839;&#x636E;&#x8BEF;&#x5DEE;&#x8868;&#x8FBE;&#x5F0F;</p>
+<p><img src="img/20141024110207492.png" alt=""> &#x8BA1;&#x7B97;&#x53EF;&#x5F97;<code>e1=&#xFF08;0.1+0.1+0.1&#xFF09;/1.0=0.3</code></p>
+<p>&#x5206;&#x7C7B;&#x5668;&#x6743;&#x91CD;&#xFF1A;</p>
+<p><img src="img/20141024110356489.png" alt=""></p>
+<p>&#x7136;&#x540E;&#x6839;&#x636E;&#x7B97;&#x6CD5;&#x628A;&#x9519;&#x5206;&#x70B9;&#x7684;&#x6743;&#x503C;&#x53D8;&#x5927;&#x3002;&#x5BF9;&#x4E8E;&#x6B63;&#x786E;&#x5206;&#x7C7B;&#x7684;7&#x4E2A;&#x70B9;&#xFF0C;&#x6743;&#x503C;&#x4E0D;&#x53D8;&#xFF0C;&#x4ECD;&#x4E3A;0.1,&#x5BF9;&#x4E8E;&#x9519;&#x5206;&#x7684;3&#x4E2A;&#x70B9;&#xFF0C;&#x6743;&#x503C;&#x4E3A;&#xFF1A;</p>
+<pre><code>D1=D0*(1-e1)/e1=0.1*(1-0.3)/0.3=0.2333
+</code></pre><p>&#x7B2C;&#x4E8C;&#x6B21;&#x5206;&#x7C7B;&#xFF1A;</p>
+<p><img src="img/20141024110729390.png" alt=""></p>
+<p>&#x5982;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x6709;3&#x4E2A;&quot;-&quot;&#x5206;&#x7C7B;&#x9519;&#x8BEF;&#x3002;&#x4E0A;&#x8F6E;&#x5206;&#x7C7B;&#x540E;&#x6743;&#x503C;&#x4E4B;&#x548C;&#x4E3A;&#xFF1A;0.1<em>7+0.2333</em>3=1.3990</p>
+<p>&#x5206;&#x7C7B;&#x8BEF;&#x5DEE;&#xFF1A;<code>e2=0.1*3/1.3990=0.2144</code></p>
+<p>&#x5206;&#x7C7B;&#x5668;&#x6743;&#x91CD;<code>a2=0.6493</code></p>
+<p>&#x9519;&#x5206;&#x7684;3&#x4E2A;&#x70B9;&#x6743;&#x503C;&#x4E3A;&#xFF1A;<code>D2=0.1*&#xFF08;1-0.2144&#xFF09;/0.2144=0.3664</code></p>
+<p>&#x7B2C;&#x4E09;&#x6B21;&#x5206;&#x7C7B;&#xFF1A;</p>
+<p><img src="img/20141024111220276.png" alt=""></p>
+<p>&#x540C;&#x4E0A;&#x6B65;&#x9AA4;&#x53EF;&#x6C42;&#x5F97;&#xFF1A;<code>e3=0.1365</code> &#xFF1B;<code>a3=0.9223</code>&#xFF1B;<code>D3=0.6326</code></p>
+<p>&#x6700;&#x7EC8;&#x7684;&#x5F3A;&#x5206;&#x7C7B;&#x5668;&#x5373;&#x4E3A;&#x4E09;&#x4E2A;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x53E0;&#x52A0;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="img/20141024111440630.png" alt=""></p>
+<p>&#x6BCF;&#x4E2A;&#x533A;&#x57DF;&#x662F;&#x5C5E;&#x4E8E;&#x54EA;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x7531;&#x8FD9;&#x4E2A;&#x533A;&#x57DF;&#x6240;&#x5728;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x6743;&#x503C;&#x7EFC;&#x5408;&#x51B3;&#x5B9A;&#x3002;&#x6BD4;&#x5982;&#x5DE6;&#x4E0B;&#x89D2;&#x7684;&#x533A;&#x57DF;&#xFF0C;&#x5C5E;&#x4E8E;&#x84DD;&#x8272;&#x5206;&#x7C7B;&#x533A;&#x7684;&#x6743;&#x91CD;&#x4E3A;h1 &#x4E2D;&#x7684;0.42&#x548C;h2 &#x4E2D;&#x7684;0.65&#xFF0C;&#x5176;&#x548C;&#x4E3A;1.07&#xFF1B;&#x5C5E;&#x4E8E;&#x6DE1;&#x7EA2;&#x8272;&#x5206;&#x7C7B;&#x533A;&#x57DF;&#x7684;&#x6743;&#x91CD;&#x4E3A;h3 &#x4E2D;&#x7684;0.92&#xFF1B;&#x5C5E;&#x4E8E;&#x6DE1;&#x7EA2;&#x8272;&#x5206;&#x7C7B;&#x533A;&#x7684;&#x6743;&#x91CD;&#x5C0F;&#x4E8E;&#x5C5E;&#x4E8E;&#x84DD;&#x8272;&#x5206;&#x7C7B;&#x533A;&#x7684;&#x6743;&#x503C;&#xFF0C;&#x56E0;&#x6B64;&#x5DE6;&#x4E0B;&#x89D2;&#x5C5E;&#x4E8E;&#x84DD;&#x8272;&#x5206;&#x7C7B;&#x533A;&#x3002;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x6574;&#x5408;&#x7684;&#x7ED3;&#x679C;&#x5982;&#x4E0A;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x4ECE;&#x7ED3;&#x679C;&#x56FE;&#x4E2D;&#x770B;&#xFF0C;&#x5373;&#x4F7F;&#x662F;&#x7B80;&#x5355;&#x7684;&#x5206;&#x7C7B;&#x5668;&#xFF0C;&#x7EC4;&#x5408;&#x8D77;&#x6765;&#x4E5F;&#x80FD;&#x83B7;&#x5F97;&#x5F88;&#x597D;&#x7684;&#x5206;&#x7C7B;&#x6548;&#x679C;&#x3002;</p>
+<p><strong>&#x5206;&#x7C7B;&#x5668;&#x6743;&#x503C;&#x8C03;&#x6574;&#x7684;&#x539F;&#x56E0;</strong></p>
+<p><img src="img/20141024111839062.png" alt=""></p>
+<p>&#x7531;&#x516C;&#x5F0F;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x6743;&#x503C;&#x662F;&#x5173;&#x4E8E;&#x8BEF;&#x5DEE;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x3002;&#x6BCF;&#x6B21;&#x8FED;&#x4EE3;&#x90FD;&#x4F1A;&#x63D0;&#x9AD8;&#x9519;&#x5206;&#x70B9;&#x7684;&#x6743;&#x503C;&#xFF0C;&#x5F53;&#x4E0B;&#x4E00;&#x6B21;&#x5206;&#x7C7B;&#x5668;&#x518D;&#x6B21;&#x9519;&#x5206;&#x8FD9;&#x4E9B;&#x70B9;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x63D0;&#x9AD8;&#x6574;&#x4F53;&#x7684;&#x9519;&#x8BEF;&#x7387;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x5BFC;&#x81F4;&#x5206;&#x7C7B;&#x5668;&#x6743;&#x503C;&#x53D8;&#x5C0F;&#xFF0C;&#x8FDB;&#x800C;&#x5BFC;&#x81F4;&#x8FD9;&#x4E2A;&#x5206;&#x7C7B;&#x5668;&#x5728;&#x6700;&#x7EC8;&#x7684;&#x6DF7;&#x5408;&#x5206;&#x7C7B;&#x5668;&#x4E2D;&#x7684;&#x6743;&#x503C;&#x53D8;&#x5C0F;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;Adaboost&#x7B97;&#x6CD5;&#x8BA9;&#x6B63;&#x786E;&#x7387;&#x9AD8;&#x7684;&#x5206;&#x7C7B;&#x5668;&#x5360;&#x6574;&#x4F53;&#x7684;&#x6743;&#x503C;&#x66F4;&#x9AD8;&#xFF0C;&#x8BA9;&#x6B63;&#x786E;&#x7387;&#x4F4E;&#x7684;&#x5206;&#x7C7B;&#x5668;&#x6743;&#x503C;&#x66F4;&#x4F4E;&#xFF0C;&#x4ECE;&#x800C;&#x63D0;&#x9AD8;&#x6700;&#x7EC8;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x6B63;&#x786E;&#x7387;&#x3002;</p>
+<p><strong>&#x7B97;&#x6CD5;&#x4F18;&#x7F3A;&#x70B9;</strong></p>
+<p>&#x4F18;&#x70B9;</p>
+<p>1)Adaboost&#x662F;&#x4E00;&#x79CD;&#x6709;&#x5F88;&#x9AD8;&#x7CBE;&#x5EA6;&#x7684;&#x5206;&#x7C7B;&#x5668;
+2)&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5404;&#x79CD;&#x65B9;&#x6CD5;&#x6784;&#x5EFA;&#x5B50;&#x5206;&#x7C7B;&#x5668;,Adaboost&#x7B97;&#x6CD5;&#x63D0;&#x4F9B;&#x7684;&#x662F;&#x6846;&#x67B6;
+3)&#x5F53;&#x4F7F;&#x7528;&#x7B80;&#x5355;&#x5206;&#x7C7B;&#x5668;&#x65F6;&#xFF0C;&#x8BA1;&#x7B97;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x7684;&#x3002;&#x800C;&#x4E14;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x6784;&#x9020;&#x6781;&#x5176;&#x7B80;&#x5355;
+4)&#x7B80;&#x5355;&#xFF0C;&#x4E0D;&#x7528;&#x505A;&#x7279;&#x5F81;&#x7B5B;&#x9009;
+5)&#x4E0D;&#x7528;&#x62C5;&#x5FC3;overfitting(&#x8FC7;&#x5EA6;&#x62DF;&#x5408;)</p>
+<p>&#x7F3A;&#x70B9;</p>
+<p>1)&#x5BB9;&#x6613;&#x53D7;&#x5230;&#x566A;&#x58F0;&#x5E72;&#x6270;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x5927;&#x90E8;&#x5206;&#x7B97;&#x6CD5;&#x7684;&#x7F3A;&#x70B9;</p>
+<p>2)&#x8BAD;&#x7EC3;&#x65F6;&#x95F4;&#x8FC7;&#x957F;</p>
+<p>3)&#x6267;&#x884C;&#x6548;&#x679C;&#x4F9D;&#x8D56;&#x4E8E;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x9009;&#x62E9;</p>
+<p><strong>SQL&#x5B9E;&#x73B0;</strong></p>
+<pre><code>#&#x5F00;&#x59CB;&#x8FED;&#x4EE3;
+while(@i&lt;=3) do  
+    set @evalue=0,@temp=0;
+    set @flag1=0,@flag2=0,@flag3=0,@flag4=0;
+    set @las=concat(&apos;d&apos;,@i-1);
+    set @cur=concat(&apos;d&apos;,@i);
+    set @a=concat(&apos;select hx,hy into @hx,@hy from hea where id = &apos;,@i);
+    prepare stmt1 from @a;
+    execute stmt1;
+    set @aa=concat(&apos;update adaset set &apos;,@cur,&apos; = &apos;,@las);
+    prepare stmt111 from @aa;
+    execute stmt111;
+#1.&#x5206;&#x7C7B;&#x5668;&#x4E3A;&#x5782;&#x76F4;x&#x8F74;&#x76F4;&#x7EBF;
+    if (@hy=0) then
+    #&#x5904;&#x7406;&#x5206;&#x7C7B;1
+        set @b=concat(&apos;select count(class) into @l_1 from adaset where class=1 and x &lt; &apos;,@hx);
+        prepare stmt2 from @b;
+        execute stmt2;
+        set @c=concat(&apos;select count(class) into @l_2 from adaset where class=-1 and x &lt; &apos;,@hx);
+        prepare stmt3 from @c;
+        execute stmt3;
+        if(@l_1=0 and @l_2!=0) then
+        set @clas=concat(&apos;update hea set l=-1 where id = &apos;,@i);
+        prepare stmt28 from @clas;
+        execute stmt28;
+        end if;
+        if(@l_1!=0 and @l_2 =0) then
+            set @clas=concat(&apos;update hea set l=1 where id = &apos;,@i);
+            prepare stmt29 from @clas;
+            execute stmt29;
+        end if;
+        set @weight=concat(&apos;d&apos;,@i-1);
+        if (@l_1 !=0 and @l_2 !=0 and @l_1&gt;@l_2) then #@l_2&#x662F;&#x9519;&#x5206;&#x70B9;
+            set @d=concat(&apos;select sum(&apos;,@weight,&apos;) into @temp from adaset where class=-1 and x &lt; &apos;,@hx);
+            prepare stmt4 from @d;
+            execute stmt4;
+            set @evalue=@evalue+@temp;
+            set @flag1=1;
+            set @clas=concat(&apos;update hea set l=1 where id = &apos;,@i);
+            prepare stmt20 from @clas;
+            execute stmt20;
+        end if;
+        if (@l_1 !=0 and @l_2 !=0 and @l_1&lt;@l_2) then #@l_1&#x662F;&#x9519;&#x5206;&#x70B9;
+            set @d=concat(&apos;select sum(&apos;,@weight,&apos;) into @temp from adaset where class=1 and x &lt; &apos;,@hx);
+            prepare stmt5 from @d;
+            execute stmt5;
+            set @evalue=@evalue+@temp;
+            set @flag2=1;
+            set @clas=concat(&apos;update hea set l=-1 where id = &apos;,@i);
+            prepare stmt21 from @clas;
+            execute stmt21;
+        end if;
+#&#x603B;&#x6743;&#x503C;&amp;&#x8BEF;&#x5DEE;
+    set @h=concat(&apos;select sum(&apos;,@weight,&apos;) into @temp from adaset&apos;);
+    prepare stmt10 from @h;
+    execute stmt10;
+    set @evalue = round(@evalue/@temp,4);
+    set @avalue = round((0.5*ln((1-@evalue)/@evalue)),4);
+    set @eee=round((1-@evalue)/@evalue,4);
+#&#x66F4;&#x65B0;&#x8BEF;&#x5DEE;e&amp;&#x5047;&#x8BBE;&#x6743;&#x91CD;a
+    set @j=concat(&apos;update hea set e = &apos;,@evalue,&apos; ,a = &apos;,@avalue,&apos; where id = &apos;,@i);
+    prepare stmt11 from @j;
+    execute stmt11;
+#&#x66F4;&#x65B0;&#x9519;&#x5206;&#x6837;&#x672C;&#x7684;&#x6743;&#x91CD;
+    if (@hy=0) then
+        if (@flag1=1) then
+            set @k=concat(&apos;update adaset set &apos;,@cur,&apos; = &apos;,@las,&apos;*&apos;,@eee,&apos; where class=-1 and x &lt; &apos;,@hx);
+            prepare stmt12 from @k;
+            execute stmt12;
+        end if;
+        if (@flag2=1) then
+            set @m=concat(&apos;update adaset set &apos;,@cur,&apos; = &apos;,@las,&apos;*&apos;,@eee,&apos; where class=1 and x &lt; &apos;,@hx);
+            prepare stmt13 from @m;
+            execute stmt13;
+        end if;
+        if (@flag3=1) then
+            set @n=concat(&apos;update adaset set &apos;,@cur,&apos; = &apos;,@las,&apos;*&apos;,@eee,&apos; where class=-1 and x &gt; &apos;,@hx);
+            prepare stmt14 from @n;
+            execute stmt14;
+        end if;
+        if (@flag4=1) then
+            set @o=concat(&apos;update adaset set &apos;,@cur,&apos; = &apos;,@las,&apos;*&apos;,@eee,&apos; where class=1 and x &gt; &apos;,@hx);
+            prepare stmt15 from @o;
+            execute stmt15;
+        end if;
+    end if;
+set @i=@i+1;
+end while;
+</code></pre><p>&#x4EE5;&#x4E0A;&#x662F;&#x535A;&#x4E3B;&#x6700;&#x8FD1;&#x7528;SQL&#x5B9E;&#x73B0;&#x7684;Adaboost&#x7B97;&#x6CD5;&#x7684;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x3002;&#x6570;&#x636E;&#x5E93;&#x8868;&#x4EE5;&#x540E;&#x6574;&#x7406;&#x4E00;&#x4E0B;&#x518D;&#x8D34;&#x3002;Ubuntu&#x4E0D;&#x7A33;&#x5B9A;&#x554A;&#xFF0C;&#x6B7B;&#x673A;&#x4E24;&#x6B21;&#x4E86;&#x3002;&#x3002;&#x7F16;&#x8F91;&#x7684;&#x535A;&#x5BA2;&#x90FD;&#x6CA1;&#x4E86;&#x3002;&#x3002;&#x7D2F;&#x89C9;&#x4E0D;&#x7231;&#x3002;&#x3002;</p>
+<p><strong>&#x4E2A;&#x4EBA;&#x7591;&#x95EE;</strong></p>
+<p>&#x4E0A;&#x6587;&#x4E2D;&#x7684;&#x7F3A;&#x70B9;&#x63D0;&#x5230;&#xFF0C;Adaboost&#x7B97;&#x6CD5;&#x7684;&#x6548;&#x679C;&#x4F9D;&#x8D56;&#x4E8E;&#x5F31;&#x5206;&#x7C7B;&#x5668;&#x7684;&#x9009;&#x62E9;&#xFF0C;&#x90A3;&#x4E48;&#x9762;&#x5BF9;&#x5DE8;&#x5927;&#x7684;&#x5F85;&#x5206;&#x7C7B;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5982;&#x4F55;&#x9009;&#x62E9;&#x5F31;&#x5206;&#x7C7B;&#x5462;&#xFF1F;&#x6709;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x539F;&#x5219;&#x3002;&#x535A;&#x4E3B;&#x4F9D;&#x65E7;&#x5728;&#x63A2;&#x7D22;&#x4E2D;&#xFF0C;&#x627E;&#x5230;&#x7B54;&#x6848;&#x7684;&#x8BDD;&#x4F1A;&#x5728;&#x8FD9;&#x91CC;&#x66F4;&#x65B0;&#x3002;</p>
+<p>&#x63A8;&#x8350;&#x8D44;&#x6599;&#xFF1A;&#x7531;Adaboost&#x7B97;&#x6CD5;&#x521B;&#x59CB;&#x4EBA;Freund&#x548C;Schapire&#x5199;&#x7684;&#x5173;&#x4E8E;Adaboost&#x7B97;&#x6CD5;&#x7684;&#x6587;&#x6863;&#xFF0C;&#x6211;&#x5DF2;&#x7ECF;&#x4E0A;&#x4F20;&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./pagerank.html" class="navigation navigation-prev " aria-label="Previous page: PageRank"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./knn.html" class="navigation navigation-next " aria-label="Next page: kNN"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

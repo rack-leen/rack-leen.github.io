@@ -1,0 +1,813 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>网络基本功（十六）：细说网络性能监测与实例（下） | 网络基本功系列</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./16.html" />
+    
+    
+    <link rel="prev" href="./14.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="16"
+        data-chapter-title="网络基本功（十六）：细说网络性能监测与实例（下）"
+        data-filepath="15.md"
+        data-basepath="."
+        data-revision="Tue Apr 05 2016 09:04:13 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/network-basic" target="blank" class="custom-link">网络基本功系列</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="0.html">
+            
+                
+                    <a href="./0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        网络基本功（一）：细说网络传输
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="1.html">
+            
+                
+                    <a href="./1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        网络基本功（二）：细说交换机
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        网络基本功（三）：细说VLAN与Trunk
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        网络基本功（四）：细说路由（上）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        网络基本功（五）：细说路由（下）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        网络基本功（六）：链路聚合
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        网络基本功（七）：细说IP地址与子网
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        网络基本功（八）：细说TCP滑动窗口
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="8.html">
+            
+                
+                    <a href="./8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        网络基本功（九）：细说TCP重传
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="9.html">
+            
+                
+                    <a href="./9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        网络基本功（十）：细说TCP确认机制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="10.html">
+            
+                
+                    <a href="./10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        网络基本功（十一）：TCP窗口调整与流控
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="11.html">
+            
+                
+                    <a href="./11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        网络基本功（十二）：细说Linux网络配置（上）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="12.html">
+            
+                
+                    <a href="./12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        网络基本功（十三）：细说Linux网络配置（下）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="13.html">
+            
+                
+                    <a href="./13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        网络基本功（十四）：细说诊断工具ping
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="14.html">
+            
+                
+                    <a href="./14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        网络基本功（十五）：细说网络性能监测与实例（上）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="16" data-path="15.html">
+            
+                
+                    <a href="./15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        网络基本功（十六）：细说网络性能监测与实例（下）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="16.html">
+            
+                
+                    <a href="./16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        网络基本功（十七）：细说tcpdump的妙用（上）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18" data-path="17.html">
+            
+                
+                    <a href="./17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.</b>
+                        
+                        网络基本功（十八）：细说tcpdump的妙用（下）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19" data-path="18.html">
+            
+                
+                    <a href="./18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.</b>
+                        
+                        网络基本功（十九）：细说NAT原理与配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20" data-path="19.html">
+            
+                
+                    <a href="./19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.</b>
+                        
+                        网络基本功（二十）：细说ICMP和ARP
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21" data-path="20.html">
+            
+                
+                    <a href="./20.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.</b>
+                        
+                        网络基本功（二十一）：细说HTTP（上）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22" data-path="21.html">
+            
+                
+                    <a href="./21.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.</b>
+                        
+                        网络基本功（二十二）：细说HTTP（下）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="23" data-path="22.html">
+            
+                
+                    <a href="./22.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.</b>
+                        
+                        网络基本功（二十三）：Wireshark抓包实例诊断TCP连接问题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24" data-path="23.html">
+            
+                
+                    <a href="./23.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.</b>
+                        
+                        网络基本功（二十四）：Wireshark抓包实例分析TCP重传
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25" data-path="24.html">
+            
+                
+                    <a href="./24.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.</b>
+                        
+                        网络基本功（二十五）：Wireshark抓包实例分析TCP重复ACK与乱序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26" data-path="25.html">
+            
+                
+                    <a href="./25.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.</b>
+                        
+                        网络基本功（二十六）：Wireshark抓包实例分析TCP窗口及reset
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27" data-path="26.html">
+            
+                
+                    <a href="./26.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.</b>
+                        
+                        网络基本功（二十七）：Wireshark抓包实例分析HTTP问题(上)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="28" data-path="27.html">
+            
+                
+                    <a href="./27.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>28.</b>
+                        
+                        网络基本功（二十八）：Wireshark抓包实例分析HTTP问题(下)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="29" data-path="28.html">
+            
+                
+                    <a href="./28.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>29.</b>
+                        
+                        网络基本功（二十九）：Wireshark抓包实例诊断数据库常见问题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="30" data-path="29.html">
+            
+                
+                    <a href="./29.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>30.</b>
+                        
+                        网络基本功（三十）：细说DNS（上）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="31" data-path="30.html">
+            
+                
+                    <a href="./30.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>31.</b>
+                        
+                        网络基本功（三十一）：细说DHCP
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >网络基本功系列</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x7F51;&#x7EDC;&#x57FA;&#x672C;&#x529F;&#xFF08;&#x5341;&#x516D;&#xFF09;&#xFF1A;&#x7EC6;&#x8BF4;&#x7F51;&#x7EDC;&#x6027;&#x80FD;&#x76D1;&#x6D4B;&#x4E0E;&#x5B9E;&#x4F8B;&#xFF08;&#x4E0B;&#xFF09;">&#x7F51;&#x7EDC;&#x57FA;&#x672C;&#x529F;&#xFF08;&#x5341;&#x516D;&#xFF09;&#xFF1A;&#x7EC6;&#x8BF4;&#x7F51;&#x7EDC;&#x6027;&#x80FD;&#x76D1;&#x6D4B;&#x4E0E;&#x5B9E;&#x4F8B;&#xFF08;&#x4E0B;&#xFF09;</h1>
+<p><strong>&#x8F6C;&#x8F7D;&#x8BF7;&#x5728;&#x6587;&#x9996;&#x4FDD;&#x7559;&#x539F;&#x6587;&#x51FA;&#x5904;&#xFF1A;EMC&#x4E2D;&#x6587;&#x652F;&#x6301;&#x8BBA;&#x575B;</strong><a href="https://community.emc.com/go/chinese" target="_blank">https://community.emc.com/go/chinese</a> <a href="https://community.emc.com/servlet/JiveServlet/showImage/2-852040-102113/image001.gif" target="_blank"><img src="https://community.emc.com/servlet/JiveServlet/downloadImage/2-852040-102113/image001.gif" alt="image001.gif"></a></p>
+<h2 id="&#x4ECB;&#x7ECD;">&#x4ECB;&#x7ECD;</h2>
+<p>&#x7F51;&#x7EDC;&#x95EE;&#x9898;&#x4E2D;&#xFF0C;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x662F;&#x6700;&#x590D;&#x6742;&#x7684;&#x95EE;&#x9898;&#x4E4B;&#x4E00;&#xFF0C;&#x89E3;&#x51B3;&#x8FD9;&#x6837;&#x7684;&#x95EE;&#x9898;&#x80FD;&#x591F;&#x900F;&#x5F7B;&#x7684;&#x4E86;&#x89E3;&#x6574;&#x4E2A;&#x7F51;&#x7EDC;&#x7684;&#x7ED3;&#x6784;&#x3002;&#x4F46;&#x901A;&#x8FC7;&#x5408;&#x9002;&#x7684;&#x541E;&#x5410;&#x91CF;&#x548C;&#x6570;&#x636E;&#x6D41;&#x6D4B;&#x8BD5;&#x5DE5;&#x5177;&#xFF0C;&#x80FD;&#x591F;&#x5E2E;&#x4F60;&#x5FEB;&#x901F;&#x627E;&#x5230;&#x95EE;&#x9898;&#x6240;&#x5728;&#x3002;&#x672C;&#x6587;&#x627F;&#x63A5;&#x4E0A;&#x6587;&#xFF0C;&#x9610;&#x8FF0;netperf&#x548C;netstat&#x7684;&#x7528;&#x6CD5;&#x3002;</p>
+<h2 id="&#x66F4;&#x591A;&#x4FE1;&#x606F;">&#x66F4;&#x591A;&#x4FE1;&#x606F;</h2>
+<p><strong>&#x541E;&#x5410;&#x91CF;&#x6D4B;&#x91CF;:</strong></p>
+<p>(&#x627F;&#x63A5;&#x4E0A;&#x6587;)</p>
+<p><strong>netperf</strong></p>
+<p>&#x8BE5;&#x7A0B;&#x5E8F;&#x662F;&#x7531;HP&#x521B;&#x9020;&#xFF0C;&#x8BE5;&#x7A0B;&#x5E8F;&#x514D;&#x8D39;&#x53EF;&#x7528;&#xFF0C;&#x8FD0;&#x884C;&#x4E8E;&#x4E00;&#x4E9B;Unix&#x5E73;&#x53F0;&#xFF0C;&#x6709;&#x652F;&#x6301;&#x6587;&#x6863;&#xFF0C;&#x4E5F;&#x88AB;&#x79FB;&#x690D;&#x5230;Windows&#x5E73;&#x53F0;&#x3002;&#x867D;&#x7136;&#x4E0D;&#x50CF;ttcp&#x90A3;&#x6837;&#x65E0;&#x5904;&#x4E0D;&#x5728;&#xFF0C;&#x4F46;&#x5B83;&#x7684;&#x6D4B;&#x8BD5;&#x8303;&#x56F4;&#x66F4;&#x52A0;&#x5E7F;&#x6CDB;&#x3002;</p>
+<p>&#x4E0E;ttcp&#x4E0D;&#x540C;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x662F;&#x5206;&#x5F00;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x662F;netserver&#xFF0C;&#x80FD;&#x591F;&#x5355;&#x72EC;&#x542F;&#x52A8;&#xFF0C;&#x6216;&#x901A;&#x8FC7;inetd&#x542F;&#x52A8;&#x3002;&#x5BA2;&#x6237;&#x7AEF;&#x662F;netperf&#x3002;&#x4E0B;&#x4F8B;&#x4E2D;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x542F;&#x52A8;&#x4E8E;&#x540C;&#x4E00;&#x53F0;&#x673A;&#x5668;&#xFF1A;</p>
+<pre><code>bsd1# netserver
+Starting netserver at port 12865
+bsd1# netperf
+TCP STREAM TEST to localhost : histogram
+Recv   Send    Send
+Socket Socket  Message  Elapsed
+Size   Size    Size     Time     Throughput
+bytes  bytes   bytes    secs.    10^6bits/sec
+16384  16384  16384    10.00     326.10
+</code></pre><p>&#x6D4B;&#x8BD5;&#x7684;&#x662F;loop-back&#x63A5;&#x53E3;&#xFF0C;&#x62A5;&#x544A;&#x663E;&#x793A;&#x541E;&#x5410;&#x91CF;&#x4E3A;326Mbps&#x3002;</p>
+<p>&#x4E0B;&#x4F8B;&#x4E2D;&#xFF0C;netserver&#x542F;&#x52A8;&#x4E8E;&#x4E3B;&#x673A;&#xFF1A;</p>
+<pre><code>bsd1# netserver
+Starting netserver at port 12865
+netperf&#x52A0;&#x4E0A;-H&#x9009;&#x9879;&#x6307;&#x5B9A;&#x670D;&#x52A1;&#x5668;&#x5730;&#x5740;&#xFF1A;
+bsd2# netperf -H 205.153.60.247
+TCP STREAM TEST to 205.153.60.247 : histogram
+Recv   Send    Send
+Socket Socket  Message  Elapsed
+Size   Size    Size     Time     Throughput
+bytes  bytes   bytes    secs.    10^6bits/sec
+16384  16384  16384    10.01       6.86
+</code></pre><p>&#x5927;&#x81F4;&#x4E0E;ttcp&#x6240;&#x5F97;&#x51FA;&#x7684;&#x541E;&#x5410;&#x91CF;&#x76F8;&#x540C;&#x3002;netperf&#x8FD8;&#x8FDB;&#x884C;&#x4E86;&#x4E00;&#x4E9B;&#x989D;&#x5916;&#x7684;&#x6D4B;&#x8BD5;&#x3002;&#x4EE5;&#x4E0B;&#x6D4B;&#x8BD5;&#x4E2D;&#xFF0C;&#x8FD8;&#x8BA1;&#x7B97;&#x4E86;&#x8FDE;&#x63A5;&#x7684;transaction rate&#xFF1A;</p>
+<pre><code>bsd2# netperf -H 205.153.60.247 -tTCP_RR
+TCP REQUEST/RESPONSE TEST to 205.153.60.247 : histogram
+Local /Remote
+Socket Size   Request  Resp.   Elapsed  Trans.
+Send   Recv   Size     Size    Time     Rate
+bytes  Bytes  bytes    bytes   secs.    per sec
+16384  16384  1        1       10.00     655.84
+16384  16384
+</code></pre><p>&#x8BE5;&#x7A0B;&#x5E8F;&#x5305;&#x542B;&#x4E00;&#x4E9B;&#x6D4B;&#x8BD5;&#x811A;&#x672C;&#x3002;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;netperf&#x505A;&#x5404;&#x79CD;&#x6D41;&#x6D4B;&#x8BD5;&#x3002;</p>
+<p><strong>iperf</strong></p>
+<p>&#x5982;&#x679C;ttcp&#x548C;netperf&#x90FD;&#x4E0D;&#x7B26;&#x5408;&#x4F60;&#x7684;&#x8981;&#x6C42;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x8003;&#x8651;iperf&#x3002;iperf&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x6D4B;&#x8BD5;UDP&#x5E26;&#x5BBD;&#xFF0C;&#x4E22;&#x5931;&#x7387;&#xFF0C;&#x548C;&#x6296;&#x52A8;&#x3002;Java&#x524D;&#x7AEF;&#x8BA9;&#x8BE5;&#x5DE5;&#x5177;&#x4FBF;&#x4E8E;&#x4F7F;&#x7528;&#x3002;&#x8BE5;&#x5DE5;&#x5177;&#x540C;&#x6837;&#x79FB;&#x690D;&#x5165;windows&#x3002;</p>
+<p>&#x4E0B;&#x4F8B;&#x662F;&#x8FD0;&#x884C;iperf&#x670D;&#x52A1;&#x5668;&#x7AEF;&#xFF1A;</p>
+<pre><code>bsd2# iperf -s -p3000
+------------------------------------------------------------
+Server listening on TCP port 3000
+TCP window size: 16.0 KByte (default)
+------------------------------------------------------------
+[  4] local 172.16.2.236 port 3000 connected with 205.153.63.30 port 1133
+[ ID] Interval       Transfer     Bandwidth
+[  4]  0.0-10.0 sec   5.6 MBytes   4.5 Mbits/sec
+^C
+</code></pre><p>&#x4E0B;&#x4F8B;&#x662F;&#x5728;windows&#x8FD0;&#x884C;&#x5BA2;&#x6237;&#x7AEF;&#xFF1A;</p>
+<pre><code>C:\&gt;iperf -c205.153.60.236
+-p3000
+------------------------------------------------------------
+Client connecting to 205.153.60.236, TCP port 3000
+TCP window size:  8.0 KByte (default)
+------------------------------------------------------------
+[ 28] local 205.153.63.30 port 1133 connected with 205.153.60.236 port 3000
+[ ID] Interval       Transfer     Bandwidth
+[ 28]  0.0-10.0 sec   5.6 MBytes   4.5 Mbits/sec
+</code></pre><p>&#x6CE8;&#x610F;&#x4F7F;&#x7528;Ctrl-C&#x6765;&#x7EC8;&#x6B62;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x3002;&#x5728;TCP&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;iperf&#x76F8;&#x5F53;&#x4E8E;ttcp&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x53EF;&#x76C8;&#x7528;&#x6237;&#x5BA2;&#x6237;&#x7AEF;&#x6216;&#x670D;&#x52A1;&#x5668;&#x3002;</p>
+<p>&#x5728;&#x7814;&#x7A76;TCP&#x7A97;&#x53E3;&#x662F;&#x5426;&#x8DB3;&#x591F;&#x5927;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;iperf&#x7279;&#x522B;&#x65B9;&#x4FBF;&#x3002;-w&#x9009;&#x9879;&#x8BBE;&#x7F6E;socket buffer&#x5927;&#x5C0F;&#x3002;&#x5BF9;&#x4E8E;TCP&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x7A97;&#x53E3;&#x5927;&#x5C0F;&#x3002;&#x901A;&#x8FC7;-w&#x9009;&#x9879;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x5355;&#x6B65;&#x8C03;&#x8BD5;&#x5404;&#x79CD;&#x7A97;&#x53E3;&#x5927;&#x5C0F;&#x6765;&#x770B;&#x5B83;&#x4EEC;&#x662F;&#x600E;&#x6837;&#x5F71;&#x54CD;&#x541E;&#x5410;&#x91CF;&#x7684;&#x3002;</p>
+<p><strong>&#x5176;&#x4ED6;&#x5DE5;&#x5177;</strong></p>
+<p>&#x4F60;&#x4E5F;&#x8BB8;&#x60F3;&#x8981;&#x8003;&#x8651;&#x4E00;&#x4E9B;&#x76F8;&#x5173;&#x6216;&#x7C7B;&#x4F3C;&#x7684;&#x5DE5;&#x5177;&#x3002;treno&#x4F7F;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#x7C7B;&#x4F3C;&#x4E8E;traceroute&#x6765;&#x8BA1;&#x7B97;&#x5757;&#x5BB9;&#x91CF;&#xFF0C;&#x8DEF;&#x5F84;MTU&#xFF0C;&#x4EE5;&#x53CA;&#x6700;&#x5C0F;RTP&#x3002;&#x5982;&#x4E0B;&#x4F8B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>bsd2# treno 205.153.63.30
+MTU=8166  MTU=4352  MTU=2002  MTU=1492 ..........
+Replies were from sloan.lander.edu [205.153.63.30]
+    Average rate: 3868.14 kbp/s (3380 pkts in + 42 lost = 1.2%) in 10.07 s
+Equilibrium rate:      0 kbp/s (0 pkts in + 0 lost =   0%) in    0 s
+Path properties: min RTT was  13.58 ms, path MTU was 1440 bytes
+XXX Calibration checks are still under construction, use &#x2013;v
+</code></pre><p>&#x901A;&#x5E38;&#x6765;&#x8BF4;&#xFF0C;netperf&#xFF0C;iperf&#x548C;treno&#x63D0;&#x4F9B;&#x66F4;&#x52A0;&#x4E30;&#x5BCC;&#x7684;feature&#xFF0C;&#x4F46;ttcp&#x66F4;&#x52A0;&#x5BB9;&#x6613;&#x627E;&#x5230;&#x3002;</p>
+<p><strong>&#x901A;&#x8FC7;netstat&#x8FDB;&#x884C;&#x6D41;&#x91CF;&#x6D4B;&#x91CF;:</strong></p>
+<p>&#x5728;&#x7406;&#x60F3;&#x7684;&#x7F51;&#x7EDC;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x628A;overhead&#x7B97;&#x5728;&#x5185;&#xFF0C;&#x541E;&#x5410;&#x91CF;&#x662F;&#x5F88;&#x63A5;&#x8FD1;&#x4E8E;&#x5E26;&#x5BBD;&#x7684;&#x3002;&#x4F46;&#x662F;&#x541E;&#x5410;&#x91CF;&#x5F80;&#x5F80;&#x4F4E;&#x4E8E;&#x671F;&#x671B;&#x503C;&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4F60;&#x4F1A;&#x60F3;&#x8981;&#x77E5;&#x9053;&#x5DEE;&#x5F02;&#x5728;&#x54EA;&#x3002;&#x5982;&#x4E4B;&#x524D;&#x6240;&#x63D0;&#x5230;&#x7684;&#xFF0C;&#x53EF;&#x80FD;&#x4E0E;&#x786C;&#x4EF6;&#x6216;&#x8F6F;&#x4EF6;&#x76F8;&#x5173;&#x3002;&#x4F46;&#x901A;&#x5E38;&#x662F;&#x7531;&#x4E8E;&#x7F51;&#x7EDC;&#x4E0A;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x6D41;&#x7684;&#x5F71;&#x54CD;&#x3002;&#x5982;&#x679C;&#x4F60;&#x65E0;&#x6CD5;&#x786E;&#x5B9A;&#x539F;&#x56E0;&#xFF0C;&#x4E0B;&#x4E00;&#x6B65;&#x5C31;&#x662F;&#x67E5;&#x770B;&#x4F60;&#x7F51;&#x7EDC;&#x4E0A;&#x7684;&#x6570;&#x636E;&#x6D41;&#x3002;</p>
+<p>&#x6709;&#x4E09;&#x79CD;&#x57FA;&#x672C;&#x65B9;&#x6CD5;&#x53EF;&#x4F9B;&#x91C7;&#x7528;&#x3002;&#x7B2C;&#x4E00;&#xFF0C;&#x6700;&#x5FEB;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x4F7F;&#x7528;&#x5982;netstat&#x8FD9;&#x6837;&#x7684;&#x5DE5;&#x5177;&#x6765;&#x67E5;&#x770B;&#x94FE;&#x8DEF;&#x884C;&#x4E3A;&#x3002;&#x6216;&#x901A;&#x8FC7;&#x6293;&#x5305;&#x6765;&#x67E5;&#x770B;&#x6570;&#x636E;&#x6D41;&#x3002;&#x6700;&#x540E;&#xFF0C;&#x53EF;&#x4F7F;&#x7528;&#x57FA;&#x4E8E;SNMP&#x7684;&#x5DE5;&#x5177;&#x5982;ntop&#x3002;</p>
+<p>&#x8981;&#x5F97;&#x5230;&#x7F51;&#x7EDC;&#x4E0A;&#x6570;&#x636E;&#x6D41;&#x7684;&#x5FEB;&#x7167;&#xFF0C;&#x4F7F;&#x7528;-i&#x9009;&#x9879;&#x3002;&#x4E3E;&#x4F8B;&#x6765;&#x8BF4;&#xFF1A;</p>
+<pre><code>bsd2# netstat -i
+Name  Mtu   Network       Address            Ipkts Ierrs    Opkts Oerrs  Coll
+lp0*  1500  &lt;Link&gt;                               0     0        0     0     0
+ep0   1500  &lt;Link&gt;      00.60.97.06.22.22 13971293     0  1223799     1     0
+ep0   1500  205.153.63    bsd2            13971293     0  1223799     1     0
+tun0* 1500  &lt;Link&gt;                               0     0        0     0     0
+sl0*  552   &lt;Link&gt;                               0     0        0     0     0
+ppp0* 1500  &lt;Link&gt;                               0     0        0     0     0
+lo0   16384 &lt;Link&gt;                             234     0      234     0     0
+lo0   16384 127           localhost            234     0      234     0     0
+</code></pre><p>&#x8F93;&#x51FA;&#x663E;&#x793A;&#x4E86;&#x81EA;&#x4E0A;&#x4E00;&#x6B21;&#x91CD;&#x542F;&#x4EE5;&#x6765;&#xFF0C;&#x5404;&#x63A5;&#x53E3;&#x6240;&#x5904;&#x7406;&#x7684;&#x62A5;&#x6587;&#x6570;&#x91CF;&#x3002;&#x5728;&#x672C;&#x4F8B;&#x4E2D;&#xFF0C;&#x63A5;&#x53E3;ep0&#x6536;&#x5230;13,971,293&#x4E2A;&#x6CA1;&#x6709;&#x5DEE;&#x9519;(Ierrs)&#x7684;&#x62A5;&#x6587;(Ipkts)&#xFF0C;&#x53D1;&#x9001;&#x4E86;1,223,799 &#x4E2A;&#x62A5;&#x6587;(Opkts)&#xFF0C;&#x6709;1&#x4E2A;&#x5DEE;&#x9519;&#xFF0C;&#x6CA1;&#x6709;&#x51B2;&#x7A81;&#xFF08;Coll&#xFF09;&#x3002;&#x5C11;&#x91CF;&#x9519;&#x8BEF;&#x901A;&#x5E38;&#x5E76;&#x4E0D;&#x662F;&#x9020;&#x6210;&#x544A;&#x8B66;&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x4F46;&#x5404;&#x9519;&#x8BEF;&#x6240;&#x5360;&#x6BD4;&#x4F8B;&#x5E94;&#x5F53;&#x662F;&#x7EF4;&#x6301;&#x5728;&#x8F83;&#x4F4E;&#x6C34;&#x5E73;&#xFF0C;&#x5E94;&#x8BE5;&#x660E;&#x663E;&#x4F4E;&#x4E8E;&#x62A5;&#x6587;&#x603B;&#x91CF;&#x7684;0.1%&#x3002;&#x51B2;&#x7A81;&#x53EF;&#x4EE5;&#x7A0D;&#x5FAE;&#x9AD8;&#x4E00;&#x4E9B;&#xFF0C;&#x4F46;&#x5E94;&#x5F53;&#x5C11;&#x4E8E;&#x6570;&#x636E;&#x6D41;&#x603B;&#x91CF;&#x7684;10%&#x3002;&#x51B2;&#x7A81;&#x6570;&#x91CF;&#x4EC5;&#x5305;&#x62EC;&#x90A3;&#x4E9B;&#x5F71;&#x54CD;&#x63A5;&#x53E3;&#x7684;&#x3002;&#x8F83;&#x9AD8;&#x6570;&#x91CF;&#x7684;&#x51B2;&#x7A81;&#x55BB;&#x793A;&#x7740;&#x7F51;&#x7EDC;&#x8D1F;&#x8F7D;&#x8F83;&#x9AD8;&#xFF0C;&#x7528;&#x6237;&#x5E94;&#x5F53;&#x8003;&#x8651;&#x5206;&#x6BB5;&#x3002;&#x51B2;&#x7A81;&#x53EA;&#x51FA;&#x73B0;&#x5728;&#x7279;&#x5B9A;&#x5A92;&#x4ECB;&#x4E0A;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x53EA;&#x60F3;&#x8981;&#x5355;&#x4E00;&#x63A5;&#x53E3;&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;-I&#x9009;&#x9879;&#x6307;&#x5B9A;&#xFF0C;&#x5982;&#xFF1A;</p>
+<pre><code>bsd2# netstat -Iep0
+Name  Mtu   Network       Address            Ipkts Ierrs    Opkts Oerrs  Coll
+ep0   1500  &lt;Link&gt;      00.60.97.06.22.22 13971838     0  1223818     1     0
+ep0   1500  205.153.63    bsd2            13971838     0  1223818     1     0
+</code></pre><p>&#x968F;&#x7740;&#x5B9E;&#x73B0;&#x7684;&#x4E0D;&#x540C;&#xFF0C;&#x8F93;&#x51FA;&#x53EF;&#x80FD;&#x770B;&#x8D77;&#x6765;&#x6709;&#x4E9B;&#x5DEE;&#x5F02;&#xFF0C;&#x4F46;&#x57FA;&#x672C;&#x4FE1;&#x606F;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;&#x4F8B;&#x5982;&#xFF0C;Linux&#x5E73;&#x53F0;&#x7684;&#x8F93;&#x51FA;&#xFF1A;</p>
+<pre><code>lnx1# netstat -i
+Kernel Interface table
+Iface   MTU Met    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+eth0   1500   0  7366003      0      0      0    93092      0      0      0 BMRU
+eth1   1500   0   289211      0      0      0    18581      0      0      0 BRU
+lo     3924   0      123      0      0      0      123      0      0      0 LRU
+</code></pre><p>&#x5982;&#x4E0A;&#x4F8B;&#x6240;&#x793A;&#xFF0C;Linux&#x5C06;&#x4E22;&#x5931;&#x62A5;&#x6587;&#x62C6;&#x6210;&#x4E09;&#x4E2A;&#x76EE;&#x5F55;&#xFF1A;errors, drops,&#x4EE5;&#x53CA;overruns&#x3002;</p>
+<p>&#x4E0D;&#x65B9;&#x4FBF;&#x7684;&#x662F;&#xFF0C;netstat&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x662F;&#x7CFB;&#x7EDF;&#x81EA;&#x4E0A;&#x4E00;&#x6B21;&#x91CD;&#x542F;&#x4E4B;&#x540E;&#x7684;&#x7D2F;&#x8BA1;&#x503C;&#x3002;&#x6211;&#x4EEC;&#x771F;&#x6B63;&#x5173;&#x5FC3;&#x7684;&#x662F;&#x8FD9;&#x4E9B;&#x6570;&#x503C;&#x6700;&#x8FD1;&#x662F;&#x600E;&#x6837;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x95EE;&#x9898;&#x662F;&#x5728;&#x53D1;&#x5C55;&#x7684;&#xFF0C;&#x5728;&#x5B83;&#x589E;&#x957F;&#x5230;&#x8DB3;&#x4EE5;&#x663E;&#x73B0;&#x95EE;&#x9898;&#x4E4B;&#x524D;&#x4F1A;&#x82B1;&#x8D39;&#x76F8;&#x5F53;&#x957F;&#x7684;&#x65F6;&#x95F4;&#x3002;</p>
+<p>&#x6709;&#x65F6;&#x4F60;&#x4F1A;&#x5BF9;&#x7CFB;&#x7EDF;&#x505A;&#x4E00;&#x4E9B;&#x538B;&#x529B;&#x6D4B;&#x8BD5;&#x6765;&#x770B;&#x9519;&#x8BEF;&#x662F;&#x5426;&#x589E;&#x52A0;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;ping&#x52A0; &#x2013;I&#x9009;&#x9879;&#x6216;spray&#x547D;&#x4EE4;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x8FD0;&#x884C;netstat&#x6765;&#x5F97;&#x5230;&#x5F53;&#x524D;&#x503C;&#xFF1A;</p>
+<pre><code>bsd2# netstat -Iep0
+Name  Mtu   Network       Address            Ipkts Ierrs    Opkts Oerrs  Coll
+ep0   1500  &lt;Link&gt;      00.60.97.06.22.22 13978296     0  1228137     1     0
+ep0   1500  205.153.63    bsd2            13978296     0  1228137     1     0
+</code></pre><p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x53D1;&#x9001;&#x5927;&#x91CF;&#x62A5;&#x6587;&#x5230;&#x76EE;&#x7684;&#x5730;&#x5740;&#x3002;&#x672C;&#x4F8B;&#x4E2D;&#xFF0C;&#x53D1;&#x9001;&#x4E86;1000&#x4E2A;UDP&#x62A5;&#x6587;&#xFF1A;</p>
+<pre><code>bsd1# spray -c1000 205.153.63.239
+sending 1000 packets of lnth 86 to 205.153.63.239 ...
+        in 0.09 seconds elapsed time
+        464 packets (46.40%) dropped
+Sent:   11267 packets/sec, 946.3K bytes/sec
+Rcvd:   6039 packets/sec, 507.2K bytes/sec
+</code></pre><p>&#x6CE8;&#x610F;&#x5230;&#x8BE5;&#x6D4B;&#x8BD5;&#x8D85;&#x51FA;&#x4E86;&#x7F51;&#x7EDC;&#x5BB9;&#x91CF;&#xFF0C;&#x56E0;&#x4E3A;464&#x4E2A;&#x62A5;&#x6587;&#x88AB;&#x4E22;&#x5F03;&#x4E86;&#x3002;&#x8FD9;&#x53EF;&#x80FD;&#x610F;&#x5473;&#x7740;&#x7F51;&#x7EDC;&#x62E5;&#x585E;&#x3002;&#x66F4;&#x52A0;&#x53EF;&#x80FD;&#x7684;&#x662F;&#xFF0C;&#x4E3B;&#x673A;&#x6B63;&#x5728;&#x5C1D;&#x8BD5;&#x4E0E;&#x4E00;&#x4E2A;&#x6162;&#x901F;&#x8BBE;&#x5907;&#x901A;&#x4FE1;&#x3002;&#x5F53;spray&#x5728;&#x76F8;&#x53CD;&#x65B9;&#x5411;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x6CA1;&#x6709;&#x62A5;&#x6587;&#x4E22;&#x5F03;&#x3002;</p>
+<p>&#x6700;&#x540E;&#xFF0C;&#x56DE;&#x5230;netstat&#x6765;&#x770B;&#x770B;&#x662F;&#x5426;&#x5B58;&#x5728;&#x95EE;&#x9898;&#xFF1A;</p>
+<pre><code>bsd2# netstat -Iep0
+Name  Mtu   Network       Address            Ipkts Ierrs    Opkts Oerrs  Coll
+ep0   1500  &lt;Link&gt;      00.60.97.06.22.22 13978964     0  1228156     1     0
+ep0   1500  205.153.63    bsd2            13978964     0  1228156     1     0
+</code></pre><p>&#x672C;&#x4F8B;&#x663E;&#x793A;&#x6CA1;&#x6709;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x663E;&#x793A;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;-s&#x9009;&#x9879;&#x6765;&#x5F97;&#x5230;&#x3002;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x91CF;&#x53EF;&#x80FD;&#x6709;&#x70B9;&#x5413;&#x4EBA;&#xFF0C;&#x4F46;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x4E30;&#x5BCC;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x4FE1;&#x606F;&#x6309;&#x7167;&#x534F;&#x8BAE;&#x548C;&#x9519;&#x8BEF;&#x7C7B;&#x578B;&#x6765;&#x5206;&#x6BB5;&#xFF0C;&#x5982;bad checksum&#x6216;&#x62A5;&#x6587;&#x5934;&#x4E0D;&#x5B8C;&#x6574;&#x3002;</p>
+<p>&#x5728;&#x67D0;&#x4E9B;&#x7CFB;&#x7EDF;&#x4E0A;&#xFF0C;&#x4E24;&#x6B21;-s&#x9009;&#x9879;&#x663E;&#x793A;&#x975E;&#x96F6;&#x503C;&#x7684;&#x603B;&#x548C;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>bsd2# netstat -s -s
+ip:
+        255 total packets received
+        255 packets for this host
+        114 packets sent from this host
+icmp:
+        ICMP address mask responses are disabled
+igmp:
+tcp:
+        107 packets sent
+                81 data packets (8272 bytes)
+                26 ack-only packets (25 delayed)
+        140 packets received
+                77 acks (for 8271 bytes)
+                86 packets (153 bytes) received in-sequence
+        1 connection accept
+        1 connection established (including accepts)
+        77 segments updated rtt (of 78 attempts)
+        2 correct ACK header predictions
+        62 correct data packet header predictions
+udp:
+        115 datagrams received
+        108 broadcast/multicast datagrams dropped due to no socket
+        7 delivered
+        7 datagrams output
+</code></pre><p>&#x901A;&#x8FC7;-p&#x9009;&#x9879;&#x663E;&#x793A;&#x67D0;&#x4E00;&#x534F;&#x8BAE;&#x7684;&#x6C47;&#x603B;&#x4FE1;&#x606F;&#xFF0C;&#x4E0B;&#x4F8B;&#x663E;&#x793A;TCP&#x975E;&#x96F6;&#x503C;&#x7684;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code>bsd2# netstat -p tcp -s -s
+tcp:
+        147 packets sent
+                121 data packets (10513 bytes)
+                26 ack-only packets (25 delayed)
+        205 packets received
+                116 acks (for 10512 bytes)
+                122 packets (191 bytes) received in-sequence
+        1 connection accept
+        1 connection established (including accepts)
+        116 segments updated rtt (of 117 attempts)
+        2 correct ACK header predictions
+        88 correct data packet header predictions
+</code></pre><p>&#x89E3;&#x91CA;&#x8FD9;&#x4E00;&#x7ED3;&#x679C;&#x662F;&#x9700;&#x8981;&#x4E00;&#x4E9B;&#x7ECF;&#x9A8C;&#x7684;&#x3002;&#x4E00;&#x5F00;&#x59CB;&#x53EF;&#x4EE5;&#x4ECE;&#x5927;&#x91CF;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x5F00;&#x59CB;&#x770B;&#x8D77;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x8BC6;&#x522B;&#x9519;&#x8BEF;&#x7C7B;&#x578B;&#x3002;&#x901A;&#x5E38;&#xFF0C;input error&#x662F;&#x7531;&#x4E8E;&#x786C;&#x4EF6;&#x6545;&#x969C;&#x5E94;&#x671F;&#x7684;&#x3002; Output error&#x662F;&#x7531;&#x672C;&#x5730;&#x4E3B;&#x673A;&#x7684;&#x95EE;&#x9898;&#x9020;&#x6210;&#x3002;Data corruption,&#x4F8B;&#x5982;&#x9519;&#x8BEF;&#x6821;&#x9A8C;&#x548C;&#xFF0C;&#x901A;&#x5E38;&#x4EA7;&#x751F;&#x4E8E;&#x670D;&#x52A1;&#x5668;&#x3002;&#x51B2;&#x7A81;&#x5F80;&#x5F80;&#x610F;&#x5473;&#x7740;&#x7F51;&#x7EDC;&#x62E5;&#x585E;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x8FD9;&#x53EA;&#x662F;&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x3002;</p>
+<p>&#x53C2;&#x8003;</p>
+<p>Network Troubleshooting Tools</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./14.html" class="navigation navigation-prev " aria-label="Previous page: 网络基本功（十五）：细说网络性能监测与实例（上）"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./16.html" class="navigation navigation-next " aria-label="Next page: 网络基本功（十七）：细说tcpdump的妙用（上）"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

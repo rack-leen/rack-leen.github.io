@@ -1,0 +1,1203 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh-tw">
+    
+    
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>8.4 绕过Utilman登录 |  Kali Linux 安全渗透教程</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook\images\apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook\images\favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook\style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook\plugins\gitbook-plugin-comment\plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook\plugins\gitbook-plugin-highlight\website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook\plugins\gitbook-plugin-search\search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook\plugins\gitbook-plugin-fontsettings\website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="45.html">
+    
+    
+    <link rel="prev" href="43.html">
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book" data-level="8.4" data-chapter-title="8.4 绕过Utilman登录" data-filepath="44.md" data-basepath="." data-revision="Mon Mar 07 2016 07:10:02 GMT+0000 (UTC)" data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="http://shouce.jb51.net/kali-linux-tutorial" target="blank" class="custom-link"> Kali Linux 安全渗透教程</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index-2.html">
+            
+                
+                    <a href="index-2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="0.html">
+            
+                
+                    <a href="0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        第1章　Linux安全渗透简介
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="1.html">
+            
+                
+                    <a href="1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        1.1 什么是安全渗透
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="2.html">
+            
+                
+                    <a href="2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        1.2 安全渗透所需的工具
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="3.html">
+            
+                
+                    <a href="3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        1.3 Kali Linux简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="4.html">
+            
+                
+                    <a href="4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        1.4 安装Kali Linux
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="5.html">
+            
+                
+                    <a href="5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        1.5 Kali更新与升级
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="6.html">
+            
+                
+                    <a href="6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        1.6 基本设置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="7.html">
+            
+                
+                    <a href="7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        第2章　配置Kali Linux
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="8.html">
+            
+                
+                    <a href="8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        2.1 准备内核头文件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="9.html">
+            
+                
+                    <a href="9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        2.2 安装并配置NVIDIA显卡驱动
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="10.html">
+            
+                
+                    <a href="10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        2.3 应用更新和配置额外安全工具
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="11.html">
+            
+                
+                    <a href="11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        2.4 设置ProxyChains
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="12.html">
+            
+                
+                    <a href="12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        2.5 目录加密
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="13.html">
+            
+                
+                    <a href="13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        第3章　高级测试实验室
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="14.html">
+            
+                
+                    <a href="14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        3.1 使用VMware Workstation
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="15.html">
+            
+                
+                    <a href="15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        3.2 攻击WordPress和其他应用程序
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="16.html">
+            
+                
+                    <a href="16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        第4章　信息收集
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="17.html">
+            
+                
+                    <a href="17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        4.1 枚举服务
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="18.html">
+            
+                
+                    <a href="18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        4.2 测试网络范围
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="19.html">
+            
+                
+                    <a href="19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        4.3 识别活跃的主机
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="20.html">
+            
+                
+                    <a href="20.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        4.4 查看打开的端口
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="21.html">
+            
+                
+                    <a href="21.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        4.5 系统指纹识别
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="22.html">
+            
+                
+                    <a href="22.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        4.6 服务的指纹识别
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="23.html">
+            
+                
+                    <a href="23.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        4.7 其他信息收集手段
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="24.html">
+            
+                
+                    <a href="24.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        4.8 使用Maltego收集信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="25.html">
+            
+                
+                    <a href="25.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.</b>
+                        
+                        4.9 绘制网络结构图
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="26.html">
+            
+                
+                    <a href="26.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        第5章　漏洞扫描
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="27.html">
+            
+                
+                    <a href="27.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        5.1 使用Nessus
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="28.html">
+            
+                
+                    <a href="28.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        5.2 使用OpenVAS
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="29.html">
+            
+                
+                    <a href="29.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        第6章　漏洞利用
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="30.html">
+            
+                
+                    <a href="30.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        6.1 Metasploitable操作系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="31.html">
+            
+                
+                    <a href="31.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        6.2 Metasploit基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="32.html">
+            
+                
+                    <a href="32.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        6.3 控制Meterpreter
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="33.html">
+            
+                
+                    <a href="33.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        6.4 渗透攻击应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="34.html">
+            
+                
+                    <a href="34.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        6.5 免杀Payload生成工具Veil
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="35.html">
+            
+                
+                    <a href="35.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        第7章　权限提升
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="36.html">
+            
+                
+                    <a href="36.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        7.1 使用假冒令牌
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="37.html">
+            
+                
+                    <a href="37.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        7.2 本地权限提升
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="38.html">
+            
+                
+                    <a href="38.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        7.3 使用社会工程学工具包（SET）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="39.html">
+            
+                
+                    <a href="39.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        7.4 使用SET实施攻击
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="40.html">
+            
+                
+                    <a href="40.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        第8章　密码攻击
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="41.html">
+            
+                
+                    <a href="41.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        8.1 密码在线破解
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="42.html">
+            
+                
+                    <a href="42.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        8.2 分析密码
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="43.html">
+            
+                
+                    <a href="43.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        8.3 破解LM Hashes密码
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="8.4" data-path="44.html">
+            
+                
+                    <a href="44.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        8.4 绕过Utilman登录
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="45.html">
+            
+                
+                    <a href="45.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        8.5 破解纯文本密码工具mimikatz
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="46.html">
+            
+                
+                    <a href="46.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.6.</b>
+                        
+                        8.6 破解操作系统用户密码
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.7" data-path="47.html">
+            
+                
+                    <a href="47.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.7.</b>
+                        
+                        8.7 创建密码字典
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.8" data-path="48.html">
+            
+                
+                    <a href="48.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.8.</b>
+                        
+                        8.8 使用NVIDIA计算机统一设备架构（CUDA）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.9" data-path="49.html">
+            
+                
+                    <a href="49.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.9.</b>
+                        
+                        8.9 物理访问攻击
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="50.html">
+            
+                
+                    <a href="50.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        第9章　无线网络渗透测试
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="51.html">
+            
+                
+                    <a href="51.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        9.1 无线网络嗅探工具Kismet
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="52.html">
+            
+                
+                    <a href="52.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        9.2 使用Aircrack-ng工具破解无线网络
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="53.html">
+            
+                
+                    <a href="53.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        9.3 Gerix Wifi Cracker破解无线网络
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="54.html">
+            
+                
+                    <a href="54.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        9.4 使用Wifite破解无线网络
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="55.html">
+            
+                
+                    <a href="55.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                        9.5 使用Easy-Creds工具攻击无线网络
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" data-path="56.html">
+            
+                
+                    <a href="56.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        9.6 在树莓派上破解无线网络
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="57.html">
+            
+                
+                    <a href="57.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.7.</b>
+                        
+                        9.7 攻击路由器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.8" data-path="58.html">
+            
+                
+                    <a href="58.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.8.</b>
+                        
+                        9.8 Arpspoof工具
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="http://shouce.jb51.net/" target="blank" class="gitbook-link">
+            脚本之家 手册
+        </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="index.html"> Kali Linux 安全渗透教程</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="84-&#x7ED5;&#x8FC7;utilman&#x767B;&#x5F55;">8.4 &#x7ED5;&#x8FC7;Utilman&#x767B;&#x5F55;</h2>
+<p>Utilman&#x662F;Windows&#x8F85;&#x52A9;&#x5DE5;&#x5177;&#x7BA1;&#x7406;&#x5668;&#x3002;&#x8BE5;&#x7A0B;&#x5E8F;&#x662F;&#x5B58;&#x653E;&#x5728;Windows&#x7CFB;&#x7EDF;&#x6587;&#x4EF6;&#x4E2D;&#x6700;&#x91CD;&#x8981;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#x662F;&#x5728;&#x5B89;&#x88C5;&#x7CFB;&#x7EDF;&#x8FC7;&#x7A0B;&#x4E2D;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x5BF9;&#x4E8E;&#x7CFB;&#x7EDF;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x6765;&#x8BF4;&#x81F3;&#x5173;&#x91CD;&#x8981;&#x3002;&#x5728;Windows&#x4E0B;&#xFF0C;&#x4F7F;&#x7528;Windows+U&#x7EC4;&#x5408;&#x952E;&#x53EF;&#x4EE5;&#x8C03;&#x7528;Utilman&#x8FDB;&#x7A0B;&#x3002;&#x672C;&#x8282;&#x5C06;&#x4ECB;&#x7ECD;&#x7ED5;&#x8FC7;Utilman&#x7A0B;&#x5E8F;&#x767B;&#x5F55;&#x7CFB;&#x7EDF;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#xFF08;1&#xFF09;&#x5728;Windows&#x754C;&#x9762;&#xFF0C;&#x542F;&#x52A8;Kali Linux LiveCD&#xFF0C;&#x5982;&#x56FE;8.7&#x6240;&#x793A;&#x3002;</p>
+<p><img src="img\00401.jpg" alt="261-01"></p>
+<p>&#x56FE;8.7 Kali Linux&#x5F15;&#x5BFC;&#x754C;&#x9762;</p>
+<p>&#xFF08;2&#xFF09;&#x5728;&#x8BE5;&#x754C;&#x9762;&#x9009;&#x62E9;Live &#xFF08;686-pae&#xFF09;&#xFF0C;&#x6309;&#x4E0B;&#x56DE;&#x8F66;&#x952E;&#x5373;&#x53EF;&#x542F;&#x52A8;Kali Linux&#xFF0C;&#x5982;&#x56FE;8.8&#x6240;&#x793A;&#x3002;</p>
+<p><img src="img\00402.jpg" alt="261-02"></p>
+<p>&#x56FE;8.8 Kali Linux&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;</p>
+<p>&#xFF08;3&#xFF09;&#x5728;&#x8BE5;&#x754C;&#x9762;&#x6253;&#x5F00;Windows&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002;&#x5728;Kali Linux&#x684C;&#x9762;&#x4F9D;&#x6B21;&#x9009;&#x62E9;Places|43GB Filesystem&#x9009;&#x9879;&#xFF0C;&#x5C06;&#x6253;&#x5F00;&#x5982;&#x56FE;8.9&#x6240;&#x793A;&#x7684;&#x754C;&#x9762;&#x3002;&#x8FD9;&#x91CC;&#x7684;43G&#x8868;&#x793A;&#x5F53;&#x524D;Windows&#x7CFB;&#x7EDF;&#x7684;&#x78C1;&#x76D8;&#x5927;&#x5C0F;&#x3002;</p>
+<p><img src="img\00403.jpg" alt="262-01"></p>
+<p>&#x56FE;8.9 Windows&#x78C1;&#x76D8;&#x4E2D;&#x7684;&#x6587;&#x4EF6;&#x548C;&#x6587;&#x4EF6;&#x5939;</p>
+<p>&#xFF08;4&#xFF09;&#x8BE5;&#x754C;&#x9762;&#x663E;&#x793A;&#x4E86;Windows&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x6587;&#x4EF6;&#x548C;&#x6587;&#x4EF6;&#x5939;&#x3002;&#x8FD9;&#x91CC;&#x4F9D;&#x6B21;&#x6253;&#x5F00;Windows|System32&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x56FE;8.10&#x6240;&#x793A;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<p><img src="img\00404.jpg" alt="262-02"></p>
+<p>&#x56FE;8.10 System32&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x5185;&#x5BB9;</p>
+<p>&#xFF08;5&#xFF09;&#x5728;&#x8BE5;&#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x627E;&#x5230;Utilman.exe&#x6587;&#x4EF6;&#xFF0C;&#x5C06;&#x8BE5;&#x6587;&#x4EF6;&#x91CD;&#x547D;&#x540D;&#x4E3A;Utilman.old&#x3002;&#x7136;&#x540E;&#x590D;&#x5236;cmd.exe&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x6587;&#x4EF6;&#x540D;&#x4FEE;&#x6539;&#x4E3A;Utilman.exe&#x3002;</p>
+<p>&#xFF08;6&#xFF09;&#x73B0;&#x5728;&#x5173;&#x95ED;Kali Linux&#xFF0C;&#x5E76;&#x542F;&#x52A8;Windows&#x7CFB;&#x7EDF;&#x3002;&#x5728;&#x767B;&#x5F55;&#x754C;&#x9762;&#x6309;&#x4E0B;Windows+u&#x7EC4;&#x5408;&#x952E;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x56FE;8.11&#x6240;&#x793A;&#x7684;&#x754C;&#x9762;&#x3002;</p>
+<p><img src="img\00405.jpg" alt="263-01"></p>
+<p>&#x56FE;8.11 Windows&#x767B;&#x5F55;&#x754C;&#x9762;</p>
+<p>&#xFF08;7&#xFF09;&#x4ECE;&#x8BE5;&#x754C;&#x9762;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x63D0;&#x793A;&#x7B26;&#x7A97;&#x53E3;&#x3002;&#x5728;&#x8BE5;&#x7A97;&#x53E3;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x4E00;&#x4E9B;DOS&#x547D;&#x4EE4;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x4F7F;&#x7528;whoami&#x547D;&#x4EE4;&#x67E5;&#x770B;&#x7528;&#x6237;&#x4FE1;&#x606F;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x56FE;8.12&#x6240;&#x793A;&#x7684;&#x754C;&#x9762;&#x3002;</p>
+<p><img src="img\00406.jpg" alt="263-02"></p>
+<p>&#x56FE;8.12 &#x7528;&#x6237;&#x6743;&#x9650;&#x4FE1;&#x606F;</p>
+<p>&#xFF08;8&#xFF09;&#x4ECE;&#x8F93;&#x51FA;&#x7684;&#x754C;&#x9762;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5F53;&#x524D;&#x7528;&#x6237;&#x62E5;&#x6709;&#x6700;&#x9AD8;&#x7684;&#x6743;&#x9650;&#x3002;&#x6B64;&#x65F6;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x4EFB;&#x4F55;&#x7684; &#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x5B66;&#x4E60;&#x4E86;&#x7ED5;&#x8FC7;Utilman&#x767B;&#x5F55;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;mimikatz&#x5DE5;&#x5177;&#x6062;&#x590D;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x9501;&#x5B9A;&#x72B6;&#x6001;&#x65F6;&#x7528;&#x6237;&#x7684;&#x5BC6;&#x7801;&#x3002;&#x4E0B;&#x9762;&#x5C06;&#x4ECB;&#x7ECD;&#x4F7F;&#x7528;mimikatz&#x5DE5;&#x5177;&#xFF0C;&#x4ECE;&#x9501;&#x5B9A;&#x72B6;&#x6001;&#x6062;&#x590D;&#x5BC6;&#x7801;&#x3002;</p>
+<p>&#x5728;&#x64CD;&#x4F5C;&#x4E4B;&#x524D;&#x9700;&#x8981;&#x505A;&#x4E00;&#x4E9B;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;&#x3002;&#x9996;&#x5148;&#x4ECE;<a href="http://blog.gentilkiwi.com/mimikatz网站下载mimikatz工具，其软件包名为mimikatz_trunk.zip。然后将该软件包解压，并保存到一个USB磁盘中。本例中，将解压的文件保存到优盘的mimikatz目录中。" target="_blank">http://blog.gentilkiwi.com/mimikatz&#x7F51;&#x7AD9;&#x4E0B;&#x8F7D;mimikatz&#x5DE5;&#x5177;&#xFF0C;&#x5176;&#x8F6F;&#x4EF6;&#x5305;&#x540D;&#x4E3A;mimikatz_trunk.zip&#x3002;&#x7136;&#x540E;&#x5C06;&#x8BE5;&#x8F6F;&#x4EF6;&#x5305;&#x89E3;&#x538B;&#xFF0C;&#x5E76;&#x4FDD;&#x5B58;&#x5230;&#x4E00;&#x4E2A;USB&#x78C1;&#x76D8;&#x4E2D;&#x3002;&#x672C;&#x4F8B;&#x4E2D;&#xFF0C;&#x5C06;&#x89E3;&#x538B;&#x7684;&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x5230;&#x4F18;&#x76D8;&#x7684;mimikatz&#x76EE;&#x5F55;&#x4E2D;&#x3002;</a></p>
+<p>&#xFF08;1&#xFF09;&#x5728;&#x7CFB;&#x7EDF;&#x4E2D;&#x5B89;&#x88C5;Utilman Bypass&#xFF0C;&#x4EE5;&#x4FBF;&#x80FD;&#x6267;&#x884C;&#x4E00;&#x4E9B;&#x547D;&#x4EE4;&#x3002;</p>
+<p>&#xFF08;2&#xFF09;&#x5728;&#x9501;&#x5B9A;&#x684C;&#x9762;&#x7684;Windows&#x684C;&#x9762;&#x6309;&#x4E0B;Windows+u&#x7EC4;&#x5408;&#x952E;&#xFF0C;&#x5982;&#x56FE;8.13&#x6240;&#x793A;&#x3002;</p>
+<p><img src="img\00407.jpg" alt="264-01"></p>
+<p>&#x56FE;8.13 &#x542F;&#x52A8;&#x547D;&#x4EE4;&#x884C;</p>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x7528;Windows+u&#x7EC4;&#x5408;&#x952E;&#x542F;&#x52A8;DOS&#x7A97;&#x53E3;&#x540E;&#xFF0C;&#x8BE5;&#x7A97;&#x53E3;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x9AD8;&#x5EA6;&#x662F;30&#x3002;&#x5F53;&#x8F93;&#x51FA;&#x7684;&#x6570;&#x636E;&#x8F83;&#x591A;&#x65F6;&#xFF0C;&#x5C06;&#x770B;&#x4E0D;&#x5230;&#x6240;&#x6709;&#x7684;&#x5185;&#x5BB9;&#x3002;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x5230;DOS&#x7A97;&#x53E3;&#x7684;&#x5C5E;&#x6027;&#x83DC;&#x5355;&#x4E2D;&#xFF0C;&#x589E;&#x52A0;&#x7A97;&#x53E3;&#x7684;&#x9AD8;&#x5EA6;&#xFF0C;&#x5982;&#x56FE;8.14&#x6240;&#x793A;&#x3002;</p>
+<p><img src="img\00408.jpg" alt="264-02"></p>
+<p>&#x56FE;8.14 &#x5C5E;&#x6027;&#x83DC;&#x5355;</p>
+<p>&#x5728;&#x8BE5;&#x754C;&#x9762;&#x9009;&#x62E9;&#x201C;&#x5E03;&#x5C40;&#x201D;&#x6807;&#x7B7E;&#xFF0C;&#x4FEE;&#x6539;&#x5C4F;&#x5E55;&#x7F13;&#x51B2;&#x533A;&#x5927;&#x5C0F;&#x4E0B;&#x9762;&#x7684;&#x9AD8;&#x5EA6;&#x503C;&#x3002;&#x7136;&#x540E;&#x5355;&#x51FB;&#x201C;&#x786E;&#x5B9A;&#x201D;&#x6309;&#x94AE;&#xFF0C;&#x5373;&#x53EF;&#x6EDA;&#x52A8;&#x9F20;&#x6807;&#x67E5;&#x770B;&#x6240;&#x6709;&#x5185;&#x5BB9;&#x3002;</p>
+<p>&#xFF08;3&#xFF09;&#x4ECE;&#x56FE;8.13&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;Windows7&#x7CFB;&#x7EDF;&#x5904;&#x4E8E;&#x9501;&#x5B9A;&#x72B6;&#x6001;&#x3002;&#x6B64;&#x65F6;&#x901A;&#x8FC7;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x6267;&#x884C;&#x4E00;&#x4E9B;&#x547D;&#x4EE4;&#x6062;&#x590D;Windows&#x7528;&#x6237;&#x5BC6;&#x7801;&#x3002;&#x9996;&#x5148;&#x786E;&#x8BA4;&#x5F53;&#x524D;&#x7528;&#x6237;&#x7684;&#x6743;&#x9650;&#xFF0C;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>C:\Windows\system32&gt; whoami
+nt authority\system
+</code></pre><p>&#xFF08;4&#xFF09;&#x8FDB;&#x5165;&#x5230;USB&#x78C1;&#x76D8;&#x4E2D;&#xFF0C;&#x5E76;&#x67E5;&#x770B;&#x78C1;&#x76D8;&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x3002;&#x672C;&#x4F8B;&#x4E2D;&#x7684;USB&#x78C1;&#x76D8;&#x53F7;F&#xFF1A;&#xFF0C;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>C:\Windows\system32&gt; F:
+F:\&gt;dir mimikatz
+2014/05/26 03:45    4,311 README.md
+2014/06/15 04:54    Win32
+2014/06/15 04:54    x64
+</code></pre><p>&#x4ECE;&#x8F93;&#x51FA;&#x7684;&#x4FE1;&#x606F;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;mimikatz&#x76EE;&#x5F55;&#x4E2D;&#x6709;&#x4E09;&#x4E2A;&#x6587;&#x4EF6;&#x3002;&#x5176;&#x4E2D;Win32&#x548C;x64&#x8868;&#x793A;mimikatz&#x7684;&#x4E24;&#x4E2A;&#x7248;&#x672C;&#x3002;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x7CFB;&#x7EDF;&#x67B6;&#x6784;&#x9009;&#x62E9;&#x76F8;&#x5E94;&#x7684;&#x7248;&#x672C;&#xFF0C;&#x672C;&#x4F8B;&#x4E2D;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x662F;32&#x4F4D;&#xFF0C;&#x6240;&#x4EE5;&#x9009;&#x62E9;&#x4F7F;&#x7528;Win32&#x3002;</p>
+<p>&#xFF08;5&#xFF09;&#x67E5;&#x770B;Win32&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#xFF1A;</p>
+<pre><code>F:\&gt;cd mimikatz
+F:\Mimikatz&gt;cd win32
+F:\Mimikatz\Win32&gt;dir
+2014/06/15 04:54   29,056 mimidrv.sys
+2014/06/15 04:54   189,936 mimikatz.exe
+2014/06/15 04:54   27,632 mimilib.dll
+</code></pre><p>&#x4ECE;&#x8F93;&#x51FA;&#x7684;&#x4FE1;&#x606F;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;Win32&#x76EE;&#x5F55;&#x4E2D;&#x6709;&#x4E09;&#x4E2A;&#x6587;&#x4EF6;&#x3002;&#x5176;&#x4E2D;&#xFF0C;mimikatz&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#xFF08;6&#xFF09;&#x8FD0;&#x884C;mimikatz&#x7A0B;&#x5E8F;&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="img\00409.jpg" alt="265-01"></p>
+<p>&#x8F93;&#x51FA;&#x4FE1;&#x606F;&#x663E;&#x793A;&#x4E86;mimikatz&#x7684;&#x4E00;&#x4E9B;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;&#x5176;&#x4E2D;mimikatz #&#x63D0;&#x793A;&#x7B26;&#x8868;&#x793A;&#x6210;&#x529F;&#x767B;&#x5F55;&#x5230;&#x4E86;mimikatz&#x7A0B;&#x5E8F;&#x3002;</p>
+<p>&#xFF08;7&#xFF09;&#x6062;&#x590D;&#x5BC6;&#x7801;&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>mimikatz # sekurlsa::logonPasswords
+</code></pre><p>&#x6216;&#xFF1A;</p>
+<pre><code>mimikatz # sekurlsa::logonPasswords full
+</code></pre><p>&#x5C06;&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x7684;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code>Authentication Id : 0; 10201252 (00000000:009ba8a4)
+Session              : Interactive from 1
+User Name            : lyw
+Domain               : Windows7Test
+SID                  : S-1-5-21-2306344666-604645106-2825843324-1001
+       msv :
+  [00010000] CredentialKeys
+  * NTLM    : 32ed87bdb5fdc5e9cba88547376818d4
+  * SHA1    : 6ed5833cf35286ebf8662b7b5949f0d742bbec3f
+  [00000003] Primary
+  * Username : lyw
+  * Domain   : Windows7Test
+  * NTLM      : 32ed87bdb5fdc5e9cba88547376818d4
+  * SHA1      : 6ed5833cf35286ebf8662b7b5949f0d742bbec3f
+ tspkg :
+ wdigest :
+  * Username  : lyw
+  * Domain    : Windows7Test
+  * Password  : 123456
+ kerberos :
+  * Username  : lyw
+  * Domain    : Windows7Test
+  * Password  : (null)
+ ssp :
+ credman :
+</code></pre><p>&#x4ECE;&#x4EE5;&#x4E0A;&#x8F93;&#x51FA;&#x4FE1;&#x606F;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x9501;&#x5B9A;&#x7528;&#x6237;&#x7684;&#x6240;&#x6709;&#x4FE1;&#x606F;&#x3002;&#x5982;&#x7528;&#x6237;&#x540D;&#x3001;&#x5404;&#x79CD;&#x52A0;&#x5BC6;&#x7684;HASH&#x503C;&#x3001;&#x57DF;&#x540D;&#x548C;&#x5BC6;&#x7801;&#x7B49;&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="43.html" class="navigation navigation-prev " aria-label="Previous page: 8.3 破解LM Hashes密码"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="45.html" class="navigation navigation-next " aria-label="Next page: 8.5 破解纯文本密码工具mimikatz"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook\app.js"></script>
+
+    
+    <script src="gitbook\plugins\gitbook-plugin-comment\plugin.js"></script>
+    
+
+    
+    <script src="gitbook\plugins\gitbook-plugin-search\lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook\plugins\gitbook-plugin-search\search.js"></script>
+    
+
+    
+    <script src="gitbook\plugins\gitbook-plugin-sharing\buttons.js"></script>
+    
+
+    
+    <script src="gitbook\plugins\gitbook-plugin-fontsettings\buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    <script src="http://s25.cnzz.com/stat.php?id=1261492199&web_id=1261492199" language="JavaScript"></script>
+</body>
+    
+
+
+</html>

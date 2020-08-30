@@ -1,0 +1,3299 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>17.2 Proxy 服务器的基础设定 | 鸟哥的Linux私房菜：服务器架设篇 第三版</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./125.html" />
+    
+    
+    <link rel="prev" href="./123.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="21.2"
+        data-chapter-title="17.2 Proxy 服务器的基础设定"
+        data-filepath="124.md"
+        data-basepath="."
+        data-revision="Fri May 13 2016 13:40:53 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/vbird-linux-server-3e" target="blank" class="custom-link">鸟哥的Linux私房菜：服务器架设篇 第三版</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        鸟哥的Linux私房菜：服务器架设篇 第三版
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="part1.html">
+            
+                
+                    <a href="./part1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        第一部份：架站前的进修专区
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="0.html">
+            
+                
+                    <a href="./0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        作者序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="1.html">
+            
+                
+                    <a href="./1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        第一章、架设服务器前的准备工作
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        1.1 前言： Linux 有啥功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        1.2 基本架设服务器流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        1.3 自我评估是否已经具有架站的能力
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        1.4 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        第二章、基础网络概念
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        2.1 网络是个什么玩意儿
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="8.html">
+            
+                
+                    <a href="./8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        2.2 TCP/IP 的链结层相关协议
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="9.html">
+            
+                
+                    <a href="./9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        2.3 TCP/IP 的网络层相关封包与数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="10.html">
+            
+                
+                    <a href="./10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        2.4 TCP/IP 的传输层相关封包与数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="11.html">
+            
+                
+                    <a href="./11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        2.5 连上 Internet 前的准备事项
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="12.html">
+            
+                
+                    <a href="./12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        2.6 重点回顾：
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="13.html">
+            
+                
+                    <a href="./13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        2.7 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="14.html">
+            
+                
+                    <a href="./14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        2.8 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="15.html">
+            
+                
+                    <a href="./15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        第三章、局域网络架构简介
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="16.html">
+            
+                
+                    <a href="./16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        3.1 局域网络的联机
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="17.html">
+            
+                
+                    <a href="./17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        3.2 本书使用的内部联机网络参数与通讯协议
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="18.html">
+            
+                
+                    <a href="./18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        第四章、连上 Internet
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="19.html">
+            
+                
+                    <a href="./19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        4.1 Linux 连上 Internet 前的注意事项
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="20.html">
+            
+                
+                    <a href="./20.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        4.2 连上 Internet 的设定方法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="21.html">
+            
+                
+                    <a href="./21.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        4.3 无线网络--以笔记本电脑为例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="22.html">
+            
+                
+                    <a href="./22.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        4.4 常见问题说明
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="23.html">
+            
+                
+                    <a href="./23.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        4.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="24.html">
+            
+                
+                    <a href="./24.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.</b>
+                        
+                        4.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="25.html">
+            
+                
+                    <a href="./25.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.</b>
+                        
+                        4.7 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="26.html">
+            
+                
+                    <a href="./26.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        第五章、 Linux 常用网络指令
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="27.html">
+            
+                
+                    <a href="./27.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        5.1 网络参数设定使用的指令
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="28.html">
+            
+                
+                    <a href="./28.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        5.2 网络侦错与观察指令
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="29.html">
+            
+                
+                    <a href="./29.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        5.3 远程联机指令与实时通讯软件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="30.html">
+            
+                
+                    <a href="./30.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        5.4 文字接口网页浏览
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="31.html">
+            
+                
+                    <a href="./31.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        5.5 封包撷取功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="32.html">
+            
+                
+                    <a href="./32.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.6.</b>
+                        
+                        5.6 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.7" data-path="33.html">
+            
+                
+                    <a href="./33.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.7.</b>
+                        
+                        5.7 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.8" data-path="34.html">
+            
+                
+                    <a href="./34.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.8.</b>
+                        
+                        5.8 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="35.html">
+            
+                
+                    <a href="./35.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        第六章、 Linux 网络侦错
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="36.html">
+            
+                
+                    <a href="./36.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        6.1 无法联机原因分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="37.html">
+            
+                
+                    <a href="./37.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        6.2 处理流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="38.html">
+            
+                
+                    <a href="./38.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        6.3 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="39.html">
+            
+                
+                    <a href="./39.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        6.4 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="part2.html">
+            
+                
+                    <a href="./part2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        第二部分：主机的简易资安防护措施
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="40.html">
+            
+                
+                    <a href="./40.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        第七章、网络安全与主机基本防护：限制端口, 网络升级与 SELinux
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="41.html">
+            
+                
+                    <a href="./41.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        7.1 网络封包联机进入主机的流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="42.html">
+            
+                
+                    <a href="./42.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        7.2 网络自动升级软件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="43.html">
+            
+                
+                    <a href="./43.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        7.3 限制联机埠口 (port)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="44.html">
+            
+                
+                    <a href="./44.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        7.4 SELinux 管理原则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="45.html">
+            
+                
+                    <a href="./45.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.5.</b>
+                        
+                        7.5 被攻击后的主机修复工作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="46.html">
+            
+                
+                    <a href="./46.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.6.</b>
+                        
+                        7.6 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7" data-path="47.html">
+            
+                
+                    <a href="./47.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.7.</b>
+                        
+                        7.7 课后练习
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8" data-path="48.html">
+            
+                
+                    <a href="./48.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.8.</b>
+                        
+                        7.8 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="49.html">
+            
+                
+                    <a href="./49.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        第八章、路由观念与路由器设定
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="50.html">
+            
+                
+                    <a href="./50.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        8.1 路由
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="51.html">
+            
+                
+                    <a href="./51.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        8.2 路由器架设
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="52.html">
+            
+                
+                    <a href="./52.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.</b>
+                        
+                        8.3 动态路由器架设：quagga (zebra + ripd)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="53.html">
+            
+                
+                    <a href="./53.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.4.</b>
+                        
+                        8.4 特殊状况：路由器两边界面是同一个 IP 网段： ARP Proxy
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.5" data-path="54.html">
+            
+                
+                    <a href="./54.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.5.</b>
+                        
+                        8.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.6" data-path="55.html">
+            
+                
+                    <a href="./55.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.6.</b>
+                        
+                        8.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.7" data-path="56.html">
+            
+                
+                    <a href="./56.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.7.</b>
+                        
+                        8.7 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="57.html">
+            
+                
+                    <a href="./57.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        第九章、防火墙与 NAT 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="58.html">
+            
+                
+                    <a href="./58.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        9.1 认识防火墙
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="59.html">
+            
+                
+                    <a href="./59.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        9.2 TCP Wrappers
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="60.html">
+            
+                
+                    <a href="./60.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        9.3 Linux 的封包过滤软件：iptables
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="61.html">
+            
+                
+                    <a href="./61.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.4.</b>
+                        
+                        9.4 单机防火墙的一个实例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="62.html">
+            
+                
+                    <a href="./62.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.</b>
+                        
+                        9.5 NAT 服务器的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.6" data-path="63.html">
+            
+                
+                    <a href="./63.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.6.</b>
+                        
+                        9.6 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.7" data-path="64.html">
+            
+                
+                    <a href="./64.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.7.</b>
+                        
+                        9.7 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.8" data-path="65.html">
+            
+                
+                    <a href="./65.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.8.</b>
+                        
+                        9.8 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="66.html">
+            
+                
+                    <a href="./66.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        第十章、申请合法的主机名
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1" data-path="67.html">
+            
+                
+                    <a href="./67.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        10.1 为何需要主机名
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="68.html">
+            
+                
+                    <a href="./68.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        10.2 注册一个合法的主机名
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="69.html">
+            
+                
+                    <a href="./69.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        10.3 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" data-path="70.html">
+            
+                
+                    <a href="./70.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.4.</b>
+                        
+                        10.4 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" data-path="71.html">
+            
+                
+                    <a href="./71.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.5.</b>
+                        
+                        10.5 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="part3.html">
+            
+                
+                    <a href="./part3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        第三部分：局域网络内常见的服务器架设
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="72.html">
+            
+                
+                    <a href="./72.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        第十一章、远程联机服务器SSH / XDMCP / VNC / RDP
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="15.1" data-path="73.html">
+            
+                
+                    <a href="./73.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.1.</b>
+                        
+                        11.1 远程联机服务器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" data-path="74.html">
+            
+                
+                    <a href="./74.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.2.</b>
+                        
+                        11.2 文字接口联机服务器： SSH 服务器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.3" data-path="75.html">
+            
+                
+                    <a href="./75.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.3.</b>
+                        
+                        11.3 最原始图形接口： Xdmcp 服务的启用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.4" data-path="76.html">
+            
+                
+                    <a href="./76.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.4.</b>
+                        
+                        11.4 华丽的图形接口： VNC 服务器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.5" data-path="77.html">
+            
+                
+                    <a href="./77.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.5.</b>
+                        
+                        11.5 仿真的远程桌面系统： XRDP 服务器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.6" data-path="78.html">
+            
+                
+                    <a href="./78.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.6.</b>
+                        
+                        11.6 SSH 服务器的进阶应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.7" data-path="79.html">
+            
+                
+                    <a href="./79.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.7.</b>
+                        
+                        11.7 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.8" data-path="80.html">
+            
+                
+                    <a href="./80.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.8.</b>
+                        
+                        11.8 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.9" data-path="81.html">
+            
+                
+                    <a href="./81.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.9.</b>
+                        
+                        11.9 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="82.html">
+            
+                
+                    <a href="./82.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        第十二章、网络参数控管者： DHCP 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1" data-path="83.html">
+            
+                
+                    <a href="./83.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.1.</b>
+                        
+                        12.1 DHCP 运作的原理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.2" data-path="84.html">
+            
+                
+                    <a href="./84.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.2.</b>
+                        
+                        12.2 DHCP 服务器端的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.3" data-path="85.html">
+            
+                
+                    <a href="./85.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.3.</b>
+                        
+                        12.3 DHCP 客户端的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.4" data-path="86.html">
+            
+                
+                    <a href="./86.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.4.</b>
+                        
+                        12.4 DHCP 服务器端进阶观察与使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.5" data-path="87.html">
+            
+                
+                    <a href="./87.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.5.</b>
+                        
+                        12.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.6" data-path="88.html">
+            
+                
+                    <a href="./88.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.6.</b>
+                        
+                        12.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.7" data-path="89.html">
+            
+                
+                    <a href="./89.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.7.</b>
+                        
+                        12.7 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="90.html">
+            
+                
+                    <a href="./90.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        第十三章、文件服务器之一：NFS 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="17.1" data-path="91.html">
+            
+                
+                    <a href="./91.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.1.</b>
+                        
+                        13.1 NFS 的由来与其功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.2" data-path="92.html">
+            
+                
+                    <a href="./92.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.2.</b>
+                        
+                        13.2 NFS Server 端的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.3" data-path="93.html">
+            
+                
+                    <a href="./93.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.3.</b>
+                        
+                        13.3 NFS 客户端的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.4" data-path="94.html">
+            
+                
+                    <a href="./94.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.4.</b>
+                        
+                        13.4 案例演练
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.5" data-path="95.html">
+            
+                
+                    <a href="./95.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.5.</b>
+                        
+                        13.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.6" data-path="96.html">
+            
+                
+                    <a href="./96.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.6.</b>
+                        
+                        13.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.7" data-path="97.html">
+            
+                
+                    <a href="./97.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.7.</b>
+                        
+                        13.7 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="18" data-path="98.html">
+            
+                
+                    <a href="./98.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.</b>
+                        
+                        第十四章、账号控管： NIS 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="18.1" data-path="99.html">
+            
+                
+                    <a href="./99.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.1.</b>
+                        
+                        14.1 NIS 的由来与功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.2" data-path="100.html">
+            
+                
+                    <a href="./100.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.2.</b>
+                        
+                        14.2 NIS Server 端的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.3" data-path="101.html">
+            
+                
+                    <a href="./101.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.3.</b>
+                        
+                        14.3 NIS Client 端的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.4" data-path="102.html">
+            
+                
+                    <a href="./102.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.4.</b>
+                        
+                        14.4 NIS 搭配 NFS 的设定在丛集计算机上的应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.5" data-path="103.html">
+            
+                
+                    <a href="./103.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.5.</b>
+                        
+                        14.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.6" data-path="104.html">
+            
+                
+                    <a href="./104.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.6.</b>
+                        
+                        14.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.7" data-path="105.html">
+            
+                
+                    <a href="./105.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.7.</b>
+                        
+                        14.7 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="19" data-path="106.html">
+            
+                
+                    <a href="./106.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.</b>
+                        
+                        第十五章、时间服务器： NTP 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="19.1" data-path="107.html">
+            
+                
+                    <a href="./107.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.1.</b>
+                        
+                        15.1 关于时区与网络校时的通讯协议
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.2" data-path="108.html">
+            
+                
+                    <a href="./108.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.2.</b>
+                        
+                        15.2 NTP 服务器的安装与设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.3" data-path="109.html">
+            
+                
+                    <a href="./109.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.3.</b>
+                        
+                        15.3 客户端的时间更新方式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.4" data-path="110.html">
+            
+                
+                    <a href="./110.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.4.</b>
+                        
+                        15.4 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.5" data-path="111.html">
+            
+                
+                    <a href="./111.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.5.</b>
+                        
+                        15.5 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.6" data-path="112.html">
+            
+                
+                    <a href="./112.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.6.</b>
+                        
+                        15.6 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="20" data-path="113.html">
+            
+                
+                    <a href="./113.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.</b>
+                        
+                        第十六章、文件服务器之二： SAMBA 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="20.1" data-path="114.html">
+            
+                
+                    <a href="./114.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.1.</b>
+                        
+                        16.1 什么是 SAMBA
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.2" data-path="115.html">
+            
+                
+                    <a href="./115.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.2.</b>
+                        
+                        16.2 SAMBA 服务器的基础设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.3" data-path="116.html">
+            
+                
+                    <a href="./116.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.3.</b>
+                        
+                        16.3 Samba 客户端软件功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.4" data-path="117.html">
+            
+                
+                    <a href="./117.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.4.</b>
+                        
+                        16.4 以 PDC 服务器提供账号管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.5" data-path="118.html">
+            
+                
+                    <a href="./118.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.5.</b>
+                        
+                        16.5 服务器简单维护与管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.6" data-path="119.html">
+            
+                
+                    <a href="./119.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.6.</b>
+                        
+                        16.6 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.7" data-path="120.html">
+            
+                
+                    <a href="./120.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.7.</b>
+                        
+                        16.7 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.8" data-path="121.html">
+            
+                
+                    <a href="./121.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.8.</b>
+                        
+                        16.8 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="21" data-path="122.html">
+            
+                
+                    <a href="./122.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.</b>
+                        
+                        第十七章、区网控制者： Proxy 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="21.1" data-path="123.html">
+            
+                
+                    <a href="./123.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.1.</b>
+                        
+                        17.1 什么是代理服务器 (Proxy)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="21.2" data-path="124.html">
+            
+                
+                    <a href="./124.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.2.</b>
+                        
+                        17.2 Proxy 服务器的基础设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.3" data-path="125.html">
+            
+                
+                    <a href="./125.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.3.</b>
+                        
+                        17.3 客户端的使用与测试
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.4" data-path="126.html">
+            
+                
+                    <a href="./126.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.4.</b>
+                        
+                        17.4 服务器的其他应用设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.5" data-path="127.html">
+            
+                
+                    <a href="./127.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.5.</b>
+                        
+                        17.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.6" data-path="128.html">
+            
+                
+                    <a href="./128.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.6.</b>
+                        
+                        17.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.7" data-path="129.html">
+            
+                
+                    <a href="./129.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.7.</b>
+                        
+                        17.7 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="22" data-path="130.html">
+            
+                
+                    <a href="./130.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.</b>
+                        
+                        第十八章、网络驱动器装置： iSCSI 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="22.1" data-path="131.html">
+            
+                
+                    <a href="./131.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.1.</b>
+                        
+                        18.1 网络文件系统还是网络驱动器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.2" data-path="132.html">
+            
+                
+                    <a href="./132.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.2.</b>
+                        
+                        18.2 iSCSI target 的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.3" data-path="133.html">
+            
+                
+                    <a href="./133.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.3.</b>
+                        
+                        18.3 iSCSI initiator 的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.4" data-path="134.html">
+            
+                
+                    <a href="./134.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.4.</b>
+                        
+                        18.4 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.5" data-path="135.html">
+            
+                
+                    <a href="./135.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.5.</b>
+                        
+                        18.5 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.6" data-path="136.html">
+            
+                
+                    <a href="./136.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.6.</b>
+                        
+                        18.6 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="23" data-path="part4.html">
+            
+                
+                    <a href="./part4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.</b>
+                        
+                        第四部分：常见因特网服务器架设
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24" data-path="137.html">
+            
+                
+                    <a href="./137.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.</b>
+                        
+                        第十九章、主机名控制者： DNS 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="24.1" data-path="138.html">
+            
+                
+                    <a href="./138.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.1.</b>
+                        
+                        19.1 什么是 DNS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.2" data-path="139.html">
+            
+                
+                    <a href="./139.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.2.</b>
+                        
+                        19.2 Client 端的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.3" data-path="140.html">
+            
+                
+                    <a href="./140.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.3.</b>
+                        
+                        19.3 DNS 服务器的软件、种类与 cache only DNS 服务器设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.4" data-path="141.html">
+            
+                
+                    <a href="./141.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.4.</b>
+                        
+                        19.4 DNS 服务器的详细设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.5" data-path="142.html">
+            
+                
+                    <a href="./142.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.5.</b>
+                        
+                        19.5 协同工作的 DNS： Slave DNS 及子域授权设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.6" data-path="143.html">
+            
+                
+                    <a href="./143.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.6.</b>
+                        
+                        19.6 DNS 服务器的进阶设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.7" data-path="144.html">
+            
+                
+                    <a href="./144.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.7.</b>
+                        
+                        19.7 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.8" data-path="145.html">
+            
+                
+                    <a href="./145.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.8.</b>
+                        
+                        19.8 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.9" data-path="146.html">
+            
+                
+                    <a href="./146.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.9.</b>
+                        
+                        19.9 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="25" data-path="147.html">
+            
+                
+                    <a href="./147.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.</b>
+                        
+                        第二十章、WWW 伺服器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="25.1" data-path="148.html">
+            
+                
+                    <a href="./148.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.1.</b>
+                        
+                        20.1 WWW 的簡史、資源以及伺服器軟體
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.2" data-path="149.html">
+            
+                
+                    <a href="./149.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.2.</b>
+                        
+                        20.2 WWW (LAMP) 伺服器基本設定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.3" data-path="150.html">
+            
+                
+                    <a href="./150.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.3.</b>
+                        
+                        20.3 Apache 伺服器的進階設定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.4" data-path="151.html">
+            
+                
+                    <a href="./151.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.4.</b>
+                        
+                        20.4 登錄檔分析以及 PHP 強化模組
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.5" data-path="152.html">
+            
+                
+                    <a href="./152.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.5.</b>
+                        
+                        20.5 建立連線加密網站 (https) 及防砍站腳本
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.6" data-path="153.html">
+            
+                
+                    <a href="./153.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.6.</b>
+                        
+                        20.6 重點回顧
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.7" data-path="154.html">
+            
+                
+                    <a href="./154.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.7.</b>
+                        
+                        20.7 本章習題
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.8" data-path="155.html">
+            
+                
+                    <a href="./155.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.8.</b>
+                        
+                        20.8 參考資料與延伸閱讀
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="26" data-path="156.html">
+            
+                
+                    <a href="./156.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.</b>
+                        
+                        第二十一章、文件服务器之三： FTP 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="26.1" data-path="157.html">
+            
+                
+                    <a href="./157.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.1.</b>
+                        
+                        21.1 FTP 的数据链路原理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.2" data-path="158.html">
+            
+                
+                    <a href="./158.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.2.</b>
+                        
+                        21.2 vsftpd 服务器基础设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.3" data-path="159.html">
+            
+                
+                    <a href="./159.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.3.</b>
+                        
+                        21.3 客户端的图形接口 FTP 联机软件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.4" data-path="160.html">
+            
+                
+                    <a href="./160.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.4.</b>
+                        
+                        21.4 让 vsftpd 增加 SSL 的加密功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.5" data-path="161.html">
+            
+                
+                    <a href="./161.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.5.</b>
+                        
+                        21.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.6" data-path="162.html">
+            
+                
+                    <a href="./162.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.6.</b>
+                        
+                        21.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.7" data-path="163.html">
+            
+                
+                    <a href="./163.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.7.</b>
+                        
+                        21.7 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="27" data-path="164.html">
+            
+                
+                    <a href="./164.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.</b>
+                        
+                        第二十二章、邮件服务器： Postfix
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="27.1" data-path="165.html">
+            
+                
+                    <a href="./165.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.1.</b>
+                        
+                        22.1 邮件服务器的功能与运作原理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27.2" data-path="166.html">
+            
+                
+                    <a href="./166.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.2.</b>
+                        
+                        22.2 MTA 服务器： Postfix 基础设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27.3" data-path="167.html">
+            
+                
+                    <a href="./167.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.3.</b>
+                        
+                        22.3 MRA 服务器： dovecot 设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27.4" data-path="168.html">
+            
+                
+                    <a href="./168.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.4.</b>
+                        
+                        22.4 MUA 软件：客户端的收发信软件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27.5" data-path="169.html">
+            
+                
+                    <a href="./169.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.5.</b>
+                        
+                        22.5 邮件服务器的进阶设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27.6" data-path="170.html">
+            
+                
+                    <a href="./170.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.6.</b>
+                        
+                        22.6 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27.7" data-path="171.html">
+            
+                
+                    <a href="./171.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.7.</b>
+                        
+                        22.7 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27.8" data-path="172.html">
+            
+                
+                    <a href="./172.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.8.</b>
+                        
+                        22.8 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >鸟哥的Linux私房菜：服务器架设篇 第三版</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="172-proxy-&#x670D;&#x52A1;&#x5668;&#x7684;&#x57FA;&#x7840;&#x8BBE;&#x5B9A;">17.2 Proxy &#x670D;&#x52A1;&#x5668;&#x7684;&#x57FA;&#x7840;&#x8BBE;&#x5B9A;</h2>
+<p>&#x867D;&#x7136;&#x5728;&#x6211;&#x4EEC;&#x5C0F;&#x578B;&#x7684;&#x7F51;&#x7EDC;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;&#x67B6;&#x8BBE; Proxy &#x771F;&#x7684;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#xFF0C;&#x4E0D;&#x8FC7;&#xFF0C;&#x8003;&#x8651;&#x5230;&#x5927;&#x5BB6;&#x672A;&#x6765;&#x53EF;&#x80FD;&#x4F1A;&#x9AD8;&#x5347;&#x561B;&#xFF01;&#x6240;&#x4EE5;&#x4F01;&#x4E1A;&#x5E38;&#x7528;&#x7684; Proxy &#x4E5F;&#x9700;&#x8981;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#x6BD4;&#x8F83;&#x597D;&#x3002; &#x5728;&#x8FD9;&#x4E2A;&#x5C0F;&#x8282;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4E3B;&#x8981;&#x4ECB;&#x7ECD;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#x7684; Proxy &#x73AF;&#x5883;&#xFF0C;&#x5C31;&#x662F;&#x5355;&#x7EAF;&#x53EF;&#x4EE5;&#x8DD1;&#x800C;&#x5DF2;&#x7684;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x3002;&#x6BD4;&#x8F83;&#x9AD8;&#x9636;&#x7684;&#x8BBE;&#x5B9A;&#x8BF7;&#x53C2;&#x8003;&#x540E;&#x7EED;&#x5C0F;&#x8282;&#x7684;&#x4ECB;&#x7ECD;&#x5570;&#x3002;</p>
+<hr>
+<h3 id="1721-proxy-&#x6240;&#x9700;&#x7684;-squid-&#x8F6F;&#x4EF6;&#x53CA;&#x5176;&#x8F6F;&#x4EF6;&#x7ED3;&#x6784;">17.2.1 Proxy &#x6240;&#x9700;&#x7684; squid &#x8F6F;&#x4EF6;&#x53CA;&#x5176;&#x8F6F;&#x4EF6;&#x7ED3;&#x6784;</h3>
+<p>&#x8FBE;&#x6210;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x529F;&#x80FD;&#x7684;&#x8F6F;&#x4EF6;&#x5F88;&#x591A;&#xFF0C;&#x4F8B;&#x5982;&#x6548;&#x80FD;&#x4E0D;&#x662F;&#x5F88;&#x597D;&#x7684; Apache &#x4EE5;&#x53CA;&#x6211;&#x4EEC;&#x8FD9;&#x4E2A;&#x7AE0;&#x8282;&#x8981;&#x4ECB;&#x7ECD;&#x7684;&#x516B;&#x722A;&#x7AE0;&#x9C7C; squid &#x8FD9;&#x4E00;&#x5957;&#x3002; &#x76EE;&#x524D;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x5728; Unix Like &#x7684;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x5927;&#x591A;&#x5C31;&#x662F;&#x4F7F;&#x7528; squid &#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x4EE5; squid &#x4E3A;&#x51C6;&#x6765;&#x4ECB;&#x7ECD;&#x5566;&#x3002;&#x540C;&#x6837;&#x7684;&#xFF0C; &#x8BF7;&#x4F7F;&#x7528; rpm &#x6765;&#x68C0;&#x67E5;&#xFF0C;&#x5982;&#x679C;&#x5C1A;&#x672A;&#x5B89;&#x88C5;&#xFF0C;&#x8BF7;&#x7528;&#x300E; yum install squid &#x300F;&#x6765;&#x5B89;&#x88C5;&#x5427;&#xFF01;&#x5B89;&#x88C5;&#x597D; squid &#x4E4B;&#x540E;&#xFF0C;&#x5B83;&#x4E3B;&#x8981;&#x7684;&#x63D0;&#x4F9B;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x6709;&#xFF1A;</p>
+<ul>
+<li><p>/etc/squid/squid.conf
+&#x8FD9;&#x4E2A;&#x662F;&#x4E3B;&#x8981;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x6240;&#x6709; squid &#x6240;&#x9700;&#x8981;&#x7684;&#x8BBE;&#x5B9A;&#x90FD;&#x662F;&#x653E;&#x7F6E;&#x5728;&#x8FD9;&#x4E2A;&#x6863;&#x6848;&#x5F53;&#x4E2D;&#x7684;&#xFF01; &#x9E1F;&#x54E5;&#x5E95;&#x4E0B;&#x63D0;&#x5230;&#x7684;&#x79CD;&#x79CD;&#x8BBE;&#x5B9A;&#x65B9;&#x6CD5;&#x51E0;&#x4E4E;&#x90FD;&#x662F;&#x8FD9;&#x4E2A;&#x6863;&#x6848;&#x91CC;&#x9762;&#x7684;&#x8BF4;&#x660E;&#x5594;&#xFF01;</p>
+</li>
+<li><p>/etc/squid/mime.conf
+&#x8FD9;&#x4E2A;&#x6863;&#x6848;&#x5219;&#x662F;&#x5728;&#x8BBE;&#x5B9A; squid &#x6240;&#x652F;&#x6301;&#x7684; Internet &#x4E0A;&#x9762;&#x7684;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#xFF0C;&#x5C31;&#x662F;&#x6240;&#x8C13;&#x7684; mime &#x683C;&#x5F0F;&#x5570;&#xFF01; &#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x4E2A;&#x6863;&#x6848;&#x7684;&#x9884;&#x8BBE;&#x5185;&#x5BB9;&#x5DF2;&#x7ECF;&#x80FD;&#x591F;&#x7B26;&#x5408;&#x6211;&#x4EEC;&#x7684;&#x9700;&#x6C42;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x66F4;&#x52A8;&#x4ED6;&#xFF0C;&#x9664;&#x975E;&#x4F60;&#x5F88;&#x6E05;&#x695A;&#x7684;&#x77E5;&#x9053;&#x4F60;&#x6240;&#x9700;&#x8981;&#x989D;&#x5916;&#x652F;&#x6301;&#x7684; mime &#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x3002;</p>
+</li>
+</ul>
+<p>&#x5176;&#x4ED6;&#x91CD;&#x8981;&#x7684;&#x76EE;&#x5F55;&#x4E0E;&#x6863;&#x6848;&#x6709;&#xFF1A;</p>
+<ul>
+<li>/usr/sbin/squid&#xFF1A;&#x63D0;&#x4F9B; squid &#x7684;&#x4E3B;&#x7A0B;&#x5E8F;&#x554A;&#xFF01;</li>
+<li>/var/spool/squid&#xFF1A;&#x5C31;&#x662F;&#x9ED8;&#x8BA4;&#x7684; squid &#x5FEB;&#x53D6;&#x653E;&#x7F6E;&#x7684;&#x76EE;&#x5F55;&#x3002;</li>
+<li>/usr/lib64/squid/&#xFF1A;&#x63D0;&#x4F9B; squid &#x989D;&#x5916;&#x7684;&#x63A7;&#x5236;&#x6A21;&#x5757;&#xFF0C;&#x5C24;&#x5176;&#x662F;&#x5F71;&#x54CD;&#x8BA4;&#x8BC1;&#x5BC6;&#x7801;&#x65B9;&#x9762;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x90FD;&#x662F;&#x653E;&#x5728;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#xFF1B;</li>
+</ul>
+<hr>
+<h3 id="1722-centos-&#x9884;&#x8BBE;&#x7684;-squid-&#x8BBE;&#x5B9A;">17.2.2 CentOS &#x9884;&#x8BBE;&#x7684; squid &#x8BBE;&#x5B9A;</h3>
+<p>&#x5728;&#x9884;&#x8BBE;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;CentOS &#x7684; squid &#x5177;&#x6709;&#x5E95;&#x4E0B;&#x51E0;&#x4E2A;&#x7279;&#x8272;&#xFF1A;</p>
+<ul>
+<li>&#x4EC5;&#x6709;&#x672C;&#x673A; (localhost, 127.0.0.1) &#x6765;&#x6E90;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A; squid &#x529F;&#x80FD;</li>
+<li>squid &#x6240;&#x76D1;&#x542C;&#x7684; Proxy &#x670D;&#x52A1;&#x57E0;&#x53E3;&#x5728; port 3128</li>
+<li>&#x5FEB;&#x53D6;&#x76EE;&#x5F55;&#x6240;&#x5728;&#x7684;&#x4F4D;&#x7F6E;&#x5728; /var/spool/squid/ &#xFF0C;&#x4E14;&#x4EC5;&#x6709; 100MB &#x7684;&#x78C1;&#x76D8;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x91CF;</li>
+<li>&#x9664;&#x4E86; squid &#x7A0B;&#x5E8F;&#x6240;&#x9700;&#x8981;&#x7684;&#x57FA;&#x672C;&#x5185;&#x5B58;&#x4E4B;&#x5916;&#xFF0C;&#x5C1A;&#x63D0;&#x4F9B; 8MB &#x7684;&#x5185;&#x5B58;&#x6765;&#x7ED9;&#x70ED;&#x95E8;&#x6863;&#x6848;&#x5FEB;&#x53D6;&#x5728;&#x5185;&#x5B58;&#x4E2D; (&#x56E0;&#x4E3A;&#x5185;&#x5B58;&#x901F;&#x5EA6;&#x6BD4;&#x786C;&#x76D8;&#x8FD8;&#x5FEB;)</li>
+<li>&#x9ED8;&#x8BA4;&#x542F;&#x52A8; squid &#x7A0B;&#x5E8F;&#x7684;&#x7528;&#x6237;&#x4E3A; squid &#x8FD9;&#x4E2A;&#x8D26;&#x53F7; (&#x4E0E;&#x78C1;&#x76D8;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x76EE;&#x5F55;&#x6743;&#x9650;&#x6709;&#x5173;)</li>
+</ul>
+<p>&#x5176;&#x5B9E;&#xFF0C; CentOS &#x9884;&#x8BBE;&#x7684; squid &#x8BBE;&#x5B9A;&#xFF0C;&#x662F;&#x4EC5;&#x9488;&#x5BF9;&#x672C;&#x673A; (localhost) &#x5F00;&#x653E;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x800C;&#x4E00;&#x5927;&#x5806;&#x8BBE;&#x5B9A;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C; &#x90FD;&#x662F;&#x4EC5;&#x9488;&#x5BF9;&#x5C0F;&#x578B;&#x7F51;&#x7EDC;&#x73AF;&#x5883;&#x6240;&#x6307;&#x5B9A;&#x7684;&#x6570;&#x503C;&#xFF0C;&#x540C;&#x65F6;&#xFF0C;&#x5F88;&#x591A;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#x7684;&#x53C2;&#x6570;&#x90FD;&#x6CA1;&#x6709;&#x542F;&#x52A8;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x5F97;&#x8981;&#x6765;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#x5404;&#x8BBE;&#x5B9A;&#x503C;&#x7684;&#x610F;&#x4E49;&#xFF0C; &#x8FD9;&#x6837;&#x624D;&#x80FD;&#x591F;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x561B;&#xFF01;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x90FD;&#x662F;&#x5728; squid.conf &#x91CC;&#x5934;&#x6307;&#x5B9A;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x5C31;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x8FD9;&#x4E2A;&#x6863;&#x6848;&#x7684;&#x5185;&#x5BB9;&#x4E0E;&#x8F83;&#x91CD;&#x8981;&#x7684;&#x53C2;&#x6570;&#x5427;&#xFF1A;</p>
+<p><strong>Tips:</strong> CentOS 6.x &#x5DF2;&#x7ECF;&#x5C06; squid.conf &#x91CC;&#x9762;&#x4E0D;&#x76F8;&#x5E72;&#x7684;&#x8BBE;&#x5B9A;&#x503C;&#x901A;&#x901A;&#x62FF;&#x6389;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x6863;&#x6848;&#x5C31;&#x53D8;&#x7684;&#x975E;&#x5E38;&#x7684;&#x7CBE;&#x7B80;&#xFF01;&#x8FD9;&#x6837;&#x5176;&#x5B9E;&#x6709;&#x597D;&#x6709;&#x574F;&#x5566;&#xFF01; &#x597D;&#x5904;&#x662F;&#xFF0C;&#x4F60;&#x4E0D;&#x7528;&#x53BB;&#x770B;&#x4E00;&#x4E9B;&#x4F60;&#x7528;&#x4E0D;&#x5230;&#x7684;&#x53C2;&#x6570;&#x503C;&#xFF0C;&#x574F;&#x5904;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x5176;&#x4ED6;&#x7684;&#x8BBE;&#x5B9A;&#xFF0C;&#x5C31;&#x5F97;&#x989D;&#x5916;&#x53C2;&#x8003;&#x5916;&#x90E8;&#x6587;&#x4EF6;&#x4E86;&#xFF01;&#x4F24;&#x8111;&#x7B4B;&#xFF5E;</p>
+<p><img src="img/vbird_face.gif" alt=""></p>
+<pre><code>[root@www ~]# vim /etc/squid/squid.conf
+# 1\. &#x4FE1;&#x4EFB;&#x7528;&#x6237;&#x4E0E;&#x76EE;&#x6807;&#x63A7;&#x5236;&#xFF0C;&#x900F;&#x8FC7; acl &#x5B9A;&#x4E49;&#x51FA; localhost &#x7B49;&#x76F8;&#x5173;&#x7528;&#x6237;
+acl manager proto cache_object              &amp;lt;==&#x5B9A;&#x4E49; manager &#x4E3A;&#x7BA1;&#x7406;&#x529F;&#x80FD;
+acl localhost src 127.0.0.1/32              &amp;lt;==&#x5B9A;&#x4E49; localhost &#x4E3A;&#x672C;&#x673A;&#x6765;&#x6E90;
+acl localhost src ::1/128
+acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 &amp;lt;==&#x5B9A;&#x4E49; to_localhost &#x53EF;&#x8054;&#x673A;&#x5230;&#x672C;&#x673A;
+acl to_localhost dst ::1/128
+
+# 2\. &#x4FE1;&#x4EFB;&#x7528;&#x6237;&#x4E0E;&#x76EE;&#x6807;&#x63A7;&#x5236;&#xFF0C;&#x5B9A;&#x4E49;&#x53EF;&#x80FD;&#x4F7F;&#x7528;&#x8FD9;&#x90E8; proxy &#x7684;&#x5916;&#x90E8;&#x7528;&#x6237;(&#x5185;&#x7F51;)
+acl localnet src 10.0.0.0/8      &amp;lt;==&#x53EF;&#x53D1;&#x73B0;&#x5E95;&#x4E0B;&#x90FD;&#x662F; private IP &#x7684;&#x8BBE;&#x5B9A;
+acl localnet src 172.16.0.0/12
+acl localnet src 192.168.0.0/16
+acl localnet src fc00::/7
+acl localnet src fe80::/10
+# &#x4E0A;&#x8FF0;&#x6570;&#x636E;&#x8BBE;&#x5B9A;&#x4E24;&#x4E2A;&#x7528;&#x6237; (localhost, localnet) &#x4E0E;&#x4E00;&#x4E2A;&#x53EF;&#x53D6;&#x5F97;&#x76EE;&#x6807; (to_localhost)
+
+# 3\. &#x5B9A;&#x4E49;&#x53EF;&#x53D6;&#x5F97;&#x7684;&#x6570;&#x636E;&#x7AEF;&#x53E3;&#x6240;&#x5728;&#xFF01;
+acl SSL_ports port 443                  &amp;lt;==&#x8054;&#x673A;&#x52A0;&#x5BC6;&#x7684;&#x57E0;&#x53E3;&#x8BBE;&#x5B9A;
+acl Safe_ports port 80          # http  &amp;lt;==&#x516C;&#x8BA4;&#x6807;&#x51C6;&#x7684;&#x534F;&#x8BAE;&#x4F7F;&#x7528;&#x57E0;&#x53E3;
+acl Safe_ports port 21          # ftp
+acl Safe_ports port 443         # https
+# &#x5B9A;&#x4E49;&#x51FA; SSL_ports &#x53CA;&#x6807;&#x51C6;&#x7684;&#x5E38;&#x7528;&#x57E0;&#x53E3; Safe_ports &#x4E24;&#x4E2A;&#x540D;&#x79F0;
+
+# 4\. &#x5B9A;&#x4E49;&#x8FD9;&#x4E9B;&#x540D;&#x79F0;&#x662F;&#x5426;&#x53EF;&#x653E;&#x884C;&#x7684;&#x6807;&#x51C6;&#x4F9D;&#x636E;(&#x6709;&#x987A;&#x5E8F;&#x5594;&#xFF01;)
+http_access allow manager localhost  &amp;lt;==&#x653E;&#x884C;&#x7BA1;&#x7406;&#x672C;&#x673A;&#x7684;&#x529F;&#x80FD;
+http_access deny manager             &amp;lt;==&#x5176;&#x4ED6;&#x7BA1;&#x7406;&#x6765;&#x6E90;&#x90FD;&#x4E88;&#x4EE5;&#x62D2;&#x7EDD;
+http_access deny !Safe_ports         &amp;lt;==&#x62D2;&#x7EDD;&#x975E;&#x6B63;&#x89C4;&#x7684;&#x57E0;&#x53E3;&#x8054;&#x673A;&#x8981;&#x6C42;
+http_access deny CONNECT !SSL_ports  &amp;lt;==&#x62D2;&#x7EDD;&#x975E;&#x6B63;&#x89C4;&#x7684;&#x52A0;&#x5BC6;&#x57E0;&#x53E3;&#x8054;&#x673A;&#x8981;&#x6C42;
+&amp;lt;==&#x8FD9;&#x4E2A;&#x4F4D;&#x7F6E;&#x4E3A;&#x4F60;&#x53EF;&#x4EE5;&#x5199;&#x5165;&#x81EA;&#x5DF1;&#x7684;&#x89C4;&#x5219;&#x7684;&#x4F4D;&#x7F6E;&#x5594;&#xFF01;&#x4E0D;&#x8981;&#x5199;&#x9519;&#x4E86;&#xFF01;&#x6709;&#x987A;&#x5E8F;&#x4E4B;&#x5206;&#x7684;&#xFF01;
+http_access allow localnet           &amp;lt;==&#x653E;&#x884C;&#x5185;&#x90E8;&#x7F51;&#x7EDC;&#x7684;&#x7528;&#x6237;&#x6765;&#x6E90;
+http_access allow localhost          &amp;lt;==&#x653E;&#x884C;&#x672C;&#x673A;&#x7684;&#x4F7F;&#x7528;
+http_access deny all                 &amp;lt;==&#x5168;&#x90E8;&#x90FD;&#x4E88;&#x4EE5;&#x62D2;&#x7EDD;&#x5566;&#xFF01;
+
+# 5\. &#x7F51;&#x7EDC;&#x76F8;&#x5173;&#x53C2;&#x6570;&#xFF0C;&#x6700;&#x91CD;&#x8981;&#x7684;&#x662F;&#x90A3;&#x4E2A;&#x5B9A;&#x4E49; Proxy &#x534F;&#x8BAE;&#x57E0;&#x53E3;&#x7684; http_port
+http_port 3128     &amp;lt;==Proxy &#x9884;&#x8BBE;&#x7684;&#x76D1;&#x542C;&#x5BA2;&#x6237;&#x7AEF;&#x8981;&#x6C42;&#x7684;&#x57E0;&#x53E3;&#xFF0C;&#x662F;&#x53EF;&#x4EE5;&#x6539;&#x7684;
+# &#x5176;&#x5B9E;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x8BA9; proxy server/client &#x4E4B;&#x95F4;&#x7684;&#x8054;&#x673A;&#x52A0;&#x5BC6;&#xFF0C;&#x53EF;&#x4EE5;&#x6539;&#x7528; https_port (923)
+
+# 6\. &#x5FEB;&#x53D6;&#x4E0E;&#x5185;&#x5B58;&#x76F8;&#x5173;&#x53C2;&#x6570;&#x7684;&#x8BBE;&#x5B9A;&#x503C;&#xFF0C;&#x5C24;&#x5176;&#x6CE8;&#x610F;&#x5185;&#x5B58;&#x7684;&#x8BA1;&#x7B97;&#x65B9;&#x5F0F;
+hierarchy_stoplist cgi-bin ? &amp;lt;==hierarchy_stoplist &#x540E;&#x9762;&#x7684;&#x5173;&#x952E;&#x8BCD; (&#x6B64;&#x4F8B;&#x4E3A; cgi-bin)
+# &#x82E5;&#x53D1;&#x73B0;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x6240;&#x9700;&#x8981;&#x7684;&#x7F51;&#x5740;&#x5217;&#xFF0C;&#x5219;&#x4E0D;&#x5FEB;&#x53D6; (&#x907F;&#x514D;&#x7ECF;&#x5E38;&#x53D8;&#x52A8;&#x7684;&#x6570;&#x636E;&#x5E93;&#x6216;&#x7A0B;&#x5E8F;&#x8BAF;&#x606F;)
+cache_mem 8 MB     &amp;lt;==&#x7ED9;proxy&#x989D;&#x5916;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x7528;&#x6765;&#x5904;&#x7406;&#x6700;&#x70ED;&#x95E8;&#x7684;&#x5FEB;&#x53D6;&#x6570;&#x636E;(&#x9700;&#x81EA;&#x5DF1;&#x52A0;)
+
+# 7\. &#x78C1;&#x76D8;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#xFF0C;&#x4EA6;&#x5373;&#x653E;&#x7F6E;&#x5FEB;&#x53D6;&#x6570;&#x636E;&#x7684;&#x76EE;&#x5F55;&#x6240;&#x5728;&#x4E0E;&#x76F8;&#x5173;&#x8BBE;&#x5B9A;
+cache_dir ufs /var/spool/squid 100 16 256 &amp;lt;==&#x9ED8;&#x8BA4;&#x4F7F;&#x7528; 100MB &#x7684;&#x5BB9;&#x91CF;&#x653E;&#x7F6E;&#x5FEB;&#x53D6;
+coredump_dir /var/spool/squid
+# &#x5E95;&#x4E0B;&#x7684;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#x5F97;&#x8981;&#x81EA;&#x5DF1;&#x52A0;&#x4E0A;&#x6765;&#x5594;&#xFF01;&#x65E7;&#x7248;&#x624D;&#x6709;&#x8FD9;&#x6837;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#xFF01;
+minimum_object_size 0 KB    &amp;lt;==&#x5C0F;&#x4E8E;&#x591A;&#x5C11; KB &#x7684;&#x6570;&#x636E;&#x4E0D;&#x8981;&#x653E;&#x5FEB;&#x53D6;&#xFF0C;0 &#x4E3A;&#x4E0D;&#x9650;&#x5236;
+maximum_object_size 4096 KB &amp;lt;==&#x4E0E;&#x4E0A;&#x5934;&#x76F8;&#x53CD;&#xFF0C;&#x5927;&#x4E8E; 4 MB &#x7684;&#x6570;&#x636E;&#x5C31;&#x4E0D;&#x5FEB;&#x53D6;&#x5230;&#x78C1;&#x76D8;
+cache_swap_low 90   &amp;lt;==&#x4E0E;&#x4E0B;&#x4E00;&#x884C;&#x6709;&#x5173;&#xFF0C;&#x51CF;&#x4F4E;&#x5230;&#x5269;&#x4E0B; 90% &#x7684;&#x78C1;&#x76D8;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x4E3A;&#x6B62;
+cache_swap_high 95  &amp;lt;==&#x5F53;&#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x91CF;&#x8D85;&#x8FC7; 95% &#x5C31;&#x5F00;&#x59CB;&#x5220;&#x9664;&#x78C1;&#x76D8;&#x4E2D;&#x7684;&#x65E7;&#x5FEB;&#x53D6;
+
+# 8\. &#x5176;&#x4ED6;&#x53EF;&#x80FD;&#x4F1A;&#x7528;&#x5230;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#xFF01;&#x53C2;&#x8003;&#x53C2;&#x8003;&#x5373;&#x53EF;&#xFF0C;&#x5E76;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x5728;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x3002;
+access_log /var/log/squid/access.log squid &amp;lt;==&#x66FE;&#x7ECF;&#x4F7F;&#x7528;&#x8FC7; squid &#x7684;&#x7528;&#x6237;&#x8BB0;&#x5F55;
+ftp_user Squid@  &amp;lt;==&#x5F53;&#x4EE5; Proxy &#x8FDB;&#x884C; FTP &#x4EE3;&#x7406;&#x533F;&#x540D;&#x767B;&#x5F55;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x8D26;&#x53F7;&#x540D;&#x79F0;
+ftp_passive on   &amp;lt;==&#x82E5;&#x6709;&#x4EE3;&#x7406; FTP &#x670D;&#x52A1;&#xFF0C;&#x4F7F;&#x7528;&#x88AB;&#x52A8;&#x5F0F;&#x8054;&#x673A;
+refresh_pattern ^ftp:           1440    20%     10080
+refresh_pattern ^gopher:        1440    0%      1440
+refresh_pattern -i (/cgi-bin/&amp;#124;\?) 0     0%      0
+refresh_pattern .               0       20%     4320
+# &#x4E0A;&#x9762;&#x8FD9;&#x56DB;&#x884C;&#x4E0E;&#x5FEB;&#x53D6;&#x7684;&#x5B58;&#x5728;&#x65F6;&#x95F4;&#x6709;&#x5173;&#xFF0C;&#x5E95;&#x4E0B;&#x5185;&#x6587;&#x4F1A;&#x4E88;&#x4EE5;&#x8BF4;&#x660E;
+cache_mgr root               &amp;lt;==&#x9884;&#x8BBE;&#x7684; proxy &#x7BA1;&#x7406;&#x5458;&#x7684; email
+cache_effective_user squid   &amp;lt;==&#x542F;&#x52A8; squid PID &#x7684;&#x62E5;&#x6709;&#x8005;
+cache_effective_group squid  &amp;lt;==&#x542F;&#x52A8; squid PID &#x7684;&#x7FA4;&#x7EC4;
+# visible_hostname &amp;lt;==&#x6709;&#x65F6;&#x7531;&#x4E8E; DNS &#x7684;&#x95EE;&#x9898;&#xFF0C;&#x627E;&#x4E0D;&#x5230;&#x4E3B;&#x673A;&#x540D;&#x4F1A;&#x51FA;&#x9519;&#xFF0C;&#x5C31;&#x5F97;&#x52A0;&#x4E0A;&#x6B64;&#x8BBE;&#x5B9A;
+ipcache_size 1024  &amp;lt;==&#x4EE5;&#x4E0B;&#x4E09;&#x4E2A;&#x4E3A;&#x6307;&#x5B9A; IP &#x8FDB;&#x884C;&#x5FEB;&#x53D6;&#x7684;&#x8BBE;&#x5B9A;&#x503C;
+ipcache_low 90
+ipcache_high 95
+</code></pre><p>&#x5149;&#x662F;&#x4E86;&#x89E3;&#x4E0A;&#x8FF0;&#x7684;&#x4E00;&#x4E9B;&#x57FA;&#x7840;&#x8BBE;&#x5B9A;&#x503C;&#xFF0C;&#x53EF;&#x80FD;&#x5C31;&#x8981;&#x5934;&#x660F;&#x660F;&#x4E86;&#xFF0C;&#x66F4;&#x522B;&#x8BF4; squid.conf &#x91CC;&#x9762;&#x7684;&#x5176;&#x4ED6;&#x8BBE;&#x5B9A;&#x503C;&#xFF0C;&#x770B;&#x5230;&#x5934;&#x597D;&#x660F;... &#x65E0;&#x8BBA;&#x5982;&#x4F55;&#xFF0C;&#x4E0A;&#x8FF0;&#x8FD9;&#x4E9B;&#x8BBE;&#x5B9A;&#x5DF2;&#x7ECF;&#x662F;&#x5F88;&#x57FA;&#x7840;&#x7684;&#x8BBE;&#x5B9A;&#x4E86;&#xFF0C;&#x4F60;&#x6700;&#x597D;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#xFF01;&#x9664;&#x4E86; cache_dir &#x90A3;&#x4E00;&#x884C;&#x53D6;&#x6D88;&#x6279;&#x6CE8;&#xFF0C;&#x5176;&#x4ED6;&#x7684;&#x4FDD;&#x6301;&#x4E0D;&#x52A8;&#xFF01; &#x8BA9;&#x6211;&#x4EEC;&#x4EE5;&#x9ED8;&#x8BA4;&#x503C;&#x6765;&#x76F4;&#x63A5;&#x542F;&#x52A8; squid &#x770B;&#x770B;&#x6709;&#x4EC0;&#x4E48;&#x7279;&#x522B;&#x7684;&#x5730;&#x65B9;&#x518D;&#x8BF4;&#x3002;</p>
+<ul>
+<li>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x503C;&#x6765;&#x542F;&#x52A8; squid &#x5E76;&#x89C2;&#x5BDF;&#x76F8;&#x5173;&#x4FE1;&#x606F;</li>
+</ul>
+<p>&#x8981;&#x542F;&#x52A8; squid &#x771F;&#x662F;&#x7B80;&#x5355;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x542F;&#x52A8; squid &#x5E76;&#x4E14;&#x89C2;&#x5BDF;&#x6709;&#x6CA1;&#x6709;&#x76F8;&#x5173;&#x7684;&#x57E0;&#x53E3;&#x5427;&#xFF01;</p>
+<pre><code>[root@www ~]# /etc/init.d/squid start
+init_cache_dir /var/spool/squid... &#x6B63;&#x5728;&#x6FC0;&#x6D3B; squid: .       [  &#x786E;&#x5B9A;  ]
+# &#x7B2C;&#x4E00;&#x6B21;&#x542F;&#x52A8;&#x4F1A;&#x521D;&#x59CB;&#x5316;&#x5FEB;&#x53D6;&#x76EE;&#x5F55;&#xFF0C;&#x56E0;&#x6B64;&#x4F1A;&#x51FA;&#x73B0;&#x4E0A;&#x8FF0;&#x5DE6;&#x8FB9;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x672A;&#x6765;&#x8FD9;&#x4E2A;&#x8BAF;&#x606F;&#x4E0D;&#x4F1A;&#x518D;&#x51FA;&#x73B0;
+[root@www ~]# netstat -tulnp &amp;#124; grep squid
+Proto Recv-Q Send-Q Local Address   Foreign Address   State    PID/Program name
+tcp        0      0 :::3128         :::*              LISTEN   2370/(squid)
+udp        0      0 :::45470        :::*                       2370/(squid)
+[root@www ~]# chkconfig squid on
+</code></pre><p>&#x5982;&#x679C;&#x4F60;&#x6709;&#x8BBE;&#x5B9A; icp_port &#x65F6;&#xFF0C;squid &#x9884;&#x8BBE;&#x4F1A;&#x542F;&#x52A8; 3128 &#x53CA; 3130 &#x4E24;&#x4E2A;&#x57E0;&#x53E3;&#xFF0C;&#x5176;&#x4E2D;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C; &#x5B9E;&#x9645;&#x5E2E;&#x7528;&#x6237;&#x8FDB;&#x884C;&#x76D1;&#x542C;&#x4E0E;&#x4F20;&#x9001;&#x6570;&#x636E;&#x7684;&#x662F; port 3128 (TCP)&#xFF0C;3130 (UDP) &#x4EC5;&#x662F;&#x8D1F;&#x8D23;&#x4E0E;&#x90BB;&#x8FD1; Proxy &#x4E92;&#x76F8;&#x6C9F;&#x901A;&#x5F7C;&#x6B64;&#x7684;&#x5FEB;&#x53D6;&#x6570;&#x636E;&#x5E93;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4E0E;&#x5B9E;&#x9645;&#x7684;&#x7528;&#x6237;&#x8981;&#x6C42;&#x65E0;&#x5173;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684; proxy &#x662F;&#x5355;&#x7EAF;&#x7684;&#x5355;&#x4E00;&#x4E3B;&#x673A;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x5355;&#x7EAF;&#x7684;&#x4F5C;&#x4E3A;&#x9632;&#x706B;&#x5899;&#x529F;&#x80FD;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A; port 3130 &#x662F;&#x53EF;&#x4EE5;&#x5173;&#x95ED;&#x7684;&#x3002;&#x5C31;&#x56E0;&#x5982;&#x6B64;&#xFF0C;&#x6240;&#x4EE5; CentOS 6.x &#x9884;&#x8BBE;&#x5C06;&#x8FD9;&#x4E2A;&#x8BBE;&#x5B9A;&#x503C;&#x6279;&#x6CE8;&#x4E0D;&#x4F7F;&#x7528;&#x5570;&#xFF01;</p>
+<p>&#x4F8B;&#x9898;&#xFF1A;&#x7531;&#x4E8E;&#x6211;&#x7684; Proxy &#x4EC5;&#x662F;&#x90E8;&#x7B80;&#x5355;&#x7684;&#x5355;&#x4E00;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x67B6;&#x8BBE;&#x6210;&#x4E3A;&#x516C;&#x5F00;&#x7684;&#x90BB;&#x8FD1;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668; (peer proxy &#x6216; neighbor proxy)&#xFF0C; &#x56E0;&#x6B64;&#x60F3;&#x8981;&#x5173;&#x95ED; port 3130 &#xFF0C;&#x8BE5;&#x5982;&#x4F55;&#x5904;&#x7406;&#xFF1F;&#x7B54;&#xFF1A;&#x65E7;&#x7248;&#x7684; CentOS 5.x &#x4EE5;&#x524D;&#x7684;&#x7248;&#x672C;&#x624D;&#x9700;&#x8981;&#x8FDB;&#x884C;&#xFF0C;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x76F4;&#x63A5;&#x4FEE;&#x6539; icp_port &#x5373;&#x53EF;&#xFF01;&#x65B9;&#x6CD5;&#x4E3A;&#xFF1A;</p>
+<pre><code>[root@www ~]# vim /etc/squid/squid.conf
+#Default: VBird 2011/04/06 modified&#xFF0C;&#x5C06;&#x4E0B;&#x5217;&#x6570;&#x636E;&#x4ECE; 3130 &#x6539;&#x4E3A; 0 &#x5373;&#x53EF;
+icp_port 0
+
+[root@www ~]# /etc/init.d/squid restart
+</code></pre><p>&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x4E0E; proxy &#x4E4B;&#x95F4;&#x7684;&#x6C9F;&#x901A;&#x60F3;&#x8981;&#x4F7F;&#x7528;&#x52A0;&#x5BC6;&#x673A;&#x5236;&#x7684; SSL &#x529F;&#x80FD;&#xFF0C;&#x4EE5;&#x4FDD;&#x969C;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x4FE1;&#x606F;&#x907F;&#x514D;&#x88AB;&#x7A83;&#x53D6;&#x65F6;&#xFF0C; &#x90A3;&#x4E48;&#x8FD8;&#x6709;&#x4E2A; https_port &#x53EF;&#x4EE5;&#x53D6;&#x4EE3; http_port &#xFF01;&#x4E0D;&#x8FC7;&#xFF0C;&#x5145;&#x5176;&#x91CF;&#x6211;&#x4EEC;&#x7684; proxy &#x5E76;&#x975E;&#x516C;&#x5F00;&#x4E5F;&#x4EC5;&#x662F;&#x67B6;&#x8BBE;&#x5728;&#x5185;&#x90E8;&#x533A;&#x7F51;&#xFF0C; &#x56E0;&#x6B64;&#x8FD8;&#x4E0D;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5230;&#x8FD9;&#x4E2A; https_port &#x5566;&#xFF01;</p>
+<ul>
+<li>&#x89C2;&#x5BDF;&#x4E0E;&#x4FEE;&#x6539;&#x5FEB;&#x53D6;&#x76EE;&#x5F55; (cache_dir)&#xFF1A;&#x6743;&#x9650;&#x4E0E; SELinux</li>
+</ul>
+<p>&#x4ECE;&#x524D;&#x9762;&#x7684;&#x8BF4;&#x660E;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x78C1;&#x76D8;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x662F;&#x5F71;&#x54CD; proxy &#x6548;&#x80FD;&#x7684;&#x4E00;&#x4E2A;&#x76F8;&#x5F53;&#x91CD;&#x8981;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x90A3;&#x4E48; squid &#x662F;&#x5982;&#x4F55;&#x5C06;&#x5FEB;&#x53D6;&#x5B58;&#x8FDB;&#x78C1;&#x76D8;&#x7684;&#x5462;&#xFF1F; squid &#x662F;&#x5C06;&#x6570;&#x636E;&#x5206;&#x6210;&#x4E00;&#x5C0F;&#x5757;&#x4E00;&#x5C0F;&#x5757;&#xFF0C;&#x7136;&#x540E;&#x5206;&#x522B;&#x653E;&#x7F6E;&#x5230;&#x4E2A;&#x522B;&#x7684;&#x76EE;&#x5F55;&#x4E2D;&#x3002;&#x7531;&#x4E8E;&#x8F83;&#x591A;&#x7684;&#x76EE;&#x5F55;&#x53EF;&#x4EE5;&#x8282;&#x7701;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x5185;&#x627E;&#x597D;&#x591A;&#x6863;&#x6848;&#x7684;&#x65F6;&#x95F4; (&#x60F3;&#x4E00;&#x60F3;&#xFF0C;&#x5206;&#x95E8;&#x522B;&#x7C7B;&#x7684;&#x653E;&#x7F6E;&#x4E66;&#x7C4D;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x4E66;&#x67DC;&#x5185;&#xFF0C;&#x603B;&#x6BD4;&#x5C06;&#x6240;&#x6709;&#x4E66;&#x7C4D;&#x6742;&#x4E71;&#x65E0;&#x7AE0;&#x7684;&#x653E;&#x7F6E;&#x5230;&#x4E00;&#x4E2A;&#x5927;&#x4E66;&#x67DC;&#x8981;&#x597D;&#x7684;&#x591A;&#x5427;&#xFF01;)&#xFF0C; &#x56E0;&#x6B64;&#xFF0C;&#x5728;&#x9ED8;&#x8BA4;&#x7684; /var/spool/squid/ &#x76EE;&#x5F55;&#x4E0B;&#xFF0C; squid &#x53C8;&#x4F1A;&#x5C06;&#x5B83;&#x5206;&#x6210;&#x4E24;&#x5C42;&#x5B50;&#x76EE;&#x5F55;&#x6765;&#x5B58;&#x653E;&#x76F8;&#x5173;&#x7684;&#x5FEB;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x6240;&#x4EE5;&#x89C2;&#x5BDF;&#x8BE5;&#x76EE;&#x5F55;&#x5C31;&#x4F1A;&#x662F;&#xFF1A;</p>
+<pre><code>[root@www ~]# ls /var/spool/squid
+00  01  02  03  04  05  06  07  08  09  0A  0B  0C  0D  0E  0F  swap.state
+# &#x7B97;&#x4E00;&#x4E0B;&#xFF0C;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x5171;&#x6709; 16 &#x4E2A;&#x5B50;&#x76EE;&#x5F55;&#xFF01;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x7B2C;&#x4E00;&#x4E2A;&#x5B50;&#x76EE;&#x5F55;&#x7684;&#x5185;&#x5BB9;&#xFF1A;
+
+[root@www ~]# ls /var/spool/squid/00
+00  08  10  18  20  28 ... 98  A0  A8  B0  B8  C0  C8  D0  D8  E0  E8  F0  F8
+01  09  11  19  21  29 ... 99  A1  A9  B1  B9  C1  C9  D1  D9  E1  E9  F1  F9
+....(&#x4E2D;&#x95F4;&#x7701;&#x7565;)....
+06  0E  16  1E  26  2E ... 9E  A6  AE  B6  BE  C6  CE  D6  DE  E6  EE  F6  FE
+07  0F  17  1F  27  2F ... 9F  A7  AF  B7  BF  C7  CF  D7  DF  E7  EF  F7  FF
+# &#x770B;&#x89C1;&#x4E86;&#x5417;&#xFF1F;&#x603B;&#x5171;&#x6709; 256 &#x4E2A;&#x5B50;&#x76EE;&#x5F55;&#x51FA;&#x73B0;&#x5570;&#xFF01;
+</code></pre><p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x4E86;&#x8F83;&#x591A;&#x7684;&#x76EE;&#x5F55;&#x662F;&#x4E3A;&#x4E86;&#x5C06;&#x6570;&#x636E;&#x5206;&#x95E8;&#x522B;&#x7C7B;&#x653E;&#x7F6E;&#xFF0C;&#x4F46;&#x662F;&#x7B2C;&#x4E00;&#x5C42; 16 &#x4E2A;&#x4E0E;&#x7B2C;&#x4E8C;&#x5C42; 256 &#x4E2A;&#x662F;&#x600E;&#x4E48;&#x6765;&#x7684;&#xFF1F; &#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x77A7;&#x4E00;&#x77A7; cache_dir &#x8FD9;&#x4E2A;&#x91CD;&#x8981;&#x53C2;&#x6570;&#x7684;&#x8BBE;&#x5B9A;&#x662F;&#x600E;&#x6837;&#xFF1A;</p>
+<ul>
+<li>cache_dir ufs /var/spool/squid 100 16 256</li>
+</ul>
+<p>&#x5728; /var/spool/squid/ &#x540E;&#x9762;&#x7684;&#x53C2;&#x6570;&#x610F;&#x4E49;&#x662F;&#xFF1A;</p>
+<ul>
+<li>&#x7B2C;&#x4E00;&#x4E2A; 100 &#x4EE3;&#x8868;&#x7684;&#x662F;&#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x91CF;&#x4EC5;&#x7528;&#x6389;&#x8BE5;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684; 100MB</li>
+<li>&#x7B2C;&#x4E8C;&#x4E2A; 16 &#x4EE3;&#x8868;&#x7B2C;&#x4E00;&#x5C42;&#x6B21;&#x76EE;&#x5F55;&#x5171;&#x6709; 16 &#x4E2A;</li>
+<li>&#x7B2C;&#x4E09;&#x4E2A; 256 &#x4EE3;&#x8868;&#x6BCF;&#x5C42;&#x6B21;&#x76EE;&#x5F55;&#x5185;&#x90E8;&#x518D;&#x5206;&#x4E3A; 256 &#x4E2A;&#x6B21;&#x76EE;&#x5F55;</li>
+</ul>
+<p>&#x6839;&#x636E; squid &#x7684;&#x8BF4;&#x6CD5;&#x4E0E;&#x5176;&#x4ED6;&#x6587;&#x732E;&#x7684;&#x8BF4;&#x660E;&#xFF0C;&#x8FD9;&#x4E24;&#x5C42;&#x5FEB;&#x53D6;&#x76EE;&#x5F55;&#x8F83;&#x4F73;&#x7684;&#x914D;&#x7F6E;&#x5C31;&#x662F; 16 256 &#x4EE5;&#x53CA; 64 64 &#x8FD9;&#x4E24;&#x79CD;&#x914D;&#x7F6E;&#xFF0C; &#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x76F8;&#x5173;&#x7684;&#x6570;&#x636E;&#x5566;&#xFF01;&#x91CD;&#x70B9;&#x65F6;&#x8FD8;&#x5F97;&#x8981;&#x6CE8;&#x610F;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x7684;&#x6863;&#x6848;&#x62E5;&#x6709;&#x8005;&#x4E0E; SELinux &#x7C7B;&#x578B;&#x624D;&#x6210;&#x5466;&#xFF01;</p>
+<p>&#x4F8B;&#x9898;&#xFF1A;&#x770B;&#x8D77;&#x6765;&#x9884;&#x8BBE;&#x7684; proxy &#x7684;&#x78C1;&#x76D8;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x5E94;&#x8BE5;&#x662F;&#x4E0D;&#x591F;&#x7528;&#xFF0C;&#x800C;&#x4E4B;&#x524D;&#x7684;&#x78C1;&#x76D8;&#x89C4;&#x5212;&#x53C8;&#x6CA1;&#x6709;&#x505A;&#x597D;&#xFF0C;&#x56E0;&#x6B64; /var/ &#x6700;&#x591A;&#x8FD8;&#x6709; 500MB &#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x505A;&#x4E3A;&#x78C1;&#x76D8;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x3002; &#x90A3;&#x4E48;&#x5982;&#x679C;&#x60F3;&#x8981;&#x5C06;&#x9884;&#x8BBE;&#x7684;&#x78C1;&#x76D8;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x6539;&#x4E3A; 500MB &#x800C;&#x4E14;&#x518D;&#x52A0;&#x4E0A; /srv/squid/ &#x76EE;&#x5F55;&#x7ED9;&#x4E88; 2GB &#x7684;&#x5BB9;&#x91CF;&#x505A;&#x4E3A;&#x78C1;&#x76D8;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#xFF0C;&#x8BE5;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x8BBE;&#x5B9A;&#xFF1F;&#x7B54;&#xFF1A;&#x8FD9;&#x91CC;&#x90FD;&#x4E0E; cache_dir &#x6709;&#x5173;&#xFF01;&#x8FD9;&#x4E2A;&#x8BBE;&#x5B9A;&#x503C;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x51FA;&#x73B0;&#x591A;&#x6B21;&#xFF01;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x8FDB;&#x884C;&#x7684;&#xFF0C;&#x7279;&#x522B;&#x6CE8;&#x610F;&#x5E95;&#x4E0B;&#x7684;&#x76EE;&#x5F55;&#x6743;&#x9650;&#x4E0E; SELinux &#x7C7B;&#x578B;&#x5466;&#xFF01;</p>
+<pre><code>[root@www ~]# vim /etc/squid/squid.conf
+#Default: VBird 2011/04/06 modified&#xFF0C;&#x5E95;&#x4E0B;&#x7684;&#x8BBE;&#x5B9A;&#x9664;&#x4E86;&#x62FF;&#x6389; # &#x4E4B;&#x5916;&#x8FD8;&#x5F97;&#x4FEE;&#x6539;&#xFF01;
+cache_dir ufs /var/spool/squid 500 16 256
+cache_dir ufs /srv/squid 2000 16 256
+
+[root@www ~]# mkdir /srv/squid
+[root@www ~]# chmod 750 /srv/squid
+[root@www ~]# chown squid:squid /srv/squid
+[root@www ~]# chcon --reference /var/spool/squid /srv/squid
+[root@www ~]# ll -Zd /srv/squid
+drwxr-x---. squid squid system_u:object_r:squid_cache_t:s0 /srv/squid/
+
+[root@www ~]# /etc/init.d/squid restart
+</code></pre><p>&#x4E4B;&#x6240;&#x4EE5;&#x8981;&#x6539;&#x6210; squid &#x62E5;&#x6709;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x4E0A;&#x5934;&#x7684; squid.conf &#x4E2D;&#xFF0C;&#x9884;&#x8BBE;&#x7684;&#x542F;&#x52A8; PID &#x7684;&#x8D26;&#x53F7;&#x5C31;&#x662F; squid &#x8FD9;&#x4E2A;&#x4EBA;&#x7269;&#x561B;&#xFF01;&#x6240;&#x4EE5;&#x5F53;&#x7136;&#x8981;&#x53D8;&#x66F4;&#xFF01;&#x81F3;&#x4E8E; SELinux &#x7684;&#x7C7B;&#x578B;&#x65B9;&#x9762;&#xFF0C;&#x53C2;&#x8003;&#x9884;&#x8BBE;&#x7684; /var/spool/squid &#x5C31;&#x80FD;&#x591F;&#x77E5;&#x9053;&#x4E86;&#x3002;&#x4E0D;&#x8FC7;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x67D0;&#x4E9B;&#x7279;&#x5B9A;&#x7684;&#x76EE;&#x5F55; (&#x4F8B;&#x5982; /home) &#x662F;&#x4E0D;&#x5141;&#x8BB8;&#x5EFA;&#x7ACB;&#x5FEB;&#x53D6;&#x76EE;&#x5F55;&#x7684;&#xFF0C; &#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x670D;&#x52A1;&#x8D44;&#x6599;&#x53EF;&#x4EE5;&#x653E;&#x7F6E;&#x7684; /srv &#x4F5C;&#x4E3A;&#x6D4B;&#x8BD5;&#x8303;&#x4F8B;&#x5570;&#xFF01;</p>
+<p>&#x60F3;&#x4E00;&#x60F3;&#xFF0C;&#x65E2;&#x7136;&#x5FEB;&#x53D6;&#x662F;&#x653E;&#x5728;&#x78C1;&#x76D8;&#x4E0A;&#x9762;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x5FEB;&#x53D6;&#x7684;&#x6570;&#x636E;&#x4F1A;&#x4E0D;&#x4F1A;&#x585E;&#x6EE1;&#x6574;&#x4E2A;&#x5FEB;&#x53D6;&#x78C1;&#x76D8;&#x5462;&#xFF1F;&#x5F53;&#x7136;&#x4F1A;&#x554A;&#xFF01;&#x800C;&#x4E14;&#x5F53;&#x585E;&#x6EE1;&#x78C1;&#x76D8;&#x4E4B;&#x540E;&#xFF0C; &#x4F60;&#x7684; proxy &#x6050;&#x6015;&#x5C31;&#x65E0;&#x6CD5;&#x7EE7;&#x7EED;&#x8FD0;&#x4F5C;&#x4E86;&#xFF01;&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x4EEC;&#x5F53;&#x7136;&#x5F97;&#x8981;&#x597D;&#x597D;&#x7684;&#x6CE8;&#x610F;&#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x91CF;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x9971;&#x548C;&#x4E86;&#x3002;&#x5728;&#x4E0A;&#x8FF0;&#x7684;&#x4F8B;&#x9898;&#x4E2D;&#xFF0C; &#x82E5; /var/spool/squid &#x585E;&#x6EE1; 500MB &#x800C; /srv/squid &#x585E;&#x6EE1; 2GB &#x90A3;&#x4E48;&#x4F60;&#x7684; proxy &#x5C31;&#x6302;&#x4E86;&#x3002;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x6B64; squid &#x6709;&#x5E95;&#x4E0B;&#x4E24;&#x4E2A;&#x91CD;&#x8981;&#x8BBE;&#x5B9A;&#xFF1A;</p>
+<ul>
+<li>cache_swap_low 90</li>
+<li>cache_swap_high 95</li>
+</ul>
+<p>&#x4EE3;&#x8868;&#x5F53;&#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x91CF;&#x8FBE; 95% &#x65F6;&#xFF0C;&#x6BD4;&#x8F83;&#x65E7;&#x7684;&#x5FEB;&#x53D6;&#x6570;&#x636E;&#x5C06;&#x4F1A;&#x88AB;&#x5220;&#x9664;&#xFF0C;&#x5F53;&#x5220;&#x9664;&#x5230;&#x5269;&#x4E0B;&#x78C1;&#x76D8;&#x4F7F;&#x7528;&#x91CF;&#x8FBE; 90% &#x65F6;&#xFF0C;&#x5C31;&#x505C;&#x6B62;&#x6301;&#x7EED;&#x5220;&#x9664;&#x7684;&#x52A8;&#x4F5C;&#x3002; &#x4EE5;&#x672C;&#x6848;&#x4F8B;&#x4E2D;&#xFF0C;&#x603B;&#x5171; 2.5GB &#x7684;&#x5BB9;&#x91CF;&#xFF0C;&#x5F53;&#x7528;&#x5230; 2.5<em>0.95=2.375G &#x65F6;&#xFF0C;&#x65E7;&#x7684;&#x6570;&#x636E;&#x4F1A;&#x5F00;&#x59CB;&#x88AB;&#x5220;&#x9664;&#xFF0C;&#x5220;&#x5230;&#x5269;&#x4E0B; 2.5</em>0.9=2.25GB &#x65F6;&#xFF0C;&#x5C31;&#x505C;&#x6B62;&#x5220;&#x9664;&#x7684;&#x610F;&#x601D;&#x3002;&#x6240;&#x4EE5;&#x4F1A;&#x88AB;&#x5220;&#x9664;&#x6389; 125MB &#x7684;&#x65E7;&#x6570;&#x636E;&#x5C31;&#x662F;&#x4E86;&#x3002;&#x901A;&#x5E38;&#x8FD9;&#x4E2A;&#x8BBE;&#x5B9A;&#x503C;&#x5DF2;&#x7ECF;&#x8DB3;&#x591F;&#x4E86;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x53D8;&#x52A8;&#x4ED6;&#xFF0C; &#x9664;&#x4E86;&#x4F60;&#x7684;&#x5FEB;&#x53D6;&#x592A;&#x5927;&#x6216;&#x592A;&#x5C0F;&#x65F6;&#xFF0C;&#x624D;&#x4F1A;&#x8C03;&#x6574;&#x8FD9;&#x4E2A;&#x8BBE;&#x5B9A;&#x503C;&#x3002;</p>
+<ul>
+<li>squid &#x4F7F;&#x7528;&#x7684;&#x5185;&#x5B58;&#x8BA1;&#x7B97;&#x65B9;&#x5F0F;</li>
+</ul>
+<p>&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x9664;&#x4E86;&#x78C1;&#x76D8;&#x5BB9;&#x91CF;&#x4E4B;&#x5916;&#xFF0C;&#x5185;&#x5B58;&#x53EF;&#x80FD;&#x662F;&#x53E6;&#x4E00;&#x4E2A;&#x76F8;&#x5F53;&#x91CD;&#x8981;&#x7684;&#x5F71;&#x54CD; proxy &#x6548;&#x80FD;&#x7684;&#x56E0;&#x5B50;&#xFF01;&#x600E;&#x4E48;&#x8BF4;&#x5462;&#xFF1F;&#x56E0;&#x4E3A; proxy &#x4F1A;&#x5C06;&#x6570;&#x636E;&#x5B58;&#x4E00;&#x4EFD;&#x5728;&#x78C1;&#x76D8;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x4E2D;&#xFF0C;&#x4F46;&#x662F;&#x540C;&#x65F6;&#x4E5F;&#x4F1A;&#x5C06;&#x6570;&#x636E;&#x6682;&#x5B58;&#x5728;&#x5185;&#x5B58;&#x5F53;&#x4E2D;&#x554A;&#xFF0C;&#x4EE5;&#x52A0;&#x5FEB;&#x672A;&#x6765;&#x4F7F;&#x7528;&#x8005;&#x5B58;&#x53D6;&#x540C;&#x4E00;&#x4EFD;&#x6570;&#x636E;&#x7684;&#x901F;&#x5EA6;&#xFF01; &#x4F46;&#x662F;&#x8FD9;&#x4E2A;&#x5185;&#x5B58;&#x5FEB;&#x53D6;&#x662F;&#x9700;&#x8981;&#x82B1;&#x8D39;&#x989D;&#x5916;&#x7684;&#x670D;&#x52A1;&#x5668;&#x7269;&#x7406;&#x5185;&#x5B58;&#x7684;&#x91CF;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x5F97;&#x8981;&#x4EE5;&#x989D;&#x5916;&#x7684;&#x8BBE;&#x5B9A;&#x503C;&#x6765;&#x6307;&#x5B9A;&#x5570;&#x3002;&#x90A3;&#x5C31;&#x662F; cache_mem &#x8FD9;&#x4E2A;&#x8BBE;&#x5B9A;&#x503C;&#x7684;&#x529F;&#x80FD;&#x4E86;&#x3002;</p>
+<p>&#x5F88;&#x591A;&#x4EBA; (&#x5305;&#x62EC;&#x9E1F;&#x54E5;) &#x90FD;&#x4F1A;&#x8BEF;&#x4F1A; cache_mem &#x7684;&#x7528;&#x9014;&#xFF01;&#x5176;&#x5B9E; cache_mem &#x662F;&#x989D;&#x5916;&#x7684;&#x6307;&#x5B9A;&#x4E00;&#x4E9B;&#x5185;&#x5B58;&#x6765;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x300E;&#x70ED;&#x95E8;&#x300F;&#x7684;&#x6570;&#x636E;&#x5B58;&#x53D6;&#xFF01; cache_mem &#x5E76;&#x4E0D;&#x662F;&#x6307;&#x6211;&#x8981;&#x4F7F;&#x7528;&#x591A;&#x5C11;&#x5185;&#x5B58;&#x7ED9; squid &#x4F7F;&#x7528;&#xFF0C;&#x800C;&#x662F;&#x6307; &quot;&#x6211;&#x8FD8;&#x8981;&#x989D;&#x5916;&#x63D0;&#x4F9B;&#x591A;&#x5C11;&#x5185;&#x5B58;&#x7ED9; squid &#x4F7F;&#x7528;&quot; &#x7684;&#x610F;&#x601D;&#x300F;&#xFF01;&#x7531;&#x4E8E;&#x9884;&#x8BBE; 1GB &#x7684;&#x78C1;&#x76D8;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x4F1A;&#x5360;&#x7528;&#x7EA6; 10M &#x7684;&#x5185;&#x5B58;&#xFF0C;&#x800C; squid &#x672C;&#x8EAB;&#x4E5F;&#x4F1A;&#x5360;&#x7528;&#x7EA6; 15MB &#x7684;&#x5185;&#x5B58;&#xFF0C; &#x56E0;&#x6B64;&#xFF0C;&#x4E0A;&#x4E2A;&#x4F8B;&#x9898;&#x4E2D; squid &#x4F7F;&#x7528;&#x6389;&#x7684;&#x5185;&#x5B58;&#x5C31;&#x6709;&#xFF1A;</p>
+<ul>
+<li>2.5 * 10 + 15 + &quot;cache_mem &#x8BBE;&#x5B9A;&#x503C; (8)&quot;</li>
+</ul>
+<p>squid &#x5B98;&#x65B9;&#x7F51;&#x7AD9;&#x5EFA;&#x8BAE;&#x4F60;&#x7684;&#x7269;&#x7406;&#x5185;&#x5B58;&#x6700;&#x597D;&#x662F;&#x4E0A;&#x9762;&#x6570;&#x503C;&#x7684;&#x4E24;&#x500D;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x4E0A;&#x8FF0;&#x7684;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x91CF;&#x5DF2;&#x7ECF;&#x662F; 48MB&#xFF0C; &#x5219;&#x6211;&#x7684;&#x7269;&#x7406;&#x5185;&#x5B58;&#x6700;&#x597D;&#x81F3;&#x5C11;&#x8981;&#x6709; 100 MB &#x4EE5;&#x4E0A;&#xFF0C;&#x624D;&#x4F1A;&#x6709;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x6548;&#x80FD;&#xFF01;&#x5F53;&#x7136;&#xFF0C;&#x8FD9;&#x4E2A;&#x5355;&#x6307; Proxy &#x90E8;&#x5206;&#x800C;&#x5DF2;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684;&#x8BE5;&#x90E8;&#x4E3B;&#x673A;&#x8FD8;&#x6709;&#x8D1F;&#x8D23;&#x5176;&#x4ED6;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x5475;&#x5475;&#xFF01;&#x90A3;&#x4E48;&#x5185;&#x5B58;&#x5C31;&#x5F97;&#x5728;&#x7D2F;&#x52A0;&#x4E0A;&#x53BB;&#x5566;&#xFF01;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684; Proxy &#x5F88;&#x591A;&#x4EBA;&#x4F7F;&#x7528;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x503C;&#x8D8A;&#x5927;&#x8D8A;&#x597D;&#xFF0C;&#x4F46;&#x662F;&#x6700;&#x597D;&#x4E5F;&#x8981;&#x7B26;&#x5408;&#x4E0A;&#x9762;&#x7684;&#x9700;&#x6C42;&#x5594;&#xFF01;</p>
+<p>&#x4F8B;&#x9898;&#xFF1A;&#x7531;&#x4E8E;&#x6211;&#x7684;&#x5185;&#x5B58;&#x591F;&#x5927;&#xFF0C;&#x800C; proxy &#x786E;&#x5B9E;&#x662F;&#x6211;&#x91CD;&#x8981;&#x7684;&#x670D;&#x52A1;&#xFF0C;&#x56E0;&#x6B64;&#x60F3;&#x8981;&#x589E;&#x52A0;&#x989D;&#x5916;&#x7684; 32MB &#x4F5C;&#x4E3A;&#x70ED;&#x95E8;&#x6570;&#x636E;&#x5FEB;&#x53D6;&#xFF0C;&#x8BE5;&#x5982;&#x4F55;&#x4FEE;&#x6539;&#xFF1F;&#x7B54;&#xFF1A;&#x76F4;&#x63A5;&#x505A;&#x4E86;&#x5566;&#xFF01;&#x5C31;&#x662F;&#x4FEE;&#x6539; cache_mem &#x800C;&#x5DF2;&#xFF01;</p>
+<pre><code>[root@www ~]# vim /etc/squid/squid.conf
+#Default: VBird 2011/04/06 modified&#xFF0C;&#x5C06;&#x539F;&#x672C;&#x7684; 8 &#x6539;&#x4E3A; 32 &#x5570;&#xFF01;
+cache_mem 32 MB
+
+[root@www ~]# /etc/init.d/squid restart
+</code></pre><hr>
+<h3 id="1723-&#x7BA1;&#x63A7;&#x4FE1;&#x4EFB;&#x6765;&#x6E90;-&#x5982;&#x533A;&#x7F51;-&#x4E0E;&#x76EE;&#x6807;-&#x5982;&#x6076;&#x610F;&#x7F51;&#x7AD9;&#xFF1A;-acl-&#x4E0E;-httpaccess-&#x7684;&#x4F7F;&#x7528;">17.2.3 &#x7BA1;&#x63A7;&#x4FE1;&#x4EFB;&#x6765;&#x6E90; (&#x5982;&#x533A;&#x7F51;) &#x4E0E;&#x76EE;&#x6807; (&#x5982;&#x6076;&#x610F;&#x7F51;&#x7AD9;)&#xFF1A; acl &#x4E0E; http_access &#x7684;&#x4F7F;&#x7528;</h3>
+<p>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x57FA;&#x7840;&#x8BBE;&#x5B9A;&#x4E2D;&#xFF0C;&#x5176;&#x5B9E;&#x4EC5;&#x6709; proxy &#x670D;&#x52A1;&#x5668;&#x672C;&#x8EAB;&#x53EF;&#x4EE5;&#x5411;&#x81EA;&#x5DF1;&#x7684; proxy &#x8981;&#x6C42;&#x7F51;&#x9875;&#x4EE3;&#x7406;&#xFF5E;&#x90A3;&#x6709;&#x4E2A;&#x5C41;&#x7528;&#x554A;&#xFF1F; &#x6211;&#x4EEC;&#x7684;&#x91CD;&#x70B9;&#x662F;&#x60F3;&#x8981;&#x5F00;&#x653E;&#x7ED9;&#x533A;&#x7F51;&#x6765;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A; proxy &#x7684;&#x561B;&#xFF01;&#x6240;&#x4EE5;&#x5F53;&#x7136;&#x5F97;&#x8981;&#x4FEE;&#x6539;&#x4FE1;&#x4EFB;&#x7528;&#x6237;&#x7684;&#x7BA1;&#x63A7;&#x53C2;&#x6570;&#x5570;&#x3002; &#x6B64;&#x65F6;&#xFF0C;&#x90A3;&#x4E2A;&#x91CD;&#x8981;&#x5230;&#x4E0D;&#x884C;&#x7684; acl &#x5C31;&#x5F97;&#x8981;&#x6765;&#x77A7;&#x4E00;&#x77A7;&#x5566;&#xFF01;&#x8FD9;&#x4E2A; acl &#x7684;&#x57FA;&#x672C;&#x8BED;&#x6CD5;&#x4E3A;&#xFF1A;</p>
+<pre><code>acl &amp;lt;&#x81EA;&#x5B9A;&#x4E49;&#x7684; acl &#x540D;&#x79F0;&amp;gt; &amp;lt;&#x8981;&#x63A7;&#x5236;&#x7684; acl &#x7C7B;&#x578B;&amp;gt; &amp;lt;&#x8BBE;&#x5B9A;&#x7684;&#x5185;&#x5BB9;&amp;gt;
+</code></pre><p>&#x7531;&#x4E8E; squid &#x5E76;&#x4E0D;&#x4F1A;&#x76F4;&#x63A5;&#x4F7F;&#x7528; IP &#x6216;&#x7F51;&#x57DF;&#x6765;&#x7BA1;&#x63A7;&#x4FE1;&#x4EFB;&#x76EE;&#x6807;&#xFF0C;&#x800C;&#x662F;&#x900F;&#x8FC7; acl &#x540D;&#x79F0;&#x6765;&#x7BA1;&#x7406;&#xFF0C;&#x8FD9;&#x4E2A; &lt;acl &#x540D;&#x79F0;&gt; &#x5C31;&#x5FC5;&#x987B;&#x8981;&#x8BBE;&#x5B9A;&#x7BA1;&#x7406;&#x7684;&#x662F;&#x6765;&#x6E90;&#x8FD8;&#x662F;&#x76EE;&#x6807; (acl &#x7C7B;&#x578B;) &#xFF0C;&#x4EE5;&#x53CA;&#x5B9E;&#x9645;&#x7684; IP &#x6216;&#x7F51;&#x57DF; (&#x8BBE;&#x5B9A;&#x7684;&#x5185;&#x5BB9;) &#x5566;&#xFF01;&#x8FD9;&#x4E2A; acl &#x540D;&#x79F0;&#x53EF;&#x4EE5;&#x60F3;&#x6210;&#x662F;&#x4E00;&#x4E2A;&#x6635;&#x79F0;&#x5C31;&#x662F;&#x4E86;&#x3002;&#x90A3;&#x4E48;&#x6709;&#x54EA;&#x4E9B;&#x91CD;&#x8981;&#x7684; acl &#x7C7B;&#x578B;&#x5462;&#xFF1F;&#x57FA;&#x672C;&#x4E0A;&#x6709;&#x8FD9;&#x4E9B;&#xFF1A;</p>
+<ul>
+<li>&#x7BA1;&#x7406;&#x662F;&#x5426;&#x80FD;&#x4F7F;&#x7528; proxy &#x7684;&#x4FE1;&#x4EFB;&#x5BA2;&#x6237;&#x7AEF;&#x65B9;&#x5F0F;&#xFF1A;</li>
+</ul>
+<p>&#x7531;&#x4E8E;&#x56E0;&#x7279;&#x7F51;&#x4E3B;&#x8981;&#x6709;&#x4F7F;&#x7528; IP &#x6216;&#x4E3B;&#x673A;&#x540D;&#x6765;&#x4F5C;&#x4E3A;&#x8054;&#x673A;&#x65B9;&#x5F0F;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x4FE1;&#x4EFB;&#x7528;&#x6237;&#x7684;&#x6765;&#x6E90;&#x81F3;&#x5C11;&#x5C31;&#x6709;&#x5E95;&#x4E0B;&#x51E0;&#x79CD;&#xFF1A;</p>
+<ul>
+<li><p>src ip-address/netmask&#xFF1A;
+&#x4E3B;&#x8981;&#x63A7;&#x5236;&#x300E;&#x6765;&#x6E90;&#x7684; IP &#x5730;&#x5740;&#x300F;&#x3002;&#x4E3E;&#x4F8B;&#x6765;&#x8BF4;&#xFF0C;&#x9E1F;&#x54E5;&#x7684;&#x5185;&#x7F51;&#x6709;&#x4E24;&#x4E2A;&#xFF0C;&#x5206;&#x522B;&#x662F; 192.168.1.0/24 &#x4EE5;&#x53CA; 192.168.100.0/24 &#xFF0C; &#x90A3;&#x4E48;&#x5047;&#x8BBE;&#x6211;&#x60F3;&#x8981;&#x5236;&#x8BA2;&#x4E00;&#x4E2A; vbirdlan &#x7684; acl &#x540D;&#x79F0;&#xFF0C;&#x90A3;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5185;&#x5199;&#x6210;&#xFF1A;
+acl vbirdlan src 192.168.1.0/24 192.168.100.0/24</p>
+</li>
+<li><p>src addr1-addr2/netmask&#xFF1A;
+&#x4E3B;&#x8981;&#x63A7;&#x5236;&#x300E;&#x4E00;&#x6BB5;&#x8303;&#x56F4;&#x6765;&#x6E90;&#x7684; IP &#x5730;&#x5740;&#x300F;&#x3002;&#x5047;&#x8BBE;&#x6211;&#x53EA;&#x60F3;&#x8981;&#x8BA9; 192.168.1.100-192.168.1.200 &#x4F7F;&#x7528;&#x8FD9;&#x90E8; proxy &#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x7528;&#xFF1A;
+acl vbirdlan2 src 192.168.1.100-192.168.1.200/24</p>
+</li>
+<li><p>srcdomain .domain.name&#xFF1A;
+&#x5982;&#x679C;&#x6765;&#x6E90;&#x7528;&#x6237;&#x7684; IP &#x4E00;&#x76F4;&#x53D8;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528;&#x7684;&#x662F; DDNS &#x7684;&#x65B9;&#x5F0F;&#x6765;&#x66F4;&#x65B0;&#x4E3B;&#x673A;&#x540D;&#x4E0E; IP &#x7684;&#x5BF9;&#x5E94;&#xFF0C;&#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E3B;&#x673A;&#x540D;&#x6765;&#x5F00;&#x653E;&#xFF01; &#x4F8B;&#x5982;&#x6765;&#x6E90;&#x662F; .ksu.edu.tw &#x7684;&#x6765;&#x6E90;&#x7528;&#x6237;&#x5C31;&#x5F00;&#x653E;&#x4F7F;&#x7528;&#x6743;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#xFF1A;
+acl vbirdksu srcdomain .ksu.edu.tw</p>
+</li>
+<li><p>&#x7BA1;&#x7406;&#x662F;&#x5426;&#x8BA9; proxy &#x5E2E;&#x5FD9;&#x4EE3;&#x7406;&#x5230;&#x8BE5;&#x76EE;&#x6807;&#x53BB;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF1A;</p>
+</li>
+</ul>
+<p>&#x9664;&#x4E86;&#x7BA1;&#x7406;&#x6765;&#x6E90;&#x7528;&#x6237;&#x4E4B;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x80FD;&#x591F;&#x7BA1;&#x7406;&#x662F;&#x5426;&#x8BA9; proxy &#x670D;&#x52A1;&#x5668;&#x5230;&#x67D0;&#x4E9B;&#x76EE;&#x6807;&#x53BB;&#x83B7;&#x53D6;&#x6570;&#x636E;&#x5594;&#xFF01;&#x5728;&#x9884;&#x8BBE;&#x7684;&#x8BBE;&#x5B9A;&#x4E2D;&#xFF0C; &#x6211;&#x4EEC;&#x7684; proxy &#x4EC5;&#x7BA1;&#x7406;&#x53EF;&#x4EE5;&#x5411;&#x5916;&#x53D6;&#x5F97; port 21, 80, 440... &#x7B49;&#x7AEF;&#x53E3;&#x7684;&#x76EE;&#x6807;&#x7F51;&#x7AD9;&#xFF0C;&#x4E0D;&#x662F;&#x8FD9;&#x4E9B;&#x7AEF;&#x53E3;&#x5C31;&#x65E0;&#x6CD5;&#x5E2E;&#x5FD9;&#x4EE3;&#x7406;&#x53D6;&#x5F97;&#x3002; &#x81F3;&#x4E8E; IP &#x6216;&#x7F51;&#x57DF;&#x5219;&#x6CA1;&#x6709;&#x7BA1;&#x7406;&#x3002;&#x57FA;&#x672C;&#x7684;&#x7BA1;&#x7406;&#x6709;&#x8FD9;&#x4E9B;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<ul>
+<li><p>dst ip-addr/netmask&#xFF1A;
+&#x63A7;&#x5236;&#x4E0D;&#x80FD;&#x53BB;&#x7684;&#x76EE;&#x6807;&#x7F51;&#x7AD9;&#x7684; IP &#xFF0C;&#x4E3E;&#x4F8B;&#x6765;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x8BB8; proxy &#x53BB;&#x6349;&#x53D6; 120.114.150.21 &#x8FD9;&#x90E8;&#x4E3B;&#x673A;&#x7684; IP &#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x5199;&#x6210;&#x662F;&#xFF1A;
+acl dropip dst 120.114.150.21/32</p>
+</li>
+<li><p>dstdomain .domain.name&#xFF1A;
+&#x63A7;&#x5236;&#x4E0D;&#x80FD;&#x53BB;&#x7684;&#x76EE;&#x6807;&#x7F51;&#x7AD9;&#x7684;&#x4E3B;&#x673A;&#x540D;&#x3002;&#x4E3E;&#x4F8B;&#x6765;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x5728;&#x4E0A;&#x8BFE;&#x65F6;&#x4E0D;&#x5141;&#x8BB8;&#x5B66;&#x751F;&#x8DD1;&#x53BB;&#x79CD;&#x7530;&#x8FD8;&#x662F;&#x5C0F;&#x5C0F;&#x6218;&#x4E89;&#xFF0C;&#x90A3;&#x5C31;&#x5F97;&#x8981;&#x628A; .facebook.com &#x7ED9;&#x5173;&#x95ED;&#xFF01;&#x90A3;&#x5C31;&#x9700;&#x8981;&#x5199;&#x6210;&#xFF1A;
+acl dropfb dstdomain .facebook.com</p>
+</li>
+<li><p>url_regex [-i] ^<a href="http://url&#xFF1A;" target="_blank">http://url&#xFF1A;</a>
+&#x4F7F;&#x7528;&#x6B63;&#x89C4;&#x8868;&#x793A;&#x6CD5;&#x6765;&#x5904;&#x7406;&#x7F51;&#x5740;&#x5217;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#xFF01;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x7684;&#x7F51;&#x5740;&#x5217;&#x5FC5;&#x987B;&#x8981;&#x5B8C;&#x6574;&#x7684;&#x8F93;&#x5165;&#x6B63;&#x89C4;&#x8868;&#x793A;&#x6CD5;&#x7684;&#x5F00;&#x59CB;&#x5230;&#x7ED3;&#x5C3E;&#x624D;&#x884C;&#x3002; &#x4E3E;&#x4F8B;&#x6765;&#x8BF4;&#xFF0C;&#x6606;&#x5C71;&#x79D1;&#x5927;&#x7684;&#x4E2D;&#x6587;&#x7F51;&#x9875;&#x5199;&#x6CD5;&#x4E3A; (&#x5E76;&#x975E;&#x90E8;&#x5206;&#x6BD4;&#x5BF9;&#xFF0C;&#x6240;&#x4EE5;&#x6700;&#x7ED3;&#x5C3E;&#x7684; .<em> &#x8BB0;&#x5F97;&#x8981;&#x52A0;&#x4E0A;&#x53BB;&#xFF01;)&#xFF1A;
+acl ksuurl url_regex ^<a href="http://www.ksu.edu.tw/cht/" target="_blank">http://www.ksu.edu.tw/cht/</a>.</em></p>
+</li>
+<li><p>urlpath_regex [-i] .gif$&#xFF1A;
+&#x4E0E;&#x4E0A;&#x4E00;&#x4E2A; acl &#x975E;&#x5E38;&#x7C7B;&#x4F3C;&#xFF0C;&#x53EA;&#x662F;&#x4E0A;&#x4E00;&#x4E2A;&#x9700;&#x8981;&#x586B;&#x5199;&#x5B8C;&#x6574;&#x7684;&#x7F51;&#x5740;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x91CC;&#x5219;&#x662F;&#x6839;&#x636E;&#x7F51;&#x5740;&#x5217;&#x7684;&#x90E8;&#x5206;&#x6BD4;&#x5BF9;&#x6765;&#x5904;&#x7F6E;&#x3002;&#x4EE5;&#x4E0A;&#x8FF0;&#x7684;&#x9884;&#x8BBE;&#x6848;&#x4F8B;&#x6765;&#x8BF4;&#xFF0C; &#x53EA;&#x8981;&#x7F51;&#x5740;&#x5217;&#x7ED3;&#x5C3E;&#x662F; gif (&#x56FE;&#x7247;&#x6587;&#x4EF6;) &#x5C31;&#x7B26;&#x5408;&#x8FD9;&#x4E2A;&#x9879;&#x76EE;&#x4E86;&#x3002;&#x4E07;&#x4E00;&#x6211;&#x8981;&#x627E;&#x51FA;&#x6709;&#x95EE;&#x9898;&#x7684;&#x8272;&#x60C5;&#x7F51;&#x7AD9;&#xFF0C;&#x6709;&#x51FA;&#x73B0; /sexy &#x540D;&#x79F0;&#x5E76;&#x4EE5; jpg &#x7ED3;&#x5C3E;&#x7684;&#xFF0C; &#x5C31;&#x4E88;&#x4EE5;&#x62B5;&#x6321;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x4F7F;&#x7528;&#xFF1A;
+acl sexurl urlpath_regex /sexy.*.jpg$</p>
+</li>
+</ul>
+<p>&#x9664;&#x4E86;&#x4E0A;&#x8FF0;&#x7684;&#x529F;&#x80FD;&#x4E4B;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x80FD;&#x591F;&#x4F7F;&#x7528;&#x5916;&#x90E8;&#x7684;&#x6863;&#x6848;&#x6765;&#x63D0;&#x4F9B;&#x76F8;&#x5BF9;&#x5E94;&#x7684; acl &#x5185;&#x5BB9;&#x8BBE;&#x5B9A;&#x503C;&#x5594;&#xFF01; &#x4E3E;&#x4F8B;&#x6765;&#x8BF4;&#xFF0C;&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x62B5;&#x6321;&#x7684;&#x5916;&#x90E8;&#x4E3B;&#x673A;&#x540D;&#x5E38;&#x5E38;&#x4F1A;&#x53D8;&#x52A8;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; /etc/squid/dropdomain.txt &#x6765;&#x8BBE;&#x5B9A;&#x4E3B;&#x673A;&#x540D;&#xFF0C; &#x7136;&#x540E;&#x900F;&#x8FC7;&#x5E95;&#x4E0B;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5904;&#x7406;</p>
+<pre><code>acl dropdomain dstdomain &quot;/etc/squid/dropdomain.txt&quot;
+</code></pre><p>&#x7136;&#x540E;&#x5728; dropdomain.txt &#x5F53;&#x4E2D;&#xFF0C;&#x4E00;&#x884C;&#x4E00;&#x4E2A;&#x5F85;&#x7BA1;&#x7406;&#x7684;&#x4E3B;&#x673A;&#x540D;&#xFF0C;&#x8FD9;&#x6837;&#x4E5F;&#x80FD;&#x591F;&#x51CF;&#x5C11;&#x6301;&#x7EED;&#x4FEE;&#x6539; squid.conf &#x7684;&#x56F0;&#x6270;&#xFF01; &#x597D;&#x4E86;&#xFF01;&#x4E86;&#x89E3;&#x4E86; acl &#x4E4B;&#x540E;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x5F97;&#x8981;&#x8C08;&#x8C08; http_access &#x8FD9;&#x4E2A;&#x5B9E;&#x9645;&#x653E;&#x884C;&#x6216;&#x62D2;&#x7EDD;&#x7684;&#x53C2;&#x6570;&#x4E86;&#xFF01;</p>
+<ul>
+<li>&#x4EE5; http_access &#x8C03;&#x6574;&#x7BA1;&#x7406;&#x4FE1;&#x4EFB;&#x6765;&#x6E90;&#x4E0E;&#x7BA1;&#x63A7;&#x76EE;&#x6807;&#x7684;&#x300E;&#x987A;&#x5E8F;&#x300F;&#xFF1A;</li>
+</ul>
+<p>&#x8BBE;&#x5B9A;&#x597D; acl &#x4E4B;&#x540E;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x662F;&#x8981;&#x770B;&#x770B;&#x5230;&#x5E95;&#x8981;&#x4E0D;&#x8981;&#x653E;&#x884C;&#x5594;&#xFF5E;&#x653E;&#x884C;&#x4E0E;&#x5426;&#x8DDF; http_access &#x8FD9;&#x4E2A;&#x9879;&#x76EE;&#x6709;&#x5173;&#x3002;&#x57FA;&#x672C;&#x4E0A;&#xFF0C; http_access &#x5C31;&#x662F;&#x62D2;&#x7EDD; (deny) &#x4E0E;&#x5141;&#x8BB8; (allow) &#x4E24;&#x4E2A;&#x63A7;&#x4EF6;&#x76EE;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x52A0;&#x4E0A; acl &#x540D;&#x79F0;&#x5C31;&#x80FD;&#x591F;&#x8FBE;&#x5230;&#x8FD9;&#x6837;&#x7684;&#x529F;&#x80FD;&#x4E86;&#xFF01; &#x53EA;&#x662F;&#x4F60;&#x5F97;&#x8981;&#x7279;&#x522B;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF1A;http_access &#x540E;&#x9762;&#x63A5;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x662F;&#x6709;&#x987A;&#x5E8F;&#x7684;&#xFF01;&#x8FD9;&#x4E2A;&#x89C2;&#x5FF5;&#x5F88;&#x91CD;&#x8981;&#x5594;&#xFF01; &#x6211;&#x4EEC;&#x7528;&#x5E95;&#x4E0B;&#x7684;&#x6848;&#x4F8B;&#x6765;&#x8BF4;&#x660E;&#x597D;&#x4E86;&#xFF1A;</p>
+<p>&#x5047;&#x8BBE;&#x6211;&#x8981;&#x653E;&#x884C;&#x5185;&#x90E8;&#x7F51;&#x7EDC; 192.168.1.0/24, 192.168.100.0/24 &#x8FD9;&#x4E24;&#x6BB5;&#x7F51;&#x57DF;&#xFF0C;&#x7136;&#x540E;&#x62D2;&#x7EDD;&#x5BF9;&#x5916;&#x7684;&#x8272;&#x60C5;&#x76F8;&#x5173;&#x56FE;&#x7247;&#xFF0C; &#x4EE5;&#x53CA; facebook.com &#x7F51;&#x7AD9;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x5E94;&#x8BE5;&#x8981;&#x8FD9;&#x6837;&#x505A;&#xFF1A;</p>
+<pre><code>[root@www ~]# vim /etc/squid/squid.conf
+# http_access &#x662F;&#x6709;&#x987A;&#x5E8F;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5EFA;&#x8BAE;&#x4F60;&#x627E;&#x5230;&#x5E95;&#x4E0B;&#x8FD9;&#x4E2A;&#x5173;&#x952E;&#x8BCD;&#x884C;&#x540E;&#xFF0C;&#x5C06;&#x4F60;&#x7684;&#x8D44;&#x6599;&#x52A0;&#x5728;&#x540E;&#x9762;
+# INSERT YOUR OWN RULE(S) HERE TO ALLOW ACCESS FROM YOUR CLIENTS
+acl vbirdlan src 192.168.1.0/24 192.168.100.0/24
+acl dropdomain dstdomain .facebook.com
+acl dropsex urlpath_regex /sexy.*jpg$
+http_access deny dropdomain  &amp;lt;==&#x8FD9;&#x4E09;&#x884C;&#x7684;&#x300E;&#x987A;&#x5E8F;&#x300F;&#x5F88;&#x91CD;&#x8981;&#xFF01;
+http_access deny dropsex
+http_access allow vbirdlan
+
+[root@www ~]# /etc/init.d/squid restart
+</code></pre><p>&#x4F60;&#x5F97;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x5982;&#x679C;&#x5148;&#x653E;&#x884C;&#x4E86; vbirdlan &#x624D;&#x62B5;&#x6321; dropdomain &#x65F6;&#xFF0C;&#x4F60;&#x7684;&#x8BBE;&#x5B9A;&#x53EF;&#x80FD;&#x4F1A;&#x5931;&#x8D25;&#xFF01;&#x56E0;&#x4E3A;&#x5185;&#x7F51;&#x5DF2;&#x7ECF;&#x5148;&#x653E;&#x884C;&#xFF0C; &#x56E0;&#x6B64;&#x540E;&#x9762;&#x7684;&#x89C4;&#x5219;&#x4E0D;&#x4F1A;&#x6BD4;&#x5BF9;&#xFF0C;&#x90A3;&#x4E48; facebook.com &#x5C31;&#x65E0;&#x6CD5;&#x88AB;&#x62B5;&#x6321;&#x4E86;&#xFF01;&#x8FD9;&#x70B9;&#x5F97;&#x8981;&#x5F88;&#x6CE8;&#x610F;&#x624D;&#x884C;&#xFF01; &#x901A;&#x5E38;&#x7684;&#x4F5C;&#x6CD5;&#x662F;&#xFF0C;&#x5148;&#x5C06;&#x8981;&#x62D2;&#x7EDD;&#x7684;&#x5199;&#x4E0A;&#x53BB;&#xFF0C;&#x7136;&#x540E;&#x624D;&#x5199;&#x8981;&#x653E;&#x884C;&#x7684;&#x6570;&#x636E;&#x5C31;&#x597D;&#x4E86;&#x3002;</p>
+<hr>
+<h3 id="1724-&#x5176;&#x4ED6;&#x989D;&#x5916;&#x7684;&#x529F;&#x80FD;&#x9879;&#x76EE;">17.2.4 &#x5176;&#x4ED6;&#x989D;&#x5916;&#x7684;&#x529F;&#x80FD;&#x9879;&#x76EE;</h3>
+<ul>
+<li>&#x4E0D;&#x8981;&#x8FDB;&#x884C;&#x67D0;&#x4E9B;&#x7F51;&#x9875;&#x7684;&#x5FEB;&#x53D6;&#x52A8;&#x4F5C;</li>
+</ul>
+<p>&#x4ECE;&#x524D;&#x9762;&#x7684;&#x8BF4;&#x660E;&#x6211;&#x4EEC;&#x77E5;&#x9053; Proxy &#x7684;&#x5FEB;&#x53D6;&#x901A;&#x5E38;&#x5728;&#x8BB0;&#x5F55;&#x6BD4;&#x8F83;&#x5C11;&#x53D8;&#x52A8;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x8BA8;&#x8BBA;&#x533A;&#x6216;&#x8005;&#x662F;&#x7A0B;&#x63A7;&#x7C7B;&#x7684;&#x6570;&#x636E;&#x5E93;&#x578B;&#x6001;&#x7F51;&#x9875;&#xFF0C; &#x90A3;&#x4E48;&#x6050;&#x6015;&#x5C31;&#x6CA1;&#x6709;&#x5FEB;&#x53D6;&#x7684;&#x9700;&#x8981;&#xFF0C;&#x56E0;&#x4E3A;&#x6570;&#x636E;&#x4E00;&#x76F4;&#x53D8;&#x52A8;&#x561B;&#xFF01;&#x4F60;&#x603B;&#x4E0D;&#x5E0C;&#x671B;&#x4F60;&#x53D1;&#x4E86;&#x4E00;&#x5E16;&#x7559;&#x8A00;&#xFF0C;&#x7ED3;&#x679C;&#x7B49;&#x4E00;&#x4E0B;&#x518D;&#x53BB;&#x6D4F;&#x89C8;&#x65F6;&#xFF0C;&#x770B;&#x5230;&#x7684;&#x8FD8;&#x662F;&#x65E7;&#x7559;&#x8A00;&#x5427;&#xFF01; &#x6240;&#x4EE5;&#x5570;&#xFF0C;&#x5728;&#x9884;&#x8BBE;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;squid &#x5DF2;&#x7ECF;&#x62D2;&#x7EDD;&#x67D0;&#x4E9B;&#x6570;&#x636E;&#x7684;&#x5FEB;&#x53D6;&#x4E86;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x5E95;&#x4E0B;&#x7684;&#x51E0;&#x4E2A;&#x8BBE;&#x5B9A;&#x503C;&#xFF1A;</p>
+<pre><code>acl QUERY urlpath_regex cgi-bin \?
+cache deny QUERY  &amp;lt;==&#x91CD;&#x70B9;&#x5C31;&#x662F;&#x8FD9;&#x4E00;&#x884C;&#xFF01;&#x53EF;&#x4EE5;&#x62D2;&#x7EDD;&#xFF0C;&#x4E0D;&#x8981;&#x8BA9;&#x540E;&#x9762;&#x7684; URL &#x88AB;&#x5FEB;&#x53D6;&#xFF01;
+</code></pre><p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x901A;&#x5E38; .php &#x7ED3;&#x5C3E;&#x7684;&#x7F51;&#x9875;&#x5927;&#x90E8;&#x5206;&#x5C31;&#x662F;&#x8BA8;&#x8BBA;&#x533A;&#x4E4B;&#x7C7B;&#x7684;&#x53D8;&#x52A8;&#x6027;&#x6570;&#x636E;&#xFF0C;&#x90A3;&#x4E48;&#x80FD;&#x4E0D;&#x80FD;&#x51FA;&#x73B0; .php &#x7ED3;&#x5C3E;&#x7684;&#x7F51;&#x9875;&#x5C31;&#x4E0D;&#x8981;&#x5FEB;&#x53D6;&#x5462;&#xFF1F; &#x5F53;&#x7136;&#x53EF;&#x4EE5;&#x554A;&#xFF01;&#x90A3;&#x8BE5;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#xFF1F;&#x6211;&#x4EEC;&#x4EE5;&#x4E0A;&#x9762;&#x7684;&#x6570;&#x636E;&#x6765;&#x7167;&#x6837;&#x9020;&#x53E5;&#x4E00;&#x4E0B;&#x5427;&#xFF01;</p>
+<p>&#x4F8B;&#x9898;&#xFF1A;&#x53EA;&#x8981;&#x7F51;&#x5740;&#x5217;&#x51FA;&#x73B0; .php &#x7ED3;&#x5C3E;&#x7684;&#xFF0C;&#x5C31;&#x4E0D;&#x4E88;&#x4EE5;&#x5FEB;&#x53D6;&#xFF01;&#x7B54;&#xFF1A;&#x900F;&#x8FC7; acl &#x914D;&#x5408; cache &#x8FD9;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x6765;&#x5904;&#x7406;&#x5373;&#x53EF;&#xFF01;</p>
+<pre><code>[root@www ~]# vim /etc/squid/squid.conf
+acl denyphp urlpath_regex \.php$
+cache deny denyphp
+# &#x5728;&#x6B64;&#x6863;&#x6848;&#x7684;&#x6700;&#x540E;&#x65B0;&#x589E;&#x8FD9;&#x4E24;&#x884C;&#x5373;&#x53EF;&#xFF01;
+
+[root@www ~]# /etc/init.d/squid restart
+</code></pre><ul>
+<li>&#x78C1;&#x76D8;&#x4E2D;&#x5FEB;&#x53D6;&#x7684;&#x5B58;&#x5728;&#x65F6;&#x95F4;</li>
+</ul>
+<p>&#x8FD8;&#x8BB0;&#x5F97;&#x5E95;&#x4E0B;&#x7684;&#x8BBE;&#x5B9A;&#x503C;&#x5417;&#xFF1F;&#x8FD9;&#x4E2A;&#x8BBE;&#x5B9A;&#x503C;&#x7684;&#x53C2;&#x6570;&#x662F;&#x8FD9;&#x6837;&#x8BBE;&#x5B9A;&#x7684;&#xFF1A;</p>
+<pre><code># refresh_pattern &amp;lt;regex&amp;gt;   &amp;lt;&#x6700;&#x5C0F;&#x65F6;&#x95F4;&amp;gt; &amp;lt;&#x767E;&#x5206;&#x6BD4;&amp;gt; &amp;lt;&#x6700;&#x5927;&#x65F6;&#x95F4;&amp;gt;
+refresh_pattern ^ftp:           1440    20%     10080
+refresh_pattern ^gopher:        1440    0%      1440
+refresh_pattern -i (/cgi-bin/&amp;#124;\?) 0     0%      0
+refresh_pattern .               0       20%     4320
+</code></pre><ul>
+<li><p>regex&#xFF1A;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x6B63;&#x89C4;&#x8868;&#x793A;&#x6CD5;&#x6765;&#x5206;&#x6790;&#x7F51;&#x5740;&#x5217;&#x7684;&#x8D44;&#x6599;&#xFF0C;&#x5982;&#x4E0A;&#x9762;&#x7B2C;&#x4E00;&#x884C;&#x8BBE;&#x5B9A;&#x4E3A;&#x7F51;&#x5740;&#x5217;&#x5F00;&#x5934;&#x662F; ftp &#x7684;&#x610F;&#x601D;&#x3002;</p>
+</li>
+<li><p>&#x6700;&#x5C0F;&#x65F6;&#x95F4;&#xFF1A;&#x5355;&#x4F4D;&#x662F;&#x5206;&#x949F;&#xFF0C;&#x5F53;&#x53D6;&#x5F97;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x7684;&#x65F6;&#x95F4;&#x8D85;&#x8FC7;&#x8FD9;&#x4E2A;&#x8BBE;&#x5B9A;&#x503C;&#xFF0C;&#x5219;&#x8BE5;&#x6570;&#x636E;&#x4F1A;&#x88AB;&#x5224;&#x5B9A;&#x4E3A;&#x65E7;&#x8D44;&#x6599;&#x3002;&#x5982;&#x4E0A;&#x9762;&#x7B2C;&#x4E00;&#x884C;&#xFF0C; &#x8868;&#x793A;&#x5F53;&#x53D6;&#x5F97;&#x7684;&#x8D44;&#x6599;&#x8D85;&#x8FC7; 1440 &#x5206;&#x949F;&#x65F6;&#xFF0C;&#x8BE5;&#x8D44;&#x6599;&#x4F1A;&#x88AB;&#x5224;&#x5B9A;&#x4E3A;&#x65E7;&#x6570;&#x636E;&#xFF0C;&#x82E5;&#x6709;&#x4EBA;&#x5C1D;&#x8BD5;&#x8BFB;&#x53D6;&#x540C;&#x6837;&#x7684;&#x7F51;&#x5740;&#x5217;&#xFF0C;&#x90A3;&#x4E48; squid &#x4F1A;&#x91CD;&#x65B0;&#x6293;&#x53D6;&#x8BE5;&#x6570;&#x636E;&#xFF0C;&#x4E0D;&#x4F1A;&#x4F7F;&#x7528;&#x5FEB;&#x53D6;&#x5185;&#x7684;&#x65E7;&#x6570;&#x636E;&#x3002;&#x81F3;&#x4E8E;&#x7B2C;&#x4E09;&#x884C;&#xFF0C;&#x5219;&#x8868;&#x793A;&#x9664;&#x4E86;&#x4E0A;&#x8FF0;&#x7684;&#x4E24;&#x4E2A;&#x5F00;&#x5934;&#x6570;&#x636E;&#x5916;&#xFF0C;&#x5176;&#x4ED6;&#x7684;&#x6570;&#x636E;&#x90FD;&#x662F;&#x88AB;&#x5B9A;&#x4E49;&#x4E3A;&#x65B0;&#x7684;&#xFF0C; &#x56E0;&#x6B64; squid &#x53EA;&#x4F1A;&#x4ECE;&#x5FEB;&#x53D6;&#x5185;&#x6293;&#x6570;&#x636E;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x3002;</p>
+</li>
+<li><p>&#x767E;&#x5206;&#x6BD4;&#xFF1A;&#x8FD9;&#x4E2A;&#x9879;&#x76EE;&#x4E0E;&#x300E;&#x6700;&#x5927;&#x65F6;&#x95F4;&#x300F;&#x6709;&#x5173;&#xFF0C;&#x5F53;&#x8BE5;&#x8D44;&#x6599;&#x88AB;&#x6293;&#x53D6;&#x5230;&#x5FEB;&#x53D6;&#x540E;&#xFF0C;&#x7ECF;&#x8FC7;&#x6700;&#x5927;&#x65F6;&#x95F4;&#x7684;&#x591A;&#x5C11;&#x767E;&#x5206;&#x6BD4;&#x65F6;&#xFF0C;&#x8BE5;&#x6570;&#x636E;&#x5C31;&#x4F1A;&#x88AB;&#x91CD;&#x6293;&#x3002;</p>
+</li>
+<li><p>&#x6700;&#x5927;&#x65F6;&#x95F4;&#xFF1A;&#x4E0E;&#x4E0A;&#x4E00;&#x4E2A;&#x8BBE;&#x5B9A;&#x6709;&#x5173;&#xFF0C;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x5B58;&#x5728;&#x5FEB;&#x53D6;&#x5185;&#x7684;&#x6700;&#x957F;&#x65F6;&#x95F4;&#x3002;&#x5982;&#x4E0A;&#x9762;&#x7B2C;&#x4E00;&#x884C;&#xFF0C;&#x6700;&#x5927;&#x65F6;&#x95F4;&#x4E3A; 10080 &#x5206;&#x949F;&#xFF0C;&#x4F46;&#x662F;&#x5F53;&#x8D85;&#x8FC7;&#x6B64;&#x65F6;&#x95F4;&#x7684; 20% (2016&#x5206;&#x949F;) &#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x4E5F;&#x4F1A;&#x88AB;&#x5224;&#x5B9A;&#x4E3A;&#x65E7;&#x8D44;&#x6599;&#x3002;</p>
+</li>
+</ul>
+<p>&#x4F8B;&#x9898;&#xFF1A;&#x5728;&#x7F51;&#x5740;&#x5217;&#x51FA;&#x73B0; .vbird. &#x5B57;&#x6837;&#x65F6;&#xFF0C;&#x8BE5;&#x6570;&#x636E;&#x4E3A;&#x6682;&#x65F6;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x56E0;&#x6B64; 2 &#x5C0F;&#x65F6;&#x540E;&#x5C31;&#x7B97;&#x65E7;&#x6570;&#x636E;&#x3002;&#x800C;&#x6700;&#x957F;&#x4FDD;&#x7559;&#x5728;&#x5FEB;&#x53D6;&#x7ED9;&#x5979;&#x4E00;&#x5929;&#x7684;&#x65F6;&#x95F4;&#xFF0C; &#x4E14;&#x7ECF;&#x8FC7; 50% &#x7684;&#x65F6;&#x95F4;&#x540E;&#xFF0C;&#x5C31;&#x88AB;&#x5224;&#x5B9A;&#x4E3A;&#x65E7;&#x6570;&#x636E;&#x5427;&#xFF01;&#x7B54;&#xFF1A;</p>
+<pre><code>[root@www ~]# vim /etc/squid/squid.conf
+refresh_pattern ^ftp:           1440    20%     10080
+refresh_pattern ^gopher:        1440    0%      1440
+refresh_pattern -i (/cgi-bin/&amp;#124;\?) 0     0%      0
+refresh_pattern \.vbird\.       120     50%     1440
+refresh_pattern .               0       20%     4320
+
+[root@www ~]# /etc/init.d/squid restart
+</code></pre><ul>
+<li>&#x4E3B;&#x673A;&#x540D;&#x4E0E;&#x7BA1;&#x7406;&#x5458;&#x7684; email &#x6307;&#x5B9A;</li>
+</ul>
+<p>&#x5982;&#x679C;&#x4F60;&#x7684;&#x670D;&#x52A1;&#x5668;&#x4E3B;&#x673A;&#x540D;&#x5C1A;&#x672A;&#x51B3;&#x5B9A;&#xFF0C;&#x56E0;&#x6B64;&#x4F7F;&#x7528;&#x7684;&#x4E3B;&#x673A;&#x540D;&#x5728;&#x56E0;&#x7279;&#x7F51;&#x4E0A;&#x9762;&#x662F;&#x627E;&#x4E0D;&#x5230;&#x5BF9;&#x5E94;&#x7684; IP &#x7684; (&#x56E0;&#x4E3A; DNS &#x672A;&#x8BBE;&#x5B9A;)&#xFF0C; &#x90A3;&#x4E48;&#x5728;&#x9884;&#x8BBE;&#x7684; squid &#x8BBE;&#x5B9A;&#x4E2D;&#xFF0C;&#x6050;&#x6015;&#x4F1A;&#x65E0;&#x6CD5;&#x987A;&#x5229;&#x7684;&#x542F;&#x52A8;&#x3002;&#x6B64;&#x65F6;&#x4F60;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x7684;&#x52A0;&#x5165;&#x4E00;&#x4E2A;&#x4E3B;&#x673A;&#x540D;&#xFF0C;&#x5C31;&#x662F;&#x900F;&#x8FC7; visible_hostname &#x6765;&#x6307;&#x5B9A;&#x3002; &#x540C;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x4F7F;&#x7528; squid &#x51FA;&#x73B0;&#x4EFB;&#x4F55;&#x9519;&#x8BEF;&#x65F6;&#xFF0C;&#x5C4F;&#x5E55;&#x4E0A;&#x90FD;&#x4F1A;&#x51FA;&#x73B0;&#x7BA1;&#x7406;&#x5458;&#x7684; email &#x8BA9;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x56DE;&#x62A5;&#x3002;&#x73B0;&#x5728;&#x5047;&#x8BBE;&#x4E3B;&#x673A;&#x540D;&#x4E3A; www.centos.vbird &#x4E14;&#x7BA1;&#x7406;&#x5458;&#x7684; email &#x4E3A; dmtsai@www.centos.vbird &#xFF0C;&#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x4FEE;&#x6539;&#xFF1A;</p>
+<pre><code>[root@www ~]# vim /etc/squid/squid.conf
+cache_mgr dmtsai@www.centos.vbird  &amp;lt;==&#x7BA1;&#x7406;&#x5458;&#x7684; email &#x5466;&#xFF01;
+visible_hostname www.centos.vbird  &amp;lt;==&#x76F4;&#x63A5;&#x8BBE;&#x5B9A;&#x4E3B;&#x673A;&#x540D;&#x5594;&#xFF01;
+
+[root@www ~]# /etc/init.d/squid restart
+</code></pre><hr>
+<h3 id="1725-&#x5B89;&#x5168;&#x6027;&#x8BBE;&#x5B9A;&#xFF1A;&#x9632;&#x706B;&#x5899;-selinux-&#x4E0E;&#x9ED1;&#x540D;&#x5355;&#x6863;&#x6848;">17.2.5 &#x5B89;&#x5168;&#x6027;&#x8BBE;&#x5B9A;&#xFF1A;&#x9632;&#x706B;&#x5899;, SELinux &#x4E0E;&#x9ED1;&#x540D;&#x5355;&#x6863;&#x6848;</h3>
+<ul>
+<li>&#x9632;&#x706B;&#x5899;&#x5F97;&#x8981;&#x653E;&#x884C; tcp &#x7684; port 3128</li>
+</ul>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x8BBE;&#x5B9A;&#x4E86;&#x8BA9; 192.168.100.0/24 &#x53CA; 192.168.1.0/24 &#x8FD9;&#x4E24;&#x6BB5;&#x6765;&#x6E90;&#x4F7F;&#x7528;&#x6211;&#x4EEC;&#x7684; proxy server &#xFF0C; &#x90A3;&#x4E48;&#x60F3;&#x5F53;&#x7136;&#x5C14;&#xFF0C;&#x9632;&#x706B;&#x5899;&#x7684;&#x8BBE;&#x5B9A;&#x5C31;&#x5F97;&#x8981;&#x5F00;&#x653E;&#x8FD9;&#x4E24;&#x6BB5;&#x4F7F;&#x7528; port 3128 &#x624D;&#x884C;&#x554A;&#xFF01;&#x4E0D;&#x8FC7;&#x4F60;&#x5F97;&#x8981;&#x7279;&#x522B;&#x6CE8;&#x610F;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x5F00;&#x653E;&#x9632;&#x706B;&#x5899;&#x5C31;&#x80FD;&#x4F7F;&#x7528; proxy server &#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x8FD8;&#x5F97;&#x8981;&#x4F7F;&#x7528; acl &#x914D;&#x5408; http_access &#x624D;&#x884C;&#x5466;&#xFF01;&#x6CE8;&#x610F;&#x6CE8;&#x610F;&#xFF01;&#x5047;&#x8BBE;&#x4F60;&#x5DF2;&#x7ECF;&#x4F7F;&#x7528;&#x4E86; iptables.rule &#xFF0C; &#x90A3;&#x4E48;&#x4FEE;&#x6539;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code>[root@www ~]# vim /usr/local/virus/iptables/iptables.allow
+iptables -A INPUT -i $EXTIF -p tcp -s 192.168.1.0/24 --dport 3128 -j ACCEPT
+# &#x56E0;&#x4E3A;&#x5185;&#x7F51; 192.168.100.0/24 &#x672C;&#x6765;&#x5C31;&#x662F;&#x5168;&#x90E8;&#x90FD;&#x63A5;&#x53D7;&#x653E;&#x884C;&#x7684;&#xFF01;
+
+[root@www ~]# /usr/local/virus/iptables/iptables.rule
+</code></pre><ul>
+<li>SELinux &#x7684;&#x6CE8;&#x610F;&#x4E8B;&#x9879;</li>
+</ul>
+<p>&#x9488;&#x5BF9; proxy &#x6765;&#x8BF4;&#xFF0C;CentOS 6.x &#x5012;&#x662F;&#x6CA1;&#x6709;&#x7ED9;&#x4E88;&#x592A;&#x591A;&#x7684;&#x89C4;&#x5219;&#x9650;&#x5236;&#xFF0C;&#x56E0;&#x6B64;&#x4F3C;&#x4E4E;&#x4E0D;&#x592A;&#x9700;&#x8981;&#x4FEE;&#x8BA2;&#x89C4;&#x5219;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;SELinux &#x7684;&#x5B89;&#x5168;&#x672C;&#x6587;&#x5728;&#x7C7B;&#x578B;&#x90E8;&#x5206;&#x5F97;&#x6CE8;&#x610F;&#x3002;&#x8FD9;&#x5305;&#x62EC;&#x914D;&#x7F6E;&#x6587;&#x4EF6; (/etc/squid/ &#x5185;&#x7684;&#x6570;&#x636E;) &#x7C7B;&#x578B;&#x662F; squid_conf_t &#x7684;&#x6837;&#x5F0F;&#xFF0C; &#x800C;&#x5FEB;&#x53D6;&#x76EE;&#x5F55;&#x7684;&#x7C7B;&#x578B;&#x5219;&#x662F; squid_cache_t &#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x4E14;&#x4E0A;&#x5C42;&#x7C7B;&#x578B; (/var/spool/) &#x5E94;&#x8BE5;&#x662F;&#x8981;&#x6210;&#x4E3A; var_t &#x4E4B;&#x7C7B;&#x7684;&#x624D;&#x884C;&#x3002; &#x4FEE;&#x6539;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x900F;&#x8FC7; chcon &#x6765;&#x5904;&#x7406;&#x5373;&#x53EF;&#x3002;</p>
+<ul>
+<li>&#x5EFA;&#x7ACB;&#x9ED1;&#x540D;&#x5355;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</li>
+</ul>
+<p>&#x6211;&#x4EEC;&#x5728; <a href="#http_access">17.2.3</a> &#x5C0F;&#x8282;&#x91CC;&#x9762;&#x8C08;&#x5230;&#xFF0C;&#x53EF;&#x4EE5;&#x900F;&#x8FC7;&#x300E; dstdomain .domain.name &#x300F;&#x6765;&#x62B5;&#x6321;&#x4E0D;&#x60F3;&#x8054;&#x673A;&#x7684;&#x7F51;&#x7AD9;&#x3002; &#x4E0D;&#x8FC7;&#x6BCF;&#x6B21;&#x90FD;&#x5F97;&#x4F7F;&#x7528; root &#x8EAB;&#x4EFD;&#x6765;&#x8BBE;&#x5B9A; squid.conf &#x624D;&#x884C;&#x3002;&#x90A3;&#x6709;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x989D;&#x5916;&#x5904;&#x7406;&#x51FA;&#x4E00;&#x4E2A;&#x6863;&#x6848;&#xFF0C;&#x8BA9;&#x60F3;&#x8981;&#x62D2;&#x7EDD;&#x8054;&#x673A;&#x7684;&#x6570;&#x636E;&#x5199;&#x5165;&#xFF0C; &#x8FD9;&#x6837;&#x6BD4;&#x8F83;&#x5BB9;&#x6613;&#x7BA1;&#x7406;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x4E00;&#x76F4;&#x53BB;&#x4FEE;&#x6539; squid.conf &#x561B;&#xFF01;&#x6709;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#x53EF;&#x4EE5;&#x8FBE;&#x6210;&#x5462;&#xFF1F;&#x6709;&#x7684;&#xFF0C;&#x5C31;&#x900F;&#x8FC7;&#x7279;&#x5B9A;&#x6863;&#x6848;&#x6765;&#x5904;&#x7F6E;&#x5373;&#x53EF;&#x3002; &#x770B;&#x770B;&#x5E95;&#x4E0B;&#x8FD9;&#x4E2A;&#x4F8B;&#x9898;&#x6765;&#x4FEE;&#x8BA2;&#x4E00;&#x4E0B;&#x5427;&#xFF1A;</p>
+<p>&#x4F8B;&#x9898;&#xFF1A;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; /etc/squid/dropdomain.txt &#x7684;&#x6863;&#x6848;&#xFF0C;&#x5185;&#x5BB9;&#x4E3A;&#x62D2;&#x7EDD;&#x8054;&#x673A;&#x7684;&#x76EE;&#x6807;&#x7F51;&#x7AD9;&#x3002;&#x7B54;&#xFF1A;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x8BBE;&#x5B9A;&#x8FC7;&#x76F8;&#x5173;&#x7684;&#x7F51;&#x7AD9;&#xFF0C;&#x5904;&#x7406;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x76F4;&#x63A5;&#x5C06;&#x4E3B;&#x673A;&#x540D;&#x5199;&#x5165; squid.conf &#x4E2D;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x4FEE;&#x8BA2;&#xFF1A;</p>
+<pre><code>[root@www ~]# vim /etc/squid/squid.conf
+# &#x627E;&#x5230;&#x5E95;&#x4E0B;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5C31;&#x662F; dropdomain &#x90A3;&#x884C;&#xFF0C;&#x7EA6;&#x5728; 629 &#x884C;&#x5DE6;&#x53F3;&#xFF0C;&#x5E76;&#x4E14;&#x4FEE;&#x6539;&#x4E00;&#x4E0B;
+acl dropdomain dstdomain &quot;/etc/squid/dropdomain.txt&quot;
+# &#x6CE8;&#x610F;&#x4E00;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x6863;&#x540D;&#xFF0C;&#x8BF7;&#x5199;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x4E14;&#x4F7F;&#x7528;&#x53CC;&#x5F15;&#x53F7;&#x6216;&#x5355;&#x5F15;&#x53F7;&#x5708;&#x8D77;&#x6765;&#xFF01;
+
+[root@www ~]# vim /etc/squid/dropdomain.txt
+.facebook.com
+.yahoo.com
+# &#x4E00;&#x884C;&#x4E00;&#x4E2A; domain &#x540D;&#x79F0;&#x5373;&#x53EF;
+
+[root@www ~]# /etc/init.d/squid reload
+</code></pre><p>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x597D;&#x5904;&#x662F;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x989D;&#x5916;&#x7684;&#x63A7;&#x5236;&#x65B9;&#x5F0F;&#x53BB;&#x4FEE;&#x6539; /etc/squid/dropdomain.txt &#x8FD9;&#x4E2A;&#x6863;&#x6848;&#x7684;&#x5185;&#x5BB9;&#xFF0C; &#x5E76;&#x4E14;&#x4FEE;&#x6539;&#x5B8C;&#x6BD5;&#x540E;&#x518D;&#x4F7F;&#x7528; reload &#x53BB;&#x52A0;&#x8F7D;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x4E0D;&#x5FC5;&#x8981;&#x91CD;&#x65B0;&#x542F;&#x52A8; (restart)&#xFF0C;&#x56E0;&#x4E3A; reload &#x7684;&#x901F;&#x5EA6;&#x6BD4;&#x8F83;&#x5FEB;&#x901F;&#x3002; &#x4E3E;&#x4F8B;&#x6765;&#x8BF4;&#xFF0C;&#x9E1F;&#x54E5;&#x7684;&#x4E13;&#x9898;&#x751F;&#x5C31;&#x7528; PHP &#x5199;&#x4E86;&#x4E00;&#x652F;&#x63A7;&#x5236;&#x8BE5;&#x6863;&#x6848;&#x7684;&#x7F51;&#x9875;&#x63A5;&#x53E3;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA9;&#x8001;&#x5E08;&#x5728;&#x4E0A;&#x8BFE;&#x65F6;&#x76F4;&#x63A5;&#x900F;&#x8FC7;&#x7F51;&#x9875;&#x8F93;&#x5165;&#x8981;&#x88AB;&#x63A7;&#x5236;&#x7684;&#x76EE;&#x6807;&#x7F51;&#x7AD9;&#xFF0C; &#x8FD9;&#x6837;&#x5B66;&#x751F;&#x5C31;&#x65E0;&#x6CD5;&#x5728;&#x4E0A;&#x8BFE;&#x65F6;&#x8054;&#x673A;&#x5230;&#x5916;&#x9762;&#x7684;&#x67D0;&#x4E9B;&#x7F51;&#x7AD9;&#x53BB;&#x73A9;&#x6E38;&#x620F;&#x5570;&#xFF5E;</p>
+<hr>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./123.html" class="navigation navigation-prev " aria-label="Previous page: 17.1 什么是代理服务器 (Proxy)"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./125.html" class="navigation navigation-next " aria-label="Next page: 17.3 客户端的使用与测试"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

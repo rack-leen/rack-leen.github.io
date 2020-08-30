@@ -1,0 +1,156 @@
+<hr>
+<p>title: 备忘录模式<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2020-01-04 22:13:44<br>
+tags:</p>
+<ul>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h2 id="备忘录模式"><a class="header-anchor" href="#备忘录模式">¶</a>备忘录模式</h2>
+<h3 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h3>
+<blockquote>
+<p>Without violating encapsulation,capture and externalize an object’s internal state so that the object can be restored to this state later.<br>
+在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可将该对象恢复到原先保存的状态</p>
+</blockquote>
+<h3 id="代码实现"><a class="header-anchor" href="#代码实现">¶</a>代码实现</h3>
+<h4 id="准备"><a class="header-anchor" href="#准备">¶</a>准备</h4>
+<p>我们可以用备忘录模式来模拟游戏，游戏开始之后就开始备份游戏开始状态，当游戏失败，游戏结束，我们需要会到游戏开始就需要游戏开始的备份。</p>
+<h4 id="备份"><a class="header-anchor" href="#备份">¶</a>备份</h4>
+<ol>
+<li>备忘录管理员</li>
+</ol>
+<pre><code class="language-Java">package org.example.memento;
+
+/**
+ * 备忘录管理员
+ */
+public class Caretaker {
+    private Memento memento ;
+    public Memento getMemento(){
+        return this.memento ;
+    }
+    public void setMemento(Memento memento){
+        this.memento = memento ;
+    }
+}
+</code></pre>
+<ol start="2">
+<li>备忘录</li>
+</ol>
+<pre><code class="language-Java">package org.example.memento;
+
+/**
+ * 备忘录类，用来备份状态
+ */
+public class Memento {
+    private String state = &quot;&quot;;
+    /* 初始化备份的状态 */
+    public Memento(String state){
+        this.state = state ;
+    }
+    public String getState(){
+        return this.state ;
+    }
+
+    public void setState(String state){
+        this.state = state ;
+    }
+}
+</code></pre>
+<h4 id="游戏"><a class="header-anchor" href="#游戏">¶</a>游戏</h4>
+<pre><code class="language-Java">package org.example.memento;
+
+/**
+ * 现在我们开始玩一个游戏，游戏中途失败，然后需要重新开始，就需要备份开始阶段，然后从开始阶段重新开始
+ * 游戏备份
+ */
+public class Game {
+    /* 状态 */
+    private String state = &quot;&quot; ;
+
+    /* 用来改变状态 */
+    public void changeState(){
+        this.state = &quot;游戏结束&quot;;
+    }
+
+    /* 获取当前状态 */
+    public String getState(){
+        return this.state ;
+    }
+
+    /* 设置当前状态 */
+    public void setState(String state){
+        this.state = state ;
+    }
+
+    /* 创建当前状态的备份 */
+    public Memento createMemento(){
+        return new Memento(this.state);
+    }
+
+    /* 将当备份的状态恢复为当前状态 */
+    public void restoreMemento(Memento memento){
+        this.setState(memento.getState());
+    }
+}
+</code></pre>
+<h4 id="场景实现"><a class="header-anchor" href="#场景实现">¶</a>场景实现</h4>
+<pre><code class="language-Java">public class App {
+    /**
+     * 备忘录模式
+     * @param args
+     */
+    public static void main(String[] args) {
+        /* 创建一个游戏 */
+        Game game = new Game();
+
+        /* 开始游戏 */
+        game.setState(&quot;游戏开始&quot;);
+        System.out.println(&quot;=======游戏开始状态=======&quot;);
+        System.out.println(game.getState());
+
+        /* 创建游戏备份 */
+        Caretaker caretaker = new Caretaker();
+        caretaker.setMemento(game.createMemento());
+        /* 游戏结束 */
+        game.changeState();
+        System.out.println(&quot;=======游戏失败状态=======&quot;);
+        System.out.println(game.getState());
+
+        /* 使用游戏备份，会到游戏开始 */
+        game.restoreMemento(caretaker.getMemento());
+        System.out.println(&quot;=======游戏恢复状态=======&quot;);
+        System.out.println(game.getState());
+    }
+}
+</code></pre>
+<h3 id="备忘录的扩展"><a class="header-anchor" href="#备忘录的扩展">¶</a>备忘录的扩展</h3>
+<h3 id="应用实现"><a class="header-anchor" href="#应用实现">¶</a>应用实现</h3>
+<ol>
+<li>需要保存和恢复数据的相关场景。</li>
+<li>提供回滚操作，包括文本回退等。</li>
+<li>需要监控的副本场景中，这个需要监控的场景不复杂，可以直接备份。</li>
+<li>数据库连接的事务管理就是使用备忘录模式。</li>
+</ol>
+<h3 id="注意事项"><a class="header-anchor" href="#注意事项">¶</a>注意事项</h3>
+<ol>
+<li>备忘录的生命周期。备忘录创建后就要在最近就使用，不能拖的太长。</li>
+<li>备忘录的性能。不要频繁的使用备忘录。每次创建一个备份都要消耗资源。</li>
+</ol>

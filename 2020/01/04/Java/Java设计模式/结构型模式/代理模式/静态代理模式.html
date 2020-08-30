@@ -1,0 +1,250 @@
+<hr>
+<p>title: 静态代理模式<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2019-05-19 19:22:11<br>
+tags:</p>
+<ul>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>代理模式<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>代理模式<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h3 id="静态代理模式"><a class="header-anchor" href="#静态代理模式">¶</a>静态代理模式</h3>
+<h4 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h4>
+<p>静态地为其他对象提供代理，用以对某个对象的访问。静态代理模式共分为三个部分，代理类，被代理类，共同接口。</p>
+<ul>
+<li>共同接口<br>
+通用接口，代理类和被代理类共同实现，这让代理类能够替代被代理的对象。共同接口使得代理类能够代理这个接口下的一系列的被代理类。</li>
+<li>被代理类<br>
+可以称作委托者，是业务逻辑的执行者。实现了共同接口，可以被代理类代理。</li>
+<li>代理类<br>
+获取被代理类引用(获取业务逻辑)，为最终的执行者。实现了共同接口，可以代理被代理类。<br>
+<img src="%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E5%9B%BE.png" alt="静态代理模式结构图"><br>
+我们可以用代购举例，用户需要购买商品，可以通过代理帮助购买，代理能够帮助购买很多种类的商品，而购买商品操作是用户与代理共同具有的。</li>
+<li>可以有代理<strong>能够购买</strong>和<strong>用户需要</strong>购买的商品操作为共同接口</li>
+<li>用户实现这个接口表示用户需要购买这些商品</li>
+<li>代理实现这个接口表示代理能够购买这些商品</li>
+<li>代理需要访问用户得知需要<strong>购买什么商品</strong>(业务逻辑)</li>
+<li>用户需要告知代理需要<strong>购买什么商品</strong>(业务逻辑)</li>
+<li>并且用户需要给代理钱来购买商品</li>
+<li>最终代理购买了商品给用户</li>
+</ul>
+<h4 id="使用静态代理模式"><a class="header-anchor" href="#使用静态代理模式">¶</a>使用静态代理模式</h4>
+<h5 id="第一步-创建实体"><a class="header-anchor" href="#第一步-创建实体">¶</a>第一步，创建实体</h5>
+<p>{% codeblock lang:java %}<br>
+/**</p>
+<ul>
+<li>创建用户实体（需要给代理的钱）<br>
+*/</li>
+</ul>
+<p>package com.spring.bean;</p>
+<p>public class User {<br>
+private int id ;<br>
+private String name ;<br>
+private int age ;</p>
+<pre><code>public User() {
+}
+
+public User(int id, String name, int age) {
+    this.id = id;
+    this.name = name;
+    this.age = age;
+}
+
+public int getId() {
+    return id;
+}
+
+public void setId(int id) {
+    this.id = id;
+}
+
+public String getName() {
+    return name;
+}
+
+public void setName(String name) {
+    this.name = name;
+}
+
+public int getAge() {
+    return age;
+}
+
+public void setAge(int age) {
+    this.age = age;
+}
+
+@Override
+public String toString() {
+    return &quot;User{&quot; +
+            &quot;id=&quot; + id +
+            &quot;, name='&quot; + name + '\'' +
+            &quot;, age=&quot; + age +
+            '}';
+}
+</code></pre>
+<p>}</p>
+<p>{% endcodeblock %}</p>
+<h5 id="第二步-创建共同接口"><a class="header-anchor" href="#第二步-创建共同接口">¶</a>第二步，创建共同接口</h5>
+<p>{% codeblock lang:java %}<br>
+package com.spring.service;</p>
+<p>import com.spring.bean.User;</p>
+<p>/**</p>
+<ul>
+<li>创建共同接口(买东西这个操作)<br>
+*/<br>
+public interface UserService {<br>
+void addUser(User u);<br>
+void deleteUser(int id);<br>
+}</li>
+</ul>
+<p>{% endcodeblock %}</p>
+<h5 id="第三步-创建被代理类"><a class="header-anchor" href="#第三步-创建被代理类">¶</a>第三步，创建被代理类</h5>
+<p>{% codeblock lang:java %}<br>
+package com.spring.serviceImpl;</p>
+<p>import com.spring.bean.User;<br>
+import com.spring.service.UserService;</p>
+<p>/**</p>
+<ul>
+<li>
+<p>创建用户的业务逻辑实现(具体买什么东西)</p>
+</li>
+<li>
+<p>我们需要知道用户要干什么<br>
+*/<br>
+public class UserServiceImpl implements UserService {<br>
+public void addUser(User u) {<br>
+System.out.println(“增加User”);<br>
+}</p>
+<p>public void deleteUser(int id) {<br>
+System.out.println(“删除User”);<br>
+}<br>
+}</p>
+</li>
+</ul>
+<p>{% endcodeblock %}</p>
+<h5 id="第四步-创建事务类"><a class="header-anchor" href="#第四步-创建事务类">¶</a>第四步，创建事务类</h5>
+<p>{% codeblock lang:java %}<br>
+package com.spring.transaction;</p>
+<p>/**</p>
+<ul>
+<li>
+<p>事务(代理买东西时需要用到的额外工具)</p>
+</li>
+<li>
+<p>相当于一个代理需要的一个工具<br>
+*/<br>
+public class Transaction {<br>
+public void before(){<br>
+System.out.println(“开始事务”);<br>
+}</p>
+<p>public void after(){<br>
+System.out.println(“提交事务”);<br>
+}</p>
+</li>
+</ul>
+<p>}</p>
+<p>{% endcodeblock %}</p>
+<h5 id="第五步-创建代理类"><a class="header-anchor" href="#第五步-创建代理类">¶</a>第五步，创建代理类</h5>
+<p>{% codeblock lang:java %}<br>
+package com.spring.serviceImpl;</p>
+<p>import com.spring.bean.User;<br>
+import com.spring.service.UserService;<br>
+import com.spring.transaction.Transaction;</p>
+<p>/**<br>
+{% codeblock lang:java %}<br>
+{% endcodeblock %}</p>
+<ul>
+<li>代理类</li>
+<li>代理类需要实现共同的接口，使得代理知道用户要干什么</li>
+<li>代理之后需要使用工具事务类，帮助代理执行这个操作<br>
+*/</li>
+</ul>
+<p>public class ProxyUser implements UserService {</p>
+<pre><code>private UserService userService ;
+private Transaction transaction ;
+
+public ProxyUser() {
+}
+
+public ProxyUser(UserService userService, Transaction transaction) {
+    this.userService = userService;
+    this.transaction = transaction;
+}
+
+public void addUser(User u) {
+    transaction.before();
+    userService.addUser(u);
+    transaction.after();
+}
+
+public void deleteUser(int id) {
+    transaction.before();
+    userService.deleteUser(id);
+    transaction.after();
+}
+</code></pre>
+<p>}</p>
+<p>{% endcodeblock %}</p>
+<h5 id="第六步-代理开始工作"><a class="header-anchor" href="#第六步-代理开始工作">¶</a>第六步，代理开始工作</h5>
+<p>{% codeblock lang:java %}<br>
+import com.spring.bean.User;<br>
+import com.spring.service.UserService;<br>
+import com.spring.serviceImpl.ProxyUser;<br>
+import com.spring.serviceImpl.UserServiceImpl;<br>
+import com.spring.transaction.Transaction;</p>
+<p>public class Test {</p>
+<pre><code>/**
+ * 创建实体对象(相当于买东西的钱)
+ * 创建用户业务逻辑对象(需要买什么东西)
+ * 创建事务对象(代购需要的工具)
+ * 创建代理对象(代购人)
+ * 代理对象确定需要代理的对象(userService),使用transaction对象作为工具，实现代理工作
+ */
+
+@org.junit.Test
+public void test01(){
+    User user = new User(1, &quot;张三&quot;, 18);
+    UserService userService = new UserServiceImpl();
+    Transaction transaction = new Transaction();
+    ProxyUser proxyUser = new ProxyUser(userService, transaction);
+    proxyUser.addUser(user);
+}
+</code></pre>
+<p>}</p>
+<p>{% endcodeblock %}</p>
+<h5 id="第七步-测试结果"><a class="header-anchor" href="#第七步-测试结果">¶</a>第七步，测试结果</h5>
+<p>{% codeblock lang:java %}<br>
+开始事务<br>
+增加User<br>
+提交事务<br>
+{% endcodeblock %}</p>
+<h4 id="优缺点"><a class="header-anchor" href="#优缺点">¶</a>优缺点</h4>
+<h5 id="优点"><a class="header-anchor" href="#优点">¶</a>优点</h5>
+<ul>
+<li>可以将两个类需要通信的类解耦，实现低耦合，高内聚。使我们只需要了解代理类。</li>
+<li>两个类之间的关系能被统一管理。</li>
+</ul>
+<h5 id="缺点"><a class="header-anchor" href="#缺点">¶</a>缺点</h5>
+<ul>
+<li>代理对象的一个接口服务于一种类型的对象(一种代表了代理类和被代理类必须实现同一个接口，这个接口下的所有类都可被代理类访问到)，如果代理的方法很多，需要为每一种方法都进行代理，这样会出现非常多的冗余代码。</li>
+<li>如果共同接口增加一个方法，则代理类和被代理类都需要实现这个方法。这增加了代码维护难度。</li>
+</ul>
+<h4 id="自言自语"><a class="header-anchor" href="#自言自语">¶</a>自言自语</h4>
+<p>静态代理模式使我们只需要改代理类的实现，而不需要更改其他的类。但是静态代理合适应用在小的项目中，如果在大项目中，则需要使用动态代理模式。<br>
+剩余:22种。</p>

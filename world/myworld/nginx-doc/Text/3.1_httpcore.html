@@ -1,0 +1,1907 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>http核心模块 | Nginx 中文官方文档</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.5">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../Text/3.2_httpupstream.html" />
+    
+    
+    <link rel="prev" href="../Text/3.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="3.1"
+        data-chapter-title="http核心模块"
+        data-filepath="Text/3.1_httpcore.md"
+        data-basepath=".."
+        data-revision="Mon Dec 14 2015 06:00:19 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/nginx-doc" target="blank" class="custom-link">Nginx 中文官方文档</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="Text/1.html">
+            
+                
+                    <a href="../Text/1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        主要文档
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="Text/1.1_overview.html">
+            
+                
+                    <a href="../Text/1.1_overview.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Nginx功能概述
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="Text/1.2_nginxchswhyuseit.html">
+            
+                
+                    <a href="../Text/1.2_nginxchswhyuseit.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        为什么选择Nginx
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="Text/1.3_install.html">
+            
+                
+                    <a href="../Text/1.3_install.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        Nginx安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="Text/1.4_nginxchscommandline.html">
+            
+                
+                    <a href="../Text/1.4_nginxchscommandline.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        运行和控制Nginx
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="Text/1.5_notation.html">
+            
+                
+                    <a href="../Text/1.5_notation.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        配置符号参考
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="Text/1.6_optimizations.html">
+            
+                
+                    <a href="../Text/1.6_optimizations.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        优化 Nginx
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="Text/1.7_faq.html">
+            
+                
+                    <a href="../Text/1.7_faq.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.</b>
+                        
+                        常见问题(FAQ)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="Text/1.8_debug.html">
+            
+                
+                    <a href="../Text/1.8_debug.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.8.</b>
+                        
+                        调试 nginx
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="Text/2.html">
+            
+                
+                    <a href="../Text/2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        核心模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="Text/2.1_mainmodule.html">
+            
+                
+                    <a href="../Text/2.1_mainmodule.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Nginx主模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="Text/2.2_events.html">
+            
+                
+                    <a href="../Text/2.2_events.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Nginx事件模块
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="Text/3.html">
+            
+                
+                    <a href="../Text/3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        基本模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="3.1" data-path="Text/3.1_httpcore.html">
+            
+                
+                    <a href="../Text/3.1_httpcore.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        http核心模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="Text/3.2_httpupstream.html">
+            
+                
+                    <a href="../Text/3.2_httpupstream.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        HttpIndex模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="Text/3.3_httpaccess.html">
+            
+                
+                    <a href="../Text/3.3_httpaccess.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        HttpAccess模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="Text/3.4_httpauthbasic.html">
+            
+                
+                    <a href="../Text/3.4_httpauthbasic.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        HttpAuthBasic模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="Text/3.5_httpautoindex.html">
+            
+                
+                    <a href="../Text/3.5_httpautoindex.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        HttpAutoindex模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="Text/3.6_browser.html">
+            
+                
+                    <a href="../Text/3.6_browser.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        Browser模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="Text/3.7_charset.html">
+            
+                
+                    <a href="../Text/3.7_charset.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        Charset模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="Text/3.8_httpemptygif.html">
+            
+                
+                    <a href="../Text/3.8_httpemptygif.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        HttpEmptyGif模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="Text/3.9_httpfcgi.html">
+            
+                
+                    <a href="../Text/3.9_httpfcgi.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.</b>
+                        
+                        HttpFcgi模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="Text/3.10_geo.html">
+            
+                
+                    <a href="../Text/3.10_geo.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.10.</b>
+                        
+                        Geo模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="Text/3.11_httpgzip.html">
+            
+                
+                    <a href="../Text/3.11_httpgzip.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.11.</b>
+                        
+                        HttpGzip模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="Text/3.12_httpheaders.html">
+            
+                
+                    <a href="../Text/3.12_httpheaders.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.12.</b>
+                        
+                        HttpHeaders模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="Text/3.13_httpindex.html">
+            
+                
+                    <a href="../Text/3.13_httpindex.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.13.</b>
+                        
+                        HttpIndex模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="Text/3.14_httpreferer.html">
+            
+                
+                    <a href="../Text/3.14_httpreferer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.14.</b>
+                        
+                        HttpReferer模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="Text/3.15_httplimitzone.html">
+            
+                
+                    <a href="../Text/3.15_httplimitzone.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.15.</b>
+                        
+                        HttpLimit zone
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="Text/3.16_httplimitrequest.html">
+            
+                
+                    <a href="../Text/3.16_httplimitrequest.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.16.</b>
+                        
+                        HttpLimitReqest模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="Text/3.17_httplog.html">
+            
+                
+                    <a href="../Text/3.17_httplog.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.17.</b>
+                        
+                        HttpLog模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="Text/3.18_map.html">
+            
+                
+                    <a href="../Text/3.18_map.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.18.</b>
+                        
+                        map
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="Text/3.19_memcached.html">
+            
+                
+                    <a href="../Text/3.19_memcached.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.19.</b>
+                        
+                        Memcached
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="Text/3.20_httpproxy.html">
+            
+                
+                    <a href="../Text/3.20_httpproxy.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.20.</b>
+                        
+                        HttpProxy模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="Text/3.21_rewrite.html">
+            
+                
+                    <a href="../Text/3.21_rewrite.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.21.</b>
+                        
+                        HttpRewrite模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.22" data-path="Text/3.22_httpssi.html">
+            
+                
+                    <a href="../Text/3.22_httpssi.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.22.</b>
+                        
+                        HttpSSI模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.23" data-path="Text/3.23_userid.html">
+            
+                
+                    <a href="../Text/3.23_userid.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.23.</b>
+                        
+                        HttpUserId
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="Text/4.html">
+            
+                
+                    <a href="../Text/4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        其他模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="Text/4.1_addition.html">
+            
+                
+                    <a href="../Text/4.1_addition.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        Addition模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="Text/4.2_embeddedperl.html">
+            
+                
+                    <a href="../Text/4.2_embeddedperl.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        EmbeddedPerl
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="Text/4.3_flv.html">
+            
+                
+                    <a href="../Text/4.3_flv.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        flv
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="Text/4.4_gzipstatic.html">
+            
+                
+                    <a href="../Text/4.4_gzipstatic.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        HttpGzipStatic
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="Text/4.5_randomindex.html">
+            
+                
+                    <a href="../Text/4.5_randomindex.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        RandomIndex
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="Text/4.6_geoip.html">
+            
+                
+                    <a href="../Text/4.6_geoip.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        HttpGeoIP
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="Text/4.7_realip.html">
+            
+                
+                    <a href="../Text/4.7_realip.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        HttpRealIp
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="Text/4.8_ssl.html">
+            
+                
+                    <a href="../Text/4.8_ssl.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        HttpSSL
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="Text/4.9_stubstatus.html">
+            
+                
+                    <a href="../Text/4.9_stubstatus.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.</b>
+                        
+                        StubStatus模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="Text/4.10_sub.html">
+            
+                
+                    <a href="../Text/4.10_sub.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.</b>
+                        
+                        HttpSubstitution
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="Text/4.11_httpdav.html">
+            
+                
+                    <a href="../Text/4.11_httpdav.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.</b>
+                        
+                        HttpDav模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12" data-path="Text/4.12_googleperftools.html">
+            
+                
+                    <a href="../Text/4.12_googleperftools.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.12.</b>
+                        
+                        GooglePerftools
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.13" data-path="Text/4.13_xslt.html">
+            
+                
+                    <a href="../Text/4.13_xslt.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.13.</b>
+                        
+                        HttpXSLT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.14" data-path="Text/4.14_securelink.html">
+            
+                
+                    <a href="../Text/4.14_securelink.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.14.</b>
+                        
+                        HttpSecureLink
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.15" data-path="Text/4.15_imagefilter.html">
+            
+                
+                    <a href="../Text/4.15_imagefilter.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.15.</b>
+                        
+                        HttpImageFilter
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="Text/5.html">
+            
+                
+                    <a href="../Text/5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        mail模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="Text/5.1_mailcore.html">
+            
+                
+                    <a href="../Text/5.1_mailcore.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        MailCore
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="Text/5.2_mailauth.html">
+            
+                
+                    <a href="../Text/5.2_mailauth.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        MailAuth
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="Text/5.3_mailproxy.html">
+            
+                
+                    <a href="../Text/5.3_mailproxy.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        MailProxy
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="Text/5.4_mailssl.html">
+            
+                
+                    <a href="../Text/5.4_mailssl.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        MailSSL
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="Text/6.html">
+            
+                
+                    <a href="../Text/6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        安装
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="Text/6.1_nginx_windows.html">
+            
+                
+                    <a href="../Text/6.1_nginx_windows.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        nginx在windows上的安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="Text/6.2_nginx_freebsd.html">
+            
+                
+                    <a href="../Text/6.2_nginx_freebsd.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        nginx在freebsd上的安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="Text/6.3_nginx_ubuntu.html">
+            
+                
+                    <a href="../Text/6.3_nginx_ubuntu.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        nginx在ubuntu上的安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="Text/6.4_nginx_fedora.html">
+            
+                
+                    <a href="../Text/6.4_nginx_fedora.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        nginx在fedora上的安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="Text/6.5_nginx_php_fpm.html">
+            
+                
+                    <a href="../Text/6.5_nginx_php_fpm.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        nginx php-fpm安装配置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="Text/7.html">
+            
+                
+                    <a href="../Text/7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        配置示例和方法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="Text/7.1_fullexample.html">
+            
+                
+                    <a href="../Text/7.1_fullexample.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        完整例子
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="Text/7.2_fullexample2.html">
+            
+                
+                    <a href="../Text/7.2_fullexample2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        完整例子2
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="Text/7.3_virtualhost.html">
+            
+                
+                    <a href="../Text/7.3_virtualhost.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        虚拟主机
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="Text/7.4_loadbalance.html">
+            
+                
+                    <a href="../Text/7.4_loadbalance.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        负载均衡
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="Text/7.5_doorchain.html">
+            
+                
+                    <a href="../Text/7.5_doorchain.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        nginx防盗链
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="Text/7.6_checkerrors.html">
+            
+                
+                    <a href="../Text/7.6_checkerrors.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.6.</b>
+                        
+                        HWLoadbalancerCheckErrors
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Nginx 中文官方文档</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h3 id="http&#x6838;&#x5FC3;&#x6A21;&#x5757;">http&#x6838;&#x5FC3;&#x6A21;&#x5757;</h3>
+<h3 id="&#x6307;&#x4EE4;">&#x6307;&#x4EE4;</h3>
+<h3 id="alias">alias</h3>
+<p><strong>syntax:*</strong>alias file-path|directory-path;*</p>
+<p><strong>default:*</strong>no*</p>
+<p><strong>context:*</strong>location*</p>
+<p>This directive assigns a path to be used for the indicated location. Note that it may look similar to the <code>root</code> directive, but the document root doesn&apos;t change, just the file system path used for the request.</p>
+<p>For example:</p>
+<pre><code>location  /i/ {
+ alias   /spool/w3/images/;
+}
+</code></pre><p>The request &quot;/i/top.gif&quot; will return the file &quot;/spool/w3/images/top.gif&quot;.</p>
+<p>It is possible to use variables in the replacement path.</p>
+<p>The <code>alias</code> directive cannot be used inside a regex-specified <code>location</code>. If you need to do this you must use a combination of <code>rewrite</code> and <code>root</code>.</p>
+<h3 id="clientbodyinfileonly">client_body_in_file_only</h3>
+<p><strong>syntax:*</strong>client_body_in_file_only on|off*</p>
+<p><strong>default:*</strong>off*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>The directive enables to store a client request body in a file.</p>
+<p>Please note that the file at the request completion will not be removed if the directive is enabled.</p>
+<p>This directive can be used for debugging and for the <code>$r-&gt;request_body_file</code> method in the Embedded Perl module.</p>
+<h3 id="clientbodyinsinglebuffer">client_body_in_single_buffer</h3>
+<p><strong>syntax:*</strong>client_body_in_single_buffer*</p>
+<p><strong>default:*</strong>off*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>The directive(0.7.58+) specifies whether to keep the whole body in a single client request buffer. The directive is recommended when using the variable $request_body to reduce the operations of copying.</p>
+<h3 id="clientbodybuffersize">client_body_buffer_size</h3>
+<p><strong>syntax:*</strong>client_body_buffer_size the_size*</p>
+<p><strong>default:*</strong>8k/16k*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>The directive specifies the client request body buffer size.</p>
+<p>If the request body is more than the buffer, then the entire request body or some part is written in a temporary file.</p>
+<p>The default size is equal to two pages size, depending on platform it is either 8K or 16K.</p>
+<h3 id="clientbodytemppath">client_body_temp_path</h3>
+<p><strong>syntax:*</strong>client_body_temp_path dir-path [ level1 [ level2 [ level3 ]*</p>
+<p><strong>default:*</strong>client_body_temp*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>The directive assigns the directory for storing the temporary files in it with the body of the request.</p>
+<p>In the <code>dir-path</code> a hierarchy of subdirectories up to three levels are possible.</p>
+<p>For example</p>
+<pre><code>client_body_temp_path /spool/nginx/client_temp 1 2;
+</code></pre><p>The directory structure will be like this:</p>
+<pre><code>/spool/nginx/client_temp/7/45/00000123457
+</code></pre><h3 id="clientbodytimeout">client_body_timeout</h3>
+<p><strong>syntax:*</strong>client_body_timeout time*</p>
+<p><strong>default:*</strong>60*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>Directive sets the read timeout for the request body from client.</p>
+<p>The timeout is set only if a body is not get in one readstep. If after this time the client send nothing, nginx returns error &quot;Request time out&quot; (408).</p>
+<h3 id="clientheaderbuffersize">client_header_buffer_size</h3>
+<p><strong>syntax:*</strong>client_header_buffer_size size*</p>
+<p><strong>default:*</strong>1k*</p>
+<p><strong>context:*</strong>http, server*</p>
+<p>Directive sets the headerbuffer size for the request header from client.</p>
+<p>For the overwhelming majority of requests it is completely sufficient a buffer size of 1K.</p>
+<p>However if a big cookie is in the request-header or the request has come from a wap-client the header can not be placed in 1K, therefore, the request-header or a line of request-header is not located completely in this buffer nginx allocate a bigger buffer, the size of the bigger buffer can be set with the instruction large_client_header_buffers.</p>
+<h3 id="clientheadertimeout">client_header_timeout</h3>
+<p><strong>syntax:*</strong>client_header_timeout time*</p>
+<p><strong>default:*</strong>60*</p>
+<p><strong>context:*</strong>http, server*</p>
+<p>Directive assigns timeout with reading of the title of the request of client.</p>
+<p>The timeout is set only if a header is not get in one readstep. If after this time the client send nothing, nginx returns error &quot;Request time out&quot; (408).</p>
+<h3 id="clientmaxbodysize">client_max_body_size</h3>
+<p><strong>syntax:*</strong>client_max_body_size size*</p>
+<p><strong>default:*</strong>client_max_body_size 1m*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>Directive assigns the maximum accepted body size of client request, indicated by the line <code>Content-Length</code> in the header of request.</p>
+<p>If size is greater the given one, then the client gets the error &quot;Request Entity Too Large&quot; (413).</p>
+<p>It is necessary to keep in mind that the browsers do not know how to correctly show this error.</p>
+<h3 id="defaulttype">default_type</h3>
+<p><strong>syntax:*</strong>default_type MIME-type*</p>
+<p><strong>default:*</strong>default_type text/plain*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>Assigns the default MIME-type to be used for files where the standard MIME map doesn&apos;t specify anything.</p>
+<p>See also types</p>
+<p>Example:</p>
+<pre><code>location = /proxy.pac {
+ default_type application/x-ns-proxy-autoconfig;
+}
+location = /wpad.dat {
+
+  rewrite . /proxy.pac;
+ default_type application/x-ns-proxy-autoconfig;
+}
+</code></pre><h3 id="directio">directio</h3>
+<p><strong>syntax:*</strong>directio [size|off]*</p>
+<p><strong>default:*</strong>directio off*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>The directive enables use of flags O_DIRECT (FreeBSD, Linux), F_NOCACHE (Mac OS X) or directio() function (Solaris) for reading files with size greater than specified. This directive disables use of sendfile for this request. This directive may be useful for big files:</p>
+<pre><code>    directio  4m;
+</code></pre><h3 id="errorpage">error_page</h3>
+<p><strong>syntax:*</strong>error_page code [ code... ] [ = | =answer-code ] uri | @named_location*</p>
+<p><strong>default:*</strong>no*</p>
+<p><strong>context:*</strong>http, server, location, if in location*</p>
+<p>The directive specifies the URI, which will be showed for the errors indicated.</p>
+<p>Example:</p>
+<pre><code>error_page   404          /404.html;
+
+error_page   502 503 504  /50x.html;
+error_page   403          http://example.com/forbidden.html;
+error_page   404          = @fetch;
+</code></pre><p>Furthermore, it is possible to change the code of answer to another, for example:</p>
+<pre><code>error_page 404 =200 /.empty.gif;
+</code></pre><p>If an erroneous answer is processed by the proxied or FastCGI server and this server can return the different answer codes, for example, 200, 302, 401 or 404, then it is possible to hide the code returned:</p>
+<pre><code>error_page   404  =  /404.php;
+</code></pre><p>If you wish to return the error code as-is, OMIT the = from the error_page directive:</p>
+<pre><code>error_page   404  /404.php;
+</code></pre><h3 id="ifmodifiedsince">if_modified_since</h3>
+<p><strong>syntax:*</strong>if_modified_since [off|exact|before]*</p>
+<p><strong>default:*</strong>if_modified_since exact*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>The directive (0.7.24) defines how to compare time of file modification and time in request header &quot;If-Modified-Since&quot;:</p>
+<ul>
+<li>off &#x2014; don&apos;t check &quot;If-Modified-Since&quot; request header (0.7.34);</li>
+<li>exact &#x2014; exact match;</li>
+<li>before &#x2014; file modification time should be less than time in &quot;If-Modified-Since&quot; request header.</li>
+</ul>
+<h3 id="index">index</h3>
+<p><strong>syntax:*</strong>index file [file...]*</p>
+<p><strong>default:*</strong>index index.html*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>Directive determines the file(s) which will be used as the index. It&apos;s possible to use variables in the name of file. The presence of the files is checked in the order of their enumeration. A file with an absolute path can be put at the end. Example using a variable:</p>
+<pre><code>index  index.$geo.html  index.0.html  /index.html;
+</code></pre><p>If you want to automatically generate an index from a directory listing, useautoindex on.</p>
+<h3 id="internal">internal</h3>
+<p><strong>syntax:*</strong>internal*</p>
+<p><strong>default:*</strong>no*</p>
+<p><strong>context:*</strong>location*</p>
+<p><strong>internal</strong> indicates that the matching location can be used only for so called &quot;internal&quot; requests.</p>
+<p>For external requests it will return the error &quot;Not found&quot; (404).</p>
+<p>Internal requests are the following:</p>
+<ul>
+<li>requests redirected by the instruction <strong>error_page</strong></li>
+<li>subrequests created by the command <strong>include virtual</strong> of the &quot;ngx_http_ssi_module&quot; module</li>
+<li>requests changed by the instruction <strong>rewrite</strong> of the &quot;ngx_http_rewrite_module&quot; module</li>
+</ul>
+<p>An example to prevent clients fetching error pages directly:</p>
+<pre><code>error_page 404 /404.html;
+location  /404.html {
+  internal;
+
+}
+</code></pre><p>Nginx 0.7.x introduces a new syntax for internal locations: <code>@location</code></p>
+<p>Example:</p>
+<pre><code>location / {
+    root /var/www/html;
+    error_page 404 @40x;
+
+}
+
+location @40x {
+  root /var/www/errors/40x.html;
+}
+</code></pre><h3 id="keepalivetimeout">keepalive_timeout</h3>
+<p><strong>syntax:*</strong>keepalive_timeout [ time ]*</p>
+<p><strong>default:*</strong>keepalive_timeout 75*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>The first parameter assigns the timeout for keep-alive connections with the client. The server will close connections after this time.</p>
+<p>The optional second parameter assigns the <code>time</code> value in the header <code>Keep-Alive: timeout=time</code> of the response. This header can convince some browsers to close the connection, so that the server does not have to. Without this parameter, nginx does not send a <code>Keep-Alive</code> header (though this is not what makes a connection &quot;keep-alive&quot;).</p>
+<p>The parameters can differ from each other.</p>
+<p>Notes on how browsers handle the <code>Keep-Alive</code> header:</p>
+<ul>
+<li>MSIE and Opera ignore the &quot;Keep-Alive: timeout=<N>&quot; header.</N></li>
+<li>MSIE keeps the connection alive for about 60-65 seconds, then sends a TCP RST.</li>
+<li>Opera keeps the connection alive for a long time.</li>
+<li>Mozilla keeps the connection alive for N plus about 1-10 seconds.</li>
+<li>Konqueror keeps the connection alive for about N seconds.</li>
+</ul>
+<h3 id="keepaliverequests">keepalive_requests</h3>
+<p><strong>syntax:*</strong>keepalive_requests n*</p>
+<p><strong>default:*</strong>keepalive_requests 100*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>Number of requests which can be made over a keep-alive connection.</p>
+<h4 id="largeclientheaderbuffers">large_client_header_buffers</h4>
+<p><strong>syntax:*</strong>large_client_header_buffers number size*</p>
+<p><strong>default:*</strong>large_client_header_buffers 4 4k/8k*</p>
+<p><strong>context:*</strong>http, server*</p>
+<p>Directive assigns the maximum number and size of buffers for large headers to read from client request.</p>
+<p>The request line can not be bigger than the size of one buffer, if the client send a bigger header nginx returns error &quot;Request URI too large&quot; (414).</p>
+<p>The longest header line of request also must be not more than the size of one buffer, otherwise the client get the error &quot;Bad request&quot; (400).</p>
+<p>Buffers are separated only as needed.</p>
+<p>By default the size of one buffer is equal to the size of page, depending on platform this either 4K or 8K, if at the end of working request connection converts to state keep-alive, then these buffers are freed.</p>
+<h3 id="limitexcept">limit_except</h3>
+<p><strong>syntax:*</strong>limit_except methods {...}*</p>
+<p><strong>default:*</strong>no*</p>
+<p><strong>context:*</strong>location*</p>
+<p>Directive limits HTTP-methods, accessible inside location.</p>
+<p>For the limitation can be used the directives of modules ngx_http_access_module and ngx_http_auth_basic_module:</p>
+<pre><code>limit_except  GET {
+  allow  192.168.1.0/32;
+  deny   all;
+
+}
+</code></pre><h3 id="limitrate">limit_rate</h3>
+<p><strong>syntax:*</strong>limit_rate speed*</p>
+<p><strong>default:*</strong>no*</p>
+<p><strong>context:*</strong>http, server, location, if in location*</p>
+<p>Directive assigns the speed of transmission of the answer to client. Speed is assigned in the bytes per second. Limitation works only for one connection, i.e., if client opens 2 connections, then total velocity will be 2 times higher then the limit set.</p>
+<p>If it is necessary to limit speed for the part of the clients at the <em>server</em> level, based on some kind of condition - then this directive does not apply. Instead you should specify the limit by assigning the value to the $limit_rate variable, as shown below:</p>
+<pre><code>server {
+  if ($slow) {
+    set $limit_rate  4k;
+  }
+
+}
+</code></pre><h3 id="limitrateafter">limit_rate_after</h3>
+<p><strong>syntax:*</strong>limit_rate_after time*</p>
+<p><strong>default:*</strong>limit_rate_after 1m*</p>
+<p><strong>context:*</strong>http, server, location, if in location*</p>
+<p>The directive limits speed only after the first part was sent.</p>
+<pre><code>limit_rate_after 1m;
+limit_rate 100k;
+</code></pre><h3 id="listen">listen</h3>
+<p><strong>syntax:*</strong>listen address:port [ default [ backlog=num | rcvbuf=size | sndbuf=size | accept_filter=filter | deferred | bind | ssl ] ]*</p>
+<p><strong>default:*</strong>listen 80*</p>
+<p><strong>context:*</strong>server*</p>
+<p>The <em>listen</em> directive specifies the address and port accepted by the enclosing server {...} block. It is possible to specify only an address, only a port, or a server name as the address.</p>
+<pre><code>listen 127.0.0.1:8000;
+
+listen 127.0.0.1;
+listen 8000;
+listen *:8000;
+listen localhost:8000;
+</code></pre><p>IPv6 address(0.7.36) are set in square brackets:</p>
+<pre><code>listen [::]:8000; 
+listen [fe80::1];
+</code></pre><p>When Linux (in contrast to FreeBSD) binds IPv6 [::], it will also bind the corresponding IPv4 address. If other non IPv6 server definitions already used this, the bind will fail. By using explicit addresses instead of [::] this will not be a problem. It is also possible to specify that this listen directive is only to bind the IPv6 address with use of the &quot;default ipv6only=on&quot; option. Note that this only affect this listen directive, the same <a href="#">server {...}</a> block may very well listen to IPv4 as well, specified by other listen directives.</p>
+<pre><code>listen [2a02:750:5::123]:80;
+listen [::]:80 default ipv6only=on;
+</code></pre><p>If only address is given, the default port is 80.</p>
+<p>If the directive has the <em>default</em> parameter, then the enclosing server {...} block will be the default server for the address:port pair. This is useful for name-based virtual hosting where you wish to specify the default server block for hostnames that do not match any [#server_name server_name] directives. If there are no directives with the <code>default</code> parameter, then the default server will be the first server block in which the <code>address:port</code> pair appears.</p>
+<p>The <code>listen</code> directive accepts several parameters, specific to the system calls <code>listen(2)</code> and <code>bind(2)</code>. These parameters must follow the <code>default</code> parameter.</p>
+<p>backlog=num -- is assigned parameter backlog in call <code>listen(2)</code>. By default backlog equals -1.</p>
+<p>rcvbuf=size -- assigned to the parameter <code>SO_RCVBUF</code> for the listening socket.</p>
+<p>sndbuf=size -- assigned to the parameter <code>SO_SNDBUF</code> for the listening socket.</p>
+<p>accept_filter=filter -- is assigned name accept-filter.</p>
+<p>. It works only to FreeBSD, it is possible to use two filters -- <code>dataready</code> and <code>httpready</code>. On the signal -HUP accept-filter it is possible to change only in the quite last versions FreeBSD: 6.0, 5.4-STABLE and 4.11-STABLE.
+deferred -- indicates to use that postponed accept(2) on Linux with</p>
+<p>. the aid of option <code>TCP_DEFER_ACCEPT</code>.
+bind -- indicates that it is necessary to make <code>bind(2)</code> separately</p>
+<p>. for this pair of address:port. The fact is that if are described several directives listen with the identical port, but by different addresses and one of the directives listen listens to on all addresses for this port (<em>:port), then nginx will make bind(2) only to </em>:port. It is necessary to consider that in this case for determining the address, on which the connections arrive, is done the system call getsockname(). But if are used parameters backlog, rcvbuf, sndbuf, accept_filter or deferred, then it is always done separately for this pair of address:port bind(2).
+ssl -- parameter (0.7.14) not related to listen(2) and bind(2) syscalls</p>
+<p>. but instead specifies that connections accepted on this port should work in SSL mode. This allows to specify compact configurations for servers working with both HTTP and HTTPS. For example:</p>
+<pre><code>listen  80;
+listen  443 default ssl;
+</code></pre><p>Example of the use of the parameters:</p>
+<pre><code>listen  127.0.0.1 default accept_filter=dataready backlog=1024;
+</code></pre><h3 id="location">location</h3>
+<p><strong>syntax:*</strong>location [=|~|~<em>|^~] /uri/ { ... }</em></p>
+<p><strong>default:*</strong>no*</p>
+<p><strong>context:*</strong>server*</p>
+<p>This directive allows different configurations depending on the URI. It can be configured using both literal strings and regular expressions. To use regular expressions, you must use the a prefix:</p>
+<ol>
+<li><code>~*</code> for case insensitive matching</li>
+<li><code>~</code> for case sensitive matching</li>
+</ol>
+<p>To determine which <em>location</em> directive matches a particular query, the literal strings are checked first. Literal strings match the beginning portion of the query and are case-sensitive - the most specific match will be used (see below on how nginx determines this). Afterwards, regular expressions are checked in the order defined in the configuration file. The first regular expression to match the query will stop the search. If no regular expression matches are found, the result from the literal string search is used.</p>
+<p>There are two ways to modify this behavior. The first is to use the prefix &quot;=&quot;, which matches an exact query only. If the query matches, then searching stops and the request is handled immediately. For example, if the request &quot;/&quot; occurs frequently, then using &quot;location = /&quot; will expedite the processing of this request.</p>
+<p>The second is to use the prefix <code>^~</code>. This prefix is used with a literal string and tells nginx to not check regular expressions if the path provided is a match. For instance, &quot;location <code>^~</code> /images/&quot; would halt searching if the query begins with /images/ - all regular expression directives would not be checked.</p>
+<p>To summarize, the order in which directives are checked is as follows:</p>
+<ol>
+<li>Directives with the <code>=</code> prefix that match the query exactly. If found, searching stops.</li>
+<li>All remaining directives with conventional strings. If this match used the <code>^~</code> prefix, searching stops.</li>
+<li>Regular expressions, in the order they are defined in the configuration file.</li>
+<li>If #3 yielded a match, that result is used. Otherwise, the match from #2 is used.</li>
+</ol>
+<p>It is important to know that nginx does the comparison against decoded URIs. For example, if you wish to match &quot;/images/%20/test&quot;, then you must use &quot;/images/ /test&quot; to determine the location.</p>
+<p>Example:</p>
+<pre><code>location  = / {
+
+  # matches the query / only.
+  [ configuration A ] 
+}
+location  / {
+  # matches any query, since all queries begin with /, but regular
+  # expressions and any longer conventional blocks will be
+
+  # matched first.
+  [ configuration B ] 
+}
+location ^~ /images/ {
+  # matches any query beginning with /images/ and halts searching,
+  # so regular expressions will not be checked.
+
+  [ configuration C ] 
+}
+location ~* \.(gif|jpg|jpeg)$ {
+  # matches any request ending in gif, jpg, or jpeg. However, all
+  # requests to the /images/ directory will be handled by
+
+  # Configuration C.   
+  [ configuration D ] 
+}
+</code></pre><p>Example requests:</p>
+<ul>
+<li>/ -&gt; configuration A</li>
+<li>/documents/document.html -&gt; configuration B</li>
+<li>/images/1.gif -&gt; configuration C</li>
+<li>/documents/1.jpg -&gt; configuration D</li>
+</ul>
+<p>Note that you could define these 4 configurations in any order and the results would remain the same. While nested locations are allowed by the configuration file parser, their use is discouraged and may produce unexpected results.</p>
+<h4 id="how-nginx-determines-which-path-matches">How nginx Determines Which Path Matches</h4>
+<p>Most users will not need to know how nginx internally determines which path to use - know that it will choose the &quot;most specific&quot; match for your URI in a speedy and efficient manner. For those that are curious, however, read on.</p>
+<p>All path strings are sorted alphabetically. nginx then proceeds to search down the list looking for matches until the request URI has a &quot;higher&quot; value then the current string in the sorted list. This is determined using the family of <code>strcmp()</code> functions - once <code>strcmp()</code> returns 1, then searching stops. Once searching stops, the last string which matched is used.</p>
+<p>For example, lets say we have the following paths:</p>
+<pre><code>/
+/a
+/apple
+/banana
+</code></pre><p>Now, lets say the server gets the path &quot;/az&quot;. nginx would begin search down this list. First, &quot;/&quot; would match, but &quot;/ is less than &quot;/az&quot; so searching continues. &quot;/a&quot; also matches, but &quot;/a&quot; is still less than &quot;/az&quot; so we continue again. &quot;/apple&quot; does not match. The next string, &quot;/banana&quot;, is greater than &quot;/az&quot; so searching stops and the last match, &quot;/a&quot;, would be used.</p>
+<h4 id="named-locations">Named Locations</h4>
+<p>Later versions of Nginx (&gt;0.7.x) have Named Locations. These are location blocks that start with an @ symbol, and are treated similar to internal locations except that they preserve the original URI on internal redirects for error_page or try_files directives.</p>
+<pre><code>location / {
+
+ try_files @joomla index.html;
+}
+location @joomla {
+  rewrite ^(.*)$ /index.php?q=$1 last;
+
+}
+</code></pre><h3 id="lognotfound">log_not_found</h3>
+<p><strong>syntax:*</strong>log_not_found [on|off]*</p>
+<p><strong>default:*</strong>log_not_found on*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>The directive enables or disables messages in error_log about files not found on disk.</p>
+<h3 id="logsubrequest">log_subrequest</h3>
+<p><strong>syntax:*</strong>log_subrequest [on|off]*</p>
+<p><strong>default:*</strong>log_subrequest off*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>The directive enables or disables messages in access_log about sub-requests such as rewrite rules and/or SSI requests.</p>
+<h3 id="msiepadding">msie_padding</h3>
+<p><strong>syntax:*</strong>msie_padding [on|off]*</p>
+<p><strong>default:*</strong>msie_padding on*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>This directive enables or disables the the msie_padding feature for MSIE browsers. When this is enabled, nginx will pad the size of the response body to a minimum of 512 bytes, for responses with a status code above or equal to 400.</p>
+<p>The padding prevents the activation of &quot;friendly&quot; HTTP error pages in MSIE, so as to not hide the more-informative error pages from the server.</p>
+<p>Note that Chromium/Chrome have &quot;friendly&quot; HTTP error pages as well, but this feature will not send them the padding.</p>
+<h3 id="msierefresh">msie_refresh</h3>
+<p><strong>syntax:*</strong>msie_refresh [on|off]*</p>
+<p><strong>default:*</strong>msie_refresh off*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>This directive allows or forbids issuing a <code>refresh</code> instead of doing a <code>redirect</code> for MSIE.</p>
+<h3 id="openfilecache">open_file_cache</h3>
+<p><strong>syntax:*</strong>open_file_cache max = N [inactive = time] | off*</p>
+<p><strong>default:*</strong>open_file_cache off*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>The directive sets the cache activity on. These information can be stored:</p>
+<ul>
+<li>Open file descriptors, information with their size and modification time;</li>
+<li>Information about the existence of directories;</li>
+<li>Error information when searches for a file - no file, do not have rights to read, etc. See also open_file_cache_errors</li>
+</ul>
+<p>Options directive:</p>
+<ul>
+<li><code>max</code> - specifies the maximum number of entries in the cache. When the cache overflows, the longest-used items(LRU) will be removed;</li>
+<li><code>inactive</code> - specifies the time when the cached item is removed, if it has not been downloaded during that time, the default is 60 seconds;</li>
+<li><code>off</code> - prohibits the cache activity.</li>
+</ul>
+<p>Example:</p>
+<pre><code> open_file_cache max=1000 inactive=20s; 
+ open_file_cache_valid    30s; 
+ open_file_cache_min_uses 2;
+ open_file_cache_errors   on;
+</code></pre><h3 id="openfilecacheerrors">open_file_cache_errors</h3>
+<p><strong>syntax:*</strong>open_file_cache_errors on | off*</p>
+<p><strong>default:*</strong>open_file_cache_errors off*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>The directive specifies to cache errors or not when searching a file.</p>
+<h3 id="openfilecacheminuses">open_file_cache_min_uses</h3>
+<p><strong>syntax:*</strong>open_file_cache_min_uses number*</p>
+<p><strong>default:*</strong>open_file_cache_min_uses 1*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>The directive defines the minimum use number of a file within the time specified in the directive parameter inactive in open_file_cache. ?If use more than the number, the file descriptor will remain open in the cache.</p>
+<h3 id="openfilecachevalid">open_file_cache_valid</h3>
+<p><strong>syntax:*</strong>open_file_cache_valid time*</p>
+<p><strong>default:*</strong>open_file_cache_valid 60*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>The directive specifies the time when need to check the validity of the information about the item in open_file_cache.</p>
+<h3 id="optimizeservernames">optimize_server_names</h3>
+<p><strong>syntax:*</strong>optimize_server_names [ on|off ]*</p>
+<p><strong>default:*</strong>optimize_server_names on*</p>
+<p><strong>context:*</strong>http, server*</p>
+<p>Directive activates or deactivates optimization of host name checks for name-based virtual servers.</p>
+<p>In particular, the check influences the name of the host used in redirects. If optimization is on, and all name-based servers listening on one address:port pair have identical configuration, then names are not checked during request execution and redirects use first server name.</p>
+<p>If redirect must use host name passed by the client, then the optimization must be turned off.</p>
+<p>Note: this directive is deprecated in nginx 0.7.x, use server_name_in_redirect instead.</p>
+<h3 id="portinredirect">port_in_redirect</h3>
+<p><strong>syntax:*</strong>port_in_redirect [ on|off ]*</p>
+<p><strong>default:*</strong>port_in_redirect on*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>Directive allows or prevents port indication in redirects handled by nginx.</p>
+<p>If <code>port_in_redirect</code> is on, then Nginx will not add the port in the url when the request is redirected.</p>
+<h3 id="recursiveerrorpages">recursive_error_pages</h3>
+<p><strong>syntax:*</strong>recursive_error_pages [on|off]*</p>
+<p><strong>default:*</strong>recursive_error_pages off*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p><code>recursive_error_pages</code> enables or disables following a chain of <code>error_page</code> directives.</p>
+<h3 id="resolver">resolver</h3>
+<p><strong>syntax:*</strong>resolver address*</p>
+<p><strong>default:*</strong>no*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>TODO: Description</p>
+<h3 id="resolvertimeout">resolver_timeout</h3>
+<p><strong>syntax:*</strong>resolver_timeout time*</p>
+<p><strong>default:*</strong>30*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>Resolver timeout in seconds.</p>
+<h3 id="root">root</h3>
+<p><strong>syntax:*</strong>root path*</p>
+<p><strong>default:*</strong>root html*</p>
+<p><strong>context:*</strong>http, server, location, if in location*</p>
+<p><strong>root</strong> specifies the document root for the requests. For example, with this configuration</p>
+<pre><code>location  /i/ {
+ root  /spool/w3;
+}
+</code></pre><p>A request for &quot;/i/top.gif&quot; will return the file &quot;/spool/w3/i/top.gif&quot;. You can use variables in the argument.</p>
+<p><strong>note:</strong> Keep in mind that the root will still append the directory to the request so that a request for &quot;/i/top.gif&quot; will not look in &quot;/spool/w3/top.gif&quot; like might happen in an Apache-like alias configuration where the location match itself is dropped. Use the <code>alias</code> directive to achieve the Apache-like functionality.</p>
+<h3 id="satisfyany">satisfy_any</h3>
+<p><strong>syntax:*</strong>satisfy_any [ on|off ]*</p>
+<p><strong>default:*</strong>satisfy_any off*</p>
+<p><strong>context:*</strong>location*</p>
+<p>Directive solves access with at least one successful checking, executed by modules NginxHttpAccessModule orNginxHttpAuthBasicModule:</p>
+<pre><code>location  / {
+ satisfy_any  on;
+  allow  192.168.1.0/32;
+  deny   all;
+  auth_basic            &quot;closed site&quot;;
+  auth_basic_user_file  conf/htpasswd;
+
+}
+</code></pre><h3 id="sendtimeout">send_timeout</h3>
+<p><strong>syntax:*</strong>send_timeout the time*</p>
+<p><strong>default:*</strong>send_timeout 60*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>Directive assigns response timeout to client. Timeout is established not on entire transfer of answer, but only between two operations of reading, if after this time client will take nothing, then nginx is shutting down the connection.</p>
+<h3 id="sendfile">sendfile</h3>
+<p><strong>syntax:*</strong>sendfile [ on|off ]*</p>
+<p><strong>default:*</strong>sendfile off*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>Directive activate or deactivate the usage of <code>sendfile()</code>.</p>
+<h3 id="server">server</h3>
+<p><strong>syntax:*</strong>server {...}*</p>
+<p><strong>default:*</strong>no*</p>
+<p><strong>context:*</strong>http*</p>
+<p>Directive assigns configuration for the virtual server.</p>
+<p>There is no separation of IP and name-based (the <code>Host</code> header of the request) servers.</p>
+<p>Instead, the directive <code>listen</code> is used to describe all addresses and ports on which incoming connections can occur, and in directive <code>server_name</code> indicate all names of the server.</p>
+<h3 id="servername">server_name</h3>
+<p><strong>syntax:*</strong>server_name name [... ]*</p>
+<p><strong>default:*</strong>server_name hostname*</p>
+<p><strong>context:*</strong>server*</p>
+<p>This directive performs two actions:</p>
+<ul>
+<li><p>Compares the <code>Host</code> header of the incoming HTTP request against the server { ... } blocks in the Nginx configuration files and selects the first one that matches. This is how <strong>virtual servers</strong> are defined. Server names are processed in the following order:</p>
+</li>
+<li><p>full, static names</p>
+</li>
+<li>names with a wildcard at the start of the name &#x2014; *.example.com</li>
+<li>names with a wildcard at the end of the name &#x2014; www.example.*</li>
+<li>names with regular expressions</li>
+</ul>
+<p>If there is no match, a [#server server { ... }] block in the configuration file will be used based on the following order:</p>
+<ol>
+<li>the server block with a matching <code>listen</code> directive marked as <code>default</code></li>
+<li><p>the first server block with a matching <code>listen</code> directive (or implicit <code>listen 80;</code>)</p>
+</li>
+<li><p>Sets the server name that will be used in HTTP redirects if server_name_in_redirect is set.</p>
+</li>
+</ol>
+<p>Example:</p>
+<pre><code>server {
+
+ server_name   example.com  www.example.com;
+}
+</code></pre><p>The first name becomes the basic name of server. By default the name of the machine (hostname) is used.</p>
+<p>It is possible to use &quot;*&quot; for replacing the first or the last part of the name:</p>
+<pre><code>server {
+ server_name   example.com  *.example.com  www.example.*;
+}
+</code></pre><p>Two of the above given names can be combined into one:</p>
+<pre><code>server {
+ server_name  .example.com;
+}
+</code></pre><p>It is also possible to use regular expressions in server names, prepending the name with a tilde &quot;~&quot; like so:</p>
+<pre><code>server {
+ server_name   www.example.com   ~^www\d+\.example\.com$;
+
+}
+</code></pre><p> The basic name of server is used in an HTTP redirects, if no <code>Host</code> header was in client request or that header does not match any assigned server<em>name. You can also use just &quot;<em>&quot; to force Nginx to use the <code>Host</code> header in the HTTP redirect (note that &quot;</em>&quot; cannot be used as the first name, but you can use a dummy name such as &quot;</em>&quot; instead):</p>
+<pre><code>server {
+ server_name example.com *;
+
+}
+server {
+ server_name  _ *;
+}
+</code></pre><p>Note that this has changed in 0.6.x and is now:</p>
+<pre><code>server {
+ server_name _;
+
+}
+</code></pre><p>Since nginx 0.7.12, an empty server name is supported, to catch the requests without &quot;Host&quot; header:</p>
+<pre><code>server {
+server_name &quot;&quot;;
+}
+</code></pre><h3 id="servernameinredirect">server_name_in_redirect</h3>
+<p><strong>syntax:*</strong>server_name_in_redirect on|off*</p>
+<p><strong>default:*</strong>server_name_in_redirect on*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>If <code>server_name_in_redirect</code> is on, then Nginx will use the first value of the server_name directive for redirects. If <code>server_name_in_redirect</code> is off, then nginx will use the requested <code>Host</code> header.</p>
+<h3 id="servernameshashmaxsize">server_names_hash_max_size</h3>
+<p><strong>syntax:*</strong>server_names_hash_max_size number*</p>
+<p><strong>default:*</strong>server_names_hash_max_size 512*</p>
+<p><strong>context:*</strong>http*</p>
+<p>The maximum size of the server name hash tables. For more detail see the description of tuning the hash tables in Nginx Optimizations.</p>
+<h3 id="servernameshashbucketsize">server_names_hash_bucket_size</h3>
+<p><strong>syntax:*</strong>server_names_hash_bucket_size number*</p>
+<p><strong>default:*</strong>server_names_hash_bucket_size 32/64/128*</p>
+<p><strong>context:*</strong>http*</p>
+<p>Directive assigns the size of basket in the hash-tables of the names of servers. This value by default depends on the size of the line of processor cache. For more detail see the description of tuning the hash tables in Nginx Optimizations.</p>
+<h3 id="servertokens">server_tokens</h3>
+<p><strong>syntax:*</strong>server_tokens on|off*</p>
+<p><strong>default:*</strong>server_tokens on*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>Whether to send the Nginx version number in error pages and <code>Server</code> header.</p>
+<h3 id="tcpnodelay">tcp_nodelay</h3>
+<p><strong>syntax:*</strong>tcp_nodelay [on|off]*</p>
+<p><strong>default:*</strong>tcp_nodelay on*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>This directive allows or forbids the use of the socket option <code>TCP_NODELAY</code>. Only included in <code>keep-alive</code> connections.</p>
+<p>You can read more about the <code>TCP_NODELAY</code> socket option here.</p>
+<h3 id="tcpnopush">tcp_nopush</h3>
+<p><strong>syntax:*</strong>tcp_nopush [on|off]*</p>
+<p><strong>default:*</strong>tcp_nopush off*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>This directive permits or forbids the use of the socket options <code>TCP_NOPUSH</code> on FreeBSD or <code>TCP_CORK</code> on Linux. This option is only available when using <code>sendfile</code>.</p>
+<p>Setting this option causes nginx to attempt to send it&apos;s HTTP response headers in one packet on Linux and FreeBSD 4.xReadMoreAboutTcpNopush</p>
+<h3 id="tryfiles">try_files</h3>
+<p><strong>syntax:*</strong>try_files file1 [file2 ... filen] fallback*</p>
+<p><strong>default:*</strong>none*</p>
+<p><strong>context:*</strong>location*</p>
+<p>This directive tells Nginx to test for each file&apos;s existence, and use the first found file as the URI. If none of the files are found, then the location <code>fallback</code> is called (&quot;fallback&quot; can be any name). <code>fallback</code> is a required parameter. It can be a named location or any <em>guaranteed</em> URI.</p>
+<p>Example:</p>
+<pre><code>location / {
+
+  try_files index.html index.htm @fallback;
+}
+
+location @fallback {
+ root  /var/www/error;
+ index index.html;
+
+}
+</code></pre><h3 id="types">types</h3>
+<p><strong>syntax:*</strong>types {...}*</p>
+<p><strong>context:*</strong>http, server, location*</p>
+<p>Directive assigns the correspondence of expansion and MIME-types of answers. To one MIME- type can correspond several expansions. By default it is used these correspondences:</p>
+<pre><code> types  {
+
+  text/html    html;
+  image/gif    gif;
+  image/jpeg   jpg;
+}
+</code></pre><p>The sufficiently complete table of mappings is included and is located in the file <code>conf/mime.types</code>.</p>
+<p>So that for that determined location&apos;s for all answers would reveal MIME- type <code>application/octet-stream</code>, it is possible to use the following:</p>
+<pre><code>location /download/ {
+types          { }
+
+ default_type  application/octet-stream;
+}
+</code></pre><h4 id="&#x53D8;&#x91CF;">&#x53D8;&#x91CF;</h4>
+<p>The core module supports built-in variables, whose names correspond with the names of variables in Apache.</p>
+<p>First of all, there are the variables, which represent the lines of the title of the client request, for example, <code>$http_user_agent</code>, <code>$http_cookie</code>, and so forth.</p>
+<p>Furthermore, there are other variables:</p>
+<h3 id="argparameter">$arg_PARAMETER</h3>
+<p>This variable contains the value of the <code>GET</code> request variable <em>PARAMETER</em> if present in the query string</p>
+<h3 id="args">$args</h3>
+<p>This variable is equal to arguments in the line of request;</p>
+<h3 id="binaryremoteaddr">$binary_remote_addr</h3>
+<p>The address of the client in binary form;</p>
+<h3 id="bodybytessent">$body_bytes_sent</h3>
+<p>(undocumented)</p>
+<h3 id="contentlength">$content_length</h3>
+<p>This variable is equal to line <code>Content-Length</code> in the header of request;</p>
+<h3 id="contenttype">$content_type</h3>
+<p>This variable is equal to line <code>Content-Type</code> in the header of request;</p>
+<h3 id="cookiecookie">$cookie_COOKIE</h3>
+<p>The value of the cookie <em>COOKIE</em>;</p>
+<h3 id="documentroot">$document_root</h3>
+<p>This variable is equal to the value of directive root for the current request;</p>
+<h3 id="documenturi">$document_uri</h3>
+<p>The same as $uri.</p>
+<h3 id="host">$host</h3>
+<p>This variable is equal to line <code>Host</code> in the header of request or name of the server processing the request if the <code>Host</code> header is not available.</p>
+<h3 id="httpheader">$http_HEADER</h3>
+<p>The value of the HTTP header <em>HEADER</em> when converted to lowercase and with &apos;dashes&apos; converted to &apos;underscores&apos;, e.g. $http_user_agent, $http_referer...;</p>
+<h3 id="isargs">$is_args</h3>
+<p>Evaluates to &quot;?&quot; if $args is set, &quot;&quot; otherwise.</p>
+<h3 id="limitrate">$limit_rate</h3>
+<p>This variable allows limiting the connection rate.</p>
+<h3 id="querystring">$query_string</h3>
+<p>The same as $args.</p>
+<h3 id="remoteaddr">$remote_addr</h3>
+<p>The address of the client.</p>
+<h3 id="remoteport">$remote_port</h3>
+<p>The port of the client;</p>
+<h3 id="remoteuser">$remote_user</h3>
+<p>This variable is equal to the name of user, authenticated by the Auth Basic Module;</p>
+<h3 id="requestfilename">$request_filename</h3>
+<p>This variable is equal to path to the file for the current request, formed from directives root or alias and URI request;</p>
+<h3 id="requestbody">$request_body</h3>
+<p>This variable(0.7.58+) contains the body of the request. The significance of this variable appears in locations with directives proxy_pass or fastcgi_pass.</p>
+<h3 id="requestbodyfile">$request_body_file</h3>
+<p>Client request body temporary filename;</p>
+<h3 id="requestcompletion">$request_completion</h3>
+<p>(undocumented)</p>
+<h3 id="requestmethod">$request_method</h3>
+<p>This variable is equal to the method of request, usually <code>GET</code> or <code>POST</code>.</p>
+<h3 id="requesturi">$request_uri</h3>
+<p>This variable is equal to the complete initial URI together with the arguments;</p>
+<h3 id="scheme">$scheme</h3>
+<p>The HTTP scheme (i.e. http, https). Evaluated only on demand, for example:</p>
+<pre><code>rewrite  ^(.+)$  $scheme://example.com$1  redirect;
+</code></pre><h3 id="serveraddr">$server_addr</h3>
+<p>Equal to the server address. As a rule, for obtaining the value of this variable is done one system call. In order to avoid system call, it is necessary to indicate addresses in directives listen and to use parameter <code>bind</code>.</p>
+<h3 id="servername">$server_name</h3>
+<p>The name of the server.</p>
+<h3 id="serverport">$server_port</h3>
+<p>This variable is equal to the port of the server, to which the request arrived;</p>
+<h3 id="serverprotocol">$server_protocol</h3>
+<p>This variable is equal to the protocol of request, usually this <code>HTTP/1.0</code> or <code>HTTP/1.1</code>.</p>
+<h3 id="uri">$uri</h3>
+<p>This variable is equal to current URI in the request, it can differ from initial, for example by internal redirects, or with the use of <a href="#">index</a> it is file with internal redirects.</p>
+<h3 id="references">References</h3>
+<p><a href="http://sysoev.ru/nginx/docs/http/ngx_http_core_module.html" title="http://sysoev.ru/nginx/docs/http/ngx_http_core_module.html" target="_blank">Original Documentation</a></p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../Text/3.html" class="navigation navigation-prev " aria-label="Previous page: 基本模块"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../Text/3.2_httpupstream.html" class="navigation navigation-next " aria-label="Next page: HttpIndex模块"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

@@ -1,0 +1,1269 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>设计自己的Trait编辑器 | 用 Python 做科学计算</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./16-0.html" />
+    
+    
+    <link rel="prev" href="./14.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="13.3"
+        data-chapter-title="设计自己的Trait编辑器"
+        data-filepath="15.md"
+        data-basepath="."
+        data-revision="Sat Mar 19 2016 09:26:33 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/hyry-studio-scipy" target="blank" class="custom-link">用 Python 做科学计算</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="0.html">
+            
+                
+                    <a href="./0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        用Python做科学计算
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="1.html">
+            
+                
+                    <a href="./1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        软件包的安装和介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        NumPy-快速处理数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        SciPy-数值计算库
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        matplotlib-绘制精美的图表
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Traits-为Python添加类型定义
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        TraitsUI-轻松制作用户界面
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        Chaco-交互式图表
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="8.html">
+            
+                
+                    <a href="./8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        TVTK-三维可视化数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="9.html">
+            
+                
+                    <a href="./9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        Mayavi-更方便的可视化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="10.html">
+            
+                
+                    <a href="./10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        Visual-制作3D演示动画
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="11.html">
+            
+                
+                    <a href="./11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        OpenCV-图像处理和计算机视觉
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="12.html">
+            
+                
+                    <a href="./12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        Traits使用手册
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1" data-path="13.html">
+            
+                
+                    <a href="./13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        定义Traits
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="14.html">
+            
+                
+                    <a href="./14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        Trait事件处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="13.3" data-path="15.html">
+            
+                
+                    <a href="./15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        设计自己的Trait编辑器
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="16-0.html">
+            
+                
+                    <a href="./16-0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        Visual使用手册
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1" data-path="16.html">
+            
+                
+                    <a href="./16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.1.</b>
+                        
+                        场景窗口
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="17.html">
+            
+                
+                    <a href="./17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        声音的输入输出
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="18.html">
+            
+                
+                    <a href="./18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        数字信号系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="19.html">
+            
+                
+                    <a href="./19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        FFT演示程序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18" data-path="20.html">
+            
+                
+                    <a href="./20.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.</b>
+                        
+                        频域信号处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19" data-path="21.html">
+            
+                
+                    <a href="./21.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.</b>
+                        
+                        Ctypes和NumPy
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20" data-path="22.html">
+            
+                
+                    <a href="./22.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.</b>
+                        
+                        自适应滤波器和NLMS模拟
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21" data-path="23.html">
+            
+                
+                    <a href="./23.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.</b>
+                        
+                        单摆和双摆模拟
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22" data-path="24.html">
+            
+                
+                    <a href="./24.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.</b>
+                        
+                        分形与混沌
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="23" data-path="25.html">
+            
+                
+                    <a href="./25.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.</b>
+                        
+                        关于本书的编写
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24" data-path="25-1.html">
+            
+                
+                    <a href="./25-1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.</b>
+                        
+                        最近更新
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25" data-path="26-0.html">
+            
+                
+                    <a href="./26-0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.</b>
+                        
+                        源程序集
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="25.1" data-path="26-01.html">
+            
+                
+                    <a href="./26-01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.1.</b>
+                        
+                        三角波的FFT演示
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.2" data-path="26.html">
+            
+                
+                    <a href="./26.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.2.</b>
+                        
+                        在traitsUI中使用的matplotlib控件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.3" data-path="27.html">
+            
+                
+                    <a href="./27.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.3.</b>
+                        
+                        CSV文件数据图形化工具
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.4" data-path="28.html">
+            
+                
+                    <a href="./28.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.4.</b>
+                        
+                        NLMS算法的模拟测试
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.5" data-path="29.html">
+            
+                
+                    <a href="./29.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.5.</b>
+                        
+                        三维标量场观察器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.6" data-path="30.html">
+            
+                
+                    <a href="./30.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.6.</b>
+                        
+                        频谱泄漏和hann窗
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.7" data-path="31.html">
+            
+                
+                    <a href="./31.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.7.</b>
+                        
+                        FFT卷积的速度比较
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.8" data-path="32.html">
+            
+                
+                    <a href="./32.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.8.</b>
+                        
+                        二次均衡器设计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.9" data-path="33.html">
+            
+                
+                    <a href="./33.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.9.</b>
+                        
+                        单摆摆动周期的计算
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.10" data-path="34.html">
+            
+                
+                    <a href="./34.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.10.</b>
+                        
+                        双摆系统的动画模拟
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.11" data-path="35.html">
+            
+                
+                    <a href="./35.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.11.</b>
+                        
+                        绘制Mandelbrot集合
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.12" data-path="36.html">
+            
+                
+                    <a href="./36.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.12.</b>
+                        
+                        迭代函数系统的分形
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.13" data-path="37.html">
+            
+                
+                    <a href="./37.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.13.</b>
+                        
+                        绘制L-System的分形图
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >用 Python 做科学计算</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x8BBE;&#x8BA1;&#x81EA;&#x5DF1;&#x7684;trait&#x7F16;&#x8F91;&#x5668;">&#x8BBE;&#x8BA1;&#x81EA;&#x5DF1;&#x7684;Trait&#x7F16;&#x8F91;&#x5668;</h1>
+<p>&#x5728;&#x524D;&#x9762;&#x7684;&#x7AE0;&#x8282;&#x4E2D;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x6BCF;&#x79CD;trait&#x5C5E;&#x6027;&#x90FD;&#x5BF9;&#x5E94;&#x6709;&#x7F3A;&#x7701;&#x7684;trait&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x5982;&#x679C;&#x5728;View&#x4E2D;&#x4E0D;&#x6307;&#x5B9A;&#x7F16;&#x8F91;&#x5668;&#x7684;&#x8BDD;&#xFF0C;&#x5C06;&#x4F7F;&#x7528;&#x7F3A;&#x7701;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x6784;&#x6210;&#x754C;&#x9762;&#x3002;&#x6BCF;&#x4E2A;&#x7F16;&#x8F91;&#x5668;&#x90FD;&#x53EF;&#x4EE5;&#x5BF9;&#x5E94;&#x6709;&#x591A;&#x4E2A;&#x540E;&#x53F0;&#xFF0C;&#x76EE;&#x524D;&#x652F;&#x6301;&#x7684;&#x540E;&#x53F0;&#x754C;&#x9762;&#x5E93;&#x6709;pyQt&#x548C;wxPython&#x3002;&#x6BCF;&#x79CD;&#x7F16;&#x8F91;&#x5668;&#x90FD;&#x53EF;&#x4EE5;&#x6709;&#x56DB;&#x79CD;&#x6837;&#x5F0F;&#xFF1A;simple, custom, text, readonly&#x3002;</p>
+<p>traitsUI&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x4E30;&#x5BCC;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x5E93;&#xFF0C;&#x4EE5;&#x81F3;&#x4E8E;&#x6211;&#x4EEC;&#x5F88;&#x5C11;&#x6709;&#x81EA;&#x5DF1;&#x8BBE;&#x8BA1;&#x7F16;&#x8F91;&#x5668;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x7136;&#x800C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x80FD;&#x65B9;&#x4FBF;&#x5730;&#x8BBE;&#x8BA1;&#x81EA;&#x5DF1;&#x7684;&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x5C06;&#x80FD;&#x5236;&#x4F5C;&#x51FA;&#x66F4;&#x52A0;&#x4E13;&#x4E1A;&#x7684;&#x7A0B;&#x5E8F;&#x754C;&#x9762;&#x3002;</p>
+<p>&#x672C;&#x7AE0;&#x8282;&#x5C06;&#x7B80;&#x8981;&#x4ECB;&#x7ECD;trait&#x7F16;&#x8F91;&#x5668;&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#xFF1B;&#x5E76;&#x4E14;&#x5236;&#x4F5C;&#x4E00;&#x4E2A;&#x65B0;&#x7684;trait&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x7528;&#x4EE5;&#x663E;&#x793A;matplotlib&#x63D0;&#x4F9B;&#x7684;&#x7ED8;&#x56FE;&#x63A7;&#x4EF6;&#xFF1B;&#x7136;&#x540E;&#x4EE5;&#x6B64;&#x63A7;&#x4EF6;&#x5236;&#x4F5C;&#x4E00;&#x4E2A;&#x901A;&#x7528;&#x7684;&#x7ED8;&#x5236;CSV&#x6587;&#x4EF6;&#x6570;&#x636E;&#x56FE;&#x50CF;&#x7684;&#x5C0F;&#x5DE5;&#x5177;&#x3002;</p>
+<h2 id="trait&#x7F16;&#x8F91;&#x5668;&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;">Trait&#x7F16;&#x8F91;&#x5668;&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h2>
+<p>&#x6211;&#x4EEC;&#x5148;&#x6765;&#x770B;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x5C0F;&#x7A0B;&#x5E8F;&#xFF0C;&#x5B83;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;TestStrEditor&#x7C7B;&#xFF0C;&#x5176;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;test&#x7684;trait&#x5C5E;&#x6027;&#xFF0C;&#x5176;&#x7C7B;&#x578B;&#x4E3A;Str&#xFF0C;&#x5728;view&#x4E2D;&#x7528;Item&#x5B9A;&#x4E49;&#x8981;&#x5728;&#x754C;&#x9762;&#x4E2D;&#x663E;&#x793A;test&#x5C5E;&#x6027;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x5B83;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x7F16;&#x8F91;&#x5668;(&#x901A;&#x8FC7;editor&#x53C2;&#x6570;)&#x3002;&#x5F53;&#x6267;&#x884C;t.configure_traits()&#x65F6;&#xFF0C;traits&#x5E93;&#x5C06;&#x81EA;&#x52A8;&#x4E3A;&#x6211;&#x4EEC;&#x6311;&#x9009;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x6846;&#x63A7;&#x4EF6;&#x4F5C;&#x4E3A;test&#x5C5E;&#x6027;&#x7684;&#x7F16;&#x8F91;&#x5668;&#xFF1A;</p>
+<pre><code>from enthought.traits.api import *
+from enthought.traits.ui.api import *
+
+class TestStrEditor(HasTraits):
+    test = Str
+    view = View(Item(&quot;test&quot;))
+
+t = TestStrEditor()
+t.configure_traits()
+</code></pre><p><img src="img/traitsui_manual_01.png" alt=""></p>
+<p>&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x6846;&#x63A7;&#x4EF6;&#x7F16;&#x8F91;test&#x5C5E;&#x6027;</p>
+<p>Traits&#x5E93;&#x7684;&#x8DEF;&#x5F84;</p>
+<p>&#x4E0B;&#x9762;&#x7684;&#x4ECB;&#x7ECD;&#x9700;&#x8981;&#x67E5;&#x770B;traits&#x5E93;&#x7684;&#x6E90;&#x7A0B;&#x5E8F;&#xFF0C;&#x56E0;&#x6B64;&#x9996;&#x5148;&#x4F60;&#x9700;&#x8981;&#x77E5;&#x9053;&#x5B83;&#x4EEC;&#x5728;&#x54EA;&#x91CC;&#xFF1A;</p>
+<p><strong>traits</strong>: site-packages\Traits-3.2.0-py2.6-win32.egg\enthought\traits, &#x4EE5;&#x4E0B;&#x7B80;&#x79F0; %traits%</p>
+<p><strong>traitsUI</strong>: site-packages\Traits-3.2.0-py2.6-win32.egg\enthought\traits\UI, &#x4EE5;&#x4E0B;&#x7B80;&#x79F0; %ui%</p>
+<p><strong>wx&#x540E;&#x53F0;&#x754C;&#x9762;&#x5E93;</strong>: site-packages\TraitsBackendWX-3.2.0-py2.6.egg\enthought\traitsui\wx, &#x4EE5;&#x4E0B;&#x7B80;&#x79F0; %wx%</p>
+<p>Str&#x5BF9;&#x8C61;&#x7684;&#x7F3A;&#x7701;&#x7F16;&#x8F91;&#x5668;&#x901A;&#x8FC7;&#x5176;create_editor&#x65B9;&#x6CD5;&#x83B7;&#x5F97;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; from enthought.traits.api import *
+&gt;&gt;&gt; s = Str()
+&gt;&gt;&gt; ed = s.create_editor()
+&gt;&gt;&gt; type(ed)
+&lt;class &apos;enthought.traits.ui.editors.text_editor.ToolkitEditorFactory&apos;&gt;
+&gt;&gt;&gt; ed.get()
+{&apos;auto_set&apos;: True,
+ &apos;custom_editor_class&apos;: &lt;class &apos;enthought.traits.ui.wx.text_editor.CustomEditor&apos;&gt;,
+ &apos;enabled&apos;: True,
+ &apos;enter_set&apos;: False,
+ &apos;evaluate&apos;: &lt;enthought.traits.ui.editors.text_editor._Identity object at 0x0427F1B0&gt;,
+ &apos;evaluate_name&apos;: &apos;&apos;,
+ &apos;format_func&apos;: None,
+ &apos;format_str&apos;: &apos;&apos;,
+ &apos;invalid&apos;: &apos;&apos;,
+ &apos;is_grid_cell&apos;: False,
+ &apos;mapping&apos;: {},
+ &apos;multi_line&apos;: True,
+ &apos;password&apos;: False,
+ &apos;readonly_editor_class&apos;: &lt;class &apos;enthought.traits.ui.wx.text_editor.ReadonlyEditor&apos;&gt;,
+ &apos;simple_editor_class&apos;: &lt;class &apos;enthought.traits.ui.wx.text_editor.SimpleEditor&apos;&gt;,
+ &apos;text_editor_class&apos;: &lt;class &apos;enthought.traits.ui.wx.text_editor.SimpleEditor&apos;&gt;,
+ &apos;view&apos;: None}
+</code></pre><p>create_editor&#x65B9;&#x6CD5;&#x7684;&#x6E90;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x5728;%traits%trait_types.py&#x4E2D;&#x7684;BaseStr&#x7C7B;&#x7684;&#x5B9A;&#x4E49;&#x4E2D;&#x627E;&#x5230;&#x3002;create_editor&#x65B9;&#x6CD5;&#x5F97;&#x5230;&#x7684;&#x662F;&#x4E00;&#x4E2A;text_editor.ToolkitEditorFactory&#x7C7B;&#xFF1A;</p>
+<pre><code>enthought.traits.ui.editors.text_editor.ToolkitEditorFactory
+</code></pre><p>&#x5728;%ui%editorstext_editor.py&#x4E2D;&#x4F60;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x5B83;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x5B83;&#x7EE7;&#x627F;&#x4E8E;EditorFactory&#x7C7B;&#x3002;EditorFactory&#x7C7B;&#x7684;&#x4EE3;&#x7801;&#x5728;%ui%editor_factory.py&#x4E2D;&#x3002;EditorFactory&#x7C7B;&#x662F;Traits&#x7F16;&#x8F91;&#x5668;&#x7684;&#x6838;&#x5FC3;&#xFF0C;&#x901A;&#x8FC7;&#x5B83;&#x548C;&#x540E;&#x53F0;&#x754C;&#x9762;&#x5E93;&#x8054;&#x7CFB;&#x8D77;&#x6765;&#x3002;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x8BE6;&#x7EC6;&#x770B;&#x770B;EditorFactory&#x7C7B;&#x4E2D;&#x5173;&#x4E8E;&#x63A7;&#x4EF6;&#x751F;&#x6210;&#x65B9;&#x9762;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>class EditorFactory ( HasPrivateTraits ):
+    # &#x4E0B;&#x9762;&#x56DB;&#x4E2A;&#x5C5E;&#x6027;&#x63CF;&#x8FF0;&#x56DB;&#x4E2A;&#x7C7B;&#x578B;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x7684;&#x7C7B;
+    simple_editor_class = Property
+    custom_editor_class = Property
+    text_editor_class   = Property
+    readonly_editor_class = Property
+
+    # &#x7528;simple_editor_class&#x521B;&#x5EFA;&#x5B9E;&#x9645;&#x7684;&#x63A7;&#x4EF6;
+    def simple_editor ( self, ui, object, name, description, parent ):
+        return self.simple_editor_class( parent,
+                                         factory     = self,
+                                         ui          = ui,
+                                         object      = object,
+                                         name        = name,
+                                         description = description )
+
+    # &#x8FD9;&#x662F;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5B83;&#x901A;&#x8FC7;&#x7C7B;&#x7684;&#x4EE5;&#x53CA;&#x7236;&#x7C7B;&#x81EA;&#x52A8;&#x627E;&#x5230;&#x4E0E;&#x5176;&#x5339;&#x914D;&#x7684;&#x540E;&#x53F0;&#x754C;&#x9762;&#x5E93;&#x4E2D;&#x7684;&#x63A7;&#x4EF6;&#x7C7B;
+    @classmethod
+    def _get_toolkit_editor(cls, class_name):
+        editor_factory_classes = [factory_class for factory_class in cls.mro()
+                                  if issubclass(factory_class, EditorFactory)]
+        for index in range(len( editor_factory_classes )):
+            try:
+                factory_class = editor_factory_classes[index]
+                editor_file_name = os.path.basename(
+                                sys.modules[factory_class.__module__].__file__)
+                return toolkit_object(&apos;:&apos;.join([editor_file_name.split(&apos;.&apos;)[0],
+                                             class_name]), True)
+            except Exception, e:
+                if index == len(editor_factory_classes)-1:
+                    raise e
+        return None
+
+    # simple_editor_class&#x5C5E;&#x6027;&#x7684;get&#x65B9;&#x6CD5;&#xFF0C;&#x83B7;&#x53D6;&#x5C5E;&#x6027;&#x503C;
+    def _get_simple_editor_class(self):
+        try:
+            SimpleEditor = self._get_toolkit_editor(&apos;SimpleEditor&apos;)
+        except:
+            SimpleEditor = toolkit_object(&apos;editor_factory:SimpleEditor&apos;)
+        return SimpleEditor
+</code></pre><p>EditorFactory&#x7684;&#x5BF9;&#x8C61;&#x6709;&#x56DB;&#x4E2A;&#x5C5E;&#x6027;&#x4FDD;&#x5B58;&#x540E;&#x53F0;&#x7F16;&#x8F91;&#x5668;&#x63A7;&#x4EF6;&#x7684;&#x7C7B;&#xFF1A;simple_editor_class, custom_editor_class, text_editor_class, readonly_editor_class&#x3002;&#x4F8B;&#x5982;&#x524D;&#x9762;&#x4F8B;&#x5B50;&#x4E2D;&#x7684;ed&#x5BF9;&#x8C61;&#x7684;simple_editor_class&#x4E3A;&lt;class &apos;enthought.traits.ui.wx.text_editor.SimpleEditor&apos;&gt;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x5B83;&#x7528;&#x7684;&#x662F;wx&#x540E;&#x53F0;&#x754C;&#x9762;&#x5E93;&#x4E2D;&#x7684;text_editor&#x4E2D;&#x7684;SimpleEditor&#x7C7B;&#xFF0C;&#x7A0D;&#x540E;&#x6211;&#x4EEC;&#x5C06;&#x770B;&#x770B;&#x5176;&#x5185;&#x5BB9;&#x3002;</p>
+<p>EditorFactory&#x662F;&#x901A;&#x8FC7;&#x5176;&#x7C7B;&#x65B9;&#x6CD5;_get_toolkit_editor&#x8BA1;&#x7B97;&#x51FA;&#x6240;&#x8981;&#x7528;&#x540E;&#x53F0;&#x754C;&#x9762;&#x5E93;&#x4E2D;&#x7684;&#x7C7B;&#x7684;&#x3002;&#x7531;&#x4E8E;_get_toolkit_editor&#x662F;&#x7C7B;&#x65B9;&#x6CD5;&#xFF0C;&#x5B83;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;cls&#x5C31;&#x662F;&#x7C7B;&#x672C;&#x8EAB;&#x3002;&#x5F53;&#x8C03;&#x7528;text_editor.ToolkitEditorFactory._get_toolkit_editor()&#x65F6;&#xFF0C;cls&#x5C31;&#x662F;text_editor.ToolkitEditorFactory&#x7C7B;&#x3002;&#x901A;&#x8FC7;&#x8C03;&#x7528;cls.mro&#x83B7;&#x5F97;cls&#x4EE5;&#x53CA;&#x5176;&#x6240;&#x6709;&#x7236;&#x7C7B;&#xFF0C;&#x7136;&#x540E;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x5730;&#x67E5;&#x627E;&#xFF0C;&#x4ECE;&#x540E;&#x53F0;&#x754C;&#x9762;&#x5E93;&#x4E2D;&#x627E;&#x5230;&#x4E0E;&#x4E4B;&#x5339;&#x914D;&#x7684;&#x7C7B;&#xFF0C;&#x8FD9;&#x4E2A;&#x5DE5;&#x4F5C;&#x7531;toolkit_object&#x51FD;&#x6570;&#x5B8C;&#x6210;&#x3002;&#x5176;&#x6E90;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x5728;%ui%toolkit.py&#x4E2D;&#x627E;&#x5230;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x540E;&#x53F0;&#x754C;&#x9762;&#x5E93;&#x4E2D;&#x7684;&#x7C7B;&#x7684;&#x7EC4;&#x7EC7;&#x7ED3;&#x6784;&#x548C;traits.ui&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x9700;&#x8981;&#x989D;&#x5916;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x51E0;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x66FF;&#x4EE3;&#x64CD;&#x4F5C;&#x5C31;&#x53EF;&#x4EE5;&#x5C06;traits.ui&#x4E2D;&#x7684;EditorFactory&#x7C7B;&#x548C;&#x540E;&#x53F0;&#x754C;&#x9762;&#x5E93;&#x4E2D;&#x7684;&#x5B9E;&#x9645;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x7C7B;&#x8054;&#x7CFB;&#x8D77;&#x6765;&#x3002;&#x4E0B;&#x56FE;&#x663E;&#x793A;&#x4E86;traits.ui&#x4E2D;&#x7684;EditorFactory&#x548C;&#x540E;&#x53F0;&#x754C;&#x9762;&#x5E93;&#x7684;&#x5173;&#x7CFB;&#x3002;</p>
+<p><img src="img/traitsui_editor_factory.png" alt=""></p>
+<p>traits.ui&#x4E2D;&#x7684;EditorFactory&#x548C;&#x540E;&#x53F0;&#x754C;&#x9762;&#x5E93;&#x7684;&#x5173;&#x7CFB;</p>
+<p>wx&#x540E;&#x53F0;&#x754C;&#x9762;&#x5E93;&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x6240;&#x6709;&#x7F16;&#x8F91;&#x5668;&#x63A7;&#x4EF6;&#xFF0C;&#x5728; %wx%text_editor.py &#x4E2D;&#x4F60;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x4EA7;&#x751F;&#x6587;&#x672C;&#x6846;&#x63A7;&#x4EF6;&#x7684;&#x7C7B; text_editor.SimpleEditor&#x3002;&#x7C7B;&#x540D;&#x8868;&#x793A;&#x4E86;&#x63A7;&#x4EF6;&#x7684;&#x6837;&#x5F0F;&#xFF1A;simple, custom, text, readonly&#xFF0C;&#x800C;&#x5176;&#x6587;&#x4EF6;&#x540D;(&#x6A21;&#x5757;&#x540D;)&#x5219;&#x8868;&#x793A;&#x4E86;&#x63A7;&#x4EF6;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x4E0B;&#x9762;&#x662F; text_editor.SimpleEditor&#x7684;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>class SimpleEditor ( Editor ):
+
+    # Flag for window styles:
+    base_style = 0
+
+    # Background color when input is OK:
+    ok_color = OKColor
+
+    # Function used to evaluate textual user input:
+    evaluate = evaluate_trait
+
+    def init ( self, parent ):
+        &quot;&quot;&quot; Finishes initializing the editor by creating the underlying toolkit
+ widget.
+ &quot;&quot;&quot;
+        factory       = self.factory
+        style         = self.base_style
+        self.evaluate = factory.evaluate
+        self.sync_value( factory.evaluate_name, &apos;evaluate&apos;, &apos;from&apos; )
+
+        if (not factory.multi_line) or factory.password:
+            style &amp;= ~wx.TE_MULTILINE
+
+        if factory.password:
+            style |= wx.TE_PASSWORD
+
+        multi_line = ((style &amp; wx.TE_MULTILINE) != 0)
+        if multi_line:
+            self.scrollable = True
+
+        if factory.enter_set and (not multi_line):
+            control = wx.TextCtrl( parent, -1, self.str_value,
+                                   style = style | wx.TE_PROCESS_ENTER )
+            wx.EVT_TEXT_ENTER( parent, control.GetId(), self.update_object )
+        else:
+            control = wx.TextCtrl( parent, -1, self.str_value, style = style )
+
+        wx.EVT_KILL_FOCUS( control, self.update_object )
+
+        if factory.auto_set:
+            wx.EVT_TEXT( parent, control.GetId(), self.update_object )
+
+        self.control = control
+        self.set_tooltip()
+</code></pre><p>&#x771F;&#x6B63;&#x4EA7;&#x751F;&#x63A7;&#x4EF6;&#x7684;&#x7A0B;&#x5E8F;&#x662F;&#x5728;init&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x6B64;&#x65B9;&#x6CD5;&#x5728;&#x4EA7;&#x751F;&#x754C;&#x9762;&#x65F6;&#x81EA;&#x52A8;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x6CE8;&#x610F;&#x65B9;&#x6CD5;&#x540D;&#x662F;init&#xFF0C;&#x4E0D;&#x8981;&#x548C;&#x5BF9;&#x8C61;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;__init__&#x641E;&#x6DF7;&#x6DC6;&#x4E86;&#x3002;</p>
+<h2 id="&#x5236;&#x4F5C;matplotlib&#x7684;&#x7F16;&#x8F91;&#x5668;">&#x5236;&#x4F5C;matplotlib&#x7684;&#x7F16;&#x8F91;&#x5668;</h2>
+<p>Enthought&#x7684;&#x5B98;&#x65B9;&#x7ED8;&#x56FE;&#x5E93;&#x662F;&#x91C7;&#x7528;Chaco&#xFF0C;&#x4E0D;&#x8FC7;&#x5982;&#x679C;&#x4F60;&#x5BF9;matplotlib&#x5E93;&#x66F4;&#x52A0;&#x719F;&#x6089;&#x7684;&#x8BDD;&#xFF0C;&#x5C06;matplotlib&#x7684;&#x7ED8;&#x56FE;&#x63A7;&#x4EF6;&#x5D4C;&#x5165;TraitsUI&#x754C;&#x9762;&#x4E2D;&#x5C06;&#x662F;&#x975E;&#x5E38;&#x6709;&#x7528;&#x7684;&#x3002;&#x4E0B;&#x9762;&#x5148;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x5D4C;&#x5165;matplotlib&#x63A7;&#x4EF6;&#x7684;&#x5B8C;&#x6574;&#x6E90;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code># -*- coding: utf-8 -*-
+# file name: mpl_figure_editor.py
+import wx
+import matplotlib
+# matplotlib&#x91C7;&#x7528;WXAgg&#x4E3A;&#x540E;&#x53F0;&#xFF0C;&#x8FD9;&#x6837;&#x624D;&#x80FD;&#x5C06;&#x7ED8;&#x56FE;&#x63A7;&#x4EF6;&#x5D4C;&#x5165;&#x4EE5;wx&#x4E3A;&#x540E;&#x53F0;&#x754C;&#x9762;&#x5E93;&#x7684;traitsUI&#x7A97;&#x53E3;&#x4E2D;
+matplotlib.use(&quot;WXAgg&quot;)
+from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
+from matplotlib.backends.backend_wx import NavigationToolbar2Wx
+from enthought.traits.ui.wx.editor import Editor
+from enthought.traits.ui.basic_editor_factory import BasicEditorFactory
+
+class _MPLFigureEditor(Editor):
+    &quot;&quot;&quot;
+ &#x76F8;&#x5F53;&#x4E8E;wx&#x540E;&#x53F0;&#x754C;&#x9762;&#x5E93;&#x4E2D;&#x7684;&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x5B83;&#x8D1F;&#x8D23;&#x521B;&#x5EFA;&#x771F;&#x6B63;&#x7684;&#x63A7;&#x4EF6;
+ &quot;&quot;&quot;
+    scrollable = True
+
+    def init(self, parent):
+        self.control = self._create_canvas(parent)
+        self.set_tooltip()
+        print dir(self.item)
+
+    def update_editor(self):
+        pass
+
+    def _create_canvas(self, parent):
+        &quot;&quot;&quot;
+ &#x521B;&#x5EFA;&#x4E00;&#x4E2A;Panel, &#x5E03;&#x5C40;&#x91C7;&#x7528;&#x5782;&#x76F4;&#x6392;&#x5217;&#x7684;BoxSizer, panel&#x4E2D;&#x4E2D;&#x6DFB;&#x52A0;
+ FigureCanvas, NavigationToolbar2Wx, StaticText&#x4E09;&#x4E2A;&#x63A7;&#x4EF6;
+ FigureCanvas&#x7684;&#x9F20;&#x6807;&#x79FB;&#x52A8;&#x4E8B;&#x4EF6;&#x8C03;&#x7528;mousemoved&#x51FD;&#x6570;&#xFF0C;&#x5728;StaticText
+ &#x663E;&#x793A;&#x9F20;&#x6807;&#x6240;&#x5728;&#x7684;&#x6570;&#x636E;&#x5750;&#x6807;
+ &quot;&quot;&quot;
+        panel = wx.Panel(parent, -1, style=wx.CLIP_CHILDREN)
+        def mousemoved(event):
+            panel.info.SetLabel(&quot;%s, %s&quot; % (event.xdata, event.ydata))        
+        panel.mousemoved = mousemoved
+        sizer = wx.BoxSizer(wx.VERTICAL)
+        panel.SetSizer(sizer)
+        mpl_control = FigureCanvas(panel, -1, self.value)
+        mpl_control.mpl_connect(&quot;motion_notify_event&quot;, mousemoved)
+        toolbar = NavigationToolbar2Wx(mpl_control)
+        sizer.Add(mpl_control, 1, wx.LEFT | wx.TOP | wx.GROW)          
+        sizer.Add(toolbar, 0, wx.EXPAND|wx.RIGHT)
+        panel.info = wx.StaticText(parent, -1)
+        sizer.Add(panel.info)
+
+        self.value.canvas.SetMinSize((10,10))
+        return panel
+
+class MPLFigureEditor(BasicEditorFactory):
+    &quot;&quot;&quot;
+ &#x76F8;&#x5F53;&#x4E8E;traits.ui&#x4E2D;&#x7684;EditorFactory&#xFF0C;&#x5B83;&#x8FD4;&#x56DE;&#x771F;&#x6B63;&#x521B;&#x5EFA;&#x63A7;&#x4EF6;&#x7684;&#x7C7B;
+ &quot;&quot;&quot;    
+    klass = _MPLFigureEditor
+
+if __name__ == &quot;__main__&quot;:
+    from matplotlib.figure import Figure    
+    from enthought.traits.api import HasTraits, Instance
+    from enthought.traits.ui.api import View, Item
+    from numpy import sin, cos, linspace, pi
+
+    class Test(HasTraits):
+        figure = Instance(Figure, ())
+        view = View(
+            Item(&quot;figure&quot;, editor=MPLFigureEditor(), show_label=False),
+            width = 400,
+            height = 300,
+            resizable = True)
+        def __init__(self):
+            super(Test, self).__init__()
+            axes = self.figure.add_subplot(111)
+            t = linspace(0, 2*pi, 200)
+            axes.plot(sin(t))
+
+    Test().configure_traits()
+</code></pre><p>&#x6B64;&#x7A0B;&#x5E8F;&#x7684;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="img/traitsui_manual_02.png" alt=""></p>
+<p>&#x5728;TraitsUI&#x754C;&#x9762;&#x4E2D;&#x5D4C;&#x5165;&#x7684;matplotlib&#x7ED8;&#x56FE;&#x63A7;&#x4EF6;</p>
+<p>&#x7531;&#x4E8E;&#x6211;&#x4EEC;&#x7684;&#x7F16;&#x8F91;&#x5668;&#x6CA1;&#x6709;simple&#x7B49;&#x56DB;&#x79CD;&#x6837;&#x5F0F;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x653E;&#x5230;wx&#x540E;&#x53F0;&#x754C;&#x9762;&#x5E93;&#x7684;&#x6A21;&#x5757;&#x4E2D;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x80FD;&#x91C7;&#x7528;&#x4E0A;&#x8282;&#x6240;&#x4ECB;&#x7ECD;&#x7684;&#x81EA;&#x52A8;&#x67E5;&#x627E;&#x7F16;&#x8F91;&#x5668;&#x7C7B;&#x7684;&#x529E;&#x6CD5;&#x3002;traits.ui&#x4E3A;&#x6211;&#x4EEC;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x65B9;&#x4FBF;&#x7684;&#x7C7B;&#x6765;&#x5B8C;&#x6210;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#xFF1A;BasicEditorFactory&#x3002;&#x5B83;&#x7684;&#x6E90;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x5728; %ui%basic_editor_factory.py&#x4E2D;&#x627E;&#x5230;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF1A;</p>
+<pre><code>class BasicEditorFactory ( EditorFactory ):
+    klass = Any
+
+    def _get_simple_editor_class ( self ):
+        return self.klass
+    ...
+</code></pre><p>&#x5B83;&#x901A;&#x8FC7;&#x91CD;&#x8F7D;EditorFactory&#x4E2D;&#x7684;simple_editor_class&#x5C5E;&#x6027;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x521B;&#x5EFA;&#x63A7;&#x4EF6;&#x7684;&#x5E93;klass&#x3002;MPLFigureEditor&#x7EE7;&#x627F;&#x4E8E;BasicEditorFactory&#xFF0C;&#x6307;&#x5B9A;&#x521B;&#x5EFA;&#x63A7;&#x4EF6;&#x7684;&#x7C7B;&#x4E3A;_MPLFigureEditor&#x3002;</p>
+<p>&#x548C;text_editor.SimpleEditor&#x4E00;&#x6837;&#xFF0C;&#x4ECE;Editor&#x7C7B;&#x7EE7;&#x627F;&#xFF0C;&#x5728;_MPLFigureEditor&#x7C7B;&#x7684;init&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x521B;&#x5EFA;&#x5B9E;&#x9645;&#x7684;&#x63A7;&#x4EF6;&#x3002;&#x56E0;&#x4E3A;Editor&#x7C7B;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;update_editor&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x5176;&#x5BF9;&#x5E94;&#x7684;trait&#x5C5E;&#x6027;&#x6539;&#x53D8;&#x662F;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x800C;&#x6211;&#x4EEC;&#x7684;&#x7ED8;&#x56FE;&#x63A7;&#x4EF6;&#x4E0D;&#x9700;&#x8981;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#xFF0C;&#x6240;&#x4EE5;&#x91CD;&#x8F7D;update_editor&#xFF0C;&#x8BA9;&#x5B83;&#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x4E8B;&#x60C5;&#x3002;</p>
+<p>matplotlib&#x4E2D;&#xFF0C;&#x5728;&#x521B;&#x5EFA;FigureCanvas&#x65F6;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x4E0E;&#x5176;&#x5BF9;&#x5E94;&#x7684;Figure&#x5BF9;&#x8C61;&#xFF1A;</p>
+<pre><code>mpl_control = FigureCanvas(panel, -1, self.value)
+</code></pre><p>&#x8FD9;&#x91CC;self.value&#x5C31;&#x662F;&#x8FD9;&#x4E2A;Figure&#x5BF9;&#x8C61;&#xFF0C;&#x5B83;&#x5728;MVC&#x7684;&#x6A21;&#x578B;&#x7C7B;Test&#x4E2D;&#x88AB;&#x5B9A;&#x4E49;&#x4E3A;&#xFF1A;</p>
+<pre><code>figure = Instance(Figure, ())
+</code></pre><p>&#x63A7;&#x4EF6;&#x7C7B;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;self.value&#x83B7;&#x5F97;&#x4E0E;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x6A21;&#x578B;&#x7C7B;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x56E0;&#x6B64;_MPLFigureEditor&#x4E2D;&#x7684;self.value&#x548C;Test&#x7C7B;&#x4E2D;&#x7684;self.figure&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>_create_canvas&#x65B9;&#x6CD5;&#x4E2D;&#x7684;&#x7A0B;&#x5E8F;&#x7F16;&#x5199;&#x548C;&#x5728;&#x4E00;&#x4E2A;&#x6807;&#x51C6;&#x7684;wx&#x7A97;&#x53E3;&#x4E2D;&#x6DFB;&#x52A0;&#x63A7;&#x4EF6;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x754C;&#x9762;&#x5E93;&#x76F8;&#x5173;&#x7684;&#x7EC6;&#x8282;&#x4E0D;&#x662F;&#x672C;&#x4E66;&#x7684;&#x91CD;&#x70B9;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x518D;&#x8BE6;&#x7EC6;&#x89E3;&#x91CA;&#x4E86;&#x3002;&#x8BFB;&#x8005;&#x53EF;&#x4EE5;&#x53C2;&#x7167;matplotlib&#x548C;wxPython&#x7684;&#x76F8;&#x5E94;&#x6587;&#x6863;&#x3002;</p>
+<h2 id="csv&#x6570;&#x636E;&#x7ED8;&#x56FE;&#x5DE5;&#x5177;">CSV&#x6570;&#x636E;&#x7ED8;&#x56FE;&#x5DE5;&#x5177;</h2>
+<p>&#x4E0B;&#x9762;&#x7528;&#x524D;&#x9762;&#x4ECB;&#x7ECD;&#x7684;matplotlib&#x7F16;&#x8F91;&#x5668;&#x5236;&#x4F5C;&#x4E00;&#x4E2A;CSV&#x6570;&#x636E;&#x7ED8;&#x56FE;&#x5DE5;&#x5177;&#x3002;&#x7528;&#x6B64;&#x5DE5;&#x5177;&#x6253;&#x5F00;&#x4E00;&#x4E2A;CSV&#x6570;&#x636E;&#x6587;&#x6863;&#x4E4B;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x7ED8;&#x5236;&#x591A;&#x4E2A;X-Y&#x5750;&#x6807;&#x56FE;&#x3002;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x5730;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x5750;&#x6807;&#x56FE;&#xFF0C;&#x4FEE;&#x6539;&#x5750;&#x6807;&#x56FE;&#x7684;&#x6807;&#x9898;&#xFF0C;&#x9009;&#x62E9;&#x5750;&#x6807;&#x56FE;&#x7684;X&#x8F74;&#x548C;Y&#x8F74;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x6B64;&#x7A0B;&#x5E8F;&#x7684;&#x754C;&#x9762;&#x622A;&#x56FE;&#xFF1A;</p>
+<p><img src="img/traitsui_manual_03.png" alt=""></p>
+<p>CSV&#x6570;&#x636E;&#x7ED8;&#x56FE;&#x5DE5;&#x5177;&#x7684;&#x754C;&#x9762;</p>
+<p>&#x56FE;&#x4E2D;&#x4EE5;&#x6807;&#x7B7E;&#x9875;&#x7684;&#x5F62;&#x5F0F;&#x663E;&#x793A;&#x591A;&#x4E2A;&#x7ED8;&#x56FE;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x4ECE;&#x5DE6;&#x4FA7;&#x7684;&#x6570;&#x636E;&#x9009;&#x62E9;&#x680F;&#x4E2D;&#x9009;&#x62E9;X&#x8F74;&#x548C;Y&#x8F74;&#x7684;&#x6570;&#x636E;&#x3002;&#x6807;&#x7B7E;&#x9875;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x7684;&#x62D6;&#x52A8;&#xFF0C;&#x6784;&#x6210;&#x4E0A;&#x4E0B;&#x5DE6;&#x53F3;&#x5206;&#x680F;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x9690;&#x85CF;&#x5DE6;&#x4FA7;&#x7684;&#x6570;&#x636E;&#x9009;&#x62E9;&#x680F;&#xFF1A;</p>
+<p><img src="img/traitsui_manual_04.png" alt=""></p>
+<p>&#x4F7F;&#x7528;&#x53EF;&#x8C03;&#x6574;DOCK&#x7684;&#x591A;&#x6807;&#x7B7E;&#x9875;&#x754C;&#x9762;&#x65B9;&#x4FBF;&#x7528;&#x6237;&#x5BF9;&#x6BD4;&#x6570;&#x636E;</p>
+<p>&#x7531;&#x4E8E;&#x7ED8;&#x56FE;&#x63A7;&#x4EF6;&#x662F;matplotlib&#x6240;&#x63D0;&#x4F9B;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5E73;&#x79FB;&#x3001;&#x7F29;&#x653E;&#x3001;&#x4FDD;&#x5B58;&#x6587;&#x4EF6;&#x7B49;&#x529F;&#x80FD;&#x4E5F;&#x4E00;&#x5E94;&#x4FF1;&#x5168;&#x3002;&#x7531;&#x4E8E;&#x6240;&#x6709;&#x7684;&#x754C;&#x9762;&#x90FD;&#x662F;&#x91C7;&#x7528;TraitsUI&#x8BBE;&#x8BA1;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x4E3B;&#x7A97;&#x53E3;&#x65E2;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5355;&#x72EC;&#x663E;&#x793A;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5D4C;&#x5165;&#x5230;&#x4E00;&#x4E2A;&#x66F4;&#x5927;&#x7684;&#x754C;&#x9762;&#x4E2D;&#xFF0C;&#x8FD0;&#x7528;&#x5341;&#x5206;&#x7075;&#x6D3B;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x5B8C;&#x6574;&#x7684;&#x6E90;&#x7A0B;&#x5E8F;&#xFF0C;&#x8FD0;&#x884C;&#x65F6;&#x9700;&#x8981;&#x548C;mpl_figure_editor.py&#x653E;&#x5728;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x3002;&#x5305;&#x62EC;&#x6CE8;&#x91CA;&#x7A0B;&#x5E8F;&#x4E00;&#x5171;&#x7EA6;170&#x884C;&#xFF0C;&#x7F16;&#x5199;&#x65F6;&#x95F4;&#x5C11;&#x4E8E;&#x4E00;&#x5C0F;&#x65F6;&#x3002;</p>
+<pre><code># -*- coding: utf-8 -*-
+from matplotlib.figure import Figure
+from mpl_figure_editor import MPLFigureEditor
+from enthought.traits.ui.api import *
+from enthought.traits.api import *
+import csv
+
+class DataSource(HasTraits):
+    &quot;&quot;&quot;
+ &#x6570;&#x636E;&#x6E90;&#xFF0C;data&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x5178;&#xFF0C;&#x5C06;&#x5B57;&#x7B26;&#x4E32;&#x6620;&#x5C04;&#x5230;&#x5217;&#x8868;
+ names&#x662F;data&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5217;&#x8868;
+ &quot;&quot;&quot;
+    data = DictStrAny
+    names = List(Str)
+
+    def load_csv(self, filename):
+        &quot;&quot;&quot;
+ &#x4ECE;CSV&#x6587;&#x4EF6;&#x8BFB;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x66F4;&#x65B0;data&#x548C;names&#x5C5E;&#x6027;
+ &quot;&quot;&quot;
+        f = file(filename)
+        reader = csv.DictReader(f)
+        self.names = reader.fieldnames
+        for field in reader.fieldnames:
+            self.data[field] = []
+        for line in reader:
+            for k, v in line.iteritems():
+                self.data[k].append(float(v))
+        f.close()        
+
+class Graph(HasTraits):
+    &quot;&quot;&quot;
+ &#x7ED8;&#x56FE;&#x7EC4;&#x4EF6;&#xFF0C;&#x5305;&#x62EC;&#x5DE6;&#x8FB9;&#x7684;&#x6570;&#x636E;&#x9009;&#x62E9;&#x63A7;&#x4EF6;&#x548C;&#x53F3;&#x8FB9;&#x7684;&#x7ED8;&#x56FE;&#x63A7;&#x4EF6;
+ &quot;&quot;&quot;
+    name = Str # &#x7ED8;&#x56FE;&#x540D;&#xFF0C;&#x663E;&#x793A;&#x5728;&#x6807;&#x7B7E;&#x9875;&#x6807;&#x9898;&#x548C;&#x7ED8;&#x56FE;&#x6807;&#x9898;&#x4E2D;
+    data_source = Instance(DataSource) # &#x4FDD;&#x5B58;&#x6570;&#x636E;&#x7684;&#x6570;&#x636E;&#x6E90;
+    figure = Instance(Figure) # &#x63A7;&#x5236;&#x7ED8;&#x56FE;&#x63A7;&#x4EF6;&#x7684;Figure&#x5BF9;&#x8C61;
+    selected_xaxis = Str # X&#x8F74;&#x6240;&#x7528;&#x7684;&#x6570;&#x636E;&#x540D;
+    selected_items = List # Y&#x8F74;&#x6240;&#x7528;&#x7684;&#x6570;&#x636E;&#x5217;&#x8868;
+
+    clear_button = Button(u&quot;&#x6E05;&#x9664;&quot;) # &#x5FEB;&#x901F;&#x6E05;&#x9664;Y&#x8F74;&#x7684;&#x6240;&#x6709;&#x9009;&#x62E9;&#x7684;&#x6570;&#x636E;
+
+    view = View(
+        HSplit( # HSplit&#x5206;&#x4E3A;&#x5DE6;&#x53F3;&#x4E24;&#x4E2A;&#x533A;&#x57DF;&#xFF0C;&#x4E2D;&#x95F4;&#x6709;&#x53EF;&#x8C03;&#x8282;&#x5BBD;&#x5EA6;&#x6BD4;&#x4F8B;&#x7684;&#x8C03;&#x8282;&#x624B;&#x67C4;
+            # &#x5DE6;&#x8FB9;&#x4E3A;&#x4E00;&#x4E2A;&#x7EC4;
+            VGroup(
+                Item(&quot;name&quot;),   # &#x7ED8;&#x56FE;&#x540D;&#x7F16;&#x8F91;&#x6846;
+                Item(&quot;clear_button&quot;), # &#x6E05;&#x9664;&#x6309;&#x94AE;
+                Heading(u&quot;X&#x8F74;&#x6570;&#x636E;&quot;),  # &#x9759;&#x6001;&#x6587;&#x672C;
+                # X&#x8F74;&#x9009;&#x62E9;&#x5668;&#xFF0C;&#x7528;EnumEditor&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x5373;ComboBox&#x63A7;&#x4EF6;&#xFF0C;&#x63A7;&#x4EF6;&#x4E2D;&#x7684;&#x5019;&#x9009;&#x6570;&#x636E;&#x4ECE;
+                # data_source&#x7684;names&#x5C5E;&#x6027;&#x5F97;&#x5230;
+                Item(&quot;selected_xaxis&quot;, editor=
+                    EnumEditor(name=&quot;object.data_source.names&quot;, format_str=u&quot;%s&quot;)),
+                Heading(u&quot;Y&#x8F74;&#x6570;&#x636E;&quot;), # &#x9759;&#x6001;&#x6587;&#x672C;
+                # Y&#x8F74;&#x9009;&#x62E9;&#x5668;&#xFF0C;&#x7531;&#x4E8E;Y&#x8F74;&#x53EF;&#x4EE5;&#x591A;&#x9009;&#xFF0C;&#x56E0;&#x6B64;&#x7528;CheckBox&#x5217;&#x8868;&#x7F16;&#x8F91;&#xFF0C;&#x6309;&#x4E24;&#x5217;&#x663E;&#x793A;
+                Item(&quot;selected_items&quot;, style=&quot;custom&quot;, 
+                     editor=CheckListEditor(name=&quot;object.data_source.names&quot;, 
+                            cols=2, format_str=u&quot;%s&quot;)),
+                show_border = True, # &#x663E;&#x793A;&#x7EC4;&#x7684;&#x8FB9;&#x6846;
+                scrollable = True,  # &#x7EC4;&#x4E2D;&#x7684;&#x63A7;&#x4EF6;&#x8FC7;&#x591A;&#x65F6;&#xFF0C;&#x91C7;&#x7528;&#x6EDA;&#x52A8;&#x6761;
+                show_labels = False # &#x7EC4;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x63A7;&#x4EF6;&#x90FD;&#x4E0D;&#x663E;&#x793A;&#x6807;&#x7B7E;
+            ),
+            # &#x53F3;&#x8FB9;&#x7ED8;&#x56FE;&#x63A7;&#x4EF6;
+            Item(&quot;figure&quot;, editor=MPLFigureEditor(), show_label=False, width=600)
+        )        
+    )
+
+    def _name_changed(self):
+        &quot;&quot;&quot;
+ &#x5F53;&#x7ED8;&#x56FE;&#x540D;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#xFF0C;&#x66F4;&#x65B0;&#x7ED8;&#x56FE;&#x7684;&#x6807;&#x9898;
+ &quot;&quot;&quot;
+        axe = self.figure.axes[0]
+        axe.set_title(self.name)
+        self.figure.canvas.draw()
+
+    def _clear_button_fired(self):
+        &quot;&quot;&quot;
+ &#x6E05;&#x9664;&#x6309;&#x94AE;&#x7684;&#x4E8B;&#x4EF6;&#x5904;&#x7406;
+ &quot;&quot;&quot;
+        self.selected_items = []
+        self.update()
+
+    def _figure_default(self):
+        &quot;&quot;&quot;
+ figure&#x5C5E;&#x6027;&#x7684;&#x7F3A;&#x7701;&#x503C;&#xFF0C;&#x76F4;&#x63A5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Figure&#x5BF9;&#x8C61;
+ &quot;&quot;&quot;
+        figure = Figure()
+        figure.add_axes([0.05, 0.1, 0.9, 0.85]) #&#x6DFB;&#x52A0;&#x7ED8;&#x56FE;&#x533A;&#x57DF;&#xFF0C;&#x56DB;&#x5468;&#x7559;&#x6709;&#x8FB9;&#x8DDD;
+        return figure
+
+    def _selected_items_changed(self):
+        &quot;&quot;&quot;
+ Y&#x8F74;&#x6570;&#x636E;&#x9009;&#x62E9;&#x66F4;&#x65B0;
+ &quot;&quot;&quot;
+        self.update()
+
+    def _selected_xaxis_changed(self):
+        &quot;&quot;&quot;
+ X&#x8F74;&#x6570;&#x636E;&#x9009;&#x62E9;&#x66F4;&#x65B0;
+ &quot;&quot;&quot;    
+        self.update()
+
+    def update(self):
+        &quot;&quot;&quot;
+ &#x91CD;&#x65B0;&#x7ED8;&#x5236;&#x6240;&#x6709;&#x7684;&#x66F2;&#x7EBF;
+ &quot;&quot;&quot;    
+        axe = self.figure.axes[0]
+        axe.clear()
+        try:
+            xdata = self.data_source.data[self.selected_xaxis]
+        except:
+            return 
+        for field in self.selected_items:
+            axe.plot(xdata, self.data_source.data[field], label=field)
+        axe.set_xlabel(self.selected_xaxis)
+        axe.set_title(self.name)
+        axe.legend()
+        self.figure.canvas.draw()
+
+class CSVGrapher(HasTraits):
+    &quot;&quot;&quot;
+ &#x4E3B;&#x754C;&#x9762;&#x5305;&#x62EC;&#x7ED8;&#x56FE;&#x5217;&#x8868;&#xFF0C;&#x6570;&#x636E;&#x6E90;&#xFF0C;&#x6587;&#x4EF6;&#x9009;&#x62E9;&#x5668;&#x548C;&#x6DFB;&#x52A0;&#x7ED8;&#x56FE;&#x6309;&#x94AE;
+ &quot;&quot;&quot;
+    graph_list = List(Instance(Graph)) # &#x7ED8;&#x56FE;&#x5217;&#x8868;
+    data_source = Instance(DataSource) # &#x6570;&#x636E;&#x6E90;
+    csv_file_name = File(filter=[u&quot;*.csv&quot;]) # &#x6587;&#x4EF6;&#x9009;&#x62E9;
+    add_graph_button = Button(u&quot;&#x6DFB;&#x52A0;&#x7ED8;&#x56FE;&quot;) # &#x6DFB;&#x52A0;&#x7ED8;&#x56FE;&#x6309;&#x94AE;
+
+    view = View(
+        # &#x6574;&#x4E2A;&#x7A97;&#x53E3;&#x5206;&#x4E3A;&#x4E0A;&#x4E0B;&#x4E24;&#x4E2A;&#x90E8;&#x5206;
+        VGroup(
+            # &#x4E0A;&#x90E8;&#x5206;&#x6A2A;&#x5411;&#x653E;&#x7F6E;&#x63A7;&#x4EF6;&#xFF0C;&#x56E0;&#x6B64;&#x7528;HGroup
+            HGroup(
+                # &#x6587;&#x4EF6;&#x9009;&#x62E9;&#x63A7;&#x4EF6;
+                Item(&quot;csv_file_name&quot;, label=u&quot;&#x9009;&#x62E9;CSV&#x6587;&#x4EF6;&quot;, width=400),
+                # &#x6DFB;&#x52A0;&#x7ED8;&#x56FE;&#x6309;&#x94AE;
+                Item(&quot;add_graph_button&quot;, show_label=False)
+            ),
+            # &#x4E0B;&#x90E8;&#x5206;&#x662F;&#x7ED8;&#x56FE;&#x5217;&#x8868;&#xFF0C;&#x91C7;&#x7528;ListEditor&#x7F16;&#x8F91;&#x5668;&#x663E;&#x793A;
+            Item(&quot;graph_list&quot;, style=&quot;custom&quot;, show_label=False, 
+                 editor=ListEditor(
+                     use_notebook=True, # &#x662F;&#x7528;&#x591A;&#x6807;&#x7B7E;&#x9875;&#x683C;&#x5F0F;&#x663E;&#x793A;
+                     deletable=True, # &#x53EF;&#x4EE5;&#x5220;&#x9664;&#x6807;&#x7B7E;&#x9875;
+                     dock_style=&quot;tab&quot;, # &#x6807;&#x7B7E;dock&#x6837;&#x5F0F;
+                     page_name=&quot;.name&quot;) # &#x6807;&#x9898;&#x9875;&#x7684;&#x6587;&#x672C;&#x4F7F;&#x7528;Graph&#x5BF9;&#x8C61;&#x7684;name&#x5C5E;&#x6027;
+                )
+        ),
+        resizable = True,
+        height = 0.8,
+        width = 0.8,
+        title = u&quot;CSV&#x6570;&#x636E;&#x7ED8;&#x56FE;&#x5668;&quot;
+    )
+
+    def _csv_file_name_changed(self):
+        &quot;&quot;&quot;
+ &#x6253;&#x5F00;&#x65B0;&#x6587;&#x4EF6;&#x65F6;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x6839;&#x636E;&#x6587;&#x4EF6;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;DataSource
+ &quot;&quot;&quot;
+        self.data_source = DataSource()
+        self.data_source.load_csv(self.csv_file_name)
+        del self.graph_list[:]
+
+    def _add_graph_button_changed(self):
+        &quot;&quot;&quot;
+ &#x6DFB;&#x52A0;&#x7ED8;&#x56FE;&#x6309;&#x94AE;&#x7684;&#x4E8B;&#x4EF6;&#x5904;&#x7406;
+ &quot;&quot;&quot;
+        if self.data_source != None:
+            self.graph_list.append( Graph(data_source = self.data_source) )
+
+if __name__ == &quot;__main__&quot;:
+    csv_grapher = CSVGrapher()
+    csv_grapher.configure_traits()
+</code></pre><p>&#x7A0B;&#x5E8F;&#x4E2D;&#x5DF2;&#x7ECF;&#x6709;&#x6BD4;&#x8F83;&#x8BE6;&#x7EC6;&#x7684;&#x6CE8;&#x91CA;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x518D;&#x91CD;&#x590D;&#x3002;&#x5982;&#x679C;&#x4F60;&#x5BF9;traits&#x5E93;&#x7684;&#x67D0;&#x9879;&#x7528;&#x6CD5;&#x8FD8;&#x4E0D;&#x592A;&#x4E86;&#x89E3;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x67E5;&#x770B;&#x5176;&#x6E90;&#x4EE3;&#x7801;&#xFF0C;&#x4EE3;&#x7801;&#x4E2D;&#x90FD;&#x6709;&#x8BE6;&#x7EC6;&#x7684;&#x6CE8;&#x91CA;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x51E0;&#x4E2A;&#x6BD4;&#x8F83;&#x91CD;&#x70B9;&#x7684;&#x90E8;&#x5206;&#xFF1A;</p>
+<ul>
+<li><p>&#x6574;&#x4E2A;&#x7A0B;&#x5E8F;&#x7684;&#x754C;&#x9762;&#x5904;&#x7406;&#x90FD;&#x53EA;&#x662F;&#x7EC4;&#x88C5;View&#x5BF9;&#x8C61;&#xFF0C;&#x770B;&#x4E0D;&#x5230;&#x4EFB;&#x4F55;&#x5173;&#x4E8E;&#x63A7;&#x4EF6;&#x64CD;&#x4F5C;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x56E0;&#x6B64;&#x5927;&#x5927;&#x5730;&#x8282;&#x7701;&#x4E86;&#x7A0B;&#x5E8F;&#x7684;&#x5F00;&#x53D1;&#x65F6;&#x95F4;&#x3002;</p>
+</li>
+<li><p>&#x901A;&#x8FC7;&#x914D;&#x7F6E;141&#x884C;&#x7684;ListEditor&#xFF0C;&#x4F7F;&#x5176;&#x7528;&#x6807;&#x7B7E;&#x9875;&#x7684;&#x65B9;&#x5F0F;&#x663E;&#x793A;graph_list&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x4EE5;&#x6B64;&#x7BA1;&#x7406;&#x591A;&#x4E2A;Graph&#x5BF9;&#x8C61;&#x3002;</p>
+</li>
+<li><p>&#x5728;43&#x884C;&#x4E2D;&#xFF0C;Graph&#x7C7B;&#x7528;HSplit&#x5C06;&#x5176;&#x6570;&#x636E;&#x9009;&#x62E9;&#x90E8;&#x5206;&#x548C;&#x7ED8;&#x56FE;&#x63A7;&#x4EF6;&#x90E8;&#x5206;&#x5206;&#x5F00;&#xFF0C;HSplit&#x63D0;&#x4F9B;&#x7684;&#x66F4;&#x6539;&#x5DE6;&#x53F3;&#x90E8;&#x5206;&#x7684;&#x6BD4;&#x4F8B;&#x548C;&#x9690;&#x85CF;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+</li>
+<li><p>&#x672C;&#x4E66;&#x5199;&#x4F5C;&#x65F6;&#x6240;&#x91C7;&#x7528;&#x7684;traitsUI&#x5E93;&#x7248;&#x672C;&#x4E3A;3.2&#xFF0C;&#x5982;&#x679C;&#x5728;&#x6807;&#x7B7E;&#x9875;&#x6807;&#x9898;&#x4E2D;&#x8F93;&#x5165;&#x4E2D;&#x6587;&#xFF0C;&#x4F1A;&#x51FA;&#x73B0;&#x9519;&#x8BEF;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;TraitsUI&#x4E2D;&#x8FD8;&#x6709;&#x4E9B;&#x4EE3;&#x7801;&#x5BF9;unicode&#x7684;&#x652F;&#x6301;&#x4E0D;&#x591F;&#xFF0C;&#x5E0C;&#x671B;&#x65E5;&#x540E;&#x4F1A;&#x6709;&#x6240;&#x6539;&#x5584;&#x3002;&#x76EE;&#x524D;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5206;&#x6790;&#x9519;&#x8BEF;&#x63D0;&#x793A;&#x4FE1;&#x606F;&#xFF0C;&#x4FEE;&#x6539;TraitsUI&#x5E93;&#x7684;&#x6E90;&#x4EE3;&#x7801;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5C06;&#x4E0B;&#x9762;&#x63D0;&#x793A;&#x4E2D;&#x7684;770&#x884C;&#x4E2D;&#x7684;str&#x6539;&#x4E3A;unicode&#x65E2;&#x53EF;&#x4EE5;&#x4FEE;&#x590D;&#x3002;</p>
+<blockquote>
+<pre><code>&amp;gt;&amp;gt;&amp;gt; from visual import *
+</code></pre></blockquote>
+</li>
+</ul>
+<p>&#x4E4B;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x968F;&#x5FC3;&#x6240;&#x6B32;&#x7684;&#x8C03;&#x7528;visual&#x5E93;&#x901A;&#x8FC7;&#x7684;&#x51FD;&#x6570;&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x5982;&#x679C;&#x4F60;&#x5173;&#x95ED;&#x4E86;visual&#x5F39;&#x51FA;&#x7684;&#x573A;&#x666F;&#x7A97;&#x53E3;&#x7684;&#x8BDD;&#xFF0C;ipython&#x5BF9;&#x8BDD;&#x4E5F;&#x968F;&#x4E4B;&#x7ED3;&#x675F;&#x3002;&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x5173;&#x95ED;&#x573A;&#x666F;&#x7A97;&#x53E3;&#x53EF;&#x4EE5;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x8BED;&#x53E5;&#xFF1A;</p>
+<pre><code>&gt;&gt;&gt; scene.visible = False
+</code></pre><p><img src="img/vpython_manual_01.png" alt=""></p>
+<p>&#x5728;IPython&#x4E2D;&#x4EA4;&#x4E92;&#x5F0F;&#x5730;&#x89C2;&#x5BDF;visual&#x7684;&#x8FD0;&#x884C;&#x7ED3;&#x679C;</p>
+<p>&#x4E0A;&#x56FE;&#x662F;&#x7528;IPython&#x4EA4;&#x4E92;&#x5F0F;&#x7684;&#x4F7F;&#x7528;visual&#x7684;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x901A;&#x8FC7;IPython&#x80FD;&#x591F;&#x63A7;&#x5236;&#x591A;&#x4E2A;&#x573A;&#x666F;&#x7A97;&#x53E3;&#x3002;</p>
+<ul>
+<li><a href="visual_manual_display.html">&#x573A;&#x666F;&#x7A97;&#x53E3;</a><ul>
+<li><a href="visual_manual_display.html#id2">&#x63A7;&#x5236;&#x573A;&#x666F;&#x7A97;&#x53E3;</a></li>
+<li><a href="visual_manual_display.html#id3">&#x63A7;&#x5236;&#x7167;&#x76F8;&#x673A;</a></li>
+</ul>
+</li>
+</ul>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./14.html" class="navigation navigation-prev " aria-label="Previous page: Trait事件处理"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./16-0.html" class="navigation navigation-next " aria-label="Next page: Visual使用手册"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

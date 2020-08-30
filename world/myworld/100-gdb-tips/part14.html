@@ -1,0 +1,2032 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>源文件 | 100个gdb小技巧</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./directory.html" />
+    
+    
+    <link rel="prev" href="./save-history-commands.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="14"
+        data-chapter-title="源文件"
+        data-filepath="part14.md"
+        data-basepath="."
+        data-revision="Sun May 01 2016 03:19:58 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/100-gdb-tips" target="blank" class="custom-link">100个gdb小技巧</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="part1.html">
+            
+                
+                    <a href="./part1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        信息显示
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="show-version.html">
+            
+                
+                    <a href="./show-version.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        显示gdb版本信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="show-copying-warranty.html">
+            
+                
+                    <a href="./show-copying-warranty.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        显示gdb版权相关信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="start-gdb-silently.html">
+            
+                
+                    <a href="./start-gdb-silently.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        启动时不显示提示信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="quit-gdb-silently.html">
+            
+                
+                    <a href="./quit-gdb-silently.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        退出时不显示提示信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="set-pagination-off.html">
+            
+                
+                    <a href="./set-pagination-off.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        输出信息多时不会暂停输出
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="part2.html">
+            
+                
+                    <a href="./part2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        函数
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="info-function.html">
+            
+                
+                    <a href="./info-function.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        列出函数的名字
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="step-and-next-function.html">
+            
+                
+                    <a href="./step-and-next-function.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        是否进入带调试信息的函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="set-step-mode-on.html">
+            
+                
+                    <a href="./set-step-mode-on.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        进入不带调试信息的函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="finish-and-return.html">
+            
+                
+                    <a href="./finish-and-return.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        退出正在调试的函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="call-func.html">
+            
+                
+                    <a href="./call-func.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        直接执行函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="info-frame.html">
+            
+                
+                    <a href="./info-frame.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        打印函数堆栈帧信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="set-debug-entry-values.html">
+            
+                
+                    <a href="./set-debug-entry-values.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                        打印尾调用堆栈帧信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="select-frame.html">
+            
+                
+                    <a href="./select-frame.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.</b>
+                        
+                        选择函数堆栈帧
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="up-down-select-frame.html">
+            
+                
+                    <a href="./up-down-select-frame.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.</b>
+                        
+                        向上或向下切换函数堆栈帧
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="part3.html">
+            
+                
+                    <a href="./part3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        断点
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="break-anonymous-namespace.html">
+            
+                
+                    <a href="./break-anonymous-namespace.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        在匿名空间设置断点
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="break-on-address.html">
+            
+                
+                    <a href="./break-on-address.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        在程序地址上打断点
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="break-on-entry.html">
+            
+                
+                    <a href="./break-on-entry.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        在程序入口处打断点
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="break-on-linenum.html">
+            
+                
+                    <a href="./break-on-linenum.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        在文件行号上打断点
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="save-breakpoints.html">
+            
+                
+                    <a href="./save-breakpoints.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        保存已经设置的断点
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="set-tbreak.html">
+            
+                
+                    <a href="./set-tbreak.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        设置临时断点
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="set-condition-break.html">
+            
+                
+                    <a href="./set-condition-break.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        设置条件断点
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="ignore-break.html">
+            
+                
+                    <a href="./ignore-break.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        忽略断点
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="part4.html">
+            
+                
+                    <a href="./part4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        观察点
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="set-watchpoint.html">
+            
+                
+                    <a href="./set-watchpoint.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        设置观察点
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="set-watchpoint-on-specified-thread.html">
+            
+                
+                    <a href="./set-watchpoint-on-specified-thread.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        设置观察点只针对特定线程生效
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="set-read-watchpoint.html">
+            
+                
+                    <a href="./set-read-watchpoint.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        设置读观察点
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="set-read-write-watchpoint.html">
+            
+                
+                    <a href="./set-read-write-watchpoint.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        设置读写观察点
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="part5.html">
+            
+                
+                    <a href="./part5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Catchpoint
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="tcatch.html">
+            
+                
+                    <a href="./tcatch.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        让catchpoint只触发一次
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="catch-fork.html">
+            
+                
+                    <a href="./catch-fork.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        为fork调用设置catchpoint
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="catch-vfork.html">
+            
+                
+                    <a href="./catch-vfork.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        为vfork调用设置catchpoint
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="catch-exec.html">
+            
+                
+                    <a href="./catch-exec.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        为exec调用设置catchpoint
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="catch-syscall.html">
+            
+                
+                    <a href="./catch-syscall.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        为系统调用设置catchpoint
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="catch-ptrace.html">
+            
+                
+                    <a href="./catch-ptrace.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.</b>
+                        
+                        通过为ptrace调用设置catchpoint破解anti-debugging的程序
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="part6.html">
+            
+                
+                    <a href="./part6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        打印
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="print-ascii-and-wide-string.html">
+            
+                
+                    <a href="./print-ascii-and-wide-string.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        打印ASCII和宽字符字符串
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="print-STL-container.html">
+            
+                
+                    <a href="./print-STL-container.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        打印STL容器中的内容
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="print-large-array.html">
+            
+                
+                    <a href="./print-large-array.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        打印大数组中的内容
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="print-consecutive-array-elements.html">
+            
+                
+                    <a href="./print-consecutive-array-elements.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        打印数组中任意连续元素值
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="print-array-indexes.html">
+            
+                
+                    <a href="./print-array-indexes.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        打印数组的索引下标
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="print-local-variables.html">
+            
+                
+                    <a href="./print-local-variables.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.</b>
+                        
+                        打印函数局部变量的值
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="print-process-memory.html">
+            
+                
+                    <a href="./print-process-memory.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.</b>
+                        
+                        打印进程内存信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8" data-path="print-static-variables.html">
+            
+                
+                    <a href="./print-static-variables.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.8.</b>
+                        
+                        打印静态变量的值
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.9" data-path="print-variable-info.html">
+            
+                
+                    <a href="./print-variable-info.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.9.</b>
+                        
+                        打印变量的类型和所在文件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.10" data-path="examine-memory.html">
+            
+                
+                    <a href="./examine-memory.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.10.</b>
+                        
+                        打印内存的值
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.11" data-path="print-source-lines.html">
+            
+                
+                    <a href="./print-source-lines.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.11.</b>
+                        
+                        打印源代码行
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.12" data-path="set-print-pretty-on.html">
+            
+                
+                    <a href="./set-print-pretty-on.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.12.</b>
+                        
+                        每行打印一个结构体成员
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.13" data-path="print-derived-type.html">
+            
+                
+                    <a href="./print-derived-type.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.13.</b>
+                        
+                        按照派生类型打印对象
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.14" data-path="set-io-tty.html">
+            
+                
+                    <a href="./set-io-tty.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.14.</b>
+                        
+                        指定程序的输入输出设备
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.15" data-path="use-$_-$__-variables.html">
+            
+                
+                    <a href="./use-$_-$__-variables.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.15.</b>
+                        
+                        使用“$\\_”和“$\\__”变量
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.16" data-path="print-malloc-memory.html">
+            
+                
+                    <a href="./print-malloc-memory.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.16.</b>
+                        
+                        打印程序动态分配内存的信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.17" data-path="print-frame-variables.html">
+            
+                
+                    <a href="./print-frame-variables.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.17.</b>
+                        
+                        打印调用栈帧中变量的值
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="part7.html">
+            
+                
+                    <a href="./part7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        多进程/线程
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="attach-process.html">
+            
+                
+                    <a href="./attach-process.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        调试已经运行的进程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="set-follow-fork-mode-child.html">
+            
+                
+                    <a href="./set-follow-fork-mode-child.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        调试子进程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="set-detach-on-fork.html">
+            
+                
+                    <a href="./set-detach-on-fork.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        同时调试父进程和子进程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="print-threads.html">
+            
+                
+                    <a href="./print-threads.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        查看线程信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="maint-info-sol-threads.html">
+            
+                
+                    <a href="./maint-info-sol-threads.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        在Solaris上使用maintenance命令查看线程信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="show-print-thread-events.html">
+            
+                
+                    <a href="./show-print-thread-events.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.6.</b>
+                        
+                        不显示线程启动和退出信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.7" data-path="set-scheduler-locking-on.html">
+            
+                
+                    <a href="./set-scheduler-locking-on.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.7.</b>
+                        
+                        只允许一个线程运行
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.8" data-path="use-$_thread-variable.html">
+            
+                
+                    <a href="./use-$_thread-variable.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.8.</b>
+                        
+                        使用“$_thread”变量
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.9" data-path="add-copy-inferiors.html">
+            
+                
+                    <a href="./add-copy-inferiors.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.9.</b>
+                        
+                        一个gdb会话中同时调试多个程序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.10" data-path="maint-info-program-space.html">
+            
+                
+                    <a href="./maint-info-program-space.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.10.</b>
+                        
+                        打印程序进程空间信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.11" data-path="use-$_exitcode.html">
+            
+                
+                    <a href="./use-$_exitcode.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.11.</b>
+                        
+                        使用“$_exitcode”变量
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="part8.html">
+            
+                
+                    <a href="./part8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        core dump文件
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="generate-core-dump-file.html">
+            
+                
+                    <a href="./generate-core-dump-file.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        为调试进程产生core dump文件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="load-executable-and-coredump-file.html">
+            
+                
+                    <a href="./load-executable-and-coredump-file.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        加载可执行程序和core dump文件
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="part9.html">
+            
+                
+                    <a href="./part9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        汇编
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="set-disassembly-flavor.html">
+            
+                
+                    <a href="./set-disassembly-flavor.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        设置汇编指令格式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="break-on-first-assembly-code.html">
+            
+                
+                    <a href="./break-on-first-assembly-code.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        在函数的第一条汇编指令打断点
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="disassemble-next-line.html">
+            
+                
+                    <a href="./disassemble-next-line.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        自动反汇编后面要执行的代码
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="map-source-code-and-assembly.html">
+            
+                
+                    <a href="./map-source-code-and-assembly.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        将源程序和汇编指令映射起来
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="display-instruction-pc.html">
+            
+                
+                    <a href="./display-instruction-pc.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                        显示将要执行的汇编指令
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" data-path="print-registers.html">
+            
+                
+                    <a href="./print-registers.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        打印寄存器的值
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="disassemble-raw-machine-code.html">
+            
+                
+                    <a href="./disassemble-raw-machine-code.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.7.</b>
+                        
+                        显示程序原始机器码
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="part10.html">
+            
+                
+                    <a href="./part10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        改变程序的执行
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="change-string.html">
+            
+                
+                    <a href="./change-string.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        改变字符串的值
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="set-var.html">
+            
+                
+                    <a href="./set-var.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        设置变量的值
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="modify-pc-register.html">
+            
+                
+                    <a href="./modify-pc-register.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        修改PC寄存器的值
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="jump.html">
+            
+                
+                    <a href="./jump.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        跳转到指定位置执行
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="breakpoint-command.html">
+            
+                
+                    <a href="./breakpoint-command.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.5.</b>
+                        
+                        使用断点命令改变程序的执行
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="patch-program.html">
+            
+                
+                    <a href="./patch-program.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.6.</b>
+                        
+                        修改被调试程序的二进制文件
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="part11.html">
+            
+                
+                    <a href="./part11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        信号
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="info-signals.html">
+            
+                
+                    <a href="./info-signals.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        查看信号处理信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="stop-signal.html">
+            
+                
+                    <a href="./stop-signal.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        信号发生时是否暂停程序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="print-signal.html">
+            
+                
+                    <a href="./print-signal.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.</b>
+                        
+                        信号发生时是否打印信号信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="pass-signal.html">
+            
+                
+                    <a href="./pass-signal.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.4.</b>
+                        
+                        信号发生时是否把信号丢给程序处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.5" data-path="send-signal.html">
+            
+                
+                    <a href="./send-signal.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.5.</b>
+                        
+                        给程序发送信号
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.6" data-path="use-$_siginfo-variable.html">
+            
+                
+                    <a href="./use-$_siginfo-variable.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.6.</b>
+                        
+                        使用“$_siginfo”变量
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="part12.html">
+            
+                
+                    <a href="./part12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        共享库
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="info_sharedlibrary.html">
+            
+                
+                    <a href="./info_sharedlibrary.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        显示共享链接库信息
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="part13.html">
+            
+                
+                    <a href="./part13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        脚本
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1" data-path="config-gdbinit.html">
+            
+                
+                    <a href="./config-gdbinit.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        配置gdb init文件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="set-script-extension.html">
+            
+                
+                    <a href="./set-script-extension.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        按何种方式解析脚本文件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="save-history-commands.html">
+            
+                
+                    <a href="./save-history-commands.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        保存历史命令
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="14" data-path="part14.html">
+            
+                
+                    <a href="./part14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        源文件
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1" data-path="directory.html">
+            
+                
+                    <a href="./directory.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.1.</b>
+                        
+                        设置源文件查找路径
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" data-path="substitute-path.html">
+            
+                
+                    <a href="./substitute-path.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.2.</b>
+                        
+                        替换查找源文件的目录
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="part15.html">
+            
+                
+                    <a href="./part15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        图形化界面
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="15.1" data-path="tui-mode.html">
+            
+                
+                    <a href="./tui-mode.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.1.</b>
+                        
+                        进入和退出图形化调试界面
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" data-path="layout-asm.html">
+            
+                
+                    <a href="./layout-asm.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.2.</b>
+                        
+                        显示汇编代码窗口
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.3" data-path="layout-regs.html">
+            
+                
+                    <a href="./layout-regs.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.3.</b>
+                        
+                        显示寄存器窗口
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.4" data-path="winheight.html">
+            
+                
+                    <a href="./winheight.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.4.</b>
+                        
+                        调整窗口大小
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="part16.html">
+            
+                
+                    <a href="./part16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        其它
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1" data-path="option-format.html">
+            
+                
+                    <a href="./option-format.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.1.</b>
+                        
+                        命令行选项的格式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.2" data-path="preprocessor-macro.html">
+            
+                
+                    <a href="./preprocessor-macro.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.2.</b>
+                        
+                        支持预处理器宏信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.3" data-path="use-short-command.html">
+            
+                
+                    <a href="./use-short-command.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.3.</b>
+                        
+                        使用命令的缩写形式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.4" data-path="run-shell-command.html">
+            
+                
+                    <a href="./run-shell-command.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.4.</b>
+                        
+                        在gdb中执行shell命令和make
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.5" data-path="run-cd-pwd.html">
+            
+                
+                    <a href="./run-cd-pwd.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.5.</b>
+                        
+                        在gdb中执行cd和pwd命令
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.6" data-path="set-prompt.html">
+            
+                
+                    <a href="./set-prompt.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.6.</b>
+                        
+                        设置命令提示符
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.7" data-path="set-program-args.html">
+            
+                
+                    <a href="./set-program-args.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.7.</b>
+                        
+                        设置被调试程序的参数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.8" data-path="set-program-env.html">
+            
+                
+                    <a href="./set-program-env.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.8.</b>
+                        
+                        设置被调试程序的环境变量
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.9" data-path="help.html">
+            
+                
+                    <a href="./help.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.9.</b>
+                        
+                        得到命令的帮助信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.10" data-path="set-logging.html">
+            
+                
+                    <a href="./set-logging.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.10.</b>
+                        
+                        记录执行gdb的过程
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >100个gdb小技巧</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x6E90;&#x6587;&#x4EF6;">&#x6E90;&#x6587;&#x4EF6;</h1>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./save-history-commands.html" class="navigation navigation-prev " aria-label="Previous page: 保存历史命令"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./directory.html" class="navigation navigation-next " aria-label="Next page: 设置源文件查找路径"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

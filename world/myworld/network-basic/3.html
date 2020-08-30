@@ -1,0 +1,723 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>网络基本功（四）：细说路由（上） | 网络基本功系列</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./4.html" />
+    
+    
+    <link rel="prev" href="./2.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="4"
+        data-chapter-title="网络基本功（四）：细说路由（上）"
+        data-filepath="3.md"
+        data-basepath="."
+        data-revision="Tue Apr 05 2016 09:04:13 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/network-basic" target="blank" class="custom-link">网络基本功系列</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="0.html">
+            
+                
+                    <a href="./0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        网络基本功（一）：细说网络传输
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="1.html">
+            
+                
+                    <a href="./1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        网络基本功（二）：细说交换机
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        网络基本功（三）：细说VLAN与Trunk
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="4" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        网络基本功（四）：细说路由（上）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        网络基本功（五）：细说路由（下）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        网络基本功（六）：链路聚合
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        网络基本功（七）：细说IP地址与子网
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        网络基本功（八）：细说TCP滑动窗口
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="8.html">
+            
+                
+                    <a href="./8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        网络基本功（九）：细说TCP重传
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="9.html">
+            
+                
+                    <a href="./9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        网络基本功（十）：细说TCP确认机制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="10.html">
+            
+                
+                    <a href="./10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        网络基本功（十一）：TCP窗口调整与流控
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="11.html">
+            
+                
+                    <a href="./11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        网络基本功（十二）：细说Linux网络配置（上）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="12.html">
+            
+                
+                    <a href="./12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        网络基本功（十三）：细说Linux网络配置（下）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="13.html">
+            
+                
+                    <a href="./13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        网络基本功（十四）：细说诊断工具ping
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="14.html">
+            
+                
+                    <a href="./14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        网络基本功（十五）：细说网络性能监测与实例（上）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="15.html">
+            
+                
+                    <a href="./15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        网络基本功（十六）：细说网络性能监测与实例（下）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="16.html">
+            
+                
+                    <a href="./16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        网络基本功（十七）：细说tcpdump的妙用（上）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18" data-path="17.html">
+            
+                
+                    <a href="./17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.</b>
+                        
+                        网络基本功（十八）：细说tcpdump的妙用（下）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19" data-path="18.html">
+            
+                
+                    <a href="./18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.</b>
+                        
+                        网络基本功（十九）：细说NAT原理与配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20" data-path="19.html">
+            
+                
+                    <a href="./19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.</b>
+                        
+                        网络基本功（二十）：细说ICMP和ARP
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21" data-path="20.html">
+            
+                
+                    <a href="./20.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.</b>
+                        
+                        网络基本功（二十一）：细说HTTP（上）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22" data-path="21.html">
+            
+                
+                    <a href="./21.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.</b>
+                        
+                        网络基本功（二十二）：细说HTTP（下）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="23" data-path="22.html">
+            
+                
+                    <a href="./22.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.</b>
+                        
+                        网络基本功（二十三）：Wireshark抓包实例诊断TCP连接问题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24" data-path="23.html">
+            
+                
+                    <a href="./23.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.</b>
+                        
+                        网络基本功（二十四）：Wireshark抓包实例分析TCP重传
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25" data-path="24.html">
+            
+                
+                    <a href="./24.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.</b>
+                        
+                        网络基本功（二十五）：Wireshark抓包实例分析TCP重复ACK与乱序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26" data-path="25.html">
+            
+                
+                    <a href="./25.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.</b>
+                        
+                        网络基本功（二十六）：Wireshark抓包实例分析TCP窗口及reset
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27" data-path="26.html">
+            
+                
+                    <a href="./26.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.</b>
+                        
+                        网络基本功（二十七）：Wireshark抓包实例分析HTTP问题(上)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="28" data-path="27.html">
+            
+                
+                    <a href="./27.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>28.</b>
+                        
+                        网络基本功（二十八）：Wireshark抓包实例分析HTTP问题(下)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="29" data-path="28.html">
+            
+                
+                    <a href="./28.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>29.</b>
+                        
+                        网络基本功（二十九）：Wireshark抓包实例诊断数据库常见问题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="30" data-path="29.html">
+            
+                
+                    <a href="./29.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>30.</b>
+                        
+                        网络基本功（三十）：细说DNS（上）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="31" data-path="30.html">
+            
+                
+                    <a href="./30.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>31.</b>
+                        
+                        网络基本功（三十一）：细说DHCP
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >网络基本功系列</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x7F51;&#x7EDC;&#x57FA;&#x672C;&#x529F;&#xFF08;&#x56DB;&#xFF09;&#xFF1A;&#x7EC6;&#x8BF4;&#x8DEF;&#x7531;&#xFF08;&#x4E0A;&#xFF09;">&#x7F51;&#x7EDC;&#x57FA;&#x672C;&#x529F;&#xFF08;&#x56DB;&#xFF09;&#xFF1A;&#x7EC6;&#x8BF4;&#x8DEF;&#x7531;&#xFF08;&#x4E0A;&#xFF09;</h1>
+<p><strong>&#x8F6C;&#x8F7D;&#x8BF7;&#x5728;&#x6587;&#x9996;&#x4FDD;&#x7559;&#x539F;&#x6587;&#x51FA;&#x5904;&#xFF1A;EMC&#x4E2D;&#x6587;&#x652F;&#x6301;&#x8BBA;&#x575B;</strong><a href="https://community.emc.com/go/chinese" target="_blank">https://community.emc.com/go/chinese</a> <a href="https://community.emc.com/servlet/JiveServlet/showImage/2-835157-92944/image001.gif" target="_blank"><img src="https://community.emc.com/servlet/JiveServlet/downloadImage/2-835157-92944/image001.gif" alt="image001.gif"></a></p>
+<h2 id="&#x4ECB;&#x7ECD;">&#x4ECB;&#x7ECD;</h2>
+<p>&#x4EE5;&#x592A;&#x7F51;&#x4EA4;&#x6362;&#x673A;&#x5DE5;&#x4F5C;&#x5728;&#x7B2C;&#x4E8C;&#x5C42;&#x5373;&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5C42;&#xFF0C;&#x7528;&#x4E8E;&#x5728;&#x540C;&#x4E00;&#x7F51;&#x7EDC;&#x5185;&#x90E8;&#x8F6C;&#x53D1;&#x4EE5;&#x592A;&#x7F51;&#x5E27;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5F53;&#x6E90;&#x548C;&#x76EE;&#x7684;IP&#x5730;&#x5740;&#x4F4D;&#x4E8E;&#x4E0D;&#x540C;&#x7F51;&#x7EDC;&#x65F6;&#xFF0C;&#x4EE5;&#x592A;&#x7F51;&#x5E27;&#x5FC5;&#x987B;&#x53D1;&#x9001;&#x7ED9;&#x8DEF;&#x7531;&#x5668;&#x3002;&#x8DEF;&#x7531;&#x5668;&#x8D1F;&#x8D23;&#x5728;&#x4E0D;&#x540C;&#x7F51;&#x7EDC;&#x95F4;&#x4F20;&#x8F93;&#x62A5;&#x6587;&#xFF0C;&#x901A;&#x8FC7;&#x8DEF;&#x7531;&#x8868;&#x6765;&#x51B3;&#x5B9A;&#x6700;&#x4F73;&#x8F6C;&#x53D1;&#x8DEF;&#x5F84;&#x3002;&#x5F53;&#x4E3B;&#x673A;&#x5C06;&#x62A5;&#x6587;&#x53D1;&#x9001;&#x81F3;&#x4E0D;&#x540C;IP&#x5730;&#x5740;&#x65F6;&#xFF0C;&#x7531;&#x4E8E;&#x4E3B;&#x673A;&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x4E0E;&#x672C;&#x5730;&#x7F51;&#x7EDC;&#x4EE5;&#x5916;&#x7684;&#x8BBE;&#x5907;&#x901A;&#x4FE1;&#xFF0C;&#x62A5;&#x6587;&#x88AB;&#x8F6C;&#x53D1;&#x81F3;&#x9ED8;&#x8BA4;&#x7F51;&#x5173;&#x3002;&#x9ED8;&#x8BA4;&#x7F51;&#x5173;&#x5C31;&#x662F;&#x6570;&#x636E;&#x6D41;&#x4ECE;&#x672C;&#x5730;&#x7F51;&#x7EDC;&#x8DEF;&#x7531;&#x81F3;&#x8FDC;&#x7AEF;&#x8BBE;&#x5907;&#x7684;&#x76EE;&#x7684;&#x5730;&#x3002;&#x5B83;&#x901A;&#x5E38;&#x7528;&#x6765;&#x8FDE;&#x63A5;&#x672C;&#x5730;&#x7F51;&#x4E0E;&#x516C;&#x5171;&#x7F51;&#x3002;</p>
+<h2 id="&#x66F4;&#x591A;&#x4FE1;&#x606F;">&#x66F4;&#x591A;&#x4FE1;&#x606F;</h2>
+<p><strong>&#x62A5;&#x6587;&#x8F6C;&#x53D1;&#x8FC7;&#x7A0B;:</strong></p>
+<p>&#x8DEF;&#x7531;&#x5668;&#x5728;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x63A5;&#x6536;&#x62A5;&#x6587;&#x5E76;&#x5C06;&#x5B83;&#x4ECE;&#x53E6;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x8F6C;&#x53D1;&#x51FA;&#x53BB;&#xFF0C;&#x8FD9;&#x4E00;&#x8FC7;&#x7A0B;&#x7684;&#x5173;&#x952E;&#x6B65;&#x9AA4;&#x662F;&#x4E3A;&#x8F93;&#x51FA;&#x94FE;&#x8DEF;&#x5C06;&#x62A5;&#x6587;&#x5C01;&#x88C5;&#x5728;&#x9002;&#x5F53;&#x7684;&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5E27;&#x4E2D;&#x3002;&#x8DEF;&#x7531;&#x5668;&#x4E3B;&#x8981;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x4E09;&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<p>1. &#x5C06;&#x7B2C;&#x4E8C;&#x5C42;&#x7684;&#x5E27;&#x5934;&#x548C;&#x5E27;&#x5C3E;&#x79FB;&#x9664;&#xFF0C;&#x89E3;&#x6790;&#x51FA;&#x7B2C;&#x4E09;&#x5C42;&#x62A5;&#x6587;&#x3002;</p>
+<p>2. &#x68C0;&#x67E5;IP&#x62A5;&#x6587;&#x7684;&#x76EE;&#x7684;IP&#x5730;&#x5740;&#xFF0C;&#x5728;&#x8DEF;&#x7531;&#x8868;&#x4E2D;&#x67E5;&#x627E;&#x6700;&#x4F73;&#x8DEF;&#x7531;&#x3002;</p>
+<p>3. &#x5982;&#x679C;&#x8DEF;&#x7531;&#x5668;&#x627E;&#x5230;&#x4E00;&#x6761;&#x6700;&#x4F73;&#x8DEF;&#x5F84;&#xFF0C;&#x5219;&#x5C06;&#x4E09;&#x5C42;&#x62A5;&#x6587;&#x5C01;&#x88C5;&#x5230;&#x65B0;&#x7684;&#x4E8C;&#x5C42;&#x5E27;&#x4E2D;&#xFF0C;&#x5E76;&#x5C06;&#x5E27;&#x8F6C;&#x53D1;&#x5230;&#x8F93;&#x51FA;&#x7AEF;&#x53E3;&#x3002;</p>
+<p>&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;&#x8BBE;&#x5907;&#x6709;&#x4E09;&#x5C42;IPv4&#x5730;&#x5740;&#xFF0C;&#x4EE5;&#x592A;&#x7F51;&#x63A5;&#x53E3;&#x6709;&#x4E8C;&#x5C42;&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5730;&#x5740;&#x3002;&#x4F8B;&#x5982;PC 1&#x7684;IPv4&#x5730;&#x5740;192.168.1.10&#xFF0C;&#x793A;&#x4F8B;MAC&#x5730;&#x5740;0A-10&#x3002;<strong>&#x5728;&#x62A5;&#x6587;&#x4ECE;&#x539F;&#x8BBE;&#x5907;&#x4F20;&#x8F93;&#x81F3;&#x76EE;&#x7684;&#x8BBE;&#x5907;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E09;&#x5C42;IP&#x5730;&#x5740;&#x4E0D;&#x4F1A;&#x6539;&#x53D8;</strong>&#x3002;<strong>&#x4F46;&#x662F;&#xFF0C;&#x6BCF;&#x4E00;&#x8DF3;&#x968F;&#x7740;&#x62A5;&#x6587;&#x5728;&#x8DEF;&#x7531;&#x5668;&#x4E2D;&#x88AB;&#x89E3;&#x5C01;&#x88C5;&#x548C;&#x91CD;&#x65B0;&#x5C01;&#x88C5;&#xFF0C;&#x4E8C;&#x5C42;&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5730;&#x5740;&#x90FD;&#x4F1A;&#x6539;&#x53D8;&#x3002;</strong>&#x5F88;&#x53EF;&#x80FD;&#x62A5;&#x6587;&#x88AB;&#x5C01;&#x88C5;&#x6210;&#x4E0E;&#x63A5;&#x6536;&#x65F6;&#x4E0D;&#x540C;&#x7684;&#x53E6;&#x4E00;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x4E8C;&#x5C42;&#x5E27;&#x3002;</p>
+<p><a href="https://community.emc.com/servlet/JiveServlet/showImage/2-835157-92945/image002.jpg" target="_blank"><img src="https://community.emc.com/servlet/JiveServlet/downloadImage/2-835157-92945/image002.jpg" alt="image002.jpg"></a></p>
+<p><strong>&#x53D1;&#x9001;&#x62A5;&#x6587;&#xFF1A;</strong></p>
+<p>PC 1&#x53D1;&#x9001;&#x62A5;&#x6587;&#x7ED9;PC 2&#x65F6;&#xFF0C;&#x9996;&#x5148;&#x5FC5;&#x987B;&#x786E;&#x5B9A;&#x76EE;&#x7684;IPv4&#x5730;&#x5740;&#x662F;&#x5426;&#x4F4D;&#x4E8E;&#x540C;&#x4E00;&#x7F51;&#x7EDC;&#x3002;PC 1&#x901A;&#x8FC7;&#x5C06;&#x81EA;&#x5DF1;&#x7684;IPv4&#x5730;&#x5740;&#x4E0E;&#x5B50;&#x7F51;&#x63A9;&#x7801;&#x505A;&#x4E0E;&#x64CD;&#x4F5C;&#xFF0C;&#x6765;&#x5224;&#x65AD;PC 1&#x6240;&#x5C5E;&#x7684;&#x7F51;&#x6BB5;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;PC 1&#x5BF9;&#x76EE;&#x7684;IPv4&#x5730;&#x5740;&#x4E0E;PC 1&#x7684;&#x5B50;&#x7F51;&#x63A9;&#x7801;&#x505A;&#x540C;&#x6837;&#x7684;&#x4E0E;&#x64CD;&#x4F5C;&#x3002;&#x5982;&#x679C;&#x76EE;&#x7684;&#x7F51;&#x7EDC;&#x5730;&#x5740;&#x4E0E;PC 1&#x7F51;&#x7EDC;&#x76F8;&#x540C;&#xFF0C;&#x5219;PC 1&#x4E0D;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7F51;&#x5173;&#xFF0C;&#x800C;&#x662F;&#x5728;ARP&#x7F13;&#x5B58;&#x4E2D;&#x67E5;&#x627E;&#x76EE;&#x7684;IPv4&#x5730;&#x5740;&#x7684;&#x8BBE;&#x5907;MAC&#x5730;&#x5740;&#x3002;&#x5982;&#x679C;MAC&#x5730;&#x5740;&#x4E0D;&#x5728;&#x7F13;&#x5B58;&#x4E2D;&#xFF0C;&#x5219;PC 1&#x4EA7;&#x751F;&#x4E00;&#x4E2A;ARP&#x8BF7;&#x6C42;&#x6765;&#x83B7;&#x53D6;&#x5730;&#x5740;&#x5E76;&#x5C06;&#x62A5;&#x6587;&#x53D1;&#x7ED9;&#x76EE;&#x7684;&#x5730;&#x5740;&#x3002;&#x5982;&#x679C;&#x76EE;&#x7684;&#x7F51;&#x7EDC;&#x5730;&#x5740;&#x4F4D;&#x4E8E;&#x53E6;&#x4E00;&#x7F51;&#x7EDC;&#xFF0C;&#x5219;PC 1&#x5C06;&#x62A5;&#x6587;&#x8F6C;&#x53D1;&#x81F3;&#x9ED8;&#x8BA4;&#x7F51;&#x5173;&#x3002;</p>
+<p>&#x8981;&#x786E;&#x5B9A;&#x9ED8;&#x8BA4;&#x7F51;&#x5173;&#x7684;MAC&#x5730;&#x5740;&#xFF0C;PC 1&#x5728;&#x5B83;&#x7684;ARP&#x8868;&#x4E2D;&#x67E5;&#x627E;&#x9ED8;&#x8BA4;&#x7F51;&#x5173;&#x7684;IPv4&#x5730;&#x5740;&#x4EE5;&#x53CA;&#x76F8;&#x5E94;&#x7684;MAC&#x5730;&#x5740;&#x3002;&#x5982;&#x679C;ARP&#x8868;&#x4E2D;&#x6CA1;&#x6709;&#x9ED8;&#x8BA4;&#x7F51;&#x5173;&#x7684;&#x5BF9;&#x5E94;&#x8868;&#x9879;&#xFF0C;&#x5219;PC 1&#x53D1;&#x9001;ARP&#x8BF7;&#x6C42;&#x3002;&#x8DEF;&#x7531;&#x5668;R1&#x56DE;&#x590D;ARP&#x54CD;&#x5E94;&#x3002;&#x4E4B;&#x540E;PC 1&#x5C06;&#x62A5;&#x6587;&#x8F6C;&#x53D1;&#x81F3;&#x9ED8;&#x8BA4;&#x7F51;&#x5173;&#x7684;MAC&#x5730;&#x5740;&#xFF0C;&#x5373;&#x8DEF;&#x7531;&#x5668;R1&#x7684;Fa0/0&#x63A5;&#x53E3;&#x3002;</p>
+<p><strong>&#x8F6C;&#x53D1;&#x81F3;&#x4E0B;&#x4E00;&#x8DF3;&#xFF1A;</strong></p>
+<p>R1&#x4ECE;PC 1&#x63A5;&#x6536;&#x5230;&#x4EE5;&#x592A;&#x7F51;&#x5E27;&#x540E;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<p>1. R1&#x68C0;&#x67E5;&#x76EE;&#x7684;MAC&#x5730;&#x5740;&#xFF0C;&#x4E0E;&#x63A5;&#x6536;&#x7AEF;&#x53E3;FastEthernet 0/0&#x76F8;&#x5339;&#x914D;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x5C06;&#x5E27;&#x590D;&#x5236;&#x5230;buffer&#x3002;</p>
+<p>2. R1&#x8BC6;&#x522B;&#x4EE5;&#x592A;&#x7F51;&#x7C7B;&#x578B;&#x4E3A;0x800&#xFF0C;&#x610F;&#x5473;&#x7740;&#x4EE5;&#x592A;&#x7F51;&#x5E27;&#x7684;&#x6570;&#x636E;&#x90E8;&#x5206;&#x5305;&#x542B;IPv4&#x62A5;&#x6587;&#x3002;</p>
+<p>3. R1&#x89E3;&#x5C01;&#x88C5;&#x8BE5;&#x4EE5;&#x592A;&#x7F51;&#x5E27;&#x3002;</p>
+<p>4. &#x7531;&#x4E8E;&#x76EE;&#x7684;IPv4&#x5730;&#x5740;&#x4E0E;R1&#x76F4;&#x8FDE;&#x7684;&#x4EFB;&#x4F55;&#x7F51;&#x7EDC;&#x90FD;&#x4E0D;&#x76F8;&#x7B26;&#xFF0C;R1&#x5728;&#x8DEF;&#x7531;&#x8868;&#x4E2D;&#x67E5;&#x627E;&#x5305;&#x542B;&#x8BE5;&#x76EE;&#x7684;IPv4&#x5730;&#x5740;&#x4E3B;&#x673A;&#x7684;&#x7F51;&#x7EDC;&#x5730;&#x5740;&#x3002;&#x672C;&#x4F8B;&#x4E2D;&#xFF0C;&#x8DEF;&#x7531;&#x8868;&#x4E2D;&#x6709;192.168.4.0/24&#x7F51;&#x7EDC;&#x7684;&#x8DEF;&#x7531;&#x3002;&#x76EE;&#x7684;IPv4&#x5730;&#x5740;&#x4E3A;192.168.4.10&#xFF0C;&#x5373;&#x8BE5;&#x7F51;&#x7EDC;&#x4E0A;&#x7684;&#x4E3B;&#x673A;IPv4&#x5730;&#x5740;&#x3002;</p>
+<p>R1&#x627E;&#x5230;192.168.4.0/24&#x8DEF;&#x7531;&#x7684;&#x4E0B;&#x4E00;&#x6761;IPv4&#x5730;&#x5740;&#x4E3A;192.168.2.2&#x4EE5;&#x53CA;&#x8F93;&#x51FA;&#x7AEF;&#x53E3;FastEthernet 0/1&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;IPv4&#x62A5;&#x6587;&#x5C01;&#x88C5;&#x5230;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x4EE5;&#x592A;&#x7F51;&#x5E27;&#x4E2D;&#xFF0C;&#x76EE;&#x6807;MAC&#x5730;&#x5740;&#x662F;&#x4E0B;&#x4E00;&#x8DF3;&#x8DEF;&#x7531;&#x5668;&#x7684;MAC&#x5730;&#x5740;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x4E0B;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x662F;&#x5728;&#x4EE5;&#x592A;&#x7F51;&#x4E0A;&#xFF0C;&#x6240;&#x4EE5;R1&#x5FC5;&#x987B;&#x7528;ARP&#x89E3;&#x6790;&#x51FA;&#x4E0B;&#x4E00;&#x8DF3;IPv4&#x5730;&#x5740;&#x7684;MAC&#x5730;&#x5740;&#x3002;</p>
+<p>1. R1&#x5728;ARP cache&#x4E2D;&#x67E5;&#x627E;&#x4E0B;&#x4E00;&#x8DF3;IPv4&#x5730;&#x5740;192.168.2.2&#x3002;&#x5982;&#x679C;&#x8868;&#x9879;&#x4E0D;&#x5728;ARP cache&#x4E2D;&#xFF0C;R1&#x4F1A;&#x4ECE;FastEthernet 0/1 &#x63A5;&#x53E3;&#x53D1;&#x9001;ARP&#x8BF7;&#x6C42;&#xFF0C;R2&#x4F1A;&#x8FD4;&#x56DE;ARP&#x54CD;&#x5E94;&#x3002;R1&#x4E4B;&#x540E;&#x5728;ARP cache&#x4E2D;&#x66F4;&#x65B0;192.168.2.2&#x7684;MAC&#x5730;&#x5740;&#x3002;</p>
+<p>2. IPv4&#x62A5;&#x6587;&#x5C01;&#x88C5;&#x5230;&#x65B0;&#x7684;&#x4EE5;&#x592A;&#x7F51;&#x5E27;&#x4E2D;&#x5E76;&#x4ECE;R1&#x7684;FastEthernet 0/1 &#x63A5;&#x53E3;&#x8F6C;&#x53D1;&#x51FA;&#x53BB;&#x3002;</p>
+<p><strong>&#x5230;&#x8FBE;&#x76EE;&#x7684;&#x5730;&#xFF1A;</strong></p>
+<p>&#x5F53;&#x5E27;&#x5230;&#x8FBE;R3&#x65F6;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<p>1. R3&#x5C06;&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5E27;&#x590D;&#x5236;&#x5230;&#x5B83;&#x7684;buffer&#x3002;</p>
+<p>2. R3&#x89E3;&#x5C01;&#x88C5;&#x8BE5;&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5E27;&#x3002;</p>
+<p>3. R3&#x5728;&#x8DEF;&#x7531;&#x8868;&#x4E2D;&#x67E5;&#x627E;&#x8BE5;&#x76EE;&#x7684;IPv4&#x5730;&#x5740;&#x3002;R3&#x8DEF;&#x7531;&#x8868;&#x4E2D;&#x6709;&#x76F4;&#x63A5;&#x8FDE;&#x63A5;&#x5230;&#x8BE5;&#x7F51;&#x7EDC;&#x7684;&#x8DEF;&#x7531;&#x3002;&#x8FD9;&#x8868;&#x793A;&#x62A5;&#x6587;&#x53EF;&#x76F4;&#x63A5;&#x53D1;&#x9001;&#x5230;&#x76EE;&#x7684;&#x8BBE;&#x5907;&#x800C;&#x65E0;&#x9700;&#x53D1;&#x9001;&#x81F3;&#x8DEF;&#x7531;&#x5668;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x8F93;&#x51FA;&#x63A5;&#x53E3;&#x662F;&#x4E00;&#x4E2A;&#x76F4;&#x8FDE;&#x4EE5;&#x592A;&#x7F51;&#xFF0C;&#x6240;&#x4EE5;R3&#x5FC5;&#x987B;&#x7528;ARP&#x89E3;&#x6790;&#x51FA;&#x76EE;&#x7684;IPv4&#x5730;&#x5740;&#x7684;MAC&#x5730;&#x5740;&#x3002;</p>
+<p>1. R3&#x5728;&#x5B83;&#x7684;ARP cache&#x4E2D;&#x67E5;&#x627E;&#x76EE;&#x7684;IPv4&#x5730;&#x5740;&#xFF0C;&#x5982;&#x679C;&#x6B64;ARP cache&#x4E2D;&#x6CA1;&#x6709;&#x6B64;&#x8868;&#x9879;&#xFF0C;R3&#x4F1A;&#x4ECE;FastEthernet 0/0 &#x63A5;&#x53E3;&#x53D1;&#x9001;ARP&#x8BF7;&#x6C42;&#x3002;PC 2&#x56DE;&#x590D;ARP&#x54CD;&#x5E94;&#x544A;&#x77E5;&#x5B83;&#x7684;MAC&#x5730;&#x5740;&#x3002;R3&#x4E4B;&#x540E;&#x5728;ARP cache&#x4E2D;&#x66F4;&#x65B0;192.168.4.10&#x7684;MAC&#x5730;&#x5740;&#x3002;</p>
+<p>2. IPv4&#x62A5;&#x6587;&#x5C01;&#x88C5;&#x5230;&#x65B0;&#x7684;&#x4EE5;&#x592A;&#x7F51;&#x5E27;&#x4E2D;&#x5E76;&#x4ECE;R3&#x7684;FastEthernet 0/0 &#x63A5;&#x53E3;&#x53D1;&#x51FA;&#x3002;</p>
+<p>3. &#x5F53;PC 2&#x63A5;&#x6536;&#x5230;&#x8BE5;&#x5E27;&#xFF0C;&#x68C0;&#x67E5;&#x5E27;&#x7684;&#x76EE;&#x7684;MAC&#x5730;&#x5740;&#xFF0C;&#x4E0E;&#x7F51;&#x5361;&#x63A5;&#x6536;&#x7AEF;&#x53E3;&#x7684;MAC&#x5730;&#x5740;&#x76F8;&#x5339;&#x914D;&#xFF0C;PC 2&#x4E8E;&#x662F;&#x5C06;&#x5E27;&#x7684;&#x5269;&#x4F59;&#x90E8;&#x5206;&#x590D;&#x5236;&#x5230;&#x81EA;&#x5DF1;&#x7684;buffer&#x3002;</p>
+<p>4. PC 2&#x8BC6;&#x522B;&#x5230;&#x4EE5;&#x592A;&#x7F51;&#x7C7B;&#x578B;&#x4E3A;0x800&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5E27;&#x7684;&#x6570;&#x636E;&#x90E8;&#x5206;&#x5305;&#x542B;IPv4&#x62A5;&#x6587;&#x3002;</p>
+<p>5. PC 2&#x89E3;&#x5C01;&#x88C5;&#x4EE5;&#x592A;&#x7F51;&#x5E27;&#xFF0C;&#x5C06;IPv4&#x62A5;&#x6587;&#x4F20;&#x9012;&#x7ED9;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;IPv4&#x8FDB;&#x7A0B;&#x3002;</p>
+<p><strong>&#x8DEF;&#x7531;&#x8868;:</strong></p>
+<p>&#x8DEF;&#x7531;&#x8868;&#x5B58;&#x50A8;&#x7684;&#x4FE1;&#x606F;&#x5305;&#x62EC;&#xFF1A;</p>
+<p><strong>&#x76F4;&#x8FDE;&#x8DEF;&#x5F84;&#xFF1A;</strong>&#x6765;&#x81EA;&#x6D3B;&#x52A8;&#x8DEF;&#x7531;&#x63A5;&#x53E3;&#x7684;&#x8DEF;&#x5F84;&#x3002;&#x5F53;&#x63A5;&#x53E3;&#x4E3A;&#x6D3B;&#x52A8;&#x72B6;&#x6001;&#x5E76;&#x914D;&#x7F6E;&#x4E86;IP&#x5730;&#x5740;&#x65F6;&#xFF0C;&#x8DEF;&#x7531;&#x5668;&#x6DFB;&#x52A0;&#x4E00;&#x6761;&#x76F4;&#x8FDE;&#x8DEF;&#x5F84;&#x3002;</p>
+<p><strong>&#x8FDC;&#x7AEF;&#x8DEF;&#x5F84;&#xFF1A;</strong>&#x8FDC;&#x7AEF;&#x7684;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x5230;&#x5176;&#x4ED6;&#x8DEF;&#x7531;&#x3002;&#x901A;&#x8FC7;&#x9759;&#x6001;&#x914D;&#x7F6E;&#x6216;&#x52A8;&#x6001;&#x8DEF;&#x7531;&#x534F;&#x8BAE;&#x5230;&#x8FBE;&#x8BE5;&#x7F51;&#x7EDC;&#x3002;</p>
+<p>&#x8DEF;&#x7531;&#x8868;&#x662F;&#x5B58;&#x50A8;&#x5728;RAM&#x4E2D;&#x7684;&#x4E00;&#x4EFD;&#x6570;&#x636E;&#x6587;&#x4EF6;&#xFF0C;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x76F4;&#x8FDE;&#x4EE5;&#x53CA;&#x8FDC;&#x7AEF;&#x7F51;&#x7EDC;&#x7684;&#x8DEF;&#x7531;&#x4FE1;&#x606F;&#x3002;&#x8DEF;&#x7531;&#x8868;&#x4E2D;&#x5305;&#x542B;&#x7F51;&#x7EDC;&#x6216;&#x4E0B;&#x4E00;&#x8DF3;&#x5730;&#x5740;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x544A;&#x77E5;&#x8DEF;&#x7531;&#x5668;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5C06;&#x62A5;&#x6587;&#x53D1;&#x9001;&#x81F3;&#x4EE3;&#x8868;&#x4E0B;&#x4E00;&#x8DF3;&#x5730;&#x5740;&#x7684;&#x8DEF;&#x7531;&#x5668;&#x4EE5;&#x6700;&#x4F73;&#x8DEF;&#x52B2;&#x5230;&#x8FBE;&#x76EE;&#x7684;&#x5730;&#x5740;&#x3002;&#x4E0B;&#x4E00;&#x8DF3;&#x4FE1;&#x606F;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x76EE;&#x7684;&#x5730;&#x7684;&#x8F93;&#x51FA;&#x63A5;&#x53E3;&#x3002;</p>
+<p><strong>&#x8DEF;&#x7531;&#x8868;&#x5185;&#x5BB9;&#xFF1A;</strong></p>
+<p>Cisco IOS&#x8DEF;&#x7531;&#x5668;&#x53EF;&#x7528;<strong>show IP route</strong>&#x547D;&#x4EE4;&#x663E;&#x793A;IPv4&#x8DEF;&#x7531;&#x8868;&#x3002;&#x8DEF;&#x7531;&#x5668;&#x8FD8;&#x63D0;&#x4F9B;&#x4E00;&#x4E9B;&#x989D;&#x5916;&#x7684;&#x8DEF;&#x7531;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x62EC;&#x8DEF;&#x5F84;&#x662F;&#x600E;&#x6837;&#x5B66;&#x4E60;&#x5230;&#x7684;&#xFF0C;&#x8DEF;&#x5F84;&#x5728;&#x8868;&#x4E2D;&#x6709;&#x591A;&#x957F;&#x65F6;&#x95F4;&#xFF0C;&#x4F7F;&#x7528;&#x54EA;&#x4E00;&#x63A5;&#x53E3;&#x53BB;&#x5230;&#x8FBE;&#x9884;&#x5B9A;&#x4E49;&#x7684;&#x76EE;&#x7684;&#x5730;&#x3002;</p>
+<p>&#x8DEF;&#x7531;&#x8868;&#x4E2D;&#x7684;&#x8868;&#x9879;&#x53EF;&#x4F5C;&#x4E3A;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#x6DFB;&#x52A0;&#xFF1A;</p>
+<p><strong>&#x672C;&#x5730;&#x8DEF;&#x5F84;&#x63A5;&#x53E3;</strong>&#xFF1A;&#x5F53;&#x63A5;&#x53E3;&#x914D;&#x7F6E;&#x5E76;&#x6FC0;&#x6D3B;&#x65F6;&#x6DFB;&#x52A0;&#x3002;</p>
+<p><strong>&#x76F4;&#x8FDE;&#x63A5;&#x53E3;</strong>&#xFF1A;&#x5F53;&#x63A5;&#x53E3;&#x914D;&#x7F6E;&#x5E76;&#x6FC0;&#x6D3B;&#x65F6;&#x6DFB;&#x52A0;&#x3002;</p>
+<p><strong>&#x9759;&#x6001;&#x8DEF;&#x5F84;</strong>&#xFF1A;&#x5F53;&#x624B;&#x52A8;&#x914D;&#x7F6E;&#x8DEF;&#x5F84;&#x5E76;&#x4E14;&#x8F93;&#x51FA;&#x63A5;&#x53E3;&#x6FC0;&#x6D3B;&#x65F6;&#x3002;</p>
+<p><strong>&#x52A8;&#x6001;&#x8DEF;&#x7531;&#x534F;&#x8BAE;</strong>&#xFF1A;&#x5F53;&#x8DEF;&#x7531;&#x534F;&#x8BAE;&#x52A8;&#x6001;&#x5B66;&#x4E60;&#x5230;&#x7F51;&#x7EDC;&#x65F6;&#x6DFB;&#x52A0;&#xFF0C;&#x5982;EIGRP&#x6216;OSPF&#x3002;</p>
+<p>&#x8DEF;&#x7531;&#x8868;&#x9879;&#x7684;&#x6765;&#x6E90;&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x6765;&#x6807;&#x8BC6;&#xFF0C;&#x4EE3;&#x7801;&#x8868;&#x660E;&#x8DEF;&#x5F84;&#x662F;&#x600E;&#x6837;&#x5B66;&#x4E60;&#x5230;&#x7684;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5E38;&#x7528;&#x4EE3;&#x7801;&#x5305;&#x62EC;&#xFF1A;</p>
+<p><strong>L&#xFF1A;</strong>&#x8DEF;&#x7531;&#x5668;&#x63A5;&#x53E3;&#x5730;&#x5740;&#x3002;&#x5F53;&#x8DEF;&#x7531;&#x5668;&#x63A5;&#x6536;&#x5230;&#x62A5;&#x6587;&#x65F6;&#x53D1;&#x9001;&#x81F3;&#x672C;&#x5730;&#x63A5;&#x53E3;&#x800C;&#x65E0;&#x9700;&#x8F6C;&#x53D1;&#x3002;</p>
+<p><strong>C&#xFF1A;</strong>&#x76F4;&#x8FDE;&#x7F51;&#x6BB5;&#x3002;</p>
+<p><strong>O&#xFF1A;</strong>&#x901A;&#x8FC7;OSPF&#x4ECE;&#x53E6;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x52A8;&#x6001;&#x5B66;&#x4E60;&#x5230;&#x7684;&#x7F51;&#x7EDC;&#x3002;</p>
+<p><strong>D&#xFF1A;</strong>&#x901A;&#x8FC7;EIGRP&#x4ECE;&#x53E6;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x52A8;&#x6001;&#x5B66;&#x4E60;&#x5230;&#x7684;&#x7F51;&#x7EDC;&#x3002;</p>
+<p>&#x4E0B;&#x56FE;&#x663E;&#x793A;&#x4E86;R1&#x7684;&#x8DEF;&#x7531;&#x8868;&#xFF1A;</p>
+<p><a href="https://community.emc.com/servlet/JiveServlet/showImage/2-835157-92958/image003.jpg" target="_blank"><img src="https://community.emc.com/servlet/JiveServlet/downloadImage/2-835157-92958/image003.jpg" alt="image003.jpg"></a></p>
+<p><strong>&#x8FDC;&#x7AEF;&#x7F51;&#x7EDC;&#x8DEF;&#x7531;&#x8868;&#x9879;&#xFF1A;</strong></p>
+<p>&#x4E0B;&#x56FE;&#x663E;&#x793A;&#x4E86;R1&#x5230;&#x8FDC;&#x7AEF;&#x7F51;&#x7EDC;10.1.1.0&#x7684;&#x8868;&#x9879;&#xFF1A;</p>
+<p><a href="https://community.emc.com/servlet/JiveServlet/showImage/2-835157-92959/image004.jpg" target="_blank"><img src="https://community.emc.com/servlet/JiveServlet/downloadImage/2-835157-92959/image004.jpg" alt="image004.jpg"></a></p>
+<p>Route source&#xFF1A;&#x8DEF;&#x5F84;&#x662F;&#x600E;&#x6837;&#x5B66;&#x4E60;&#x5230;&#x7684;&#x3002;</p>
+<p>Destination network&#xFF1A;&#x8FDC;&#x7AEF;&#x7F51;&#x7EDC;&#x5730;&#x5740;&#x3002;</p>
+<p>Administrative distance&#xFF1A;&#x8DEF;&#x7531;&#x6765;&#x6E90;&#x7684;&#x53EF;&#x4FE1;&#x5EA6;&#x3002;&#x8F83;&#x4F4E;&#x503C;&#x8868;&#x660E;&#x4F18;&#x5148;&#x9009;&#x62E9;&#x3002;</p>
+<p>Metric&#xFF1A;&#x662F;<a href="http://www.baidu.com/s?wd=%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95&amp;hl_tag=textlink&amp;tn=SE_hldp01350_v6v6zkg6" target="_blank">&#x8DEF;&#x7531;&#x7B97;&#x6CD5;</a>&#x7528;&#x4EE5;&#x786E;&#x5B9A;&#x5230;&#x8FBE;&#x76EE;&#x7684;&#x5730;&#x7684;&#x6700;&#x4F73;&#x8DEF;&#x5F84;&#x7684;<a href="http://www.baidu.com/s?wd=%E8%AE%A1%E9%87%8F%E6%A0%87%E5%87%86&amp;hl_tag=textlink&amp;tn=SE_hldp01350_v6v6zkg6" target="_blank">&#x8BA1;&#x91CF;&#x6807;&#x51C6;</a>&#x3002;&#x8F83;&#x4F4E;&#x503C;&#x8868;&#x660E;&#x4F18;&#x5148;&#x9009;&#x62E9;&#x3002;</p>
+<p>Next hop&#xFF1A;&#x8F6C;&#x53D1;&#x62A5;&#x6587;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x5668;&#x7684;IP&#x5730;&#x5740;&#x3002;</p>
+<p>Route timestamp&#xFF1A;&#x81EA;&#x5B66;&#x4E60;&#x5230;&#x8DEF;&#x5F84;&#x4EE5;&#x6765;&#x8FC7;&#x4E86;&#x591A;&#x5C11;&#x65F6;&#x95F4;&#x3002;</p>
+<p>Outgoing interface&#xFF1A;&#x7528;&#x4EE5;&#x8F6C;&#x53D1;&#x62A5;&#x6587;&#x7684;&#x8F93;&#x51FA;&#x63A5;&#x53E3;&#x3002;</p>
+<p><strong>&#x76F4;&#x8FDE;&#x8DEF;&#x7531;&#x8868;&#x9879;&#xFF1A;</strong></p>
+<p>&#x4E0B;&#x56FE;&#x663E;&#x793A;&#x4E86;R1&#x5230;&#x76F4;&#x8FDE;&#x7F51;&#x7EDC;192.168.10.0&#x7684;&#x8DEF;&#x7531;&#x8868;&#x9879;&#xFF1A;</p>
+<p><a href="https://community.emc.com/servlet/JiveServlet/showImage/2-835157-92960/image005.jpg" target="_blank"><img src="https://community.emc.com/servlet/JiveServlet/downloadImage/2-835157-92960/image005.jpg" alt="image005.jpg"></a></p>
+<p>&#x5728;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x72B6;&#x6001;&#x4E3A;up/up&#x5E76;&#x6DFB;&#x52A0;&#x5230;IPv4&#x8DEF;&#x7531;&#x8868;&#x4E4B;&#x524D;&#xFF0C;&#x63A5;&#x53E3;&#x5FC5;&#x987B;&#xFF1A;</p>
+<ul>
+<li><p>&#x6307;&#x5B9A;&#x6709;&#x6548;&#x7684;IPv4&#x6216;IPv6&#x5730;&#x5740;&#x3002;</p>
+</li>
+<li><p>&#x901A;&#x8FC7;no shutdown&#x547D;&#x4EE4;&#x6FC0;&#x6D3B;&#x3002;</p>
+</li>
+<li><p>&#x4ECE;&#x53E6;&#x4E00;&#x8BBE;&#x5907;&#xFF08;&#x8DEF;&#x7531;&#x5668;&#xFF0C;&#x4EA4;&#x6362;&#x673A;&#xFF0C;&#x4E3B;&#x673A;&#x7B49;&#xFF09;&#x63A5;&#x6536;&#x5230;&#x8F7D;&#x4F53;&#x4FE1;&#x53F7;&#x3002;</p>
+</li>
+</ul>
+<p>&#x5F53;&#x63A5;&#x53E3;up&#x4E4B;&#x540E;&#xFF0C;&#x8BE5;&#x63A5;&#x53E3;&#x7684;&#x7F51;&#x7EDC;&#x4F5C;&#x4E3A;&#x76F4;&#x8FDE;&#x7F51;&#x7EDC;&#x6DFB;&#x52A0;&#x5230;&#x8DEF;&#x7531;&#x8868;&#x4E2D;&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./2.html" class="navigation navigation-prev " aria-label="Previous page: 网络基本功（三）：细说VLAN与Trunk"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./4.html" class="navigation navigation-next " aria-label="Next page: 网络基本功（五）：细说路由（下）"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

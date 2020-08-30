@@ -1,0 +1,1746 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>CRC32的计算实例 · 逆向工程入门指南</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="author" content="wizardforcel">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-comment/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Chapter-38.html" />
+    
+    
+    <link rel="prev" href="Chapter-36.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.gitbook.com/book/wizardforcel/re-for-beginners" target="_blank" class="custom-link">逆向工程入门指南</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    逆向工程入门指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Part-I/part1.html">
+            
+                <a href="../Part-I/part1.html">
+            
+                    
+                    Part I 代码模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../Part-I/Chapter-01.html">
+            
+                <a href="../Part-I/Chapter-01.html">
+            
+                    
+                    CPU简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../Part-I/Chapter-02.html">
+            
+                <a href="../Part-I/Chapter-02.html">
+            
+                    
+                    最简单的函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../Part-I/Chapter-03.html">
+            
+                <a href="../Part-I/Chapter-03.html">
+            
+                    
+                    Hello,world!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../Part-I/Chapter-04.html">
+            
+                <a href="../Part-I/Chapter-04.html">
+            
+                    
+                    函数的开始和结束
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../Part-I/Chapter-05.html">
+            
+                <a href="../Part-I/Chapter-05.html">
+            
+                    
+                    栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../Part-I/Chapter-06.html">
+            
+                <a href="../Part-I/Chapter-06.html">
+            
+                    
+                    printf()与参数处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../Part-I/Chapter-07.html">
+            
+                <a href="../Part-I/Chapter-07.html">
+            
+                    
+                    scanf()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../Part-I/Chapter-08.html">
+            
+                <a href="../Part-I/Chapter-08.html">
+            
+                    
+                    访问实参
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../Part-I/Chapter-09.html">
+            
+                <a href="../Part-I/Chapter-09.html">
+            
+                    
+                    一个或者多个字的返回值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../Part-I/Chapter-10.html">
+            
+                <a href="../Part-I/Chapter-10.html">
+            
+                    
+                    指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="../Part-I/Chapter-11.html">
+            
+                <a href="../Part-I/Chapter-11.html">
+            
+                    
+                    GOTO操作符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="../Part-I/Chapter-12.html">
+            
+                <a href="../Part-I/Chapter-12.html">
+            
+                    
+                    条件转跳
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="../Part-I/Chapter-13.html">
+            
+                <a href="../Part-I/Chapter-13.html">
+            
+                    
+                    选择结构switch()/case/default
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="../Part-I/Chapter-14.html">
+            
+                <a href="../Part-I/Chapter-14.html">
+            
+                    
+                    循环
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="../Part-I/Chapter-15.html">
+            
+                <a href="../Part-I/Chapter-15.html">
+            
+                    
+                    对C-Strings的简单处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="../Part-I/Chapter-16.html">
+            
+                <a href="../Part-I/Chapter-16.html">
+            
+                    
+                    用其他东西代替算数操作符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="../Part-I/Chapter-17.html">
+            
+                <a href="../Part-I/Chapter-17.html">
+            
+                    
+                    浮点数单元
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="../Part-I/Chapter-18.html">
+            
+                <a href="../Part-I/Chapter-18.html">
+            
+                    
+                    数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.19" data-path="../Part-I/Chapter-19.html">
+            
+                <a href="../Part-I/Chapter-19.html">
+            
+                    
+                    操纵特定的bit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="../Part-I/Chapter-20.html">
+            
+                <a href="../Part-I/Chapter-20.html">
+            
+                    
+                    用线性同余生成器来产生伪随机数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.21" data-path="../Part-I/Chapter-21.html">
+            
+                <a href="../Part-I/Chapter-21.html">
+            
+                    
+                    结构体
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.22" data-path="../Part-I/Chapter-22.html">
+            
+                <a href="../Part-I/Chapter-22.html">
+            
+                    
+                    联合体
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.23" data-path="../Part-I/Chapter-23.html">
+            
+                <a href="../Part-I/Chapter-23.html">
+            
+                    
+                    指向函数的指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.24" data-path="../Part-I/Chapter-24.html">
+            
+                <a href="../Part-I/Chapter-24.html">
+            
+                    
+                    在32位环境中的64位值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.25" data-path="../Part-I/Chapter-25.html">
+            
+                <a href="../Part-I/Chapter-25.html">
+            
+                    
+                    SIMD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.26" data-path="../Part-I/Chapter-26.html">
+            
+                <a href="../Part-I/Chapter-26.html">
+            
+                    
+                    64位化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.27" data-path="../Part-I/Chapter-27.html">
+            
+                <a href="../Part-I/Chapter-27.html">
+            
+                    
+                    使用SIMD来处理浮点数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.28" data-path="../Part-I/Chapter-28.html">
+            
+                <a href="../Part-I/Chapter-28.html">
+            
+                    
+                    关于ARM的特殊细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.29" data-path="../Part-I/Chapter-29.html">
+            
+                <a href="../Part-I/Chapter-29.html">
+            
+                    
+                    关于MIPS的特殊细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../Part-II/part2.html">
+            
+                <a href="../Part-II/part2.html">
+            
+                    
+                    Part II 重要的基础知识
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../Part-II/Chapter-30.html">
+            
+                <a href="../Part-II/Chapter-30.html">
+            
+                    
+                    有符号数的表示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../Part-II/Chapter-31.html">
+            
+                <a href="../Part-II/Chapter-31.html">
+            
+                    
+                    字节序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../Part-II/Chapter-32.html">
+            
+                <a href="../Part-II/Chapter-32.html">
+            
+                    
+                    内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../Part-II/Chapter-33.html">
+            
+                <a href="../Part-II/Chapter-33.html">
+            
+                    
+                    CPU
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../Part-II/Chapter-34.html">
+            
+                <a href="../Part-II/Chapter-34.html">
+            
+                    
+                    哈希函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="part3.html">
+            
+                <a href="part3.html">
+            
+                    
+                    Part III 更高级些的例子
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Chapter-35.html">
+            
+                <a href="Chapter-35.html">
+            
+                    
+                    温度转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Chapter-36.html">
+            
+                <a href="Chapter-36.html">
+            
+                    
+                    斐波那契数列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.3" data-path="Chapter-37.html">
+            
+                <a href="Chapter-37.html">
+            
+                    
+                    CRC32的计算实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="Chapter-38.html">
+            
+                <a href="Chapter-38.html">
+            
+                    
+                    网址的计算实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="Chapter-39.html">
+            
+                <a href="Chapter-39.html">
+            
+                    
+                    循环:几个迭代器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="Chapter-40.html">
+            
+                <a href="Chapter-40.html">
+            
+                    
+                    Duff’s device
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="Chapter-41.html">
+            
+                <a href="Chapter-41.html">
+            
+                    
+                    除以9
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="Chapter-42.html">
+            
+                <a href="Chapter-42.html">
+            
+                    
+                    将字符串转化为数字(atoi())
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="Chapter-43.html">
+            
+                <a href="Chapter-43.html">
+            
+                    
+                    内联函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="Chapter-44.html">
+            
+                <a href="Chapter-44.html">
+            
+                    
+                    C99 的约束
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="Chapter-45.md">
+            
+                <span>
+            
+                    
+                    无分支的abs()函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="Chapter-46.md">
+            
+                <span>
+            
+                    
+                    参数可变的函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.13" data-path="Chapter-47.md">
+            
+                <span>
+            
+                    
+                    字符串截取
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.14" data-path="Chapter-48.md">
+            
+                <span>
+            
+                    
+                    toupper()函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.15" data-path="Chapter-49.html">
+            
+                <a href="Chapter-49.html">
+            
+                    
+                    不正确的反汇编代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.16" data-path="Chapter-50.html">
+            
+                <a href="Chapter-50.html">
+            
+                    
+                    花指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.17" data-path="Chapter-51.html">
+            
+                <a href="Chapter-51.html">
+            
+                    
+                    C++
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.18" data-path="Chapter-52.html">
+            
+                <a href="Chapter-52.html">
+            
+                    
+                    负的数组引索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.19" data-path="Chapter-53.html">
+            
+                <a href="Chapter-53.html">
+            
+                    
+                    Windoes 16-bit
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../Part-IV/part4.html">
+            
+                <a href="../Part-IV/part4.html">
+            
+                    
+                    Part IV JAVA
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../Part-IV/Chapter-54.html">
+            
+                <a href="../Part-IV/Chapter-54.html">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../Part-V/part5.html">
+            
+                <a href="../Part-V/part5.html">
+            
+                    
+                    Part V 在代码里面寻找重要又有趣的东西
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../Part-V/Chapter-55.html">
+            
+                <a href="../Part-V/Chapter-55.html">
+            
+                    
+                    可执行文件的识别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../Part-V/Chapter-56.html">
+            
+                <a href="../Part-V/Chapter-56.html">
+            
+                    
+                    和外部世界的交流(win32)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../Part-V/Chapter-57.html">
+            
+                <a href="../Part-V/Chapter-57.html">
+            
+                    
+                    字符串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../Part-V/Chapter-58.html">
+            
+                <a href="../Part-V/Chapter-58.html">
+            
+                    
+                    调用断言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../Part-V/Chapter-59.html">
+            
+                <a href="../Part-V/Chapter-59.html">
+            
+                    
+                    常量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../Part-V/Chapter-60.html">
+            
+                <a href="../Part-V/Chapter-60.html">
+            
+                    
+                    找到真正的指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../Part-V/Chapter-61.html">
+            
+                <a href="../Part-V/Chapter-61.html">
+            
+                    
+                    可疑代码的模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../Part-V/Chapter-62.html">
+            
+                <a href="../Part-V/Chapter-62.html">
+            
+                    
+                    在追踪时使用Magic numbers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../Part-V/Chapter-63.html">
+            
+                <a href="../Part-V/Chapter-63.html">
+            
+                    
+                    其他东西
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../Part-VI/part6.html">
+            
+                <a href="../Part-VI/part6.html">
+            
+                    
+                    Part VI 操作系统的特性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../Part-VI/Chapter-64.html">
+            
+                <a href="../Part-VI/Chapter-64.html">
+            
+                    
+                    参数传递方法(调用规则)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../Part-VI/Chapter-65.html">
+            
+                <a href="../Part-VI/Chapter-65.html">
+            
+                    
+                    本地线程储存区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../Part-VI/Chapter-66.html">
+            
+                <a href="../Part-VI/Chapter-66.html">
+            
+                    
+                    系统调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../Part-VI/Chapter-67.html">
+            
+                <a href="../Part-VI/Chapter-67.html">
+            
+                    
+                    Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../Part-VI/Chapter-68.html">
+            
+                <a href="../Part-VI/Chapter-68.html">
+            
+                    
+                    Windows-NT
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../Part-VII/part7.html">
+            
+                <a href="../Part-VII/part7.html">
+            
+                    
+                    Part VII 工具
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../Part-VII/Chapter-69.html">
+            
+                <a href="../Part-VII/Chapter-69.html">
+            
+                    
+                    反汇编器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../Part-VII/Chapter-70.html">
+            
+                <a href="../Part-VII/Chapter-70.html">
+            
+                    
+                    调试器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../Part-VII/Chapter-71.html">
+            
+                <a href="../Part-VII/Chapter-71.html">
+            
+                    
+                    系统调用的追踪
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../Part-VII/Chapter-72.html">
+            
+                <a href="../Part-VII/Chapter-72.html">
+            
+                    
+                    反编译器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../Part-VII/Chapter-73.html">
+            
+                <a href="../Part-VII/Chapter-73.html">
+            
+                    
+                    其他工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../Part-IX/part9.html">
+            
+                <a href="../Part-IX/part9.html">
+            
+                    
+                    Part IX 逆向文件格式的例子
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../Part-IX/Chapter-84.html">
+            
+                <a href="../Part-IX/Chapter-84.html">
+            
+                    
+                    基本的异或加密
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../Part-IX/Chapter-85.html">
+            
+                <a href="../Part-IX/Chapter-85.html">
+            
+                    
+                    Millenium 的存档文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../Part-IX/Chapter-86.html">
+            
+                <a href="../Part-IX/Chapter-86.html">
+            
+                    
+                    Oracle RDBMS SYM-files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../Part-IX/Chapter-87.html">
+            
+                <a href="../Part-IX/Chapter-87.html">
+            
+                    
+                    Oracle RDBMS MSB-files
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../Afterword/part12.html">
+            
+                <a href="../Afterword/part12.html">
+            
+                    
+                    后记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../Afterword/Chapter-99.html">
+            
+                <a href="../Afterword/Chapter-99.html">
+            
+                    
+                    附录
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../Appendix/Appendix.html">
+            
+                <a href="../Appendix/Appendix.html">
+            
+                    
+                    附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../Appendix/Appendix-A.html">
+            
+                <a href="../Appendix/Appendix-A.html">
+            
+                    
+                    x86
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../Appendix/Appendix-B.html">
+            
+                <a href="../Appendix/Appendix-B.html">
+            
+                    
+                    ARM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../Appendix/Appendix-C.html">
+            
+                <a href="../Appendix/Appendix-C.html">
+            
+                    
+                    MIPS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../Appendix/Appendix-D.html">
+            
+                <a href="../Appendix/Appendix-D.html">
+            
+                    
+                    一些GCC库函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../Appendix/Appendix-E.html">
+            
+                <a href="../Appendix/Appendix-E.html">
+            
+                    
+                    一些MIPS库函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../Appendix/Appendix-F.html">
+            
+                <a href="../Appendix/Appendix-F.html">
+            
+                    
+                    速查表
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../Acronyms-used.html">
+            
+                <a href="../Acronyms-used.html">
+            
+                    
+                    缩略词表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../Glossary.html">
+            
+                <a href="../Glossary.html">
+            
+                    
+                    杂项
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../Idx.html">
+            
+                <a href="../Idx.html">
+            
+                    
+                    快速引索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../Bibliography.html">
+            
+                <a href="../Bibliography.html">
+            
+                    
+                    参考文献
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >CRC32的计算实例</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7B2C;&#x4E09;&#x5341;&#x4E03;&#x7AE0;">&#x7B2C;&#x4E09;&#x5341;&#x4E03;&#x7AE0;</h1>
+<h1 id="crc32&#x54C8;&#x5E0C;&#x6563;&#x5217;&#x8BA1;&#x7B97;&#x4F8B;&#x5B50;">CRC32&#x54C8;&#x5E0C;&#x6563;&#x5217;&#x8BA1;&#x7B97;&#x4F8B;&#x5B50;</h1>
+<p>&#x8FD9;&#x662F;&#x975E;&#x5E38;&#x6D41;&#x884C;&#x7684;CRC32&#x54C8;&#x5E0C;&#x6563;&#x5217;&#x8BA1;&#x7B97;&#x3002;</p>
+<pre><code>/* By Bob Jenkins, (c) 2006, Public Domain */
+#include &lt;stdio.h&gt;
+#include &lt;stddef.h&gt;
+#include &lt;string.h&gt;
+typedef unsigned long ub4;
+typedef unsigned char ub1;
+static const ub4 crctab[256] = {
+    0x00000000, 0x77073096, 0xee0e612c, 0x990951ba, 0x076dc419, 0x706af48f,
+    0xe963a535, 0x9e6495a3, 0x0edb8832, 0x79dcb8a4, 0xe0d5e91e, 0x97d2d988,
+    0x09b64c2b, 0x7eb17cbd, 0xe7b82d07, 0x90bf1d91, 0x1db71064, 0x6ab020f2,
+    0xf3b97148, 0x84be41de, 0x1adad47d, 0x6ddde4eb, 0xf4d4b551, 0x83d385c7,
+    0x136c9856, 0x646ba8c0, 0xfd62f97a, 0x8a65c9ec, 0x14015c4f, 0x63066cd9,
+    0xfa0f3d63, 0x8d080df5, 0x3b6e20c8, 0x4c69105e, 0xd56041e4, 0xa2677172,
+    0x3c03e4d1, 0x4b04d447, 0xd20d85fd, 0xa50ab56b, 0x35b5a8fa, 0x42b2986c,
+    0xdbbbc9d6, 0xacbcf940, 0x32d86ce3, 0x45df5c75, 0xdcd60dcf, 0xabd13d59,
+    0x26d930ac, 0x51de003a, 0xc8d75180, 0xbfd06116, 0x21b4f4b5, 0x56b3c423,
+    0xcfba9599, 0xb8bda50f, 0x2802b89e, 0x5f058808, 0xc60cd9b2, 0xb10be924,
+    0x2f6f7c87, 0x58684c11, 0xc1611dab, 0xb6662d3d, 0x76dc4190, 0x01db7106,
+    0x98d220bc, 0xefd5102a, 0x71b18589, 0x06b6b51f, 0x9fbfe4a5, 0xe8b8d433,
+    0x7807c9a2, 0x0f00f934, 0x9609a88e, 0xe10e9818, 0x7f6a0dbb, 0x086d3d2d,
+    0x91646c97, 0xe6635c01, 0x6b6b51f4, 0x1c6c6162, 0x856530d8, 0xf262004e,
+    0x6c0695ed, 0x1b01a57b, 0x8208f4c1, 0xf50fc457, 0x65b0d9c6, 0x12b7e950,
+    0x8bbeb8ea, 0xfcb9887c, 0x62dd1ddf, 0x15da2d49, 0x8cd37cf3, 0xfbd44c65,
+    0x4db26158, 0x3ab551ce, 0xa3bc0074, 0xd4bb30e2, 0x4adfa541, 0x3dd895d7,
+    0xa4d1c46d, 0xd3d6f4fb, 0x4369e96a, 0x346ed9fc, 0xad678846, 0xda60b8d0,
+    0x44042d73, 0x33031de5, 0xaa0a4c5f, 0xdd0d7cc9, 0x5005713c, 0x270241aa,
+    0xbe0b1010, 0xc90c2086, 0x5768b525, 0x206f85b3, 0xb966d409, 0xce61e49f,
+    0x5edef90e, 0x29d9c998, 0xb0d09822, 0xc7d7a8b4, 0x59b33d17, 0x2eb40d81,
+    0xb7bd5c3b, 0xc0ba6cad, 0xedb88320, 0x9abfb3b6, 0x03b6e20c, 0x74b1d29a,
+    0xead54739, 0x9dd277af, 0x04db2615, 0x73dc1683, 0xe3630b12, 0x94643b84,
+    0x0d6d6a3e, 0x7a6a5aa8, 0xe40ecf0b, 0x9309ff9d, 0x0a00ae27, 0x7d079eb1,
+    0xf00f9344, 0x8708a3d2, 0x1e01f268, 0x6906c2fe, 0xf762575d, 0x806567cb,
+    0x196c3671, 0x6e6b06e7, 0xfed41b76, 0x89d32be0, 0x10da7a5a, 0x67dd4acc,
+    0xf9b9df6f, 0x8ebeeff9, 0x17b7be43, 0x60b08ed5, 0xd6d6a3e8, 0xa1d1937e,
+    0x38d8c2c4, 0x4fdff252, 0xd1bb67f1, 0xa6bc5767, 0x3fb506dd, 0x48b2364b,
+    0xd80d2bda, 0xaf0a1b4c, 0x36034af6, 0x41047a60, 0xdf60efc3, 0xa867df55,
+    0x316e8eef, 0x4669be79, 0xcb61b38c, 0xbc66831a, 0x256fd2a0, 0x5268e236,
+    0xcc0c7795, 0xbb0b4703, 0x220216b9, 0x5505262f, 0xc5ba3bbe, 0xb2bd0b28,
+    0x2bb45a92, 0x5cb36a04, 0xc2d7ffa7, 0xb5d0cf31, 0x2cd99e8b, 0x5bdeae1d,
+    0x9b64c2b0, 0xec63f226, 0x756aa39c, 0x026d930a, 0x9c0906a9, 0xeb0e363f,
+    0x72076785, 0x05005713, 0x95bf4a82, 0xe2b87a14, 0x7bb12bae, 0x0cb61b38,
+    0x92d28e9b, 0xe5d5be0d, 0x7cdcefb7, 0x0bdbdf21, 0x86d3d2d4, 0xf1d4e242,
+    0x68ddb3f8, 0x1fda836e, 0x81be16cd, 0xf6b9265b, 0x6fb077e1, 0x18b74777,
+    0x88085ae6, 0xff0f6a70, 0x66063bca, 0x11010b5c, 0x8f659eff, 0xf862ae69,
+    0x616bffd3, 0x166ccf45, 0xa00ae278, 0xd70dd2ee, 0x4e048354, 0x3903b3c2,
+    0xa7672661, 0xd06016f7, 0x4969474d, 0x3e6e77db, 0xaed16a4a, 0xd9d65adc,
+    0x40df0b66, 0x37d83bf0, 0xa9bcae53, 0xdebb9ec5, 0x47b2cf7f, 0x30b5ffe9,
+    0xbdbdf21c, 0xcabac28a, 0x53b39330, 0x24b4a3a6, 0xbad03605, 0xcdd70693,
+    0x54de5729, 0x23d967bf, 0xb3667a2e, 0xc4614ab8, 0x5d681b02, 0x2a6f2b94,
+    0xb40bbe37, 0xc30c8ea1, 0x5a05df1b, 0x2d02ef8d,
+};
+/* how to derive the values in crctab[] from polynomial 0xedb88320 */
+void build_table()
+{
+    ub4 i, j;
+    for (i=0; i&lt;256; ++i) {
+        j = i;
+        j = (j&gt;&gt;1) ^ ((j&amp;1) ? 0xedb88320 : 0);
+        j = (j&gt;&gt;1) ^ ((j&amp;1) ? 0xedb88320 : 0);
+        j = (j&gt;&gt;1) ^ ((j&amp;1) ? 0xedb88320 : 0);
+        j = (j&gt;&gt;1) ^ ((j&amp;1) ? 0xedb88320 : 0);
+        j = (j&gt;&gt;1) ^ ((j&amp;1) ? 0xedb88320 : 0);
+        j = (j&gt;&gt;1) ^ ((j&amp;1) ? 0xedb88320 : 0);
+        j = (j&gt;&gt;1) ^ ((j&amp;1) ? 0xedb88320 : 0);
+        j = (j&gt;&gt;1) ^ ((j&amp;1) ? 0xedb88320 : 0);
+        printf(&quot;0x%.8lx, &quot;, j);
+        if (i%6 == 5) printf(&quot;&quot;);
+     }
+}
+/* the hash function */
+ub4 crc(const void *key, ub4 len, ub4 hash)
+{
+    ub4 i;
+    const ub1 *k = key;
+    for (hash=len, i=0; i&lt;len; ++i)
+        hash = (hash &gt;&gt; 8) ^ crctab[(hash &amp; 0xff) ^ k[i]];
+    return hash;
+}
+
+/* To use, try &quot;gcc -O crc.c -o crc; crc &lt; crc.c&quot; */
+int main()
+{
+    char s[1000];
+    while (gets(s)) printf(&quot;%.8lx&quot;, crc(s, strlen(s), 0));
+    return 0;
+}
+</code></pre><p>&#x6211;&#x4EEC;&#x53EA;&#x5173;&#x5FC3;crc()&#x51FD;&#x6570;&#x3002;&#x6CE8;&#x610F;for()&#x8BED;&#x53E5;&#x4E24;&#x4E2A;&#x5FAA;&#x73AF;&#x521D;&#x59CB;&#x5316;&#xFF1A;hash=len,i=0&#x3002;&#x6807;&#x51C6;C/C++&#x5141;&#x8BB8;&#x8FD9;&#x6837;&#x505A;&#x3002;&#x5FAA;&#x73AF;&#x4F53;&#x5185;&#x901A;&#x5E38;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x4E24;&#x4E2A;&#x521D;&#x59CB;&#x5316;&#x90E8;&#x5206;&#x3002; &#x8BA9;&#x6211;&#x4EEC;&#x7528;MSVC&#x4F18;&#x5316;&#xFF08;/Ox&#xFF09;&#x3002;&#x4E3A;&#x4E86;&#x7B80;&#x6D01;&#xFF0C;&#x4EC5;&#x5217;&#x51FA;crc()&#x51FD;&#x6570;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5305;&#x62EC;&#x6211;&#x505A;&#x7684;&#x6CE8;&#x91CA;&#x3002;</p>
+<pre><code>key$ = 8               ; size = 4
+_len$ = 12              ; size = 4
+_hash$ = 16             ; size = 4
+_crc PROC
+    mov     edx, DWORD PTR _len$[esp-4]
+    xor     ecx, ecx    ; i will be stored in ECX
+    mov     eax, edx
+    test    edx, edx
+    jbe     SHORT $LN1@crc
+    push    ebx
+    push    esi
+    mov     esi, DWORD PTR _key$[esp+4] ; ESI = key
+    push    edi
+$LL3@crc:
+
+; work with bytes using only 32-bit registers. byte from address key+i we store into EDI
+
+    movzx   edi, BYTE PTR [ecx+esi]
+    mov     ebx, eax ; EBX = (hash = len)
+    and     ebx, 255 ; EBX = hash &amp; 0xff
+; XOR EDI, EBX (EDI=EDI^EBX) - this operation uses all 32 bits of each register
+; but other bits (8-31) are cleared all time, so it&#x2019;s OK
+; these are cleared because, as for EDI, it was done by MOVZX instruction above
+; high bits of EBX was cleared by AND EBX, 255 instruction above (255 = 0xff)
+
+    xor     edi, ebx
+
+; EAX=EAX&gt;&gt;8; bits 24-31 taken &quot;from nowhere&quot; will be cleared
+
+        shr     eax, 8
+
+; EAX=EAX^crctab[EDI*4] - choose EDI-th element from crctab[] table
+    xor     eax, DWORD PTR _crctab[edi*4]
+    inc     ecx         ; i++
+    cmp     ecx, edx ; i&lt;len ?
+    jb      SHORT $LL3@crc ; yes
+    pop     edi
+    pop     esi
+    pop     ebx
+$LN1@crc:
+    ret 0
+_crc ENDP
+</code></pre><p>&#x6211;&#x4EEC;&#x6765;&#x770B;GCC 4.4.1&#x4F18;&#x5316;&#x540E;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code>    public crc
+crc     proc near
+key     = dword ptr 8
+hash    = dword ptr 0Ch
+push    ebp
+xor     edx, edx
+mov     ebp, esp
+push    esi
+mov     esi, [ebp+key]
+push    ebx
+mov     ebx, [ebp+hash]
+test    ebx, ebx
+mov     eax, ebx
+jz      short loc_80484D3
+nop                 ; padding
+lea     esi, [esi+0]        ; padding; ESI doesn&#x2019;t changing here
+loc_80484B8:
+mov     ecx, eax        ; save previous state of hash to ECX
+xor     al, [esi+edx]       ; AL=*(key+i)
+add     edx, 1          ; i++
+shr     ecx, 8          ; ECX=hash&gt;&gt;8
+movzx   eax, al         ; EAX=*(key+i)
+mov     eax, dword ptr ds:crctab[eax*4]     ; EAX=crctab[EAX]
+xor     eax, ecx        ; hash=EAX^ECX
+cmp     ebx, edx
+ja      short loc_80484B8
+loc_80484D3:
+    pop ebx
+    pop esi
+    pop ebp
+    retn
+crc endp
+</code></pre><p>GCC&#x5728;&#x5FAA;&#x73AF;&#x5F00;&#x59CB;&#x7684;&#x65F6;&#x5019;&#x901A;&#x8FC7;&#x586B;&#x5165;NOP&#x548C;lea esi,esi+0&#x6765;&#x6309;8&#x5B57;&#x8282;&#x5BF9;&#x9F50;&#x3002;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x8BF7;&#x9605;&#x8BFB;npad&#x5C0F;&#x7ED3;&#xFF08;64&#xFF09;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Chapter-36.html" class="navigation navigation-prev " aria-label="Previous page: 斐波那契数列">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Chapter-38.html" class="navigation navigation-next " aria-label="Next page: 网址的计算实例">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"CRC32的计算实例","level":"1.4.3","depth":2,"next":{"title":"网址的计算实例","level":"1.4.4","depth":2,"path":"Part-III/Chapter-38.md","ref":"Part-III/Chapter-38.md","articles":[]},"previous":{"title":"斐波那契数列","level":"1.4.2","depth":2,"path":"Part-III/Chapter-36.md","ref":"Part-III/Chapter-36.md","articles":[]},"dir":"ltr"},"config":{"plugins":["comment"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"comment":{"highlightCommented":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"wizardforcel","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"逆向工程入门指南","language":"zh","links":{"sidebar":{"逆向工程入门指南":"https://www.gitbook.com/book/wizardforcel/re-for-beginners"},"gitbook":true},"gitbook":"*","description":""},"file":{"path":"Part-III/Chapter-37.md","mtime":"2017-01-03T07:50:52.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-03T07:55:06.624Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-comment/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

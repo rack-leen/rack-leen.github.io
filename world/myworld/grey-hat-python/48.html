@@ -1,0 +1,1276 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>12.3 IDAPyEmu | 灰帽 Python 之旅</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    
+    <link rel="prev" href="./47.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="13.3"
+        data-chapter-title="12.3 IDAPyEmu"
+        data-filepath="48.md"
+        data-basepath="."
+        data-revision="Fri Mar 11 2016 03:05:18 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/grey-hat-python" target="blank" class="custom-link">灰帽 Python 之旅</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="0.html">
+            
+                
+                    <a href="./0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="1.html">
+            
+                
+                    <a href="./1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        1 搭建开发环境
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        1.1 操作系统准备
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        1.2  获取和安装 Python2.5
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        1.3  配置 Eclipse 和 PyDev
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        2 调试器设计
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        2.1  通用 CPU 寄存器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        2.2  栈
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="8.html">
+            
+                
+                    <a href="./8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        2.3 调试事件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="9.html">
+            
+                
+                    <a href="./9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        2.4  断点
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="10.html">
+            
+                
+                    <a href="./10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        3 自己动手写一个 windows 调试器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="11.html">
+            
+                
+                    <a href="./11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        3.2 获得 CPU 寄存器状态
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="12.html">
+            
+                
+                    <a href="./12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        3.3 实现调试事件处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="13.html">
+            
+                
+                    <a href="./13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        3.4 全能的断点
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="14.html">
+            
+                
+                    <a href="./14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        4 PyDBG---纯 PYTHON 调试器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="15.html">
+            
+                
+                    <a href="./15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        4.1 扩展断点处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="16.html">
+            
+                
+                    <a href="./16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        4.2 处理访问违例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="17.html">
+            
+                
+                    <a href="./17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        4.3 进程快照
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="18.html">
+            
+                
+                    <a href="./18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        5 IMMUNITY----最好的调试器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="19.html">
+            
+                
+                    <a href="./19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        5.1  安装 Immunity 调试器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="20.html">
+            
+                
+                    <a href="./20.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        5.2 Immunity Debugger 101
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="21.html">
+            
+                
+                    <a href="./21.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        5.3 Exploit 开发
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="22.html">
+            
+                
+                    <a href="./22.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        5.4 搞定反调试机制
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="23.html">
+            
+                
+                    <a href="./23.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        6 HOOKING
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="24.html">
+            
+                
+                    <a href="./24.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        6.1  用 PyDbg 实现 Soft Hooking
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="25.html">
+            
+                
+                    <a href="./25.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        6.2 Hard Hooking
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="26.html">
+            
+                
+                    <a href="./26.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        7 Dll 和代码注入
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="27.html">
+            
+                
+                    <a href="./27.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        7.1 创建远线程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="28.html">
+            
+                
+                    <a href="./28.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        7.2 邪恶的代码
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="29.html">
+            
+                
+                    <a href="./29.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        8 FUZZING
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="30.html">
+            
+                
+                    <a href="./30.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        8.1 Bug 的分类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="31.html">
+            
+                
+                    <a href="./31.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        8.2 File Fuzzer
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="32.html">
+            
+                
+                    <a href="./32.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        8.3 改进你的 Fuzzer
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="33.html">
+            
+                
+                    <a href="./33.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        9 SULLEY
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="34.html">
+            
+                
+                    <a href="./34.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        9.1  安装 Sulley
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="35.html">
+            
+                
+                    <a href="./35.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        9.2 Sulley primitives
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="36.html">
+            
+                
+                    <a href="./36.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        9.3 猎杀 WarFTPD
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="37.html">
+            
+                
+                    <a href="./37.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        10 Fuzzing Windows 驱动
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="38.html">
+            
+                
+                    <a href="./38.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        10.1 驱动通信
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="39.html">
+            
+                
+                    <a href="./39.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        10.2 用 Immunity fuzzing 驱动
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="40.html">
+            
+                
+                    <a href="./40.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.</b>
+                        
+                        10.4 构建 Driver Fuzzer
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="41.html">
+            
+                
+                    <a href="./41.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        11 IDAPYTHON --- IDA 脚本
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="42.html">
+            
+                
+                    <a href="./42.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        11.1  安装 IDAPython
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="43.html">
+            
+                
+                    <a href="./43.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        11.2  IDAPython 函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="44.html">
+            
+                
+                    <a href="./44.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        11.3  脚本例子
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="45.html">
+            
+                
+                    <a href="./45.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        12 PyEmu
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1" data-path="46.html">
+            
+                
+                    <a href="./46.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        12.1 安装 PyEmu
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="47.html">
+            
+                
+                    <a href="./47.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        12.2 PyEmu 一览
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="13.3" data-path="48.html">
+            
+                
+                    <a href="./48.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        12.3 IDAPyEmu
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >灰帽 Python 之旅</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="123-idapyemu">12.3 IDAPyEmu</h2>
+<p>&#x6211;&#x4EEC;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x5C31;&#x662F;&#x5728; IDA Pro &#x5206;&#x6790;&#x7A0B;&#x5E8F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F7F;&#x7528; PyEmu &#x4EFF;&#x771F;&#x4E00;&#x6B21;&#x7B80;&#x5355;&#x7684;&#x51FD;&#x6570; &#x8C03;&#x7528;&#x3002;&#x8FD9;&#x6B21;&#x5B9E;&#x9A8C;&#x7684;&#x7A0B;&#x5E8F;&#x5C31;&#x662F; addnum.exe&#xFF0C;&#x4E3B;&#x8981;&#x529F;&#x80FD;&#x5C31;&#x662F;&#x4ECE;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x63A5;&#x6536;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x76F8; &#x52A0;&#xFF0C;&#x518D;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF0C;&#x4EE3;&#x7801;&#x4F7F;&#x7528; C++ &#x7F16;&#x5199;&#xFF0C;&#x53EF;&#x4ECE; <a href="http://www.nostarch.com/ghpython.htm" target="_blank">http://www.nostarch.com/ghpython.htm</a> &#x4E0B;&#x8F7D;&#x3002;</p>
+<pre><code>/*addnum.cpp*/
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;windows.h&gt;
+int add_number( int num1, int num2 )
+{
+    int sum;
+    sum = num1 + num2; 
+    return sum;
+}
+int main(int argc, char* argv[])
+{
+    int num1, num2; 
+    int return_value; 
+    if( argc &lt; 2 )
+    {
+        printf(&quot;You need to enter two numbers to add.\n&quot;); printf(&quot;addnum.exe num1 num2\n&quot;);
+        return 0;
+    } 
+    num1 = atoi(argv[1]); 
+    num2 = atoi(argv[2]);
+    return_value = add_number( num1, num2 );
+    printf(&quot;Sum of %d + %d = %d&quot;,num1, num2, return_value ); 
+    return 0;
+}
+</code></pre><p>&#x7A0B;&#x5E8F;&#x5C06;&#x547D;&#x4EE4;&#x884C;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#x8F6C;&#x6362;&#x6210;&#x6574;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x7528;add_number&#x51FD;&#x6570;&#x76F8;&#x52A0;&#x3002;&#x6211;&#x4EEC;&#x5C06; add_number &#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x6211;&#x4EEC;&#x7684;&#x4EFF;&#x771F;&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x591F;&#x7B80;&#x5355;&#x800C;&#x4E14;&#x7ED3;&#x679C;&#x4E5F;&#x5F88;&#x5BB9;&#x6613;&#x9A8C;&#x8BC1;&#xFF0C;&#x4F5C;&#x4E3A;&#x6211;&#x4EEC;&#x4F7F; &#x7528; PyEmu &#x7684;&#x8D77;&#x70B9;&#x662F;&#x4E2A;&#x4E0D;&#x4E8C;&#x9009;&#x62E9;&#x3002;</p>
+<p>&#x5728;&#x6DF1;&#x5165; PyEmu &#x4F7F;&#x7528;&#x4E4B;&#x524D;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x770B; add_number &#x7684;&#x53CD;&#x6C47;&#x7F16;&#x4EE3;&#x7801;&#x3002;</p>
+<pre><code>var_4= dword ptr -4 
+# sum variable arg_0= dword ptr 8 
+# int num1 arg_4= dword ptr 0Ch 
+# int num2 push ebp
+mov ebp, esp
+push ecx
+mov eax, [ebp+arg_0]
+add eax, [ebp+arg_4]
+mov [ebp+var_4], eax
+mov eax, [ebp+var_4]
+mov esp, ebp
+pop ebp retn
+</code></pre><p>Listing 12-1: add_number &#x7684;&#x53CD;&#x6C47;&#x7F16;&#x4EE3;&#x7801;</p>
+<p>var_4&#xFF0C;arg_0&#xFF0C;arg_4 &#x5206;&#x522B;&#x662F;&#x53C2;&#x6570;&#x5728;&#x6808;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x4ECE; C++&#x7684;&#x53CD;&#x6C47;&#x7F16;&#x4EE3;&#x7801;&#x4E2D;&#x53EF;&#x4EE5;&#x6E05;&#x695A;&#x7684;&#x770B; &#x51FA;&#xFF0C;&#x6574;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#xFF0C;&#x548C;&#x53C2;&#x6570;&#x7684;&#x8C03;&#x7528;&#x5173;&#x7CFB;&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528; PyEmu &#x4EFF;&#x771F;&#x6574;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; &#x4E0A;&#x9762;&#x5217;&#x51FA;&#x7684;&#x6C47;&#x7F16;&#x4EE3;&#x7801;&#xFF0C;&#x540C;&#x65F6;&#x8BBE;&#x7F6E; arg_0 &#x548C; arg_4 &#x4E3A;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684;&#x4EFB;&#x4F55;&#x6570;&#xFF0C;&#x6700;&#x540E; retn &#x8FD4;&#x56DE;&#x7684;&#x65F6;&#x5019;&#xFF0C; &#x6355;&#x83B7; EAX &#x7684;&#x503C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x3002;&#x867D;&#x7136;&#x4EFF;&#x771F;&#x7684;&#x51FD;&#x6570;&#x4F3C;&#x4E4E;&#x8FC7;&#x4E8E;&#x7B80;&#x5355;&#xFF0C;&#x4E0D;&#x8FC7;&#x6574;&#x4E2A;&#x4EFF;&#x771F;&#x8FC7;&#x7A0B; &#x5C31;&#x662F;&#x4E00;&#x5207;&#x51FD;&#x6570;&#x4EFF;&#x771F;&#x7684;&#x57FA;&#x7840;&#xFF0C;&#x4E00;&#x901A;&#x767E;&#x901A;&#x3002;</p>
+<h3 id="1231-&#x51FD;&#x6570;&#x4EFF;&#x771F;">12.3.1 &#x51FD;&#x6570;&#x4EFF;&#x771F;</h3>
+<p>&#x5F00;&#x59CB;&#x811A;&#x672C;&#x7F16;&#x5199;&#xFF0C;&#x7B2C;&#x4E00;&#x6B65;&#x786E;&#x8BA4; PyEmu &#x7684;&#x8DEF;&#x5F84;&#x8BBE;&#x7F6E;&#x6B63;&#x786E;&#x3002;</p>
+<pre><code>#addnum_function_call.py 
+import sys 
+sys.path.append(&quot;C:\\PyEmu&quot;) 
+sys.path.append(&quot;C:\\PyEmu\\lib&quot;) 
+from PyEmu import *
+</code></pre><p>&#x8BBE;&#x7F6E;&#x597D;&#x5E93;&#x8DEF;&#x5F84;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x8981;&#x5F00;&#x59CB;&#x51FD;&#x6570;&#x4EFF;&#x771F;&#x90E8;&#x5206;&#x7684;&#x7F16;&#x5199;&#x4E86;&#x3002;&#x9996;&#x5148;&#x5C06;&#x6211;&#x4EEC;&#x9006;&#x5411;&#x7684;&#x7A0B;&#x5E8F;&#x7684;&#xFF0C;&#x4EE3;&#x7801; &#x5757;&#x548C;&#x6570;&#x636E;&#x5757;&#x6620;&#x5C04;&#x5230;&#x4EFF;&#x771F;&#x5668;&#x4E2D;&#xFF0C;&#x4EE5;&#x4FBF;&#x4EFF;&#x771F;&#x5668;&#x4EFF;&#x771F;&#x8FD0;&#x884C;&#x3002;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x4F1A;&#x4F7F;&#x7528; IDAPython &#x52A0;&#x8F7D;&#x8FD9;&#x4E9B;&#x5757;&#xFF0C;&#x5BF9;&#x76F8;&#x5173;&#x51FD;&#x6570;&#x4E0D;&#x719F;&#x6089;&#x7684;&#x540C;&#x5B66;&#xFF0C;&#x8BF7;&#x7FFB;&#x5230;&#x7B2C;&#x5341;&#x4E00;&#x7AE0;&#xFF0C;&#x8BA4;&#x771F;&#x9605;&#x8BFB;&#x3002;</p>
+<pre><code>#addnum_function_call.py
+...
+emu = IDAPyEmu()
+# Load the binary&apos;s code segment 
+code_start = SegByName(&quot;.text&quot;) 
+code_end = SegEnd( code_start )
+while code_start &lt;= code_end:
+    emu.set_memory( code_start, GetOriginalByte(code_start), size=1 ) 
+    code_start += 1
+print &quot;[*] Finished loading code section into memory.&quot;
+# Load the binary&apos;s data segment 
+data_start = SegByName(&quot;.data&quot;) 
+data_end = SegEnd( data_start )
+while data_start &lt;= data_end:
+    emu.set_memory( data_start, GetOriginalByte(data_start), size=1 ) 
+    data_start += 1
+print &quot;[*] Finished loading data section into memory.&quot;
+</code></pre><p>&#x4F7F;&#x7528;&#x4EFB;&#x4F55;&#x4EFF;&#x771F;&#x5668;&#x65B9;&#x6CD5;&#x4E4B;&#x524D;&#x90FD;&#x5FC5;&#x987B;&#x5B9E;&#x4F8B;&#x5316;&#x4E00;&#x4E2A; IDAPyEmu &#x5BF9;&#x8C61;&#x3002;&#x63A5;&#x7740;&#x5C06;&#x4EE3;&#x7801;&#x5757;&#x548C;&#x6570;&#x636E;&#x5757; &#x52A0;&#x8F7D;&#x8FDB; PyEmu &#x7684;&#x5185;&#x5B58;&#xFF0C;&#x540D;&#x526F;&#x5176;&#x5B9E;&#x7684;&#x4F9D;&#x846B;&#x82A6;&#x753B;&#x74E2;&#x5594;&#x3002;&#x4F7F;&#x7528; IDAPython &#x7684; SegByName()&#x51FD;&#x6570;&#x627E; &#x51FA;&#x5757;&#x9996;&#xFF0C;SegEnd()&#x627E;&#x51FA;&#x5757;&#x5C3E;&#x3002;&#x7136;&#x540E;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#x7684;&#x5C06;&#x8FD9;&#x4E9B;&#x5757;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x62F7;&#x8D1D;&#x5230; PyEmu &#x7684;&#x5185;&#x5B58; &#x4E2D;&#x3002;&#x4EE3;&#x7801;&#x548C;&#x6570;&#x636E;&#x5757;&#x90FD;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x5C31;&#x8981;&#x8BBE;&#x7F6E;&#x6808;&#x53C2;&#x6570;&#x4E86;&#xFF0C;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x4EFB;&#x610F;&#x8BBE;&#x7F6E;&#xFF0C;&#x6700;&#x540E;&#x518D;&#x5B89;&#x88C5; &#x4E00;&#x4E2A; retn &#x6307;&#x4EE4;&#x5904;&#x7406;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code>#addnum_function_call.py
+...
+# Set EIP to start executing at the function head 
+emu.set_register(&quot;EIP&quot;, 0x00401000)
+# Set up the ret handler 
+emu.set_mnemonic_handler(&quot;ret&quot;, ret_handler)
+# Set the function parameters for the call
+emu.set_stack_argument(0x8, 0x00000001, name=&quot;arg_0&quot;)
+emu.set_stack_argument(0xc, 0x00000002, name=&quot;arg_4&quot;)
+# There are 10 instructions in this function 
+emu.execute( steps = 10 ) 
+print &quot;[*] Finished function emulation run.&quot;
+</code></pre><p>&#x9996;&#x5148;&#x5C06; EIP &#x6307;&#x5411;&#x5230;&#x51FD;&#x6570;&#x5934;&#xFF0C;0x00401000&#xFF0C;PyEmu &#x4EFF;&#x771F;&#x5668;&#x5C06;&#x4ECE;&#x8FD9;&#x91CC;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x6307;&#x4EE4;&#x3002;&#x63A5;&#x7740;&#xFF0C; &#x5728;&#x51FD;&#x6570;&#x7684; retn &#x6307;&#x4EE4;&#x4E0A;&#x8BBE;&#x7F6E; &#x52A9;&#x8BB0;&#x7B26;(mnemonic)&#x6216;&#x8005;&#x6307;&#x4EE4;&#x5904;&#x7406;&#x51FD;&#x6570;(set_instruction_handler)&#x3002;&#x7B2C; &#x4E09;&#x6B65;&#xFF0C;&#x8BBE;&#x7F6E;&#x6808;&#x53C2;&#x6570;&#x4EE5;&#x4F9B;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x3002;&#x5728;&#x8FD9;&#x91CC;&#x8BBE;&#x7F6E;&#x6210; 0x00000001 &#x548C; 0x00000002&#x3002;&#x6700;&#x540E;&#x8BA9; PyEmu &#x6267;&#x884C;&#x5B8C;&#x6210;&#x6574;&#x4E2A;&#x51FD;&#x6570; 10 &#x884C;&#x4EE3;&#x7801;&#x3002;&#x5B8C;&#x6574;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code>#addnum_function_call.py
+import sys
+sys.path.append(&quot;C:\\PyEmu&quot;) 
+sys.path.append(&quot;C:\\PyEmu\\lib&quot;) 
+from PyEmu import *
+def ret_handler(emu, address): 
+    num1 = emu.get_stack_argument(&quot;arg_0&quot;) 
+    num2 = emu.get_stack_argument(&quot;arg_4&quot;)
+    sum = emu.get_register(&quot;EAX&quot;)
+    print &quot;[*] Function took: %d, %d and the result is %d.&quot; % (num1, n
+    return True emu = IDAPyEmu()
+    # Load the binary&apos;s code segment 
+    code_start = SegByName(&quot;.text&quot;) 
+    code_end = SegEnd( code_start ) 
+    while code_start &lt;= code_end:
+        emu.set_memory( code_start, GetOriginalByte(code_start), size=1 ) 
+        code_start += 1
+    print &quot;[*] Finished loading code section into memory.&quot;
+    # Load the binary&apos;s data segment 
+    data_start = SegByName(&quot;.data&quot;) 
+    data_end = SegEnd( data_start ) 
+    while data_start &lt;= data_end:
+        emu.set_memory( data_start, GetOriginalByte(data_start), size=1 ) 
+        data_start += 1
+    print &quot;[*] Finished loading data section into memory.&quot;
+    # Set EIP to start executing at the function head 
+    emu.set_register(&quot;EIP&quot;, 0x00401000)
+    # Set up the ret handler 
+    emu.set_mnemonic_handler(&quot;ret&quot;, ret_handler)
+    # Set the function parameters for the call 
+    emu.set_stack_argument(0x8, 0x00000001, name=&quot;arg_0&quot;) 
+    emu.set_stack_argument(0xc, 0x00000002, name=&quot;arg_4&quot;)
+    # There are 10 instructions in this function 
+    emu.execute( steps = 10 )
+    print &quot;[*] Finished function emulation run.&quot;
+</code></pre><p>ret &#x6307;&#x4EE4;&#x5904;&#x7406;&#x51FD;&#x6570;&#x7B80;&#x5355;&#x7684;&#x8BBE;&#x7F6E;&#x6210;&#x68C0;&#x7D22;&#x51FA;&#x6808;&#x53C2;&#x6570;&#x548C; EAX &#x7684;&#x503C;&#xFF0C;&#x6700;&#x540E;&#x518D;&#x5C06;&#x5B83;&#x4EEC;&#x6253;&#x5370;&#x51FA;&#x6765;&#x3002; &#x7528; IDA &#x52A0;&#x8F7D; addnum.exe&#xFF0C;&#x7136;&#x540E;&#x5C06; PyEmu &#x811A;&#x672C;&#x5F53;&#x4F5C; IDAPython &#x6587;&#x4EF6;&#x8C03;&#x7528;&#x3002;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x5C06;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>[*] Finished loading code section into memory. 
+[*] Finished loading data section into memory. 
+[*] Function took 1, 2 and the result is 3.
+[*] Finished function emulation run.
+</code></pre><p>Listing 12-2: IDAPyEmu &#x4EFF;&#x771F;&#x51FD;&#x6570;&#x7684;&#x8F93;&#x51FA;</p>
+<p>&#x5F88;&#x597D;&#x5F88;&#x7B80;&#x5355;&#xFF01;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x5F88;&#x6210;&#x529F;&#xFF0C;&#x6808;&#x53C2;&#x6570;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x90FD;&#x4ECE;&#x6355;&#x83B7;&#xFF0C;&#x8BF4;&#x660E;&#x51FD;&#x6570;&#x4EFF;&#x771F;&#x6210;&#x529F;&#x4E86;&#x3002;&#x4F5C;&#x4E3A;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x7EC3;&#x4E60;&#xFF0C;&#x5404;&#x4F4D;&#x53EF;&#x4EE5;&#x52A0;&#x8F7D;&#x4E0D;&#x540C;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x968F;&#x673A;&#x7684;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x4EFF;&#x771F;&#xFF0C;&#x7136;&#x540E;&#x76D1;&#x89C6;&#x76F8;&#x5173;&#x6570; &#x636E;&#x7684;&#x8C03;&#x7528;&#x6216;&#x8005;&#x4EFB;&#x4F55;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x4E1C;&#x897F;&#x3002;&#x67D0;&#x4E00;&#x5929;&#xFF0C;&#x5F53;&#x4F60;&#x9047;&#x5230;&#x4E00;&#x4E2A;&#x4E0A;&#x5343;&#x884C;&#x7684;&#x51FD;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x76F8;&#x4FE1;&#x8FD9;&#x79CD;&#x65B9; &#x6CD5;&#x80FD;&#x5E2E;&#x4F60;&#x4ECE;&#x65E0;&#x6570;&#x7684;&#x5206;&#x652F;&#xFF0C;&#x5FAA;&#x73AF;&#x8FD8;&#x6709;&#x53EF;&#x6015;&#x7684;&#x6307;&#x9488;&#x4E2D;&#x62EF;&#x6551;&#x51FA;&#x6765;&#xFF0C;&#x5B83;&#x4EEC;&#x8282;&#x7701;&#x7684;&#x4E0D;&#x4EC5;&#x4EC5;&#x662F;&#x4E8B;&#x4EF6;&#xFF0C;&#x66F4;&#x662F; &#x4F60;&#x7684;&#x4FE1;&#x5FC3;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x8BA9;&#x6211;&#x4EEC;&#x7528; PEPyEmu &#x5E93;&#x89E3;&#x538B;&#x4E00;&#x4E2A;&#x88AB;&#x538B;&#x7F29;&#x6587;&#x4EF6;&#x3002;</p>
+<h3 id="1232-pepyemu">12.3.2 PEPyEmu</h3>
+<p>PEPyEmu &#x7C7B;&#x7528;&#x4E8E;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x7684;&#x9759;&#x6001;&#x5206;&#x6790;&#xFF08;&#x4E0D;&#x9700;&#x8981; IDA Pro&#xFF09;&#x3002;&#x6574;&#x4E2A;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x5C31;&#x662F;&#x5C06;&#x78C1;&#x76D8; &#x4E0A;&#x7684;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x6620;&#x5C04;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528; pydasm &#x8FDB;&#x884C;&#x6307;&#x4EE4;&#x89E3;&#x7801;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x8BD5;&#x9A8C;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x901A; &#x8FC7;&#x4EFF;&#x771F;&#x5668;&#x8FD0;&#x884C;&#x4E00;&#x4E2A;&#x538B;&#x7F29;&#x8FC7;&#x7684;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x89E3;&#x538B;&#x51FA;&#x6765;&#x7684;&#x539F;&#x59CB;&#x6587;&#x4EF6;&#x8F6C;&#x5B58;&#x5230;&#x786C;&#x76D8;&#x4E0A;&#x3002;&#x8FD9;&#x6B21;&#x4F7F; &#x7528;&#x7684;&#x538B;&#x7F29;&#x8F6F;&#x4EF6;&#x5C31;&#x662F; UPX(Ultimate Packer for Executables)&#xFF0C;&#x4E00;&#x6B3E;&#x4F1F;&#x5927;&#x7684;&#x5F00;&#x6E90;&#x538B;&#x7F29;&#x8F6F;&#x4EF6;&#xFF0C;&#x540C;&#x65F6;&#x4E5F; &#x662F;&#x4F7F;&#x7528;&#x6700;&#x5E7F;&#x7684;&#x538B;&#x7F29;&#x8F6F;&#x4EF6;&#xFF0C;&#x7528;&#x4E8E;&#x6700;&#x5927;&#x7A0B;&#x5EA6;&#x7684;&#x538B;&#x7F29;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x540C;&#x6837;&#x4E5F;&#x80FD;&#x88AB;&#x75C5;&#x6BD2;&#x8F6F;&#x4EF6;&#x7528;&#x6765;&#x8FF7;&#x60D1;&#x5206; &#x6790;&#x8005;&#x3002;&#x5728;&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49; PyEmu &#x811A;&#x672C;( Cody Pierce &#x63D0;&#x4F9B; )&#x5BF9;&#x7A0B;&#x5E8F;&#x8FDB;&#x884C;&#x89E3;&#x538B;&#x4E4B;&#x524D;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x770B;&#x538B;&#x7F29; &#x7A0B;&#x5E8F;&#x662F;&#x600E;&#x4E48;&#x5DE5;&#x4F5C;&#x7684;&#x3002;</p>
+<h3 id="1233-&#x538B;&#x7F29;&#x7A0B;&#x5E8F;">12.3.3 &#x538B;&#x7F29;&#x7A0B;&#x5E8F;</h3>
+<p>&#x538B;&#x7F29;&#x7A0B;&#x5E8F;&#x7531;&#x6765;&#x5DF2;&#x4E45;&#x3002;&#x6700;&#x65E9;&#x5728;&#x6211;&#x4EEC;&#x4F7F;&#x7528; 1.44 &#x8F6F;&#x76D8;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x538B;&#x7F29;&#x7A0B;&#x5E8F;&#x5C31;&#x7528;&#x6765;&#x5C3D;&#x53EF;&#x80FD;&#x7684;&#x51CF;&#x5C11; &#x7A0B;&#x5E8F;&#x5927;&#x5C0F;(&#x60F3;&#x5F53;&#x521D;&#x6211;&#x4EEC;&#x7684;&#x8F6F;&#x76D8;&#x4E0A;&#x53EF;&#x662F;&#x6709;&#x4E0A;&#x5343;&#x53F7;&#x6587;&#x4EF6;)&#xFF0C;&#x968F;&#x7740;&#x4E8B;&#x4EF6;&#x7684;&#x6D41;&#x901D;&#xFF0C;&#x8FD9;&#x9879;&#x6280;&#x672F;&#x4E5F;&#x6E10;&#x6E10;&#x6210;&#x4E3A; &#x75C5;&#x6BD2;&#x5F00;&#x53D1;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x4E3B;&#x8981;&#x90E8;&#x5206;&#xFF0C;&#x7528;&#x6765;&#x8FF7;&#x60D1;&#x5206;&#x6790;&#x8005;&#x3002;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684;&#x538B;&#x7F29;&#x7A0B;&#x5E8F;&#x4F1A;&#x5C06;&#x76EE;&#x6807;&#x7A0B;&#x5E8F;&#x7684;&#x4EE3;&#x7801;&#x6BB5; &#x548C;&#x6570;&#x636E;&#x6BB5;&#x8FDB;&#x884C;&#x538B;&#x7F29;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5165;&#x53E3;&#x70B9;&#x66FF;&#x6362;&#x6210;&#x89E3;&#x538B;&#x7684;&#x4EE3;&#x7801;&#x3002;&#x5F53;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x89E3;&#x538B;&#x4EE3;&#x7801;&#x5C31;&#x4F1A;&#x5C06; &#x539F;&#x59CB;&#x4EE3;&#x7801;&#x52A0;&#x538B;&#x8FDB;&#x5185;&#x5B58;&#xFF0C;&#x7136;&#x540E;&#x8DF3;&#x5230;&#x539F;&#x59CB;&#x5165;&#x53E3;&#x70B9; OEP(original entry point )&#xFF0C;&#x5F00;&#x59CB;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x7A0B;&#x5E8F;&#x3002; &#x5728;&#x6211;&#x4EEC;&#x5206;&#x6790;&#x8C03;&#x8BD5;&#x4EFB;&#x4F55;&#x538B;&#x7F29;&#x8FC7;&#x7684;&#x7A0B;&#x5E8F;&#x4E4B;&#x524D;&#xFF0C;&#x4E5F;&#x90FD;&#x5FC5;&#x987B;&#x89E3;&#x538B;&#x5B83;&#x4EEC;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#x4F60;&#x4F1A;&#x60F3;&#x5230;&#x7528;&#x8C03;&#x8BD5;&#x5668;&#x5B8C;&#x6210; &#x8FD9;&#x9879;&#x4EFB;&#x52A1;&#xFF08;&#x56E0;&#x4E3A;&#x5404;&#x79CD;&#x4E30;&#x5BCC;&#x7684;&#x811A;&#x672C;&#xFF09;&#xFF0C;&#x4E0D;&#x8FC7;&#x73B0;&#x5728;&#x7684;&#x75C5;&#x6BD2;&#x4E00;&#x822C;&#x90FD;&#x7F34;&#x5165;&#x53CD;&#x8C03;&#x8BD5;&#x4EE3;&#x7801;&#xFF0C;&#x7528;&#x8C03;&#x8BD5;&#x5668;&#x8FDB;&#x884C; &#x89E3;&#x538B;&#x53D8;&#x5F97;&#x8D8A;&#x6765;&#x8D8A;&#x56F0;&#x96BE;&#x3002;&#x90A3;&#x600E;&#x4E48;&#x529E;&#x5462;&#xFF1F;&#x7528;&#x4EFF;&#x771F;&#x5668;&#x3002;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x5E76;&#x6CA1;&#x6709;&#x9644;&#x52A0;&#x5230;&#x6B63;&#x5728;&#x6267;&#x884C;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x800C; &#x662F;&#x5C06;&#x538B;&#x7F29;&#x8FC7;&#x7684;&#x4EE3;&#x7801;&#x62F7;&#x8D1D;&#x5230;&#x4EFF;&#x771F;&#x5668;&#x4E2D;&#x8FD0;&#x884C;&#xFF0C;&#x7136;&#x540E;&#x7B49;&#x5F85;&#x5B83;&#x81EA;&#x52A8;&#x89E3;&#x538B;&#x5B8C;&#x6210;&#xFF0C;&#x63A5;&#x7740;&#x518D;&#x628A;&#x89E3;&#x538B;&#x51FA;&#x6765;&#x7684;&#x539F; &#x59CB;&#x7A0B;&#x5E8F;&#xFF0C;&#x8F6C;&#x50A8;&#x5230;&#x786C;&#x76D8;&#x4E0A;&#x3002;&#x4EE5;&#x540E;&#x5C31;&#x80FD;&#x591F;&#x6B63;&#x5E38;&#x7684;&#x5206;&#x6790;&#x8C03;&#x8BD5;&#x5B83;&#x4EEC;&#x4E86;&#x3002;</p>
+<p>&#x8FD9;&#x6B21;&#x6211;&#x4EEC;&#x9009;&#x62E9; UPX &#x538B;&#x7F29; calc.exe&#x3002;&#x7136;&#x540E;&#x7528; PyEmu &#x89E3;&#x538B;&#x5B83;&#xFF0C;&#x6700;&#x540E; dump &#x51FA;&#x6765;&#x3002;&#x8BB0;&#x5F97;&#x8FD9;&#x79CD; &#x65B9;&#x6CD5;&#x540C;&#x6837;&#x9002;&#x7528;&#x4E8E;&#x522B;&#x7684;&#x538B;&#x7F29;&#x7A0B;&#x5E8F;&#xFF0C;&#x4E07;&#x53D8;&#x4E0D;&#x79BB;&#x5176;&#x5B97;&#x3002;</p>
+<ol>
+<li><h3 id="upx">UPX</h3>
+</li>
+</ol>
+<p>UPX &#x662F;&#x81EA;&#x7531;&#x7684;&#xFF0C;&#x662F;&#x5F00;&#x6E90;&#x7684;&#xFF0C;&#x662F;&#x8DE8;&#x5E73;&#x53F0;&#x7684;(Linux Windows....)&#x3002;&#x63D0;&#x4F9B;&#x4E0D;&#x540C;&#x7684;&#x538B;&#x7F29;&#x7EA7;&#x522B;&#xFF0C;&#x548C; &#x8BB8;&#x591A;&#x9644;&#x52A0;&#x7684;&#x9009;&#x9879;&#xFF0C;&#x7528;&#x4E8E;&#x5B8C;&#x6210;&#x5404;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x538B;&#x7F29;&#x4EFB;&#x52A1;&#x3002;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684;&#x538B;&#x7F29;&#x65B9;&#x6848;&#xFF0C;&#x90FD;&#x8BA9;&#x4F60;&#x53EF;&#x968F;&#x610F; &#x7684;&#x6D4B;&#x8BD5;&#x3002;</p>
+<p>&#x4ECE; <a href="http://upx.sourceforge.net" target="_blank">http://upx.sourceforge.net</a> &#x4E0B;&#x8F7D; UPX&#x3002;</p>
+<p>&#x89E3;&#x538B;&#x5230; C &#x76D8;&#xFF0C;&#x5B98;&#x65B9;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#x56FE;&#x5F62;&#x754C;&#x9762;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x4ECE;&#x547D;&#x4EE4;&#x884C;&#x64CD;&#x4F5C;&#x3002;&#x6253;&#x5F00; CMD&#xFF0C;&#x6539; &#x53D8;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x5230; C:\upx303w(&#x4E5F;&#x5C31;&#x662F; UPX &#x89E3;&#x538B;&#x7684;&#x76EE;&#x5F55;)&#xFF0C;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;</p>
+<pre><code>C:\upx303w&gt;upx -o c:\calc_upx.exe C:\Windows\system32\calc.exe
+Ultimate Packer for eXecutables 
+Copyright (C) 1996 - 2008
+UPX 3.03w Markus Oberhumer, Laszlo Molnar &amp; John Reiser Apr 27th 2008
+File size Ratio Format Name
+-------------------- ------ ----------- -----------
+114688 -&gt; 56832 49.55% win32/pe calc_upx.exe
+Packed 1 file. C:\upx303w&gt;
+</code></pre><p>&#x6210;&#x529F;&#x7684;&#x538B;&#x7F29;&#x4E86; Windows &#x7684;&#x8BA1;&#x7B97;&#x5668;&#xFF0C;&#x5E76;&#x4E14;&#x8F6C;&#x50A8;&#x5230;&#x4E86; C &#x76D8;&#x4E0B;&#x3002;</p>
+<p>-o &#x4E3A;&#x8F93;&#x51FA;&#x6807;&#x5FD7;&#xFF0C;&#x6307;&#x5B9A;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x540D;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x7EC8;&#x4E8E;&#x5230;&#x4E86; PEPyEmu &#x51FA;&#x9A6C;&#x4E86;&#x3002;</p>
+<ol>
+<li>&#x4F7F;&#x7528; PEPyEmu &#x89E3;&#x538B; UPX</li>
+</ol>
+<p>UPX &#x538B;&#x7F29;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x7684;&#x65B9;&#x6CD5;&#x5F88;&#x7B80;&#x5355;&#x660E;&#x4E86;&#xFF1A;&#x91CD;&#x5199;&#x7A0B;&#x5E8F;&#x7684;&#x5165;&#x53E3;&#x70B9;&#xFF0C;&#x6307;&#x5411;&#x89E3;&#x538B;&#x4EE3;&#x7801;&#xFF0C;&#x540C;&#x65F6;&#x6DFB; &#x52A0;&#x4E24;&#x4E2A;&#x800C;&#x5916;&#x7684;&#x5757;&#xFF0C;UPX0 &#x548C; UPX1&#x3002;&#x4F7F;&#x7528; Immunity &#x52A0;&#x8F7D;&#x538B;&#x7F29;&#x7A0B;&#x5E8F;,&#x68C0;&#x67E5;&#x5185;&#x5B58;&#x5E03;&#x5C40;(ALT-M),&#x5C06;&#x4F1A;&#x770B;&#x5230;&#x5982;&#x4E0B;&#x76F8;&#x4F3C;&#x7684;&#x8F93;&#x51FA;&#xFF1A;</p>
+<pre><code>Address Size Owner Section Contains Access Initial Access 00100000 00001000 calc_upx PE Header R RWE 
+01001000 00019000 calc_upx UPX0 RWE RWE
+0101A000 00007000 calc_upx UPX1 code RWE RWE 
+01021000 00007000 calc_upx .rsrc data,imports RW RWE
+resources
+</code></pre><p>Listing 12-3: UPX &#x538B;&#x7F29;&#x4E4B;&#x540E;&#x7684;&#x7A0B;&#x5E8F;&#x7684;&#x5185;&#x5B58;&#x5E03;&#x5C40;.</p>
+<p>UPX1 &#x663E;&#x793A;&#x4E3A;&#x4EE3;&#x7801;&#x5757;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x4E3B;&#x8981;&#x7684;&#x89E3;&#x538B;&#x4EE3;&#x7801;&#x3002;&#x4EE3;&#x7801;&#x7ECF;&#x8FC7; UPX1 &#x7684;&#x89E3;&#x538B;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x8DF3; &#x51FA; UPX1 &#x5757;&#xFF0C;&#x5230;&#x8FBE;&#x771F;&#x6B63;&#x7684;&#x53EF;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x5757;&#xFF0C;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x3002;&#x6211;&#x4EEC;&#x8981;&#x505A;&#x7684;&#x5C31;&#x662F;&#x8BA9;&#x4EFF;&#x771F;&#x5668;&#x8FD0;&#x884C;&#x89E3;&#x538B; &#x4EE3;&#x7801;&#xFF0C;&#x540C;&#x65F6;&#x4E0D;&#x65AD;&#x7684;&#x68C0;&#x6D4B; EIP &#x548C; JMP&#xFF0C;&#x5F53;&#x53D1;&#x73B0;&#x6709; JMP &#x6307;&#x4EE4;&#x4F7F;&#x5F97; EIP &#x7684;&#x8303;&#x56F4;&#x8D85;&#x51FA; UPX1 &#x6BB5;&#x7684;&#x65F6; &#x5019;&#xFF0C;&#x8BF4;&#x660E;&#x5C06;&#x5230;&#x8DF3;&#x8F6C;&#x5230;&#x539F;&#x59CB;&#x4EE3;&#x7801;&#x6BB5;&#x4E86;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x5F00;&#x59CB;&#x4EE3;&#x7801;&#x7684;&#x7F16;&#x5199;&#xFF0C;&#x8FD9;&#x6B21;&#x6211;&#x4EEC;&#x53EA;&#x4F7F;&#x7528;&#x72EC;&#x7ACB;&#x7684; PEPyEmu &#x6A21;&#x5757;&#x3002;</p>
+<pre><code>#upx_unpacker.py
+from ctypes import *
+# You must set your path to pyemu 
+sys.path.append(&quot;C:\\PyEmu&quot;) 
+sys.path.append(&quot;C:\\PyEmu\\lib&quot;)
+from PyEmu import PEPyEmu
+# Commandline arguments 
+exename = sys.argv[1] 
+outputfile = sys.argv[2]
+# Instantiate our emulator object 
+emu = PEPyEmu()
+if exename:
+    # Load the binary into PyEmu 
+    if not emu.load(exename): 
+        print &quot;[!] Problem loading %s&quot; % exename 
+        sys.exit(2)
+else:
+    print &quot;[!] Blank filename specified&quot; 
+    sys.exit(3) # Set our library handlers
+emu.set_library_handler(&quot;LoadLibraryA&quot;, loadlibrary) 
+emu.set_library_handler(&quot;GetProcAddress&quot;, getprocaddress) 
+emu.set_library_handler(&quot;VirtualProtect&quot;, virtualprotect)
+# Set a breakpoint at the real entry point to dump binary 
+emu.set_mnemonic_handler( &quot;jmp&quot;, jmp_handler )
+# Execute starting from the header entry point 
+emu.execute( start=emu.entry_point )
+</code></pre><p>&#x7B2C; &#x4E00; &#x6B65; &#x5C06; &#x538B; &#x7F29; &#x6587; &#x4EF6; &#x52A0; &#x8F7D; &#x8FDB; PyEmu &#x3002; &#x7B2C; &#x4E8C; &#x90E8; &#xFF0C; &#x5728; LoadLibraryA, GetProcAddress, VirtualProtect &#x4E09;&#x4E2A;&#x51FD;&#x6570;&#x4E0A;&#x8BBE;&#x7F6E;&#x5E93;&#x5904;&#x7406;&#x51FD;&#x6570;&#x3002;&#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x90FD;&#x5C06;&#x5728;&#x89E3;&#x538B;&#x4EE3;&#x7801;&#x4E2D;&#x8C03;&#x7528;&#xFF0C;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x5FC5;&#x987B; &#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x5728;&#x4EFF;&#x771F;&#x5668;&#x4E2D;&#x5B8C;&#x6210;&#x3002;&#x7B2C;&#x4E09;&#x6B65;&#xFF0C;&#x5728;&#x89E3;&#x538B;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x51C6;&#x5907;&#x8DF3;&#x5230; OEP &#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x8FDB; &#x884C;&#x76F8;&#x5173;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD9;&#x4E2A;&#x4EFB;&#x52A1;&#x5C31;&#x6709; JMP &#x6307;&#x4EE4;&#x5904;&#x7406;&#x51FD;&#x6570;&#x5B8C;&#x6210;&#x3002;&#x6700;&#x540E;&#x544A;&#x8BC9;&#x4EFF;&#x771F;&#x5668;&#xFF0C;&#x4ECE;&#x538B;&#x7F29;&#x7A0B;&#x5E8F;&#x5934;&#x90E8; &#x5F00;&#x59CB;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x3002;</p>
+<pre><code>#upx_unpacker.py
+from ctypes import *
+# You must set your path to pyemu 
+sys.path.append(&quot;C:\\PyEmu&quot;) 
+sys.path.append(&quot;C:\\PyEmu\\lib&quot;) 
+from PyEmu import PEPyEmu
+&apos;&apos;&apos;
+HMODULE WINAPI LoadLibrary(
+    in LPCTSTR lpFileName
+); 
+&apos;&apos;&apos;
+def loadlibrary(name, address):
+# Retrieve the DLL name
+dllname = emu.get_memory_string(emu.get_memory(emu.get_register(&quot;ESP&quot;)))
+# Make a real call to LoadLibrary and return the handle 
+dllhandle = windll.kernel32.LoadLibraryA(dllname)
+emu.set_register(&quot;EAX&quot;, dllhandle)
+# Reset the stack and return from the handler
+return_address = emu.get_memory(emu.get_register(&quot;ESP&quot;)) 
+emu.set_register(&quot;ESP&quot;, emu.get_register(&quot;ESP&quot;) + 8) 
+emu.set_register(&quot;EIP&quot;, return_address)
+return True
+&apos;&apos;&apos;
+FARPROC WINAPI GetProcAddress(
+    in HMODULE hModule,
+    in LPCSTR lpProcName
+);
+&apos;&apos;&apos; 
+def getprocaddress(name, address):
+    # Get both arguments, which are a handle and the procedure name 
+    handle = emu.get_memory(emu.get_register(&quot;ESP&quot;) + 4) 
+    proc_name = emu.get_memory(emu.get_register(&quot;ESP&quot;) + 8)
+    # lpProcName can be a name or ordinal, if top word is null it&apos;s an ordinal
+    # lpProcName &#x7684;&#x9AD8; 16 &#x4F4D;&#x662F; null &#x7684;&#x65F6;&#x5019;,&#x5B83;&#x5C31;&#x662F;&#x5E8F;&#x5217;&#x53F7;(&#x4E5F;&#x5C31;&#x662F;&#x4E2A;&#x5730;&#x5740;),&#x5426;&#x8005;&#x5C31;&#x662F;&#x540D;&#x5B57;
+    if (proc_name &gt;&gt; 16):
+        procname = emu.get_memory_string(emu.get_memory(emu.get_register(&quot;ESP&quot;) + 8)) 
+    else:
+        procname = arg2
+    #&#x8FD9; arg2 &#x4E0D;&#x77E5;&#x9053;&#x4ECE;&#x4F55;&#x800C;&#x6765;,&#x5E94;&#x8BE5;&#x662F; procname = proc_name
+    # Add the procedure to the emulator 
+    emu.os.add_library(handle, procname)
+    import_address = emu.os.get_library_address(procname)
+    # Return the import address 
+    emu.set_register(&quot;EAX&quot;, import_address)
+    # Reset the stack and return from our handler
+    return_address = emu.get_memory(emu.get_register(&quot;ESP&quot;)) 
+    emu.set_register(&quot;ESP&quot;, emu.get_register(&quot;ESP&quot;) + 8)
+    #&#x8FD9;&#x91CC;&#x5E94;&#x8BE5;&#x662F; r(&quot;ESP&quot;) + 8&#xFF0C;&#x56E0;&#x4E3A;&#x6709;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x9700;&#x8981;&#x5E73;&#x8861;
+    emu.set_register(&quot;EIP&quot;, return_address) 
+    return True
+&apos;&apos;&apos;
+BOOL WINAPI VirtualProtect(
+    in LPVOID lpAddress,
+    in SIZE_T dwSize,
+    in DWORD flNewProtect,
+    out PDWORD lpflOldProtect
+);
+&apos;&apos;&apos; 
+def virtualprotect(name, address):
+    # Just return TRUE
+    emu.set_register(&quot;EAX&quot;, 1)
+    # Reset the stack and return from our handler
+    return_address = emu.get_memory(emu.get_register(&quot;ESP&quot;)) 
+    emu.set_register(&quot;ESP&quot;, emu.get_register(&quot;ESP&quot;) + 16) 
+    emu.set_register(&quot;EIP&quot;, return_address)
+    return True
+# When the unpacking routine is finished, handle the JMP to the OEP 
+def jmp_handler(emu, mnemonic, eip, op1, op2, op3):
+    # The UPX1 section
+    if eip &lt; emu.sections[&quot;UPX1&quot;][&quot;base&quot;]:
+        print &quot;[*] We are jumping out of the unpacking routine.&quot; 
+        print &quot;[*] OEP = 0x%08x&quot; % eip
+        # Dump the unpacked binary to disk 
+        dump_unpacked(emu)
+        # We can stop emulating now 
+        emu.emulating = False
+        return True
+</code></pre><p>LoadLibrary &#x5904;&#x7406;&#x51FD;&#x6570;&#x4ECE;&#x6808;&#x4E2D;&#x6355;&#x6349;&#x5230;&#x8C03;&#x7528;&#x7684; DLL &#x7684;&#x540D;&#x5B57;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528; ctypes &#x5E93;&#x51FD;&#x6570;&#x8FDB; &#x884C;&#x771F;&#x6B63;&#x7684; LoadLibraryA &#x8C03;&#x7528;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7531; kernel32.dll &#x5BFC;&#x51FA;&#x3002;&#x8C03;&#x7528;&#x6210;&#x529F;&#x8FD4;&#x56DE;&#x540E;&#xFF0C;&#x5C06;&#x53E5;&#x67C4;&#x4F20;&#x9012; &#x7ED9; EAX &#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x91CD;&#x65B0;&#x8C03;&#x6574;&#x4EFF;&#x771F;&#x5668;&#x6808;&#xFF0C;&#x6700;&#x540E;&#x91CD;&#x5904;&#x7406;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x3002;&#x540C;&#x6837;&#xFF0C; GetProcAddress &#x5904;&#x7406;&#x51FD; &#x6570; &#x4ECE; &#x6808; &#x4E2D; &#x63A5; &#x6536; &#x4E24; &#x4E2A; &#x53C2; &#x6570;(arg2) &#xFF0C; &#x7136; &#x540E; &#x5728; &#x4EFF; &#x771F; &#x5668; &#x4E2D; &#x8FDB; &#x884C; &#x771F; &#x5B9E; &#x7684; &#x8C03; &#x7528;(emu.os.add_library &#x548C; emu.os.get_library_address) &#xFF0C; &#x8FD9; &#x4E2A; &#x51FD; &#x6570; &#x4E5F; &#x7531; kernel32.dll &#x5BFC; &#x51FA; ( &#x5F53; &#x7136; &#x4E5F; &#x53EF; &#x4EE5; &#x4F7F; &#x7528; windll.kernel32.GetProcAddress) &#x3002; &#x4E4B; &#x540E; &#x628A; &#x5730; &#x5740; &#x5B58; &#x50A8; &#x5230; EAX &#xFF0C; &#x8C03; &#x6574; &#x6808; ( &#x8FD9; &#x91CC; &#x539F; &#x4F5C; &#x8005; &#x4F7F; &#x7528; emu.set_register(&quot;ESP&quot;, emu.get_register(&quot;ESP&quot;) + 8)&#xFF0C;&#x4E0D;&#x8FC7;&#x7531;&#x4E8E;&#x662F;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5E94;&#x8BE5;&#x662F;+12)&#xFF0C;&#x8FD4; &#x56DE;&#x3002;&#x7B2C;&#x4E09;&#x4E2A; VirtualProtect &#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x7684;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; True &#x503C;&#xFF0C;&#x63A5;&#x7740;&#x5C31;&#x662F;&#x4E00;&#x6837;&#x7684;&#x6808;&#x5904;&#x7406; &#x548C;&#x4ECE;&#x51FD;&#x6570;&#x4E2D;&#x8FD4;&#x56DE;&#x3002;&#x4E4B;&#x6240;&#x4EE5;&#x8FD9;&#x6837;&#x505A;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x771F;&#x6B63;&#x7684;&#x4FDD;&#x62A4;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x9875;&#x9762;&#xFF1B;&#x6211;&#x4EEC;&#x503C; &#x9700;&#x8981;&#x786E;&#x4FDD;&#x5728;&#x4EFF;&#x771F;&#x5668;&#x4E2D;&#x7684; VirtualProtect &#x8C03;&#x7528;&#x90FD;&#x8FD4;&#x56DE;&#x771F;&#x3002;&#x6700;&#x540E;&#x7684; JMP &#x6307;&#x4EE4;&#x5904;&#x7406;&#x51FD;&#x6570;&#x505A;&#x4E86;&#x4E00;&#x4E2A;&#x7B80; &#x5355;&#x7684;&#x786E;&#x8BA4;&#xFF0C;&#x770B;&#x662F;&#x5426;&#x8981;&#x8DF3;&#x51FA;&#x89E3;&#x538B;&#x4EE3;&#x7801;&#x6BB5;&#xFF0C;&#x5982;&#x679C;&#x8DF3;&#x51FA;&#xFF0C;&#x5C31;&#x8C03;&#x7528; dump_unpacked &#x5C06;&#x4EE3;&#x7801;&#x8F6C;&#x50A8;&#x5230;&#x786C; &#x76D8;&#x4E0A;&#x3002;&#x4E4B;&#x540E;&#x544A;&#x8BC9;&#x4EFF;&#x771F;&#x5668;&#x505C;&#x6B62;&#x5DE5;&#x4F5C;&#xFF0C;&#x89E3;&#x538B;&#x5DE5;&#x4F5C;&#x5B8C;&#x6210;&#x4E86;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x5C31;&#x662F; dump_unpacked &#x4EE3;&#x7801;&#x3002;</p>
+<pre><code>#upx_unpacker.py
+...
+def dump_unpacked(emu): 
+    global outputfile
+    fh = open(outputfile, &apos;wb&apos;)
+    print &quot;[*] Dumping UPX0 Section&quot; 
+    base = emu.sections[&quot;UPX0&quot;][&quot;base&quot;]
+    length = emu.sections[&quot;UPX0&quot;][&quot;vsize&quot;]
+    print &quot;[*] Base: 0x%08x Vsize: %08x&quot;% (base, length) 
+    for x in range(length):
+        fh.write(&quot;%c&quot; % emu.get_memory(base + x, 1)) 
+    print &quot;[*] Dumping UPX1 Section&quot;
+    base = emu.sections[&quot;UPX1&quot;][&quot;base&quot;] 
+    length = emu.sections[&quot;UPX1&quot;][&quot;vsize&quot;]
+    print &quot;[*] Base: 0x%08x Vsize: %08x&quot; % (base, length) 
+    for x in range(length):
+        fh.write(&quot;%c&quot; % emu.get_memory(base + x, 1)) 
+    print &quot;[*] Finished.&quot;
+</code></pre><p>&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x7B80;&#x5355;&#x7684;&#x5C06; UPX0 &#x548C; UPX1 &#x4E24;&#x4E2A;&#x6BB5;&#x7684;&#x4EE3;&#x7801;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x3002;&#x4E00;&#x65E6;&#x6587;&#x4EF6; dump &#x6210;&#x529F;&#xFF0C;&#x5C31;&#x80FD;&#x591F;&#x60F3;&#x6B63;&#x5E38;&#x7A0B;&#x5E8F;&#x4E00;&#x6837;&#x5206;&#x6790;&#x8C03;&#x8BD5;&#x5B83;&#x4EEC;&#x4E86;&#x3002;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x4F7F;&#x7528;&#x6211;&#x4EEC;&#x7684;&#x89E3;&#x538B;&#x811A;&#x672C;&#x770B;&#x770B;&#xFF1A;</p>
+<pre><code>C:\&gt;C:\Python25\python.exe upx_unpacker.py C:\calc_upx.exe calc_clean.exe 
+[*] We are jumping out of the unpacking routine.
+[*] OEP = 0x01012475
+[*] Dumping UPX0 Section
+[*] Base: 0x01001000 Vsize: 00019000
+[*] Dumping UPX1 Section
+[*] Base: 0x0101a000 Vsize: 00007000 [*] Finished.
+C:\&gt;
+</code></pre><p>Listing 12-4:upx_unpacker.py &#x7684;&#x547D;&#x4EE4;&#x884C;&#x8F93;&#x51FA;</p>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6709;&#x4E86;&#x4E00;&#x4E2A;&#x548C;&#x672A;&#x52A0;&#x5BC6;&#x7684; calc.exe &#x4E00;&#x6837;&#x7684; calc_clean.exe&#x3002;&#x5927;&#x529F;&#x544A;&#x6210;&#xFF0C;&#x5404;&#x4F4D;&#x4E0D;&#x59A8;&#x6D4B;&#x8BD5; &#x7740;&#x5199;&#x5199;&#x4E0D;&#x540C;&#x58F3;&#x7684;&#x89E3;&#x538B;&#x4EE3;&#x7801;&#xFF0C;&#x76F8;&#x4FE1;&#x4E0D;&#x4E45;&#x4E4B;&#x540E;&#x4F60;&#x4F1A;&#x5B66;&#x5230;&#x66F4;&#x591A;&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./47.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 12.2 PyEmu 一览"><i class="fa fa-angle-left"></i></a>
+        
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

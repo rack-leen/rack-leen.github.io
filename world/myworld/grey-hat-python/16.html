@@ -1,0 +1,1068 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>4.2 处理访问违例 | 灰帽 Python 之旅</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./17.html" />
+    
+    
+    <link rel="prev" href="./15.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="5.2"
+        data-chapter-title="4.2 处理访问违例"
+        data-filepath="16.md"
+        data-basepath="."
+        data-revision="Fri Mar 11 2016 03:05:18 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/grey-hat-python" target="blank" class="custom-link">灰帽 Python 之旅</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="0.html">
+            
+                
+                    <a href="./0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="1.html">
+            
+                
+                    <a href="./1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        1 搭建开发环境
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        1.1 操作系统准备
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        1.2  获取和安装 Python2.5
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        1.3  配置 Eclipse 和 PyDev
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        2 调试器设计
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        2.1  通用 CPU 寄存器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        2.2  栈
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="8.html">
+            
+                
+                    <a href="./8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        2.3 调试事件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="9.html">
+            
+                
+                    <a href="./9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        2.4  断点
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="10.html">
+            
+                
+                    <a href="./10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        3 自己动手写一个 windows 调试器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="11.html">
+            
+                
+                    <a href="./11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        3.2 获得 CPU 寄存器状态
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="12.html">
+            
+                
+                    <a href="./12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        3.3 实现调试事件处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="13.html">
+            
+                
+                    <a href="./13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        3.4 全能的断点
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="14.html">
+            
+                
+                    <a href="./14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        4 PyDBG---纯 PYTHON 调试器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="15.html">
+            
+                
+                    <a href="./15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        4.1 扩展断点处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.2" data-path="16.html">
+            
+                
+                    <a href="./16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        4.2 处理访问违例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="17.html">
+            
+                
+                    <a href="./17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        4.3 进程快照
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="18.html">
+            
+                
+                    <a href="./18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        5 IMMUNITY----最好的调试器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="19.html">
+            
+                
+                    <a href="./19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        5.1  安装 Immunity 调试器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="20.html">
+            
+                
+                    <a href="./20.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        5.2 Immunity Debugger 101
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="21.html">
+            
+                
+                    <a href="./21.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        5.3 Exploit 开发
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="22.html">
+            
+                
+                    <a href="./22.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        5.4 搞定反调试机制
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="23.html">
+            
+                
+                    <a href="./23.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        6 HOOKING
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="24.html">
+            
+                
+                    <a href="./24.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        6.1  用 PyDbg 实现 Soft Hooking
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="25.html">
+            
+                
+                    <a href="./25.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        6.2 Hard Hooking
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="26.html">
+            
+                
+                    <a href="./26.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        7 Dll 和代码注入
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="27.html">
+            
+                
+                    <a href="./27.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        7.1 创建远线程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="28.html">
+            
+                
+                    <a href="./28.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        7.2 邪恶的代码
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="29.html">
+            
+                
+                    <a href="./29.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        8 FUZZING
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="30.html">
+            
+                
+                    <a href="./30.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        8.1 Bug 的分类
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="31.html">
+            
+                
+                    <a href="./31.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        8.2 File Fuzzer
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="32.html">
+            
+                
+                    <a href="./32.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        8.3 改进你的 Fuzzer
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="33.html">
+            
+                
+                    <a href="./33.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        9 SULLEY
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="34.html">
+            
+                
+                    <a href="./34.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        9.1  安装 Sulley
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="35.html">
+            
+                
+                    <a href="./35.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        9.2 Sulley primitives
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="36.html">
+            
+                
+                    <a href="./36.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        9.3 猎杀 WarFTPD
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="37.html">
+            
+                
+                    <a href="./37.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        10 Fuzzing Windows 驱动
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="38.html">
+            
+                
+                    <a href="./38.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        10.1 驱动通信
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="39.html">
+            
+                
+                    <a href="./39.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        10.2 用 Immunity fuzzing 驱动
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="40.html">
+            
+                
+                    <a href="./40.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.</b>
+                        
+                        10.4 构建 Driver Fuzzer
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="41.html">
+            
+                
+                    <a href="./41.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        11 IDAPYTHON --- IDA 脚本
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="42.html">
+            
+                
+                    <a href="./42.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        11.1  安装 IDAPython
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="43.html">
+            
+                
+                    <a href="./43.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        11.2  IDAPython 函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="44.html">
+            
+                
+                    <a href="./44.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        11.3  脚本例子
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="45.html">
+            
+                
+                    <a href="./45.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        12 PyEmu
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1" data-path="46.html">
+            
+                
+                    <a href="./46.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        12.1 安装 PyEmu
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="47.html">
+            
+                
+                    <a href="./47.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        12.2 PyEmu 一览
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="48.html">
+            
+                
+                    <a href="./48.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        12.3 IDAPyEmu
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >灰帽 Python 之旅</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="42-&#x5904;&#x7406;&#x8BBF;&#x95EE;&#x8FDD;&#x4F8B;">4.2 &#x5904;&#x7406;&#x8BBF;&#x95EE;&#x8FDD;&#x4F8B;</h2>
+<p>&#x5F53;&#x7A0B;&#x5E8F;&#x5C1D;&#x8BD5;&#x8BBF;&#x95EE;&#x5B83;&#x4EEC;&#x6CA1;&#x6709;&#x6743;&#x9650;&#x8BBF;&#x95EE;&#x7684;&#x9875;&#x9762;&#x7684;&#x65F6;&#x5019;&#x6216;&#x8005;&#x4EE5;&#x4E00;&#x79CD;&#x4E0D;&#x5408;&#x6CD5;&#x7684;&#x65B9;&#x5F0F;&#x8BBF;&#x95EE;&#x5185;&#x5B58;&#x7684; &#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x4F1A;&#x4EA7;&#x751F;&#x8BBF;&#x95EE;&#x8FDD;&#x4F8B;&#x3002;&#x5BFC;&#x81F4;&#x8FDD;&#x4F8B;&#x9519;&#x8BEF;&#x7684;&#x8303;&#x56F4;&#x5F88;&#x5E7F;&#xFF0C;&#x4ECE;&#x5185;&#x5B58;&#x6EA2;&#x51FA;&#x5230;&#x4E0D;&#x6070;&#x5F53;&#x7684;&#x5904;&#x7406;&#x7A7A;&#x6307;&#x9488;&#x90FD; &#x6709;&#x53EF;&#x80FD;&#x3002;&#x4ECE;&#x5B89;&#x5168;&#x89D2;&#x5EA6;&#x8003;&#x8651;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x8BBF;&#x95EE;&#x8FDD;&#x4F8B;&#x90FD;&#x5E94;&#x8BE5;&#x4ED4;&#x7EC6;&#x7684;&#x5BA1;&#x67E5;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x6709;&#x53EF;&#x80FD;&#x88AB;&#x5229;&#x7528;&#x3002;</p>
+<p>&#x5F53;&#x8C03;&#x8BD5;&#x5668;&#x5904;&#x7406;&#x8BBF;&#x95EE;&#x8FDD;&#x4F8B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x641C;&#x96C6;&#x6240;&#x6709;&#x548C;&#x8FDD;&#x4F8B;&#x76F8;&#x5173;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x6808;&#x6846;&#x67B6;&#xFF0C;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x4EE5;&#x53CA;&#x5F15;&#x8D77;&#x8FDD;&#x4F8B;&#x7684;&#x6307;&#x4EE4;&#x3002;&#x63A5;&#x7740;&#x6211;&#x4EEC;&#x5C31;&#x80FD;&#x591F;&#x7528;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x5199;&#x4E00;&#x4E2A;&#x5229;&#x7528;&#x7A0B;&#x5E8F;&#x6216;&#x8005;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4E8C;&#x8FDB;&#x5236;&#x7684;&#x8865;&#x4E01; &#x6587;&#x4EF6;&#x3002;</p>
+<p>PyDbg &#x80FD;&#x591F;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x8FDD;&#x4F8B;&#x8BBF;&#x95EE;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x8F93;&#x51FA;&#x76F8;&#x5173;&#x7684;&#x5954;&#x6E83;&#x4FE1;&#x606F;&#x3002;&#x8FD9;&#x6B21;&#x7684;&#x6D4B;&#x8BD5; &#x76EE;&#x6807;&#x5C31;&#x662F;&#x5371;&#x9669;&#x7684; C &#x51FD;&#x6570; strcpy() &#xFF0C;&#x6211;&#x4EEC;&#x7528;&#x5B83;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4F1A;&#x88AB;&#x6EA2;&#x51FA;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x518D;&#x5199;&#x4E00;&#x4E2A; &#x7B80;&#x77ED;&#x7684; PyDbg &#x811A;&#x672C;&#x9644;&#x52A0;&#x5230;&#x8FDB;&#x7A0B;&#x5E76;&#x5904;&#x7406;&#x8FDD;&#x4F8B;&#x3002;&#x6EA2;&#x51FA;&#x7684;&#x811A;&#x672C; buffer_overflow.py&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code># buffer_overflow.py 
+from ctypes import * 
+msvcrt = cdll.msvcrt
+# Give the debugger time to attach, then hit a button 
+raw_input(&quot;Once the debugger is attached, press any key.&quot;)
+# Create the 5-byte destination buffer 
+buffer = c_char_p(&quot;AAAAA&quot;)
+# The overflow string 
+overflow = &quot;A&quot; * 100
+# Run the overflow 
+msvcrt.strcpy(buffer, overflow)
+</code></pre><p>&#x95EE;&#x9898;&#x51FA;&#x5728;&#x8FD9;&#x53E5; msvcrt.strcpy(buffer, overflow)&#xFF0C;&#x63A5;&#x53D7;&#x7684;&#x5E94;&#x8BE5;&#x662F;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#xFF0C;&#x800C;&#x4F20;&#x9012;&#x7ED9;&#x51FD;&#x6570;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#xFF0C;&#x51FD;&#x6570;&#x5C31;&#x4F1A;&#x628A; overflow &#x5F53;&#x4F5C;&#x6307;&#x9488;&#x4F7F;&#x7528;&#xFF0C;&#x628A;&#x91CC;&#x5934;&#x7684;&#x503C;&#x5F53;&#x4F5C;&#x5730;&#x5740;&#x7528;&#xFF08;0x41414141414.....&#xFF09;&#x3002;&#x53EF;&#x60DC;&#x8FD9;&#x4E2A;&#x5730;&#x5740;&#x662F;&#x5F88;&#x53EF;&#x80FD;&#x662F;&#x4E0D;&#x80FD;&#x7528;&#x7684;&#x3002;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6784;&#x9020;&#x4E86;&#x6D4B;&#x8BD5;&#x6848;&#x4F8B;&#xFF0C; &#x63A5;&#x4E0B;&#x6765;&#x662F;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x4E86;&#x3002;</p>
+<pre><code># access_violation_handler.py
+from pydbg import *
+from pydbg.defines import *
+# Utility libraries included with PyDbg 
+import utils
+# This is our access violation handler 
+def check_accessv(dbg):
+    # We skip first-chance exceptions
+    if dbg.dbg.u.Exception.dwFirstChance:
+        return DBG_EXCEPTION_NOT_HANDLED
+    crash_bin = utils.crash_binning.crash_binning() 
+    crash_bin.record_crash(dbg)
+    print crash_bin.crash_synopsis() 
+    dbg.terminate_process()
+    return DBG_EXCEPTION_NOT_HANDLED
+pid = raw_input(&quot;Enter the Process ID: &quot;) 
+dbg = pydbg()
+dbg.attach(int(pid)) dbg.set_callback(EXCEPTION_ACCESS_VIOLATION,check_accessv) 
+dbg.run()
+</code></pre><p>&#x73B0;&#x5728;&#x8FD0;&#x884C; buffer_overflow.py&#xFF0C;&#x5E76;&#x8BB0;&#x4E0B;&#x5B83;&#x7684;&#x8FDB;&#x7A0B;&#x53F7;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x6682;&#x505C;&#x5B83;&#x7B49;&#x5904;&#x7406;&#x5B8C;&#x4EE5;&#x540E;&#x518D;&#x8FD0;&#x884C;&#x3002;</p>
+<p>&#x6267;&#x884C; access_violation_handler.py &#x6587;&#x4EF6;&#xFF0C;&#x8F93;&#x5165;&#x6D4B;&#x8BD5;&#x5957;&#x4EF6;&#x7684; PID.&#x5F53;&#x8C03;&#x8BD5;&#x5668;&#x9644;&#x52A0;&#x5230;&#x8FDB;&#x7A0B;&#x4EE5;&#x540E;&#xFF0C;&#x5728;&#x6D4B; &#x8BD5;&#x5957;&#x4EF6;&#x7684;&#x7EC8;&#x7AEF;&#x91CC;&#x6309;&#x4EFB;&#x4F55;&#x952E;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x4F60;&#x5E94;&#x8BE5;&#x770B;&#x5230;&#x548C;&#x8868; 4-1 &#x76F8;&#x4F3C;&#x7684;&#x8F93;&#x51FA;&#x3002;</p>
+<pre><code>python25.dll:1e071cd8 mov ecx,[eax+0x54] from thread 3376 caused access violation when attempting to read from 0x41414195 CONTEXT DUMP
+    EIP: 1e071cd8 mov ecx,[eax+0x54] 
+    EAX: 41414141 (1094795585) -&gt; N/A
+    EBX: 00b055d0 ( 11556304) -&gt; @U`&quot; B`Ox,`O )Xb@|V`&quot;L{O+H]$6 (heap) 
+    ECX: 0021fe90 ( 2227856) -&gt; !$4|7|4|@%,\!$H8|!OGGBG)00S\o (stack) 
+    EDX: 00a1dc60 ( 10607712) -&gt; V0`w`W (heap)
+    EDI: 1e071cd0 ( 503782608) -&gt; N/A
+    ESI: 00a84220 ( 11026976) -&gt; AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA (heap)
+    EBP: 1e1cf448 ( 505214024) -&gt; enable() -&gt; NoneEnable automa (stack) 
+    ESP: 0021fe74 ( 2227828) -&gt; 2? BUH` 7|4|@%,\!$H8|!OGGBG) (stack)
+    +00: 00000000 ( 0) -&gt; N/A
+    +04: 1e063f32 ( 503725874) -&gt; N/A
+    +08: 00a84220 ( 11026976) -&gt; AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA (heap)
+    +0c: 00000000 ( 0) -&gt; N/A
+    +10: 00000000 ( 0) -&gt; N/A
+    +14: 00b055c0 ( 11556288) -&gt; @F@U`&quot; B`Ox,`O )Xb@|V`&quot;L{O+H]$ (heap)
+disasm around:
+    0x1e071cc9 int3 
+    0x1e071cca int3 
+    0x1e071ccb int3 
+    0x1e071ccc int3 
+    0x1e071ccd int3 
+    0x1e071cce int3 
+    0x1e071ccf int3 
+    0x1e071cd0 push esi
+    0x1e071cd1 mov esi,[esp+0x8] 
+    0x1e071cd5 mov eax,[esi+0x4] 
+    0x1e071cd8 mov ecx,[eax+0x54] 
+    0x1e071cdb test ch,0x40 
+    0x1e071cde jz 0x1e071cff 
+    0x1e071ce0 mov eax,[eax+0xa4] 
+    0x1e071ce6 test eax,eax 
+    0x1e071ce8 jz 0x1e071cf4 
+    0x1e071cea push esi
+    0x1e071ceb call eax 
+    0x1e071ced add esp,0x4 
+    0x1e071cf0 test eax,eax 
+    0x1e071cf2 jz 0x1e071cff
+SEH unwind:
+    0021ffe0 -&gt; python.exe:1d00136c jmp [0x1d002040] 
+    ffffffff -&gt; kernel32.dll:7c839aa8 push ebp
+</code></pre><p>Listing 4-1&#xFF1A;PyDbg &#x6355;&#x6349;&#x5230;&#x7684;&#x5954;&#x6E83;&#x4FE1;&#x606F;</p>
+<p>&#x8F93;&#x51FA;&#x4E86;&#x5F88;&#x591A;&#x6709;&#x7528;&#x7684;&#x4FE1;&#x606F;&#x7247;&#x65AD;&#x3002;&#x7B2C;&#x4E00;&#x4E2A;&#x90E8;&#x5206;&#x6307;&#x51FA;&#x4E86;&#x90A3;&#x4E2A;&#x6307;&#x4EE4;&#x5F15;&#x53D1;&#x4E86;&#x8BBF;&#x95EE;&#x5F02;&#x5E38;&#x4EE5;&#x53CA;&#x6307;&#x4EE4;&#x5728;&#x54EA; &#x4E2A;&#x5757;&#x91CC;&#x3002;&#x8FD9;&#x4E2A;&#x4FE1;&#x606F;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9; &#x4F60;&#x5199;&#x51FA;&#x6F0F;&#x6D1E;&#x5229;&#x7528;&#x7A0B;&#x5E8F;&#x6216;&#x8005;&#x7528;&#x9759;&#x6001;&#x5206;&#x6790;&#x5DE5;&#x5177;&#x5206;&#x6790;&#x95EE;&#x9898;&#x51FA;&#x5728;&#x54EA;&#x91CC;&#x3002; &#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#x8F6C;&#x50A8;&#x51FA;&#x4E86;&#x6240;&#x6709;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x503C;&#xFF0C;&#x7279;&#x522B;&#x6709;&#x8DA3;&#x7684;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x5C06; EAX &#x8986;&#x76D6;&#x6210;&#x4E86; 0x41414141&#xFF08;0x41 &#x662F;&#x5927;&#x5199; A &#x7684;&#x7684;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x8868;&#x793A;&#xFF09;&#x3002;&#x540C;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x5230; ESI &#x6307;&#x5411;&#x4E86;&#x4E00;&#x4E2A;&#x7531; A &#x7EC4;&#x6210;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x548C; ESP+08 &#x6307;&#x5411;&#x540C;&#x4E00;&#x4E2A;&#x5730;&#x65B9;&#x3002;&#x7B2C;&#x4E09;&#x90E8;&#x5206;&#x662F;&#x5728;&#x6545;&#x969C;&#x6307;&#x4EE4;&#x9644;&#x8FD1;&#x4EE3;&#x7801;&#x7684;&#x53CD;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x3002;&#x6700;&#x540E;&#x4E00;&#x5757;&#x662F;&#x5954;&#x6E83;&#x53D1;&#x751F;&#x65F6;&#x5019; &#x6CE8;&#x518C;&#x7684;&#x7ED3;&#x6784;&#x5316;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x7684;&#x5217;&#x8868;&#x3002;</p>
+<p>&#x7528; PyDbg &#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x5954;&#x6E83;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x7B80;&#x5355;&#x3002;&#x4E0D;&#x4EC5;&#x80FD;&#x591F;&#x81EA;&#x52A8;&#x5316;&#x7684;&#x5904;&#x7406;&#x5D29;&#x6E83;&#xFF0C;&#x8FD8;&#x80FD;&#x5728; &#x5728;&#x4E8B;&#x540E;&#x5256;&#x6790;&#x8FDB;&#x7A0B;&#x53D1;&#x751F;&#x7684;&#x4E00;&#x5207;&#x3002;&#x4E0B;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x7528; PyDbg &#x7684;&#x8FDB;&#x7A0B;&#x5185;&#x90E8;&#x5FEB;&#x7167;&#x529F;&#x80FD;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8FDB; &#x7A0B; rewinder&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./15.html" class="navigation navigation-prev " aria-label="Previous page: 4.1 扩展断点处理"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./17.html" class="navigation navigation-next " aria-label="Next page: 4.3 进程快照"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

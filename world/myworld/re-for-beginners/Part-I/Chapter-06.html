@@ -1,0 +1,2136 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>printf()与参数处理 · 逆向工程入门指南</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="author" content="wizardforcel">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-comment/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Chapter-07.html" />
+    
+    
+    <link rel="prev" href="Chapter-05.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.gitbook.com/book/wizardforcel/re-for-beginners" target="_blank" class="custom-link">逆向工程入门指南</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    逆向工程入门指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="part1.html">
+            
+                <a href="part1.html">
+            
+                    
+                    Part I 代码模式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="Chapter-01.html">
+            
+                <a href="Chapter-01.html">
+            
+                    
+                    CPU简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="Chapter-02.html">
+            
+                <a href="Chapter-02.html">
+            
+                    
+                    最简单的函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="Chapter-03.html">
+            
+                <a href="Chapter-03.html">
+            
+                    
+                    Hello,world!
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="Chapter-04.html">
+            
+                <a href="Chapter-04.html">
+            
+                    
+                    函数的开始和结束
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="Chapter-05.html">
+            
+                <a href="Chapter-05.html">
+            
+                    
+                    栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.6" data-path="Chapter-06.html">
+            
+                <a href="Chapter-06.html">
+            
+                    
+                    printf()与参数处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="Chapter-07.html">
+            
+                <a href="Chapter-07.html">
+            
+                    
+                    scanf()
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="Chapter-08.html">
+            
+                <a href="Chapter-08.html">
+            
+                    
+                    访问实参
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="Chapter-09.html">
+            
+                <a href="Chapter-09.html">
+            
+                    
+                    一个或者多个字的返回值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="Chapter-10.html">
+            
+                <a href="Chapter-10.html">
+            
+                    
+                    指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="Chapter-11.html">
+            
+                <a href="Chapter-11.html">
+            
+                    
+                    GOTO操作符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="Chapter-12.html">
+            
+                <a href="Chapter-12.html">
+            
+                    
+                    条件转跳
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="Chapter-13.html">
+            
+                <a href="Chapter-13.html">
+            
+                    
+                    选择结构switch()/case/default
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="Chapter-14.html">
+            
+                <a href="Chapter-14.html">
+            
+                    
+                    循环
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="Chapter-15.html">
+            
+                <a href="Chapter-15.html">
+            
+                    
+                    对C-Strings的简单处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="Chapter-16.html">
+            
+                <a href="Chapter-16.html">
+            
+                    
+                    用其他东西代替算数操作符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="Chapter-17.html">
+            
+                <a href="Chapter-17.html">
+            
+                    
+                    浮点数单元
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="Chapter-18.html">
+            
+                <a href="Chapter-18.html">
+            
+                    
+                    数组
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.19" data-path="Chapter-19.html">
+            
+                <a href="Chapter-19.html">
+            
+                    
+                    操纵特定的bit
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="Chapter-20.html">
+            
+                <a href="Chapter-20.html">
+            
+                    
+                    用线性同余生成器来产生伪随机数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.21" data-path="Chapter-21.html">
+            
+                <a href="Chapter-21.html">
+            
+                    
+                    结构体
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.22" data-path="Chapter-22.html">
+            
+                <a href="Chapter-22.html">
+            
+                    
+                    联合体
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.23" data-path="Chapter-23.html">
+            
+                <a href="Chapter-23.html">
+            
+                    
+                    指向函数的指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.24" data-path="Chapter-24.html">
+            
+                <a href="Chapter-24.html">
+            
+                    
+                    在32位环境中的64位值
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.25" data-path="Chapter-25.html">
+            
+                <a href="Chapter-25.html">
+            
+                    
+                    SIMD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.26" data-path="Chapter-26.html">
+            
+                <a href="Chapter-26.html">
+            
+                    
+                    64位化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.27" data-path="Chapter-27.html">
+            
+                <a href="Chapter-27.html">
+            
+                    
+                    使用SIMD来处理浮点数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.28" data-path="Chapter-28.html">
+            
+                <a href="Chapter-28.html">
+            
+                    
+                    关于ARM的特殊细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.29" data-path="Chapter-29.html">
+            
+                <a href="Chapter-29.html">
+            
+                    
+                    关于MIPS的特殊细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../Part-II/part2.html">
+            
+                <a href="../Part-II/part2.html">
+            
+                    
+                    Part II 重要的基础知识
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../Part-II/Chapter-30.html">
+            
+                <a href="../Part-II/Chapter-30.html">
+            
+                    
+                    有符号数的表示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../Part-II/Chapter-31.html">
+            
+                <a href="../Part-II/Chapter-31.html">
+            
+                    
+                    字节序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../Part-II/Chapter-32.html">
+            
+                <a href="../Part-II/Chapter-32.html">
+            
+                    
+                    内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../Part-II/Chapter-33.html">
+            
+                <a href="../Part-II/Chapter-33.html">
+            
+                    
+                    CPU
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../Part-II/Chapter-34.html">
+            
+                <a href="../Part-II/Chapter-34.html">
+            
+                    
+                    哈希函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../Part-III/part3.html">
+            
+                <a href="../Part-III/part3.html">
+            
+                    
+                    Part III 更高级些的例子
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../Part-III/Chapter-35.html">
+            
+                <a href="../Part-III/Chapter-35.html">
+            
+                    
+                    温度转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../Part-III/Chapter-36.html">
+            
+                <a href="../Part-III/Chapter-36.html">
+            
+                    
+                    斐波那契数列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../Part-III/Chapter-37.html">
+            
+                <a href="../Part-III/Chapter-37.html">
+            
+                    
+                    CRC32的计算实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../Part-III/Chapter-38.html">
+            
+                <a href="../Part-III/Chapter-38.html">
+            
+                    
+                    网址的计算实例
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../Part-III/Chapter-39.html">
+            
+                <a href="../Part-III/Chapter-39.html">
+            
+                    
+                    循环:几个迭代器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../Part-III/Chapter-40.html">
+            
+                <a href="../Part-III/Chapter-40.html">
+            
+                    
+                    Duff’s device
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../Part-III/Chapter-41.html">
+            
+                <a href="../Part-III/Chapter-41.html">
+            
+                    
+                    除以9
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../Part-III/Chapter-42.html">
+            
+                <a href="../Part-III/Chapter-42.html">
+            
+                    
+                    将字符串转化为数字(atoi())
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../Part-III/Chapter-43.html">
+            
+                <a href="../Part-III/Chapter-43.html">
+            
+                    
+                    内联函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../Part-III/Chapter-44.html">
+            
+                <a href="../Part-III/Chapter-44.html">
+            
+                    
+                    C99 的约束
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../Part-III/Chapter-45.md">
+            
+                <span>
+            
+                    
+                    无分支的abs()函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="../Part-III/Chapter-46.md">
+            
+                <span>
+            
+                    
+                    参数可变的函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.13" data-path="../Part-III/Chapter-47.md">
+            
+                <span>
+            
+                    
+                    字符串截取
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.14" data-path="../Part-III/Chapter-48.md">
+            
+                <span>
+            
+                    
+                    toupper()函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.15" data-path="../Part-III/Chapter-49.html">
+            
+                <a href="../Part-III/Chapter-49.html">
+            
+                    
+                    不正确的反汇编代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.16" data-path="../Part-III/Chapter-50.html">
+            
+                <a href="../Part-III/Chapter-50.html">
+            
+                    
+                    花指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.17" data-path="../Part-III/Chapter-51.html">
+            
+                <a href="../Part-III/Chapter-51.html">
+            
+                    
+                    C++
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.18" data-path="../Part-III/Chapter-52.html">
+            
+                <a href="../Part-III/Chapter-52.html">
+            
+                    
+                    负的数组引索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.19" data-path="../Part-III/Chapter-53.html">
+            
+                <a href="../Part-III/Chapter-53.html">
+            
+                    
+                    Windoes 16-bit
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../Part-IV/part4.html">
+            
+                <a href="../Part-IV/part4.html">
+            
+                    
+                    Part IV JAVA
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../Part-IV/Chapter-54.html">
+            
+                <a href="../Part-IV/Chapter-54.html">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../Part-V/part5.html">
+            
+                <a href="../Part-V/part5.html">
+            
+                    
+                    Part V 在代码里面寻找重要又有趣的东西
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../Part-V/Chapter-55.html">
+            
+                <a href="../Part-V/Chapter-55.html">
+            
+                    
+                    可执行文件的识别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../Part-V/Chapter-56.html">
+            
+                <a href="../Part-V/Chapter-56.html">
+            
+                    
+                    和外部世界的交流(win32)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../Part-V/Chapter-57.html">
+            
+                <a href="../Part-V/Chapter-57.html">
+            
+                    
+                    字符串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../Part-V/Chapter-58.html">
+            
+                <a href="../Part-V/Chapter-58.html">
+            
+                    
+                    调用断言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../Part-V/Chapter-59.html">
+            
+                <a href="../Part-V/Chapter-59.html">
+            
+                    
+                    常量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../Part-V/Chapter-60.html">
+            
+                <a href="../Part-V/Chapter-60.html">
+            
+                    
+                    找到真正的指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../Part-V/Chapter-61.html">
+            
+                <a href="../Part-V/Chapter-61.html">
+            
+                    
+                    可疑代码的模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../Part-V/Chapter-62.html">
+            
+                <a href="../Part-V/Chapter-62.html">
+            
+                    
+                    在追踪时使用Magic numbers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../Part-V/Chapter-63.html">
+            
+                <a href="../Part-V/Chapter-63.html">
+            
+                    
+                    其他东西
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../Part-VI/part6.html">
+            
+                <a href="../Part-VI/part6.html">
+            
+                    
+                    Part VI 操作系统的特性
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../Part-VI/Chapter-64.html">
+            
+                <a href="../Part-VI/Chapter-64.html">
+            
+                    
+                    参数传递方法(调用规则)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../Part-VI/Chapter-65.html">
+            
+                <a href="../Part-VI/Chapter-65.html">
+            
+                    
+                    本地线程储存区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../Part-VI/Chapter-66.html">
+            
+                <a href="../Part-VI/Chapter-66.html">
+            
+                    
+                    系统调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../Part-VI/Chapter-67.html">
+            
+                <a href="../Part-VI/Chapter-67.html">
+            
+                    
+                    Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../Part-VI/Chapter-68.html">
+            
+                <a href="../Part-VI/Chapter-68.html">
+            
+                    
+                    Windows-NT
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../Part-VII/part7.html">
+            
+                <a href="../Part-VII/part7.html">
+            
+                    
+                    Part VII 工具
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../Part-VII/Chapter-69.html">
+            
+                <a href="../Part-VII/Chapter-69.html">
+            
+                    
+                    反汇编器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../Part-VII/Chapter-70.html">
+            
+                <a href="../Part-VII/Chapter-70.html">
+            
+                    
+                    调试器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../Part-VII/Chapter-71.html">
+            
+                <a href="../Part-VII/Chapter-71.html">
+            
+                    
+                    系统调用的追踪
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../Part-VII/Chapter-72.html">
+            
+                <a href="../Part-VII/Chapter-72.html">
+            
+                    
+                    反编译器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../Part-VII/Chapter-73.html">
+            
+                <a href="../Part-VII/Chapter-73.html">
+            
+                    
+                    其他工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../Part-IX/part9.html">
+            
+                <a href="../Part-IX/part9.html">
+            
+                    
+                    Part IX 逆向文件格式的例子
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../Part-IX/Chapter-84.html">
+            
+                <a href="../Part-IX/Chapter-84.html">
+            
+                    
+                    基本的异或加密
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../Part-IX/Chapter-85.html">
+            
+                <a href="../Part-IX/Chapter-85.html">
+            
+                    
+                    Millenium 的存档文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../Part-IX/Chapter-86.html">
+            
+                <a href="../Part-IX/Chapter-86.html">
+            
+                    
+                    Oracle RDBMS SYM-files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../Part-IX/Chapter-87.html">
+            
+                <a href="../Part-IX/Chapter-87.html">
+            
+                    
+                    Oracle RDBMS MSB-files
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../Afterword/part12.html">
+            
+                <a href="../Afterword/part12.html">
+            
+                    
+                    后记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../Afterword/Chapter-99.html">
+            
+                <a href="../Afterword/Chapter-99.html">
+            
+                    
+                    附录
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../Appendix/Appendix.html">
+            
+                <a href="../Appendix/Appendix.html">
+            
+                    
+                    附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../Appendix/Appendix-A.html">
+            
+                <a href="../Appendix/Appendix-A.html">
+            
+                    
+                    x86
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../Appendix/Appendix-B.html">
+            
+                <a href="../Appendix/Appendix-B.html">
+            
+                    
+                    ARM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../Appendix/Appendix-C.html">
+            
+                <a href="../Appendix/Appendix-C.html">
+            
+                    
+                    MIPS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../Appendix/Appendix-D.html">
+            
+                <a href="../Appendix/Appendix-D.html">
+            
+                    
+                    一些GCC库函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.5" data-path="../Appendix/Appendix-E.html">
+            
+                <a href="../Appendix/Appendix-E.html">
+            
+                    
+                    一些MIPS库函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.6" data-path="../Appendix/Appendix-F.html">
+            
+                <a href="../Appendix/Appendix-F.html">
+            
+                    
+                    速查表
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../Acronyms-used.html">
+            
+                <a href="../Acronyms-used.html">
+            
+                    
+                    缩略词表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../Glossary.html">
+            
+                <a href="../Glossary.html">
+            
+                    
+                    杂项
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../Idx.html">
+            
+                <a href="../Idx.html">
+            
+                    
+                    快速引索
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../Bibliography.html">
+            
+                <a href="../Bibliography.html">
+            
+                    
+                    参考文献
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >printf()与参数处理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7B2C;&#x516D;&#x7AE0;">&#x7B2C;&#x516D;&#x7AE0;</h1>
+<h1 id="printf-&#x4E0E;&#x53C2;&#x6570;&#x5904;&#x7406;">printf() &#x4E0E;&#x53C2;&#x6570;&#x5904;&#x7406;</h1>
+<p>&#x73B0;&#x5728;&#x8BA9;&#x6211;&#x4EEC;&#x6269;&#x5C55;&quot;hello, world&quot;(2)&#x4E2D;&#x7684;&#x793A;&#x4F8B;&#xFF0C;&#x5C06;&#x5176;&#x4E2D;main()&#x51FD;&#x6570;&#x4E2D;printf&#x7684;&#x90E8;&#x5206;&#x66FF;&#x6362;&#x6210;&#x8FD9;&#x6837;</p>
+<pre><code>#include &lt;stdio.h&gt;
+int main()
+{
+    printf(&quot;a=%d; b=%d; c=%d&quot;, 1, 2, 3);
+    return 0;
+};
+</code></pre><h2 id="61-x86">6.1 x86</h2>
+<h3 id="611-x86-3&#x4E2A;&#x53C2;&#x6570;">6.1.1 x86: 3&#x4E2A;&#x53C2;&#x6570;</h3>
+<h3 id="msvc">MSVC</h3>
+<p>&#x5728;&#x6211;&#x4EEC;&#x7528;MSVC 2010 Express&#x7F16;&#x8BD1;&#x540E;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF1A;</p>
+<pre><code>$SG3830 DB &#x2019;a=%d; b=%d; c=%d&#x2019;, 00H
+...
+        push 3
+        push 2
+        push 1
+        push OFFSET $SG3830
+        call _printf
+        add esp, 16        ; 00000010H
+</code></pre><p>&#x8FD9;&#x548C;&#x4E4B;&#x524D;&#x7684;&#x4EE3;&#x7801;&#x51E0;&#x4E4E;&#x4E00;&#x6837;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x53EF;&#x4EE5;&#x770B;&#x5230;printf()&#x7684;&#x53C2;&#x6570;&#x88AB;&#x53CD;&#x5E8F;&#x538B;&#x5165;&#x4E86;&#x6808;&#x4E2D;&#x3002;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x88AB;&#x6700;&#x540E;&#x538B;&#x5165;&#x3002;</p>
+<p>&#x53E6;&#x5916;&#xFF0C;&#x5728;32bit&#x7684;&#x73AF;&#x5883;&#x4E0B;int&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x5360;4 bytes&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#xFF0C;&#x8FD9;&#x91CC;&#x6709;4&#x4E2A;&#x53C2;&#x6570; 4*4=16 &#x2014;&#x2014; &#x6070;&#x597D;&#x5728;&#x6808;&#x4E2D;&#x5360;&#x636E;&#x4E86;16bytes&#xFF1A;&#x4E00;&#x4E2A;32bit&#x5B57;&#x7B26;&#x4E32;&#x6307;&#x9488;&#xFF0C;&#x548C;3&#x4E2A;int&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x3002;</p>
+<p>&#x5F53;&#x51FD;&#x6570;&#x6267;&#x884C;&#x5B8C;&#x540E;&#xFF0C;&#x6267;&#x884C;<code>&quot;ADD ESP, X&quot;</code>&#x6307;&#x4EE4;&#x6062;&#x590D;&#x6808;&#x6307;&#x9488;&#x5BC4;&#x5B58;&#x5668;(ESP &#x5BC4;&#x5B58;&#x5668;)&#x3002;&#x901A;&#x5E38;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x63A8;&#x65AD;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x7684;&#x4E2A;&#x6570;:&#x7528; X&#x9664;&#x4EE5;4&#x3002;</p>
+<p>&#x5F53;&#x7136;&#xFF0C;&#x8FD9;&#x53EA;&#x6D89;&#x53CA;__cdecl&#x51FD;&#x6570;&#x8C03;&#x7528;&#x65B9;&#x5F0F;&#x3002;</p>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x540E;&#xFF0C;&#x628A;&#x51E0;&#x4E2A;<code>ADD ESP, X</code>&#x6307;&#x4EE4;&#x5408;&#x5E76;&#x6210;&#x4E00;&#x4E2A;&#x3002;</p>
+<pre><code>push a1
+push a2
+call ...
+...
+push a1
+call ...
+...
+push a1
+push a2
+push a3
+call ...
+add esp, 24
+</code></pre><h3 id="msvc-&#x4E0E;-ollydbg">MSVC &#x4E0E; ollyDbg</h3>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6765;&#x5728;OllyDbg&#x4E2D;&#x52A0;&#x8F7D;&#x8FD9;&#x4E2A;&#x8303;&#x4F8B;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x5728;MSVC 2012 &#x52A0; /MD &#x53C2;&#x6570;&#x7F16;&#x8BD1;&#x8FD9;&#x4E2A;&#x793A;&#x4F8B;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x94FE;&#x63A5;<code>MSVCR*.dll</code>&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x5728;debugger&#x4E2D;&#x6E05;&#x695A;&#x7684;&#x770B;&#x5230;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x5728;OllyDbg&#x4E2D;&#x8F7D;&#x5165;&#x7A0B;&#x5E8F;&#xFF0C;&#x6700;&#x5F00;&#x59CB;&#x7684;&#x65AD;&#x70B9;&#x5728;ntdll.dll&#x4E2D;&#xFF0C;&#x63A5;&#x7740;&#x6309;F9(run)&#xFF0C;&#x7136;&#x540E;&#x7B2C;&#x4E8C;&#x4E2A;&#x65AD;&#x70B9;&#x5728;CRT-code&#x4E2D;&#x3002;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6765;&#x627E;main()&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x5F80;&#x4E0B;&#x6EDA;&#x52A8;&#x5C4F;&#x5E55;&#xFF0C;&#x627E;&#x5230;&#x4E0B;&#x56FE;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;(MSVC&#x628A;main()&#x51FD;&#x6570;&#x5206;&#x914D;&#x5728;&#x4EE3;&#x7801;&#x6BB5;&#x5F00;&#x59CB;&#x5904;) &#x89C1;&#x56FE;5.3</p>
+<p>&#x70B9;&#x51FB; PUSH EBP&#x6307;&#x4EE4;&#xFF0C;&#x6309;&#x4E0B;F2(&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;)&#x7136;&#x540E;&#x6309;&#x4E0B;F9(run),&#x901A;&#x8FC7;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x6765;&#x8DF3;&#x8FC7;CRT-code&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x8FD8;&#x4E0D;&#x5FC5;&#x5173;&#x6CE8;&#x8FD9;&#x90E8;&#x5206;&#x3002;</p>
+<p>&#x6309;6&#x6B21;F8(step over)&#x3002;&#x89C1;&#x56FE;5.4 &#x73B0;&#x5728;EIP &#x6307;&#x5411;&#x4E86;CALL printf&#x7684;&#x6307;&#x4EE4;&#x3002;&#x548C;&#x5176;&#x4ED6;&#x8C03;&#x8BD5;&#x5668;&#x4E00;&#x6837;&#xFF0C;OllyDbg&#x9AD8;&#x4EAE;&#x4E86;&#x6709;&#x503C;&#x6539;&#x53D8;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x3002;&#x6240;&#x4EE5;&#x6BCF;&#x6B21;&#x4F60;&#x6309;&#x4E0B;F8,EIP&#x90FD;&#x5728;&#x6539;&#x53D8;&#x7136;&#x540E;&#x5B83;&#x770B;&#x8D77;&#x6765;&#x4FBF;&#x662F;&#x7EA2;&#x8272;&#x7684;&#x3002;ESP&#x540C;&#x65F6;&#x4E5F;&#x5728;&#x6539;&#x53D8;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x662F;&#x6307;&#x5411;&#x6808;&#x7684;</p>
+<p>&#x6808;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x53C8;&#x5728;&#x54EA;&#xFF1F;&#x90A3;&#x4E48;&#x770B;&#x4E00;&#x4E0B;&#x8C03;&#x8BD5;&#x5668;&#x53F3;&#x4E0B;&#x65B9;&#x7684;&#x7A97;&#x53E3;:</p>
+<p><img src="img/C6-1.png" alt=""></p>
+<p>&#x56FE; 6.1</p>
+<p>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6709;&#x4E09;&#x5217;&#xFF0C;&#x6808;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x5143;&#x7EC4;&#x6570;&#x636E;&#xFF0C;&#x4EE5;&#x53CA;&#x4E00;&#x4E9B;OllyDbg&#x7684;&#x6CE8;&#x91CA;&#xFF0C;OllyDbg&#x53EF;&#x4EE5;&#x8BC6;&#x522B;&#x50CF;printf()&#x8FD9;&#x6837;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4EE5;&#x53CA;&#x540E;&#x9762;&#x7684;&#x4E09;&#x4E2A;&#x503C;&#x3002;</p>
+<p>&#x53F3;&#x51FB;&#x9009;&#x4E2D;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;&#x201D;follow in dump&#x201D;,&#x7136;&#x540E;&#x5B57;&#x7B26;&#x4E32;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;&#x5728;&#x5DE6;&#x4FA7;&#x663E;&#x793A;&#x5185;&#x5B58;&#x6570;&#x636E;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x8FD9;&#x4E9B;&#x5185;&#x5B58;&#x7684;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x88AB;&#x7F16;&#x8F91;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x8FD9;&#x4E9B;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4E4B;&#x540E;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x7684;&#x7ED3;&#x679C;&#x5C31;&#x4F1A;&#x53D8;&#x7684;&#x4E0D;&#x540C;&#xFF0C;&#x73B0;&#x5728;&#x53EF;&#x80FD;&#x5E76;&#x4E0D;&#x662F;&#x5F88;&#x5B9E;&#x7528;&#x3002;&#x4F46;&#x662F;&#x4F5C;&#x4E3A;&#x7EC3;&#x4E60;&#x5374;&#x975E;&#x5E38;&#x597D;&#xFF0C;&#x53EF;&#x4EE5;&#x4F53;&#x4F1A;&#x6BCF;&#x90E8;&#x5206;&#x662F;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;&#x7684;&#x3002;</p>
+<p>&#x518D;&#x6309;&#x4E00;&#x6B21;F8(step over)</p>
+<p>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8F93;&#x51FA;</p>
+<p><img src="img/C6-2.png" alt=""></p>
+<p>&#x56FE;6.2 &#x6267;&#x884C;printf()&#x51FD;&#x6570;</p>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x770B;&#x5BC4;&#x5B58;&#x5668;&#x548C;&#x6808;&#x662F;&#x600E;&#x6837;&#x53D8;&#x5316;&#x7684; &#x89C1;&#x56FE;5.5</p>
+<p>EAX&#x5BC4;&#x5B58;&#x5668;&#x73B0;&#x5728;&#x662F;0xD(13).&#x8FD9;&#x662F;&#x6B63;&#x786E;&#x7684;&#xFF0C;printf()&#x8FD4;&#x56DE;&#x6253;&#x5370;&#x7684;&#x5B57;&#x7B26;&#xFF0C;EIP&#x4E5F;&#x53D8;&#x4E86;&#x2014;&#x2014;</p>
+<p>&#x4E8B;&#x5B9E;&#x4E0A;&#x73B0;&#x5728;&#x6307;&#x5411;CALL printf&#x4E4B;&#x540E;&#x4E0B;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x7684;&#x5730;&#x5740;.ECX&#x548C;EDX&#x7684;&#x503C;&#x4E5F;&#x6539;&#x53D8;&#x4E86;&#x3002;&#x663E;&#x7136;&#xFF0C;printf()&#x51FD;&#x6570;&#x7684;&#x5185;&#x90E8;&#x673A;&#x5236;&#x5BF9;&#x5B83;&#x4EEC;&#x8FDB;&#x884C;&#x4E86;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x5F88;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x70B9;ESP&#x7684;&#x503C;&#x5E76;&#x6CA1;&#x6709;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x6808;&#x7684;&#x72B6;&#x6001;&#x4E5F;&#x662F;&#xFF01;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6E05;&#x695A;&#x5730;&#x770B;&#x5230;&#x5B57;&#x7B26;&#x4E32;&#x548C;&#x76F8;&#x5E94;&#x7684;3&#x4E2A;&#x503C;&#x8FD8;&#x662F;&#x5728;&#x90A3;&#x91CC;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x8FD9;&#x5C31;&#x662F;cdecl&#x8C03;&#x7528;&#x65B9;&#x5F0F;&#x3002;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;&#x5E76;&#x4E0D;&#x6E05;&#x695A;&#x6808;&#x4E2D;&#x53C2;&#x6570;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x662F;&#x8C03;&#x7528;&#x4F53;&#x7684;&#x4EFB;&#x52A1;&#x3002;</p>
+<p>&#x518D;&#x6309;&#x4E00;&#x4E0B;F8&#x6267;&#x884C;<code>ADD ESP, 0</code>&#x89C1;&#x56FE;5.6</p>
+<p>ESP&#x6539;&#x53D8;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x503C;&#x8FD8;&#x662F;&#x5728;&#x6808;&#x4E2D;&#xFF01;&#x5F53;&#x7136; &#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x7528;0&#x6216;&#x8005;&#x522B;&#x7684;&#x6570;&#x636E;&#x586B;&#x5145;&#x8FD9;&#x4E9B;&#x503C;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x5728;&#x6808;&#x6307;&#x9488;&#x5BC4;&#x5B58;&#x5668;&#x4E4B;&#x4E0A;&#x7684;&#x6570;&#x636E;&#x90FD;&#x662F;&#x65E0;&#x7528;&#x7684;&#x3002;</p>
+<p><img src="img/C6-3.png" alt=""></p>
+<p>&#x56FE;6.3 OllyDbg:main()&#x521D;&#x59CB;&#x5904;</p>
+<p><img src="img/C6-4.png" alt=""></p>
+<p>&#x56FE;6.4 OllyDbg:printf()&#x6267;&#x884C;&#x65F6;</p>
+<p><img src="img/C6-5.png" alt=""></p>
+<p>&#x56FE;6.5 Ollydbg:printf()&#x6267;&#x884C;&#x540E;</p>
+<p><img src="img/C6-6.png" alt=""></p>
+<p>&#x56FE;6.6 OllyDbg ADD ESP, 10&#x6267;&#x884C;&#x5B8C;&#x540E;</p>
+<h3 id="gcc">GCC</h3>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5C06;&#x540C;&#x6837;&#x7684;&#x7A0B;&#x5E8F;&#x5728;linux&#x4E0B;&#x7528;GCC4.4.1&#x7F16;&#x8BD1;&#x540E;&#x653E;&#x5165;IDA&#x770B;&#x4E00;&#x4E0B;:</p>
+<pre><code>main            proc near
+
+var_10          = dword ptr -10h
+var_C           = dword ptr -0Ch
+var_8           = dword ptr -8
+var_4           = dword ptr -4
+
+                push    ebp
+                mov     ebp, esp
+                and     esp, 0FFFFFFF0h
+                sub     esp, 10h
+                mov     eax, offset aADBDCD ; &quot;a=%d; b=%d; c=%d&quot;
+                mov     [esp+10h+var_4], 3
+                mov     [esp+10h+var_8], 2
+                mov     [esp+10h+var_C], 1
+                mov     [esp+10h+var_10], eax
+                call    _printf
+                mov     eax, 0
+                leave
+                retn
+main            endp
+</code></pre><p>MSVC&#x4E0E;GCC&#x7F16;&#x8BD1;&#x540E;&#x4EE3;&#x7801;&#x7684;&#x4E0D;&#x540C;&#x70B9;&#x53EA;&#x662F;&#x53C2;&#x6570;&#x5165;&#x6808;&#x7684;&#x65B9;&#x6CD5;&#x4E0D;&#x540C;&#xFF0C;&#x8FD9;&#x91CC;GCC&#x4E0D;&#x7528;PUSH/POP&#x800C;&#x662F;&#x76F4;&#x63A5;&#x5BF9;&#x6808;&#x64CD;&#x4F5C;&#x3002;</p>
+<h3 id="gcc&#x4E0E;gdb">GCC&#x4E0E;GDB</h3>
+<p>&#x63A5;&#x7740;&#x6211;&#x4EEC;&#x5C1D;&#x8BD5;&#x5728;linux&#x4E2D;&#x7528;GDB&#x8FD0;&#x884C;&#x4E0B;&#x8FD9;&#x4E2A;&#x793A;&#x4F8B;&#x7A0B;&#x5E8F;&#x3002;</p>
+<p>-g &#x8868;&#x793A;&#x5C06;debug&#x4FE1;&#x606F;&#x63D2;&#x5165;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x4E2D;</p>
+<p><code>$ gcc 1.c -g -o 1</code></p>
+<p>&#x53CD;&#x7F16;&#x8BD1;&#xFF1A;</p>
+<pre><code>$ gdb 1
+GNU gdb (GDB) 7.6.1-ubuntu
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law. Type &quot;show copying&quot;
+and &quot;show warranty&quot; for details.
+This GDB was configured as &quot;i686-linux-gnu&quot;.
+For bug reporting instructions, please see:
+&lt;http://www.gnu.org/software/gdb/bugs/&gt;...
+Reading symbols from /home/dennis/polygon/1...done.
+</code></pre><p>&#x8868;6.1 &#x5728;printf()&#x5904;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;</p>
+<pre><code>(gdb) b printf
+Breakpoint 1 at 0x80482f0
+</code></pre><p>Run &#x8FD9;&#x91CC;&#x6CA1;&#x6709;printf()&#x51FD;&#x6570;&#x7684;&#x6E90;&#x7801;&#xFF0C;&#x6240;&#x4EE5;GDB&#x6CA1;&#x6CD5;&#x663E;&#x793A;&#x51FA;&#x6E90;&#x7801;&#xFF0C;&#x4F46;&#x662F;&#x5374;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x505A;</p>
+<pre><code>(gdb) run
+Starting program: /home/dennis/polygon/1
+
+Breakpoint 1, __printf (format=0x80484f0 &quot;a=%d; b=%d; c=%d&quot;) at printf.c:29
+29 printf.c: No such file or directory.
+</code></pre><p>&#x6253;&#x5370;10&#x7EC4;&#x6808;&#x4E2D;&#x7684;&#x5143;&#x7EC4;&#x6570;&#x636E;&#xFF0C;&#x5DE6;&#x8FB9;&#x662F;&#x6808;&#x4E2D;&#x7684;&#x5730;&#x5740;</p>
+<pre><code>(gdb) x/10w $esp
+0xbffff11c: 0x0804844a 0x080484f0 0x00000001 0x00000002
+0xbffff12c: 0x00000003 0x08048460 0x00000000 0x00000000
+0xbffff13c: 0xb7e29905 0x00000001
+</code></pre><p>&#x6700;&#x5F00;&#x59CB;&#x7684;&#x662F;&#x8FD4;&#x56DE;&#x5730;&#x5740;(0x0804844a),&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x786E;&#x5B9A;&#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x4E8E;&#x662F;&#x53EF;&#x4EE5;&#x53CD;&#x6C47;&#x7F16;&#x8FD9;&#x91CC;&#x7684;&#x4EE3;&#x7801;</p>
+<pre><code>(gdb) x/5i 0x0804844a
+0x804844a &lt;main+45&gt;: mov $0x0,%eax
+0x804844f &lt;main+50&gt;: leave
+0x8048450 &lt;main+51&gt;: ret
+0x8048451: xchg %ax,%ax
+0x8048453: xchg %ax,%ax
+</code></pre><p>&#x4E24;&#x4E2A;XCHG&#x6307;&#x4EE4;&#xFF0C;&#x660E;&#x663E;&#x662F;&#x4E00;&#x4E9B;&#x5783;&#x573E;&#x6570;&#x636E;,&#x53EF;&#x4EE5;&#x5FFD;&#x7565; &#x7B2C;&#x4E8C;&#x4E2A;(0x080484f0)&#x662F;&#x4E00;&#x5904;&#x683C;&#x5F0F;&#x5316;&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code>(gdb) x/s 0x080484f0
+0x80484f0: &quot;a=%d; b=%d; c=%d&quot;
+</code></pre><p>&#x800C;&#x5176;&#x4ED6;&#x4E09;&#x4E2A;&#x5219;&#x662F;printf()&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x53E6;&#x5916;&#x7684;&#x53EF;&#x80FD;&#x53EA;&#x662F;&#x6808;&#x4E2D;&#x7684;&#x5783;&#x573E;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x53EF;&#x80FD;&#x662F;&#x5176;&#x4ED6;&#x51FD;&#x6570;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x4F8B;&#x5982;&#x5B83;&#x4EEC;&#x7684;&#x672C;&#x5730;&#x53D8;&#x91CF;&#x3002;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#x3002; &#x6267;&#x884C; finish &#xFF0C;&#x8868;&#x793A;&#x6267;&#x884C;&#x5230;&#x51FD;&#x6570;&#x7ED3;&#x675F;&#x3002;&#x5728;&#x8FD9;&#x91CC;&#x662F;&#x6267;&#x884C;&#x5230;printf()&#x5B8C;&#x3002;</p>
+<pre><code>(gdb) finish
+Run till exit from #0 __printf (format=0x80484f0 &quot;a=%d; b=%d; c=%d&quot;) at printf.c:29
+main () at 1.c:6
+6 return 0;
+Value returned is $2 = 13
+</code></pre><p>GDB&#x663E;&#x793A;&#x4E86;printf()&#x51FD;&#x6570;&#x5728;eax&#x4E2D;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x8FD9;&#x662F;&#x6253;&#x5370;&#x5B57;&#x7B26;&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x5C31;&#x50CF;&#x5728;OllyDbg&#x4E2D;&#x4E00;&#x6837;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x540C;&#x6837;&#x770B;&#x5230;&#x4E86;<code>return 0;</code>&#x53CA;&#x8FD9;&#x5728;1.c&#x6587;&#x4EF6;&#x4E2D;&#x7B2C;6&#x884C;&#x6240;&#x4EE3;&#x8868;&#x7684;&#x542B;&#x4E49;&#x3002;1.c&#x6587;&#x4EF6;&#x5C31;&#x5728;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;GDB&#x5C31;&#x5728;&#x90A3;&#x627E;&#x5230;&#x4E86;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x4F46;&#x662F;GDB&#x53C8;&#x662F;&#x600E;&#x4E48;&#x77E5;&#x9053;&#x5F53;&#x524D;&#x6267;&#x884C;&#x5230;&#x4E86;&#x54EA;&#x4E00;&#x884C;&#xFF1F;</p>
+<p>&#x4E8B;&#x5B9E;&#x4E0A;&#x8FD9;&#x548C;&#x7F16;&#x8BD1;&#x5668;&#x6709;&#x5173;&#xFF0C;&#x5F53;&#x751F;&#x6210;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x65F6;&#xFF0C;&#x540C;&#x6837;&#x4E5F;&#x4FDD;&#x5B58;&#x4E86;&#x4E00;&#x5F20;&#x4EE3;&#x7801;&#x884C;&#x53F7;&#x4E0E;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x7684;&#x5173;&#x7CFB;&#x8868;&#x3002;</p>
+<p>&#x67E5;&#x770B;EAX&#x4E2D;&#x50A8;&#x5B58;&#x7684;13:</p>
+<pre><code>(gdb) info registers
+eax            0xd      13
+ecx            0x0      0
+edx            0x0      0
+ebx            0xb7fc0000       -1208221696
+esp            0xbffff120       0xbffff120
+ebp            0xbffff138       0xbffff138
+esi            0x0      0
+edi            0x0      0
+eip            0x804844a        0x804844a &lt;main+45&gt;
+...
+</code></pre><p>&#x53CD;&#x6C47;&#x7F16;&#x5F53;&#x524D;&#x7684;&#x6307;&#x4EE4;</p>
+<pre><code>(gdb) disas
+Dump of assembler code for function main:
+    0x0804841d &lt;+0&gt;:    push    %ebp
+    0x0804841e &lt;+1&gt;:    mov     %esp,%ebp
+    0x08048420 &lt;+3&gt;:    and     $0xfffffff0,%esp
+    0x08048423 &lt;+6&gt;:    sub     $0x10,%esp
+    0x08048426 &lt;+9&gt;:    movl    $0x3,0xc(%esp)
+    0x0804842e &lt;+17&gt;:   movl    $0x2,0x8(%esp)
+    0x08048436 &lt;+25&gt;:   movl    $0x1,0x4(%esp)
+    0x0804843e &lt;+33&gt;:   movl    $0x80484f0,(%esp)
+    0x08048445 &lt;+40&gt;:   call    0x80482f0 &lt;printf@plt&gt;
+=&gt;  0x0804844a &lt;+45&gt;:   mov     $0x0,%eax
+    0x0804844f &lt;+50&gt;:   leave
+    0x08048450 &lt;+51&gt;:   ret
+End of assembler dump.
+</code></pre><p>GDB&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;AT&amp;T&#x8BED;&#x6CD5;&#x663E;&#x793A;&#xFF0C;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x8F6C;&#x6362;&#x81F3;intel:</p>
+<pre><code>(gdb) set disassembly-flavor intel
+(gdb) disas
+Dump of assembler code for function main:
+    0x0804841d &lt;+0&gt;:    push    ebp
+    0x0804841e &lt;+1&gt;:    mov     ebp,esp
+    0x08048420 &lt;+3&gt;:    and     esp,0xfffffff0
+    0x08048423 &lt;+6&gt;:    sub     esp,0x10
+    0x08048426 &lt;+9&gt;:    mov     DWORD PTR [esp+0xc],0x3
+    0x0804842e &lt;+17&gt;:   mov     DWORD PTR [esp+0x8],0x2
+    0x08048436 &lt;+25&gt;:   mov     DWORD PTR [esp+0x4],0x1
+    0x0804843e &lt;+33&gt;:   mov     DWORD PTR [esp],0x80484f0
+    0x08048445 &lt;+40&gt;:   call    0x80482f0 &lt;printf@plt&gt;
+=&gt;  0x0804844a &lt;+45&gt;:   mov     eax,0x0
+    0x0804844f &lt;+50&gt;:   leave
+    0x08048450 &lt;+51&gt;:   ret
+End of assembler dump.
+</code></pre><p>&#x6267;&#x884C;&#x4E0B;&#x4E00;&#x6761;&#x6307;&#x4EE4;,GDB&#x663E;&#x793A;&#x4E86;&#x7ED3;&#x675F;&#x5927;&#x62EC;&#x53F7;&#xFF0C;&#x4EE3;&#x8868;&#x7740;&#x8FD9;&#x91CC;&#x662F;&#x51FD;&#x6570;&#x7ED3;&#x675F;&#x90E8;&#x5206;&#x3002;</p>
+<pre><code>(gdb) step
+7 };
+</code></pre><p>&#x5728;&#x6267;&#x884C;&#x5B8C;<code>MOV EAX, 0</code>&#x540E;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;EAX&#x5C31;&#x5DF2;&#x7ECF;&#x53D8;&#x4E3A;0&#x4E86;&#x3002;</p>
+<pre><code>(gdb) info registers
+eax 0x0 0
+ecx 0x0 0
+edx 0x0 0
+ebx 0xb7fc0000 -1208221696
+esp 0xbffff120 0xbffff120
+ebp 0xbffff138 0xbffff138
+esi 0x0 0
+edi 0x0 0
+eip 0x804844f 0x804844f &lt;main+50&gt;
+...
+</code></pre><h2 id="612-x64-8&#x4E2A;&#x53C2;&#x6570;">6.1.2 x64: 8&#x4E2A;&#x53C2;&#x6570;</h2>
+<p>&#x4E3A;&#x4E86;&#x770B;&#x5176;&#x4ED6;&#x53C2;&#x6570;&#x5982;&#x4F55;&#x901A;&#x8FC7;&#x6808;&#x4F20;&#x9012;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x518D;&#x6B21;&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#x5C06;&#x53C2;&#x6570;&#x4E2A;&#x6570;&#x589E;&#x52A0;&#x5230;9&#x4E2A;(printf()&#x683C;&#x5F0F;&#x5316;&#x5B57;&#x7B26;&#x4E32;&#x548C;8&#x4E2A;int &#x53D8;&#x91CF;)</p>
+<pre><code>#include &lt;stdio.h&gt;
+int main() {
+        printf(&quot;a=%d; b=%d; c=%d; d=%d; e=%d; f=%d; g=%d; h=%d
+&quot;, 1, 2, 3, 4, 5, 6, 7, 8);
+        return 0;
+};
+</code></pre><h3 id="msvc">MSVC</h3>
+<p>&#x6B63;&#x5982;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x6240;&#x89C1;&#xFF0C;&#x5728;win64&#x4E0B;&#x5F00;&#x59CB;&#x7684;4&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x81F3;RCX&#xFF0C;RDX&#xFF0C;R8&#xFF0C;R9&#x5BC4;&#x5B58;&#x5668;&#xFF0C;</p>
+<p>&#x7136;&#x800C; MOV&#x6307;&#x4EE4;&#xFF0C;&#x66FF;&#x4EE3;PUSH&#x6307;&#x4EE4;&#x3002;&#x7528;&#x6765;&#x51C6;&#x5907;&#x6808;&#x6570;&#x636E;&#xFF0C;&#x6240;&#x4EE5;&#x503C;&#x90FD;&#x662F;&#x76F4;&#x63A5;&#x5199;&#x5165;&#x6808;&#x4E2D;</p>
+<pre><code>$SG2923 DB &#x2019;a=%d; b=%d; c=%d; d=%d; e=%d; f=%d; g=%d; h=%d&#x2019;, 0aH, 00H
+
+main    PROC
+        sub     rsp, 88
+
+        mov     DWORD PTR [rsp+64], 8
+        mov     DWORD PTR [rsp+56], 7
+        mov     DWORD PTR [rsp+48], 6
+        mov     DWORD PTR [rsp+40], 5
+        mov     DWORD PTR [rsp+32], 4
+        mov     r9d, 3
+        mov     r8d, 2
+        mov     edx, 1
+        lea     rcx, OFFSET FLAT:$SG2923
+        call    printf
+
+        ; return 0
+        xor eax, eax
+
+        add     rsp, 88
+        ret     0
+main ENDP
+_TEXT ENDS
+END
+`
+</code></pre><p>&#x8868;6.2&#xFF1A;msvc 2010 x64</p>
+<h3 id="gcc">GCC</h3>
+<p>&#x5728;*NIX&#x7CFB;&#x7EDF;&#xFF0C;&#x5BF9;&#x4E8E;x86-64&#x8FD9;&#x4E5F;&#x662F;&#x540C;&#x6837;&#x7684;&#x539F;&#x7406;&#xFF0C;&#x9664;&#x4E86;&#x524D;6&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x4E86;RDI&#xFF0C;RSI&#xFF0C;RDX&#xFF0C;RCX&#xFF0C;R8&#xFF0C;R9&#x5BC4;&#x5B58;&#x5668;&#x3002;GCC&#x5C06;&#x751F;&#x6210;&#x7684;&#x4EE3;&#x7801;&#x5B57;&#x7B26;&#x6307;&#x9488;&#x5199;&#x5165;&#x4E86;EDI&#x800C;&#x4E0D;&#x662F;RDI(&#x5982;&#x679C;&#x6709;&#x7684;&#x8BDD;)&#x2014;&#x2014;&#x6211;&#x4EEC;&#x5728;2.2.2&#x8282;&#x770B;&#x5230;&#x8FC7;&#x8FD9;&#x90E8;&#x5206;</p>
+<p>&#x540C;&#x6837;&#x6211;&#x4EEC;&#x4E5F;&#x770B;&#x5230;&#x5728;&#x5BC4;&#x5B58;&#x5668;EAX&#x88AB;&#x6E05;&#x96F6;&#x524D;&#x6709;&#x4E2A;<code>printf() call</code>:</p>
+<pre><code>.LC0:
+    .string &quot;a=%d; b=%d; c=%d; d=%d; e=%d; f=%d; g=%d; h=%d
+&quot;
+
+main:
+    sub     rsp, 40
+
+    mov     r9d, 5
+    mov     r8d, 4
+    mov     ecx, 3
+    mov     edx, 2
+    mov     esi, 1
+    mov     edi, OFFSET FLAT:.LC0
+    xor     eax, eax ; number of vector registers passed
+    mov     DWORD PTR [rsp+16], 8
+    mov     DWORD PTR [rsp+8], 7
+    mov     DWORD PTR [rsp], 6
+    call    printf
+
+    ; return 0
+
+    xor     eax, eax
+    add     rsp, 40
+    ret
+</code></pre><p>&#x8868;6.3:GCC 4.4.6 &#x2013;o 3 x64</p>
+<h3 id="gcc--gdb">GCC + GDB</h3>
+<p>&#x8BA9;&#x6211;&#x4EEC;&#x5728;GDB&#x4E2D;&#x5C1D;&#x8BD5;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x3002;</p>
+<p><code>$ gcc -g 2.c -o 2</code></p>
+<p>&#x53CD;&#x7F16;&#x8BD1;&#xFF1A;</p>
+<pre><code>$ gdb 2
+GNU gdb (GDB) 7.6.1-ubuntu
+Copyright (C) 2013 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law. Type &quot;show copying&quot;
+and &quot;show warranty&quot; for details.
+This GDB was configured as &quot;x86_64-linux-gnu&quot;.
+For bug reporting instructions, please see:
+&lt;http://www.gnu.org/software/gdb/bugs/&gt;...
+Reading symbols from /home/dennis/polygon/2...done.
+</code></pre><p>&#x8868;5.4:&#x5728;printf()&#x5904;&#x4E0B;&#x65AD;&#x70B9;&#xFF0C;&#x7136;&#x540E;run</p>
+<pre><code>(gdb) b printf
+Breakpoint 1 at 0x400410
+(gdb) run
+Starting program: /home/dennis/polygon/2
+Breakpoint 1, __printf (format=0x400628 &quot;a=%d; b=%d; c=%d; d=%d; e=%d; f=%d; g=%d; h=%d
+&quot;) at
+printf.c:29
+29 printf.c: No such file or directory.
+</code></pre><p>&#x5BC4;&#x5B58;&#x5668;RSI/RDX/RCX/R8/R9&#x90FD;&#x6709;&#x5E94;&#x6709;&#x7684;&#x503C;&#xFF0C;RIP&#x5219;&#x662F;printf()&#x51FD;&#x6570;&#x5730;&#x5740;</p>
+<pre><code>(gdb) info registers
+rax     0x0     0
+rbx     0x0     0
+rcx     0x3     3
+rdx     0x2     2
+rsi     0x1     1
+rdi     0x400628 4195880
+rbp     0x7fffffffdf60 0x7fffffffdf60
+rsp     0x7fffffffdf38 0x7fffffffdf38
+r8      0x4     4
+r9      0x5     5
+r10     0x7fffffffdce0 140737488346336
+r11     0x7ffff7a65f60 140737348263776
+r12     0x400440 4195392
+r13     0x7fffffffe040 140737488347200
+r14     0x0     0
+r15     0x0     0
+rip     0x7ffff7a65f60 0x7ffff7a65f60 &lt;__printf&gt;
+...
+</code></pre><p>&#x8868;5.5 &#x68C0;&#x67E5;&#x683C;&#x5F0F;&#x5316;&#x5B57;&#x7B26;&#x4E32;</p>
+<pre><code>(gdb) x/s $rdi
+0x400628: &quot;a=%d; b=%d; c=%d; d=%d; e=%d; f=%d; g=%d; h=%d
+&quot;
+</code></pre><p>&#x7528;x/g&#x547D;&#x4EE4;&#x663E;&#x793A;&#x6808;&#x5185;&#x5BB9;</p>
+<pre><code>(gdb) x/10g $rsp
+0x7fffffffdf38: 0x0000000000400576 0x0000000000000006
+0x7fffffffdf48: 0x0000000000000007 0x00007fff00000008
+0x7fffffffdf58: 0x0000000000000000 0x0000000000000000
+0x7fffffffdf68: 0x00007ffff7a33de5 0x0000000000000000
+0x7fffffffdf78: 0x00007fffffffe048 0x0000000100000000
+</code></pre><p>&#x4E0E;&#x4E4B;&#x524D;&#x4E00;&#x6837;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x6808;&#x5143;&#x7D20;&#x662F;&#x8FD4;&#x56DE;&#x5730;&#x5740;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x540C;&#x65F6;&#x4E5F;&#x770B;&#x5230;&#x5728;&#x9AD8;32&#x4F4D;&#x7684;8&#x4E5F;&#x6CA1;&#x6709;&#x88AB;&#x6E05;&#x9664;&#x3002; 0x00007fff00000008&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x662F;32&#x4F4D;int&#x7C7B;&#x578B;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x9AD8;&#x5BC4;&#x5B58;&#x5668;&#x6216;&#x5806;&#x6808;&#x90E8;&#x5206;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x4E00;&#x4E9B;&#x968F;&#x673A;&#x5783;&#x573E;&#x6570;&#x503C;&#x3002;</p>
+<p>printf()&#x51FD;&#x6570;&#x6267;&#x884C;&#x4E4B;&#x540E;&#x5C06;&#x8FD4;&#x56DE;&#x63A7;&#x5236;&#xFF0C;GDB&#x4F1A;&#x663E;&#x793A;&#x6574;&#x4E2A;main()&#x51FD;&#x6570;&#x3002;</p>
+<pre><code>(gdb) set disassembly-flavor intel
+(gdb) disas 0x0000000000400576
+Dump of assembler code for function main:
+    0x000000000040052d &lt;+0&gt;:    push    rbp
+    0x000000000040052e &lt;+1&gt;:    mov     rbp,rsp
+    0x0000000000400531 &lt;+4&gt;:    sub     rsp,0x20
+    0x0000000000400535 &lt;+8&gt;:    mov     DWORD PTR [rsp+0x10],0x8
+    0x000000000040053d &lt;+16&gt;:   mov     DWORD PTR [rsp+0x8],0x7
+    0x0000000000400545 &lt;+24&gt;:   mov     DWORD PTR [rsp],0x6
+    0x000000000040054c &lt;+31&gt;:   mov     r9d,0x5
+    0x0000000000400552 &lt;+37&gt;:   mov     r8d,0x4
+    0x0000000000400558 &lt;+43&gt;:   mov     ecx,0x3
+    0x000000000040055d &lt;+48&gt;:   mov     edx,0x2
+    0x0000000000400562 &lt;+53&gt;:   mov     esi,0x1
+    0x0000000000400567 &lt;+58&gt;:   mov     edi,0x400628
+    0x000000000040056c &lt;+63&gt;:   mov     eax,0x0
+    0x0000000000400571 &lt;+68&gt;:   call    0x400410 &lt;printf@plt&gt;
+    0x0000000000400576 &lt;+73&gt;:   mov     eax,0x0
+    0x000000000040057b &lt;+78&gt;:   leave
+    0x000000000040057c &lt;+79&gt;:   ret
+End of assembler dump.
+</code></pre><p>&#x6267;&#x884C;&#x5B8C;printf()&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x6E05;&#x96F6;EAX&#xFF0C;&#x7136;&#x540E;&#x53D1;&#x73B0;EAX&#x65E9;&#x5DF2;&#x4E3A;0&#xFF0C;RIP&#x73B0;&#x5728;&#x5219;&#x6307;&#x5411;LEAVE&#x6307;&#x4EE4;&#x3002;</p>
+<pre><code>(gdb) finish
+Run till exit from #0 __printf (format=0x400628 &quot;a=%d; b=%d; c=%d; d=%d; e=%d; f=%d; g=%d; h=%d
+n&quot;) at printf.c:29
+a=1; b=2; c=3; d=4; e=5; f=6; g=7; h=8
+main () at 2.c:6
+6       return 0;
+Value returned is $1 = 39
+(gdb) next
+7 };
+(gdb) info registers
+rax     0x0     0
+rbx     0x0     0
+rcx     0x26    38
+rdx     0x7ffff7dd59f0 140737351866864
+rsi     0x7fffffd9 2147483609
+rdi     0x0     0
+rbp     0x7fffffffdf60 0x7fffffffdf60
+rsp     0x7fffffffdf40 0x7fffffffdf40
+r8      0x7ffff7dd26a0 140737351853728
+r9      0x7ffff7a60134 140737348239668
+r10     0x7fffffffd5b0 140737488344496
+r11     0x7ffff7a95900 140737348458752
+r12     0x400440 4195392
+r13     0x7fffffffe040 140737488347200
+r14     0x0     0
+r15     0x0     0
+rip     0x40057b 0x40057b &lt;main+78&gt;
+...
+</code></pre><h1 id="62-arm">6.2 ARM</h1>
+<h2 id="63-arm3&#x4E2A;&#x53C2;&#x6570;">6.3 ARM:3&#x4E2A;&#x53C2;&#x6570;</h2>
+<p>&#x4E60;&#x60EF;&#x4E0A;&#xFF0C;ARM&#x4F20;&#x9012;&#x53C2;&#x6570;&#x7684;&#x89C4;&#x5219;(&#x53C2;&#x6570;&#x8C03;&#x7528;)&#x5982;&#x4E0B;:&#x524D;4&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x4E86;R0-R3&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x5176;&#x4F59;&#x7684;&#x53C2;&#x6570;&#x5219;&#x5728;&#x6808;&#x4E2D;&#x3002;&#x8FD9;&#x548C;fastcall&#x6216;&#x8005;win64&#x4F20;&#x9012;&#x53C2;&#x6570;&#x5F88;&#x76F8;&#x4F3C;</p>
+<h3 id="32-bit-arm">32-bit ARM</h3>
+<h3 id="non-optimizing-keil--arm-mode&#x975E;&#x4F18;&#x5316;keil&#x7F16;&#x8BD1;&#x6A21;&#x5F0F;--arm&#x73AF;&#x5883;">Non-optimizing Keil + ARM mode(&#x975E;&#x4F18;&#x5316;keil&#x7F16;&#x8BD1;&#x6A21;&#x5F0F; + ARM&#x73AF;&#x5883;)</h3>
+<pre><code>.text:00000014            printf_main1
+.text:00000014 10 40 2D E9       STMFD   SP!, {R4,LR}
+.text:00000018 03 30 A0 E3       MOV     R3, #3
+.text:0000001C 02 20 A0 E3       MOV     R2, #2
+.text:00000020 01 10 A0 E3       MOV     R1, #1
+.text:00000024 1D 0E 8F E2       ADR     R0, aADBDCD ; &quot;a=%d; b=%d; c=%d
+&quot;
+.text:00000028 0D 19 00 EB       BL      __2printf
+.text:0000002C 10 80 BD E8       LDMFD   SP!, {R4,PC}
+</code></pre><p>&#x6240;&#x4EE5; &#x524D;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#x6309;&#x7167;&#x5B83;&#x4EEC;&#x7684;&#x987A;&#x5E8F;&#x4F20;&#x9012;&#x7ED9;&#x4E86;R0-R3&#xFF0C; printf()&#x4E2D;&#x7684;&#x683C;&#x5F0F;&#x5316;&#x5B57;&#x7B26;&#x4E32;&#x6307;&#x9488;&#x5728;R0&#x4E2D;&#xFF0C;&#x7136;&#x540E;1&#x5728;R1&#xFF0C;2&#x5728;R2&#xFF0C;3&#x5728;R3. &#x5230;&#x76EE;&#x524D;&#x4E3A;&#x6B62;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x4E0D;&#x5BFB;&#x5E38;&#x7684;&#x3002;</p>
+<h3 id="optimizing-keil--arm-mode&#x4F18;&#x5316;&#x7684;keil&#x7F16;&#x8BD1;&#x6A21;&#x5F0F;--arm&#x73AF;&#x5883;">Optimizing Keil + ARM mode(&#x4F18;&#x5316;&#x7684;keil&#x7F16;&#x8BD1;&#x6A21;&#x5F0F; + ARM&#x73AF;&#x5883;)</h3>
+<pre><code>.text:00000014     EXPORT printf_main1
+.text:00000014     printf_main1
+.text:00000014 03 30 A0 E3     MOV    R3, #3
+.text:00000018 02 20 A0 E3     MOV    R2, #2
+.text:0000001C 01 10 A0 E3     MOV    R1, #1
+.text:00000020 1E 0E 8F E2     ADR    R0, aADBDCD ; &quot;a=%d; b=%d; c=%d
+&quot;
+.text:00000024 CB 18 00 EA     B     __2printf
+</code></pre><p>&#x8868;5.7: Optimizing Keil + ARM mode</p>
+<p>&#x8FD9;&#x662F;&#x5728;&#x9488;&#x5BF9;ARM optimized (-O3)&#x7248;&#x672C;&#x4E0B;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;B&#x4F5C;&#x4E3A;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x6307;&#x4EE4;&#x800C;&#x4E0D;&#x662F;&#x719F;&#x6089;&#x7684;BL&#x3002;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x4E0D;&#x540C;&#x4E4B;&#x5904;&#x5728;optimized&#x4E0E;&#x4E4B;&#x524D;&#x7684;(compiled without optimization)&#x5BF9;&#x6BD4;&#x53D1;&#x73B0;&#x51FD;&#x6570;prologue &#x548C; epilogue(&#x50A8;&#x5B58;R0&#x548C;LR&#x503C;&#x7684;&#x5BC4;&#x5B58;&#x5668;)&#xFF0C;B&#x6307;&#x4EE4;&#x4EC5;&#x4EC5;&#x8DF3;&#x5411;&#x53E6;&#x4E00;&#x5904;&#x5730;&#x5740;&#xFF0C;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5173;&#x4E8E;LR&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5B83;&#x548C;x86&#x4E2D;&#x7684;jmp&#x76F8;&#x4F3C;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x8FD9;&#x6837;&#xFF1F;&#x56E0;&#x4E3A;&#x4EE3;&#x7801;&#x5C31;&#x662F;&#x8FD9;&#x6837;&#xFF0C;&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x8FD9;&#x548C;&#x524D;&#x9762;&#x76F8;&#x4F3C;&#xFF0C;&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x70B9;&#x539F;&#x56E0; 1)&#x4E0D;&#x7BA1;&#x662F;&#x6808;&#x8FD8;&#x662F;SP(&#x6808;&#x6307;&#x9488;)&#xFF0C;&#x90FD;&#x6709;&#x88AB;&#x4FEE;&#x6539;&#x3002;2)printf()&#x7684;&#x8C03;&#x7528;&#x662F;&#x6700;&#x540E;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x6240;&#x4EE5;&#x4E4B;&#x540E;&#x4FBF;&#x6CA1;&#x6709;&#x4E86;&#x3002;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;printf()&#x51FD;&#x6570;&#x5C31;&#x8FD4;&#x56DE;&#x5230;LR&#x50A8;&#x5B58;&#x7684;&#x5730;&#x5740;&#x5904;&#x3002;&#x4F46;&#x662F;&#x6307;&#x9488;&#x5730;&#x5740;&#x4ECE;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x7684;&#x5730;&#x65B9;&#x8F6C;&#x79FB;&#x5230;&#x4E86;LR&#x4E2D;&#xFF01;&#x63A5;&#x7740;&#x5C31;&#x4F1A;&#x4ECE;printf()&#x5230;&#x90A3;&#x91CC;&#x3002;&#x7ED3;&#x679C;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x4FDD;&#x5B58;LR&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x4FEE;&#x6539;LR&#x3002;&#x56E0;&#x4E3A;&#x9664;&#x4E86;printf()&#x51FD;&#x6570;&#x5916;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x51FD;&#x6570;&#x4E86;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x9664;&#x4E86;&#x8FD9;&#x4E2A;&#x8C03;&#x7528;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x505A;&#x522B;&#x7684;&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x8FD9;&#x6837;&#x7F16;&#x8BD1;&#x662F;&#x53EF;&#x884C;&#x7684;&#x3002;</p>
+<h3 id="optimizing-keil--thumb-mode">Optimizing Keil + thumb mode</h3>
+<pre><code>.text:0000000C     printf_main1
+.text:0000000C 10 B5           PUSH {R4,LR}
+.text:0000000E 03 23           MOVS R3, #3
+.text:00000010 02 22           MOVS R2, #2
+.text:00000012 01 21           MOVS R1, #1
+.text:00000014 A4 A0           ADR R0, aADBDCD ; &quot;a=%d; b=%d; c=%d
+&quot;
+.text:00000016 06 F0 EB F8     BL __2printf
+.text:0000001A 10 BD           POP {R4,PC}
+</code></pre><p>&#x8868;6.8&#xFF1A;Optimizing Keil + thumb mode</p>
+<p>&#x548C;non-optimized for ARM mode&#x4EE3;&#x7801;&#x6CA1;&#x4EC0;&#x4E48;&#x660E;&#x663E;&#x7684;&#x533A;&#x522B;</p>
+<h3 id="optimizing-keil-62013-arm-mode--&#x8BA9;&#x6211;&#x4EEC;&#x79FB;&#x9664;-return">Optimizing Keil 6/2013 (ARM mode) + &#x8BA9;&#x6211;&#x4EEC;&#x79FB;&#x9664; return</h3>
+<h3 id="arm-64">ARM 64</h3>
+<h3 id="non-optimizing-gcc-linaro-49">Non-optimizing GCC (Linaro) 4.9</h3>
+<h2 id="622-arm-8-arguments">6.2.2 ARM: 8 arguments</h2>
+<p>&#x6211;&#x4EEC;&#x518D;&#x7528;&#x4E4B;&#x524D;9&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x90A3;&#x4E2A;&#x4F8B;&#x5B50;</p>
+<pre><code>void printf_main2()
+{
+    printf(&quot;a=%d; b=%d; c=%d; d=%d; e=%d; f=%d; g=%d; h=%d
+&quot;, 1, 2, 3, 4, 5, 6, 7, 8);
+};
+</code></pre><h3 id="optimizing-keil-arm-mode">Optimizing Keil: ARM mode</h3>
+<pre><code>.text:00000028      printf_main2
+.text:00000028
+.text:00000028      var_18 = -0x18
+.text:00000028      var_14 = -0x14
+.text:00000028      var_4 = -4
+.text:00000028
+.text:00000028 04 E0 2D E5      STR     LR, [SP,#var_4]!
+.text:0000002C 14 D0 4D E2      SUB     SP, SP, #0x14
+.text:00000030 08 30 A0 E3      MOV     R3, #8
+.text:00000034 07 20 A0 E3      MOV     R2, #7
+.text:00000038 06 10 A0 E3      MOV     R1, #6
+.text:0000003C 05 00 A0 E3      MOV     R0, #5
+.text:00000040 04 C0 8D E2      ADD     R12, SP, #0x18+var_14
+.text:00000044 0F 00 8C E8      STMIA   R12, {R0-R3}
+.text:00000048 04 00 A0 E3      MOV     R0, #4
+.text:0000004C 00 00 8D E5      STR     R0, [SP,#0x18+var_18]
+.text:00000050 03 30 A0 E3      MOV     R3, #3
+.text:00000054 02 20 A0 E3      MOV     R2, #2
+.text:00000058 01 10 A0 E3      MOV     R1, #1
+.text:0000005C 6E 0F 8F E2      ADR     R0, aADBDCDDDEDFDGD ; &quot;a=%d; b=%d; c=%d; d=%d;
+e=%d; f=%d; g=%&quot;...
+.text:00000060 BC 18 00 EB      BL      __2printf
+.text:00000064 14 D0 8D E2      ADD     SP, SP, #0x14
+.text:00000068 04 F0 9D E4      LDR     PC, [SP+4+var_4],#4
+</code></pre><p>&#x8FD9;&#x4E9B;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x5206;&#x6210;&#x51E0;&#x4E2A;&#x90E8;&#x5206;:</p>
+<p><strong>Function prologue:</strong></p>
+<p>&#x6700;&#x5F00;&#x59CB;&#x7684;&#x201D;STR LR, [SP,#var_4]!&#x201D;&#x6307;&#x4EE4;&#x5C06;LR&#x50A8;&#x5B58;&#x5728;&#x6808;&#x4E2D;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x5C06;&#x7528;&#x8FD9;&#x4E2A;&#x5BC4;&#x5B58;&#x5668;&#x8C03;&#x7528;printf()&#x3002;</p>
+<p>&#x7B2C;&#x4E8C;&#x4E2A;&#x201D; SUB SP, SP, #0x14&#x201D;&#x6307;&#x4EE4;&#x51CF;&#x4E86;SP(&#x6808;&#x6307;&#x9488;),&#x4E3A;&#x4E86;&#x5728;&#x6808;&#x4E0A;&#x5206;&#x914D;0x14(20)bytes&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4F20;&#x9012;5&#x4E2A; 32-bit&#x7684;&#x6570;&#x636E;&#x901A;&#x8FC7;&#x6808;&#x4F20;&#x9012;&#x7ED9;printf()&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x4E14;&#x6BCF;&#x4E2A;&#x5360;4bytes&#xFF0C;&#x4E5F;&#x5C31;&#x662F;5*4=20&#x3002;&#x53E6;&#x5916;4&#x4E2A;32-bit&#x7684;&#x6570;&#x636E;&#x5C06;&#x4F1A;&#x4F20;&#x9012;&#x7ED9;&#x5BC4;&#x5B58;&#x5668;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x6808;&#x4F20;&#x9012;5&#xFF0C;6&#xFF0C;7&#x548C;8&#xFF1A;</p>
+<p>&#x7136;&#x540E;&#xFF0C;5&#xFF0C;6&#xFF0C;7&#xFF0C;8&#x5206;&#x522B;&#x88AB;&#x5199;&#x5165;&#x4E86;R0&#xFF0C;R1&#xFF0C;R2&#x53CA;R3&#x5BC4;&#x5B58;&#x5668;&#x3002;&#x7136;&#x540E;<code>ADD R12, SP,#0x18+var_14</code>&#x6307;&#x4EE4;&#x5C06;&#x6808;&#x4E2D;&#x6307;&#x9488;&#x7684;&#x5730;&#x5740;&#x5199;&#x5165;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x8FD9;&#x91CC;&#x4F1A;&#x5411;R12&#x5199;&#x5165;4&#x4E2A;&#x503C;&#xFF0C;<code>var_14</code>&#x662F;&#x4E00;&#x4E2A;&#x6C47;&#x7F16;&#x5B8F;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;0x14&#xFF0C;&#x8FD9;&#x4E9B;&#x90FD;&#x7531;IDA&#x7B80;&#x660E;&#x7684;&#x521B;&#x5EFA;&#x8868;&#x793A;&#x8BBF;&#x95EE;&#x6808;&#x7684;&#x53D8;&#x91CF;&#xFF0C;var_?&#x5728;IDA&#x4E2D;&#x8868;&#x793A;&#x6808;&#x4E2D;&#x7684;&#x672C;&#x5730;&#x53D8;&#x91CF;&#xFF0C;&#x6240;&#x4EE5;SP+4&#x5C06;&#x88AB;&#x5199;&#x5165;R12&#x5BC4;&#x5B58;&#x5668;&#x3002;&#x4E0B;&#x4E00;&#x6B65;&#x7684;&#x201D;STMIA R12, R0-R3&#x201D;&#x6307;&#x4EE4;&#x5C06;R0-R3&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x5185;&#x5BB9;&#x5199;&#x5728;&#x4E86;R2&#x6307;&#x5411;&#x7684;&#x6307;&#x9488;&#x5904;&#x3002;STMIA&#x6307;&#x4EE4;&#x6307;Store Multiple Increment After, Increment After&#x6307;R12&#x5BC4;&#x5B58;&#x5668;&#x5728;&#x6709;&#x503C;&#x5199;&#x5165;&#x540E;&#x81EA;&#x589E;4&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x6808;&#x4F20;&#x9012;4:</p>
+<p>4&#x5B58;&#x5728;R0&#x4E2D;&#xFF0C;&#x7136;&#x540E;&#x8FD9;&#x4E2A;&#x503C;&#x5728;&#x201D; STR R0, [SP,#0x18+var_18]&#x201D;&#x6307;&#x4EE4;&#x5E2E;&#x52A9;&#x4E0B;&#xFF0C;&#x5B58;&#x5728;&#x4E86;&#x6808;&#x4E0A;&#xFF0C;var_18&#x662F;0x18&#xFF0C;&#x504F;&#x79FB;&#x91CF;&#x4E3A;0.&#x6240;&#x4EE5;R0&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x7684;&#x503C;&#x5C06;&#x4F1A;&#x5199;&#x5728;SP&#x6307;&#x9488;&#x6307;&#x5411;&#x7684;&#x6307;&#x9488;&#x5904;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x5BC4;&#x5B58;&#x5668;&#x4F20;&#x9012;1&#xFF0C;2&#xFF0C;3:</p>
+<p>&#x5F00;&#x59CB;3&#x4E2A;&#x6570;(a,b,c)(&#x5206;&#x522B;&#x662F;1,2,3)&#x6B63;&#x597D;&#x5728;printf()&#x51FD;&#x6570;&#x8C03;&#x7528;&#x524D;&#x88AB;&#x4F20;&#x9012;&#x5230;&#x4E86;R1&#xFF0C;R2&#xFF0C;R3&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x3002; &#x7136;&#x540E;&#x53E6;&#x5916;5&#x4E2A;&#x503C;&#x901A;&#x8FC7;&#x6808;&#x4F20;&#x9012;&#x3002;</p>
+<p><strong>printf() &#x8C03;&#x7528;:</strong></p>
+<p>&#x201C;ADD SP, SP, #0x14&#x201D;&#x6307;&#x4EE4;&#x5C06;SP&#x6307;&#x9488;&#x8FD4;&#x56DE;&#x5230;&#x4E4B;&#x524D;&#x7684;&#x6307;&#x9488;&#x5904;&#xFF0C;&#x56E0;&#x6B64;&#x6E05;&#x9664;&#x4E86;&#x6808;&#xFF0C;&#x5F53;&#x7136;&#xFF0C;&#x6808;&#x4E2D;&#x4E4B;&#x524D;&#x5199;&#x5165;&#x7684;&#x6570;&#x636E;&#x8FD8;&#x5728;&#x90A3;&#xFF0C;&#x4F46;&#x662F;&#x5F53;&#x540E;&#x6765;&#x7684;&#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#x65F6;&#x90A3;&#x91CC;&#x5219;&#x4F1A;&#x88AB;&#x91CD;&#x5199;&#x3002; &#x201C;LDR PC, [SP+4+var_4],#4&quot;&#x6307;&#x4EE4;&#x5C06;LR&#x4E2D;&#x50A8;&#x5B58;&#x7684;&#x503C;&#x8F7D;&#x5165;&#x5230;PC&#x6307;&#x9488;&#xFF0C;&#x56E0;&#x6B64;&#x51FD;&#x6570;&#x7ED3;&#x675F;&#x3002;</p>
+<h3 id="optimizing-keil-thumb-mode">Optimizing Keil: thumb mode</h3>
+<pre><code>.text:0000001C      printf_main2
+.text:0000001C
+.text:0000001C      var_18 = -0x18
+.text:0000001C      var_14 = -0x14
+.text:0000001C      var_8 = -8
+.text:0000001C
+.text:0000001C 00 B5        PUSH    {LR}
+.text:0000001E 08 23        MOVS    R3, #8
+.text:00000020 85 B0        SUB     SP, SP, #0x14
+.text:00000022 04 93        STR     R3, [SP,#0x18+var_8]
+.text:00000024 07 22        MOVS    R2, #7
+.text:00000026 06 21        MOVS    R1, #6
+.text:00000028 05 20        MOVS    R0, #5
+.text:0000002A 01 AB        ADD     R3, SP, #0x18+var_14
+.text:0000002C 07 C3        STMIA   R3!, {R0-R2}
+.text:0000002E 04 20        MOVS    R0, #4
+.text:00000030 00 90        STR     R0, [SP,#0x18+var_18]
+.text:00000032 03 23        MOVS    R3, #3
+.text:00000034 02 22        MOVS    R2, #2
+.text:00000036 01 21        MOVS    R1, #1
+.text:00000038 A0 A0        ADR     R0, aADBDCDDDEDFDGD ; &quot;a=%d; b=%d; c=%d; d=%d; e=%d; f=%d; g=%&quot;...
+.text:0000003A 06 F0 D9 F8  BL __2printf
+.text:0000003E
+.text:0000003E              loc_3E ; CODE XREF: example13_f+16
+.text:0000003E 05 B0        ADD SP, SP, #0x14
+.text:00000040 00 BD        POP {PC}
+</code></pre><p>&#x51E0;&#x4E4E;&#x548C;&#x4E4B;&#x524D;&#x7684;&#x4F8B;&#x5B50;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x7136;&#x540E;&#x8FD9;&#x662F;thumb &#x4EE3;&#x7801;&#xFF0C;&#x503C;&#x5165;&#x6808;&#x7684;&#x786E;&#x4E0D;&#x540C;:&#x5148;&#x662F;8&#xFF0C;&#x7136;&#x540E;5&#xFF0C;6&#xFF0C;7&#xFF0C;&#x7B2C;&#x4E09;&#x4E2A;&#x662F;4&#x3002;</p>
+<h3 id="543-optimizing-xcode-llvm-arm-mode">5.4.3 Optimizing Xcode (LLVM): ARM mode</h3>
+<pre><code>__text:0000290C     _printf_main2
+__text:0000290C
+__text:0000290C     var_1C = -0x1C
+__text:0000290C     var_C = -0xC
+__text:0000290C
+__text:0000290C 80 40 2D E9     STMFD   SP!, {R7,LR}
+__text:00002910 0D 70 A0 E1     MOV     R7, SP
+__text:00002914 14 D0 4D E2     SUB     SP, SP, #0x14
+__text:00002918 70 05 01 E3     MOV     R0, #0x1570
+__text:0000291C 07 C0 A0 E3     MOV     R12, #7
+__text:00002920 00 00 40 E3     MOVT    R0, #0
+__text:00002924 04 20 A0 E3     MOV     R2, #4
+__text:00002928 00 00 8F E0     ADD     R0, PC, R0
+__text:0000292C 06 30 A0 E3     MOV     R3, #6
+__text:00002930 05 10 A0 E3     MOV     R1, #5
+__text:00002934 00 20 8D E5     STR     R2, [SP,#0x1C+var_1C]
+__text:00002938 0A 10 8D E9     STMFA   SP, {R1,R3,R12}
+__text:0000293C 08 90 A0 E3     MOV     R9, #8
+__text:00002940 01 10 A0 E3     MOV     R1, #1
+__text:00002944 02 20 A0 E3     MOV     R2, #2
+__text:00002948 03 30 A0 E3     MOV     R3, #3
+__text:0000294C 10 90 8D E5     STR     R9, [SP,#0x1C+var_C]
+__text:00002950 A4 05 00 EB     BL      _printf
+__text:00002954 07 D0 A0 E1     MOV     SP, R7
+__text:00002958 80 80 BD E8     LDMFD   SP!, {R7,PC}
+</code></pre><p>&#x51E0;&#x4E4E;&#x548C;&#x6211;&#x4EEC;&#x4E4B;&#x524D;&#x9047;&#x5230;&#x7684;&#x4E00;&#x6837;&#xFF0C;&#x9664;&#x4E86;STMFA(Store Multiple Full Ascending)&#x6307;&#x4EE4;&#xFF0C;&#x5B83;&#x548C;STMIB(Store Multiple Increment Before)&#x6307;&#x4EE4;&#x4E00;&#x6837;&#xFF0C;&#x8FD9;&#x4E2A;&#x6307;&#x4EE4;&#x76F4;&#x5230;&#x4E0B;&#x4E2A;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x503C;&#x5199;&#x5165;&#x5185;&#x5B58;&#x65F6;&#x4F1A;&#x589E;&#x52A0;SP&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x7684;&#x503C;&#xFF0C;&#x4F46;&#x662F;&#x53CD;&#x8FC7;&#x6765;&#x5374;&#x4E0D;&#x540C;&#x3002;</p>
+<p>&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x5730;&#x65B9;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8F7B;&#x677E;&#x7684;&#x53D1;&#x73B0;&#x6307;&#x4EE4;&#x662F;&#x968F;&#x673A;&#x5206;&#x5E03;&#x7684;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;R0&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x7684;&#x503C;&#x5728;&#x4E09;&#x4E2A;&#x5730;&#x65B9;&#x521D;&#x59CB;&#xFF0C;&#x5728;0x2918&#xFF0C;0x2920,0x2928&#x3002;&#x800C;&#x8FD9;&#x4E00;&#x4E2A;&#x6307;&#x4EE4;&#x5C31;&#x53EF;&#x4EE5;&#x641E;&#x5B9A;&#x3002;&#x7136;&#x800C;&#xFF0C;optimizing compiler&#x6709;&#x5B83;&#x81EA;&#x5DF1;&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x5BF9;&#x4E8E;&#x5982;&#x4F55;&#x66F4;&#x597D;&#x7684;&#x653E;&#x7F6E;&#x6307;&#x4EE4;&#xFF0C;&#x901A;&#x5E38;&#xFF0C;&#x5904;&#x7406;&#x5668;&#x5C1D;&#x8BD5;&#x540C;&#x65F6;&#x6267;&#x884C;&#x5E76;&#x884C;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x4F8B;&#x5982;&#x50CF;&#x201D; MOVT R0, #0&#x201D;&#x548C;&#x201D; ADD R0, PC,R0&#x201D;&#x5C31;&#x4E0D;&#x80FD;&#x540C;&#x65F6;&#x6267;&#x884C;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x540C;&#x65F6;&#x90FD;&#x5728;&#x4FEE;&#x6539;R0&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#x201D;MOVT R0, #0&#x201D;&#x548C;&#x201D;MOV R2, #4&#x201D;&#x6307;&#x4EE4;&#x5374;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x6267;&#x884C;&#xFF0C;&#x56E0;&#x4E3A;&#x6267;&#x884C;&#x6548;&#x679C;&#x5E76;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x51B2;&#x7A81;&#x3002; &#x5927;&#x6982;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x5C31;&#x662F;&#x8FD9;&#x6837;&#x5C1D;&#x8BD5;&#x7F16;&#x8BD1;&#x7684;&#xFF0C;&#x53EF;&#x80FD;&#x3002;</p>
+<h3 id="optimizing-xcode-llvm-thumb-2-mode">Optimizing Xcode (LLVM): thumb-2 mode</h3>
+<pre><code>__text:00002BA0     _printf_main2
+__text:00002BA0
+__text:00002BA0     var_1C = -0x1C
+__text:00002BA0     var_18 = -0x18
+__text:00002BA0     var_C = -0xC
+__text:00002BA0
+__text:00002BA0 80 B5           PUSH    {R7,LR}
+__text:00002BA2 6F 46           MOV     R7, SP
+__text:00002BA4 85 B0           SUB     SP, SP, #0x14
+__text:00002BA6 41 F2 D8 20     MOVW    R0, #0x12D8
+__text:00002BAA 4F F0 07 0C     MOV.W   R12, #7
+__text:00002BAE C0 F2 00 00     MOVT.W  R0, #0
+__text:00002BB2 04 22           MOVS    R2, #4
+__text:00002BB4 78 44           ADD     R0, PC ; char *
+__text:00002BB6 06 23           MOVS    R3, #6
+__text:00002BB8 05 21           MOVS    R1, #5
+__text:00002BBA 0D F1 04 0E     ADD.W   LR, SP, #0x1C+var_18
+__text:00002BBE 00 92           STR     R2, [SP,#0x1C+var_1C]
+__text:00002BC0 4F F0 08 09     MOV.W   R9, #8
+__text:00002BC4 8E E8 0A 10     STMIA.W LR, {R1,R3,R12}
+__text:00002BC8 01 21           MOVS    R1, #1
+__text:00002BCA 02 22           MOVS    R2, #2
+__text:00002BCC 03 23           MOVS    R3, #3
+__text:00002BCE CD F8 10 90     STR.W   R9, [SP,#0x1C+var_C]
+__text:00002BD2 01 F0 0A EA     BLX     _printf
+__text:00002BD6 05 B0           ADD     SP, SP, #0x14
+__text:00002BD8 80 BD           POP     {R7,PC}
+</code></pre><p>&#x51E0;&#x4E4E;&#x548C;&#x524D;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x76F8;&#x540C;&#xFF0C;&#x9664;&#x4E86;thumb-instructions&#x5728;&#x8FD9;&#x91CC;&#x88AB;&#x66FF;&#x4EE3;&#x4F7F;&#x7528;&#x4E86;</p>
+<h3 id="arm-64">ARM 64</h3>
+<h3 id="&#x65E0;&#x4F18;&#x5316;&#x7684;-gcc-linaro-49">&#x65E0;&#x4F18;&#x5316;&#x7684; GCC (Linaro) 4.9</h3>
+<h2 id="63-mips">6.3 MIPS</h2>
+<h3 id="631-3&#x4E2A;&#x53C2;&#x6570;">6.3.1 3&#x4E2A;&#x53C2;&#x6570;</h3>
+<h3 id="&#x5E26;&#x4F18;&#x5316;&#x7684;-gcc-445">&#x5E26;&#x4F18;&#x5316;&#x7684; GCC 4.4.5</h3>
+<h3 id="&#x65E0;&#x4F18;&#x5316;&#x7684;-gcc-445">&#x65E0;&#x4F18;&#x5316;&#x7684; GCC 4.4.5</h3>
+<h3 id="632-8&#x4E2A;&#x53C2;&#x6570;">6.3.2 8&#x4E2A;&#x53C2;&#x6570;</h3>
+<h3 id="&#x5E26;&#x4F18;&#x5316;&#x7684;-gcc-445">&#x5E26;&#x4F18;&#x5316;&#x7684; GCC 4.4.5</h3>
+<h3 id="&#x65E0;&#x4F18;&#x5316;&#x7684;-gcc-445">&#x65E0;&#x4F18;&#x5316;&#x7684; GCC 4.4.5</h3>
+<h2 id="64-&#x7ED3;&#x8BBA;">6.4 &#x7ED3;&#x8BBA;</h2>
+<h2 id="65-by-the-way">6.5 By the way</h2>
+<p>&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x662F;&#xFF0C;&#x8FD9;&#x4E9B;x86,x64,fastcall&#x548C;ARM&#x4F20;&#x9012;&#x53C2;&#x6570;&#x7684;&#x4E0D;&#x540C;&#x8868;&#x73B0;&#x4E86;CPU&#x5E76;&#x4E0D;&#x5728;&#x610F;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x662F;&#x600E;&#x6837;&#x4F20;&#x9012;&#x7684;&#xFF0C;&#x540C;&#x6837;&#x4E5F;&#x5047;&#x60F3;&#x7F16;&#x8BD1;&#x5668;&#x53EF;&#x80FD;&#x7528;&#x7279;&#x6B8A;&#x7684;&#x7ED3;&#x6784;&#x4F20;&#x9001;&#x53C2;&#x6570;&#x800C;&#x4E00;&#x70B9;&#x4E5F;&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x6808;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Chapter-05.html" class="navigation navigation-prev " aria-label="Previous page: 栈">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Chapter-07.html" class="navigation navigation-next " aria-label="Next page: scanf()">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"printf()与参数处理","level":"1.2.6","depth":2,"next":{"title":"scanf()","level":"1.2.7","depth":2,"path":"Part-I/Chapter-07.md","ref":"Part-I/Chapter-07.md","articles":[]},"previous":{"title":"栈","level":"1.2.5","depth":2,"path":"Part-I/Chapter-05.md","ref":"Part-I/Chapter-05.md","articles":[]},"dir":"ltr"},"config":{"plugins":["comment"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"comment":{"highlightCommented":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"wizardforcel","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"逆向工程入门指南","language":"zh","links":{"sidebar":{"逆向工程入门指南":"https://www.gitbook.com/book/wizardforcel/re-for-beginners"},"gitbook":true},"gitbook":"*","description":""},"file":{"path":"Part-I/Chapter-06.md","mtime":"2017-01-03T07:50:52.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-01-03T07:55:06.624Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-comment/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

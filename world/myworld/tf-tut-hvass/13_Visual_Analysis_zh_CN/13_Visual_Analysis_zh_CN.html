@@ -1,0 +1,1646 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>可视化分析 · TensorFlow 教程（Hvass）</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="wizardforcel">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-comment/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../14_DeepDream_zh_CN/14_DeepDream_zh_CN.html" />
+    
+    
+    <link rel="prev" href="../12_Adversarial_Noise_MNIST_zh_CN/12_Adversarial_Noise_MNIST_zh_CN.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.gitbook.com/book/wizardforcel/tf-tut-hvass" target="_blank" class="custom-link">TensorFlow 教程（Hvass）</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    TensorFlow 教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../01_Simple_Linear_Model_zh_CN/01_Simple_Linear_Model_zh_CN.html">
+            
+                <a href="../01_Simple_Linear_Model_zh_CN/01_Simple_Linear_Model_zh_CN.html">
+            
+                    
+                    简单线性模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../02_Convolutional_Neural_Network_zh_CN/02_Convolutional_Neural_Network_zh_CN.html">
+            
+                <a href="../02_Convolutional_Neural_Network_zh_CN/02_Convolutional_Neural_Network_zh_CN.html">
+            
+                    
+                    卷积神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../03_PrettyTensor_zh_CN/03_PrettyTensor_zh_CN.html">
+            
+                <a href="../03_PrettyTensor_zh_CN/03_PrettyTensor_zh_CN.html">
+            
+                    
+                    PrettyTensor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../04_Save_Restore_zh_CN/04_Save_Restore_zh_CN.html">
+            
+                <a href="../04_Save_Restore_zh_CN/04_Save_Restore_zh_CN.html">
+            
+                    
+                    保存 & 恢复
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../05_Ensemble_Learning_zh_CN/05_Ensemble_Learning_zh_CN.html">
+            
+                <a href="../05_Ensemble_Learning_zh_CN/05_Ensemble_Learning_zh_CN.html">
+            
+                    
+                    集成学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../06_CIFAR-10_zh_CN/06_CIFAR-10_zh_CN.html">
+            
+                <a href="../06_CIFAR-10_zh_CN/06_CIFAR-10_zh_CN.html">
+            
+                    
+                    CIFAR-10
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../07_Inception_Model_zh_CN/07_Inception_Model_zh_CN.html">
+            
+                <a href="../07_Inception_Model_zh_CN/07_Inception_Model_zh_CN.html">
+            
+                    
+                    Inception 模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../08_Transfer_Learning_zh_CN/08_Transfer_Learning_zh_CN.html">
+            
+                <a href="../08_Transfer_Learning_zh_CN/08_Transfer_Learning_zh_CN.html">
+            
+                    
+                    迁移学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../09_Video_Data_zh_CN/09_Video_Data_zh_CN.html">
+            
+                <a href="../09_Video_Data_zh_CN/09_Video_Data_zh_CN.html">
+            
+                    
+                    视频数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../11_Adversarial_Examples_zh_CN/11_Adversarial_Examples_zh_CN.html">
+            
+                <a href="../11_Adversarial_Examples_zh_CN/11_Adversarial_Examples_zh_CN.html">
+            
+                    
+                    对抗样本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../12_Adversarial_Noise_MNIST_zh_CN/12_Adversarial_Noise_MNIST_zh_CN.html">
+            
+                <a href="../12_Adversarial_Noise_MNIST_zh_CN/12_Adversarial_Noise_MNIST_zh_CN.html">
+            
+                    
+                    MNIST的对抗噪声
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.13" data-path="13_Visual_Analysis_zh_CN.html">
+            
+                <a href="13_Visual_Analysis_zh_CN.html">
+            
+                    
+                    可视化分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../14_DeepDream_zh_CN/14_DeepDream_zh_CN.html">
+            
+                <a href="../14_DeepDream_zh_CN/14_DeepDream_zh_CN.html">
+            
+                    
+                    DeepDream
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../15_Style_Transfer_zh_CN/15_Style_Transfer_zh_CN.html">
+            
+                <a href="../15_Style_Transfer_zh_CN/15_Style_Transfer_zh_CN.html">
+            
+                    
+                    风格迁移
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >可视化分析</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="tensorflow-&#x6559;&#x7A0B;-13">TensorFlow &#x6559;&#x7A0B; #13</h1>
+<h1 id="&#x53EF;&#x89C6;&#x5316;&#x5206;&#x6790;">&#x53EF;&#x89C6;&#x5316;&#x5206;&#x6790;</h1>
+<p>by <a href="http://www.hvass-labs.org/" target="_blank">Magnus Erik Hvass Pedersen</a>
+/ <a href="https://github.com/Hvass-Labs/TensorFlow-Tutorials" target="_blank">GitHub</a> / <a href="https://www.youtube.com/playlist?list=PL9Hr9sNUjfsmEu1ZniY0XpHSzl5uihcXZ" target="_blank">Videos on YouTube</a><br>&#x4E2D;&#x6587;&#x7FFB;&#x8BD1; <a href="https://zhuanlan.zhihu.com/insight-pixel" target="_blank">thrillerist</a>/<a href="https://github.com/thrillerist/TensorFlow-Tutorials" target="_blank">Github</a></p>
+<h2 id="&#x4ECB;&#x7ECD;">&#x4ECB;&#x7ECD;</h2>
+<p>&#x5728;&#x4E4B;&#x524D;&#x7684;&#x4E00;&#x4E9B;&#x5173;&#x4E8E;&#x5377;&#x79EF;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x7684;&#x6559;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C55;&#x793A;&#x4E86;&#x5377;&#x79EF;&#x6EE4;&#x6CE2;&#x6743;&#x91CD;&#xFF0C;&#x6BD4;&#x5982;&#x6559;&#x7A0B;#02&#x548C;#06&#x3002;&#x4F46;&#x5355;&#x4ECE;&#x6EE4;&#x6CE2;&#x6743;&#x91CD;&#x4E0A;&#x770B;&#xFF0C;&#x4E0D;&#x53EF;&#x80FD;&#x786E;&#x5B9A;&#x5377;&#x79EF;&#x6EE4;&#x6CE2;&#x5668;&#x80FD;&#x4ECE;&#x8F93;&#x5165;&#x56FE;&#x50CF;&#x4E2D;&#x8BC6;&#x522B;&#x51FA;&#x4EC0;&#x4E48;&#x3002;</p>
+<p>&#x672C;&#x6559;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x63D0;&#x51FA;&#x4E00;&#x79CD;&#x7528;&#x4E8E;&#x53EF;&#x89C6;&#x5316;&#x5206;&#x6790;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5185;&#x90E8;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x7684;&#x57FA;&#x672C;&#x65B9;&#x6CD5;&#x3002;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x751F;&#x6210;&#x6700;&#x5927;&#x5316;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5185;&#x4E2A;&#x4F53;&#x7279;&#x5F81;&#x7684;&#x56FE;&#x50CF;&#x3002;&#x56FE;&#x50CF;&#x7528;&#x4E00;&#x4E9B;&#x968F;&#x673A;&#x566A;&#x58F0;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x7136;&#x540E;&#x7528;&#x7ED9;&#x5B9A;&#x7279;&#x5F81;&#x5173;&#x4E8E;&#x8F93;&#x5165;&#x56FE;&#x50CF;&#x7684;&#x68AF;&#x5EA6;&#x6765;&#x9010;&#x6E10;&#x6539;&#x53D8;&#xFF08;&#x751F;&#x6210;&#x7684;&#xFF09;&#x56FE;&#x50CF;&#x3002;</p>
+<p>&#x53EF;&#x89C6;&#x5316;&#x5206;&#x6790;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x7684;&#x65B9;&#x6CD5;&#x4E5F;&#x79F0;&#x4E3A; <em>&#x7279;&#x5F81;&#x6700;&#x5927;&#x5316;&#xFF08;feature maximization&#xFF09;</em> &#x6216; <em>&#x6FC0;&#x6D3B;&#x6700;&#x5927;&#x5316;&#xFF08;activation maximization&#xFF09;</em>&#x3002;  </p>
+<p>&#x672C;&#x6587;&#x57FA;&#x4E8E;&#x4E4B;&#x524D;&#x7684;&#x6559;&#x7A0B;&#x3002;&#x4F60;&#x9700;&#x8981;&#x5927;&#x6982;&#x5730;&#x719F;&#x6089;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#xFF08;&#x8BE6;&#x89C1;&#x6559;&#x7A0B; #01&#x548C; #02&#xFF09;&#xFF0C;&#x4E86;&#x89E3;Inception&#x6A21;&#x578B;&#x4E5F;&#x5F88;&#x6709;&#x5E2E;&#x52A9;&#xFF08;&#x6559;&#x7A0B; #07&#xFF09;&#x3002;</p>
+<h2 id="&#x6D41;&#x7A0B;&#x56FE;">&#x6D41;&#x7A0B;&#x56FE;</h2>
+<p>&#x8FD9;&#x91CC;&#x5C06;&#x4F1A;&#x4F7F;&#x7528;&#x6559;&#x7A0B; #07&#x4E2D;&#x7684;Inception&#x6A21;&#x578B;&#x3002;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x627E;&#x5230;&#x4F7F;&#x5F97;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5185;&#x7ED9;&#x5B9A;&#x7279;&#x5F81;&#x6700;&#x5927;&#x5316;&#x7684;&#x56FE;&#x50CF;&#x3002;&#x8F93;&#x5165;&#x56FE;&#x50CF;&#x7528;&#x4E00;&#x4E9B;&#x566A;&#x58F0;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x7136;&#x540E;&#x7528;&#x7ED9;&#x5B9A;&#x7279;&#x5F81;&#x7684;&#x68AF;&#x5EA6;&#x6765;&#x66F4;&#x65B0;&#x56FE;&#x50CF;&#x3002;&#x5728;&#x6267;&#x884C;&#x4E86;&#x4E00;&#x4E9B;&#x4F18;&#x5316;&#x8FED;&#x4EE3;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x8FD9;&#x4E2A;&#x7279;&#x5B9A;&#x7279;&#x5F81;&#x201C;&#x559C;&#x6B22;&#x770B;&#x5230;&#x7684;&#x201D;&#x56FE;&#x50CF;&#x3002;</p>
+<p>&#x7531;&#x4E8E;Inception&#x6A21;&#x578B;&#x662F;&#x7531;&#x5F88;&#x591A;&#x76F8;&#x7ED3;&#x5408;&#x7684;&#x57FA;&#x672C;&#x6570;&#x5B66;&#x8FD0;&#x7B97;&#x6784;&#x9020;&#x7684;&#xFF0C;&#x4F7F;&#x7528;&#x5FAE;&#x5206;&#x94FE;&#x5F0F;&#x6CD5;&#x5219;&#xFF0C;TensorFlow&#x8BA9;&#x6211;&#x4EEC;&#x5F88;&#x5FEB;&#x5C31;&#x80FD;&#x627E;&#x5230;&#x635F;&#x5931;&#x51FD;&#x6570;&#x7684;&#x68AF;&#x5EA6;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> IPython.display <span class="hljs-keyword">import</span> Image, display
+Image(<span class="hljs-string">&apos;images/13_visual_analysis_flowchart.png&apos;</span>)
+</code></pre>
+<p><img src="output_4_0.png" alt="png"></p>
+<h2 id="&#x5BFC;&#x5165;">&#x5BFC;&#x5165;</h2>
+<pre><code class="lang-python">%matplotlib inline
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+
+<span class="hljs-comment"># Functions and classes for loading and using the Inception model.</span>
+<span class="hljs-keyword">import</span> inception
+</code></pre>
+<p>&#x4F7F;&#x7528;Python3.5.2&#xFF08;Anaconda&#xFF09;&#x5F00;&#x53D1;&#xFF0C;TensorFlow&#x7248;&#x672C;&#x662F;&#xFF1A;</p>
+<pre><code class="lang-python">tf.__version__
+</code></pre>
+<pre><code>&apos;1.1.0&apos;
+</code></pre><h2 id="inception-&#x6A21;&#x578B;">Inception &#x6A21;&#x578B;</h2>
+<h3 id="&#x4ECE;&#x7F51;&#x4E0A;&#x4E0B;&#x8F7D;inception&#x6A21;&#x578B;">&#x4ECE;&#x7F51;&#x4E0A;&#x4E0B;&#x8F7D;Inception&#x6A21;&#x578B;</h3>
+<p>&#x4ECE;&#x7F51;&#x4E0A;&#x4E0B;&#x8F7D;Inception&#x6A21;&#x578B;&#x3002;&#x8FD9;&#x662F;&#x4F60;&#x4FDD;&#x5B58;&#x6570;&#x636E;&#x6587;&#x4EF6;&#x7684;&#x9ED8;&#x8BA4;&#x6587;&#x4EF6;&#x5939;&#x3002;&#x5982;&#x679C;&#x6587;&#x4EF6;&#x5939;&#x4E0D;&#x5B58;&#x5728;&#x5C31;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># inception.data_dir = &apos;inception/&apos;</span>
+</code></pre>
+<p>&#x5982;&#x679C;&#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x4E0D;&#x5B58;&#x5728;Inception&#x6A21;&#x578B;&#xFF0C;&#x5C31;&#x81EA;&#x52A8;&#x4E0B;&#x8F7D;&#x3002; &#x5B83;&#x6709;85MB&#x3002;</p>
+<pre><code class="lang-python">inception.maybe_download()
+</code></pre>
+<pre><code>Downloading Inception v3 Model ...
+- Download progress: 100.0%
+Download finished. Extracting files.
+Done.
+</code></pre><h3 id="&#x5377;&#x79EF;&#x5C42;&#x7684;&#x540D;&#x79F0;">&#x5377;&#x79EF;&#x5C42;&#x7684;&#x540D;&#x79F0;</h3>
+<p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x8FD4;&#x56DE;Inception&#x6A21;&#x578B;&#x4E2D;&#x5377;&#x79EF;&#x5C42;&#x7684;&#x540D;&#x79F0;&#x5217;&#x8868;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_conv_layer_names</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># Load the Inception model.</span>
+    model = inception.Inception()
+
+    <span class="hljs-comment"># Create a list of names for the operations in the graph</span>
+    <span class="hljs-comment"># for the Inception model where the operator-type is &apos;Conv2D&apos;.</span>
+    names = [op.name <span class="hljs-keyword">for</span> op <span class="hljs-keyword">in</span> model.graph.get_operations() <span class="hljs-keyword">if</span> op.type==<span class="hljs-string">&apos;Conv2D&apos;</span>]
+
+    <span class="hljs-comment"># Close the TensorFlow session inside the model-object.</span>
+    model.close()
+
+    <span class="hljs-keyword">return</span> names
+</code></pre>
+<pre><code class="lang-python">conv_names = get_conv_layer_names()
+</code></pre>
+<p>&#x5728;Inception&#x6A21;&#x578B;&#x4E2D;&#x603B;&#x5171;&#x6709;94&#x4E2A;&#x5377;&#x79EF;&#x5C42;&#x3002;</p>
+<pre><code class="lang-python">len(conv_names)
+</code></pre>
+<pre><code>94
+</code></pre><p>&#x5199;&#x51FA;&#x5934;5&#x4E2A;&#x5377;&#x79EF;&#x5C42;&#x7684;&#x540D;&#x79F0;&#x3002;</p>
+<pre><code class="lang-python">conv_names[:<span class="hljs-number">5</span>]
+</code></pre>
+<pre><code>[&apos;conv/Conv2D&apos;,
+ &apos;conv_1/Conv2D&apos;,
+ &apos;conv_2/Conv2D&apos;,
+ &apos;conv_3/Conv2D&apos;,
+ &apos;conv_4/Conv2D&apos;]
+</code></pre><p>&#x5199;&#x51FA;&#x6700;&#x540E;5&#x4E2A;&#x5377;&#x79EF;&#x5C42;&#x7684;&#x540D;&#x79F0;&#x3002;</p>
+<pre><code class="lang-python">conv_names[<span class="hljs-number">-5</span>:]
+</code></pre>
+<pre><code>[&apos;mixed_10/tower_1/conv/Conv2D&apos;,
+ &apos;mixed_10/tower_1/conv_1/Conv2D&apos;,
+ &apos;mixed_10/tower_1/mixed/conv/Conv2D&apos;,
+ &apos;mixed_10/tower_1/mixed/conv_1/Conv2D&apos;,
+ &apos;mixed_10/tower_2/conv/Conv2D&apos;]
+</code></pre><h2 id="&#x627E;&#x5230;&#x8F93;&#x5165;&#x56FE;&#x50CF;&#x7684;&#x5E2E;&#x52A9;&#x51FD;&#x6570;">&#x627E;&#x5230;&#x8F93;&#x5165;&#x56FE;&#x50CF;&#x7684;&#x5E2E;&#x52A9;&#x51FD;&#x6570;</h2>
+<p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7528;&#x6765;&#x5BFB;&#x627E;&#x4F7F;&#x7F51;&#x7EDC;&#x5185;&#x7ED9;&#x5B9A;&#x7279;&#x5F81;&#x6700;&#x5927;&#x5316;&#x7684;&#x8F93;&#x5165;&#x56FE;&#x50CF;&#x3002;&#x5B83;&#x672C;&#x8D28;&#x4E0A;&#x662F;&#x7528;&#x68AF;&#x5EA6;&#x6CD5;&#x6765;&#x8FDB;&#x884C;&#x4F18;&#x5316;&#x3002;&#x56FE;&#x50CF;&#x7528;&#x5C0F;&#x7684;&#x968F;&#x673A;&#x503C;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x7136;&#x540E;&#x7528;&#x7ED9;&#x5B9A;&#x7279;&#x5F81;&#x5173;&#x4E8E;&#x8F93;&#x5165;&#x56FE;&#x50CF;&#x7684;&#x68AF;&#x5EA6;&#x6765;&#x9010;&#x6B65;&#x66F4;&#x65B0;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">optimize_image</span><span class="hljs-params">(conv_id=None, feature=<span class="hljs-number">0</span>,
+                   num_iterations=<span class="hljs-number">30</span>, show_progress=True)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    Find an image that maximizes the feature
+    given by the conv_id and feature number.
+
+    Parameters:
+    conv_id: Integer identifying the convolutional layer to
+             maximize. It is an index into conv_names.
+             If None then use the last fully-connected layer
+             before the softmax output.
+    feature: Index into the layer for the feature to maximize.
+    num_iteration: Number of optimization iterations to perform.
+    show_progress: Boolean whether to show the progress.
+    &quot;&quot;&quot;</span>
+
+    <span class="hljs-comment"># Load the Inception model. This is done for each call of</span>
+    <span class="hljs-comment"># this function because we will add a lot to the graph</span>
+    <span class="hljs-comment"># which will cause the graph to grow and eventually the</span>
+    <span class="hljs-comment"># computer will run out of memory.</span>
+    model = inception.Inception()
+
+    <span class="hljs-comment"># Reference to the tensor that takes the raw input image.</span>
+    resized_image = model.resized_image
+
+    <span class="hljs-comment"># Reference to the tensor for the predicted classes.</span>
+    <span class="hljs-comment"># This is the output of the final layer&apos;s softmax classifier.</span>
+    y_pred = model.y_pred
+
+    <span class="hljs-comment"># Create the loss-function that must be maximized.</span>
+    <span class="hljs-keyword">if</span> conv_id <span class="hljs-keyword">is</span> <span class="hljs-keyword">None</span>:
+        <span class="hljs-comment"># If we want to maximize a feature on the last layer,</span>
+        <span class="hljs-comment"># then we use the fully-connected layer prior to the</span>
+        <span class="hljs-comment"># softmax-classifier. The feature no. is the class-number</span>
+        <span class="hljs-comment"># and must be an integer between 1 and 1000.</span>
+        <span class="hljs-comment"># The loss-function is just the value of that feature.</span>
+        loss = model.y_logits[<span class="hljs-number">0</span>, feature]
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-comment"># If instead we want to maximize a feature of a</span>
+        <span class="hljs-comment"># convolutional layer inside the neural network.</span>
+
+        <span class="hljs-comment"># Get the name of the convolutional operator.</span>
+        conv_name = conv_names[conv_id]
+
+        <span class="hljs-comment"># Get a reference to the tensor that is output by the</span>
+        <span class="hljs-comment"># operator. Note that &quot;:0&quot; is added to the name for this.</span>
+        tensor = model.graph.get_tensor_by_name(conv_name + <span class="hljs-string">&quot;:0&quot;</span>)
+
+        <span class="hljs-comment"># Set the Inception model&apos;s graph as the default</span>
+        <span class="hljs-comment"># so we can add an operator to it.</span>
+        <span class="hljs-keyword">with</span> model.graph.as_default():
+            <span class="hljs-comment"># The loss-function is the average of all the</span>
+            <span class="hljs-comment"># tensor-values for the given feature. This</span>
+            <span class="hljs-comment"># ensures that we generate the whole input image.</span>
+            <span class="hljs-comment"># You can try and modify this so it only uses</span>
+            <span class="hljs-comment"># a part of the tensor.</span>
+            loss = tf.reduce_mean(tensor[:,:,:,feature])
+
+    <span class="hljs-comment"># Get the gradient for the loss-function with regard to</span>
+    <span class="hljs-comment"># the resized input image. This creates a mathematical</span>
+    <span class="hljs-comment"># function for calculating the gradient.</span>
+    gradient = tf.gradients(loss, resized_image)
+
+    <span class="hljs-comment"># Create a TensorFlow session so we can run the graph.</span>
+    session = tf.Session(graph=model.graph)
+
+    <span class="hljs-comment"># Generate a random image of the same size as the raw input.</span>
+    <span class="hljs-comment"># Each pixel is a small random value between 128 and 129,</span>
+    <span class="hljs-comment"># which is about the middle of the colour-range.</span>
+    image_shape = resized_image.get_shape()
+    image = np.random.uniform(size=image_shape) + <span class="hljs-number">128.0</span>
+
+    <span class="hljs-comment"># Perform a number of optimization iterations to find</span>
+    <span class="hljs-comment"># the image that maximizes the loss-function.</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(num_iterations):
+        <span class="hljs-comment"># Create a feed-dict. This feeds the image to the</span>
+        <span class="hljs-comment"># tensor in the graph that holds the resized image, because</span>
+        <span class="hljs-comment"># this is the final stage for inputting raw image data.</span>
+        feed_dict = {model.tensor_name_resized_image: image}
+
+        <span class="hljs-comment"># Calculate the predicted class-scores,</span>
+        <span class="hljs-comment"># as well as the gradient and the loss-value.</span>
+        pred, grad, loss_value = session.run([y_pred, gradient, loss],
+                                             feed_dict=feed_dict)
+
+        <span class="hljs-comment"># Squeeze the dimensionality for the gradient-array.</span>
+        grad = np.array(grad).squeeze()
+
+        <span class="hljs-comment"># The gradient now tells us how much we need to change the</span>
+        <span class="hljs-comment"># input image in order to maximize the given feature.</span>
+
+        <span class="hljs-comment"># Calculate the step-size for updating the image.</span>
+        <span class="hljs-comment"># This step-size was found to give fast convergence.</span>
+        <span class="hljs-comment"># The addition of 1e-8 is to protect from div-by-zero.</span>
+        step_size = <span class="hljs-number">1.0</span> / (grad.std() + <span class="hljs-number">1e-8</span>)
+
+        <span class="hljs-comment"># Update the image by adding the scaled gradient</span>
+        <span class="hljs-comment"># This is called gradient ascent.</span>
+        image += step_size * grad
+
+        <span class="hljs-comment"># Ensure all pixel-values in the image are between 0 and 255.</span>
+        image = np.clip(image, <span class="hljs-number">0.0</span>, <span class="hljs-number">255.0</span>)
+
+        <span class="hljs-keyword">if</span> show_progress:
+            print(<span class="hljs-string">&quot;Iteration:&quot;</span>, i)
+
+            <span class="hljs-comment"># Convert the predicted class-scores to a one-dim array.</span>
+            pred = np.squeeze(pred)
+
+            <span class="hljs-comment"># The predicted class for the Inception model.</span>
+            pred_cls = np.argmax(pred)
+
+            <span class="hljs-comment"># Name of the predicted class.</span>
+            cls_name = model.name_lookup.cls_to_name(pred_cls,
+                                               only_first_name=<span class="hljs-keyword">True</span>)
+
+            <span class="hljs-comment"># The score (probability) for the predicted class.</span>
+            cls_score = pred[pred_cls]
+
+            <span class="hljs-comment"># Print the predicted score etc.</span>
+            msg = <span class="hljs-string">&quot;Predicted class-name: {0} (#{1}), score: {2:&gt;7.2%}&quot;</span>
+            print(msg.format(cls_name, pred_cls, cls_score))
+
+            <span class="hljs-comment"># Print statistics for the gradient.</span>
+            msg = <span class="hljs-string">&quot;Gradient min: {0:&gt;9.6f}, max: {1:&gt;9.6f}, stepsize: {2:&gt;9.2f}&quot;</span>
+            print(msg.format(grad.min(), grad.max(), step_size))
+
+            <span class="hljs-comment"># Print the loss-value.</span>
+            print(<span class="hljs-string">&quot;Loss:&quot;</span>, loss_value)
+
+            <span class="hljs-comment"># Newline.</span>
+            print()
+
+    <span class="hljs-comment"># Close the TensorFlow session inside the model-object.</span>
+    model.close()
+
+    <span class="hljs-keyword">return</span> image.squeeze()
+</code></pre>
+<h3 id="&#x7ED8;&#x5236;&#x56FE;&#x50CF;&#x548C;&#x566A;&#x58F0;&#x7684;&#x5E2E;&#x52A9;&#x51FD;&#x6570;">&#x7ED8;&#x5236;&#x56FE;&#x50CF;&#x548C;&#x566A;&#x58F0;&#x7684;&#x5E2E;&#x52A9;&#x51FD;&#x6570;</h3>
+<p>&#x51FD;&#x6570;&#x5BF9;&#x56FE;&#x50CF;&#x505A;&#x5F52;&#x4E00;&#x5316;&#xFF0C;&#x5219;&#x50CF;&#x7D20;&#x503C;&#x5728;0.0&#x5230;1.0&#x4E4B;&#x95F4;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">normalize_image</span><span class="hljs-params">(x)</span>:</span>
+    <span class="hljs-comment"># Get the min and max values for all pixels in the input.</span>
+    x_min = x.min()
+    x_max = x.max()
+
+    <span class="hljs-comment"># Normalize so all values are between 0.0 and 1.0</span>
+    x_norm = (x - x_min) / (x_max - x_min)
+
+    <span class="hljs-keyword">return</span> x_norm
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7ED8;&#x5236;&#x4E00;&#x5F20;&#x56FE;&#x50CF;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">plot_image</span><span class="hljs-params">(image)</span>:</span>
+    <span class="hljs-comment"># Normalize the image so pixels are between 0.0 and 1.0</span>
+    img_norm = normalize_image(image)
+
+    <span class="hljs-comment"># Plot the image.</span>
+    plt.imshow(img_norm, interpolation=<span class="hljs-string">&apos;nearest&apos;</span>)
+    plt.show()
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5728;&#x5750;&#x6807;&#x7CFB;&#x5185;&#x7ED8;&#x5236;6&#x5F20;&#x56FE;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">plot_images</span><span class="hljs-params">(images, show_size=<span class="hljs-number">100</span>)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    The show_size is the number of pixels to show for each image.
+    The max value is 299.
+    &quot;&quot;&quot;</span>
+
+    <span class="hljs-comment"># Create figure with sub-plots.</span>
+    fig, axes = plt.subplots(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>)
+
+    <span class="hljs-comment"># Adjust vertical spacing.</span>
+    fig.subplots_adjust(hspace=<span class="hljs-number">0.1</span>, wspace=<span class="hljs-number">0.1</span>)
+
+    <span class="hljs-comment"># Use interpolation to smooth pixels?</span>
+    smooth = <span class="hljs-keyword">True</span>
+
+    <span class="hljs-comment"># Interpolation type.</span>
+    <span class="hljs-keyword">if</span> smooth:
+        interpolation = <span class="hljs-string">&apos;spline16&apos;</span>
+    <span class="hljs-keyword">else</span>:
+        interpolation = <span class="hljs-string">&apos;nearest&apos;</span>
+
+    <span class="hljs-comment"># For each entry in the grid.</span>
+    <span class="hljs-keyword">for</span> i, ax <span class="hljs-keyword">in</span> enumerate(axes.flat):
+        <span class="hljs-comment"># Get the i&apos;th image and only use the desired pixels.</span>
+        img = images[i, <span class="hljs-number">0</span>:show_size, <span class="hljs-number">0</span>:show_size, :]
+
+        <span class="hljs-comment"># Normalize the image so its pixels are between 0.0 and 1.0</span>
+        img_norm = normalize_image(img)
+
+        <span class="hljs-comment"># Plot the image.</span>
+        ax.imshow(img_norm, interpolation=interpolation)
+
+        <span class="hljs-comment"># Remove ticks.</span>
+        ax.set_xticks([])
+        ax.set_yticks([])
+
+    <span class="hljs-comment"># Ensure the plot is shown correctly with multiple plots</span>
+    <span class="hljs-comment"># in a single Notebook cell.</span>
+    plt.show()
+</code></pre>
+<h3 id="&#x4F18;&#x5316;&#x548C;&#x7ED8;&#x5236;&#x56FE;&#x50CF;&#x7684;&#x5E2E;&#x52A9;&#x51FD;&#x6570;">&#x4F18;&#x5316;&#x548C;&#x7ED8;&#x5236;&#x56FE;&#x50CF;&#x7684;&#x5E2E;&#x52A9;&#x51FD;&#x6570;</h3>
+<p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4F18;&#x5316;&#x591A;&#x5F20;&#x56FE;&#x50CF;&#x5E76;&#x7ED8;&#x5236;&#x5B83;&#x4EEC;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">optimize_images</span><span class="hljs-params">(conv_id=None, num_iterations=<span class="hljs-number">30</span>, show_size=<span class="hljs-number">100</span>)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;
+    Find 6 images that maximize the 6 first features in the layer
+    given by the conv_id.
+
+    Parameters:
+    conv_id: Integer identifying the convolutional layer to
+             maximize. It is an index into conv_names.
+             If None then use the last layer before the softmax output.
+    num_iterations: Number of optimization iterations to perform.
+    show_size: Number of pixels to show for each image. Max 299.
+    &quot;&quot;&quot;</span>
+
+    <span class="hljs-comment"># Which layer are we using?</span>
+    <span class="hljs-keyword">if</span> conv_id <span class="hljs-keyword">is</span> <span class="hljs-keyword">None</span>:
+        print(<span class="hljs-string">&quot;Final fully-connected layer before softmax.&quot;</span>)
+    <span class="hljs-keyword">else</span>:
+        print(<span class="hljs-string">&quot;Layer:&quot;</span>, conv_names[conv_id])
+
+    <span class="hljs-comment"># Initialize the array of images.</span>
+    images = []
+
+    <span class="hljs-comment"># For each feature do the following. Note that the</span>
+    <span class="hljs-comment"># last fully-connected layer only supports numbers</span>
+    <span class="hljs-comment"># between 1 and 1000, while the convolutional layers</span>
+    <span class="hljs-comment"># support numbers between 0 and some other number.</span>
+    <span class="hljs-comment"># So we just use the numbers between 1 and 7.</span>
+    <span class="hljs-keyword">for</span> feature <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,<span class="hljs-number">7</span>):
+        print(<span class="hljs-string">&quot;Optimizing image for feature no.&quot;</span>, feature)
+
+        <span class="hljs-comment"># Find the image that maximizes the given feature</span>
+        <span class="hljs-comment"># for the network layer identified by conv_id (or None).</span>
+        image = optimize_image(conv_id=conv_id, feature=feature,
+                               show_progress=<span class="hljs-keyword">False</span>,
+                               num_iterations=num_iterations)
+
+        <span class="hljs-comment"># Squeeze the dim of the array.</span>
+        image = image.squeeze()
+
+        <span class="hljs-comment"># Append to the list of images.</span>
+        images.append(image)
+
+    <span class="hljs-comment"># Convert to numpy-array so we can index all dimensions easily.</span>
+    images = np.array(images)
+
+    <span class="hljs-comment"># Plot the images.</span>
+    plot_images(images=images, show_size=show_size)
+</code></pre>
+<h2 id="&#x7ED3;&#x679C;">&#x7ED3;&#x679C;</h2>
+<h3 id="&#x4E3A;&#x6D45;&#x5904;&#x7684;&#x5377;&#x79EF;&#x5C42;&#x4F18;&#x5316;&#x56FE;&#x50CF;">&#x4E3A;&#x6D45;&#x5904;&#x7684;&#x5377;&#x79EF;&#x5C42;&#x4F18;&#x5316;&#x56FE;&#x50CF;</h3>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5BFB;&#x627E;&#x8BA9;&#x5377;&#x79EF;&#x5C42;<code>conv_names[conv_id]</code>&#x4E2D;&#x7684;2&#x53F7;&#x7279;&#x5F81;&#x6700;&#x5927;&#x5316;&#x7684;&#x8F93;&#x5165;&#x56FE;&#x50CF;&#xFF0C;&#x5176;&#x4E2D;<code>conv_id=5</code>&#x3002;</p>
+<pre><code class="lang-python">image = optimize_image(conv_id=<span class="hljs-number">5</span>, feature=<span class="hljs-number">2</span>,
+                       num_iterations=<span class="hljs-number">30</span>, show_progress=<span class="hljs-keyword">True</span>)
+</code></pre>
+<pre><code>Iteration: 0
+Predicted class-name: dishwasher (#667), score:   4.81%
+Gradient min: -0.000083, max:  0.000100, stepsize:  76290.32
+Loss: 4.83793
+
+Iteration: 1
+Predicted class-name: kite (#397), score:  15.12%
+Gradient min: -0.000142, max:  0.000126, stepsize:  71463.42
+Loss: 5.59611
+
+Iteration: 2
+Predicted class-name: wall clock (#524), score:   6.85%
+Gradient min: -0.000119, max:  0.000121, stepsize:  80427.39
+Loss: 6.91725
+
+Iteration: 3
+Predicted class-name: syringe (#531), score:   4.69%
+Gradient min: -0.000124, max:  0.000116, stepsize:  87046.41
+Loss: 7.93267
+
+Iteration: 4
+Predicted class-name: syringe (#531), score:   6.53%
+Gradient min: -0.000115, max:  0.000122, stepsize:  94634.06
+Loss: 8.85594
+
+Iteration: 5
+Predicted class-name: syringe (#531), score:  21.31%
+Gradient min: -0.000108, max:  0.000131, stepsize: 103182.49
+Loss: 9.70698
+
+Iteration: 6
+Predicted class-name: syringe (#531), score:  36.39%
+Gradient min: -0.000102, max:  0.000099, stepsize: 111440.73
+Loss: 10.4558
+
+Iteration: 7
+Predicted class-name: syringe (#531), score:  43.79%
+Gradient min: -0.000100, max:  0.000083, stepsize: 119285.09
+Loss: 11.1371
+
+Iteration: 8
+Predicted class-name: syringe (#531), score:  34.85%
+Gradient min: -0.000078, max:  0.000098, stepsize: 126258.06
+Loss: 11.7331
+
+Iteration: 9
+Predicted class-name: syringe (#531), score:  18.28%
+Gradient min: -0.000075, max:  0.000071, stepsize: 133766.53
+Loss: 12.2777
+
+Iteration: 10
+Predicted class-name: syringe (#531), score:  11.91%
+Gradient min: -0.000072, max:  0.000079, stepsize: 139181.44
+Loss: 12.7673
+
+Iteration: 11
+Predicted class-name: binder (#835), score:  13.27%
+Gradient min: -0.000079, max:  0.000070, stepsize: 145263.47
+Loss: 13.2062
+
+Iteration: 12
+Predicted class-name: binder (#835), score:  15.05%
+Gradient min: -0.000060, max:  0.000101, stepsize: 150589.72
+Loss: 13.6149
+
+Iteration: 13
+Predicted class-name: binder (#835), score:  14.79%
+Gradient min: -0.000074, max:  0.000072, stepsize: 156626.62
+Loss: 13.9922
+
+Iteration: 14
+Predicted class-name: binder (#835), score:  14.44%
+Gradient min: -0.000078, max:  0.000062, stepsize: 160979.04
+Loss: 14.3428
+
+Iteration: 15
+Predicted class-name: binder (#835), score:  11.76%
+Gradient min: -0.000081, max:  0.000081, stepsize: 164249.60
+Loss: 14.6689
+
+Iteration: 16
+Predicted class-name: binder (#835), score:   9.61%
+Gradient min: -0.000069, max:  0.000073, stepsize: 169375.77
+Loss: 14.968
+
+Iteration: 17
+Predicted class-name: binder (#835), score:   7.51%
+Gradient min: -0.000060, max:  0.000086, stepsize: 173951.43
+Loss: 15.2644
+
+Iteration: 18
+Predicted class-name: binder (#835), score:   6.16%
+Gradient min: -0.000057, max:  0.000074, stepsize: 176921.49
+Loss: 15.5303
+
+Iteration: 19
+Predicted class-name: quilt (#976), score:   6.22%
+Gradient min: -0.000067, max:  0.000068, stepsize: 182788.52
+Loss: 15.7967
+
+Iteration: 20
+Predicted class-name: quilt (#976), score:   7.31%
+Gradient min: -0.000068, max:  0.000063, stepsize: 185266.16
+Loss: 16.0442
+
+Iteration: 21
+Predicted class-name: bib (#941), score:   7.74%
+Gradient min: -0.000048, max:  0.000066, stepsize: 190195.76
+Loss: 16.2883
+
+Iteration: 22
+Predicted class-name: bib (#941), score:   9.43%
+Gradient min: -0.000060, max:  0.000047, stepsize: 192709.62
+Loss: 16.5165
+
+Iteration: 23
+Predicted class-name: bib (#941), score:  11.05%
+Gradient min: -0.000064, max:  0.000049, stepsize: 197288.09
+Loss: 16.7361
+
+Iteration: 24
+Predicted class-name: bib (#941), score:  12.59%
+Gradient min: -0.000054, max:  0.000047, stepsize: 201010.69
+Loss: 16.9544
+
+Iteration: 25
+Predicted class-name: bib (#941), score:  15.13%
+Gradient min: -0.000045, max:  0.000049, stepsize: 204798.67
+Loss: 17.1659
+
+Iteration: 26
+Predicted class-name: bib (#941), score:  15.91%
+Gradient min: -0.000047, max:  0.000047, stepsize: 208499.70
+Loss: 17.3637
+
+Iteration: 27
+Predicted class-name: bib (#941), score:  17.96%
+Gradient min: -0.000056, max:  0.000059, stepsize: 210286.13
+Loss: 17.559
+
+Iteration: 28
+Predicted class-name: bib (#941), score:  19.26%
+Gradient min: -0.000043, max:  0.000043, stepsize: 214742.82
+Loss: 17.7469
+
+Iteration: 29
+Predicted class-name: bib (#941), score:  18.87%
+Gradient min: -0.000047, max:  0.000059, stepsize: 218511.00
+Loss: 17.9321
+</code></pre><pre><code class="lang-python">plot_image(image)
+</code></pre>
+<p><img src="output_42_0.png" alt="png"></p>
+<h3 id="&#x4E3A;&#x5377;&#x79EF;&#x5C42;&#x4F18;&#x5316;&#x591A;&#x5F20;&#x56FE;&#x50CF;">&#x4E3A;&#x5377;&#x79EF;&#x5C42;&#x4F18;&#x5316;&#x591A;&#x5F20;&#x56FE;&#x50CF;</h3>
+<p>&#x4E0B;&#x9762;&#xFF0C;&#x6211;&#x4EEC;&#x4E3A;Inception&#x6A21;&#x578B;&#x4E2D;&#x7684;&#x5377;&#x79EF;&#x5C42;&#x4F18;&#x5316;&#x591A;&#x5F20;&#x56FE;&#x50CF;&#xFF0C;&#x5E76;&#x7ED8;&#x5236;&#x5B83;&#x4EEC;&#x3002;&#x8FD9;&#x4E9B;&#x56FE;&#x50CF;&#x5C55;&#x793A;&#x4E86;&#x5377;&#x79EF;&#x5C42;&#x201C;&#x60F3;&#x770B;&#x5230;&#x7684;&#x201D;&#x5185;&#x5BB9;&#x3002;&#x6CE8;&#x610F;&#x66F4;&#x6DF1;&#x7684;&#x5C42;&#x6B21;&#x91CC;&#x56FE;&#x6848;&#x53D8;&#x5F97;&#x8D8A;&#x6765;&#x8D8A;&#x590D;&#x6742;&#x3002;</p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">0</span>, num_iterations=<span class="hljs-number">10</span>)
+</code></pre>
+<pre><code>Layer: conv/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+</code></pre><pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">3</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: conv_3/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_46_1.png" alt="png"></p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">4</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: conv_4/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_47_1.png" alt="png"></p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">5</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: mixed/conv/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_48_1.png" alt="png"></p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">6</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: mixed/tower/conv/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_49_1.png" alt="png"></p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">7</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: mixed/tower/conv_1/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_50_1.png" alt="png"></p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">8</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: mixed/tower_1/conv/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_51_1.png" alt="png"></p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">9</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: mixed/tower_1/conv_1/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_52_1.png" alt="png"></p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">10</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: mixed/tower_1/conv_2/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_53_1.png" alt="png"></p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">20</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: mixed_2/tower/conv/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_54_1.png" alt="png"></p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">30</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: mixed_4/conv/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_55_1.png" alt="png"></p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">40</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: mixed_5/conv/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_56_1.png" alt="png"></p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">50</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: mixed_6/conv/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_57_1.png" alt="png"></p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">60</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: mixed_7/conv/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_58_1.png" alt="png"></p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">70</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: mixed_8/tower/conv/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_59_1.png" alt="png"></p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">80</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: mixed_9/tower_1/conv/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_60_1.png" alt="png"></p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">90</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: mixed_10/tower_1/conv_1/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_61_1.png" alt="png"></p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-number">93</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Layer: mixed_10/tower_2/conv/Conv2D
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_62_1.png" alt="png"></p>
+<h3 id="softmax&#x524D;&#x6700;&#x7EC8;&#x7684;&#x5168;&#x8FDE;&#x63A5;&#x5C42;">Softmax&#x524D;&#x6700;&#x7EC8;&#x7684;&#x5168;&#x8FDE;&#x63A5;&#x5C42;</h3>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x4E3A;Inception&#x6A21;&#x578B;&#x4E2D;&#x7684;&#x6700;&#x540E;&#x4E00;&#x5C42;&#x4F18;&#x5316;&#x5E76;&#x7ED8;&#x5236;&#x56FE;&#x50CF;&#x3002;&#x8FD9;&#x662F;&#x5728;softmax&#x5206;&#x7C7B;&#x5668;&#x524D;&#x7684;&#x5168;&#x8FDE;&#x63A5;&#x5C42;&#x3002;&#x8BE5;&#x5C42;&#x7279;&#x5F81;&#x5BF9;&#x5E94;&#x4E86;&#x8F93;&#x51FA;&#x7684;&#x7C7B;&#x522B;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x5E0C;&#x671B;&#x5728;&#x8FD9;&#x4E9B;&#x56FE;&#x50CF;&#x91CC;&#x770B;&#x5230;&#x4E00;&#x4E9B;&#x53EF;&#x8BC6;&#x522B;&#x7684;&#x56FE;&#x6848;&#xFF0C;&#x6BD4;&#x5982;&#x5BF9;&#x5E94;&#x8F93;&#x51FA;&#x7C7B;&#x522B;&#x7684;&#x7334;&#x5B50;&#x3001;&#x9E1F;&#x7C7B;&#x7B49;&#xFF0C;&#x4F46;&#x56FE;&#x50CF;&#x53EA;&#x663E;&#x793A;&#x4E86;&#x4E00;&#x4E9B;&#x590D;&#x6742;&#x7684;&#x3001;&#x62BD;&#x8C61;&#x7684;&#x56FE;&#x6848;&#x3002;</p>
+<pre><code class="lang-python">optimize_images(conv_id=<span class="hljs-keyword">None</span>, num_iterations=<span class="hljs-number">30</span>)
+</code></pre>
+<pre><code>Final fully-connected layer before softmax.
+Optimizing image for feature no. 1
+Optimizing image for feature no. 2
+Optimizing image for feature no. 3
+Optimizing image for feature no. 4
+Optimizing image for feature no. 5
+Optimizing image for feature no. 6
+</code></pre><p><img src="output_65_1.png" alt="png"></p>
+<p>&#x4E0A;&#x9762;&#x53EA;&#x663E;&#x793A;&#x4E86;100x100&#x50CF;&#x7D20;&#x7684;&#x56FE;&#x50CF;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x4E0A;&#x662F;299x299&#x50CF;&#x7D20;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6267;&#x884C;&#x66F4;&#x591A;&#x7684;&#x4F18;&#x5316;&#x8FED;&#x4EE3;&#x5E76;&#x753B;&#x51FA;&#x5B8C;&#x6574;&#x7684;&#x56FE;&#x50CF;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x4E00;&#x4E9B;&#x53EF;&#x8BC6;&#x522B;&#x7684;&#x6A21;&#x5F0F;&#x3002;&#x90A3;&#x4E48;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x518D;&#x6B21;&#x4F18;&#x5316;&#x7B2C;&#x4E00;&#x5F20;&#x56FE;&#x50CF;&#xFF0C;&#x5E76;&#x4EE5;&#x5168;&#x5206;&#x8FA8;&#x7387;&#x6765;&#x7ED8;&#x5236;&#x3002;</p>
+<p>Inception&#x6A21;&#x578B;&#x4EE5;&#x5927;&#x7EA6;100%&#x7684;&#x786E;&#x4FE1;&#x5EA6;&#x5C06;&#x7ED3;&#x679C;&#x56FE;&#x50CF;&#x5206;&#x7C7B;&#x6210;&#x201C;&#x654F;&#x72D0;&#x201D;&#xFF0C;&#x4F46;&#x5728;&#x4EBA;&#x773C;&#x770B;&#x6765;&#xFF0C;&#x56FE;&#x50CF;&#x53EA;&#x662F;&#x4E00;&#x4E9B;&#x62BD;&#x8C61;&#x7684;&#x56FE;&#x6848;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x6D4B;&#x8BD5;&#x53E6;&#x4E00;&#x4E2A;&#x7279;&#x5F81;&#x53F7;&#x7801;&#xFF0C;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x53F7;&#x7801;&#x5FC5;&#x987B;&#x4ECB;&#x4E8E;0&#x5230;1000&#x4E4B;&#x95F4;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x5BF9;&#x5E94;&#x4E86;&#x6700;&#x7EC8;&#x8F93;&#x51FA;&#x5C42;&#x7684;&#x4E00;&#x4E2A;&#x6709;&#x6548;&#x7C7B;&#x522B;&#x53F7;&#x3002;</p>
+<pre><code class="lang-python">image = optimize_image(conv_id=<span class="hljs-keyword">None</span>, feature=<span class="hljs-number">1</span>,
+                       num_iterations=<span class="hljs-number">100</span>, show_progress=<span class="hljs-keyword">True</span>)
+</code></pre>
+<pre><code>Iteration: 0
+Predicted class-name: dishwasher (#667), score:   4.98%
+Gradient min: -0.006252, max:  0.004451, stepsize:   3734.48
+Loss: -0.837608
+
+Iteration: 1
+Predicted class-name: ballpoint (#907), score:   8.52%
+Gradient min: -0.007303, max:  0.006427, stepsize:   2152.89
+Loss: -0.416723
+
+Iteration: 2
+Predicted class-name: spider web (#600), score:  90.44%
+Gradient min: -0.007480, max:  0.012272, stepsize:   1343.66
+Loss: 2.77814
+
+Iteration: 3
+Predicted class-name: pot (#838), score:   3.01%
+Gradient min: -0.009853, max:  0.007638, stepsize:   1526.98
+Loss: 3.27751
+
+Iteration: 4
+Predicted class-name: American egret (#426), score:  11.55%
+Gradient min: -0.008507, max:  0.006308, stepsize:   1787.96
+Loss: 5.95497
+
+Iteration: 5
+Predicted class-name: spider web (#600), score:  21.98%
+Gradient min: -0.010415, max:  0.009410, stepsize:   1722.27
+Loss: 5.07394
+
+Iteration: 6
+Predicted class-name: kit fox (#1), score:  29.21%
+Gradient min: -0.009298, max:  0.007885, stepsize:   2471.91
+Loss: 7.98241
+
+Iteration: 7
+Predicted class-name: brain coral (#649), score:   8.95%
+Gradient min: -0.004683, max:  0.004366, stepsize:   2876.78
+Loss: 2.61856
+
+Iteration: 8
+Predicted class-name: kit fox (#1), score:  30.05%
+Gradient min: -0.008918, max:  0.006374, stepsize:   2243.47
+Loss: 8.18703
+
+Iteration: 9
+Predicted class-name: kit fox (#1), score:  55.10%
+Gradient min: -0.041977, max:  0.025564, stepsize:   1270.96
+Loss: 9.4695
+
+Iteration: 10
+Predicted class-name: kit fox (#1), score:  45.79%
+Gradient min: -0.025474, max:  0.026726, stepsize:    858.88
+Loss: 8.49094
+
+Iteration: 11
+Predicted class-name: kit fox (#1), score:  71.39%
+Gradient min: -0.021939, max:  0.016643, stepsize:   1316.54
+Loss: 12.4999
+
+Iteration: 12
+Predicted class-name: kit fox (#1), score:  82.78%
+Gradient min: -0.011797, max:  0.017714, stepsize:   1763.08
+Loss: 11.1421
+
+Iteration: 13
+Predicted class-name: kit fox (#1), score:  67.38%
+Gradient min: -0.016686, max:  0.015832, stepsize:   1908.94
+Loss: 11.186
+
+Iteration: 14
+Predicted class-name: kit fox (#1), score:  57.64%
+Gradient min: -0.017312, max:  0.014563, stepsize:   1412.06
+Loss: 9.67373
+
+Iteration: 15
+Predicted class-name: kit fox (#1), score:  69.09%
+Gradient min: -0.005773, max:  0.005870, stepsize:   3163.64
+Loss: 12.9428
+
+Iteration: 16
+Predicted class-name: kit fox (#1), score:  82.98%
+Gradient min: -0.020765, max:  0.017950, stepsize:   1225.38
+Loss: 10.6559
+
+Iteration: 17
+Predicted class-name: kit fox (#1), score:  99.04%
+Gradient min: -0.005492, max:  0.006126, stepsize:   2520.72
+Loss: 16.579
+
+Iteration: 18
+Predicted class-name: kit fox (#1), score:  86.78%
+Gradient min: -0.017253, max:  0.028574, stepsize:   1280.11
+Loss: 11.7084
+
+Iteration: 19
+Predicted class-name: kit fox (#1), score:  96.57%
+Gradient min: -0.007056, max:  0.006660, stepsize:   1838.04
+Loss: 17.8698
+
+Iteration: 20
+Predicted class-name: kit fox (#1), score:  99.04%
+Gradient min: -0.008916, max:  0.008408, stepsize:   2720.73
+Loss: 17.922
+
+Iteration: 21
+Predicted class-name: kit fox (#1), score:  68.39%
+Gradient min: -0.012104, max:  0.013627, stepsize:   1398.73
+Loss: 12.5718
+
+Iteration: 22
+Predicted class-name: kit fox (#1), score:  98.38%
+Gradient min: -0.007660, max:  0.007840, stepsize:   2043.20
+Loss: 14.0164
+
+Iteration: 23
+Predicted class-name: kit fox (#1), score:  98.36%
+Gradient min: -0.009233, max:  0.006748, stepsize:   1951.74
+Loss: 19.118
+
+Iteration: 24
+Predicted class-name: kit fox (#1), score:  99.44%
+Gradient min: -0.013526, max:  0.015166, stepsize:   1557.67
+Loss: 23.2171
+
+Iteration: 25
+Predicted class-name: kit fox (#1), score:  99.83%
+Gradient min: -0.005306, max:  0.006063, stepsize:   2142.04
+Loss: 21.0666
+
+Iteration: 26
+Predicted class-name: kit fox (#1), score:  99.85%
+Gradient min: -0.005931, max:  0.005094, stepsize:   2287.80
+Loss: 21.2772
+
+Iteration: 27
+Predicted class-name: kit fox (#1), score:  97.91%
+Gradient min: -0.008425, max:  0.010999, stepsize:   1633.57
+Loss: 23.1276
+
+Iteration: 28
+Predicted class-name: kit fox (#1), score:  99.98%
+Gradient min: -0.012720, max:  0.010505, stepsize:   1749.55
+Loss: 25.9384
+
+Iteration: 29
+Predicted class-name: kit fox (#1), score:  99.90%
+Gradient min: -0.020819, max:  0.023275, stepsize:   1026.48
+Loss: 22.4687
+
+Iteration: 30
+Predicted class-name: kit fox (#1), score:  99.87%
+Gradient min: -0.005569, max:  0.007158, stepsize:   2436.42
+Loss: 21.3727
+
+Iteration: 31
+Predicted class-name: kit fox (#1), score:  97.25%
+Gradient min: -0.010902, max:  0.007087, stepsize:   1689.47
+Loss: 13.2659
+
+Iteration: 32
+Predicted class-name: kit fox (#1), score:  99.96%
+Gradient min: -0.006695, max:  0.006514, stepsize:   2277.89
+Loss: 23.113
+
+Iteration: 33
+Predicted class-name: kit fox (#1), score:  99.89%
+Gradient min: -0.011343, max:  0.011963, stepsize:   1713.67
+Loss: 20.4645
+
+Iteration: 34
+Predicted class-name: kit fox (#1), score:  99.83%
+Gradient min: -0.005129, max:  0.005226, stepsize:   2531.23
+Loss: 22.9016
+
+Iteration: 35
+Predicted class-name: kit fox (#1), score:  99.96%
+Gradient min: -0.004618, max:  0.005916, stepsize:   1979.85
+Loss: 19.6406
+
+Iteration: 36
+Predicted class-name: kit fox (#1), score:  99.94%
+Gradient min: -0.005298, max:  0.007882, stepsize:   2158.99
+Loss: 26.6898
+
+Iteration: 37
+Predicted class-name: kit fox (#1), score:  99.77%
+Gradient min: -0.009913, max:  0.010110, stepsize:   1643.65
+Loss: 21.2908
+
+Iteration: 38
+Predicted class-name: kit fox (#1), score:  99.99%
+Gradient min: -0.005472, max:  0.004434, stepsize:   2654.99
+Loss: 28.4096
+
+Iteration: 39
+Predicted class-name: kit fox (#1), score:  99.99%
+Gradient min: -0.006044, max:  0.007171, stepsize:   1646.69
+Loss: 32.005
+
+Iteration: 40
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.007782, max:  0.007306, stepsize:   1853.00
+Loss: 34.7635
+
+Iteration: 41
+Predicted class-name: kit fox (#1), score:  99.94%
+Gradient min: -0.030789, max:  0.017443, stepsize:   1224.15
+Loss: 32.2997
+
+Iteration: 42
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.005752, max:  0.006784, stepsize:   2148.87
+Loss: 34.8329
+
+Iteration: 43
+Predicted class-name: kit fox (#1), score:  99.98%
+Gradient min: -0.005747, max:  0.005908, stepsize:   2058.32
+Loss: 33.3857
+
+Iteration: 44
+Predicted class-name: kit fox (#1), score:  99.99%
+Gradient min: -0.005644, max:  0.005296, stepsize:   2042.49
+Loss: 33.5334
+
+Iteration: 45
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.008353, max:  0.008290, stepsize:   1814.68
+Loss: 34.6049
+
+Iteration: 46
+Predicted class-name: kit fox (#1), score:  99.99%
+Gradient min: -0.007643, max:  0.006041, stepsize:   2002.25
+Loss: 36.0055
+
+Iteration: 47
+Predicted class-name: kit fox (#1), score:  99.99%
+Gradient min: -0.008912, max:  0.009060, stepsize:   1462.12
+Loss: 31.0812
+
+Iteration: 48
+Predicted class-name: kit fox (#1), score:  99.99%
+Gradient min: -0.018941, max:  0.019518, stepsize:   1859.71
+Loss: 36.9466
+
+Iteration: 49
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.007313, max:  0.010175, stepsize:   1605.92
+Loss: 39.6561
+
+Iteration: 50
+Predicted class-name: kit fox (#1), score:  99.99%
+Gradient min: -0.005102, max:  0.005128, stepsize:   2222.82
+Loss: 34.06
+
+Iteration: 51
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.009598, max:  0.007205, stepsize:   1756.78
+Loss: 26.9699
+
+Iteration: 52
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.006587, max:  0.006691, stepsize:   1967.08
+Loss: 37.3345
+
+Iteration: 53
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.006564, max:  0.006621, stepsize:   2305.14
+Loss: 39.8643
+
+Iteration: 54
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.020868, max:  0.016884, stepsize:   1375.65
+Loss: 37.7343
+
+Iteration: 55
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.005574, max:  0.005976, stepsize:   1908.25
+Loss: 41.346
+
+Iteration: 56
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.009256, max:  0.010253, stepsize:   1768.63
+Loss: 35.9501
+
+Iteration: 57
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.010851, max:  0.017633, stepsize:   1499.83
+Loss: 42.5105
+
+Iteration: 58
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.005229, max:  0.006164, stepsize:   2135.08
+Loss: 43.219
+
+Iteration: 59
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.006745, max:  0.006746, stepsize:   1642.55
+Loss: 38.7929
+
+Iteration: 60
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.005743, max:  0.004990, stepsize:   2049.10
+Loss: 45.1963
+
+Iteration: 61
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.007454, max:  0.006493, stepsize:   1576.57
+Loss: 39.2328
+
+Iteration: 62
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.005872, max:  0.006283, stepsize:   2189.59
+Loss: 42.8966
+
+Iteration: 63
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.006593, max:  0.007255, stepsize:   1561.50
+Loss: 43.5881
+
+Iteration: 64
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.006010, max:  0.005091, stepsize:   1858.49
+Loss: 49.4166
+
+Iteration: 65
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.011517, max:  0.009566, stepsize:   1209.07
+Loss: 41.3484
+
+Iteration: 66
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.008072, max:  0.008848, stepsize:   2159.80
+Loss: 45.9205
+
+Iteration: 67
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.008305, max:  0.006268, stepsize:   1548.71
+Loss: 42.3279
+
+Iteration: 68
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.006149, max:  0.009358, stepsize:   1883.51
+Loss: 46.414
+
+Iteration: 69
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.006578, max:  0.006697, stepsize:   1474.94
+Loss: 42.8873
+
+Iteration: 70
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.005391, max:  0.006146, stepsize:   2104.57
+Loss: 49.2656
+
+Iteration: 71
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.008280, max:  0.008504, stepsize:   1563.85
+Loss: 49.4512
+
+Iteration: 72
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.009657, max:  0.011234, stepsize:   1538.54
+Loss: 52.4693
+
+Iteration: 73
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.006796, max:  0.008983, stepsize:   1630.90
+Loss: 47.8848
+
+Iteration: 74
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.007820, max:  0.007669, stepsize:   1989.92
+Loss: 53.1304
+
+Iteration: 75
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.007080, max:  0.009358, stepsize:   1601.16
+Loss: 52.802
+
+Iteration: 76
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.006778, max:  0.011433, stepsize:   1852.65
+Loss: 51.9139
+
+Iteration: 77
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.007497, max:  0.007986, stepsize:   1568.70
+Loss: 49.05
+
+Iteration: 78
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.005112, max:  0.006590, stepsize:   2242.10
+Loss: 58.7734
+
+Iteration: 79
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.008460, max:  0.008341, stepsize:   1525.32
+Loss: 60.3876
+
+Iteration: 80
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.006530, max:  0.006501, stepsize:   1898.08
+Loss: 60.4282
+
+Iteration: 81
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.009223, max:  0.006812, stepsize:   1697.45
+Loss: 59.8338
+
+Iteration: 82
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.006340, max:  0.006535, stepsize:   1737.38
+Loss: 60.1702
+
+Iteration: 83
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.008974, max:  0.008040, stepsize:   1453.65
+Loss: 59.8085
+
+Iteration: 84
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.008100, max:  0.005810, stepsize:   1709.52
+Loss: 63.3426
+
+Iteration: 85
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.006354, max:  0.008465, stepsize:   1674.72
+Loss: 62.9884
+
+Iteration: 86
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.007080, max:  0.006697, stepsize:   1713.75
+Loss: 66.6128
+
+Iteration: 87
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.015349, max:  0.009788, stepsize:   1500.05
+Loss: 63.2206
+
+Iteration: 88
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.008576, max:  0.007250, stepsize:   1536.09
+Loss: 68.5237
+
+Iteration: 89
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.005157, max:  0.005224, stepsize:   1869.55
+Loss: 71.2678
+
+Iteration: 90
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.007810, max:  0.007995, stepsize:   1401.19
+Loss: 62.0469
+
+Iteration: 91
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.010371, max:  0.009543, stepsize:   1559.59
+Loss: 70.518
+
+Iteration: 92
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.009110, max:  0.006689, stepsize:   1855.04
+Loss: 67.8497
+
+Iteration: 93
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.005365, max:  0.006440, stepsize:   1969.30
+Loss: 69.9785
+
+Iteration: 94
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.010603, max:  0.011318, stepsize:   1475.43
+Loss: 69.6375
+
+Iteration: 95
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.004267, max:  0.005465, stepsize:   2023.68
+Loss: 76.1746
+
+Iteration: 96
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.011737, max:  0.010223, stepsize:   1207.37
+Loss: 58.1862
+
+Iteration: 97
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.005620, max:  0.005410, stepsize:   1992.51
+Loss: 73.5772
+
+Iteration: 98
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.007732, max:  0.010692, stepsize:   1286.44
+Loss: 67.5603
+
+Iteration: 99
+Predicted class-name: kit fox (#1), score: 100.00%
+Gradient min: -0.005850, max:  0.006159, stepsize:   1863.65
+Loss: 75.6356
+</code></pre><pre><code class="lang-python">plot_image(image=image)
+</code></pre>
+<p><img src="output_68_0.png" alt="png"></p>
+<h2 id="&#x5173;&#x95ED;tensorflow&#x4F1A;&#x8BDD;">&#x5173;&#x95ED;TensorFlow&#x4F1A;&#x8BDD;</h2>
+<p>&#x5728;&#x4E0A;&#x9762;&#x4F7F;&#x7528;Inception&#x6A21;&#x578B;&#x7684;&#x51FD;&#x6570;&#x4E2D;&#x5DF2;&#x7ECF;&#x5173;&#x95ED;&#x4E86;TensorFlow&#x4F1A;&#x8BDD;&#x3002;&#x8FD9;&#x4E48;&#x505A;&#x662F;&#x4E3A;&#x4E86;&#x8282;&#x7701;&#x5185;&#x5B58;&#xFF0C;&#x56E0;&#x6B64;&#x5F53;&#x8BA1;&#x7B97;&#x56FE;&#x4E2D;&#x6DFB;&#x52A0;&#x4E86;&#x5F88;&#x591A;&#x68AF;&#x5EA6;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x7535;&#x8111;&#x4E0D;&#x4F1A;&#x5954;&#x6E83;&#x3002;</p>
+<h2 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h2>
+<p>&#x8FD9;&#x7BC7;&#x6559;&#x7A0B;&#x8BF4;&#x660E;&#x4E86;&#x5982;&#x4F55;&#x4F18;&#x5316;&#x8F93;&#x5165;&#x56FE;&#x50CF;&#xFF0C;&#x4F7F;&#x5F97;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5185;&#x7684;&#x7279;&#x5F81;&#x6700;&#x5927;&#x5316;&#x3002;&#x7531;&#x4E8E;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5185;&#x7ED9;&#x5B9A;&#x7279;&#x5F81;&#xFF08;&#x6216;&#x795E;&#x7ECF;&#x5143;&#xFF09;&#x5BF9;&#x7279;&#x5B9A;&#x7684;&#x56FE;&#x50CF;&#x53CD;&#x5E94;&#x6700;&#x5F3A;&#x70C8;&#xFF0C;&#x8FD9;&#x8BA9;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5BF9;&#x5176;&#x201C;&#x559C;&#x6B22;&#x770B;&#x5230;&#x7684;&#x4E1C;&#x897F;&#x201D;&#x8FDB;&#x884C;&#x53EF;&#x89C6;&#x5316;&#x5206;&#x6790;&#x3002;</p>
+<p>&#x5BF9;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x7684;&#x8F83;&#x4F4E;&#x5C42;&#xFF0C;&#x56FE;&#x50CF;&#x5305;&#x542B;&#x4E86;&#x7B80;&#x5355;&#x7684;&#x56FE;&#x6848;&#xFF0C;&#x6BD4;&#x5982;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x6CE2;&#x6D6A;&#x7EBF;&#x3002;&#x968F;&#x7740;&#x7F51;&#x7EDC;&#x8D8A;&#x6765;&#x8D8A;&#x6DF1;&#xFF0C;&#x56FE;&#x50CF;&#x6A21;&#x5F0F;&#x8D8A;&#x6765;&#x8D8A;&#x590D;&#x6742;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x4F1A;&#x5E0C;&#x671B;&#x6DF1;&#x5C42;&#x7F51;&#x7EDC;&#x7684;&#x6A21;&#x5F0F;&#x662F;&#x53EF;&#x8BC6;&#x522B;&#x7684;&#xFF0C;&#x6BD4;&#x5982;&#x7334;&#x5B50;&#x3001;&#x72D0;&#x72F8;&#x3001;&#x6C7D;&#x8F66;&#x7B49;&#x7B49;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x4E0A;&#x6DF1;&#x5C42;&#x7F51;&#x7EDC;&#x7684;&#x56FE;&#x50CF;&#x6A21;&#x5F0F;&#x66F4;&#x52A0;&#x590D;&#x6742;&#x548C;&#x62BD;&#x8C61;&#x3002;</p>
+<p>&#x8FD9;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;&#x56DE;&#x60F3;&#x5728;&#x6559;&#x7A0B; #11&#x4E2D;&#xFF0C;Inception&#x6A21;&#x578B;&#x5F88;&#x5BB9;&#x6613;&#x5C31;&#x88AB;&#x4E00;&#x4E9B;&#x5BF9;&#x6297;&#x566A;&#x58F0;&#x7CCA;&#x5F04;&#xFF0C;&#x800C;&#x5C06;&#x4EFB;&#x4F55;&#x8F93;&#x5165;&#x56FE;&#x5206;&#x7C7B;&#x4E3A;&#x53E6;&#x5916;&#x7684;&#x76EE;&#x6807;&#x7C7B;&#x522B;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x4E0D;&#x96BE;&#x60F3;&#x8C61;Inception&#x6A21;&#x578B;&#x53EF;&#x4EE5;&#x8BC6;&#x522B;&#x8FD9;&#x4E9B;&#x5728;&#x4EBA;&#x773C;&#x770B;&#x6765;&#x5E76;&#x4E0D;&#x6E05;&#x695A;&#x7684;&#x62BD;&#x8C61;&#x56FE;&#x50CF;&#x6A21;&#x5F0F;&#x3002;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x65E0;&#x7A77;&#x591A;&#x7684;&#x80FD;&#x591F;&#x6700;&#x5927;&#x5316;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x5185;&#x90E8;&#x7279;&#x5F81;&#x7684;&#x56FE;&#x50CF;&#xFF0C;&#x5E76;&#x4E14;&#x4EBA;&#x7C7B;&#x53EA;&#x80FD;&#x8BC6;&#x522B;&#x51FA;&#x5176;&#x4E2D;&#x7684;&#x4E00;&#x5C0F;&#x90E8;&#x5206;&#x3002;&#x8FD9;&#x4E5F;&#x8BB8;&#x662F;&#x4F18;&#x5316;&#x8FC7;&#x7A0B;&#x53EA;&#x627E;&#x5230;&#x62BD;&#x8C61;&#x56FE;&#x50CF;&#x6A21;&#x5F0F;&#x7684;&#x539F;&#x56E0;&#x3002;</p>
+<h3 id="&#x5176;&#x4ED6;&#x65B9;&#x6CD5;">&#x5176;&#x4ED6;&#x65B9;&#x6CD5;</h3>
+<p>&#x7814;&#x7A76;&#x6587;&#x732E;&#x4E2D;&#x8FD8;&#x6709;&#x8BB8;&#x591A;&#x6307;&#x5BFC;&#x4F18;&#x5316;&#x8FC7;&#x7A0B;&#x7684;&#x5EFA;&#x8BAE;&#xFF0C;&#x4ECE;&#x800C;&#x627E;&#x5230;&#x4EBA;&#x7C7B;&#x66F4;&#x6613;&#x8BC6;&#x522B;&#x7684;&#x56FE;&#x50CF;&#x6A21;&#x5F0F;&#x3002;</p>
+<p><a href="https://arxiv.org/abs/1506.06579" target="_blank">&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a>&#x63D0;&#x51FA;&#x4E86;&#x4E00;&#x79CD;&#x7ED3;&#x5408;&#x542F;&#x53D1;&#x5F0F;&#x6765;&#x5F15;&#x5BFC;&#x56FE;&#x50CF;&#x6A21;&#x5F0F;&#x7684;&#x4F18;&#x5316;&#x8FC7;&#x7A0B;&#x3002;&#x8BBA;&#x6587;&#x4E2D;&#x5C55;&#x793A;&#x4E86;&#x4E00;&#x4E9B;&#x7C7B;&#x522B;&#x7684;&#x6837;&#x672C;&#x56FE;&#x50CF;&#xFF0C;&#x6BD4;&#x5982;&#x706B;&#x70C8;&#x9E1F;&#x3001;&#x9E48;&#x9E55;&#x3001;&#x9ED1;&#x5929;&#x9E45;&#xFF0C;&#x4EBA;&#x773C;&#x591A;&#x591A;&#x5C11;&#x5C11;&#x90FD;&#x80FD;&#x8BC6;&#x522B;&#x51FA;&#x6765;&#x3002;&#x5728;<a href="https://github.com/yosinski/deep-visualization-toolbox/blob/master/optimize/gradient_optimizer.py#L313-L346" target="_blank">&#x8FD9;&#x91CC;</a>&#x6709;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#xFF08;&#x7CBE;&#x786E;&#x7684;&#x884C;&#x6570;&#x4EE5;&#x540E;&#x53EF;&#x80FD;&#x4F1A;&#x6539;&#x53D8;&#xFF09;&#x3002;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x9700;&#x8981;&#x542F;&#x53D1;&#x5F0F;&#x7684;&#x7EC4;&#x5408;&#x5E76;&#x5BF9;&#x53C2;&#x6570;&#x8FDB;&#x884C;&#x5FAE;&#x8C03;&#xFF0C;&#x4EE5;&#x751F;&#x6210;&#x8FD9;&#x4E9B;&#x56FE;&#x50CF;&#x3002;&#x4F46;&#x8BBA;&#x6587;&#x4E2D;&#x53C2;&#x6570;&#x7684;&#x9009;&#x62E9;&#x5E76;&#x4E0D;&#x660E;&#x786E;&#x3002;&#x5C3D;&#x7BA1;&#x5C1D;&#x8BD5;&#x4E86;&#x4E00;&#x756A;&#xFF0C;&#x6211;&#x8FD8;&#x662F;&#x65E0;&#x6CD5;&#x91CD;&#x73B0;&#x4ED6;&#x4EEC;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x4E5F;&#x8BB8;&#x6211;&#x8BEF;&#x89E3;&#x4E86;&#x8FD9;&#x7BC7;&#x8BBA;&#x6587;&#xFF0C;&#x6216;&#x8BB8;&#x542F;&#x53D1;&#x5F0F;&#x5BF9;&#x4ED6;&#x4EEC;&#x7F51;&#x7EDC;&#x67B6;&#x6784;&#xFF08;&#x4E00;&#x79CD;AlexNet&#x7684;&#x53D8;&#x4F53;&#xFF09;&#x7684;&#x5FAE;&#x8C03;&#x662F;&#x597D;&#x7684;&#xFF0C;&#x7136;&#x800C;&#x8FD9;&#x7BC7;&#x6559;&#x7A0B;&#x4E2D;&#x7528;&#x7684;&#x662F;&#x66F4;&#x5148;&#x8FDB;&#x7684;Inception&#x6A21;&#x578B;&#x3002;</p>
+<p><a href="https://arxiv.org/abs/1602.03616" target="_blank">&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;</a>&#x63D0;&#x51FA;&#x4E86;&#x53E6;&#x4E00;&#x79CD;&#x751F;&#x6210;&#x4EBA;&#x773C;&#x53EF;&#x8BC6;&#x522B;&#x7684;&#x56FE;&#x50CF;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4F5C;&#x5F0A;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x904D;&#x5386;&#x8BAD;&#x7EC3;&#x96C6;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x56FE;&#x50CF;&#xFF08;&#x6BD4;&#x5982;ImageNet&#xFF09;&#xFF0C;&#x627E;&#x5230;&#x80FD;&#x6700;&#x5927;&#x6FC0;&#x6D3B;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x4E2D;&#x7ED9;&#x5B9A;&#x7279;&#x5F81;&#x7684;&#x56FE;&#x50CF;&#x3002;&#x7136;&#x540E;&#x5BF9;&#x76F8;&#x4F3C;&#x7684;&#x56FE;&#x50CF;&#x505A;&#x805A;&#x7C7B;&#x548C;&#x5E73;&#x5747;&#x3002;&#x5C06;&#x8FD9;&#x4E2A;&#x4F5C;&#x4E3A;&#x4F18;&#x5316;&#x7A0B;&#x5E8F;&#x7684;&#x521D;&#x59CB;&#x56FE;&#x50CF;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5F53;&#x4F7F;&#x7528;&#x4ECE;&#x771F;&#x5B9E;&#x7167;&#x7247;&#x6784;&#x9020;&#x7684;&#x56FE;&#x50CF;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x80FD;&#x5F97;&#x5230;&#x66F4;&#x597D;&#x7684;&#x7ED3;&#x679C;&#x4E5F;&#x4E0D;&#x8DB3;&#x4E3A;&#x602A;&#x4E86;&#x3002;</p>
+<h2 id="&#x7EC3;&#x4E60;">&#x7EC3;&#x4E60;</h2>
+<p>&#x4E0B;&#x9762;&#x4F7F;&#x4E00;&#x4E9B;&#x53EF;&#x80FD;&#x4F1A;&#x8BA9;&#x4F60;&#x63D0;&#x5347;TensorFlow&#x6280;&#x80FD;&#x7684;&#x4E00;&#x4E9B;&#x5EFA;&#x8BAE;&#x7EC3;&#x4E60;&#x3002;&#x4E3A;&#x4E86;&#x5B66;&#x4E60;&#x5982;&#x4F55;&#x66F4;&#x5408;&#x9002;&#x5730;&#x4F7F;&#x7528;TensorFlow&#xFF0C;&#x5B9E;&#x8DF5;&#x7ECF;&#x9A8C;&#x662F;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x3002;</p>
+<p>&#x5728;&#x4F60;&#x5BF9;&#x8FD9;&#x4E2A;Notebook&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x4E4B;&#x524D;&#xFF0C;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5148;&#x5907;&#x4EFD;&#x4E00;&#x4E0B;&#x3002;</p>
+<ul>
+<li>&#x5C1D;&#x8BD5;&#x4E3A;&#x7F51;&#x7EDC;&#x4E2D;&#x8F83;&#x4F4E;&#x5C42;&#x7684;&#x7279;&#x5F81;&#x8FD0;&#x884C;&#x591A;&#x6B21;&#x4F18;&#x5316;&#x3002;&#x5F97;&#x5230;&#x7684;&#x56FE;&#x50CF;&#x603B;&#x662F;&#x76F8;&#x540C;&#x5417;&#xFF1F;</li>
+<li>&#x8BD5;&#x7740;&#x7528;&#x66F4;&#x5C11;&#x6216;&#x66F4;&#x591A;&#x7684;&#x4F18;&#x5316;&#x8FED;&#x4EE3;&#x3002;&#x8FD9;&#x5BF9;&#x56FE;&#x50CF;&#x8D28;&#x91CF;&#x6709;&#x4F55;&#x5F71;&#x54CD;&#xFF1F;</li>
+<li>&#x8BD5;&#x7740;&#x6539;&#x53D8;&#x5377;&#x79EF;&#x7279;&#x5F81;&#x7684;&#x635F;&#x5931;&#x51FD;&#x6570;&#x3002;&#x8FD9;&#x53EF;&#x4EE5;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x505A;&#x3002;&#x5B83;&#x5C06;&#x5982;&#x4F55;&#x5F71;&#x54CD;&#x56FE;&#x6837;&#x6A21;&#x5F0F;&#xFF1F;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;</li>
+<li>&#x4F60;&#x8BA4;&#x4E3A;&#x4F18;&#x5316;&#x5668;&#x9664;&#x4E86;&#x589E;&#x5927;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x6700;&#x5927;&#x5316;&#x7684;&#x90A3;&#x4E2A;&#x7279;&#x5F81;&#x4E4B;&#x5916;&#xFF0C;&#x4F1A;&#x653E;&#x5927;&#x5176;&#x4ED6;&#x7279;&#x5F81;&#x5417;&#xFF1F;&#x4F60;&#x8981;&#x600E;&#x4E48;&#x5EA6;&#x91CF;&#x8FD9;&#x4E2A;&#xFF1F;&#x4F60;&#x786E;&#x5B9A;&#x4F18;&#x5316;&#x5668;&#x4E00;&#x6B21;&#x53EA;&#x4F1A;&#x6700;&#x5927;&#x5316;&#x4E00;&#x4E2A;&#x7279;&#x5F81;&#x5417;&#xFF1F;</li>
+<li>&#x8BD5;&#x7740;&#x540C;&#x65F6;&#x6700;&#x5927;&#x5316;&#x591A;&#x4E2A;&#x7279;&#x5F81;&#x3002;</li>
+<li>&#x5728;MNIST&#x6570;&#x636E;&#x96C6;&#x4E0A;&#x8BAD;&#x7EC3;&#x4E00;&#x4E2A;&#x5C0F;&#x4E00;&#x70B9;&#x7684;&#x7F51;&#x7EDC;&#xFF0C;&#x7136;&#x540E;&#x8BD5;&#x7740;&#x5BF9;&#x7279;&#x5F81;&#x548C;&#x5C42;&#x6B21;&#x505A;&#x53EF;&#x89C6;&#x5316;&#x3002;&#x4F1A;&#x66F4;&#x5BB9;&#x6613;&#x5728;&#x56FE;&#x50CF;&#x4E2D;&#x770B;&#x5230;&#x56FE;&#x6848;&#x5417;&#xFF1F;</li>
+<li>&#x8BD5;&#x7740;&#x5B9E;&#x73B0;&#x4E0A;&#x8FF0;&#x8BBA;&#x6587;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x3002;</li>
+<li>&#x8BD5;&#x7740;&#x7528;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x6539;&#x5584;&#x4F18;&#x5316;&#x7684;&#x56FE;&#x50CF;&#x3002;</li>
+<li>&#x5411;&#x670B;&#x53CB;&#x89E3;&#x91CA;&#x7A0B;&#x5E8F;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;&#x3002;</li>
+</ul>
+<h2 id="license-mit">License (MIT)</h2>
+<p>Copyright (c) 2016 by <a href="http://www.hvass-labs.org/" target="_blank">Magnus Erik Hvass Pedersen</a></p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../12_Adversarial_Noise_MNIST_zh_CN/12_Adversarial_Noise_MNIST_zh_CN.html" class="navigation navigation-prev " aria-label="Previous page: MNIST的对抗噪声">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../14_DeepDream_zh_CN/14_DeepDream_zh_CN.html" class="navigation navigation-next " aria-label="Next page: DeepDream">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"可视化分析","level":"1.13","depth":1,"next":{"title":"DeepDream","level":"1.14","depth":1,"path":"14_DeepDream_zh_CN/14_DeepDream_zh_CN.md","ref":"14_DeepDream_zh_CN/14_DeepDream_zh_CN.md","articles":[]},"previous":{"title":"MNIST的对抗噪声","level":"1.12","depth":1,"path":"12_Adversarial_Noise_MNIST_zh_CN/12_Adversarial_Noise_MNIST_zh_CN.md","ref":"12_Adversarial_Noise_MNIST_zh_CN/12_Adversarial_Noise_MNIST_zh_CN.md","articles":[]},"dir":"ltr"},"config":{"plugins":["comment"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"comment":{"highlightCommented":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"wizardforcel","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"TensorFlow 教程（Hvass）","language":"zh","links":{"sidebar":{"TensorFlow 教程（Hvass）":"https://www.gitbook.com/book/wizardforcel/tf-tut-hvass"},"gitbook":true},"gitbook":"*","description":"Tensorflow 教程（Hvass）"},"file":{"path":"13_Visual_Analysis_zh_CN/13_Visual_Analysis_zh_CN.md","mtime":"2017-09-18T01:21:37.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-09-18T01:34:14.068Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-comment/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

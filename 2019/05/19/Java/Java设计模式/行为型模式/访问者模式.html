@@ -1,0 +1,190 @@
+<hr>
+<p>title: 访问者模式<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2019-5-19 22:13:39<br>
+tags:</p>
+<ul>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h2 id="访问者模式"><a class="header-anchor" href="#访问者模式">¶</a>访问者模式</h2>
+<h3 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h3>
+<blockquote>
+<p>Represent an operation to be performed on the elements of an objects structure.Vistor lets you define a new operation without changing the classes of the elements on which it operates.<br>
+封装一些作用于某种数据结构中的各元素操作，它可以在不改变数据结构的前提下定义作用于这些元素的新的操作。</p>
+</blockquote>
+<h3 id="访问者模式示意图"><a class="header-anchor" href="#访问者模式示意图">¶</a>访问者模式示意图</h3>
+<p><img src="%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F.png" alt="访问者模式"></p>
+<h3 id="流程"><a class="header-anchor" href="#流程">¶</a>流程</h3>
+<ol>
+<li>客户获取需要的信息，首先需要让对象结构生产出元素对象。</li>
+<li>元素先接受访问者的访问，访问者就可以获取生产的元素对象。</li>
+<li>访问者就可以按自己的方式操作元素对象，获得客户端需要的信息。</li>
+<li>最终客户端能够得到需要的信息。</li>
+</ol>
+<h3 id="代码实现"><a class="header-anchor" href="#代码实现">¶</a>代码实现</h3>
+<h4 id="元素"><a class="header-anchor" href="#元素">¶</a>元素</h4>
+<ol>
+<li>创建所有元素的抽象类</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 元素的抽象类，定义所有元素共同操作
+ */
+public abstract class Element {
+    /* 元素的动作 */
+    public abstract void test();
+    /* 元素接受访问者访问，访问者可以在自己那里定义访问动作 */
+    public abstract void accept(IVisitor visitor);
+}
+</code></pre>
+<ol start="2">
+<li>创建继承抽象类的具体元素1</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 元素1的实现类
+ */
+public class ConcreteElement1 extends Element {
+    @Override
+    public void test() {
+        System.out.println(&quot;元素1&quot;);
+    }
+
+    /**
+     * 接受访问者的访问，并将产生的元素对象送给访问者，让访问者操作元素对象
+     * @param visitor
+     */
+    @Override
+    public void accept(IVisitor visitor) {
+        visitor.visit(this);
+    }
+}
+</code></pre>
+<ol start="3">
+<li>创建继承抽象类的具体元素2</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 元素2的实现类
+ */
+public class ConcreteElement2 extends Element{
+    @Override
+    public void test() {
+        System.out.println(&quot;元素2&quot;);
+    }
+
+    /**
+     * 接受访问者的访问，将元素2的对象送给访问者，让访问者能操作元素2的对象
+     * @param visitor
+     */
+    @Override
+    public void accept(IVisitor visitor) {
+        visitor.visit(this);
+    }
+}
+</code></pre>
+<h4 id="访问者"><a class="header-anchor" href="#访问者">¶</a>访问者</h4>
+<ol>
+<li>创建所有访问者需要实现的接口</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 访问者接口
+ */
+public interface IVisitor {
+    /* 用于访问元素1 */
+    public void visit(ConcreteElement1 element1);
+    /* 用于访问元素2 */
+    public void visit(ConcreteElement2 element2);
+}
+</code></pre>
+<ol start="2">
+<li>创建访问者,这个访问者能够访问元素1和元素2</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 访问者
+ */
+public class ConcreteVisitor implements IVisitor {
+
+    /**
+     * 访问者访问元素1的方法，元素1接受了访问者的访问，访问者能够获取到元素1的对象，然后在这个方法中自由操作元素对象
+     * @param element1
+     */
+    @Override
+    public void visit(ConcreteElement1 element1) {
+        element1.test();
+    }
+
+    /**
+     * 访问者访问元素2的方法，元素1接受了访问者的访问，访问者能够获取到元素2的对象，然后在这个方法中自由操作元素对象
+     * @param element2
+     */
+    @Override
+    public void visit(ConcreteElement2 element2) {
+        element2.test();
+    }
+}
+</code></pre>
+<h4 id="对象结构"><a class="header-anchor" href="#对象结构">¶</a>对象结构</h4>
+<ol>
+<li>创建一个用来生产元素对象的对象结构</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 对象结构，用来生产元素对象，这里随机生产出元素1或者元素2
+ */
+public class ObjectStructure {
+    public static Element createElement(){
+        Random random = new Random();
+        if (random.nextInt(100) &gt; 50) {
+            return new ConcreteElement1();
+        }else {
+            return new ConcreteElement2();
+        }
+    }
+}
+</code></pre>
+<h4 id="场景实现"><a class="header-anchor" href="#场景实现">¶</a>场景实现</h4>
+<pre><code class="language-Java">public class Test{
+	public static void main(String[] args) {
+	        for (int i=0 ; i&lt;10 ; i++){
+            /* 创建元素对象 */
+            Element element = ObjectStructure.createElement();
+            /* 让元素接受访问者的访问 */
+            /* 接受访问后，访问者就获取元素对象，操作元素对象 */
+            element.accept(new ConcreteVisitor());
+        }
+	}
+}
+</code></pre>
+<h3 id="应用场景"><a class="header-anchor" href="#应用场景">¶</a>应用场景</h3>
+<ol>
+<li>一个对象结构有很多不同接口的对象，我们需要对这些对象实施依赖具体类的操作。</li>
+<li>需要对一个对象结构中的对象进行很多不同且不相关的操作。</li>
+<li>访问者模式使迭代器模式的扩展，当迭代器不能胜任，我们能使用访问者模式。</li>
+</ol>
+<h3 id="访问者模式的优点和缺点"><a class="header-anchor" href="#访问者模式的优点和缺点">¶</a>访问者模式的优点和缺点</h3>
+<h4 id="优点"><a class="header-anchor" href="#优点">¶</a>优点</h4>
+<ol>
+<li>符合单一职责原则，元素只负责加载数据，访问者只负责展现数据，对象结构只负责创建对象。</li>
+<li>扩展性非常好。对数据的操作很快捷，如果要增加操作，只需要在访问者中增加对应方法就行了。</li>
+<li>非常好的灵活性。</li>
+</ol>
+<h4 id="缺点"><a class="header-anchor" href="#缺点">¶</a>缺点</h4>
+<ol>
+<li>具体元素对访问者公开，违反迪米特原则。</li>
+<li>具体元素变更很困难。</li>
+<li>访问者直接访问具体元素，违反了依赖倒置原则。</li>
+</ol>

@@ -1,0 +1,1343 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>生成器(Generators) · Python进阶</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="东滨社: Sync up new tech ideas across world, for fun and love.">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-comment/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../Map_n_Filter/" />
+    
+    
+    <link rel="prev" href="Iteration.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://legacy.gitbook.com/book/eastlakeside/interpy-zh" target="_blank" class="custom-link">Python进阶</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../Introduction.html">
+            
+                <a href="../Introduction.html">
+            
+                    
+                    序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../translator.html">
+            
+                <a href="../translator.html">
+            
+                    
+                    译后感
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="../author.html">
+            
+                <a href="../author.html">
+            
+                    
+                    原作者前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../args_kwargs/">
+            
+                <a href="../args_kwargs/">
+            
+                    
+                    args 和 *kwargs
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../args_kwargs/Usage_args.html">
+            
+                <a href="../args_kwargs/Usage_args.html">
+            
+                    
+                    *args 的用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../args_kwargs/Usage_kwargs.html">
+            
+                <a href="../args_kwargs/Usage_kwargs.html">
+            
+                    
+                    **kwargs 的用法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../args_kwargs/Using_args_and_kwargs_to_call_function.html">
+            
+                <a href="../args_kwargs/Using_args_and_kwargs_to_call_function.html">
+            
+                    
+                    使用 args 和 *kwargs 来调用函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../args_kwargs/When_to_use.html">
+            
+                <a href="../args_kwargs/When_to_use.html">
+            
+                    
+                    啥时候使用它们
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../Debugging/">
+            
+                <a href="../Debugging/">
+            
+                    
+                    调试 Debugging
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    生成器 Generators
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="Iterable.html">
+            
+                <a href="Iterable.html">
+            
+                    
+                    可迭代对象(Iterable)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="Iterator.html">
+            
+                <a href="Iterator.html">
+            
+                    
+                    迭代器(Iterator)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="Iteration.html">
+            
+                <a href="Iteration.html">
+            
+                    
+                    迭代(Iteration)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.4" data-path="Generators.html">
+            
+                <a href="Generators.html">
+            
+                    
+                    生成器(Generators)
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../Map_n_Filter/">
+            
+                <a href="../Map_n_Filter/">
+            
+                    
+                    Map，Filter 和 Reduce
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../Map_n_Filter/Map.html">
+            
+                <a href="../Map_n_Filter/Map.html">
+            
+                    
+                    Map
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../Map_n_Filter/Filter.html">
+            
+                <a href="../Map_n_Filter/Filter.html">
+            
+                    
+                    Filter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../Map_n_Filter/Reduce.html">
+            
+                <a href="../Map_n_Filter/Reduce.html">
+            
+                    
+                    Reduce
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../set_data_structure/set_data_structure.html">
+            
+                <a href="../set_data_structure/set_data_structure.html">
+            
+                    
+                    set 数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../ternary_operators/ternary_operators.html">
+            
+                <a href="../ternary_operators/ternary_operators.html">
+            
+                    
+                    三元运算符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../decorators/">
+            
+                <a href="../decorators/">
+            
+                    
+                    装饰器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../decorators/everything_is_object.html">
+            
+                <a href="../decorators/everything_is_object.html">
+            
+                    
+                    一切皆对象
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../decorators/def_func_in_func.html">
+            
+                <a href="../decorators/def_func_in_func.html">
+            
+                    
+                    在函数中定义函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../decorators/return_func_in_func.html">
+            
+                <a href="../decorators/return_func_in_func.html">
+            
+                    
+                    从函数中返回函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../decorators/func_as_argument.html">
+            
+                <a href="../decorators/func_as_argument.html">
+            
+                    
+                    将函数作为参数传给另一个函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../decorators/your_first_decorator.html">
+            
+                <a href="../decorators/your_first_decorator.html">
+            
+                    
+                    你的第一个装饰器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.5.1" data-path="../decorators/use_cases.html">
+            
+                <a href="../decorators/use_cases.html">
+            
+                    
+                    使用场景
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.2" data-path="../decorators/auth.html">
+            
+                <a href="../decorators/auth.html">
+            
+                    
+                    授权
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.3" data-path="../decorators/logging.html">
+            
+                <a href="../decorators/logging.html">
+            
+                    
+                    日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../decorators/deco_with_args.html">
+            
+                <a href="../decorators/deco_with_args.html">
+            
+                    
+                    带参数的装饰器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.6.1" data-path="../decorators/nest_deco_in_func.html">
+            
+                <a href="../decorators/nest_deco_in_func.html">
+            
+                    
+                    在函数中嵌入装饰器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.2" data-path="../decorators/deco_class.html">
+            
+                <a href="../decorators/deco_class.html">
+            
+                    
+                    装饰器类
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../global_return/">
+            
+                <a href="../global_return/">
+            
+                    
+                    Global和Return
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../global_return/multiple_return_values.html">
+            
+                <a href="../global_return/multiple_return_values.html">
+            
+                    
+                    多个return值
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../Mutation/">
+            
+                <a href="../Mutation/">
+            
+                    
+                    对象变动 Mutation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../slots_magic/">
+            
+                <a href="../slots_magic/">
+            
+                    
+                    slots魔法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../virtual_environment/virtual_environment.html">
+            
+                <a href="../virtual_environment/virtual_environment.html">
+            
+                    
+                    虚拟环境 Virtualenv
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../collections/collections.html">
+            
+                <a href="../collections/collections.html">
+            
+                    
+                    容器 Collections
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../Enumerate/Enumerate.html">
+            
+                <a href="../Enumerate/Enumerate.html">
+            
+                    
+                    枚举 Enumerate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../introspection/">
+            
+                <a href="../introspection/">
+            
+                    
+                    对象自省
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.15.1" data-path="../introspection/dir.html">
+            
+                <a href="../introspection/dir.html">
+            
+                    
+                    dir
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.2" data-path="../introspection/type_and_id.html">
+            
+                <a href="../introspection/type_and_id.html">
+            
+                    
+                    type和id
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15.3" data-path="../introspection/inspect.html">
+            
+                <a href="../introspection/inspect.html">
+            
+                    
+                    inspect模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="../Comprehensions/">
+            
+                <a href="../Comprehensions/">
+            
+                    
+                    推导式 Comprehension
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.16.1" data-path="../Comprehensions/list-comprehensions.html">
+            
+                <a href="../Comprehensions/list-comprehensions.html">
+            
+                    
+                    列表推导式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.2" data-path="../Comprehensions/dict-comprehensions.html">
+            
+                <a href="../Comprehensions/dict-comprehensions.html">
+            
+                    
+                    字典推导式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16.3" data-path="../Comprehensions/set-comprehensions.html">
+            
+                <a href="../Comprehensions/set-comprehensions.html">
+            
+                    
+                    集合推导式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="../exception/">
+            
+                <a href="../exception/">
+            
+                    
+                    异常
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1" data-path="../exception/multiple_exception.html">
+            
+                <a href="../exception/multiple_exception.html">
+            
+                    
+                    处理多个异常
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.17.1.1" data-path="../exception/finally_clause.html">
+            
+                <a href="../exception/finally_clause.html">
+            
+                    
+                    finally从句
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17.1.2" data-path="../exception/try_else_clause.html">
+            
+                <a href="../exception/try_else_clause.html">
+            
+                    
+                    try/else从句
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="../Lambdas/">
+            
+                <a href="../Lambdas/">
+            
+                    
+                    lambda表达式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" data-path="../Onelines/">
+            
+                <a href="../Onelines/">
+            
+                    
+                    一行式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="../for_else/">
+            
+                <a href="../for_else/">
+            
+                    
+                    For - Else
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.20.1" data-path="../for_else/else_clause.html">
+            
+                <a href="../for_else/else_clause.html">
+            
+                    
+                    else语句
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" data-path="../c_extensions/">
+            
+                <a href="../c_extensions/">
+            
+                    
+                    使用C扩展
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.21.1" data-path="../c_extensions/ctypes.html">
+            
+                <a href="../c_extensions/ctypes.html">
+            
+                    
+                    CTypes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.2" data-path="../c_extensions/swig.html">
+            
+                <a href="../c_extensions/swig.html">
+            
+                    
+                    SWIG
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21.3" data-path="../c_extensions/python_c_api.html">
+            
+                <a href="../c_extensions/python_c_api.html">
+            
+                    
+                    Python/C API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" data-path="../open_func/open_func.html">
+            
+                <a href="../open_func/open_func.html">
+            
+                    
+                    open函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" data-path="../TargetingPython2+3/">
+            
+                <a href="../TargetingPython2+3/">
+            
+                    
+                    目标Python2+3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24" data-path="../Coroutines/">
+            
+                <a href="../Coroutines/">
+            
+                    
+                    协程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25" data-path="../func_caching/">
+            
+                <a href="../func_caching/">
+            
+                    
+                    函数缓存
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.25.1" data-path="../func_caching/python_32.html">
+            
+                <a href="../func_caching/python_32.html">
+            
+                    
+                    Python 3.2+
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25.2" data-path="../func_caching/python_2.html">
+            
+                <a href="../func_caching/python_2.html">
+            
+                    
+                    Python 2+
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26" data-path="../context_managers/">
+            
+                <a href="../context_managers/">
+            
+                    
+                    上下文管理器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.26.1" data-path="../context_managers/implement_as_class.html">
+            
+                <a href="../context_managers/implement_as_class.html">
+            
+                    
+                    基于类的实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26.2" data-path="../context_managers/handle_exception.html">
+            
+                <a href="../context_managers/handle_exception.html">
+            
+                    
+                    处理异常
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.26.3" data-path="../context_managers/implement_as_generator.html">
+            
+                <a href="../context_managers/implement_as_generator.html">
+            
+                    
+                    基于生成器的实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.27" data-path="../seealso.html">
+            
+                <a href="../seealso.html">
+            
+                    
+                    推荐阅读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.28" data-path="../donors.html">
+            
+                <a href="../donors.html">
+            
+                    
+                    捐赠名单
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >生成器(Generators)</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x751F;&#x6210;&#x5668;generators">&#x751F;&#x6210;&#x5668;(Generators)</h1>
+<p>&#x751F;&#x6210;&#x5668;&#x4E5F;&#x662F;&#x4E00;&#x79CD;&#x8FED;&#x4EE3;&#x5668;&#xFF0C;&#x4F46;&#x662F;&#x4F60;&#x53EA;&#x80FD;&#x5BF9;&#x5176;&#x8FED;&#x4EE3;&#x4E00;&#x6B21;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x5E76;&#x6CA1;&#x6709;&#x628A;&#x6240;&#x6709;&#x7684;&#x503C;&#x5B58;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x800C;&#x662F;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x751F;&#x6210;&#x503C;&#x3002;&#x4F60;&#x901A;&#x8FC7;&#x904D;&#x5386;&#x6765;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#xFF0C;&#x8981;&#x4E48;&#x7528;&#x4E00;&#x4E2A;&#x201C;for&#x201D;&#x5FAA;&#x73AF;&#xFF0C;&#x8981;&#x4E48;&#x5C06;&#x5B83;&#x4EEC;&#x4F20;&#x9012;&#x7ED9;&#x4EFB;&#x610F;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x8FED;&#x4EE3;&#x7684;&#x51FD;&#x6570;&#x548C;&#x7ED3;&#x6784;&#x3002;&#x5927;&#x591A;&#x6570;&#x65F6;&#x5019;&#x751F;&#x6210;&#x5668;&#x662F;&#x4EE5;&#x51FD;&#x6570;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x5B83;&#x4EEC;&#x5E76;&#x4E0D;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x800C;&#x662F;<code>yield</code>(&#x6682;&#x4E14;&#x8BD1;&#x4F5C;&#x201C;&#x751F;&#x51FA;&#x201D;)&#x4E00;&#x4E2A;&#x503C;&#x3002;&#x8FD9;&#x91CC;&#x6709;&#x4E2A;&#x751F;&#x6210;&#x5668;&#x51FD;&#x6570;&#x7684;&#x7B80;&#x5355;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generator_function</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">10</span>):
+        <span class="hljs-keyword">yield</span> i
+
+<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> generator_function():
+    print(item)
+
+<span class="hljs-comment"># Output: 0</span>
+<span class="hljs-comment"># 1</span>
+<span class="hljs-comment"># 2</span>
+<span class="hljs-comment"># 3</span>
+<span class="hljs-comment"># 4</span>
+<span class="hljs-comment"># 5</span>
+<span class="hljs-comment"># 6</span>
+<span class="hljs-comment"># 7</span>
+<span class="hljs-comment"># 8</span>
+<span class="hljs-comment"># 9</span>
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x6848;&#x4F8B;&#x5E76;&#x4E0D;&#x662F;&#x975E;&#x5E38;&#x5B9E;&#x7528;&#x3002;&#x751F;&#x6210;&#x5668;&#x6700;&#x4F73;&#x5E94;&#x7528;&#x573A;&#x666F;&#x662F;&#xFF1A;&#x4F60;&#x4E0D;&#x60F3;&#x540C;&#x4E00;&#x65F6;&#x95F4;&#x5C06;&#x6240;&#x6709;&#x8BA1;&#x7B97;&#x51FA;&#x6765;&#x7684;&#x5927;&#x91CF;&#x7ED3;&#x679C;&#x96C6;&#x5206;&#x914D;&#x5230;&#x5185;&#x5B58;&#x5F53;&#x4E2D;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x7ED3;&#x679C;&#x96C6;&#x91CC;&#x8FD8;&#x5305;&#x542B;&#x5FAA;&#x73AF;&#x3002;</p>
+<blockquote>
+<p>&#x8BD1;&#x8005;&#x6CE8;&#xFF1A;&#x8FD9;&#x6837;&#x505A;&#x4F1A;&#x6D88;&#x8017;&#x5927;&#x91CF;&#x8D44;&#x6E90; </p>
+</blockquote>
+<p>&#x8BB8;&#x591A;Python 2&#x91CC;&#x7684;&#x6807;&#x51C6;&#x5E93;&#x51FD;&#x6570;&#x90FD;&#x4F1A;&#x8FD4;&#x56DE;&#x5217;&#x8868;&#xFF0C;&#x800C;Python 3&#x90FD;&#x4FEE;&#x6539;&#x6210;&#x4E86;&#x8FD4;&#x56DE;&#x751F;&#x6210;&#x5668;&#xFF0C;&#x56E0;&#x4E3A;&#x751F;&#x6210;&#x5668;&#x5360;&#x7528;&#x66F4;&#x5C11;&#x7684;&#x8D44;&#x6E90;&#x3002;  </p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x8BA1;&#x7B97;&#x6590;&#x6CE2;&#x90A3;&#x5951;&#x6570;&#x5217;&#x7684;&#x751F;&#x6210;&#x5668;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># generator version</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fibon</span><span class="hljs-params">(n)</span>:</span>
+    a = b = <span class="hljs-number">1</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n):
+        <span class="hljs-keyword">yield</span> a
+        a, b = b, a + b
+</code></pre>
+<p>&#x51FD;&#x6570;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>for x in fibon(1000000):
+    print(x)
+</code></pre><p>&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x62C5;&#x5FC3;&#x5B83;&#x4F1A;&#x4F7F;&#x7528;&#x5927;&#x91CF;&#x8D44;&#x6E90;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x4E4B;&#x524D;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x8FD9;&#x6837;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#x8BDD;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fibon</span><span class="hljs-params">(n)</span>:</span>
+    a = b = <span class="hljs-number">1</span>
+    result = []
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(n):
+        result.append(a)
+        a, b = b, a + b
+    <span class="hljs-keyword">return</span> result
+</code></pre>
+<p>&#x8FD9;&#x4E5F;&#x8BB8;&#x4F1A;&#x5728;&#x8BA1;&#x7B97;&#x5F88;&#x5927;&#x7684;&#x8F93;&#x5165;&#x53C2;&#x6570;&#x65F6;&#xFF0C;&#x7528;&#x5C3D;&#x6240;&#x6709;&#x7684;&#x8D44;&#x6E90;&#x3002;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x8BA8;&#x8BBA;&#x8FC7;&#x751F;&#x6210;&#x5668;&#x4F7F;&#x7528;&#x4E00;&#x6B21;&#x8FED;&#x4EE3;&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x5E76;&#x6CA1;&#x6709;&#x6D4B;&#x8BD5;&#x8FC7;&#x3002;&#x5728;&#x6D4B;&#x8BD5;&#x524D;&#x4F60;&#x9700;&#x8981;&#x518D;&#x77E5;&#x9053;&#x4E00;&#x4E2A;Python&#x5185;&#x7F6E;&#x51FD;&#x6570;&#xFF1A;<code>next()</code>&#x3002;&#x5B83;&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x83B7;&#x53D6;&#x4E00;&#x4E2A;&#x5E8F;&#x5217;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x3002;&#x90A3;&#x6211;&#x4EEC;&#x6765;&#x9A8C;&#x8BC1;&#x4E0B;&#x6211;&#x4EEC;&#x7684;&#x7406;&#x89E3;&#xFF1A;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">generator_function</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):
+        <span class="hljs-keyword">yield</span> i
+
+gen = generator_function()
+print(next(gen))
+<span class="hljs-comment"># Output: 0</span>
+print(next(gen))
+<span class="hljs-comment"># Output: 1</span>
+print(next(gen))
+<span class="hljs-comment"># Output: 2</span>
+print(next(gen))
+<span class="hljs-comment"># Output: Traceback (most recent call last):</span>
+<span class="hljs-comment">#            File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span>
+<span class="hljs-comment">#         StopIteration</span>
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5728;<code>yield</code>&#x6389;&#x6240;&#x6709;&#x7684;&#x503C;&#x540E;&#xFF0C;<code>next()</code>&#x89E6;&#x53D1;&#x4E86;&#x4E00;&#x4E2A;<code>StopIteration</code>&#x7684;&#x5F02;&#x5E38;&#x3002;&#x57FA;&#x672C;&#x4E0A;&#x8FD9;&#x4E2A;&#x5F02;&#x5E38;&#x544A;&#x8BC9;&#x6211;&#x4EEC;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x503C;&#x90FD;&#x5DF2;&#x7ECF;&#x88AB;<code>yield</code>&#x5B8C;&#x4E86;&#x3002;&#x4F60;&#x4E5F;&#x8BB8;&#x4F1A;&#x5947;&#x602A;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x6211;&#x4EEC;&#x5728;&#x4F7F;&#x7528;<code>for</code>&#x5FAA;&#x73AF;&#x65F6;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x5F02;&#x5E38;&#x5462;&#xFF1F;&#x554A;&#x54C8;&#xFF0C;&#x7B54;&#x6848;&#x5F88;&#x7B80;&#x5355;&#x3002;<code>for</code>&#x5FAA;&#x73AF;&#x4F1A;&#x81EA;&#x52A8;&#x6355;&#x6349;&#x5230;&#x8FD9;&#x4E2A;&#x5F02;&#x5E38;&#x5E76;&#x505C;&#x6B62;&#x8C03;&#x7528;<code>next()</code>&#x3002;&#x4F60;&#x77E5;&#x4E0D;&#x77E5;&#x9053;Python&#x4E2D;&#x4E00;&#x4E9B;&#x5185;&#x7F6E;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E5F;&#x652F;&#x6301;&#x8FED;&#x4EE3;&#x54E6;&#xFF1F;&#x6211;&#x4EEC;&#x8FD9;&#x5C31;&#x53BB;&#x770B;&#x770B;&#xFF1A;</p>
+<pre><code class="lang-python">my_string = <span class="hljs-string">&quot;Yasoob&quot;</span>
+next(my_string)
+<span class="hljs-comment"># Output: Traceback (most recent call last):</span>
+<span class="hljs-comment">#      File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span>
+<span class="hljs-comment">#    TypeError: str object is not an iterator</span>
+</code></pre>
+<p>&#x597D;&#x5427;&#xFF0C;&#x8FD9;&#x4E0D;&#x662F;&#x6211;&#x4EEC;&#x9884;&#x671F;&#x7684;&#x3002;&#x8FD9;&#x4E2A;&#x5F02;&#x5E38;&#x8BF4;&#x90A3;&#x4E2A;<code>str</code>&#x5BF9;&#x8C61;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#x3002;&#x5BF9;&#xFF0C;&#x5C31;&#x662F;&#x8FD9;&#x6837;&#xFF01;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x8FED;&#x4EE3;&#x5BF9;&#x8C61;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x5B83;&#x652F;&#x6301;&#x8FED;&#x4EE3;&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x8FED;&#x4EE3;&#x64CD;&#x4F5C;&#x3002;&#x90A3;&#x6211;&#x4EEC;&#x600E;&#x6837;&#x624D;&#x80FD;&#x5BF9;&#x5B83;&#x5B9E;&#x65BD;&#x8FED;&#x4EE3;&#x5462;&#xFF1F;&#x662F;&#x65F6;&#x5019;&#x5B66;&#x4E60;&#x4E0B;&#x53E6;&#x4E00;&#x4E2A;&#x5185;&#x7F6E;&#x51FD;&#x6570;&#xFF0C;<code>iter</code>&#x3002;&#x5B83;&#x5C06;&#x6839;&#x636E;&#x4E00;&#x4E2A;&#x53EF;&#x8FED;&#x4EE3;&#x5BF9;&#x8C61;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x8FED;&#x4EE3;&#x5668;&#x5BF9;&#x8C61;&#x3002;&#x8FD9;&#x91CC;&#x662F;&#x6211;&#x4EEC;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x5B83;&#xFF1A;</p>
+<pre><code class="lang-python">my_string = <span class="hljs-string">&quot;Yasoob&quot;</span>
+my_iter = iter(my_string)
+next(my_iter)
+<span class="hljs-comment"># Output: &apos;Y&apos;</span>
+</code></pre>
+<p>&#x73B0;&#x5728;&#x597D;&#x591A;&#x5566;&#x3002;&#x6211;&#x80AF;&#x5B9A;&#x4F60;&#x5DF2;&#x7ECF;&#x7231;&#x4E0A;&#x4E86;&#x5B66;&#x4E60;&#x751F;&#x6210;&#x5668;&#x3002;&#x4E00;&#x5B9A;&#x8981;&#x8BB0;&#x4F4F;&#xFF0C;&#x60F3;&#x8981;&#x5B8C;&#x5168;&#x638C;&#x63E1;&#x8FD9;&#x4E2A;&#x6982;&#x5FF5;&#xFF0C;&#x4F60;&#x53EA;&#x6709;&#x4F7F;&#x7528;&#x5B83;&#x3002;&#x786E;&#x4FDD;&#x4F60;&#x6309;&#x7167;&#x8FD9;&#x4E2A;&#x6A21;&#x5F0F;&#xFF0C;&#x5E76;&#x5728;&#x751F;&#x6210;&#x5668;&#x5BF9;&#x4F60;&#x6709;&#x610F;&#x4E49;&#x7684;&#x4EFB;&#x4F55;&#x65F6;&#x5019;&#x90FD;&#x4F7F;&#x7528;&#x5B83;&#x3002;&#x4F60;&#x7EDD;&#x5BF9;&#x4E0D;&#x4F1A;&#x5931;&#x671B;&#x7684;&#xFF01;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Iteration.html" class="navigation navigation-prev " aria-label="Previous page: 迭代(Iteration)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../Map_n_Filter/" class="navigation navigation-next " aria-label="Next page: Map，Filter 和 Reduce">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"生成器(Generators)","level":"1.4.4","depth":2,"next":{"title":"Map，Filter 和 Reduce","level":"1.5","depth":1,"path":"Map_n_Filter/README.md","ref":"Map_n_Filter/README.md","articles":[{"title":"Map","level":"1.5.1","depth":2,"path":"Map_n_Filter/Map.md","ref":"Map_n_Filter/Map.md","articles":[]},{"title":"Filter","level":"1.5.2","depth":2,"path":"Map_n_Filter/Filter.md","ref":"Map_n_Filter/Filter.md","articles":[]},{"title":"Reduce","level":"1.5.3","depth":2,"path":"Map_n_Filter/Reduce.md","ref":"Map_n_Filter/Reduce.md","articles":[]}]},"previous":{"title":"迭代(Iteration)","level":"1.4.3","depth":2,"path":"Generators/Iteration.md","ref":"Generators/Iteration.md","articles":[]},"dir":"ltr"},"config":{"plugins":["","comment"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"comment":{"highlightCommented":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"github":"eastlakeside/interpy-zh","theme":"default","author":"东滨社: Sync up new tech ideas across world, for fun and love.","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Python进阶","language":"zh","links":{"sidebar":{"Python进阶":"https://legacy.gitbook.com/book/eastlakeside/interpy-zh"},"gitbook":true},"gitbook":"*","description":"IntermediatePython中译本"},"file":{"path":"Generators/Generators.md","mtime":"2018-10-11T01:59:49.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-11T02:00:02.893Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-comment/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

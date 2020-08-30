@@ -1,0 +1,264 @@
+<hr>
+<p>title: 原型模式<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2019-5-19 00:00:00<br>
+tags:</p>
+<ul>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>创建型模式<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>创建型模式<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h2 id="原型模式"><a class="header-anchor" href="#原型模式">¶</a>原型模式</h2>
+<h3 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h3>
+<blockquote>
+<p>Specify the kinds of objects to create using a prototypical instance , and create new objects by copying this prototye.<br>
+用原型实例指定创建对象的种类，并且通过拷贝这些原型创建对象。</p>
+</blockquote>
+<h3 id="原型模式示意图"><a class="header-anchor" href="#原型模式示意图">¶</a>原型模式示意图</h3>
+<p><img src="%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F.png" alt="原型模式"></p>
+<h3 id="流程"><a class="header-anchor" href="#流程">¶</a>流程</h3>
+<ol>
+<li>首先创建一个实体类，这个实体类需要实现Cloneable接口的clone()方法，这样能拥有克隆能力。</li>
+<li>然后创建一个对象，根据客户端需要，以创建的这个对象作为原型，克隆多个需要的对象，然后通过set方法将这些克隆的对象改为自己需要的对象。</li>
+</ol>
+<h3 id="需求"><a class="header-anchor" href="#需求">¶</a>需求</h3>
+<p>我们为幼儿园小朋友发成绩表，他们的年龄和成绩都一样，我们只需要改成绩表的名字就行了。</p>
+<h3 id="代码实现"><a class="header-anchor" href="#代码实现">¶</a>代码实现</h3>
+<ol>
+<li>创建一个学生类,作为拷贝原型</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 原型模式需要实现Cloneable接口
+ */
+@Data
+@ToString
+public class Student implements Cloneable {
+    private String name ;
+    private String age ;
+    private String score ;
+    private ArrayList&lt;Student&gt; students = new ArrayList&lt;&gt;();
+    private final ArrayList&lt;Student&gt; finalStudent = new ArrayList&lt;&gt;();
+
+    public Student(String name, String age, String score) {
+        this.name = name;
+        this.age = age;
+        this.score = score;
+        System.out.println(name + &quot;创建成功&quot;);
+    }
+
+    /**
+     * 这个方法是原型模式的基础
+     * @return
+     * @throws CloneNotSupportedException
+     */
+    public Student clone()  {
+        System.out.println(&quot;学生拷贝成功&quot;);
+        Student student = null ;
+        try {
+            // 这是一种浅拷贝，只能拷贝基本类型(包括string)，其他的数组这些引用类型就与原型对象共享。
+            student =  (Student) super.clone() ;
+            // 这个是深拷贝，将数组和引用一起拷贝，每个拷贝的对象有自己的数组和引用
+            this.students = (ArrayList&lt;Student&gt;) this.students.clone();
+
+            // 这个finalStudent是由final修饰，，不能重新赋值，不能拷贝
+            // this.finalStudent = (ArrayList&lt;Student&gt;) this.finalStudent.clone() ;
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+
+        return student ;
+    }
+}
+
+</code></pre>
+<ol start="2">
+<li>开始发成绩表了</li>
+</ol>
+<pre><code class="language-Java">public class Test {
+    public static void main(String[] args) {
+        Student rack = new Student(&quot;rack&quot;, &quot;12&quot;, &quot;16&quot;);
+        Student clone = (Student) rack.clone();
+        clone.setName(&quot;leen&quot;);
+
+        System.out.println(rack);
+        System.out.println(clone);
+    }
+}
+</code></pre>
+<h3 id="原型模式扩展"><a class="header-anchor" href="#原型模式扩展">¶</a>原型模式扩展</h3>
+<blockquote>
+<p>为原型模式增加一个原型管理器，用来管理原型的创建。</p>
+</blockquote>
+<h4 id="需求-v2"><a class="header-anchor" href="#需求-v2">¶</a>需求</h4>
+<p>现在我们要创建一个学校，学校里面有教师，学生等实体，我们需要以一个教师和学生作为原型，创建出多个教师和学生。</p>
+<h4 id="代码实现-v2"><a class="header-anchor" href="#代码实现-v2">¶</a>代码实现</h4>
+<ol>
+<li>创建一个学校接口，里面放入clone方法，使得所有实现它的实体都需要重写clone,拥有复制的能力。</li>
+</ol>
+<pre><code class="language-Java">public interface School extends Cloneable {
+    public School clone();
+}
+</code></pre>
+<ol start="2">
+<li>创建一个学生类,实现学校接口。</li>
+</ol>
+<pre><code class="language-Java">@Data
+@ToString
+public class Student implements School {
+    private String name ;
+    private String age ;
+    private String score ;
+    private ArrayList&lt;Student&gt; students = new ArrayList&lt;&gt;();
+    private final ArrayList&lt;Student&gt; finalStudent = new ArrayList&lt;&gt;();
+
+    public Student(String name, String age, String score) {
+        this.name = name;
+        this.age = age;
+        this.score = score;
+        System.out.println(name + &quot;创建成功&quot;);
+    }
+
+    /**
+     * 这个方法是原型模式的基础
+     * @return
+     * @throws CloneNotSupportedException
+     */
+    public Student clone()  {
+        System.out.println(&quot;学生拷贝成功&quot;);
+        Student student = null ;
+        try {
+            // 这是一种浅拷贝，只能拷贝基本类型(包括string)，其他的数组这些引用类型就与原型对象共享。
+            student =  (Student) super.clone() ;
+            // 这个是深拷贝，将数组和引用一起拷贝，每个拷贝的对象有自己的数组和引用
+            this.students = (ArrayList&lt;Student&gt;) this.students.clone();
+
+            // 这个finalStudent是由final修饰，，不能重新赋值，不能拷贝
+            // this.finalStudent = (ArrayList&lt;Student&gt;) this.finalStudent.clone() ;
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+
+        return student ;
+    }
+}
+
+</code></pre>
+<ol start="3">
+<li>创建一个教师类</li>
+</ol>
+<pre><code class="language-Java">@Data
+@ToString
+public class Teacher implements School {
+    private String name ;
+    private String age ;
+    private String subject ;
+
+    public Teacher(String name, String age, String subject) {
+        this.name = name;
+        this.age = age;
+        this.subject = subject;
+    }
+
+    public Teacher clone(){
+        Teacher teacher = null ;
+        try {
+            teacher = (Teacher) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+
+        return teacher ;
+    }
+}
+
+</code></pre>
+<ol start="5">
+<li>创建一个原型管理器，我们如果需要更多的职位，比如校长等，我们直接通过原型管理器将原型对象加入进去，使其能拥有复制能力。</li>
+</ol>
+<pre><code class="language-Java">public class PrototypeManager {
+    public Map&lt;String , School&gt; map = new HashMap&lt;&gt;();
+
+    /**
+     * 增加除了教师学生之外的学校职位
+     * @param key
+     * @param value
+     */
+    public void add(String key , School value){
+        this.map.put(key , value);
+    }
+
+    /**
+     * 从原型池中获取原型，如果原型不存在，抛异常
+     * @param key
+     * @return
+     */
+    public School get(String key){
+        School school = null;
+        try {
+            school = this.map.get(key);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return school ;
+    }
+}
+</code></pre>
+<ol start="4">
+<li>场景实现</li>
+</ol>
+<pre><code class="language-Java">public class Test {
+    public static void main(String[] args) {
+        PrototypeManager prototypeManager = new PrototypeManager();
+        prototypeManager.add(&quot;teacher&quot; , new Teacher(&quot;teacher1&quot; , &quot;21&quot; , &quot;数学&quot;));
+        Teacher teacher1 = (Teacher)prototypeManager.get(&quot;teacher&quot;);
+        Teacher teacher2 = teacher1.clone();
+        teacher2.setName(&quot;teacher2&quot;);
+
+        prototypeManager.add(&quot;student&quot; , new Student(&quot;student1&quot; , &quot;12&quot; , &quot;45&quot;));
+        Student student1 = (Student)prototypeManager.get(&quot;student&quot;);
+        Student student2 = student1.clone();
+        student2.setName(&quot;student2&quot;);
+
+        System.out.println(teacher1);
+        System.out.println(teacher2);
+        System.out.println(student1);
+        System.out.println(student2);
+    }
+}
+</code></pre>
+<h3 id="应用场景"><a class="header-anchor" href="#应用场景">¶</a>应用场景</h3>
+<ol>
+<li>一个对象有多个修改者。</li>
+<li>类初始化需要很多资源，我们要优化的话，就直接克隆一个对象，不需要再创建。</li>
+<li>通过new产生一个对象很繁琐，为了简化，我们直接copy就行了。<br>
+原型模式就像我们复制粘贴一样，文章大体不变，只变一些细节。<br>
+原型模式一般与工厂模式一起用；原型模式已经和java融为一体，随手就能用。</li>
+</ol>
+<h3 id="原型模式的优点和注意事项"><a class="header-anchor" href="#原型模式的优点和注意事项">¶</a>原型模式的优点和注意事项</h3>
+<h4 id="优点"><a class="header-anchor" href="#优点">¶</a>优点</h4>
+<ol>
+<li>原型模式是在内存二进制流的拷贝，比直接new一个对象消耗性能少。</li>
+<li>在内存中拷贝，构造函数不会被执行，这就逃避构造函数的约束。</li>
+</ol>
+<h4 id="注意事项"><a class="header-anchor" href="#注意事项">¶</a>注意事项</h4>
+<ol>
+<li>如果实体类中只有基本数据类型和string，就用浅拷贝进行克隆。</li>
+<li>如果实体类中还有数组和引用，就需要单独为它们进行深拷贝。</li>
+<li>使用clone后，克隆一个对象是直接拷贝二进制流，不会执行构造函数。如果需要使用构造函数，就不能使用原型模式。</li>
+<li>变量前加了final关键字，就不能使用clone进行拷贝。</li>
+</ol>

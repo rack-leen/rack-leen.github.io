@@ -1,0 +1,828 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>简单线性模型 · TensorFlow 教程（Hvass）</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="wizardforcel">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-comment/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../02_Convolutional_Neural_Network_zh_CN/02_Convolutional_Neural_Network_zh_CN.html" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.gitbook.com/book/wizardforcel/tf-tut-hvass" target="_blank" class="custom-link">TensorFlow 教程（Hvass）</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    TensorFlow 教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="01_Simple_Linear_Model_zh_CN.html">
+            
+                <a href="01_Simple_Linear_Model_zh_CN.html">
+            
+                    
+                    简单线性模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../02_Convolutional_Neural_Network_zh_CN/02_Convolutional_Neural_Network_zh_CN.html">
+            
+                <a href="../02_Convolutional_Neural_Network_zh_CN/02_Convolutional_Neural_Network_zh_CN.html">
+            
+                    
+                    卷积神经网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../03_PrettyTensor_zh_CN/03_PrettyTensor_zh_CN.html">
+            
+                <a href="../03_PrettyTensor_zh_CN/03_PrettyTensor_zh_CN.html">
+            
+                    
+                    PrettyTensor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../04_Save_Restore_zh_CN/04_Save_Restore_zh_CN.html">
+            
+                <a href="../04_Save_Restore_zh_CN/04_Save_Restore_zh_CN.html">
+            
+                    
+                    保存 & 恢复
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../05_Ensemble_Learning_zh_CN/05_Ensemble_Learning_zh_CN.html">
+            
+                <a href="../05_Ensemble_Learning_zh_CN/05_Ensemble_Learning_zh_CN.html">
+            
+                    
+                    集成学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../06_CIFAR-10_zh_CN/06_CIFAR-10_zh_CN.html">
+            
+                <a href="../06_CIFAR-10_zh_CN/06_CIFAR-10_zh_CN.html">
+            
+                    
+                    CIFAR-10
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../07_Inception_Model_zh_CN/07_Inception_Model_zh_CN.html">
+            
+                <a href="../07_Inception_Model_zh_CN/07_Inception_Model_zh_CN.html">
+            
+                    
+                    Inception 模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../08_Transfer_Learning_zh_CN/08_Transfer_Learning_zh_CN.html">
+            
+                <a href="../08_Transfer_Learning_zh_CN/08_Transfer_Learning_zh_CN.html">
+            
+                    
+                    迁移学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../09_Video_Data_zh_CN/09_Video_Data_zh_CN.html">
+            
+                <a href="../09_Video_Data_zh_CN/09_Video_Data_zh_CN.html">
+            
+                    
+                    视频数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../11_Adversarial_Examples_zh_CN/11_Adversarial_Examples_zh_CN.html">
+            
+                <a href="../11_Adversarial_Examples_zh_CN/11_Adversarial_Examples_zh_CN.html">
+            
+                    
+                    对抗样本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../12_Adversarial_Noise_MNIST_zh_CN/12_Adversarial_Noise_MNIST_zh_CN.html">
+            
+                <a href="../12_Adversarial_Noise_MNIST_zh_CN/12_Adversarial_Noise_MNIST_zh_CN.html">
+            
+                    
+                    MNIST的对抗噪声
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../13_Visual_Analysis_zh_CN/13_Visual_Analysis_zh_CN.html">
+            
+                <a href="../13_Visual_Analysis_zh_CN/13_Visual_Analysis_zh_CN.html">
+            
+                    
+                    可视化分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../14_DeepDream_zh_CN/14_DeepDream_zh_CN.html">
+            
+                <a href="../14_DeepDream_zh_CN/14_DeepDream_zh_CN.html">
+            
+                    
+                    DeepDream
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../15_Style_Transfer_zh_CN/15_Style_Transfer_zh_CN.html">
+            
+                <a href="../15_Style_Transfer_zh_CN/15_Style_Transfer_zh_CN.html">
+            
+                    
+                    风格迁移
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >简单线性模型</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="tensorflow-&#x6559;&#x7A0B;-01">TensorFlow &#x6559;&#x7A0B; #01</h1>
+<h1 id="&#x7B80;&#x5355;&#x7EBF;&#x6027;&#x6A21;&#x578B;">&#x7B80;&#x5355;&#x7EBF;&#x6027;&#x6A21;&#x578B;</h1>
+<p>by <a href="http://www.hvass-labs.org/" target="_blank">Magnus Erik Hvass Pedersen</a>
+/ <a href="https://github.com/Hvass-Labs/TensorFlow-Tutorials" target="_blank">GitHub</a> / <a href="https://www.youtube.com/playlist?list=PL9Hr9sNUjfsmEu1ZniY0XpHSzl5uihcXZ" target="_blank">Videos on YouTube</a></p>
+<p>&#x4E2D;&#x6587;&#x7FFB;&#x8BD1; <a href="https://zhuanlan.zhihu.com/insight-pixel" target="_blank">thrillerist</a>
+/<a href="https://github.com/thrillerist/TensorFlow-Tutorials" target="_blank">Github</a></p>
+<h2 id="&#x4ECB;&#x7ECD;">&#x4ECB;&#x7ECD;</h2>
+<p>&#x8FD9;&#x4EFD;&#x6559;&#x7A0B;&#x793A;&#x8303;&#x4E86;&#x5728;TensorFlow&#x4E2D;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7EBF;&#x6027;&#x6A21;&#x578B;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x3002;&#x5728;&#x8F7D;&#x5165;&#x79F0;&#x4E3A;MNIST&#x7684;&#x624B;&#x5199;&#x6570;&#x5B57;&#x56FE;&#x7247;&#x6570;&#x636E;&#x96C6;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5728;TensorFlow&#x4E2D;&#x5B9A;&#x4E49;&#x5E76;&#x4F18;&#x5316;&#x4E86;&#x4E00;&#x4E2A;&#x6570;&#x5B66;&#x6A21;&#x578B;&#x3002;&#xFF08;&#x6211;&#x4EEC;&#xFF09;&#x4F1A;&#x753B;&#x51FA;&#x7ED3;&#x679C;&#x5E76;&#x5C55;&#x5F00;&#x8BA8;&#x8BBA;&#x3002;  </p>
+<p>&#x4F60;&#x5E94;&#x8BE5;&#x719F;&#x6089;&#x57FA;&#x672C;&#x7684;&#x7EBF;&#x6027;&#x4EE3;&#x6570;&#xFF0C;Python&#x548C;Jupyter Notebook&#x7F16;&#x8F91;&#x5668;&#x3002;&#x5982;&#x679C;&#x4F60;&#x5BF9;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x548C;&#x5206;&#x7C7B;&#x6709;&#x57FA;&#x672C;&#x7684;&#x7406;&#x89E3;&#x4E5F;&#x5F88;&#x6709;&#x5E2E;&#x52A9;&#x3002;</p>
+<h2 id="&#x5BFC;&#x5165;">&#x5BFC;&#x5165;</h2>
+<pre><code class="lang-python">%matplotlib inline
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> confusion_matrix
+</code></pre>
+<p>&#x4F7F;&#x7528;Python3.5.2&#xFF08;Anaconda&#xFF09;&#x5F00;&#x53D1;&#xFF0C;TensorFlow&#x7248;&#x672C;&#x662F;&#xFF1A;</p>
+<pre><code class="lang-python">tf.__version__
+</code></pre>
+<pre><code>&apos;0.12.0-rc1&apos;
+</code></pre><h2 id="&#x8F7D;&#x5165;&#x6570;&#x636E;">&#x8F7D;&#x5165;&#x6570;&#x636E;</h2>
+<p>MNIST&#x6570;&#x636E;&#x96C6;&#x5927;&#x7EA6;&#x6709;12MB&#xFF0C;&#x5982;&#x679C;&#x7ED9;&#x5B9A;&#x7684;&#x5730;&#x5740;&#x91CC;&#x6CA1;&#x6709;&#x6587;&#x4EF6;&#xFF0C;&#x5B83;&#x5C06;&#x81EA;&#x52A8;&#x4E0B;&#x8F7D;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">from</span> tensorflow.examples.tutorials.mnist <span class="hljs-keyword">import</span> input_data
+data = input_data.read_data_sets(<span class="hljs-string">&quot;data/MNIST/&quot;</span>, one_hot=<span class="hljs-keyword">True</span>)
+</code></pre>
+<pre><code>Extracting data/MNIST/train-images-idx3-ubyte.gz
+Extracting data/MNIST/train-labels-idx1-ubyte.gz
+Extracting data/MNIST/t10k-images-idx3-ubyte.gz
+Extracting data/MNIST/t10k-labels-idx1-ubyte.gz
+</code></pre><p>&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x8F7D;&#x5165;&#x4E86;MNIST&#x6570;&#x636E;&#x96C6;&#xFF0C;&#x5B83;&#x7531;70,000&#x5F20;&#x56FE;&#x50CF;&#x548C;&#x5BF9;&#x5E94;&#x7684;&#x6807;&#x7B7E;&#xFF08;&#x6BD4;&#x5982;&#x56FE;&#x50CF;&#x7684;&#x7C7B;&#x522B;&#xFF09;&#x7EC4;&#x6210;&#x3002;&#x6570;&#x636E;&#x96C6;&#x5206;&#x6210;&#x4E09;&#x4EFD;&#x4E92;&#x76F8;&#x72EC;&#x7ACB;&#x7684;&#x5B50;&#x96C6;&#x3002;&#x6211;&#x4EEC;&#x5728;&#x6559;&#x7A0B;&#x4E2D;&#x53EA;&#x7528;&#x8BAD;&#x7EC3;&#x96C6;&#x548C;&#x6D4B;&#x8BD5;&#x96C6;&#x3002;</p>
+<pre><code class="lang-python">print(<span class="hljs-string">&quot;Size of:&quot;</span>)
+print(<span class="hljs-string">&quot;- Training-set:\t\t{}&quot;</span>.format(len(data.train.labels)))
+print(<span class="hljs-string">&quot;- Test-set:\t\t{}&quot;</span>.format(len(data.test.labels)))
+print(<span class="hljs-string">&quot;- Validation-set:\t{}&quot;</span>.format(len(data.validation.labels)))
+</code></pre>
+<pre><code>Size of:
+- Training-set:        55000
+- Test-set:        10000
+- Validation-set:    5000
+</code></pre><h3 id="one-hot-&#x7F16;&#x7801;">One-Hot &#x7F16;&#x7801;</h3>
+<p>&#x6570;&#x636E;&#x96C6;&#x4EE5;&#x4E00;&#x79CD;&#x79F0;&#x4E3A;One-Hot&#x7F16;&#x7801;&#x7684;&#x65B9;&#x5F0F;&#x8F7D;&#x5165;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x6807;&#x7B7E;&#x4ECE;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x6570;&#x5B57;&#x8F6C;&#x6362;&#x6210;&#x4E00;&#x4E2A;&#x957F;&#x5EA6;&#x7B49;&#x4E8E;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x7C7B;&#x522B;&#x6570;&#x91CF;&#x7684;&#x5411;&#x91CF;&#x3002;&#x5411;&#x91CF;&#x4E2D;&#x9664;&#x4E86;&#x7B2C;$i$&#x4E2A;&#x5143;&#x7D20;&#x662F;1&#xFF0C;&#x5176;&#x4ED6;&#x5143;&#x7D20;&#x90FD;&#x662F;0&#xFF0C;&#x8FD9;&#x4EE3;&#x8868;&#x7740;&#x5B83;&#x7684;&#x7C7B;&#x522B;&#x662F;$i$&apos;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x524D;&#x9762;&#x4E94;&#x5F20;&#x56FE;&#x50CF;&#x6807;&#x7B7E;&#x7684;One-Hot&#x7F16;&#x7801;&#x4E3A;&#xFF1A;</p>
+<pre><code class="lang-python">data.test.labels[<span class="hljs-number">0</span>:<span class="hljs-number">5</span>, :]
+</code></pre>
+<pre><code>array([[ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  1.,  0.,  0.],
+       [ 0.,  0.,  1.,  0.,  0.,  0.,  0.,  0.,  0.,  0.],
+       [ 0.,  1.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.],
+       [ 1.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.,  1.,  0.,  0.,  0.,  0.,  0.]])
+</code></pre><p>&#x5728;&#x4E0D;&#x540C;&#x7684;&#x6BD4;&#x8F83;&#x548C;&#x5EA6;&#x91CF;&#x6027;&#x80FD;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x9700;&#x8981;&#x7528;&#x5355;&#x72EC;&#x7684;&#x6570;&#x5B57;&#x8868;&#x793A;&#x7C7B;&#x522B;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x53D6;&#x6700;&#x5927;&#x5143;&#x7D20;&#x7684;&#x7D22;&#x5F15;&#xFF0C;&#x5C06;One-Hot&#x7F16;&#x7801;&#x7684;&#x5411;&#x91CF;&#x8F6C;&#x6362;&#x6210;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x6570;&#x5B57;&#x3002;&#x9700;&#x6CE8;&#x610F;&#x7684;&#x662F;&apos;class&apos;&#x5728;Python&#x4E2D;&#x662F;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x7528;&apos;cls&apos;&#x4EE3;&#x66FF;&#x5B83;&#x3002;</p>
+<pre><code class="lang-python">data.test.cls = np.array([label.argmax() <span class="hljs-keyword">for</span> label <span class="hljs-keyword">in</span> data.test.labels])
+</code></pre>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6D4B;&#x8BD5;&#x96C6;&#x4E2D;&#x524D;&#x9762;&#x4E94;&#x5F20;&#x56FE;&#x50CF;&#x7684;&#x7C7B;&#x522B;&#x3002;&#x5C06;&#x8FD9;&#x4E9B;&#x4E0E;&#x4E0A;&#x9762;&#x7684;One-Hot&#x7F16;&#x7801;&#x7684;&#x5411;&#x91CF;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x7B2C;&#x4E00;&#x5F20;&#x56FE;&#x50CF;&#x7684;&#x7C7B;&#x522B;&#x662F;7&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x5728;One-Hot&#x7F16;&#x7801;&#x5411;&#x91CF;&#x4E2D;&#xFF0C;&#x9664;&#x4E86;&#x7B2C;7&#x4E2A;&#x5143;&#x7D20;&#x5176;&#x4ED6;&#x90FD;&#x4E3A;&#x96F6;&#x3002;</p>
+<pre><code class="lang-python">data.test.cls[<span class="hljs-number">0</span>:<span class="hljs-number">5</span>]
+</code></pre>
+<pre><code>array([7, 2, 1, 0, 4])
+</code></pre><h3 id="&#x6570;&#x636E;&#x7EF4;&#x5EA6;">&#x6570;&#x636E;&#x7EF4;&#x5EA6;</h3>
+<p>&#x5728;&#x4E0B;&#x9762;&#x7684;&#x6E90;&#x7801;&#x4E2D;&#xFF0C;&#x6709;&#x5F88;&#x591A;&#x5730;&#x65B9;&#x7528;&#x5230;&#x4E86;&#x6570;&#x636E;&#x7EF4;&#x5EA6;&#x3002;&#x5728;&#x8BA1;&#x7B97;&#x673A;&#x7F16;&#x7A0B;&#x4E2D;&#xFF0C;&#x901A;&#x5E38;&#x6765;&#x8BF4;&#x6700;&#x597D;&#x4F7F;&#x7528;&#x53D8;&#x91CF;&#x548C;&#x5E38;&#x91CF;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x6BCF;&#x6B21;&#x4F7F;&#x7528;&#x6570;&#x503C;&#x65F6;&#x5199;&#x786C;&#x4EE3;&#x7801;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x6570;&#x5B57;&#x53EA;&#x9700;&#x8981;&#x5728;&#x4E00;&#x4E2A;&#x5730;&#x65B9;&#x6539;&#x52A8;&#x5C31;&#x884C;&#x3002;&#x8FD9;&#x4E9B;&#x6700;&#x597D;&#x80FD;&#x4ECE;&#x8BFB;&#x53D6;&#x7684;&#x6570;&#x636E;&#x4E2D;&#x83B7;&#x53D6;&#xFF0C;&#x4F46;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x76F4;&#x63A5;&#x5199;&#x4E0A;&#x6570;&#x503C;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># We know that MNIST images are 28 pixels in each dimension.</span>
+img_size = <span class="hljs-number">28</span>
+
+<span class="hljs-comment"># Images are stored in one-dimensional arrays of this length.</span>
+img_size_flat = img_size * img_size
+
+<span class="hljs-comment"># Tuple with height and width of images used to reshape arrays.</span>
+img_shape = (img_size, img_size)
+
+<span class="hljs-comment"># Number of classes, one class for each of 10 digits.</span>
+num_classes = <span class="hljs-number">10</span>
+</code></pre>
+<h3 id="&#x7528;&#x6765;&#x7ED8;&#x5236;&#x56FE;&#x50CF;&#x7684;&#x5E2E;&#x52A9;&#x51FD;&#x6570;">&#x7528;&#x6765;&#x7ED8;&#x5236;&#x56FE;&#x50CF;&#x7684;&#x5E2E;&#x52A9;&#x51FD;&#x6570;</h3>
+<p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7528;&#x6765;&#x5728;3x3&#x7684;&#x6805;&#x683C;&#x4E2D;&#x753B;9&#x5F20;&#x56FE;&#x50CF;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x6BCF;&#x5F20;&#x56FE;&#x50CF;&#x4E0B;&#x9762;&#x5199;&#x51FA;&#x771F;&#x5B9E;&#x7684;&#x548C;&#x9884;&#x6D4B;&#x7684;&#x7C7B;&#x522B;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">plot_images</span><span class="hljs-params">(images, cls_true, cls_pred=None)</span>:</span>
+    <span class="hljs-keyword">assert</span> len(images) == len(cls_true) == <span class="hljs-number">9</span>
+
+    <span class="hljs-comment"># Create figure with 3x3 sub-plots.</span>
+    fig, axes = plt.subplots(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>)
+    fig.subplots_adjust(hspace=<span class="hljs-number">0.3</span>, wspace=<span class="hljs-number">0.3</span>)
+
+    <span class="hljs-keyword">for</span> i, ax <span class="hljs-keyword">in</span> enumerate(axes.flat):
+        <span class="hljs-comment"># Plot image.</span>
+        ax.imshow(images[i].reshape(img_shape), cmap=<span class="hljs-string">&apos;binary&apos;</span>)
+
+        <span class="hljs-comment"># Show true and predicted classes.</span>
+        <span class="hljs-keyword">if</span> cls_pred <span class="hljs-keyword">is</span> <span class="hljs-keyword">None</span>:
+            xlabel = <span class="hljs-string">&quot;True: {0}&quot;</span>.format(cls_true[i])
+        <span class="hljs-keyword">else</span>:
+            xlabel = <span class="hljs-string">&quot;True: {0}, Pred: {1}&quot;</span>.format(cls_true[i], cls_pred[i])
+
+        ax.set_xlabel(xlabel)
+
+        <span class="hljs-comment"># Remove ticks from the plot.</span>
+        ax.set_xticks([])
+        ax.set_yticks([])
+</code></pre>
+<h3 id="&#x7ED8;&#x5236;&#x51E0;&#x5F20;&#x56FE;&#x50CF;&#x6765;&#x770B;&#x770B;&#x6570;&#x636E;&#x662F;&#x5426;&#x6B63;&#x786E;">&#x7ED8;&#x5236;&#x51E0;&#x5F20;&#x56FE;&#x50CF;&#x6765;&#x770B;&#x770B;&#x6570;&#x636E;&#x662F;&#x5426;&#x6B63;&#x786E;</h3>
+<pre><code class="lang-python"><span class="hljs-comment"># Get the first images from the test-set.</span>
+images = data.test.images[<span class="hljs-number">0</span>:<span class="hljs-number">9</span>]
+
+<span class="hljs-comment"># Get the true classes for those images.</span>
+cls_true = data.test.cls[<span class="hljs-number">0</span>:<span class="hljs-number">9</span>]
+
+<span class="hljs-comment"># Plot the images and labels using our helper-function above.</span>
+plot_images(images=images, cls_true=cls_true)
+</code></pre>
+<p><img src="output_25_0.png" alt="png"></p>
+<h2 id="tensorflow&#x56FE;">TensorFlow&#x56FE;</h2>
+<p>TensorFlow&#x7684;&#x5168;&#x90E8;&#x76EE;&#x7684;&#x5C31;&#x662F;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x79F0;&#x4E4B;&#x4E3A;&#x8BA1;&#x7B97;&#x56FE;&#xFF08;computational graph&#xFF09;&#x7684;&#x4E1C;&#x897F;&#xFF0C;&#x5B83;&#x4F1A;&#x6BD4;&#x76F4;&#x63A5;&#x5728;Python&#x4E2D;&#x8FDB;&#x884C;&#x76F8;&#x540C;&#x8BA1;&#x7B97;&#x91CF;&#x8981;&#x9AD8;&#x6548;&#x5F97;&#x591A;&#x3002;TensorFlow&#x6BD4;Numpy&#x66F4;&#x9AD8;&#x6548;&#xFF0C;&#x56E0;&#x4E3A;TensorFlow&#x4E86;&#x89E3;&#x6574;&#x4E2A;&#x9700;&#x8981;&#x8FD0;&#x884C;&#x7684;&#x8BA1;&#x7B97;&#x56FE;&#xFF0C;&#x7136;&#x800C;Numpy&#x53EA;&#x77E5;&#x9053;&#x67D0;&#x4E2A;&#x65F6;&#x95F4;&#x70B9;&#x4E0A;&#x552F;&#x4E00;&#x7684;&#x6570;&#x5B66;&#x8FD0;&#x7B97;&#x3002;</p>
+<p>TensorFlow&#x4E5F;&#x80FD;&#x591F;&#x81EA;&#x52A8;&#x5730;&#x8BA1;&#x7B97;&#x9700;&#x8981;&#x4F18;&#x5316;&#x7684;&#x53D8;&#x91CF;&#x7684;&#x68AF;&#x5EA6;&#xFF0C;&#x4F7F;&#x5F97;&#x6A21;&#x578B;&#x6709;&#x66F4;&#x597D;&#x7684;&#x8868;&#x73B0;&#x3002;&#x8FD9;&#x662F;&#x7531;&#x4E8E;Graph&#x662F;&#x7B80;&#x5355;&#x6570;&#x5B66;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x7ED3;&#x5408;&#xFF0C;&#x56E0;&#x6B64;&#x6574;&#x4E2A;&#x56FE;&#x7684;&#x68AF;&#x5EA6;&#x53EF;&#x4EE5;&#x7528;&#x94FE;&#x5F0F;&#x6CD5;&#x5219;&#x63A8;&#x5BFC;&#x51FA;&#x6765;&#x3002;</p>
+<p>TensorFlow&#x8FD8;&#x80FD;&#x5229;&#x7528;&#x591A;&#x6838;CPU&#x548C;GPU&#xFF0C;Google&#x4E5F;&#x4E3A;TensorFlow&#x5236;&#x9020;&#x4E86;&#x79F0;&#x4E3A;TPUs&#xFF08;Tensor Processing Units&#xFF09;&#x7684;&#x7279;&#x6B8A;&#x82AF;&#x7247;&#xFF0C;&#x5B83;&#x6BD4;GPU&#x66F4;&#x5FEB;&#x3002;</p>
+<p>&#x4E00;&#x4E2A;TensorFlow&#x56FE;&#x7531;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#x90E8;&#x5206;&#x7EC4;&#x6210;&#xFF0C;&#x540E;&#x9762;&#x4F1A;&#x8BE6;&#x7EC6;&#x63CF;&#x8FF0;&#xFF1A;</p>
+<ul>
+<li>&#x5360;&#x4F4D;&#x7B26;&#x53D8;&#x91CF;&#xFF08;Placeholder&#xFF09;&#x7528;&#x6765;&#x6539;&#x53D8;&#x56FE;&#x7684;&#x8F93;&#x5165;&#x3002;</li>
+<li>&#x6A21;&#x578B;&#x53D8;&#x91CF;&#xFF08;Model&#xFF09;&#x5C06;&#x4F1A;&#x88AB;&#x4F18;&#x5316;&#xFF0C;&#x4F7F;&#x5F97;&#x6A21;&#x578B;&#x8868;&#x73B0;&#x5F97;&#x66F4;&#x597D;&#x3002;</li>
+<li>&#x6A21;&#x578B;&#x672C;&#x8D28;&#x4E0A;&#x5C31;&#x662F;&#x4E00;&#x4E9B;&#x6570;&#x5B66;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x6839;&#x636E;Placeholder&#x548C;&#x6A21;&#x578B;&#x7684;&#x8F93;&#x5165;&#x53D8;&#x91CF;&#x6765;&#x8BA1;&#x7B97;&#x4E00;&#x4E9B;&#x8F93;&#x51FA;&#x3002;</li>
+<li>&#x4E00;&#x4E2A;cost&#x5EA6;&#x91CF;&#x7528;&#x6765;&#x6307;&#x5BFC;&#x53D8;&#x91CF;&#x7684;&#x4F18;&#x5316;&#x3002;</li>
+<li>&#x4E00;&#x4E2A;&#x4F18;&#x5316;&#x7B56;&#x7565;&#x4F1A;&#x66F4;&#x65B0;&#x6A21;&#x578B;&#x7684;&#x53D8;&#x91CF;&#x3002;</li>
+</ul>
+<p>&#x53E6;&#x5916;&#xFF0C;TensorFlow&#x56FE;&#x4E5F;&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E9B;&#x8C03;&#x8BD5;&#x72B6;&#x6001;&#xFF0C;&#x6BD4;&#x5982;&#x7528;TensorBoard&#x6253;&#x5370;log&#x6570;&#x636E;&#xFF0C;&#x672C;&#x6559;&#x7A0B;&#x4E0D;&#x6D89;&#x53CA;&#x8FD9;&#x4E9B;&#x3002;</p>
+<h3 id="&#x5360;&#x4F4D;&#x7B26;-&#xFF08;placeholder&#xFF09;&#x53D8;&#x91CF;">&#x5360;&#x4F4D;&#x7B26; &#xFF08;Placeholder&#xFF09;&#x53D8;&#x91CF;</h3>
+<p>Placeholder&#x662F;&#x4F5C;&#x4E3A;&#x56FE;&#x7684;&#x8F93;&#x5165;&#xFF0C;&#x6BCF;&#x6B21;&#x6211;&#x4EEC;&#x8FD0;&#x884C;&#x56FE;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x53EF;&#x80FD;&#x4F1A;&#x6539;&#x53D8;&#x5B83;&#x4EEC;&#x3002;&#x5C06;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x79F0;&#x4E3A;feeding placeholder&#x53D8;&#x91CF;&#xFF0C;&#x540E;&#x9762;&#x5C06;&#x4F1A;&#x63CF;&#x8FF0;&#x5B83;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x6211;&#x4EEC;&#x4E3A;&#x8F93;&#x5165;&#x56FE;&#x50CF;&#x5B9A;&#x4E49;placeholder&#x53D8;&#x91CF;&#x3002;&#x8FD9;&#x8BA9;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6539;&#x53D8;&#x8F93;&#x5165;&#x5230;TensorFlow&#x56FE;&#x4E2D;&#x7684;&#x56FE;&#x50CF;&#x3002;&#x8FD9;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x5F20;&#x91CF;&#xFF08;tensor&#xFF09;&#xFF0C;&#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x591A;&#x7EF4;&#x5411;&#x91CF;&#x6216;&#x77E9;&#x9635;&#x3002;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x8BBE;&#x7F6E;&#x4E3A;<code>float32</code>&#xFF0C;&#x5F62;&#x72B6;&#x8BBE;&#x4E3A;<code>[None, img_size_flat]</code>&#xFF0C;<code>None</code>&#x4EE3;&#x8868;tensor&#x53EF;&#x80FD;&#x4FDD;&#x5B58;&#x7740;&#x4EFB;&#x610F;&#x6570;&#x91CF;&#x7684;&#x56FE;&#x50CF;&#xFF0C;&#x6BCF;&#x5F20;&#x56FE;&#x8C61;&#x662F;&#x4E00;&#x4E2A;&#x957F;&#x5EA6;&#x4E3A;<code>img_size_flat</code>&#x7684;&#x5411;&#x91CF;&#x3002;</p>
+<pre><code class="lang-python">x = tf.placeholder(tf.float32, [<span class="hljs-keyword">None</span>, img_size_flat])
+</code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x4E3A;&#x8F93;&#x5165;&#x53D8;&#x91CF;<code>x</code>&#x4E2D;&#x7684;&#x56FE;&#x50CF;&#x6240;&#x5BF9;&#x5E94;&#x7684;&#x771F;&#x5B9E;&#x6807;&#x7B7E;&#x5B9A;&#x4E49;placeholder&#x53D8;&#x91CF;&#x3002;&#x53D8;&#x91CF;&#x7684;&#x5F62;&#x72B6;&#x662F;<code>[None, num_classes]</code>&#xFF0C;&#x8FD9;&#x4EE3;&#x8868;&#x7740;&#x5B83;&#x4FDD;&#x5B58;&#x4E86;&#x4EFB;&#x610F;&#x6570;&#x91CF;&#x7684;&#x6807;&#x7B7E;&#xFF0C;&#x6BCF;&#x4E2A;&#x6807;&#x7B7E;&#x662F;&#x957F;&#x5EA6;&#x4E3A;<code>num_classes</code>&#x7684;&#x5411;&#x91CF;&#xFF0C;&#x672C;&#x4F8B;&#x4E2D;&#x957F;&#x5EA6;&#x4E3A;10&#x3002;</p>
+<pre><code class="lang-python">y_true = tf.placeholder(tf.float32, [<span class="hljs-keyword">None</span>, num_classes])
+</code></pre>
+<p>&#x6700;&#x540E;&#x6211;&#x4EEC;&#x4E3A;&#x53D8;&#x91CF;<code>x</code>&#x4E2D;&#x56FE;&#x50CF;&#x7684;&#x771F;&#x5B9E;&#x7C7B;&#x522B;&#x5B9A;&#x4E49;placeholder&#x53D8;&#x91CF;&#x3002;&#x5B83;&#x4EEC;&#x662F;&#x6574;&#x5F62;&#xFF0C;&#x5E76;&#x4E14;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x7EF4;&#x5EA6;&#x8BBE;&#x4E3A;<code>[None]</code>&#xFF0C;&#x4EE3;&#x8868;placeholder&#x53D8;&#x91CF;&#x662F;&#x4EFB;&#x610F;&#x957F;&#x7684;&#x4E00;&#x7EF4;&#x5411;&#x91CF;&#x3002;</p>
+<pre><code class="lang-python">y_true_cls = tf.placeholder(tf.int64, [<span class="hljs-keyword">None</span>])
+</code></pre>
+<h3 id="&#x9700;&#x8981;&#x4F18;&#x5316;&#x7684;&#x53D8;&#x91CF;">&#x9700;&#x8981;&#x4F18;&#x5316;&#x7684;&#x53D8;&#x91CF;</h3>
+<p>&#x9664;&#x4E86;&#x4E0A;&#x9762;&#x5B9A;&#x4E49;&#x7684;&#x90A3;&#x4E9B;&#x7ED9;&#x6A21;&#x578B;&#x8F93;&#x5165;&#x6570;&#x636E;&#x7684;&#x53D8;&#x91CF;&#x4E4B;&#x5916;&#xFF0C;TensorFlow&#x8FD8;&#x9700;&#x8981;&#x6539;&#x53D8;&#x4E00;&#x4E9B;&#x6A21;&#x578B;&#x53D8;&#x91CF;&#xFF0C;&#x4F7F;&#x5F97;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x7684;&#x8868;&#x73B0;&#x66F4;&#x597D;&#x3002;</p>
+<p>&#x7B2C;&#x4E00;&#x4E2A;&#x9700;&#x8981;&#x4F18;&#x5316;&#x7684;&#x53D8;&#x91CF;&#x79F0;&#x4E3A;&#x6743;&#x91CD;<code>weight</code>&#xFF0C;TensorFlow&#x53D8;&#x91CF;&#x9700;&#x8981;&#x88AB;&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x96F6;&#xFF0C;&#x5B83;&#x7684;&#x5F62;&#x72B6;&#x662F;<code>[img_size_flat, num_classes]</code>&#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x662F;&#x4E00;&#x4E2A;<code>img_size_flat</code>&#x884C;&#x3001;<code>num_classes</code>&#x5217;&#x7684;&#x4E8C;&#x7EF4;&#x5F20;&#x91CF;&#xFF08;&#x6216;&#x77E9;&#x9635;&#xFF09;&#x3002;</p>
+<pre><code class="lang-python">weights = tf.Variable(tf.zeros([img_size_flat, num_classes]))
+</code></pre>
+<p>&#x7B2C;&#x4E8C;&#x4E2A;&#x9700;&#x8981;&#x4F18;&#x5316;&#x7684;&#x662F;&#x504F;&#x5DEE;&#x53D8;&#x91CF;<code>biases</code>&#xFF0C;&#x5B83;&#x88AB;&#x5B9A;&#x4E49;&#x6210;&#x4E00;&#x4E2A;&#x957F;&#x5EA6;&#x4E3A;<code>num_classes</code>&#x7684;1&#x7EF4;&#x5F20;&#x91CF;&#xFF08;&#x6216;&#x5411;&#x91CF;&#xFF09;&#x3002;</p>
+<pre><code class="lang-python">biases = tf.Variable(tf.zeros([num_classes]))
+</code></pre>
+<h3 id="&#x6A21;&#x578B;">&#x6A21;&#x578B;</h3>
+<p>&#x8FD9;&#x4E2A;&#x6700;&#x57FA;&#x672C;&#x7684;&#x6570;&#x5B66;&#x6A21;&#x578B;&#x5C06;placeholder&#x53D8;&#x91CF;<code>x</code>&#x4E2D;&#x7684;&#x56FE;&#x50CF;&#x4E0E;&#x6743;&#x91CD;<code>weight</code>&#x76F8;&#x4E58;&#xFF0C;&#x7136;&#x540E;&#x52A0;&#x4E0A;&#x504F;&#x5DEE;<code>biases</code>&#x3002;</p>
+<p>&#x7ED3;&#x679C;&#x662F;&#x5927;&#x5C0F;&#x4E3A;<code>[num_images, num_classes]</code>&#x7684;&#x4E00;&#x4E2A;&#x77E9;&#x9635;&#xFF0C;&#x7531;&#x4E8E;<code>x</code>&#x7684;&#x5F62;&#x72B6;&#x662F;<code>[num_images, img_size_flat]</code> &#x5E76;&#x4E14; <code>weights</code>&#x7684;&#x5F62;&#x72B6;&#x662F;<code>[img_size_flat, num_classes]</code>&#xFF0C;&#x56E0;&#x6B64;&#x4E24;&#x4E2A;&#x77E9;&#x9635;&#x4E58;&#x79EF;&#x7684;&#x5F62;&#x72B6;&#x662F;<code>[num_images, num_classes]</code>&#xFF0C;&#x7136;&#x540E;&#x5C06;<code>biases</code>&#x5411;&#x91CF;&#x6DFB;&#x52A0;&#x5230;&#x77E9;&#x9635;&#x6BCF;&#x4E00;&#x884C;&#x4E2D;&#x3002;</p>
+<pre><code class="lang-python">logits = tf.matmul(x, weights) + biases
+</code></pre>
+<p>&#x73B0;&#x5728;<code>logits</code>&#x662F;&#x4E00;&#x4E2A; <code>num_images</code> &#x884C;<code>num_classes</code>&#x5217;&#x7684;&#x77E9;&#x9635;&#xFF0C;&#x7B2C;$i$&#x884C;&#x7B2C;$j$&#x5217;&#x7684;&#x90A3;&#x4E2A;&#x5143;&#x7D20;&#x4EE3;&#x8868;&#x7740;&#x7B2C;$i$&#x5F20;&#x8F93;&#x5165;&#x56FE;&#x50CF;&#x6709;&#x591A;&#x5927;&#x53EF;&#x80FD;&#x6027;&#x662F;&#x7B2C;$j$&#x4E2A;&#x7C7B;&#x522B;&#x3002;</p>
+<p>&#x7136;&#x800C;&#xFF0C;&#x8FD9;&#x662F;&#x5F88;&#x7C97;&#x7565;&#x7684;&#x4F30;&#x8BA1;&#x5E76;&#x4E14;&#x5F88;&#x96BE;&#x89E3;&#x91CA;&#xFF0C;&#x56E0;&#x4E3A;&#x6570;&#x503C;&#x53EF;&#x80FD;&#x5F88;&#x5C0F;&#x6216;&#x5F88;&#x5927;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x5BF9;&#x5B83;&#x4EEC;&#x505A;&#x5F52;&#x4E00;&#x5316;&#xFF0C;&#x4F7F;&#x5F97;<code>logits</code>&#x77E9;&#x9635;&#x7684;&#x6BCF;&#x4E00;&#x884C;&#x76F8;&#x52A0;&#x4E3A;1&#xFF0C;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x9650;&#x5236;&#x5728;0&#x5230;1&#x4E4B;&#x95F4;&#x3002;&#x8FD9;&#x662F;&#x7528;&#x4E00;&#x4E2A;&#x79F0;&#x4E3A;softmax&#x7684;&#x51FD;&#x6570;&#x6765;&#x8BA1;&#x7B97;&#x7684;&#xFF0C;&#x7ED3;&#x679C;&#x4FDD;&#x5B58;&#x5728;<code>y_pred</code>&#x4E2D;&#x3002;</p>
+<pre><code class="lang-python">y_pred = tf.nn.softmax(logits)
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x4ECE;<code>y_pred</code>&#x77E9;&#x9635;&#x4E2D;&#x53D6;&#x6BCF;&#x884C;&#x6700;&#x5927;&#x5143;&#x7D20;&#x7684;&#x7D22;&#x5F15;&#x503C;&#xFF0C;&#x6765;&#x5F97;&#x5230;&#x9884;&#x6D4B;&#x7684;&#x7C7B;&#x522B;&#x3002;</p>
+<pre><code class="lang-python">y_pred_cls = tf.argmax(y_pred, dimension=<span class="hljs-number">1</span>)
+</code></pre>
+<h3 id="&#x4F18;&#x5316;&#x635F;&#x5931;&#x51FD;&#x6570;">&#x4F18;&#x5316;&#x635F;&#x5931;&#x51FD;&#x6570;</h3>
+<p>&#x4E3A;&#x4E86;&#x4F7F;&#x6A21;&#x578B;&#x66F4;&#x597D;&#x5730;&#x5BF9;&#x8F93;&#x5165;&#x56FE;&#x50CF;&#x8FDB;&#x884C;&#x5206;&#x7C7B;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x6539;&#x53D8;<code>weights</code>&#x548C;<code>biases</code>&#x53D8;&#x91CF;&#x3002;&#x9996;&#x5148;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6BD4;&#x8F83;&#x6A21;&#x578B;&#x7684;&#x9884;&#x6D4B;&#x8F93;&#x51FA;<code>y_pred</code>&#x548C;&#x671F;&#x671B;&#x8F93;&#x51FA;<code>y_true</code>&#xFF0C;&#x6765;&#x4E86;&#x89E3;&#x76EE;&#x524D;&#x6A21;&#x578B;&#x7684;&#x6027;&#x80FD;&#x5982;&#x4F55;&#x3002;</p>
+<p>&#x4EA4;&#x53C9;&#x71B5;&#xFF08;cross-entropy&#xFF09;&#x662F;&#x4E00;&#x4E2A;&#x5728;&#x5206;&#x7C7B;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x6027;&#x80FD;&#x5EA6;&#x91CF;&#x3002;&#x4EA4;&#x53C9;&#x71B5;&#x662F;&#x4E00;&#x4E2A;&#x5E38;&#x4E3A;&#x6B63;&#x503C;&#x7684;&#x8FDE;&#x7EED;&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x6A21;&#x578B;&#x7684;&#x9884;&#x6D4B;&#x503C;&#x7CBE;&#x51C6;&#x5730;&#x7B26;&#x5408;&#x671F;&#x671B;&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x5B83;&#x5C31;&#x7B49;&#x4E8E;&#x96F6;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x4F18;&#x5316;&#x7684;&#x76EE;&#x7684;&#x5C31;&#x662F;&#x6700;&#x5C0F;&#x5316;&#x4EA4;&#x53C9;&#x71B5;&#xFF0C;&#x901A;&#x8FC7;&#x6539;&#x53D8;&#x6A21;&#x578B;&#x4E2D;<code>weights</code>&#x548C;<code>biases</code>&#x7684;&#x503C;&#xFF0C;&#x4F7F;&#x4EA4;&#x53C9;&#x71B5;&#x8D8A;&#x63A5;&#x8FD1;&#x96F6;&#x8D8A;&#x597D;&#x3002;</p>
+<p>TensorFlow&#x6709;&#x4E00;&#x4E2A;&#x5185;&#x7F6E;&#x7684;&#x8BA1;&#x7B97;&#x4EA4;&#x53C9;&#x71B5;&#x7684;&#x51FD;&#x6570;&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x5B83;&#x4F7F;&#x7528;<code>logits</code>&#x7684;&#x503C;&#xFF0C;&#x56E0;&#x4E3A;&#x5728;&#x5B83;&#x5185;&#x90E8;&#x4E5F;&#x8BA1;&#x7B97;&#x4E86;softmax&#x3002;</p>
+<pre><code class="lang-python">cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=logits,
+                                                        labels=y_true)
+</code></pre>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x4E3A;&#x6BCF;&#x4E2A;&#x56FE;&#x50CF;&#x5206;&#x7C7B;&#x8BA1;&#x7B97;&#x4E86;&#x4EA4;&#x53C9;&#x71B5;&#xFF0C;&#x6240;&#x4EE5;&#x6709;&#x4E00;&#x4E2A;&#x5F53;&#x524D;&#x6A21;&#x578B;&#x5728;&#x6BCF;&#x5F20;&#x56FE;&#x4E0A;&#x7684;&#x6027;&#x80FD;&#x5EA6;&#x91CF;&#x3002;&#x4F46;&#x662F;&#x4E3A;&#x4E86;&#x7528;&#x4EA4;&#x53C9;&#x71B5;&#x6765;&#x6307;&#x5BFC;&#x6A21;&#x578B;&#x53D8;&#x91CF;&#x7684;&#x4F18;&#x5316;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x989D;&#x5916;&#x7684;&#x6807;&#x91CF;&#x503C;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x7B80;&#x5355;&#x5730;&#x5229;&#x7528;&#x6240;&#x6709;&#x56FE;&#x50CF;&#x5206;&#x7C7B;&#x4EA4;&#x53C9;&#x71B5;&#x7684;&#x5747;&#x503C;&#x3002;</p>
+<pre><code class="lang-python">cost = tf.reduce_mean(cross_entropy)
+</code></pre>
+<h3 id="&#x4F18;&#x5316;&#x65B9;&#x6CD5;">&#x4F18;&#x5316;&#x65B9;&#x6CD5;</h3>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;&#x9700;&#x8981;&#x88AB;&#x6700;&#x5C0F;&#x5316;&#x7684;&#x635F;&#x5931;&#x5EA6;&#x91CF;&#xFF0C;&#x63A5;&#x7740;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4F18;&#x5316;&#x5668;&#x3002;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E2D;&#xFF0C;&#x7528;&#x7684;&#x662F;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x7684;&#x57FA;&#x672C;&#x5F62;&#x5F0F;&#xFF0C;&#x6B65;&#x957F;&#x8BBE;&#x4E3A;0.5&#x3002;</p>
+<p>&#x4F18;&#x5316;&#x8FC7;&#x7A0B;&#x5E76;&#x4E0D;&#x662F;&#x5728;&#x8FD9;&#x91CC;&#x6267;&#x884C;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x8FD8;&#x6CA1;&#x8BA1;&#x7B97;&#x4EFB;&#x4F55;&#x4E1C;&#x897F;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x662F;&#x5F80;TensorFlow&#x56FE;&#x4E2D;&#x6DFB;&#x52A0;&#x4E86;&#x4F18;&#x5316;&#x5668;&#xFF0C;&#x4EE5;&#x4FBF;&#x4E4B;&#x540E;&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
+<pre><code class="lang-python">optimizer = tf.train.GradientDescentOptimizer(learning_rate=<span class="hljs-number">0.5</span>).minimize(cost)
+</code></pre>
+<h3 id="&#x6027;&#x80FD;&#x5EA6;&#x91CF;">&#x6027;&#x80FD;&#x5EA6;&#x91CF;</h3>
+<p>&#x6211;&#x4EEC;&#x9700;&#x8981;&#x53E6;&#x5916;&#x4E00;&#x4E9B;&#x6027;&#x80FD;&#x5EA6;&#x91CF;&#xFF0C;&#x6765;&#x5411;&#x7528;&#x6237;&#x5C55;&#x793A;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x3002;</p>
+<p>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5E03;&#x5C14;&#x503C;&#x5411;&#x91CF;&#xFF0C;&#x4EE3;&#x8868;&#x9884;&#x6D4B;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x7B49;&#x4E8E;&#x6BCF;&#x5F20;&#x56FE;&#x7247;&#x7684;&#x771F;&#x5B9E;&#x7C7B;&#x578B;&#x3002;</p>
+<pre><code class="lang-python">correct_prediction = tf.equal(y_pred_cls, y_true_cls)
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x5148;&#x5C06;&#x5E03;&#x5C14;&#x503C;&#x5411;&#x91CF;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x6210;&#x6D6E;&#x70B9;&#x578B;&#x5411;&#x91CF;&#xFF0C;&#x8FD9;&#x6837;&#x5B50;False&#x5C31;&#x53D8;&#x6210;0&#xFF0C;True&#x53D8;&#x6210;1&#xFF0C;&#x7136;&#x540E;&#x8BA1;&#x7B97;&#x8FD9;&#x4E9B;&#x503C;&#x7684;&#x5E73;&#x5747;&#x6570;&#xFF0C;&#x4EE5;&#x6B64;&#x6765;&#x8BA1;&#x7B97;&#x5206;&#x7C7B;&#x7684;&#x51C6;&#x786E;&#x5EA6;&#x3002;</p>
+<pre><code class="lang-python">accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+</code></pre>
+<h2 id="&#x8FD0;&#x884C;tensorflow">&#x8FD0;&#x884C;TensorFlow</h2>
+<h3 id="&#x521B;&#x5EFA;tensorflow&#x4F1A;&#x8BDD;&#xFF08;session&#xFF09;">&#x521B;&#x5EFA;TensorFlow&#x4F1A;&#x8BDD;&#xFF08;session&#xFF09;</h3>
+<p>&#x4E00;&#x65E6;&#x521B;&#x5EFA;&#x4E86;TensorFlow&#x56FE;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;TensorFlow session&#xFF0C;&#x7528;&#x6765;&#x8FD0;&#x884C;&#x56FE;&#x3002;</p>
+<pre><code class="lang-python">session = tf.Session()
+</code></pre>
+<h3 id="&#x521D;&#x59CB;&#x5316;&#x53D8;&#x91CF;">&#x521D;&#x59CB;&#x5316;&#x53D8;&#x91CF;</h3>
+<p>&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;&#x5F00;&#x59CB;&#x4F18;&#x5316;<code>weights</code>&#x548C;<code>biases</code>&#x53D8;&#x91CF;&#x4E4B;&#x524D;&#x5BF9;&#x5B83;&#x4EEC;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x3002;</p>
+<pre><code class="lang-python">session.run(tf.global_variables_initializer())
+</code></pre>
+<h3 id="&#x7528;&#x6765;&#x4F18;&#x5316;&#x8FED;&#x4EE3;&#x7684;&#x5E2E;&#x52A9;&#x51FD;&#x6570;">&#x7528;&#x6765;&#x4F18;&#x5316;&#x8FED;&#x4EE3;&#x7684;&#x5E2E;&#x52A9;&#x51FD;&#x6570;</h3>
+<p>&#x5728;&#x8BAD;&#x7EC3;&#x96C6;&#x4E2D;&#x6709;50,000&#x5F20;&#x56FE;&#x3002;&#x7528;&#x8FD9;&#x4E9B;&#x56FE;&#x50CF;&#x8BA1;&#x7B97;&#x6A21;&#x578B;&#x7684;&#x68AF;&#x5EA6;&#x4F1A;&#x82B1;&#x5F88;&#x591A;&#x65F6;&#x95F4;&#x3002;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x5229;&#x7528;&#x968F;&#x673A;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5B83;&#x5728;&#x4F18;&#x5316;&#x5668;&#x7684;&#x6BCF;&#x6B21;&#x8FED;&#x4EE3;&#x91CC;&#x53EA;&#x7528;&#x5230;&#x4E86;&#x4E00;&#x5C0F;&#x90E8;&#x5206;&#x7684;&#x56FE;&#x50CF;&#x3002;</p>
+<pre><code class="lang-python">batch_size = <span class="hljs-number">100</span>
+</code></pre>
+<p>&#x51FD;&#x6570;&#x6267;&#x884C;&#x4E86;&#x591A;&#x6B21;&#x7684;&#x4F18;&#x5316;&#x8FED;&#x4EE3;&#x6765;&#x9010;&#x6B65;&#x5730;&#x63D0;&#x5347;&#x6A21;&#x578B;&#x7684;<code>weights</code>&#x548C;<code>biases</code>&#x3002;&#x5728;&#x6BCF;&#x6B21;&#x8FED;&#x4EE3;&#x4E2D;&#xFF0C;&#x4ECE;&#x8BAD;&#x7EC3;&#x96C6;&#x4E2D;&#x9009;&#x62E9;&#x4E00;&#x6279;&#x65B0;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;TensorFlow&#x7528;&#x8FD9;&#x4E9B;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x6765;&#x6267;&#x884C;&#x4F18;&#x5316;&#x5668;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">optimize</span><span class="hljs-params">(num_iterations)</span>:</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(num_iterations):
+        <span class="hljs-comment"># Get a batch of training examples.</span>
+        <span class="hljs-comment"># x_batch now holds a batch of images and</span>
+        <span class="hljs-comment"># y_true_batch are the true labels for those images.</span>
+        x_batch, y_true_batch = data.train.next_batch(batch_size)
+
+        <span class="hljs-comment"># Put the batch into a dict with the proper names</span>
+        <span class="hljs-comment"># for placeholder variables in the TensorFlow graph.</span>
+        <span class="hljs-comment"># Note that the placeholder for y_true_cls is not set</span>
+        <span class="hljs-comment"># because it is not used during training.</span>
+        feed_dict_train = {x: x_batch,
+                           y_true: y_true_batch}
+
+        <span class="hljs-comment"># Run the optimizer using this batch of training data.</span>
+        <span class="hljs-comment"># TensorFlow assigns the variables in feed_dict_train</span>
+        <span class="hljs-comment"># to the placeholder variables and then runs the optimizer.</span>
+        session.run(optimizer, feed_dict=feed_dict_train)
+</code></pre>
+<h3 id="&#x5C55;&#x793A;&#x6027;&#x80FD;&#x7684;&#x5E2E;&#x52A9;&#x51FD;&#x6570;">&#x5C55;&#x793A;&#x6027;&#x80FD;&#x7684;&#x5E2E;&#x52A9;&#x51FD;&#x6570;</h3>
+<p>&#x6D4B;&#x8BD5;&#x96C6;&#x6570;&#x636E;&#x5B57;&#x5178;&#x88AB;&#x5F53;&#x505A;TensorFlow&#x56FE;&#x7684;&#x8F93;&#x5165;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x5728;TensorFlow&#x56FE;&#x4E2D;&#xFF0C;placeholder&#x53D8;&#x91CF;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x6B63;&#x786E;&#x7684;&#x540D;&#x5B57;&#x3002;</p>
+<pre><code class="lang-python">feed_dict_test = {x: data.test.images,
+                  y_true: data.test.labels,
+                  y_true_cls: data.test.cls}
+</code></pre>
+<p>&#x7528;&#x6765;&#x6253;&#x5370;&#x6D4B;&#x8BD5;&#x96C6;&#x5206;&#x7C7B;&#x51C6;&#x786E;&#x5EA6;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">print_accuracy</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># Use TensorFlow to compute the accuracy.</span>
+    acc = session.run(accuracy, feed_dict=feed_dict_test)
+
+    <span class="hljs-comment"># Print the accuracy.</span>
+    print(<span class="hljs-string">&quot;Accuracy on test-set: {0:.1%}&quot;</span>.format(acc))
+</code></pre>
+<p>Function for printing and plotting the confusion matrix using scikit-learn.</p>
+<p>&#x7528;scikit-learn&#x6253;&#x5370;&#x6DF7;&#x6DC6;&#x77E9;&#x9635;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">print_confusion_matrix</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># Get the true classifications for the test-set.</span>
+    cls_true = data.test.cls
+
+    <span class="hljs-comment"># Get the predicted classifications for the test-set.</span>
+    cls_pred = session.run(y_pred_cls, feed_dict=feed_dict_test)
+
+    <span class="hljs-comment"># Get the confusion matrix using sklearn.</span>
+    cm = confusion_matrix(y_true=cls_true,
+                          y_pred=cls_pred)
+
+    <span class="hljs-comment"># Print the confusion matrix as text.</span>
+    print(cm)
+
+    <span class="hljs-comment"># Plot the confusion matrix as an image.</span>
+    plt.imshow(cm, interpolation=<span class="hljs-string">&apos;nearest&apos;</span>, cmap=plt.cm.Blues)
+
+    <span class="hljs-comment"># Make various adjustments to the plot.</span>
+    plt.tight_layout()
+    plt.colorbar()
+    tick_marks = np.arange(num_classes)
+    plt.xticks(tick_marks, range(num_classes))
+    plt.yticks(tick_marks, range(num_classes))
+    plt.xlabel(<span class="hljs-string">&apos;Predicted&apos;</span>)
+    plt.ylabel(<span class="hljs-string">&apos;True&apos;</span>)
+</code></pre>
+<p>&#x7ED8;&#x5236;&#x6D4B;&#x8BD5;&#x96C6;&#x4E2D;&#x8BEF;&#x5206;&#x7C7B;&#x56FE;&#x50CF;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">plot_example_errors</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># Use TensorFlow to get a list of boolean values</span>
+    <span class="hljs-comment"># whether each test-image has been correctly classified,</span>
+    <span class="hljs-comment"># and a list for the predicted class of each image.</span>
+    correct, cls_pred = session.run([correct_prediction, y_pred_cls],
+                                    feed_dict=feed_dict_test)
+
+    <span class="hljs-comment"># Negate the boolean array.</span>
+    incorrect = (correct == <span class="hljs-keyword">False</span>)
+
+    <span class="hljs-comment"># Get the images from the test-set that have been</span>
+    <span class="hljs-comment"># incorrectly classified.</span>
+    images = data.test.images[incorrect]
+
+    <span class="hljs-comment"># Get the predicted classes for those images.</span>
+    cls_pred = cls_pred[incorrect]
+
+    <span class="hljs-comment"># Get the true classes for those images.</span>
+    cls_true = data.test.cls[incorrect]
+
+    <span class="hljs-comment"># Plot the first 9 images.</span>
+    plot_images(images=images[<span class="hljs-number">0</span>:<span class="hljs-number">9</span>],
+                cls_true=cls_true[<span class="hljs-number">0</span>:<span class="hljs-number">9</span>],
+                cls_pred=cls_pred[<span class="hljs-number">0</span>:<span class="hljs-number">9</span>])
+</code></pre>
+<h3 id="&#x7ED8;&#x5236;&#x6A21;&#x578B;&#x6743;&#x91CD;&#x7684;&#x5E2E;&#x52A9;&#x51FD;&#x6570;">&#x7ED8;&#x5236;&#x6A21;&#x578B;&#x6743;&#x91CD;&#x7684;&#x5E2E;&#x52A9;&#x51FD;&#x6570;</h3>
+<p>&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7528;&#x6765;&#x7ED8;&#x5236;&#x6A21;&#x578B;&#x7684;&#x6743;&#x91CD;<code>weights</code>&#x3002;&#x753B;&#x4E86;10&#x5F20;&#x56FE;&#x50CF;&#xFF0C;&#x8BAD;&#x7EC3;&#x6A21;&#x578B;&#x6240;&#x8BC6;&#x522B;&#x51FA;&#x7684;&#x6BCF;&#x4E2A;&#x6570;&#x5B57;&#x5BF9;&#x5E94;&#x7740;&#x4E00;&#x5F20;&#x56FE;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">plot_weights</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-comment"># Get the values for the weights from the TensorFlow variable.</span>
+    w = session.run(weights)
+
+    <span class="hljs-comment"># Get the lowest and highest values for the weights.</span>
+    <span class="hljs-comment"># This is used to correct the colour intensity across</span>
+    <span class="hljs-comment"># the images so they can be compared with each other.</span>
+    w_min = np.min(w)
+    w_max = np.max(w)
+
+    <span class="hljs-comment"># Create figure with 3x4 sub-plots,</span>
+    <span class="hljs-comment"># where the last 2 sub-plots are unused.</span>
+    fig, axes = plt.subplots(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>)
+    fig.subplots_adjust(hspace=<span class="hljs-number">0.3</span>, wspace=<span class="hljs-number">0.3</span>)
+
+    <span class="hljs-keyword">for</span> i, ax <span class="hljs-keyword">in</span> enumerate(axes.flat):
+        <span class="hljs-comment"># Only use the weights for the first 10 sub-plots.</span>
+        <span class="hljs-keyword">if</span> i&lt;<span class="hljs-number">10</span>:
+            <span class="hljs-comment"># Get the weights for the i&apos;th digit and reshape it.</span>
+            <span class="hljs-comment"># Note that w.shape == (img_size_flat, 10)</span>
+            image = w[:, i].reshape(img_shape)
+
+            <span class="hljs-comment"># Set the label for the sub-plot.</span>
+            ax.set_xlabel(<span class="hljs-string">&quot;Weights: {0}&quot;</span>.format(i))
+
+            <span class="hljs-comment"># Plot the image.</span>
+            ax.imshow(image, vmin=w_min, vmax=w_max, cmap=<span class="hljs-string">&apos;seismic&apos;</span>)
+
+        <span class="hljs-comment"># Remove ticks from each sub-plot.</span>
+        ax.set_xticks([])
+        ax.set_yticks([])
+</code></pre>
+<h2 id="&#x4F18;&#x5316;&#x4E4B;&#x524D;&#x7684;&#x6027;&#x80FD;">&#x4F18;&#x5316;&#x4E4B;&#x524D;&#x7684;&#x6027;&#x80FD;</h2>
+<p>&#x6D4B;&#x8BD5;&#x96C6;&#x4E0A;&#x7684;&#x51C6;&#x786E;&#x5EA6;&#x662F;9.8%&#x3002;&#x8FD9;&#x662F;&#x7531;&#x4E8E;&#x6A21;&#x578B;&#x53EA;&#x505A;&#x4E86;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5E76;&#x6CA1;&#x505A;&#x4EFB;&#x4F55;&#x4F18;&#x5316;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x901A;&#x5E38;&#x5C06;&#x56FE;&#x50CF;&#x9884;&#x6D4B;&#x6210;&#x6570;&#x5B57;&#x96F6;&#xFF0C;&#x6B63;&#x5982;&#x4E0B;&#x9762;&#x7ED8;&#x5236;&#x7684;&#x56FE;&#x50CF;&#x90A3;&#x6837;&#xFF0C;&#x521A;&#x597D;&#x6D4B;&#x8BD5;&#x96C6;&#x4E2D;9.8%&#x7684;&#x56FE;&#x50CF;&#x662F;&#x6570;&#x5B57;&#x96F6;&#x3002;</p>
+<pre><code class="lang-python">print_accuracy()
+</code></pre>
+<pre><code>Accuracy on test-set: 9.8%
+</code></pre><pre><code class="lang-python">plot_example_errors()
+</code></pre>
+<p><img src="output_83_0.png" alt="png"></p>
+<h2 id="1&#x6B21;&#x8FED;&#x4EE3;&#x4F18;&#x5316;&#x540E;&#x7684;&#x6027;&#x80FD;">1&#x6B21;&#x8FED;&#x4EE3;&#x4F18;&#x5316;&#x540E;&#x7684;&#x6027;&#x80FD;</h2>
+<p>&#x5728;&#x5B8C;&#x6210;&#x4E00;&#x6B21;&#x8FED;&#x4EE3;&#x4F18;&#x5316;&#x4E4B;&#x540E;&#xFF0C;&#x6A21;&#x578B;&#x5728;&#x6D4B;&#x8BD5;&#x96C6;&#x4E0A;&#x7684;&#x51C6;&#x786E;&#x7387;&#x4ECE;9.8%&#x63D0;&#x9AD8;&#x5230;&#x4E86;40.7%&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x5B83;&#x5927;&#x7EA6;10&#x6B21;&#x91CC;&#x9762;&#x4F1A;&#x8BEF;&#x5206;&#x7C7B;6&#x6B21;&#xFF0C;&#x6B63;&#x5982;&#x4E0B;&#x9762;&#x6240;&#x663E;&#x793A;&#x7684;&#x3002;</p>
+<pre><code class="lang-python">optimize(num_iterations=<span class="hljs-number">1</span>)
+</code></pre>
+<pre><code class="lang-python">print_accuracy()
+</code></pre>
+<pre><code>Accuracy on test-set: 40.7%
+</code></pre><pre><code class="lang-python">plot_example_errors()
+</code></pre>
+<p><img src="output_87_0.png" alt="png"></p>
+<p>&#x4E0B;&#x9762;&#x7ED8;&#x5236;&#x7684;&#x662F;&#x6743;&#x91CD;&#x3002;&#x6B63;&#x503C;&#x4E3A;&#x7EA2;&#x8272;&#xFF0C;&#x8D1F;&#x503C;&#x4E3A;&#x84DD;&#x8272;&#x3002;&#x8FD9;&#x4E9B;&#x6743;&#x91CD;&#x53EF;&#x4EE5;&#x76F4;&#x89C2;&#x5730;&#x7406;&#x89E3;&#x4E3A;&#x56FE;&#x50CF;&#x6EE4;&#x6CE2;&#x5668;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x6743;&#x91CD;&#x7528;&#x6765;&#x786E;&#x5B9A;&#x4E00;&#x5F20;&#x6570;&#x5B57;&#x96F6;&#x7684;&#x56FE;&#x50CF;&#x5BF9;&#x5706;&#x5F62;&#x56FE;&#x50CF;&#x6709;&#x6B63;&#x53CD;&#x5E94;&#xFF08;&#x7EA2;&#x8272;&#xFF09;&#xFF0C;&#x5BF9;&#x5706;&#x5F62;&#x56FE;&#x50CF;&#x7684;&#x4E2D;&#x95F4;&#x90E8;&#x5206;&#x6709;&#x8D1F;&#x53CD;&#x5E94;&#xFF08;&#x84DD;&#x8272;&#xFF09;&#x3002;</p>
+<p>&#x7C7B;&#x4F3C;&#x7684;&#xFF0C;&#x6743;&#x91CD;&#x4E5F;&#x7528;&#x6765;&#x786E;&#x5B9A;&#x4E00;&#x5F20;&#x6570;&#x5B57;&#x4E00;&#x7684;&#x56FE;&#x50CF;&#x5BF9;&#x56FE;&#x50CF;&#x4E2D;&#x5FC3;&#x5782;&#x76F4;&#x7EBF;&#x6BB5;&#x6709;&#x6B63;&#x53CD;&#x5E94;&#xFF08;&#x7EA2;&#x8272;&#xFF09;&#xFF0C;&#x5BF9;&#x7EBF;&#x6BB5;&#x5468;&#x56F4;&#x6709;&#x8D1F;&#x53CD;&#x5E94;&#xFF08;&#x84DD;&#x8272;&#xFF09;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#x5230;&#x6743;&#x91CD;&#x5927;&#x591A;&#x770B;&#x8D77;&#x6765;&#x8DDF;&#x5B83;&#x8981;&#x8BC6;&#x522B;&#x7684;&#x6570;&#x5B57;&#x5F88;&#x50CF;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x53EA;&#x505A;&#x4E86;&#x4E00;&#x6B21;&#x8FED;&#x4EE3;&#xFF0C;&#x5373;&#x6743;&#x91CD;&#x53EA;&#x5728;100&#x5F20;&#x56FE;&#x50CF;&#x4E0A;&#x8BAD;&#x7EC3;&#x3002;&#x7B49;&#x7ECF;&#x8FC7;&#x4E0A;&#x5343;&#x5F20;&#x56FE;&#x50CF;&#x7684;&#x8BAD;&#x7EC3;&#x4E4B;&#x540E;&#xFF0C;&#x6743;&#x91CD;&#x4F1A;&#x53D8;&#x5F97;&#x66F4;&#x96BE;&#x5206;&#x8FA8;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x9700;&#x8981;&#x8BC6;&#x522B;&#x51FA;&#x6570;&#x5B57;&#x7684;&#x8BB8;&#x591A;&#x79CD;&#x4E66;&#x5199;&#x65B9;&#x6CD5;&#x3002;</p>
+<pre><code class="lang-python">plot_weights()
+</code></pre>
+<p><img src="output_89_0.png" alt="png"></p>
+<h2 id="10&#x6B21;&#x4F18;&#x5316;&#x8FED;&#x4EE3;&#x540E;&#x7684;&#x6027;&#x80FD;">10&#x6B21;&#x4F18;&#x5316;&#x8FED;&#x4EE3;&#x540E;&#x7684;&#x6027;&#x80FD;</h2>
+<pre><code class="lang-python"><span class="hljs-comment"># We have already performed 1 iteration.</span>
+optimize(num_iterations=<span class="hljs-number">9</span>)
+</code></pre>
+<pre><code class="lang-python">print_accuracy()
+</code></pre>
+<pre><code>Accuracy on test-set: 78.2%
+</code></pre><pre><code class="lang-python">plot_example_errors()
+</code></pre>
+<p><img src="output_93_0.png" alt="png"></p>
+<pre><code class="lang-python">plot_weights()
+</code></pre>
+<p><img src="output_94_0.png" alt="png"></p>
+<h2 id="1000&#x6B21;&#x8FED;&#x4EE3;&#x4E4B;&#x540E;&#x7684;&#x6027;&#x80FD;">1000&#x6B21;&#x8FED;&#x4EE3;&#x4E4B;&#x540E;&#x7684;&#x6027;&#x80FD;</h2>
+<p>&#x5728;&#x8FED;&#x4EE3;&#x4E86;1000&#x6B21;&#x4E4B;&#x540E;&#xFF0C;&#x6A21;&#x578B;&#x5728;&#x5341;&#x6B21;&#x91CC;&#x9762;&#x5927;&#x7EA6;&#x53EA;&#x8BEF;&#x8BC6;&#x522B;&#x4E86;&#x4E00;&#x6B21;&#x3002;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x6709;&#x4E9B;&#x8BEF;&#x8BC6;&#x522B;&#x60C5;&#x6709;&#x53EF;&#x539F;&#xFF0C;&#x56E0;&#x4E3A;&#x5373;&#x4F7F;&#x5728;&#x4EBA;&#x7C7B;&#x773C;&#x91CC;&#xFF0C;&#x4E5F;&#x5F88;&#x96BE;&#x786E;&#x5B9A;&#x56FE;&#x50CF;&#xFF08;&#x7684;&#x6570;&#x5B57;&#xFF09;&#xFF0C;&#x7136;&#x800C;&#x6709;&#x4E00;&#x4E9B;&#x56FE;&#x50CF;&#x662F;&#x5F88;&#x660E;&#x663E;&#x7684;&#xFF0C;&#x597D;&#x7684;&#x6A21;&#x578B;&#x5E94;&#x8BE5;&#x80FD;&#x5206;&#x8FA8;&#x51FA;&#x6765;&#x3002;&#x4F46;&#x8FD9;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x6A21;&#x578B;&#x65E0;&#x6CD5;&#x8FBE;&#x5230;&#x66F4;&#x597D;&#x7684;&#x6027;&#x80FD;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x66F4;&#x4E3A;&#x590D;&#x6742;&#x7684;&#x6A21;&#x578B;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># We have already performed 10 iterations.</span>
+optimize(num_iterations=<span class="hljs-number">990</span>)
+</code></pre>
+<pre><code class="lang-python">print_accuracy()
+</code></pre>
+<pre><code>Accuracy on test-set: 91.7%
+</code></pre><pre><code class="lang-python">plot_example_errors()
+</code></pre>
+<p><img src="output_98_0.png" alt="png"></p>
+<p>&#x6A21;&#x578B;&#x7ECF;&#x8FC7;&#x4E86;1000&#x6B21;&#x8FED;&#x4EE3;&#x8BAD;&#x7EC3;&#xFF0C;&#x6BCF;&#x6B21;&#x8FED;&#x4EE3;&#x7528;&#x5230;&#x8BAD;&#x7EC3;&#x96C6;&#x91CC;&#x9762;&#x7684;100&#x5F20;&#x56FE;&#x50CF;&#x3002;&#x7531;&#x4E8E;&#x56FE;&#x50CF;&#x7684;&#x591A;&#x6837;&#x5316;&#xFF0C;&#x73B0;&#x5728;&#x6743;&#x91CD;&#x53D8;&#x5F97;&#x5F88;&#x96BE;&#x8FA8;&#x8BA4;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x4F1A;&#x6000;&#x7591;&#x8FD9;&#x4E9B;&#x6743;&#x91CD;&#x662F;&#x5426;&#x771F;&#x7684;&#x7406;&#x89E3;&#x6570;&#x5B57;&#x662F;&#x600E;&#x4E48;&#x7531;&#x7EBF;&#x6761;&#x7EC4;&#x6210;&#x7684;&#xFF0C;&#x6216;&#x8005;&#x6A21;&#x578B;&#x53EA;&#x662F;&#x8BB0;&#x4F4F;&#x4E86;&#x8BB8;&#x591A;&#x4E0D;&#x540C;&#x7684;&#x50CF;&#x7D20;&#x3002;</p>
+<pre><code class="lang-python">plot_weights()
+</code></pre>
+<p><img src="output_100_0.png" alt="png"></p>
+<p>&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x6253;&#x5370;&#x5E76;&#x7ED8;&#x5236;&#x51FA;&#x6DF7;&#x6DC6;&#x77E9;&#x9635;&#xFF0C;&#x5B83;&#x8BA9;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x8BEF;&#x5206;&#x7C7B;&#x7684;&#x66F4;&#x591A;&#x7EC6;&#x8282;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5B83;&#x5C55;&#x793A;&#x4E86;&#x63CF;&#x7ED8;&#x7740;&#x6570;&#x5B57;5&#x7684;&#x56FE;&#x50CF;&#x6709;&#x65F6;&#x4F1A;&#x88AB;&#x8BEF;&#x5206;&#x7C7B;&#x6210;&#x5176;&#x4ED6;&#x53EF;&#x80FD;&#x7684;&#x6570;&#x5B57;&#xFF0C;&#x4F46;&#x5927;&#x591A;&#x662F;3&#xFF0C;6&#x6216;8&#x3002;</p>
+<pre><code class="lang-python">print_confusion_matrix()
+</code></pre>
+<pre><code>[[ 957    0    3    2    0    5   11    1    1    0]
+ [   0 1108    2    2    1    2    4    2   14    0]
+ [   4    9  914   19   15    5   13   14   35    4]
+ [   1    0   16  928    0   28    2   14   13    8]
+ [   1    1    3    2  939    0   10    2    6   18]
+ [  10    3    3   33   10  784   17    6   19    7]
+ [   8    3    3    2   11   14  915    1    1    0]
+ [   3    9   21    9    7    1    0  959    2   17]
+ [   8    8    8   38   11   40   14   18  825    4]
+ [  11    7    1   13   75   13    1   39    4  845]]
+</code></pre><p><img src="output_102_1.png" alt="png"></p>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x7528;TensorFlow&#x5B8C;&#x6210;&#x4E86;&#x4EFB;&#x52A1;&#xFF0C;&#x5173;&#x95ED;session&#xFF0C;&#x91CA;&#x653E;&#x8D44;&#x6E90;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-comment"># This has been commented out in case you want to modify and experiment</span>
+<span class="hljs-comment"># with the Notebook without having to restart it.</span>
+<span class="hljs-comment"># session.close()</span>
+</code></pre>
+<h2 id="&#x7EC3;&#x4E60;">&#x7EC3;&#x4E60;</h2>
+<p>These are a few suggestions for exercises that may help improve your skills with TensorFlow. It is important to get hands-on experience with TensorFlow in order to learn how to use it properly.</p>
+<p>&#x4E0B;&#x9762;&#x4F7F;&#x4E00;&#x4E9B;&#x53EF;&#x80FD;&#x4F1A;&#x8BA9;&#x4F60;&#x63D0;&#x5347;TensorFlow&#x6280;&#x80FD;&#x7684;&#x4E00;&#x4E9B;&#x5EFA;&#x8BAE;&#x7EC3;&#x4E60;&#x3002;&#x4E3A;&#x4E86;&#x5B66;&#x4E60;&#x5982;&#x4F55;&#x66F4;&#x5408;&#x9002;&#x5730;&#x4F7F;&#x7528;TensorFlow&#xFF0C;&#x5B9E;&#x8DF5;&#x7ECF;&#x9A8C;&#x662F;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x3002;
+&#x5728;&#x4F60;&#x5BF9;&#x8FD9;&#x4E2A;Notebook&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#x4E4B;&#x524D;&#xFF0C;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5148;&#x5907;&#x4EFD;&#x4E00;&#x4E0B;&#x3002;</p>
+<ul>
+<li>&#x6539;&#x53D8;&#x4F18;&#x5316;&#x5668;&#x7684;&#x5B66;&#x4E60;&#x7387;&#x3002;</li>
+<li>&#x6539;&#x53D8;&#x4F18;&#x5316;&#x5668;&#xFF0C;&#x6BD4;&#x5982;&#x7528;<code>AdagradOptimizer</code> &#x6216; <code>AdamOptimizer</code>&#x3002;</li>
+<li>&#x5C06;batch-size&#x6539;&#x4E3A;1&#x6216;1000&#x3002;</li>
+<li>&#x8FD9;&#x4E9B;&#x6539;&#x53D8;&#x5982;&#x4F55;&#x5F71;&#x54CD;&#x6027;&#x80FD;&#xFF1F;</li>
+<li>&#x4F60;&#x89C9;&#x5F97;&#x8FD9;&#x4E9B;&#x6539;&#x53D8;&#x5BF9;&#x5176;&#x4ED6;&#x5206;&#x7C7B;&#x95EE;&#x9898;&#x6216;&#x6570;&#x5B66;&#x6A21;&#x578B;&#x6709;&#x76F8;&#x540C;&#x7684;&#x5F71;&#x54CD;&#x5417;?</li>
+<li>&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x6539;&#x53D8;&#x4EFB;&#x4F55;&#x53C2;&#x6570;&#xFF0C;&#x591A;&#x6B21;&#x8FD0;&#x884C;Notebook&#xFF0C;&#x4F1A;&#x5F97;&#x5230;&#x5B8C;&#x6210;&#x4E00;&#x6837;&#x7684;&#x7ED3;&#x679C;&#x5417;&#xFF1F;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;</li>
+<li>&#x6539;&#x53D8;<code>plot_example_errors()</code> &#x51FD;&#x6570;&#xFF0C;&#x4F7F;&#x5B83;&#x6253;&#x5370;&#x8BEF;&#x5206;&#x7C7B;&#x7684; <code>logits</code>&#x548C;<code>y_pred</code>&#x503C;&#x3002;</li>
+<li>&#x7528;<code>sparse_softmax_cross_entropy_with_logits</code> &#x4EE3;&#x66FF; <code>softmax_cross_entropy_with_logits</code>&#x3002;&#x8FD9;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x6539;&#x53D8;&#x4EE3;&#x7801;&#x7684;&#x591A;&#x4E2A;&#x5730;&#x65B9;&#x3002;&#x63A2;&#x8BA8;&#x4F7F;&#x7528;&#x8FD9;&#x4E24;&#x4E2D;&#x65B9;&#x6CD5;&#x7684;&#x4F18;&#x7F3A;&#x70B9;&#x3002;</li>
+<li>&#x4E0D;&#x770B;&#x6E90;&#x7801;&#xFF0C;&#x81EA;&#x5DF1;&#x91CD;&#x5199;&#x7A0B;&#x5E8F;&#x3002;</li>
+<li>&#x5411;&#x670B;&#x53CB;&#x89E3;&#x91CA;&#x7A0B;&#x5E8F;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;&#x3002;</li>
+</ul>
+<h2 id="license-mit">License (MIT)</h2>
+<p>Copyright (c) 2016 by <a href="http://www.hvass-labs.org/" target="_blank">Magnus Erik Hvass Pedersen</a></p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: TensorFlow 教程">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../02_Convolutional_Neural_Network_zh_CN/02_Convolutional_Neural_Network_zh_CN.html" class="navigation navigation-next " aria-label="Next page: 卷积神经网络">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"简单线性模型","level":"1.2","depth":1,"next":{"title":"卷积神经网络","level":"1.3","depth":1,"path":"02_Convolutional_Neural_Network_zh_CN/02_Convolutional_Neural_Network_zh_CN.md","ref":"02_Convolutional_Neural_Network_zh_CN/02_Convolutional_Neural_Network_zh_CN.md","articles":[]},"previous":{"title":"TensorFlow 教程","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["comment"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"comment":{"highlightCommented":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"wizardforcel","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"TensorFlow 教程（Hvass）","language":"zh","links":{"sidebar":{"TensorFlow 教程（Hvass）":"https://www.gitbook.com/book/wizardforcel/tf-tut-hvass"},"gitbook":true},"gitbook":"*","description":"Tensorflow 教程（Hvass）"},"file":{"path":"01_Simple_Linear_Model_zh_CN/01_Simple_Linear_Model_zh_CN.md","mtime":"2017-09-18T01:21:37.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-09-18T01:34:14.068Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-comment/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

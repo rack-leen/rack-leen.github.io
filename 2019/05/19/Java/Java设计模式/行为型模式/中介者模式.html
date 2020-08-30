@@ -1,0 +1,211 @@
+<hr>
+<p>title: 中介者模式<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2020-01-04 22:13:27<br>
+tags:</p>
+<ul>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h2 id="中介者模式"><a class="header-anchor" href="#中介者模式">¶</a>中介者模式</h2>
+<h3 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h3>
+<blockquote>
+<p>Define an object that encapsulates how a set of objects interact.Mediator promotes loose coupling by keeping objects from referring to each other explicitly,and it lets you vary their interaction independently.<br>
+用一个中介对象封装一系列的对象交互，中介者使各对象不需要显示地相互作用，从而使其耦合松散，而且可以独立地改变它们之间的交互。</p>
+</blockquote>
+<h3 id="代码实现"><a class="header-anchor" href="#代码实现">¶</a>代码实现</h3>
+<h4 id="中介者"><a class="header-anchor" href="#中介者">¶</a>中介者</h4>
+<ol>
+<li>抽象中介者</li>
+</ol>
+<pre><code class="language-Java">package org.example.mediator;
+
+/**
+ * 抽象中介者
+ */
+public abstract class Mediator {
+    protected ConcreteColleague1 concreteColleague1 ;
+    protected ConcreteColleague2 concreteColleague2 ;
+
+    /**
+     * 中介者模式的中介者需要得到需要中介的对象
+     */
+    public ConcreteColleague1 getConcreteColleague1(){
+        return this.concreteColleague1 ;
+    }
+
+    public void setConcreteColleague1(ConcreteColleague1 concreteColleague1){
+        this.concreteColleague1 = concreteColleague1 ;
+    }
+
+    public ConcreteColleague2 getConcreteColleague2(){
+        return this.concreteColleague2 ;
+    }
+
+    public void setConcreteColleague2(ConcreteColleague2 concreteColleague2){
+        this.concreteColleague2 = concreteColleague2 ;
+    }
+
+    /**
+     * 中介者模式的业务逻辑
+     */
+    public abstract void execute();
+    public abstract void doSomething1();
+    public abstract void doSomething2();
+}
+</code></pre>
+<ol start="2">
+<li>具体中介者</li>
+</ol>
+<pre><code class="language-Java">package org.example.mediator;
+
+/**
+ * 具体中介者
+ */
+public class ConcreteMediator extends Mediator {
+    @Override
+    public void execute() {
+        doSomething1();
+        doSomething2();
+    }
+
+    @Override
+    public void doSomething1() {
+        System.out.println(&quot;中介者处理的业务逻辑1&quot;);
+        this.concreteColleague1.selfMethod1();
+        this.concreteColleague2.selfMethod1();
+    }
+
+    @Override
+    public void doSomething2() {
+        System.out.println(&quot;中介者处理的业务逻辑2&quot;);
+        this.concreteColleague1.selfMethod1();
+        this.concreteColleague2.selfMethod1();
+    }
+}
+</code></pre>
+<h4 id="同事角色"><a class="header-anchor" href="#同事角色">¶</a>同事角色</h4>
+<ol>
+<li>抽象同事角色</li>
+</ol>
+<pre><code class="language-Java">package org.example.mediator;
+
+/**
+ * 抽象同事类，所有的同事类都会集成这个抽象类，并与中介者是一对一关系
+ */
+public abstract class Colleague {
+    // 委托中介者对象，表示与中介者是一对一关系
+    protected Mediator mediator ;
+    public Colleague(Mediator mediator){
+        this.mediator = mediator ;
+    }
+}
+</code></pre>
+<ol start="2">
+<li>具体同事角色1</li>
+</ol>
+<pre><code class="language-Java">package org.example.mediator;
+
+/**
+ * 具体同事类，继承抽象同事类
+ */
+public class ConcreteColleague1 extends Colleague {
+
+    public ConcreteColleague1(Mediator mediator) {
+        super(mediator);
+    }
+
+    /**
+     * 同事类自己特有的业务逻辑
+     */
+    public void selfMethod1(){
+        System.out.println(&quot;同事类1处理自己的业务逻辑&quot;);
+    }
+
+    /**
+     * 这个同事类与其他同事类有联系的业务逻辑就需要通过中介者来管理
+     */
+    public void depMethod1(){
+        /* 其他不能处理的业务逻辑交给中介者处理 */
+        this.mediator.execute();
+    }
+}
+</code></pre>
+<ol start="3">
+<li>具体同事角色2</li>
+</ol>
+<pre><code class="language-Java">package org.example.mediator;
+
+public class ConcreteColleague2 extends Colleague {
+    public ConcreteColleague2(Mediator mediator) {
+        super(mediator);
+    }
+
+    /**
+     * 同事类自己特有的业务逻辑
+     */
+    public void selfMethod1(){
+        System.out.println(&quot;同事类2处理自己的业务逻辑&quot;);
+    }
+
+    /**
+     * 这个同事类与其他同事类有联系的业务逻辑就需要通过中介者来管理
+     */
+    public void depMethod1(){
+        /* 其他公共的业务逻辑让中介者代替处理 */
+        super.mediator.execute();
+    }
+}
+</code></pre>
+<h4 id="场景实现"><a class="header-anchor" href="#场景实现">¶</a>场景实现</h4>
+<pre><code class="language-Java">public class App {
+    /**
+     * 中介者模式
+     * @param args
+     */
+    public static void main(String[] args) {
+        /* 创建中介者 */
+        Mediator mediator = new ConcreteMediator();
+        /* 创建两个同事角色 */
+        ConcreteColleague1 colleague1 = new ConcreteColleague1(mediator);
+        ConcreteColleague2 colleague2 = new ConcreteColleague2(mediator);
+        /* 将两个同事对象设置入中介对象中，让中介对象中的业务逻辑与同事对象的业务逻辑融合 */
+        mediator.setConcreteColleague1(colleague1);
+        mediator.setConcreteColleague2(colleague2);
+        /* 让同事对象调用融合后的业务逻辑 */
+        colleague1.depMethod1();
+        colleague2.depMethod1();
+    }
+}
+</code></pre>
+<h3 id="应用场景"><a class="header-anchor" href="#应用场景">¶</a>应用场景</h3>
+<ol>
+<li>中介者模式适用于多个对象紧密耦合(蜘蛛网状关系)的情况，让其变为星型。</li>
+<li>中介者模式也叫调停者模式，用来调节多个对象之间的混乱关系。</li>
+<li>机场调度中心,MVC框架，媒体网关，中介服务都需要使用中介者模式。</li>
+</ol>
+<h3 id="中介者模式的优缺点"><a class="header-anchor" href="#中介者模式的优缺点">¶</a>中介者模式的优缺点</h3>
+<h4 id="优点"><a class="header-anchor" href="#优点">¶</a>优点</h4>
+<ol>
+<li>减少依赖，把原有的一对多的依赖变为一对一的依赖(一个同事对一个中介者)。</li>
+</ol>
+<h4 id="缺点"><a class="header-anchor" href="#缺点">¶</a>缺点</h4>
+<ol>
+<li>对应的同事太多，中介者类会膨胀。同事类越多，中介者的逻辑就越复杂。</li>
+</ol>

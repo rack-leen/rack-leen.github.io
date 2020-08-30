@@ -1,0 +1,93 @@
+<hr>
+<p>title: 二叉树遍历<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2019-05-24 10:06:59<br>
+tags:</p>
+<ul>
+<li>数据结构</li>
+<li>数据结构杂记</li>
+<li>二叉树</li>
+<li>二叉树遍历<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>数据结构</li>
+<li>数据结构杂记</li>
+<li>二叉树</li>
+<li>二叉树遍历<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h3 id="二叉树遍历"><a class="header-anchor" href="#二叉树遍历">¶</a>二叉树遍历</h3>
+<blockquote>
+<p>二叉树遍历是沿着某条路径，依次对每个节点均做一次且仅做一次访问。<br>
+二叉树遍历按照节点访问顺序分为前序遍历、中序遍历和后序遍历。</p>
+</blockquote>
+<h4 id="前序遍历"><a class="header-anchor" href="#前序遍历">¶</a>前序遍历</h4>
+<h5 id="访问方式"><a class="header-anchor" href="#访问方式">¶</a>访问方式</h5>
+<p>按照根节点-&gt;左子树-&gt;右子树的方式访问二叉树。<br>
+<img src="%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86/%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86.png" alt="前序遍历"></p>
+<h5 id="理解"><a class="header-anchor" href="#理解">¶</a>理解</h5>
+<ol>
+<li>首先访问根节点A</li>
+<li>之后访问根节点的左子树的B节点</li>
+<li>以B节点为根，访问B节点的左边节点D，D节点已经是最末节点</li>
+<li>之后访问B节点的右边节点F</li>
+<li>然后以节点F为根，首先访问F节点的左边节点E，E节点已经为最末节点</li>
+<li>并且F节点没有右边节点，这时，二叉树的左子树访问完毕</li>
+<li>开始访问二叉树的右子树的C节点</li>
+<li>节点C有左节点G，首先访问左节点G</li>
+<li>G没有左节点，却有右节点，因此访问G节点的右边节点H</li>
+<li>节点H已经是最末节点，C节点的左子树访问完毕</li>
+<li>开始访问C节点的右子树上的节点I</li>
+<li>节点I没有任何子树，因此I节点是末端节点</li>
+<li>至此，整个二叉树的节点访问完毕<br>
+前序遍历结果：A-&gt;B-&gt;D-&gt;F-&gt;E-&gt;C-&gt;G-&gt;H-&gt;I</li>
+</ol>
+<h4 id="中序遍历"><a class="header-anchor" href="#中序遍历">¶</a>中序遍历</h4>
+<h5 id="访问方式-v2"><a class="header-anchor" href="#访问方式-v2">¶</a>访问方式</h5>
+<p>按照左子树-&gt;根节点-&gt;右子树的方式访问二叉树。<br>
+<img src="%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86.png" alt="中序遍历"></p>
+<h5 id="理解-v2"><a class="header-anchor" href="#理解-v2">¶</a>理解</h5>
+<ol>
+<li>首先访问左子树，从左子树的最左端D节点开始</li>
+<li>由于D节点没有子节点，因此D节点回溯到D的父节点B</li>
+<li>从B节点的右子树的最左端E开始</li>
+<li>E节点访问父节点F,此时，二叉树的左子树访问完毕</li>
+<li>开始访问二叉树的根节点A</li>
+<li>开始访问二叉树的右子树，从右子树的最左端G开始</li>
+<li>G有一个子节点H，首先访问H</li>
+<li>G访问完子节点后开始回溯到父节点C</li>
+<li>C节点有右边节点I</li>
+<li>I没有任何子节点，此时，整个二叉树访问完毕。<br>
+中序遍历的结果：D-&gt;B-&gt;E-&gt;F-&gt;A-&gt;G-&gt;H-&gt;C-&gt;I<br>
+由此可知，中序遍历是从左到右遍历的，计算中序遍历有简单直观的投影法<br>
+<img src="%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86/%E4%B8%AD%E5%BA%8F%E6%8A%95%E5%BD%B1%E6%B3%95.jpg" alt="中序投影法"></li>
+</ol>
+<h4 id="后序遍历"><a class="header-anchor" href="#后序遍历">¶</a>后序遍历</h4>
+<h5 id="访问方式-v3"><a class="header-anchor" href="#访问方式-v3">¶</a>访问方式</h5>
+<p>按照左子树-&gt;右子树-&gt;根节点的方式访问二叉树。<br>
+<img src="%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86.png" alt="后序遍历"></p>
+<h5 id="理解-v3"><a class="header-anchor" href="#理解-v3">¶</a>理解</h5>
+<ol>
+<li>从左子树的最左端D节点开始访问，D节点的父节点是B节点</li>
+<li>之后从左子树的最右端E节点访问，E节点的父节点是F节点</li>
+<li>E节点已经是最右端了，因此开始访问E节点的父节点F节点</li>
+<li>F节点也已经是最右端节点，并且与D节点有同一个父节点B</li>
+<li>因此，最终访问父节点B，B节点的父节点A是整个二叉树的根节点，需要最后访问</li>
+<li>左子树访问完毕，开始访问右子树。从右子树的最左端H节点开始访问</li>
+<li>H节点没有子节点，因此访问父节点G</li>
+<li>G节点的子节点访问完后，开始访问其父节点C的右子树的节点I</li>
+<li>I节点没有子节点，因此可以最终访问父节点C</li>
+<li>这时二叉树的右子树访问完毕，并且左子树也访问完毕，最终访问根节点A<br>
+后序遍历的结果：D-&gt;E-&gt;F-&gt;B-&gt;H-&gt;G-&gt;I-&gt;C-&gt;A</li>
+</ol>
+<h4 id="结论"><a class="header-anchor" href="#结论">¶</a>结论</h4>
+<p>由以上二叉树访问流程可知，整个二叉树的遍历就是一个递归的过程。</p>

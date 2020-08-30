@@ -1,0 +1,1719 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>7.1 K 近邻算法 | 编程之法：面试和算法心得</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.5">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./07.02.svm.html" />
+    
+    
+    <link rel="prev" href="./ch7.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="11.1"
+        data-chapter-title="7.1 K 近邻算法"
+        data-filepath="07.01.md"
+        data-basepath="."
+        data-revision="Thu Jan 14 2016 10:53:03 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/the-art-of-programming-by-july" target="blank" class="custom-link">编程之法：面试和算法心得</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="00.01.html">
+            
+                
+                    <a href="./00.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        程序员如何准备面试中的算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="part1.html">
+            
+                
+                    <a href="./part1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        第一部分 数据结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="ch1.html">
+            
+                
+                    <a href="./ch1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        第一章 字符串
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="01.00.html">
+            
+                
+                    <a href="./01.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        1.0 本章导读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="01.01.html">
+            
+                
+                    <a href="./01.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        1.1 旋转字符串
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="01.02.html">
+            
+                
+                    <a href="./01.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        1.2 字符串包含
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="01.03.html">
+            
+                
+                    <a href="./01.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        1.3 字符串转换成整数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="01.04.html">
+            
+                
+                    <a href="./01.04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        1.4 回文判断
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="01.05.html">
+            
+                
+                    <a href="./01.05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        1.5 最长回文子串
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="01.06.html">
+            
+                
+                    <a href="./01.06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        1.6 字符串的全排列
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="01.10.html">
+            
+                
+                    <a href="./01.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        1.10 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="ch2.html">
+            
+                
+                    <a href="./ch2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        第二章 数组
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="02.00.html">
+            
+                
+                    <a href="./02.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        2.0 本章导读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="02.01.html">
+            
+                
+                    <a href="./02.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        2.1 寻找最小的 k 个数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="02.02.html">
+            
+                
+                    <a href="./02.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        2.2 寻找和为定值的两个数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="02.03.html">
+            
+                
+                    <a href="./02.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        2.3 寻找和为定值的多个数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="02.04.html">
+            
+                
+                    <a href="./02.04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        2.4 最大连续子数组和
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="02.05.html">
+            
+                
+                    <a href="./02.05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        2.5 跳台阶
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="02.06.html">
+            
+                
+                    <a href="./02.06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        2.6 奇偶排序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="02.07.html">
+            
+                
+                    <a href="./02.07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        2.7 荷兰国旗
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="02.08.html">
+            
+                
+                    <a href="./02.08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.</b>
+                        
+                        2.8 矩阵相乘
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="02.09.html">
+            
+                
+                    <a href="./02.09.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.</b>
+                        
+                        2.9 完美洗牌
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="02.15.html">
+            
+                
+                    <a href="./02.15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.</b>
+                        
+                        2.15 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="ch3.html">
+            
+                
+                    <a href="./ch3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        第三章 树
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="03.00.html">
+            
+                
+                    <a href="./03.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        3.0 本章导读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="03.01.html">
+            
+                
+                    <a href="./03.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        3.1 红黑树
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="03.02.html">
+            
+                
+                    <a href="./03.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        3.2 B树
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="03.03.html">
+            
+                
+                    <a href="./03.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        3.3 最近公共祖先LCA
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="03.10.html">
+            
+                
+                    <a href="./03.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        3.10 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="part2.html">
+            
+                
+                    <a href="./part2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        第二部分 算法心得
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="ch4.html">
+            
+                
+                    <a href="./ch4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        第四章 查找匹配
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="04.01.html">
+            
+                
+                    <a href="./04.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        4.1 有序数组的查找
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="04.02.html">
+            
+                
+                    <a href="./04.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        4.2 行列递增矩阵的查找
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="04.03.html">
+            
+                
+                    <a href="./04.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        4.3 出现次数超过一半的数字
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="ch5.html">
+            
+                
+                    <a href="./ch5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        第五章 动态规划
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="05.00.html">
+            
+                
+                    <a href="./05.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        5.0 本章导读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="05.01.html">
+            
+                
+                    <a href="./05.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        5.1 最大连续乘积子串
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="05.02.html">
+            
+                
+                    <a href="./05.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        5.2 字符串编辑距离
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="05.03.html">
+            
+                
+                    <a href="./05.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        5.3 格子取数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="05.04.html">
+            
+                
+                    <a href="./05.04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        5.4 交替字符串
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="05.10.html">
+            
+                
+                    <a href="./05.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.6.</b>
+                        
+                        5.10 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="part3.html">
+            
+                
+                    <a href="./part3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        第三部分 综合演练
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="ch6.html">
+            
+                
+                    <a href="./ch6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        第六章 海量数据处理
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="06.00.html">
+            
+                
+                    <a href="./06.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        6.0 本章导读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="06.01.html">
+            
+                
+                    <a href="./06.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        6.1 关联式容器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="06.02.html">
+            
+                
+                    <a href="./06.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        6.2 分而治之
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="06.03.html">
+            
+                
+                    <a href="./06.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        6.3 simhash算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="06.04.html">
+            
+                
+                    <a href="./06.04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.5.</b>
+                        
+                        6.4 外排序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="06.05.html">
+            
+                
+                    <a href="./06.05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.6.</b>
+                        
+                        6.5 MapReduce
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7" data-path="06.06.html">
+            
+                
+                    <a href="./06.06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.7.</b>
+                        
+                        6.6 多层划分
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8" data-path="06.07.html">
+            
+                
+                    <a href="./06.07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.8.</b>
+                        
+                        6.7 Bitmap
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.9" data-path="06.08.html">
+            
+                
+                    <a href="./06.08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.9.</b>
+                        
+                        6.8 Bloom filter
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.10" data-path="06.09.html">
+            
+                
+                    <a href="./06.09.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.10.</b>
+                        
+                        6.9 Trie树
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.11" data-path="06.10.html">
+            
+                
+                    <a href="./06.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.11.</b>
+                        
+                        6.10 数据库
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.12" data-path="06.11.html">
+            
+                
+                    <a href="./06.11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.12.</b>
+                        
+                        6.11 倒排索引
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.13" data-path="06.15.html">
+            
+                
+                    <a href="./06.15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.13.</b>
+                        
+                        6.15 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="ch7.html">
+            
+                
+                    <a href="./ch7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        第七章 机器学习
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="11.1" data-path="07.01.html">
+            
+                
+                    <a href="./07.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        7.1 K 近邻算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="07.02.svm.html">
+            
+                
+                    <a href="./07.02.svm.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        7.2 支持向量机
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="ch8.html">
+            
+                
+                    <a href="./ch8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        附录 更多题型
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="08.00.html">
+            
+                
+                    <a href="./08.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        附录A 语言基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="08.01.html">
+            
+                
+                    <a href="./08.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        附录B 概率统计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="08.02.html">
+            
+                
+                    <a href="./08.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        附录C 智力逻辑
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="08.03.html">
+            
+                
+                    <a href="./08.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.4.</b>
+                        
+                        附录D 系统设计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="08.04.html">
+            
+                
+                    <a href="./08.04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.</b>
+                        
+                        附录E 操作系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.6" data-path="08.05.html">
+            
+                
+                    <a href="./08.05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.6.</b>
+                        
+                        附录F 网络协议
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="ch10.html">
+            
+                
+                    <a href="./ch10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        sift算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1" data-path="10.01.01.html">
+            
+                
+                    <a href="./10.01.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        sift算法的编译与实现
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="10.01.02.html">
+            
+                
+                    <a href="./10.01.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        教你一步一步用c语言实现sift算法、上
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="10.01.03.html">
+            
+                
+                    <a href="./10.01.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        教你一步一步用c语言实现sift算法、下
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="part4.html">
+            
+                
+                    <a href="./part4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        其它
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1" data-path="a.1.html">
+            
+                
+                    <a href="./a.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.1.</b>
+                        
+                        40亿个数中快速查找
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" data-path="a.2.html">
+            
+                
+                    <a href="./a.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.2.</b>
+                        
+                        hash表算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.3" data-path="a.3.html">
+            
+                
+                    <a href="./a.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.3.</b>
+                        
+                        一致性哈希算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.4" data-path="a.4.html">
+            
+                
+                    <a href="./a.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.4.</b>
+                        
+                        倒排索引关键词不重复Hash编码
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.5" data-path="a.5.html">
+            
+                
+                    <a href="./a.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.5.</b>
+                        
+                        傅里叶变换算法、上
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.6" data-path="a.6.html">
+            
+                
+                    <a href="./a.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.6.</b>
+                        
+                        傅里叶变换算法、下
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.7" data-path="a.7.html">
+            
+                
+                    <a href="./a.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.7.</b>
+                        
+                        后缀树
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.8" data-path="a.8.html">
+            
+                
+                    <a href="./a.8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.8.</b>
+                        
+                        基于给定的文档生成倒排索引的编码与实践
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.9" data-path="a.9.html">
+            
+                
+                    <a href="./a.9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.9.</b>
+                        
+                        搜索关键词智能提示suggestion
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.10" data-path="a.10.html">
+            
+                
+                    <a href="./a.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.10.</b>
+                        
+                        最小操作数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.11" data-path="a.11.html">
+            
+                
+                    <a href="./a.11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.11.</b>
+                        
+                        最短摘要的生成
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.12" data-path="a.12.html">
+            
+                
+                    <a href="./a.12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.12.</b>
+                        
+                        最长公共子序列
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.13" data-path="a.13.html">
+            
+                
+                    <a href="./a.13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.13.</b>
+                        
+                        木块砌墙原稿
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.14" data-path="a.14.html">
+            
+                
+                    <a href="./a.14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.14.</b>
+                        
+                        附近地点搜索
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.15" data-path="a.15.html">
+            
+                
+                    <a href="./a.15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.15.</b>
+                        
+                        随机取出其中之一元素
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >编程之法：面试和算法心得</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="k&#x8FD1;&#x90BB;&#x7B97;&#x6CD5;">K&#x8FD1;&#x90BB;&#x7B97;&#x6CD5;</h1>
+<h3 id="11&#x3001;&#x4EC0;&#x4E48;&#x662F;k&#x8FD1;&#x90BB;&#x7B97;&#x6CD5;">1.1&#x3001;&#x4EC0;&#x4E48;&#x662F;K&#x8FD1;&#x90BB;&#x7B97;&#x6CD5;</h3>
+<p>&#x4F55;&#x8C13;K&#x8FD1;&#x90BB;&#x7B97;&#x6CD5;&#xFF0C;&#x5373;K-Nearest Neighbor algorithm&#xFF0C;&#x7B80;&#x79F0;KNN&#x7B97;&#x6CD5;&#xFF0C;&#x5355;&#x4ECE;&#x540D;&#x5B57;&#x6765;&#x731C;&#x60F3;&#xFF0C;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x7C97;&#x66B4;&#x7684;&#x8BA4;&#x4E3A;&#x662F;&#xFF1A;K&#x4E2A;&#x6700;&#x8FD1;&#x7684;&#x90BB;&#x5C45;&#xFF0C;&#x5F53;K=1&#x65F6;&#xFF0C;&#x7B97;&#x6CD5;&#x4FBF;&#x6210;&#x4E86;&#x6700;&#x8FD1;&#x90BB;&#x7B97;&#x6CD5;&#xFF0C;&#x5373;&#x5BFB;&#x627E;&#x6700;&#x8FD1;&#x7684;&#x90A3;&#x4E2A;&#x90BB;&#x5C45;&#x3002;&#x4E3A;&#x4F55;&#x8981;&#x627E;&#x90BB;&#x5C45;&#xFF1F;&#x6253;&#x4E2A;&#x6BD4;&#x65B9;&#x6765;&#x8BF4;&#xFF0C;&#x5047;&#x8BBE;&#x4F60;&#x6765;&#x5230;&#x4E00;&#x4E2A;&#x964C;&#x751F;&#x7684;&#x6751;&#x5E84;&#xFF0C;&#x73B0;&#x5728;&#x4F60;&#x8981;&#x627E;&#x5230;&#x4E0E;&#x4F60;&#x6709;&#x7740;&#x76F8;&#x4F3C;&#x7279;&#x5F81;&#x7684;&#x4EBA;&#x7FA4;&#x878D;&#x5165;&#x4ED6;&#x4EEC;&#xFF0C;&#x6240;&#x8C13;&#x5165;&#x4F19;&#x3002;</p>
+<p>&#x7528;&#x5B98;&#x65B9;&#x7684;&#x8BDD;&#x6765;&#x8BF4;&#xFF0C;&#x6240;&#x8C13;K&#x8FD1;&#x90BB;&#x7B97;&#x6CD5;&#xFF0C;&#x5373;&#x662F;&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#xFF0C;&#x5BF9;&#x65B0;&#x7684;&#x8F93;&#x5165;&#x5B9E;&#x4F8B;&#xFF0C;&#x5728;&#x8BAD;&#x7EC3;&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x627E;&#x5230;&#x4E0E;&#x8BE5;&#x5B9E;&#x4F8B;&#x6700;&#x90BB;&#x8FD1;&#x7684;K&#x4E2A;&#x5B9E;&#x4F8B;&#xFF08;&#x4E5F;&#x5C31;&#x662F;&#x4E0A;&#x9762;&#x6240;&#x8BF4;&#x7684;K&#x4E2A;&#x90BB;&#x5C45;&#xFF09;&#xFF0C;&#x8FD9;K&#x4E2A;&#x5B9E;&#x4F8B;&#x7684;&#x591A;&#x6570;&#x5C5E;&#x4E8E;&#x67D0;&#x4E2A;&#x7C7B;&#xFF0C;&#x5C31;&#x628A;&#x8BE5;&#x8F93;&#x5165;&#x5B9E;&#x4F8B;&#x5206;&#x7C7B;&#x5230;&#x8FD9;&#x4E2A;&#x7C7B;&#x4E2D;&#x3002;&#x6839;&#x636E;&#x8FD9;&#x4E2A;&#x8BF4;&#x6CD5;&#xFF0C;&#x54B1;&#x4EEC;&#x6765;&#x770B;&#x4E0B;&#x5F15;&#x81EA;&#x7EF4;&#x57FA;&#x767E;&#x79D1;&#x4E0A;&#x7684;&#x4E00;&#x5E45;&#x56FE;&#xFF1A;</p>
+<p><img src="../images/10/10.2/10.2.2.png" alt=""></p>
+<p>&#x5982;&#x4E0A;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x6709;&#x4E24;&#x7C7B;&#x4E0D;&#x540C;&#x7684;&#x6837;&#x672C;&#x6570;&#x636E;&#xFF0C;&#x5206;&#x522B;&#x7528;&#x84DD;&#x8272;&#x7684;&#x5C0F;&#x6B63;&#x65B9;&#x5F62;&#x548C;&#x7EA2;&#x8272;&#x7684;&#x5C0F;&#x4E09;&#x89D2;&#x5F62;&#x8868;&#x793A;&#xFF0C;&#x800C;&#x56FE;&#x6B63;&#x4E2D;&#x95F4;&#x7684;&#x90A3;&#x4E2A;&#x7EFF;&#x8272;&#x7684;&#x5706;&#x6240;&#x6807;&#x793A;&#x7684;&#x6570;&#x636E;&#x5219;&#x662F;&#x5F85;&#x5206;&#x7C7B;&#x7684;&#x6570;&#x636E;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x77E5;&#x9053;&#x4E2D;&#x95F4;&#x90A3;&#x4E2A;&#x7EFF;&#x8272;&#x7684;&#x6570;&#x636E;&#x662F;&#x4ECE;&#x5C5E;&#x4E8E;&#x54EA;&#x4E00;&#x7C7B;&#xFF08;&#x84DD;&#x8272;&#x5C0F;&#x6B63;&#x65B9;&#x5F62;or&#x7EA2;&#x8272;&#x5C0F;&#x4E09;&#x89D2;&#x5F62;&#xFF09;&#xFF0C;&#x4E0B;&#x9762;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x8981;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;&#x7ED9;&#x8FD9;&#x4E2A;&#x7EFF;&#x8272;&#x7684;&#x5706;&#x5206;&#x7C7B;&#x3002;</p>
+<ul>
+<li>&#x6211;&#x4EEC;&#x5E38;&#x8BF4;&#xFF0C;&#x7269;&#x4EE5;&#x7C7B;&#x805A;&#xFF0C;&#x4EBA;&#x4EE5;&#x7FA4;&#x5206;&#xFF0C;&#x5224;&#x522B;&#x4E00;&#x4E2A;&#x4EBA;&#x662F;&#x4E00;&#x4E2A;&#x4EC0;&#x4E48;&#x6837;&#x54C1;&#x8D28;&#x7279;&#x5F81;&#x7684;&#x4EBA;&#xFF0C;&#x5E38;&#x5E38;&#x53EF;&#x4EE5;&#x4ECE;&#x4ED6;/&#x5979;&#x8EAB;&#x8FB9;&#x7684;&#x670B;&#x53CB;&#x5165;&#x624B;&#xFF0C;&#x6240;&#x8C13;&#x89C2;&#x5176;&#x53CB;&#xFF0C;&#x800C;&#x8BC6;&#x5176;&#x4EBA;&#x3002;&#x6211;&#x4EEC;&#x4E0D;&#x662F;&#x8981;&#x5224;&#x522B;&#x4E0A;&#x56FE;&#x4E2D;&#x90A3;&#x4E2A;&#x7EFF;&#x8272;&#x7684;&#x5706;&#x662F;&#x5C5E;&#x4E8E;&#x54EA;&#x4E00;&#x7C7B;&#x6570;&#x636E;&#x4E48;&#xFF0C;&#x597D;&#x8BF4;&#xFF0C;&#x4ECE;&#x5B83;&#x7684;&#x90BB;&#x5C45;&#x4E0B;&#x624B;&#x3002;&#x4F46;&#x4E00;&#x6B21;&#x6027;&#x770B;&#x591A;&#x5C11;&#x4E2A;&#x90BB;&#x5C45;&#x5462;&#xFF1F;&#x4ECE;&#x4E0A;&#x56FE;&#x4E2D;&#xFF0C;&#x4F60;&#x8FD8;&#x80FD;&#x770B;&#x5230;&#xFF1A;</li>
+<li>&#x5982;&#x679C;K=3&#xFF0C;&#x7EFF;&#x8272;&#x5706;&#x70B9;&#x7684;&#x6700;&#x8FD1;&#x7684;3&#x4E2A;&#x90BB;&#x5C45;&#x662F;2&#x4E2A;&#x7EA2;&#x8272;&#x5C0F;&#x4E09;&#x89D2;&#x5F62;&#x548C;1&#x4E2A;&#x84DD;&#x8272;&#x5C0F;&#x6B63;&#x65B9;&#x5F62;&#xFF0C;&#x5C11;&#x6570;&#x4ECE;&#x5C5E;&#x4E8E;&#x591A;&#x6570;&#xFF0C;&#x57FA;&#x4E8E;&#x7EDF;&#x8BA1;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5224;&#x5B9A;&#x7EFF;&#x8272;&#x7684;&#x8FD9;&#x4E2A;&#x5F85;&#x5206;&#x7C7B;&#x70B9;&#x5C5E;&#x4E8E;&#x7EA2;&#x8272;&#x7684;&#x4E09;&#x89D2;&#x5F62;&#x4E00;&#x7C7B;&#x3002;
+&#x5982;&#x679C;K=5&#xFF0C;&#x7EFF;&#x8272;&#x5706;&#x70B9;&#x7684;&#x6700;&#x8FD1;&#x7684;5&#x4E2A;&#x90BB;&#x5C45;&#x662F;2&#x4E2A;&#x7EA2;&#x8272;&#x4E09;&#x89D2;&#x5F62;&#x548C;3&#x4E2A;&#x84DD;&#x8272;&#x7684;&#x6B63;&#x65B9;&#x5F62;&#xFF0C;&#x8FD8;&#x662F;&#x5C11;&#x6570;&#x4ECE;&#x5C5E;&#x4E8E;&#x591A;&#x6570;&#xFF0C;&#x57FA;&#x4E8E;&#x7EDF;&#x8BA1;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5224;&#x5B9A;&#x7EFF;&#x8272;&#x7684;&#x8FD9;&#x4E2A;&#x5F85;&#x5206;&#x7C7B;&#x70B9;&#x5C5E;&#x4E8E;&#x84DD;&#x8272;&#x7684;&#x6B63;&#x65B9;&#x5F62;&#x4E00;&#x7C7B;&#x3002;</li>
+</ul>
+<p>&#x4E8E;&#x6B64;&#x6211;&#x4EEC;&#x770B;&#x5230;&#xFF0C;&#x5F53;&#x65E0;&#x6CD5;&#x5224;&#x5B9A;&#x5F53;&#x524D;&#x5F85;&#x5206;&#x7C7B;&#x70B9;&#x662F;&#x4ECE;&#x5C5E;&#x4E8E;&#x5DF2;&#x77E5;&#x5206;&#x7C7B;&#x4E2D;&#x7684;&#x54EA;&#x4E00;&#x7C7B;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F9D;&#x636E;&#x7EDF;&#x8BA1;&#x5B66;&#x7684;&#x7406;&#x8BBA;&#x770B;&#x5B83;&#x6240;&#x5904;&#x7684;&#x4F4D;&#x7F6E;&#x7279;&#x5F81;&#xFF0C;&#x8861;&#x91CF;&#x5B83;&#x5468;&#x56F4;&#x90BB;&#x5C45;&#x7684;&#x6743;&#x91CD;&#xFF0C;&#x800C;&#x628A;&#x5B83;&#x5F52;&#x4E3A;(&#x6216;&#x5206;&#x914D;)&#x5230;&#x6743;&#x91CD;&#x66F4;&#x5927;&#x7684;&#x90A3;&#x4E00;&#x7C7B;&#x3002;&#x8FD9;&#x5C31;&#x662F;K&#x8FD1;&#x90BB;&#x7B97;&#x6CD5;&#x7684;&#x6838;&#x5FC3;&#x601D;&#x60F3;&#x3002;</p>
+<h3 id="12&#x3001;&#x8FD1;&#x90BB;&#x7684;&#x8DDD;&#x79BB;&#x5EA6;&#x91CF;&#x8868;&#x793A;&#x6CD5;">1.2&#x3001;&#x8FD1;&#x90BB;&#x7684;&#x8DDD;&#x79BB;&#x5EA6;&#x91CF;&#x8868;&#x793A;&#x6CD5;</h3>
+<p>&#x4E0A;&#x6587;&#x7B2C;&#x4E00;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x5230;&#xFF0C;K&#x8FD1;&#x90BB;&#x7B97;&#x6CD5;&#x7684;&#x6838;&#x5FC3;&#x5728;&#x4E8E;&#x627E;&#x5230;&#x5B9E;&#x4F8B;&#x70B9;&#x7684;&#x90BB;&#x5C45;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x95EE;&#x9898;&#x5C31;&#x63A5;&#x8E35;&#x800C;&#x81F3;&#x4E86;&#xFF0C;&#x5982;&#x4F55;&#x627E;&#x5230;&#x90BB;&#x5C45;&#xFF0C;&#x90BB;&#x5C45;&#x7684;&#x5224;&#x5B9A;&#x6807;&#x51C6;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x7528;&#x4EC0;&#x4E48;&#x6765;&#x5EA6;&#x91CF;&#x3002;&#x8FD9;&#x4E00;&#x7CFB;&#x5217;&#x95EE;&#x9898;&#x4FBF;&#x662F;&#x4E0B;&#x9762;&#x8981;&#x8BB2;&#x7684;&#x8DDD;&#x79BB;&#x5EA6;&#x91CF;&#x8868;&#x793A;&#x6CD5;&#x3002;&#x4F46;&#x6709;&#x7684;&#x8BFB;&#x8005;&#x53EF;&#x80FD;&#x5C31;&#x6709;&#x7591;&#x95EE;&#x4E86;&#xFF0C;&#x6211;&#x662F;&#x8981;&#x627E;&#x90BB;&#x5C45;&#xFF0C;&#x627E;&#x76F8;&#x4F3C;&#x6027;&#xFF0C;&#x600E;&#x4E48;&#x53C8;&#x8DDF;&#x8DDD;&#x79BB;&#x626F;&#x4E0A;&#x5173;&#x7CFB;&#x4E86;&#xFF1F;</p>
+<p>&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x7279;&#x5F81;&#x7A7A;&#x95F4;&#x4E2D;&#x4E24;&#x4E2A;&#x5B9E;&#x4F8B;&#x70B9;&#x7684;&#x8DDD;&#x79BB;&#x548C;&#x53CD;&#x5E94;&#x51FA;&#x4E24;&#x4E2A;&#x5B9E;&#x4F8B;&#x70B9;&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x4F3C;&#x6027;&#x7A0B;&#x5EA6;&#x3002;K&#x8FD1;&#x90BB;&#x6A21;&#x578B;&#x7684;&#x7279;&#x5F81;&#x7A7A;&#x95F4;&#x4E00;&#x822C;&#x662F;n&#x7EF4;&#x5B9E;&#x6570;&#x5411;&#x91CF;&#x7A7A;&#x95F4;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x8DDD;&#x79BB;&#x53EF;&#x4EE5;&#x4F7F;&#x6B27;&#x5F0F;&#x8DDD;&#x79BB;&#xFF0C;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x662F;&#x5176;&#x5B83;&#x8DDD;&#x79BB;&#xFF0C;&#x65E2;&#x7136;&#x626F;&#x5230;&#x4E86;&#x8DDD;&#x79BB;&#xFF0C;&#x4E0B;&#x9762;&#x5C31;&#x6765;&#x5177;&#x4F53;&#x9610;&#x8FF0;&#x4E0B;&#x90FD;&#x6709;&#x54EA;&#x4E9B;&#x8DDD;&#x79BB;&#x5EA6;&#x91CF;&#x7684;&#x8868;&#x793A;&#x6CD5;&#xFF0C;&#x6743;&#x5F53;&#x6269;&#x5C55;&#x3002;</p>
+<p>1.<strong>&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;</strong>&#xFF0C;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x4E24;&#x70B9;&#x4E4B;&#x95F4;&#x6216;&#x591A;&#x70B9;&#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x8868;&#x793A;&#x6CD5;&#xFF0C;&#x53C8;&#x79F0;&#x4E4B;&#x4E3A;&#x6B27;&#x51E0;&#x91CC;&#x5F97;&#x5EA6;&#x91CF;&#xFF0C;&#x5B83;&#x5B9A;&#x4E49;&#x4E8E;&#x6B27;&#x51E0;&#x91CC;&#x5F97;&#x7A7A;&#x95F4;&#x4E2D;&#xFF0C;&#x5982;&#x70B9; x = (x1,...,xn) &#x548C; y = (y1,...,yn) &#x4E4B;&#x95F4;&#x7684;&#x8DDD;&#x79BB;&#x4E3A;&#xFF1A;<br><img src="../images/10/10.2/10.2.3.png" alt=""></p>
+<p>(1)&#x4E8C;&#x7EF4;&#x5E73;&#x9762;&#x4E0A;&#x4E24;&#x70B9;a(x1,y1)&#x4E0E;b(x2,y2)&#x95F4;&#x7684;&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;&#xFF1A;<br><img src="../images/10/10.2/10.2.4.png" alt=""></p>
+<p>(2)&#x4E09;&#x7EF4;&#x7A7A;&#x95F4;&#x4E24;&#x70B9;a(x1,y1,z1)&#x4E0E;b(x2,y2,z2)&#x95F4;&#x7684;&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;&#xFF1A;<br><img src="../images/10/10.2/10.2.5.png" alt=""></p>
+<p>(3)&#x4E24;&#x4E2A;n&#x7EF4;&#x5411;&#x91CF;a(x11,x12,&#x2026;,x1n)&#x4E0E; b(x21,x22,&#x2026;,x2n)&#x95F4;&#x7684;&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;&#xFF1A;<br><img src="../images/10/10.2/10.2.6.png" alt=""></p>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x8868;&#x793A;&#x6210;&#x5411;&#x91CF;&#x8FD0;&#x7B97;&#x7684;&#x5F62;&#x5F0F;&#xFF1A;<br><img src="../images/10/10.2/10.2.7.png" alt=""></p>
+<p>&#x5176;&#x4E0A;&#xFF0C;&#x4E8C;&#x7EF4;&#x5E73;&#x9762;&#x4E0A;&#x4E24;&#x70B9;&#x6B27;&#x5F0F;&#x8DDD;&#x79BB;&#xFF0C;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x5982;&#x4E0B;&#x7F16;&#x5199;&#xFF1A;</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">//unixfy&#xFF1A;&#x8BA1;&#x7B97;&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;  </span>
+<span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">euclideanDistance</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">double</span>&gt;&amp; v1, <span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">double</span>&gt;&amp; v2)</span>  
+</span>{  
+     assert(v1.size() == v2.size());  
+     <span class="hljs-keyword">double</span> ret = <span class="hljs-number">0.0</span>;  
+     <span class="hljs-keyword">for</span> (<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">double</span>&gt;::size_type i = <span class="hljs-number">0</span>; i != v1.size(); ++i)  
+     {  
+         ret += (v1[i] - v2[i]) * (v1[i] - v2[i]);  
+     }  
+     <span class="hljs-keyword">return</span> <span class="hljs-built_in">sqrt</span>(ret);  
+ }
+</code></pre>
+<p>2.<strong>&#x66FC;&#x54C8;&#x987F;&#x8DDD;&#x79BB;</strong>&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x66FC;&#x54C8;&#x987F;&#x8DDD;&#x79BB;&#x7684;&#x6B63;&#x5F0F;&#x610F;&#x4E49;&#x4E3A;L1-&#x8DDD;&#x79BB;&#x6216;&#x57CE;&#x5E02;&#x533A;&#x5757;&#x8DDD;&#x79BB;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5728;&#x6B27;&#x51E0;&#x91CC;&#x5F97;&#x7A7A;&#x95F4;&#x7684;&#x56FA;&#x5B9A;&#x76F4;&#x89D2;&#x5750;&#x6807;&#x7CFB;&#x4E0A;&#x4E24;&#x70B9;&#x6240;&#x5F62;&#x6210;&#x7684;&#x7EBF;&#x6BB5;&#x5BF9;&#x8F74;&#x4EA7;&#x751F;&#x7684;&#x6295;&#x5F71;&#x7684;&#x8DDD;&#x79BB;&#x603B;&#x548C;&#x3002;&#x4F8B;&#x5982;&#x5728;&#x5E73;&#x9762;&#x4E0A;&#xFF0C;&#x5750;&#x6807;&#xFF08;x1, y1&#xFF09;&#x7684;&#x70B9;P1&#x4E0E;&#x5750;&#x6807;&#xFF08;x2, y2&#xFF09;&#x7684;&#x70B9;P2&#x7684;&#x66FC;&#x54C8;&#x987F;&#x8DDD;&#x79BB;&#x4E3A;&#xFF1A;<img src="../images/10/10.2/10.2.8.png" alt="">&#xFF0C;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x66FC;&#x54C8;&#x987F;&#x8DDD;&#x79BB;&#x4F9D;&#x8D56;&#x5EA7;&#x6807;&#x7CFB;&#x7EDF;&#x7684;&#x8F6C;&#x5EA6;&#xFF0C;&#x800C;&#x975E;&#x7CFB;&#x7EDF;&#x5728;&#x5EA7;&#x6807;&#x8F74;&#x4E0A;&#x7684;&#x5E73;&#x79FB;&#x6216;&#x6620;&#x5C04;&#x3002; </p>
+<p>&#x901A;&#x4FD7;&#x6765;&#x8BB2;&#xFF0C;&#x60F3;&#x8C61;&#x4F60;&#x5728;&#x66FC;&#x54C8;&#x987F;&#x8981;&#x4ECE;&#x4E00;&#x4E2A;&#x5341;&#x5B57;&#x8DEF;&#x53E3;&#x5F00;&#x8F66;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x5341;&#x5B57;&#x8DEF;&#x53E3;&#xFF0C;&#x9A7E;&#x9A76;&#x8DDD;&#x79BB;&#x662F;&#x4E24;&#x70B9;&#x95F4;&#x7684;&#x76F4;&#x7EBF;&#x8DDD;&#x79BB;&#x5417;&#xFF1F;&#x663E;&#x7136;&#x4E0D;&#x662F;&#xFF0C;&#x9664;&#x975E;&#x4F60;&#x80FD;&#x7A7F;&#x8D8A;&#x5927;&#x697C;&#x3002;&#x800C;&#x5B9E;&#x9645;&#x9A7E;&#x9A76;&#x8DDD;&#x79BB;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;&#x201C;&#x66FC;&#x54C8;&#x987F;&#x8DDD;&#x79BB;&#x201D;&#xFF0C;&#x6B64;&#x5373;&#x66FC;&#x54C8;&#x987F;&#x8DDD;&#x79BB;&#x540D;&#x79F0;&#x7684;&#x6765;&#x6E90;&#xFF0C; &#x540C;&#x65F6;&#xFF0C;&#x66FC;&#x54C8;&#x987F;&#x8DDD;&#x79BB;&#x4E5F;&#x79F0;&#x4E3A;&#x57CE;&#x5E02;&#x8857;&#x533A;&#x8DDD;&#x79BB;(City Block distance)&#x3002;</p>
+<p>(1)&#x4E8C;&#x7EF4;&#x5E73;&#x9762;&#x4E24;&#x70B9;a(x1,y1)&#x4E0E;b(x2,y2)&#x95F4;&#x7684;&#x66FC;&#x54C8;&#x987F;&#x8DDD;&#x79BB;<br><img src="../images/10/10.2/10.2.9.png" alt=""></p>
+<p>(2)&#x4E24;&#x4E2A;n&#x7EF4;&#x5411;&#x91CF;a(x11,x12,&#x2026;,x1n)&#x4E0E; b(x21,x22,&#x2026;,x2n)&#x95F4;&#x7684;&#x66FC;&#x54C8;&#x987F;&#x8DDD;&#x79BB;<br><img src="../images/10/10.2/10.2.10.png" alt="">  </p>
+<p>3.<strong>&#x5207;&#x6BD4;&#x96EA;&#x592B;&#x8DDD;&#x79BB;</strong>&#xFF0C;&#x82E5;&#x4E8C;&#x4E2A;&#x5411;&#x91CF;&#x6216;&#x4E8C;&#x4E2A;&#x70B9;p &#x3001;and q&#xFF0C;&#x5176;&#x5EA7;&#x6807;&#x5206;&#x522B;&#x4E3A;&#x53CA;&#xFF0C;&#x5219;&#x4E24;&#x8005;&#x4E4B;&#x95F4;&#x7684;&#x5207;&#x6BD4;&#x96EA;&#x592B;&#x8DDD;&#x79BB;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;<img src="../images/10/10.2/10.2.11.png" alt="">&#xFF0C;</p>
+<p>&#x8FD9;&#x4E5F;&#x7B49;&#x4E8E;&#x4EE5;&#x4E0B;Lp&#x5EA6;&#x91CF;&#x7684;&#x6781;&#x503C;&#xFF1A;<img src="../images/10/10.2/10.2.12.png" alt="">&#xFF0C;&#x56E0;&#x6B64;&#x5207;&#x6BD4;&#x96EA;&#x592B;&#x8DDD;&#x79BB;&#x4E5F;&#x79F0;&#x4E3A;L&#x221E;&#x5EA6;&#x91CF;&#x3002;</p>
+<p>&#x4EE5;&#x6570;&#x5B66;&#x7684;&#x89C2;&#x70B9;&#x6765;&#x770B;&#xFF0C;&#x5207;&#x6BD4;&#x96EA;&#x592B;&#x8DDD;&#x79BB;&#x662F;&#x7531;&#x4E00;&#x81F4;&#x8303;&#x6570;&#xFF08;uniform norm&#xFF09;&#xFF08;&#x6216;&#x79F0;&#x4E3A;&#x4E0A;&#x786E;&#x754C;&#x8303;&#x6570;&#xFF09;&#x6240;&#x884D;&#x751F;&#x7684;&#x5EA6;&#x91CF;&#xFF0C;&#x4E5F;&#x662F;&#x8D85;&#x51F8;&#x5EA6;&#x91CF;&#xFF08;injective metric space&#xFF09;&#x7684;&#x4E00;&#x79CD;&#x3002;</p>
+<p>&#x5728;&#x5E73;&#x9762;&#x51E0;&#x4F55;&#x4E2D;&#xFF0C;&#x82E5;&#x4E8C;&#x70B9;p&#x53CA;q&#x7684;&#x76F4;&#x89D2;&#x5750;&#x6807;&#x7CFB;&#x5750;&#x6807;&#x4E3A;<img src="../images/10/10.2/10.2.13.png" alt="">&#x53CA;<img src="../images/10/10.2/10.2.14.png" alt="">&#xFF0C;&#x5219;&#x5207;&#x6BD4;&#x96EA;&#x592B;&#x8DDD;&#x79BB;&#x4E3A;&#xFF1A;<img src="../images/10/10.2/10.2.15.png" alt="">&#x3002;</p>
+<p>&#x73A9;&#x8FC7;&#x56FD;&#x9645;&#x8C61;&#x68CB;&#x7684;&#x670B;&#x53CB;&#x6216;&#x8BB8;&#x77E5;&#x9053;&#xFF0C;&#x56FD;&#x738B;&#x8D70;&#x4E00;&#x6B65;&#x80FD;&#x591F;&#x79FB;&#x52A8;&#x5230;&#x76F8;&#x90BB;&#x7684;8&#x4E2A;&#x65B9;&#x683C;&#x4E2D;&#x7684;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x3002;&#x90A3;&#x4E48;&#x56FD;&#x738B;&#x4ECE;&#x683C;&#x5B50;(x1,y1)&#x8D70;&#x5230;&#x683C;&#x5B50;(x2,y2)&#x6700;&#x5C11;&#x9700;&#x8981;&#x591A;&#x5C11;&#x6B65;&#xFF1F;&#x3002;&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x6700;&#x5C11;&#x6B65;&#x6570;&#x603B;&#x662F;max( | x2-x1 | , | y2-y1 | ) &#x6B65; &#x3002;&#x6709;&#x4E00;&#x79CD;&#x7C7B;&#x4F3C;&#x7684;&#x4E00;&#x79CD;&#x8DDD;&#x79BB;&#x5EA6;&#x91CF;&#x65B9;&#x6CD5;&#x53EB;&#x5207;&#x6BD4;&#x96EA;&#x592B;&#x8DDD;&#x79BB;&#x3002;</p>
+<p>(1)&#x4E8C;&#x7EF4;&#x5E73;&#x9762;&#x4E24;&#x70B9;a(x1,y1)&#x4E0E;b(x2,y2)&#x95F4;&#x7684;&#x5207;&#x6BD4;&#x96EA;&#x592B;&#x8DDD;&#x79BB;<br><img src="../images/10/10.2/10.2.16.png" alt=""></p>
+<p>(2)&#x4E24;&#x4E2A;n&#x7EF4;&#x5411;&#x91CF;a(x11,x12,&#x2026;,x1n)&#x4E0E; b(x21,x22,&#x2026;,x2n)&#x95F4;&#x7684;&#x5207;&#x6BD4;&#x96EA;&#x592B;&#x8DDD;&#x79BB;  &#x3000;&#x3000;
+<img src="../images/10/10.2/10.2.17.png" alt=""></p>
+<p>&#x8FD9;&#x4E2A;&#x516C;&#x5F0F;&#x7684;&#x53E6;&#x4E00;&#x79CD;&#x7B49;&#x4EF7;&#x5F62;&#x5F0F;&#x662F;
+<img src="../images/10/10.2/10.2.18.png" alt="">  </p>
+<p>4.<strong>&#x95F5;&#x53EF;&#x592B;&#x65AF;&#x57FA;&#x8DDD;&#x79BB;(Minkowski Distance)</strong>&#xFF0C;&#x95F5;&#x6C0F;&#x8DDD;&#x79BB;&#x4E0D;&#x662F;&#x4E00;&#x79CD;&#x8DDD;&#x79BB;&#xFF0C;&#x800C;&#x662F;&#x4E00;&#x7EC4;&#x8DDD;&#x79BB;&#x7684;&#x5B9A;&#x4E49;&#x3002;  </p>
+<p>(1) &#x95F5;&#x6C0F;&#x8DDD;&#x79BB;&#x7684;&#x5B9A;&#x4E49;       </p>
+<p>&#x4E24;&#x4E2A;n&#x7EF4;&#x53D8;&#x91CF;a(x11,x12,&#x2026;,x1n)&#x4E0E; b(x21,x22,&#x2026;,x2n)&#x95F4;&#x7684;&#x95F5;&#x53EF;&#x592B;&#x65AF;&#x57FA;&#x8DDD;&#x79BB;&#x5B9A;&#x4E49;&#x4E3A;&#xFF1A; </p>
+<p><img src="../images/10/10.2/10.2.19.png" alt=""></p>
+<p>&#x5176;&#x4E2D;p&#x662F;&#x4E00;&#x4E2A;&#x53D8;&#x53C2;&#x6570;&#x3002;</p>
+<p>&#x5F53;p=1&#x65F6;&#xFF0C;&#x5C31;&#x662F;&#x66FC;&#x54C8;&#x987F;&#x8DDD;&#x79BB;</p>
+<p>&#x5F53;p=2&#x65F6;&#xFF0C;&#x5C31;&#x662F;&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;</p>
+<p>&#x5F53;p&#x2192;&#x221E;&#x65F6;&#xFF0C;&#x5C31;&#x662F;&#x5207;&#x6BD4;&#x96EA;&#x592B;&#x8DDD;&#x79BB;</p>
+<p>&#x6839;&#x636E;&#x53D8;&#x53C2;&#x6570;&#x7684;&#x4E0D;&#x540C;&#xFF0C;&#x95F5;&#x6C0F;&#x8DDD;&#x79BB;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x4E00;&#x7C7B;&#x7684;&#x8DDD;&#x79BB;&#x3002;  </p>
+<p>5.<strong>&#x6807;&#x51C6;&#x5316;&#x6B27;&#x6C0F;&#x8DDD;&#x79BB; (Standardized Euclidean distance)</strong>&#xFF0C;&#x6807;&#x51C6;&#x5316;&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;&#x662F;&#x9488;&#x5BF9;&#x7B80;&#x5355;&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;&#x7684;&#x7F3A;&#x70B9;&#x800C;&#x4F5C;&#x7684;&#x4E00;&#x79CD;&#x6539;&#x8FDB;&#x65B9;&#x6848;&#x3002;&#x6807;&#x51C6;&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;&#x7684;&#x601D;&#x8DEF;&#xFF1A;&#x65E2;&#x7136;&#x6570;&#x636E;&#x5404;&#x7EF4;&#x5206;&#x91CF;&#x7684;&#x5206;&#x5E03;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x90A3;&#x5148;&#x5C06;&#x5404;&#x4E2A;&#x5206;&#x91CF;&#x90FD;&#x201C;&#x6807;&#x51C6;&#x5316;&#x201D;&#x5230;&#x5747;&#x503C;&#x3001;&#x65B9;&#x5DEE;&#x76F8;&#x7B49;&#x3002;&#x81F3;&#x4E8E;&#x5747;&#x503C;&#x548C;&#x65B9;&#x5DEE;&#x6807;&#x51C6;&#x5316;&#x5230;&#x591A;&#x5C11;&#xFF0C;&#x5148;&#x590D;&#x4E60;&#x70B9;&#x7EDF;&#x8BA1;&#x5B66;&#x77E5;&#x8BC6;&#x3002;</p>
+<p>&#x5047;&#x8BBE;&#x6837;&#x672C;&#x96C6;X&#x7684;&#x6570;&#x5B66;&#x671F;&#x671B;&#x6216;&#x5747;&#x503C;(mean)&#x4E3A;m&#xFF0C;&#x6807;&#x51C6;&#x5DEE;(standard deviation&#xFF0C;&#x65B9;&#x5DEE;&#x5F00;&#x6839;)&#x4E3A;s&#xFF0C;&#x90A3;&#x4E48;X&#x7684;&#x201C;&#x6807;&#x51C6;&#x5316;&#x53D8;&#x91CF;&#x201D;X*&#x8868;&#x793A;&#x4E3A;&#xFF1A;(X-m&#xFF09;/s&#xFF0C;&#x800C;&#x4E14;&#x6807;&#x51C6;&#x5316;&#x53D8;&#x91CF;&#x7684;&#x6570;&#x5B66;&#x671F;&#x671B;&#x4E3A;0&#xFF0C;&#x65B9;&#x5DEE;&#x4E3A;1&#x3002;
+&#x5373;&#xFF0C;&#x6837;&#x672C;&#x96C6;&#x7684;&#x6807;&#x51C6;&#x5316;&#x8FC7;&#x7A0B;(standardization)&#x7528;&#x516C;&#x5F0F;&#x63CF;&#x8FF0;&#x5C31;&#x662F;&#xFF1A;<br><img src="../images/10/10.2/10.2.20.png" alt=""></p>
+<p>&#x6807;&#x51C6;&#x5316;&#x540E;&#x7684;&#x503C; =  ( &#x6807;&#x51C6;&#x5316;&#x524D;&#x7684;&#x503C;  &#xFF0D; &#x5206;&#x91CF;&#x7684;&#x5747;&#x503C; ) /&#x5206;&#x91CF;&#x7684;&#x6807;&#x51C6;&#x5DEE;&#x3000;&#x3000;</p>
+<p>&#x7ECF;&#x8FC7;&#x7B80;&#x5355;&#x7684;&#x63A8;&#x5BFC;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x4E24;&#x4E2A;n&#x7EF4;&#x5411;&#x91CF;a(x11,x12,&#x2026;,x1n)&#x4E0E; b(x21,x22,&#x2026;,x2n)&#x95F4;&#x7684;&#x6807;&#x51C6;&#x5316;&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;&#x7684;&#x516C;&#x5F0F;&#xFF1A;<br><img src="../images/10/10.2/10.2.21.png" alt=""></p>
+<p>&#x5982;&#x679C;&#x5C06;&#x65B9;&#x5DEE;&#x7684;&#x5012;&#x6570;&#x770B;&#x6210;&#x662F;&#x4E00;&#x4E2A;&#x6743;&#x91CD;&#xFF0C;&#x8FD9;&#x4E2A;&#x516C;&#x5F0F;&#x53EF;&#x4EE5;&#x770B;&#x6210;&#x662F;&#x4E00;&#x79CD;&#x52A0;&#x6743;&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;(Weighted Euclidean distance)&#x3002;  </p>
+<p>6.<strong>&#x9A6C;&#x6C0F;&#x8DDD;&#x79BB;(Mahalanobis Distance)</strong></p>
+<p>&#xFF08;1&#xFF09;&#x9A6C;&#x6C0F;&#x8DDD;&#x79BB;&#x5B9A;&#x4E49;       </p>
+<p>&#x6709;M&#x4E2A;&#x6837;&#x672C;&#x5411;&#x91CF;X1~Xm&#xFF0C;<a href="http://zh.wikipedia.org/wiki/%E5%8D%8F%E6%96%B9%E5%B7%AE%E7%9F%A9%E9%98%B5" target="_blank">&#x534F;&#x65B9;&#x5DEE;&#x77E9;&#x9635;</a>&#x8BB0;&#x4E3A;S&#xFF0C;&#x5747;&#x503C;&#x8BB0;&#x4E3A;&#x5411;&#x91CF;&#x3BC;&#xFF0C;&#x5219;&#x5176;&#x4E2D;&#x6837;&#x672C;&#x5411;&#x91CF;X&#x5230;u&#x7684;&#x9A6C;&#x6C0F;&#x8DDD;&#x79BB;&#x8868;&#x793A;&#x4E3A;&#xFF1A;<br><img src="../images/10/10.2/10.2.22.png" alt=""></p>
+<p>&#xFF08;&#x534F;&#x65B9;&#x5DEE;&#x77E9;&#x9635;&#x4E2D;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x662F;&#x5404;&#x4E2A;&#x77E2;&#x91CF;&#x5143;&#x7D20;&#x4E4B;&#x95F4;&#x7684;&#x534F;&#x65B9;&#x5DEE;Cov(X,Y)&#xFF0C;Cov(X,Y) = E{ [X-E(X)] [Y-E(Y)]}&#xFF0C;&#x5176;&#x4E2D;E&#x4E3A;&#x6570;&#x5B66;&#x671F;&#x671B;&#xFF09;</p>
+<p>&#x800C;&#x5176;&#x4E2D;&#x5411;&#x91CF;Xi&#x4E0E;Xj&#x4E4B;&#x95F4;&#x7684;&#x9A6C;&#x6C0F;&#x8DDD;&#x79BB;&#x5B9A;&#x4E49;&#x4E3A;&#xFF1A;<br><img src="../images/10/10.2/10.2.23.png" alt=""></p>
+<p>&#x82E5;&#x534F;&#x65B9;&#x5DEE;&#x77E9;&#x9635;&#x662F;&#x5355;&#x4F4D;&#x77E9;&#x9635;&#xFF08;&#x5404;&#x4E2A;&#x6837;&#x672C;&#x5411;&#x91CF;&#x4E4B;&#x95F4;&#x72EC;&#x7ACB;&#x540C;&#x5206;&#x5E03;&#xFF09;,&#x5219;&#x516C;&#x5F0F;&#x5C31;&#x6210;&#x4E86;&#xFF1A;<br><img src="../images/10/10.2/10.2.24.png" alt=""></p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;&#x4E86;&#x3002;</p>
+<p>&#x82E5;&#x534F;&#x65B9;&#x5DEE;&#x77E9;&#x9635;&#x662F;&#x5BF9;&#x89D2;&#x77E9;&#x9635;&#xFF0C;&#x516C;&#x5F0F;&#x53D8;&#x6210;&#x4E86;&#x6807;&#x51C6;&#x5316;&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;&#x3002;</p>
+<p>(2)&#x9A6C;&#x6C0F;&#x8DDD;&#x79BB;&#x7684;&#x4F18;&#x7F3A;&#x70B9;&#xFF1A;&#x91CF;&#x7EB2;&#x65E0;&#x5173;&#xFF0C;&#x6392;&#x9664;&#x53D8;&#x91CF;&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x5173;&#x6027;&#x7684;&#x5E72;&#x6270;&#x3002; </p>
+<p>&#x300C;&#x5FAE;&#x535A;&#x4E0A;&#x7684;seafood&#x9AD8;&#x6E05;&#x7248;&#x70B9;&#x8BC4;&#x9053;&#xFF1A;&#x539F;&#x6765;&#x9A6C;&#x6C0F;&#x8DDD;&#x79BB;&#x662F;&#x6839;&#x636E;&#x534F;&#x65B9;&#x5DEE;&#x77E9;&#x9635;&#x6F14;&#x53D8;&#xFF0C;&#x4E00;&#x76F4;&#x88AB;&#x8001;&#x5E08;&#x8BEF;&#x5BFC;&#x4E86;&#xFF0C;&#x602A;&#x4E0D;&#x5F97;&#x770B;Killian&#x5728;05&#x5E74;NIPS&#x53D1;&#x8868;&#x7684;LMNN&#x8BBA;&#x6587;&#x65F6;&#x5019;&#x8001;&#x662F;&#x770B;&#x5230;&#x534F;&#x65B9;&#x5DEE;&#x77E9;&#x9635;&#x548C;&#x534A;&#x6B63;&#x5B9A;&#xFF0C;&#x539F;&#x6765;&#x662F;&#x8FD9;&#x56DE;&#x4E8B;&#x300D;  </p>
+<p>7.<strong>&#x5DF4;&#x6C0F;&#x8DDD;&#x79BB;&#xFF08;Bhattacharyya Distance&#xFF09;</strong>&#xFF0C;&#x5728;&#x7EDF;&#x8BA1;&#x4E2D;&#xFF0C;Bhattacharyya&#x8DDD;&#x79BB;&#x6D4B;&#x91CF;&#x4E24;&#x4E2A;&#x79BB;&#x6563;&#x6216;&#x8FDE;&#x7EED;&#x6982;&#x7387;&#x5206;&#x5E03;&#x7684;&#x76F8;&#x4F3C;&#x6027;&#x3002;&#x5B83;&#x4E0E;&#x8861;&#x91CF;&#x4E24;&#x4E2A;&#x7EDF;&#x8BA1;&#x6837;&#x54C1;&#x6216;&#x79CD;&#x7FA4;&#x4E4B;&#x95F4;&#x7684;&#x91CD;&#x53E0;&#x91CF;&#x7684;Bhattacharyya&#x7CFB;&#x6570;&#x5BC6;&#x5207;&#x76F8;&#x5173;&#x3002;Bhattacharyya&#x8DDD;&#x79BB;&#x548C;Bhattacharyya&#x7CFB;&#x6570;&#x4EE5;20&#x4E16;&#x7EAA;30&#x5E74;&#x4EE3;&#x66FE;&#x5728;&#x5370;&#x5EA6;&#x7EDF;&#x8BA1;&#x7814;&#x7A76;&#x6240;&#x5DE5;&#x4F5C;&#x7684;&#x4E00;&#x4E2A;&#x7EDF;&#x8BA1;&#x5B66;&#x5BB6;A. Bhattacharya&#x547D;&#x540D;&#x3002;&#x540C;&#x65F6;&#xFF0C;Bhattacharyya&#x7CFB;&#x6570;&#x53EF;&#x4EE5;&#x88AB;&#x7528;&#x6765;&#x786E;&#x5B9A;&#x4E24;&#x4E2A;&#x6837;&#x672C;&#x88AB;&#x8BA4;&#x4E3A;&#x76F8;&#x5BF9;&#x63A5;&#x8FD1;&#x7684;&#xFF0C;&#x5B83;&#x662F;&#x7528;&#x6765;&#x6D4B;&#x91CF;&#x4E2D;&#x7684;&#x7C7B;&#x5206;&#x7C7B;&#x7684;&#x53EF;&#x5206;&#x79BB;&#x6027;&#x3002;</p>
+<p>&#xFF08;1&#xFF09;&#x5DF4;&#x6C0F;&#x8DDD;&#x79BB;&#x7684;&#x5B9A;&#x4E49;</p>
+<p>&#x5BF9;&#x4E8E;&#x79BB;&#x6563;&#x6982;&#x7387;&#x5206;&#x5E03; p&#x548C;q&#x5728;&#x540C;&#x4E00;&#x57DF; X&#xFF0C;&#x5B83;&#x88AB;&#x5B9A;&#x4E49;&#x4E3A;&#xFF1A;<br><img src="../images/10/10.2/10.2.25.png" alt=""></p>
+<p>&#x5176;&#x4E2D;&#xFF1A;<br><img src="../images/10/10.2/10.2.26.png" alt=""></p>
+<p>&#x662F;Bhattacharyya&#x7CFB;&#x6570;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x8FDE;&#x7EED;&#x6982;&#x7387;&#x5206;&#x5E03;&#xFF0C;Bhattacharyya&#x7CFB;&#x6570;&#x88AB;&#x5B9A;&#x4E49;&#x4E3A;&#xFF1A;<br><img src="../images/10/10.2/10.2.27.png" alt=""></p>
+<p>&#x5728;<img src="../images/10/10.2/10.2.28.jpg" alt="">&#x8FD9;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5DF4;&#x6C0F;&#x8DDD;&#x79BB;<img src="../images/10/10.2/10.2.29.png" alt="">&#x5E76;&#x6CA1;&#x6709;&#x670D;&#x4ECE;&#x4E09;&#x89D2;&#x4E0D;&#x7B49;&#x5F0F;.&#xFF08;&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x662F;&#xFF0C;Hellinger&#x8DDD;&#x79BB;&#x4E0D;&#x670D;&#x4ECE;&#x4E09;&#x89D2;&#x4E0D;&#x7B49;&#x5F0F;<img src="../images/10/10.2/10.2.30.jpg" alt="">&#xFF09;&#x3002; </p>
+<p>&#x5BF9;&#x4E8E;&#x591A;&#x53D8;&#x91CF;&#x7684;&#x9AD8;&#x65AF;&#x5206;&#x5E03;<img src="../images/10/10.2/10.2.31.png" alt="">&#xFF0C;<img src="../images/10/10.2/10.2.32.png" alt="">&#xFF0C;
+&#x548C;&#x662F;&#x624B;&#x6BB5;&#x548C;&#x534F;&#x65B9;&#x5DEE;&#x7684;&#x5206;&#x5E03;<img src="../images/10/10.2/10.2.33.png" alt="">&#x3002;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x7B2C;&#x4E00;&#x9879;&#x4E2D;&#x7684;Bhattacharyya&#x8DDD;&#x79BB;&#x4E0E;&#x9A6C;&#x6C0F;&#x8DDD;&#x79BB;&#x6709;&#x5173;&#x8054;&#x3002; </p>
+<p>&#xFF08;2&#xFF09;Bhattacharyya&#x7CFB;&#x6570;</p>
+<p>Bhattacharyya&#x7CFB;&#x6570;&#x662F;&#x4E24;&#x4E2A;&#x7EDF;&#x8BA1;&#x6837;&#x672C;&#x4E4B;&#x95F4;&#x7684;&#x91CD;&#x53E0;&#x91CF;&#x7684;&#x8FD1;&#x4F3C;&#x6D4B;&#x91CF;&#xFF0C;&#x53EF;&#x4EE5;&#x88AB;&#x7528;&#x4E8E;&#x786E;&#x5B9A;&#x88AB;&#x8003;&#x8651;&#x7684;&#x4E24;&#x4E2A;&#x6837;&#x672C;&#x7684;&#x76F8;&#x5BF9;&#x63A5;&#x8FD1;&#x3002;</p>
+<p>&#x8BA1;&#x7B97;Bhattacharyya&#x7CFB;&#x6570;&#x6D89;&#x53CA;&#x96C6;&#x6210;&#x7684;&#x57FA;&#x672C;&#x5F62;&#x5F0F;&#x7684;&#x4E24;&#x4E2A;&#x6837;&#x672C;&#x7684;&#x91CD;&#x53E0;&#x7684;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x7684;&#x503C;&#x7684;&#x4E24;&#x4E2A;&#x6837;&#x672C;&#x88AB;&#x5206;&#x88C2;&#x6210;&#x4E00;&#x4E2A;&#x9009;&#x5B9A;&#x7684;&#x5206;&#x533A;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x6BCF;&#x4E2A;&#x5206;&#x533A;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x6837;&#x54C1;&#x7684;&#x6210;&#x5458;&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x5728;&#x4E0B;&#x9762;&#x7684;&#x516C;&#x5F0F;&#x4E2D;&#x4F7F;&#x7528;<br><img src="../images/10/10.2/10.2.34.png" alt=""></p>
+<p>&#x8003;&#x8651;&#x6837;&#x54C1;a &#x548C; b &#xFF0C;n&#x662F;&#x7684;&#x5206;&#x533A;&#x6570;&#xFF0C;&#x5E76;&#x4E14;<img src="../images/10/10.2/10.2.35.png" alt="">&#xFF0C;<img src="../images/10/10.2/10.2.36.png" alt="">&#x88AB;&#x4E00;&#x4E2A; &#x548C; b i&#x7684;&#x65E5;&#x5206;&#x533A;&#x4E2D;&#x7684;&#x6837;&#x672C;&#x6570;&#x91CF;&#x7684;&#x6210;&#x5458;&#x3002;&#x66F4;&#x591A;&#x4ECB;&#x7ECD;&#x8BF7;&#x53C2;&#x770B;&#xFF1A;<a href="http://en.wikipedia.org/wiki/Bhattacharyya_coefficient" target="_blank">http://en.wikipedia.org/wiki/Bhattacharyya_coefficient</a>&#x3002;  </p>
+<p>8.<strong>&#x6C49;&#x660E;&#x8DDD;&#x79BB;(Hamming distance)</strong>&#xFF0C; &#x4E24;&#x4E2A;&#x7B49;&#x957F;&#x5B57;&#x7B26;&#x4E32;s1&#x4E0E;s2&#x4E4B;&#x95F4;&#x7684;&#x6C49;&#x660E;&#x8DDD;&#x79BB;&#x5B9A;&#x4E49;&#x4E3A;&#x5C06;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x53D8;&#x4E3A;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x6240;&#x9700;&#x8981;&#x4F5C;&#x7684;&#x6700;&#x5C0F;&#x66FF;&#x6362;&#x6B21;&#x6570;&#x3002;&#x4F8B;&#x5982;&#x5B57;&#x7B26;&#x4E32;&#x201C;1111&#x201D;&#x4E0E;&#x201C;1001&#x201D;&#x4E4B;&#x95F4;&#x7684;&#x6C49;&#x660E;&#x8DDD;&#x79BB;&#x4E3A;2&#x3002;&#x5E94;&#x7528;&#xFF1A;&#x4FE1;&#x606F;&#x7F16;&#x7801;&#xFF08;&#x4E3A;&#x4E86;&#x589E;&#x5F3A;&#x5BB9;&#x9519;&#x6027;&#xFF0C;&#x5E94;&#x4F7F;&#x5F97;&#x7F16;&#x7801;&#x95F4;&#x7684;&#x6700;&#x5C0F;&#x6C49;&#x660E;&#x8DDD;&#x79BB;&#x5C3D;&#x53EF;&#x80FD;&#x5927;&#xFF09;&#x3002;
+&#x6216;&#x8BB8;&#xFF0C;&#x4F60;&#x8FD8;&#x6CA1;&#x660E;&#x767D;&#x6211;&#x518D;&#x8BF4;&#x4EC0;&#x4E48;&#xFF0C;&#x4E0D;&#x6025;&#xFF0C;&#x770B;&#x4E0B;&#x4E0A;&#x7BC7;blog&#x4E2D;&#x7B2C;78&#x9898;&#x7684;&#x7B2C;3&#x5C0F;&#x9898;&#x6574;&#x7406;&#x7684;&#x4E00;&#x9053;&#x9762;&#x8BD5;&#x9898;&#x76EE;&#xFF0C;&#x4FBF;&#x4E00;&#x76EE;&#x4E86;&#x7136;&#x4E86;&#x3002;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="../images/10/10.2/10.2.37.jpg" alt=""></p>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x52A8;&#x6001;&#x89C4;&#x5212;&#xFF1A;    </span>
+
+<span class="hljs-comment">//f[i,j]&#x8868;&#x793A;s[0...i]&#x4E0E;t[0...j]&#x7684;&#x6700;&#x5C0F;&#x7F16;&#x8F91;&#x8DDD;&#x79BB;&#x3002;    </span>
+f[i,j] = min { f[i-<span class="hljs-number">1</span>,j]+<span class="hljs-number">1</span>,  f[i,j-<span class="hljs-number">1</span>]+<span class="hljs-number">1</span>,  f[i-<span class="hljs-number">1</span>,j-<span class="hljs-number">1</span>]+(s[i]==t[j]?<span class="hljs-number">0</span>:<span class="hljs-number">1</span>) }    
+
+<span class="hljs-comment">//&#x5206;&#x522B;&#x8868;&#x793A;&#xFF1A;&#x6DFB;&#x52A0;1&#x4E2A;&#xFF0C;&#x5220;&#x9664;1&#x4E2A;&#xFF0C;&#x66FF;&#x6362;1&#x4E2A;&#xFF08;&#x76F8;&#x540C;&#x5C31;&#x4E0D;&#x7528;&#x66FF;&#x6362;&#xFF09;&#x3002;</span>
+</code></pre>
+<p>&#x4E0E;&#x6B64;&#x540C;&#x65F6;&#xFF0C;&#x9762;&#x8BD5;&#x5B98;&#x8FD8;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x95EE;&#x4E0B;&#x53BB;&#xFF1A;&#x90A3;&#x4E48;&#xFF0C;&#x8BF7;&#x95EE;&#xFF0C;&#x5982;&#x4F55;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x4E24;&#x7BC7;&#x6587;&#x7AE0;&#x76F8;&#x4F3C;&#x6027;&#x7684;&#x7B97;&#x6CD5;&#xFF1F;&#xFF08;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x7684;&#x8BA8;&#x8BBA;&#x53EF;&#x4EE5;&#x770B;&#x770B;&#x8FD9;&#x91CC;&#xFF1A;<a href="http://t.cn/zl82CAH" target="_blank">http://t.cn/zl82CAH</a>&#xFF0C;&#x53CA;&#x8FD9;&#x91CC;&#x5173;&#x4E8E;simhash&#x7B97;&#x6CD5;&#x7684;&#x4ECB;&#x7ECD;&#xFF1A;<a href="http://www.cnblogs.com/linecong/archive/2010/08/28/simhash.html" target="_blank">http://www.cnblogs.com/linecong/archive/2010/08/28/simhash.html</a>&#xFF09;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x4FBF;&#x5F15;&#x51FA;&#x4E86;&#x4E0B;&#x6587;&#x5173;&#x4E8E;&#x5939;&#x89D2;&#x4F59;&#x5F26;&#x7684;&#x8BA8;&#x8BBA;&#x3002;
+<em>&#xFF08;<a href="http://blog.csdn.net/v_july_v/article/details/7974418" target="_blank">&#x4E0A;&#x7BC7;blog</a>&#x4E2D;&#x7B2C;78&#x9898;&#x7684;&#x7B2C;3&#x5C0F;&#x9898;&#x7ED9;&#x51FA;&#x4E86;&#x591A;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x8BFB;&#x8005;&#x53EF;&#x4EE5;&#x53C2;&#x770B;&#x4E4B;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x7A0B;&#x5E8F;&#x5458;&#x7F16;&#x7A0B;&#x827A;&#x672F;&#x7CFB;&#x5217;&#x7B2C;&#x4E8C;&#x5341;&#x516B;&#x7AE0;&#x5C06;&#x8BE6;&#x7EC6;&#x9610;&#x8FF0;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF09;</em>  </p>
+<p>9.<strong>&#x5939;&#x89D2;&#x4F59;&#x5F26;(Cosine)</strong> &#xFF0C;&#x51E0;&#x4F55;&#x4E2D;&#x5939;&#x89D2;&#x4F59;&#x5F26;&#x53EF;&#x7528;&#x6765;&#x8861;&#x91CF;&#x4E24;&#x4E2A;&#x5411;&#x91CF;&#x65B9;&#x5411;&#x7684;&#x5DEE;&#x5F02;&#xFF0C;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x4E2D;&#x501F;&#x7528;&#x8FD9;&#x4E00;&#x6982;&#x5FF5;&#x6765;&#x8861;&#x91CF;&#x6837;&#x672C;&#x5411;&#x91CF;&#x4E4B;&#x95F4;&#x7684;&#x5DEE;&#x5F02;&#x3002;</p>
+<p>(1)&#x5728;&#x4E8C;&#x7EF4;&#x7A7A;&#x95F4;&#x4E2D;&#x5411;&#x91CF;A(x1,y1)&#x4E0E;&#x5411;&#x91CF;B(x2,y2)&#x7684;&#x5939;&#x89D2;&#x4F59;&#x5F26;&#x516C;&#x5F0F;&#xFF1A;<br><img src="../images/10/10.2/10.2.38.png" alt=""></p>
+<p>(2) &#x4E24;&#x4E2A;n&#x7EF4;&#x6837;&#x672C;&#x70B9;a(x11,x12,&#x2026;,x1n)&#x548C;b(x21,x22,&#x2026;,x2n)&#x7684;&#x5939;&#x89D2;&#x4F59;&#x5F26;<br><img src="../images/10/10.2/10.2.39.png" alt=""></p>
+<p>&#x7C7B;&#x4F3C;&#x7684;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E24;&#x4E2A;n&#x7EF4;&#x6837;&#x672C;&#x70B9;a(x11,x12,&#x2026;,x1n)&#x548C;b(x21,x22,&#x2026;,x2n)&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7C7B;&#x4F3C;&#x4E8E;&#x5939;&#x89D2;&#x4F59;&#x5F26;&#x7684;&#x6982;&#x5FF5;&#x6765;&#x8861;&#x91CF;&#x5B83;&#x4EEC;&#x95F4;&#x7684;&#x76F8;&#x4F3C;&#x7A0B;&#x5EA6;&#xFF0C;&#x5373;&#xFF1A;<br><img src="../images/10/10.2/10.2.40.png" alt=""></p>
+<p>&#x5939;&#x89D2;&#x4F59;&#x5F26;&#x53D6;&#x503C;&#x8303;&#x56F4;&#x4E3A;[-1,1]&#x3002;&#x5939;&#x89D2;&#x4F59;&#x5F26;&#x8D8A;&#x5927;&#x8868;&#x793A;&#x4E24;&#x4E2A;&#x5411;&#x91CF;&#x7684;&#x5939;&#x89D2;&#x8D8A;&#x5C0F;&#xFF0C;&#x5939;&#x89D2;&#x4F59;&#x5F26;&#x8D8A;&#x5C0F;&#x8868;&#x793A;&#x4E24;&#x5411;&#x91CF;&#x7684;&#x5939;&#x89D2;&#x8D8A;&#x5927;&#x3002;&#x5F53;&#x4E24;&#x4E2A;&#x5411;&#x91CF;&#x7684;&#x65B9;&#x5411;&#x91CD;&#x5408;&#x65F6;&#x5939;&#x89D2;&#x4F59;&#x5F26;&#x53D6;&#x6700;&#x5927;&#x503C;1&#xFF0C;&#x5F53;&#x4E24;&#x4E2A;&#x5411;&#x91CF;&#x7684;&#x65B9;&#x5411;&#x5B8C;&#x5168;&#x76F8;&#x53CD;&#x5939;&#x89D2;&#x4F59;&#x5F26;&#x53D6;&#x6700;&#x5C0F;&#x503C;-1&#x3002;</p>
+<p>10.<strong>&#x6770;&#x5361;&#x5FB7;&#x76F8;&#x4F3C;&#x7CFB;&#x6570;(Jaccard similarity coefficient)</strong></p>
+<p>(1) &#x6770;&#x5361;&#x5FB7;&#x76F8;&#x4F3C;&#x7CFB;&#x6570;</p>
+<p>&#x4E24;&#x4E2A;&#x96C6;&#x5408;A&#x548C;B&#x7684;&#x4EA4;&#x96C6;&#x5143;&#x7D20;&#x5728;A&#xFF0C;B&#x7684;&#x5E76;&#x96C6;&#x4E2D;&#x6240;&#x5360;&#x7684;&#x6BD4;&#x4F8B;&#xFF0C;&#x79F0;&#x4E3A;&#x4E24;&#x4E2A;&#x96C6;&#x5408;&#x7684;&#x6770;&#x5361;&#x5FB7;&#x76F8;&#x4F3C;&#x7CFB;&#x6570;&#xFF0C;&#x7528;&#x7B26;&#x53F7;J(A,B)&#x8868;&#x793A;&#x3002;<br><img src="../images/10/10.2/10.2.41.png" alt=""></p>
+<p>&#x6770;&#x5361;&#x5FB7;&#x76F8;&#x4F3C;&#x7CFB;&#x6570;&#x662F;&#x8861;&#x91CF;&#x4E24;&#x4E2A;&#x96C6;&#x5408;&#x7684;&#x76F8;&#x4F3C;&#x5EA6;&#x4E00;&#x79CD;&#x6307;&#x6807;&#x3002;</p>
+<p>(2) &#x6770;&#x5361;&#x5FB7;&#x8DDD;&#x79BB;</p>
+<p>&#x4E0E;&#x6770;&#x5361;&#x5FB7;&#x76F8;&#x4F3C;&#x7CFB;&#x6570;&#x76F8;&#x53CD;&#x7684;&#x6982;&#x5FF5;&#x662F;&#x6770;&#x5361;&#x5FB7;&#x8DDD;&#x79BB;(Jaccard distance)&#x3002;</p>
+<p>&#x6770;&#x5361;&#x5FB7;&#x8DDD;&#x79BB;&#x53EF;&#x7528;&#x5982;&#x4E0B;&#x516C;&#x5F0F;&#x8868;&#x793A;&#xFF1A;<br><img src="../images/10/10.2/10.2.42.png" alt=""></p>
+<p>&#x6770;&#x5361;&#x5FB7;&#x8DDD;&#x79BB;&#x7528;&#x4E24;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x4E0D;&#x540C;&#x5143;&#x7D20;&#x5360;&#x6240;&#x6709;&#x5143;&#x7D20;&#x7684;&#x6BD4;&#x4F8B;&#x6765;&#x8861;&#x91CF;&#x4E24;&#x4E2A;&#x96C6;&#x5408;&#x7684;&#x533A;&#x5206;&#x5EA6;&#x3002;</p>
+<p>(3) &#x6770;&#x5361;&#x5FB7;&#x76F8;&#x4F3C;&#x7CFB;&#x6570;&#x4E0E;&#x6770;&#x5361;&#x5FB7;&#x8DDD;&#x79BB;&#x7684;&#x5E94;&#x7528;</p>
+<p>&#x53EF;&#x5C06;&#x6770;&#x5361;&#x5FB7;&#x76F8;&#x4F3C;&#x7CFB;&#x6570;&#x7528;&#x5728;&#x8861;&#x91CF;&#x6837;&#x672C;&#x7684;&#x76F8;&#x4F3C;&#x5EA6;&#x4E0A;&#x3002;</p>
+<p>&#x4E3E;&#x4F8B;&#xFF1A;&#x6837;&#x672C;A&#x4E0E;&#x6837;&#x672C;B&#x662F;&#x4E24;&#x4E2A;n&#x7EF4;&#x5411;&#x91CF;&#xFF0C;&#x800C;&#x4E14;&#x6240;&#x6709;&#x7EF4;&#x5EA6;&#x7684;&#x53D6;&#x503C;&#x90FD;&#x662F;0&#x6216;1&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;A(0111)&#x548C;B(1011)&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x6837;&#x672C;&#x770B;&#x6210;&#x662F;&#x4E00;&#x4E2A;&#x96C6;&#x5408;&#xFF0C;1&#x8868;&#x793A;&#x96C6;&#x5408;&#x5305;&#x542B;&#x8BE5;&#x5143;&#x7D20;&#xFF0C;0&#x8868;&#x793A;&#x96C6;&#x5408;&#x4E0D;&#x5305;&#x542B;&#x8BE5;&#x5143;&#x7D20;&#x3002;</p>
+<p>M11 &#xFF1A;&#x6837;&#x672C;A&#x4E0E;B&#x90FD;&#x662F;1&#x7684;&#x7EF4;&#x5EA6;&#x7684;&#x4E2A;&#x6570;</p>
+<p>M01&#xFF1A;&#x6837;&#x672C;A&#x662F;0&#xFF0C;&#x6837;&#x672C;B&#x662F;1&#x7684;&#x7EF4;&#x5EA6;&#x7684;&#x4E2A;&#x6570;</p>
+<p>M10&#xFF1A;&#x6837;&#x672C;A&#x662F;1&#xFF0C;&#x6837;&#x672C;B&#x662F;0 &#x7684;&#x7EF4;&#x5EA6;&#x7684;&#x4E2A;&#x6570;</p>
+<p>M00&#xFF1A;&#x6837;&#x672C;A&#x4E0E;B&#x90FD;&#x662F;0&#x7684;&#x7EF4;&#x5EA6;&#x7684;&#x4E2A;&#x6570;</p>
+<p>&#x4F9D;&#x636E;&#x4E0A;&#x6587;&#x7ED9;&#x7684;&#x6770;&#x5361;&#x5FB7;&#x76F8;&#x4F3C;&#x7CFB;&#x6570;&#x53CA;&#x6770;&#x5361;&#x5FB7;&#x8DDD;&#x79BB;&#x7684;&#x76F8;&#x5173;&#x5B9A;&#x4E49;&#xFF0C;&#x6837;&#x672C;A&#x4E0E;B&#x7684;&#x6770;&#x5361;&#x5FB7;&#x76F8;&#x4F3C;&#x7CFB;&#x6570;J&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x4E3A;&#xFF1A;<br><img src="../images/10/10.2/10.2.43.png" alt=""></p>
+<p>&#x8FD9;&#x91CC;M11+M01+M10&#x53EF;&#x7406;&#x89E3;&#x4E3A;A&#x4E0E;B&#x7684;&#x5E76;&#x96C6;&#x7684;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#xFF0C;&#x800C;M11&#x662F;A&#x4E0E;B&#x7684;&#x4EA4;&#x96C6;&#x7684;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#x3002;&#x800C;&#x6837;&#x672C;A&#x4E0E;B&#x7684;&#x6770;&#x5361;&#x5FB7;&#x8DDD;&#x79BB;&#x8868;&#x793A;&#x4E3A;J&apos;&#xFF1A;<br><img src="../images/10/10.2/10.2.44.png" alt=""></p>
+<p>11.<strong>&#x76AE;&#x5C14;&#x900A;&#x7CFB;&#x6570;(Pearson Correlation Coefficient)</strong></p>
+<p>&#x5728;&#x5177;&#x4F53;&#x9610;&#x8FF0;&#x76AE;&#x5C14;&#x900A;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x4E4B;&#x524D;&#xFF0C;&#x6709;&#x5FC5;&#x8981;&#x89E3;&#x91CA;&#x4E0B;&#x4EC0;&#x4E48;&#x662F;&#x76F8;&#x5173;&#x7CFB;&#x6570; ( Correlation coefficient )&#x4E0E;&#x76F8;&#x5173;&#x8DDD;&#x79BB;(Correlation distance)&#x3002;</p>
+<p>&#x76F8;&#x5173;&#x7CFB;&#x6570; ( Correlation coefficient )&#x7684;&#x5B9A;&#x4E49;&#x662F;&#xFF1A;<br><img src="../images/10/10.2/10.2.45.png" alt=""></p>
+<p>(&#x5176;&#x4E2D;&#xFF0C;E&#x4E3A;&#x6570;&#x5B66;&#x671F;&#x671B;&#x6216;&#x5747;&#x503C;&#xFF0C;D&#x4E3A;&#x65B9;&#x5DEE;&#xFF0C;D&#x5F00;&#x6839;&#x53F7;&#x4E3A;&#x6807;&#x51C6;&#x5DEE;&#xFF0C;E{ [X-E(X)] [Y-E(Y)]}&#x79F0;&#x4E3A;&#x968F;&#x673A;&#x53D8;&#x91CF;X&#x4E0E;Y&#x7684;&#x534F;&#x65B9;&#x5DEE;&#xFF0C;&#x8BB0;&#x4E3A;Cov(X,Y)&#xFF0C;&#x5373;Cov(X,Y) = E{ [X-E(X)] [Y-E(Y)]}&#xFF0C;&#x800C;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x4E4B;&#x95F4;&#x7684;&#x534F;&#x65B9;&#x5DEE;&#x548C;&#x6807;&#x51C6;&#x5DEE;&#x7684;&#x5546;&#x5219;&#x79F0;&#x4E3A;&#x968F;&#x673A;&#x53D8;&#x91CF;X&#x4E0E;Y&#x7684;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#xFF0C;&#x8BB0;&#x4E3A;<img src="../images/10/10.2/10.2.46.jpg" alt="">)</p>
+<p>&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x8861;&#x91CF;&#x968F;&#x673A;&#x53D8;&#x91CF;X&#x4E0E;Y&#x76F8;&#x5173;&#x7A0B;&#x5EA6;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x7684;&#x53D6;&#x503C;&#x8303;&#x56F4;&#x662F;[-1,1]&#x3002;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x7684;&#x7EDD;&#x5BF9;&#x503C;&#x8D8A;&#x5927;&#xFF0C;&#x5219;&#x8868;&#x660E;X&#x4E0E;Y&#x76F8;&#x5173;&#x5EA6;&#x8D8A;&#x9AD8;&#x3002;&#x5F53;X&#x4E0E;Y&#x7EBF;&#x6027;&#x76F8;&#x5173;&#x65F6;&#xFF0C;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x53D6;&#x503C;&#x4E3A;1&#xFF08;&#x6B63;&#x7EBF;&#x6027;&#x76F8;&#x5173;&#xFF09;&#x6216;-1&#xFF08;&#x8D1F;&#x7EBF;&#x6027;&#x76F8;&#x5173;&#xFF09;&#x3002;</p>
+<p>&#x5177;&#x4F53;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#xFF1A;X&#x3001;Y&#xFF0C;&#x6700;&#x7EC8;&#x8BA1;&#x7B97;&#x51FA;&#x7684;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x7684;&#x542B;&#x4E49;&#x53EF;&#x4EE5;&#x6709;&#x5982;&#x4E0B;&#x7406;&#x89E3;&#xFF1A;</p>
+<p>&#x5F53;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x4E3A;0&#x65F6;&#xFF0C;X&#x548C;Y&#x4E24;&#x53D8;&#x91CF;&#x65E0;&#x5173;&#x7CFB;&#x3002;</p>
+<p>&#x5F53;X&#x7684;&#x503C;&#x589E;&#x5927;&#xFF08;&#x51CF;&#x5C0F;&#xFF09;&#xFF0C;Y&#x503C;&#x589E;&#x5927;&#xFF08;&#x51CF;&#x5C0F;&#xFF09;&#xFF0C;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x4E3A;&#x6B63;&#x76F8;&#x5173;&#xFF0C;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x5728;0.00&#x4E0E;1.00&#x4E4B;&#x95F4;&#x3002;</p>
+<p>&#x5F53;X&#x7684;&#x503C;&#x589E;&#x5927;&#xFF08;&#x51CF;&#x5C0F;&#xFF09;&#xFF0C;Y&#x503C;&#x51CF;&#x5C0F;&#xFF08;&#x589E;&#x5927;&#xFF09;&#xFF0C;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x4E3A;&#x8D1F;&#x76F8;&#x5173;&#xFF0C;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x5728;-1.00&#x4E0E;0.00&#x4E4B;&#x95F4;&#x3002;</p>
+<p>&#x76F8;&#x5173;&#x8DDD;&#x79BB;&#x7684;&#x5B9A;&#x4E49;&#x662F;&#xFF1A;</p>
+<p><img src="../images/10/10.2/10.2.47.png" alt=""></p>
+<p>OK&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x54B1;&#x4EEC;&#x6765;&#x91CD;&#x70B9;&#x4E86;&#x89E3;&#x4E0B;&#x76AE;&#x5C14;&#x900A;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x3002;</p>
+<p>&#x5728;&#x7EDF;&#x8BA1;&#x5B66;&#x4E2D;&#xFF0C;&#x76AE;&#x5C14;&#x900A;&#x79EF;&#x77E9;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#xFF08;&#x82F1;&#x8BED;&#xFF1A;Pearson product-moment correlation coefficient&#xFF0C;&#x53C8;&#x79F0;&#x4F5C; PPMCC&#x6216;PCCs, &#x7528;r&#x8868;&#x793A;&#xFF09;&#x7528;&#x4E8E;&#x5EA6;&#x91CF;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;X&#x548C;Y&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x5173;&#xFF08;&#x7EBF;&#x6027;&#x76F8;&#x5173;&#xFF09;&#xFF0C;&#x5176;&#x503C;&#x4ECB;&#x4E8E;-1&#x4E0E;1&#x4E4B;&#x95F4;&#x3002;</p>
+<p>&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x53D6;&#x503C;&#x8303;&#x56F4;&#x5224;&#x65AD;&#x53D8;&#x91CF;&#x7684;&#x76F8;&#x5173;&#x5F3A;&#x5EA6;&#xFF1A;</p>
+<p>&#x76F8;&#x5173;&#x7CFB;&#x6570;<br>0.8-1.0     &#x6781;&#x5F3A;&#x76F8;&#x5173;<br>0.6-0.8     &#x5F3A;&#x76F8;&#x5173;<br>0.4-0.6     &#x4E2D;&#x7B49;&#x7A0B;&#x5EA6;&#x76F8;&#x5173;<br>0.2-0.4     &#x5F31;&#x76F8;&#x5173;<br>0.0-0.2     &#x6781;&#x5F31;&#x76F8;&#x5173;&#x6216;&#x65E0;&#x76F8;&#x5173;  </p>
+<p>&#x5728;&#x81EA;&#x7136;&#x79D1;&#x5B66;&#x9886;&#x57DF;&#x4E2D;&#xFF0C;&#x8BE5;&#x7CFB;&#x6570;&#x5E7F;&#x6CDB;&#x7528;&#x4E8E;&#x5EA6;&#x91CF;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x5173;&#x7A0B;&#x5EA6;&#x3002;&#x5B83;&#x662F;&#x7531;&#x5361;&#x5C14;&#xB7;&#x76AE;&#x5C14;&#x900A;&#x4ECE;&#x5F17;&#x6717;&#x897F;&#x65AF;&#xB7;&#x9AD8;&#x5C14;&#x987F;&#x5728;19&#x4E16;&#x7EAA;80&#x5E74;&#x4EE3;&#x63D0;&#x51FA;&#x7684;&#x4E00;&#x4E2A;&#x76F8;&#x4F3C;&#x5374;&#x53C8;&#x7A0D;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x60F3;&#x6CD5;&#x6F14;&#x53D8;&#x800C;&#x6765;&#x7684;&#x3002;&#x8FD9;&#x4E2A;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x4E5F;&#x79F0;&#x4F5C;&#x201C;&#x76AE;&#x5C14;&#x68EE;&#x76F8;&#x5173;&#x7CFB;&#x6570;r&#x201D;&#x3002;</p>
+<p><strong>(1)&#x76AE;&#x5C14;&#x900A;&#x7CFB;&#x6570;&#x7684;&#x5B9A;&#x4E49;</strong>&#xFF1A;</p>
+<p>&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x4E4B;&#x95F4;&#x7684;&#x76AE;&#x5C14;&#x900A;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x5B9A;&#x4E49;&#x4E3A;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x4E4B;&#x95F4;&#x7684;&#x534F;&#x65B9;&#x5DEE;&#x548C;&#x6807;&#x51C6;&#x5DEE;&#x7684;&#x5546;&#xFF1A;<br><img src="../images/10/10.2/10.2.48.png" alt=""></p>
+<p>&#x4EE5;&#x4E0A;&#x65B9;&#x7A0B;&#x5B9A;&#x4E49;&#x4E86;&#x603B;&#x4F53;&#x76F8;&#x5173;&#x7CFB;&#x6570;, &#x4E00;&#x822C;&#x8868;&#x793A;&#x6210;&#x5E0C;&#x814A;&#x5B57;&#x6BCD;&#x3C1;(rho)&#x3002;&#x57FA;&#x4E8E;&#x6837;&#x672C;&#x5BF9;&#x534F;&#x65B9;&#x5DEE;&#x548C;&#x65B9;&#x5DEE;&#x8FDB;&#x884C;&#x4F30;&#x8BA1;&#xFF0C;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x6837;&#x672C;&#x6807;&#x51C6;&#x5DEE;, &#x4E00;&#x822C;&#x8868;&#x793A;&#x6210;r&#xFF1A;<br><img src="../images/10/10.2/10.2.49.png" alt=""></p>
+<p>&#x4E00;&#x79CD;&#x7B49;&#x4EF7;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x662F;&#x8868;&#x793A;&#x6210;&#x6807;&#x51C6;&#x5206;&#x7684;&#x5747;&#x503C;&#x3002;&#x57FA;&#x4E8E;(Xi, Yi)&#x7684;&#x6837;&#x672C;&#x70B9;&#xFF0C;&#x6837;&#x672C;&#x76AE;&#x5C14;&#x900A;&#x7CFB;&#x6570;&#x662F;<br><img src="../images/10/10.2/10.2.50.png" alt=""></p>
+<p>&#x5176;&#x4E2D;<img src="../images/10/10.2/10.2.51.png" alt="">&#x3001;<img src="../images/10/10.2/10.2.52.png" alt="">&#x53CA;<img src="../images/10/10.2/10.2.53.png" alt="">&#xFF0C;&#x5206;&#x522B;&#x662F;&#x6807;&#x51C6;&#x5206;&#x3001;&#x6837;&#x672C;&#x5E73;&#x5747;&#x503C;&#x548C;&#x6837;&#x672C;&#x6807;&#x51C6;&#x5DEE;&#x3002;</p>
+<p>&#x6216;&#x8BB8;&#x4E0A;&#x9762;&#x7684;&#x8BB2;&#x89E3;&#x4EE4;&#x4F60;&#x5934;&#x8111;&#x6DF7;&#x4E71;&#x4E0D;&#x582A;&#xFF0C;&#x6CA1;&#x5173;&#x7CFB;&#xFF0C;&#x6211;&#x6362;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x8BB2;&#x89E3;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>&#x5047;&#x8BBE;&#x6709;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;X&#x3001;Y&#xFF0C;&#x90A3;&#x4E48;&#x4E24;&#x53D8;&#x91CF;&#x95F4;&#x7684;&#x76AE;&#x5C14;&#x900A;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x53EF;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x516C;&#x5F0F;&#x8BA1;&#x7B97;&#xFF1A;</p>
+<ul>
+<li><p>&#x516C;&#x5F0F;&#x4E00;&#xFF1A;<img src="../images/10/10.2/10.2.54.jpg" alt=""></p>
+<p>  &#x6CE8;&#xFF1A;&#x52FF;&#x5FD8;&#x4E86;&#x4E0A;&#x9762;&#x8BF4;&#x8FC7;&#xFF0C;&#x201C;&#x76AE;&#x5C14;&#x900A;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x5B9A;&#x4E49;&#x4E3A;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x4E4B;&#x95F4;&#x7684;&#x534F;&#x65B9;&#x5DEE;&#x548C;&#x6807;&#x51C6;&#x5DEE;&#x7684;&#x5546;&#x201D;&#xFF0C;&#x5176;&#x4E2D;&#x6807;&#x51C6;&#x5DEE;&#x7684;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#x4E3A;&#xFF1A;<img src="../images/10/10.2/10.2.55.jpg" alt=""></p>
+</li>
+<li>&#x516C;&#x5F0F;&#x4E8C;&#xFF1A;<img src="../images/10/10.2/10.2.56.jpg" alt=""></li>
+<li>&#x516C;&#x5F0F;&#x4E09;&#xFF1A;<img src="../images/10/10.2/10.2.57.jpg" alt=""></li>
+<li>&#x516C;&#x5F0F;&#x56DB;&#xFF1A;<img src="../images/10/10.2/10.2.58.jpg" alt=""></li>
+</ul>
+<p>&#x4EE5;&#x4E0A;&#x5217;&#x51FA;&#x7684;&#x56DB;&#x4E2A;&#x516C;&#x5F0F;&#x7B49;&#x4EF7;&#xFF0C;&#x5176;&#x4E2D;E&#x662F;<a href="http://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%A6%E6%9C%9F%E6%9C%9B" target="_blank">&#x6570;&#x5B66;&#x671F;&#x671B;</a>&#xFF0C;cov&#x8868;&#x793A;<a href="http://zh.wikipedia.org/wiki/%E5%8D%8F%E6%96%B9%E5%B7%AE" target="_blank">&#x534F;&#x65B9;&#x5DEE;</a>&#xFF0C;N&#x8868;&#x793A;&#x53D8;&#x91CF;&#x53D6;&#x503C;&#x7684;&#x4E2A;&#x6570;&#x3002;</p>
+<p><strong>(2)&#x76AE;&#x5C14;&#x900A;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x7684;&#x9002;&#x7528;&#x8303;&#x56F4;</strong></p>
+<p>&#x5F53;&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x6807;&#x51C6;&#x5DEE;&#x90FD;&#x4E0D;&#x4E3A;&#x96F6;&#x65F6;&#xFF0C;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x624D;&#x6709;&#x5B9A;&#x4E49;&#xFF0C;&#x76AE;&#x5C14;&#x900A;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x9002;&#x7528;&#x4E8E;&#xFF1A;</p>
+<ol>
+<li>&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x4E4B;&#x95F4;&#x662F;&#x7EBF;&#x6027;&#x5173;&#x7CFB;&#xFF0C;&#x90FD;&#x662F;&#x8FDE;&#x7EED;&#x6570;&#x636E;&#x3002;</li>
+<li>&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x603B;&#x4F53;&#x662F;&#x6B63;&#x6001;&#x5206;&#x5E03;&#xFF0C;&#x6216;&#x63A5;&#x8FD1;&#x6B63;&#x6001;&#x7684;&#x5355;&#x5CF0;&#x5206;&#x5E03;&#x3002;</li>
+<li>&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x89C2;&#x6D4B;&#x503C;&#x662F;&#x6210;&#x5BF9;&#x7684;&#xFF0C;&#x6BCF;&#x5BF9;&#x89C2;&#x6D4B;&#x503C;&#x4E4B;&#x95F4;&#x76F8;&#x4E92;&#x72EC;&#x7ACB;&#x3002;</li>
+</ol>
+<p><strong>(3)&#x5982;&#x4F55;&#x7406;&#x89E3;&#x76AE;&#x5C14;&#x900A;&#x76F8;&#x5173;&#x7CFB;&#x6570;</strong></p>
+<p>rubyist&#xFF1A;&#x76AE;&#x5C14;&#x900A;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x7406;&#x89E3;&#x6709;&#x4E24;&#x4E2A;&#x89D2;&#x5EA6;</p>
+<p>&#x5176;&#x4E00;, &#x6309;&#x7167;&#x9AD8;&#x4E2D;&#x6570;&#x5B66;&#x6C34;&#x5E73;&#x6765;&#x7406;&#x89E3;, &#x5B83;&#x5F88;&#x7B80;&#x5355;, &#x53EF;&#x4EE5;&#x770B;&#x505A;&#x5C06;&#x4E24;&#x7EC4;&#x6570;&#x636E;&#x9996;&#x5148;&#x505A;Z&#x5206;&#x6570;&#x5904;&#x7406;&#x4E4B;&#x540E;, &#x7136;&#x540E;&#x4E24;&#x7EC4;&#x6570;&#x636E;&#x7684;&#x4E58;&#x79EF;&#x548C;&#x9664;&#x4EE5;&#x6837;&#x672C;&#x6570;&#xFF0C;Z&#x5206;&#x6570;&#x4E00;&#x822C;&#x4EE3;&#x8868;&#x6B63;&#x6001;&#x5206;&#x5E03;&#x4E2D;, &#x6570;&#x636E;&#x504F;&#x79BB;&#x4E2D;&#x5FC3;&#x70B9;&#x7684;&#x8DDD;&#x79BB;.&#x7B49;&#x4E8E;&#x53D8;&#x91CF;&#x51CF;&#x6389;&#x5E73;&#x5747;&#x6570;&#x518D;&#x9664;&#x4EE5;&#x6807;&#x51C6;&#x5DEE;.(&#x5C31;&#x662F;&#x9AD8;&#x8003;&#x7684;&#x6807;&#x51C6;&#x5206;&#x7C7B;&#x4F3C;&#x7684;&#x5904;&#x7406;)</p>
+<p>&#x6837;&#x672C;&#x6807;&#x51C6;&#x5DEE;&#x5219;&#x7B49;&#x4E8E;&#x53D8;&#x91CF;&#x51CF;&#x6389;&#x5E73;&#x5747;&#x6570;&#x7684;&#x5E73;&#x65B9;&#x548C;&#xFF0C;&#x518D;&#x9664;&#x4EE5;&#x6837;&#x672C;&#x6570;&#xFF0C;&#x6700;&#x540E;&#x518D;&#x5F00;&#x65B9;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x65B9;&#x5DEE;&#x5F00;&#x65B9;&#x5373;&#x4E3A;&#x6807;&#x51C6;&#x5DEE;&#xFF0C;&#x6837;&#x672C;&#x6807;&#x51C6;&#x5DEE;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#x4E3A;&#xFF1A;<br><img src="../images/10/10.2/10.2.59.jpg" alt=""></p>
+<p>&#x6240;&#x4EE5;, &#x6839;&#x636E;&#x8FD9;&#x4E2A;&#x6700;&#x6734;&#x7D20;&#x7684;&#x7406;&#x89E3;,&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x516C;&#x5F0F;&#x4F9D;&#x6B21;&#x7CBE;&#x7B80;&#x4E3A;:<br><img src="../images/10/10.2/10.2.60.png" alt=""></p>
+<p>&#x5176;&#x4E8C;, &#x6309;&#x7167;&#x5927;&#x5B66;&#x7684;&#x7EBF;&#x6027;&#x6570;&#x5B66;&#x6C34;&#x5E73;&#x6765;&#x7406;&#x89E3;, &#x5B83;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#x4E00;&#x70B9;,&#x53EF;&#x4EE5;&#x770B;&#x505A;&#x662F;&#x4E24;&#x7EC4;&#x6570;&#x636E;&#x7684;&#x5411;&#x91CF;&#x5939;&#x89D2;&#x7684;&#x4F59;&#x5F26;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x5173;&#x4E8E;&#x6B64;&#x76AE;&#x5C14;&#x900A;&#x7CFB;&#x6570;&#x7684;&#x51E0;&#x4F55;&#x5B66;&#x7684;&#x89E3;&#x91CA;&#xFF0C;&#x5148;&#x6765;&#x770B;&#x4E00;&#x5E45;&#x56FE;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;<br><img src="../images/10/10.2/10.2.61.png" alt=""></p>
+<p>&#x56DE;&#x5F52;&#x76F4;&#x7EBF;&#xFF1A; y=gx(x) [&#x7EA2;&#x8272;] &#x548C; x=gy(y) [&#x84DD;&#x8272;]</p>
+<p>&#x5982;&#x4E0A;&#x56FE;&#xFF0C;&#x5BF9;&#x4E8E;&#x6CA1;&#x6709;&#x4E2D;&#x5FC3;&#x5316;&#x7684;&#x6570;&#x636E;, &#x76F8;&#x5173;&#x7CFB;&#x6570;&#x4E0E;&#x4E24;&#x6761;&#x53EF;&#x80FD;&#x7684;&#x56DE;&#x5F52;&#x7EBF;y=gx(x) &#x548C; x=gy(y) &#x5939;&#x89D2;&#x7684;&#x4F59;&#x5F26;&#x503C;&#x4E00;&#x81F4;&#x3002;
+&#x5BF9;&#x4E8E;&#x6CA1;&#x6709;&#x4E2D;&#x5FC3;&#x5316;&#x7684;&#x6570;&#x636E; (&#x4E5F;&#x5C31;&#x662F;&#x8BF4;, &#x6570;&#x636E;&#x79FB;&#x52A8;&#x4E00;&#x4E2A;&#x6837;&#x672C;&#x5E73;&#x5747;&#x503C;&#x4EE5;&#x4F7F;&#x5176;&#x5747;&#x503C;&#x4E3A;0), &#x76F8;&#x5173;&#x7CFB;&#x6570;&#x4E5F;&#x53EF;&#x4EE5;&#x88AB;&#x89C6;&#x4F5C;&#x7531;&#x4E24;&#x4E2A;&#x968F;&#x673A;&#x53D8;&#x91CF; &#x5411;&#x91CF; &#x5939;&#x89D2; &#x7684; &#x4F59;&#x5F26;&#x503C;&#xFF08;&#x89C1;&#x4E0B;&#x65B9;&#xFF09;&#x3002;</p>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x4F8B;&#x5982;&#xFF0C;&#x6709;5&#x4E2A;&#x56FD;&#x5BB6;&#x7684;&#x56FD;&#x6C11;&#x751F;&#x4EA7;&#x603B;&#x503C;&#x5206;&#x522B;&#x4E3A; 10, 20, 30, 50 &#x548C; 80 &#x4EBF;&#x7F8E;&#x5143;&#x3002; &#x5047;&#x8BBE;&#x8FD9;5&#x4E2A;&#x56FD;&#x5BB6; (&#x987A;&#x5E8F;&#x76F8;&#x540C;) &#x7684;&#x8D2B;&#x56F0;&#x767E;&#x5206;&#x6BD4;&#x5206;&#x522B;&#x4E3A; 11%, 12%, 13%, 15%, and 18% &#x3002; &#x4EE4; x &#x548C; y &#x5206;&#x522B;&#x4E3A;&#x5305;&#x542B;&#x4E0A;&#x8FF0;5&#x4E2A;&#x6570;&#x636E;&#x7684;&#x5411;&#x91CF;: x = (1, 2, 3, 5, 8) &#x548C; y = (0.11, 0.12, 0.13, 0.15, 0.18)&#x3002;</p>
+<p>&#x5229;&#x7528;&#x901A;&#x5E38;&#x7684;&#x65B9;&#x6CD5;&#x8BA1;&#x7B97;&#x4E24;&#x4E2A;&#x5411;&#x91CF;&#x4E4B;&#x95F4;&#x7684;&#x5939;&#x89D2;  (&#x53C2;&#x89C1; &#x6570;&#x91CF;&#x79EF;), &#x672A;&#x4E2D;&#x5FC3;&#x5316; &#x7684;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x662F;:<br><img src="../images/10/10.2/10.2.62.png" alt=""></p>
+<p>&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x4EE5;&#x4E0A;&#x7684;&#x6570;&#x636E;&#x7279;&#x610F;&#x9009;&#x5B9A;&#x4E3A;&#x5B8C;&#x5168;&#x76F8;&#x5173;: y = 0.10 + 0.01 x&#x3002; &#x4E8E;&#x662F;&#xFF0C;&#x76AE;&#x5C14;&#x900A;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x5E94;&#x8BE5;&#x7B49;&#x4E8E;1&#x3002;&#x5C06;&#x6570;&#x636E;&#x4E2D;&#x5FC3;&#x5316; (&#x901A;&#x8FC7;E(x) = 3.8&#x79FB;&#x52A8; x &#x548C;&#x901A;&#x8FC7; E(y) = 0.138 &#x79FB;&#x52A8; y ) &#x5F97;&#x5230; x = (&#x2212;2.8, &#x2212;1.8, &#x2212;0.8, 1.2, 4.2) &#x548C; y = (&#x2212;0.028, &#x2212;0.018, &#x2212;0.008, 0.012, 0.042), &#x4ECE;&#x4E2D;<br><img src="../images/10/10.2/10.2.63.png" alt=""></p>
+<p><strong>(4)&#x76AE;&#x5C14;&#x900A;&#x76F8;&#x5173;&#x7684;&#x7EA6;&#x675F;&#x6761;&#x4EF6;</strong></p>
+<p>&#x4ECE;&#x4EE5;&#x4E0A;&#x89E3;&#x91CA;, &#x4E5F;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x76AE;&#x5C14;&#x900A;&#x76F8;&#x5173;&#x7684;&#x7EA6;&#x675F;&#x6761;&#x4EF6;:</p>
+<ol>
+<li>&#x4E24;&#x4E2A;&#x53D8;&#x91CF;&#x95F4;&#x6709;&#x7EBF;&#x6027;&#x5173;&#x7CFB;</li>
+<li>&#x53D8;&#x91CF;&#x662F;&#x8FDE;&#x7EED;&#x53D8;&#x91CF;</li>
+<li>&#x53D8;&#x91CF;&#x5747;&#x7B26;&#x5408;&#x6B63;&#x6001;&#x5206;&#x5E03;,&#x4E14;&#x4E8C;&#x5143;&#x5206;&#x5E03;&#x4E5F;&#x7B26;&#x5408;&#x6B63;&#x6001;&#x5206;&#x5E03;</li>
+<li>&#x4E24;&#x53D8;&#x91CF;&#x72EC;&#x7ACB;</li>
+</ol>
+<p>&#x5728;&#x5B9E;&#x8DF5;&#x7EDF;&#x8BA1;&#x4E2D;,&#x4E00;&#x822C;&#x53EA;&#x8F93;&#x51FA;&#x4E24;&#x4E2A;&#x7CFB;&#x6570;,&#x4E00;&#x4E2A;&#x662F;&#x76F8;&#x5173;&#x7CFB;&#x6570;,&#x4E5F;&#x5C31;&#x662F;&#x8BA1;&#x7B97;&#x51FA;&#x6765;&#x7684;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x5927;&#x5C0F;,&#x5728;-1&#x5230;1&#x4E4B;&#x95F4;;&#x53E6;&#x4E00;&#x4E2A;&#x662F;&#x72EC;&#x7ACB;&#x6837;&#x672C;&#x68C0;&#x9A8C;&#x7CFB;&#x6570;,&#x7528;&#x6765;&#x68C0;&#x9A8C;&#x6837;&#x672C;&#x4E00;&#x81F4;&#x6027;&#x3002;</p>
+<p>&#x7B80;&#x5355;&#x8BF4;&#x6765;&#xFF0C;&#x5404;&#x79CD;&#x201C;&#x8DDD;&#x79BB;&#x201D;&#x7684;&#x5E94;&#x7528;&#x573A;&#x666F;&#x7B80;&#x5355;&#x6982;&#x62EC;&#x4E3A;&#xFF0C;&#x7A7A;&#x95F4;&#xFF1A;&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;&#xFF0C;&#x8DEF;&#x5F84;&#xFF1A;&#x66FC;&#x54C8;&#x987F;&#x8DDD;&#x79BB;&#xFF0C;&#x56FD;&#x9645;&#x8C61;&#x68CB;&#x56FD;&#x738B;&#xFF1A;&#x5207;&#x6BD4;&#x96EA;&#x592B;&#x8DDD;&#x79BB;&#xFF0C;&#x4EE5;&#x4E0A;&#x4E09;&#x79CD;&#x7684;&#x7EDF;&#x4E00;&#x5F62;&#x5F0F;:&#x95F5;&#x53EF;&#x592B;&#x65AF;&#x57FA;&#x8DDD;&#x79BB;&#xFF0C;&#x52A0;&#x6743;&#xFF1A;&#x6807;&#x51C6;&#x5316;&#x6B27;&#x6C0F;&#x8DDD;&#x79BB;&#xFF0C;&#x6392;&#x9664;&#x91CF;&#x7EB2;&#x548C;&#x4F9D;&#x5B58;&#xFF1A;&#x9A6C;&#x6C0F;&#x8DDD;&#x79BB;&#xFF0C;&#x5411;&#x91CF;&#x5DEE;&#x8DDD;&#xFF1A;&#x5939;&#x89D2;&#x4F59;&#x5F26;&#xFF0C;&#x7F16;&#x7801;&#x5DEE;&#x522B;&#xFF1A;&#x6C49;&#x660E;&#x8DDD;&#x79BB;&#xFF0C;&#x96C6;&#x5408;&#x8FD1;&#x4F3C;&#x5EA6;&#xFF1A;&#x6770;&#x5361;&#x5FB7;&#x7C7B;&#x4F3C;&#x7CFB;&#x6570;&#x4E0E;&#x8DDD;&#x79BB;&#xFF0C;&#x76F8;&#x5173;&#xFF1A;&#x76F8;&#x5173;&#x7CFB;&#x6570;&#x4E0E;&#x76F8;&#x5173;&#x8DDD;&#x79BB;&#x3002;</p>
+<h3 id="13&#x3001;k&#x503C;&#x7684;&#x9009;&#x62E9;">1.3&#x3001;K&#x503C;&#x7684;&#x9009;&#x62E9;</h3>
+<p>&#x9664;&#x4E86;&#x4E0A;&#x8FF0;1.2&#x8282;&#x5982;&#x4F55;&#x5B9A;&#x4E49;&#x90BB;&#x5C45;&#x7684;&#x95EE;&#x9898;&#x4E4B;&#x5916;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x9009;&#x62E9;&#x591A;&#x5C11;&#x4E2A;&#x90BB;&#x5C45;&#xFF0C;&#x5373;K&#x503C;&#x5B9A;&#x4E49;&#x4E3A;&#x591A;&#x5927;&#x7684;&#x95EE;&#x9898;&#x3002;&#x4E0D;&#x8981;&#x5C0F;&#x770B;&#x4E86;&#x8FD9;&#x4E2A;K&#x503C;&#x9009;&#x62E9;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x5BF9;K&#x8FD1;&#x90BB;&#x7B97;&#x6CD5;&#x7684;&#x7ED3;&#x679C;&#x4F1A;&#x4EA7;&#x751F;&#x91CD;&#x5927;&#x5F71;&#x54CD;&#x3002;&#x5982;&#x674E;&#x822A;&#x535A;&#x58EB;&#x7684;&#x4E00;&#x4E66;&#x300C;&#x7EDF;&#x8BA1;&#x5B66;&#x4E60;&#x65B9;&#x6CD5;&#x300D;&#x4E0A;&#x6240;&#x8BF4;&#xFF1A;</p>
+<ol>
+<li>&#x5982;&#x679C;&#x9009;&#x62E9;&#x8F83;&#x5C0F;&#x7684;K&#x503C;&#xFF0C;&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x7528;&#x8F83;&#x5C0F;&#x7684;&#x9886;&#x57DF;&#x4E2D;&#x7684;&#x8BAD;&#x7EC3;&#x5B9E;&#x4F8B;&#x8FDB;&#x884C;&#x9884;&#x6D4B;&#xFF0C;&#x201C;&#x5B66;&#x4E60;&#x201D;&#x8FD1;&#x4F3C;&#x8BEF;&#x5DEE;&#x4F1A;&#x51CF;&#x5C0F;&#xFF0C;&#x53EA;&#x6709;&#x4E0E;&#x8F93;&#x5165;&#x5B9E;&#x4F8B;&#x8F83;&#x8FD1;&#x6216;&#x76F8;&#x4F3C;&#x7684;&#x8BAD;&#x7EC3;&#x5B9E;&#x4F8B;&#x624D;&#x4F1A;&#x5BF9;&#x9884;&#x6D4B;&#x7ED3;&#x679C;&#x8D77;&#x4F5C;&#x7528;&#xFF0C;&#x4E0E;&#x6B64;&#x540C;&#x65F6;&#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;&#x662F;&#x201C;&#x5B66;&#x4E60;&#x201D;&#x7684;&#x4F30;&#x8BA1;&#x8BEF;&#x5DEE;&#x4F1A;&#x589E;&#x5927;&#xFF0C;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;K&#x503C;&#x7684;&#x51CF;&#x5C0F;&#x5C31;&#x610F;&#x5473;&#x7740;&#x6574;&#x4F53;&#x6A21;&#x578B;&#x53D8;&#x5F97;&#x590D;&#x6742;&#xFF0C;&#x5BB9;&#x6613;&#x53D1;&#x751F;&#x8FC7;&#x62DF;&#x5408;&#xFF1B;</li>
+<li>&#x5982;&#x679C;&#x9009;&#x62E9;&#x8F83;&#x5927;&#x7684;K&#x503C;&#xFF0C;&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x7528;&#x8F83;&#x5927;&#x9886;&#x57DF;&#x4E2D;&#x7684;&#x8BAD;&#x7EC3;&#x5B9E;&#x4F8B;&#x8FDB;&#x884C;&#x9884;&#x6D4B;&#xFF0C;&#x5176;&#x4F18;&#x70B9;&#x662F;&#x53EF;&#x4EE5;&#x51CF;&#x5C11;&#x5B66;&#x4E60;&#x7684;&#x4F30;&#x8BA1;&#x8BEF;&#x5DEE;&#xFF0C;&#x4F46;&#x7F3A;&#x70B9;&#x662F;&#x5B66;&#x4E60;&#x7684;&#x8FD1;&#x4F3C;&#x8BEF;&#x5DEE;&#x4F1A;&#x589E;&#x5927;&#x3002;&#x8FD9;&#x65F6;&#x5019;&#xFF0C;&#x4E0E;&#x8F93;&#x5165;&#x5B9E;&#x4F8B;&#x8F83;&#x8FDC;&#xFF08;&#x4E0D;&#x76F8;&#x4F3C;&#x7684;&#xFF09;&#x8BAD;&#x7EC3;&#x5B9E;&#x4F8B;&#x4E5F;&#x4F1A;&#x5BF9;&#x9884;&#x6D4B;&#x5668;&#x4F5C;&#x7528;&#xFF0C;&#x4F7F;&#x9884;&#x6D4B;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#xFF0C;&#x4E14;K&#x503C;&#x7684;&#x589E;&#x5927;&#x5C31;&#x610F;&#x5473;&#x7740;&#x6574;&#x4F53;&#x7684;&#x6A21;&#x578B;&#x53D8;&#x5F97;&#x7B80;&#x5355;&#x3002;</li>
+<li>K=N&#xFF0C;&#x5219;&#x5B8C;&#x5168;&#x4E0D;&#x8DB3;&#x53D6;&#xFF0C;&#x56E0;&#x4E3A;&#x6B64;&#x65F6;&#x65E0;&#x8BBA;&#x8F93;&#x5165;&#x5B9E;&#x4F8B;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x90FD;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x7684;&#x9884;&#x6D4B;&#x5B83;&#x5C5E;&#x4E8E;&#x5728;&#x8BAD;&#x7EC3;&#x5B9E;&#x4F8B;&#x4E2D;&#x6700;&#x591A;&#x7684;&#x7D2F;&#xFF0C;&#x6A21;&#x578B;&#x8FC7;&#x4E8E;&#x7B80;&#x5355;&#xFF0C;&#x5FFD;&#x7565;&#x4E86;&#x8BAD;&#x7EC3;&#x5B9E;&#x4F8B;&#x4E2D;&#x5927;&#x91CF;&#x6709;&#x7528;&#x4FE1;&#x606F;&#x3002;</li>
+</ol>
+<p>&#x5728;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;K&#x503C;&#x4E00;&#x822C;&#x53D6;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x5C0F;&#x7684;&#x6570;&#x503C;&#xFF0C;&#x4F8B;&#x5982;&#x91C7;&#x7528;<a href="http://zh.wikipedia.org/zh/%E4%BA%A4%E5%8F%89%E9%A9%97%E8%AD%89" target="_blank">&#x4EA4;&#x53C9;&#x9A8C;&#x8BC1;</a>&#x6CD5;&#xFF08;&#x7B80;&#x5355;&#x6765;&#x8BF4;&#xFF0C;&#x5C31;&#x662F;&#x4E00;&#x90E8;&#x5206;&#x6837;&#x672C;&#x505A;&#x8BAD;&#x7EC3;&#x96C6;&#xFF0C;&#x4E00;&#x90E8;&#x5206;&#x505A;&#x6D4B;&#x8BD5;&#x96C6;&#xFF09;&#x6765;&#x9009;&#x62E9;&#x6700;&#x4F18;&#x7684;K&#x503C;&#x3002;    </p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./ch7.html" class="navigation navigation-prev " aria-label="Previous page: 第七章 机器学习"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./07.02.svm.html" class="navigation navigation-next " aria-label="Next page: 7.2 支持向量机"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

@@ -1,0 +1,319 @@
+<hr>
+<p>title: 单例模式<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2019-5-19 00:00:00<br>
+tags:</p>
+<ul>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>创建型模式<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>创建型模式<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h2 id="单例模式"><a class="header-anchor" href="#单例模式">¶</a>单例模式</h2>
+<h3 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h3>
+<blockquote>
+<p>Ensure a class has only one instance , and provide a global point of access to it.<br>
+确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。</p>
+</blockquote>
+<h3 id="单例模式示意图"><a class="header-anchor" href="#单例模式示意图">¶</a>单例模式示意图</h3>
+<p><img src="%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F.png" alt="单例模式"></p>
+<h3 id="流程"><a class="header-anchor" href="#流程">¶</a>流程</h3>
+<ol>
+<li>客户向单例提供者请求实例</li>
+<li>单例提供者使用类名.getInstance()从单例类中获取唯一实例</li>
+<li>这个唯一实例在单例类中先被创建(单例类只能创建一个实例)。单例类通过暴露getInstance()这个静态方法，让外界可以获取这个单个实例。</li>
+</ol>
+<h3 id="代码实现"><a class="header-anchor" href="#代码实现">¶</a>代码实现</h3>
+<ol>
+<li>普通单例模式(饿汉式)</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 普通单例模式(饿汉式)
+ * 一开始就初始化，线程安全，比较常用，但容易产生垃圾
+ *
+ * 为什么线程安全？
+ * 类加载的方式是按需加载，且只加载一次。当单例类加载完成后，单例实例就被创建供系统使用，线程每次只能获取这一个实例。
+ */
+public class SingleTonCommon {
+    private static final SingleTonCommon singleTon = new SingleTonCommon();
+
+    /* 不让外界调用创建对象，只能让singleTon成员变量创建对象 */
+    private SingleTonCommon(){
+
+    }
+
+    public static SingleTonCommon getInstance(){
+        return singleTon ;
+    }
+
+    /* 单例类里面的类方法不能被外界访问 */
+    public static void test(){
+        System.out.println(&quot;普通单例模式(饿汉式)&quot;);
+    }
+
+    /* 可以被外界访问的方法 */
+    public void getTest(){
+        test();
+    }
+}
+
+</code></pre>
+<ol start="2">
+<li>普通单例模式(懒汉式)</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 普通单例模式(懒汉式)
+ * 线程不安全，延迟初始化。
+ *
+ * 为什么线程不安全？
+ * 当两个线程同时创建单例对象，线程1到达singleTon == null , 线程1判断完后，还没有创建对象，线程2就抢占cpu资源，开始运行。
+ * 这时线程2也到达singleTon == null,并且判断为空，创建一个对象。之后释放cpu资源，线程1再次抢占cpu资源。
+ * 这时线程1还是原来的状态singleTon == null,判断为空，线程1再次创建一个对象，这就产生两个对象。
+ */
+public class SingleTonCommon2 {
+    private static SingleTonCommon2 singleTon ;
+
+    private SingleTonCommon2(){
+
+    }
+
+    public static SingleTonCommon2 getInstance(){
+        if (singleTon == null){
+            singleTon = new SingleTonCommon2();
+        }
+        return singleTon ;
+    }
+
+    /* 单例类里面的类方法不能被外界访问 */
+    public static void test(){
+        System.out.println(&quot;普通单例模式(懒汉式)&quot;);
+    }
+
+    /* 可以被外界访问的方法 */
+    public void getTest(){
+        test();
+    }
+}
+</code></pre>
+<ol start="3">
+<li>synchronized单例模式(懒汉式线程安全版)</li>
+</ol>
+<pre><code class="language-Java">/**
+ * synchronized单例模式单例模式
+ *
+ * 线程安全，延迟初始化
+ *
+ * 为什么线程安全？
+ * 双重锁单例模式就是懒汉式的升级版，懒汉式在singleTon == null判断时可能会有其他线程能创建多的对象。
+ * 但是这里使用synchronized同步锁，使得每次判断只能进一个，就只能创建一个对象。
+ */
+public class SingleSynchronized {
+    private static SingleSynchronized singleTon ;
+
+    private SingleSynchronized(){
+
+    }
+
+    public static SingleSynchronized getInstance(){
+        // 第一次判断singleTon == null是在synchronized代码块之外判断，为了避免已经创建了对象还要进入同步代码块的情况，提高效率。
+        if (singleTon == null){
+            // 与懒汉式情况不同，当线程1到singleTon == null,并进入判断，但是还没创建线程就被线程2抢占cpu资源，然后线程2先一步创建对象
+            // 这时虽然线程1已经进入判断，但是因为加入了synchronized线程同步锁，synchronized保证两个线程都是为了创建同一个对象，线程2已经创建线程1就不需要再创建了。
+            synchronized (SingleSynchronized.class){
+                if (singleTon == null){
+                    singleTon = new SingleSynchronized();
+                }
+            }
+        }
+        return singleTon ;
+    }
+
+    /* 单例类里面的类方法不能被外界访问 */
+    public static void test(){
+        System.out.println(&quot;synchronized单例模式&quot;);
+    }
+
+    /* 可以被外界访问的方法 */
+    public void getTest(){
+        test();
+    }
+}
+
+</code></pre>
+<ol start="4">
+<li>volatile单例模式(懒汉式线程安全版)</li>
+</ol>
+<pre><code class="language-Java">/** volatile可以保证可见性,同时保证JVM指令不会进行重排序。
+ * 创建对象是需要有几个步骤，通过jvm指令来创建的
+ * 创建对象步骤：获取1.singleTon对象需要的内存地址--&gt;2.初始化singleTon对象--&gt;3.将引用变量singleTon指向获取的内存地址
+ * volatile禁止jvm对指令进行重排序，因此指令顺序总是1--&gt;2--&gt;3
+ */
+public class SingleTonVolatitle {
+    private volatile static SingleTonVolatitle singleTon ;
+
+    private SingleTonVolatitle(){
+
+    }
+
+    /**
+     * 虽然volatile不能保证原子性，但是singleTon赋值堆中的引用是原子操作
+     * 如果被两个线程执行， new SingleTonVolatitle()会执行两次，但是赋值操作只进行一次。
+     * @return
+     */
+    public SingleTonVolatitle getInstance(){
+        if (singleTon == null) {
+            singleTon = new SingleTonVolatitle();
+        }
+        return singleTon ;
+    }
+
+    /* 单例类里面的类方法不能被外界访问 */
+    public static void test(){
+        System.out.println(&quot;volatile单例模式&quot;);
+    }
+
+    /* 可以被外界访问的方法 */
+    public void getTest(){
+        test();
+    }
+}
+
+</code></pre>
+<ol start="5">
+<li>静态内部类单例模式</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 静态内部类单例模式
+ *
+ * 只有第一次调用getInstance方法时，虚拟机才加载静态内部类并初始化，只有一个线程获得对象的初始化锁，其他线程无法进行初始化。
+ */
+public class SingleTonStaticInner {
+    private SingleTonStaticInner(){
+
+    }
+
+    public SingleTonStaticInner getInstance(){
+        return Inner.singleTon ;
+    }
+
+    /**
+     * 静态内部类只有在被加载的时候才会被初始化，并且其生命周期直到系统结束才会结束。
+     * 这样就保证有且只有一个对象，不管有多少为线程调用getInstance,都是取的同一个对象
+     * 因此，静态内部类能保证单例唯一性，延迟单例实例化以及保证线程安全
+     *
+     * 但是静态内部类无法传递参数
+     */
+    private static class Inner{
+        private static final SingleTonStaticInner singleTon = new SingleTonStaticInner();
+    }
+}
+</code></pre>
+<ol start="6">
+<li>枚举单例模式</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 枚举单例模式
+ * 枚举和普通类一样，都拥有字段和方法
+ * 枚举的构造方法只能被声明为私有构造方法
+ * 枚举是线程安全的，并且在任何情况下，它都是一个单例(我们通过枚举类.INSTANCE就能获得枚举对象)
+ */
+public enum  SingleTonEnum {
+    INSTANCE;
+    
+    public static SingleTonEnum Instance(){
+        return SingleTonEnum.INSTANCE ;
+    }
+}
+</code></pre>
+<ol start="7">
+<li>静态代码块单例模式</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 静态代码块单例模式
+ * 静态代码块是在单例类在虚拟机中一加载就被调用，并且只调用一次
+ * 因此静态代码块单例也是线程安全的
+ */
+public class SingleTonStatic {
+    private static SingleTonStatic singleTon ;
+    private SingleTonStatic(){
+
+    }
+
+    static {
+        singleTon = new SingleTonStatic();
+    }
+}
+</code></pre>
+<h3 id="应用场景"><a class="header-anchor" href="#应用场景">¶</a>应用场景</h3>
+<ol>
+<li>要求生成唯一序列号的环境。</li>
+<li>在整个项目中需要一个共享访问点或共享数据，例如一个web页面的计数器，不用把每次刷新都记录到数据库，使用单例模式保持计数器的值，并确保线程安全。</li>
+<li>创建一个对象需要消耗的资源很多，如要访问IO或数据库。</li>
+<li>需要定义大量的静态常量或静态方法。</li>
+</ol>
+<h3 id="单例模式优缺点"><a class="header-anchor" href="#单例模式优缺点">¶</a>单例模式优缺点</h3>
+<h4 id="优点"><a class="header-anchor" href="#优点">¶</a>优点</h4>
+<ol>
+<li>对象的创建会占用内存，只有一个实例对象，这样减少内存开支。</li>
+<li>对象会占用系统资源，只有一个实例对象，会减少系统性能开销。</li>
+<li>多个实例在内存中可能会产生对多重占用问题，单例模式可以避免这种情况发生。</li>
+<li>单例模式可以在全局设置一个访问点，这样可以优化和共享资源访问。</li>
+</ol>
+<h4 id="缺点"><a class="header-anchor" href="#缺点">¶</a>缺点</h4>
+<ol>
+<li>没有接口，扩展困难。</li>
+<li>在并发环境下，单例模式没有完成是不能进行测试的，也不能使用mock虚拟一个对象。</li>
+<li>单例模式与单一职责原则有冲突。</li>
+</ol>
+<h3 id="单例的扩展"><a class="header-anchor" href="#单例的扩展">¶</a>单例的扩展</h3>
+<blockquote>
+<p>能产生固定数量对象的模式叫有上限的多例模式。</p>
+</blockquote>
+<pre><code class="language-Java">import java.util.ArrayList;
+
+/**
+ * 单例的扩展
+ * 有上限的多例
+ */
+public class SingleTonExtension {
+    /* 定义需要产生的对象数量 */
+    private static int maxNumSingleTon = 2 ;
+
+    /* 将所有产生的对象放入这个容器，ArrayList是线程不安全的，可以使用线程安全的容器 */
+    private static ArrayList&lt;SingleTonExtension&gt; singleTons = new ArrayList&lt;&gt;();
+
+    private SingleTonExtension(){
+
+    }
+
+    /* 使用静态代码块实现单例 */
+    static {
+        for (int i=0 ; i&lt;maxNumSingleTon ; i++) {
+            singleTons.add(new SingleTonExtension());
+        }
+    }
+}
+</code></pre>
+<h3 id="文献引用"><a class="header-anchor" href="#文献引用">¶</a>文献引用</h3>
+<ol>
+<li><a href="https://blog.csdn.net/May_3/article/details/82180961" target="_blank" rel="noopener">Java双重校验锁实现单例模式</a></li>
+<li><a href="https://jianshu.com/p/3bfd916f2bb2" target="_blank" rel="noopener">设计模式之单例模式</a></li>
+<li><a href="https://www.jianshu.com/p/638ac7c82110" target="_blank" rel="noopener">volatile</a></li>
+<li><a href="https://www.cnblogs.com/jingmoxukong/p/6098351.html" target="_blank" rel="noopener">Java 枚举</a></li>
+<li><a href="https://www.cnblogs.com/Heliner/p/10524699.html" target="_blank" rel="noopener">Java之static静态代码块</a></li>
+<li><a href="https://blog.csdn.net/mnb65482/article/details/80458571" target="_blank" rel="noopener">深入理解单例模式：静态内部类单例原理</a></li>
+</ol>

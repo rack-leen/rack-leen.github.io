@@ -1,0 +1,903 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>索引段数据统计 | Mastering Elasticsearch 中文版</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../chapter-5/54_README.html" />
+    
+    
+    <link rel="prev" href="../chapter-5/52_README.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="5.3"
+        data-chapter-title="索引段数据统计"
+        data-filepath="chapter-5/53_README.md"
+        data-basepath=".."
+        data-revision="Mon May 02 2016 08:52:51 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/mastering-elasticsearch" target="blank" class="custom-link">Mastering Elasticsearch 中文版</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        前言
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="chapter-1/index.html">
+            
+                
+                    <a href="../chapter-1/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        第1章 认识Elasticsearch
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="chapter-1/11_README.html">
+            
+                
+                    <a href="../chapter-1/11_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        认识Apache Lucene
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="chapter-1/111_README.html">
+            
+                
+                    <a href="../chapter-1/111_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.1.</b>
+                        
+                        熟悉Lucene
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="chapter-1/112_README.html">
+            
+                
+                    <a href="../chapter-1/112_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.2.</b>
+                        
+                        总体架构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="chapter-1/113_README.html">
+            
+                
+                    <a href="../chapter-1/113_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.3.</b>
+                        
+                        分析你的文本
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4" data-path="chapter-1/114_README.html">
+            
+                
+                    <a href="../chapter-1/114_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.4.</b>
+                        
+                        Lucene查询语言
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chapter-1/12_README.html">
+            
+                
+                    <a href="../chapter-1/12_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        认识 ElasticSearch
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="chapter-1/121_README.html">
+            
+                
+                    <a href="../chapter-1/121_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.1.</b>
+                        
+                        基本概念
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="chapter-1/122_README.html">
+            
+                
+                    <a href="../chapter-1/122_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.2.</b>
+                        
+                        ElasticSearch背后的核心理念
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="chapter-1/123_README.html">
+            
+                
+                    <a href="../chapter-1/123_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.3.</b>
+                        
+                        ElasticSearch的工作原理
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="chapter-1/13_README.html">
+            
+                
+                    <a href="../chapter-1/13_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        本章小结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="chapter-2/index.html">
+            
+                
+                    <a href="../chapter-2/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        第2章 强大的用户查询语言DSL
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="chapter-2/21_README.html">
+            
+                
+                    <a href="../chapter-2/21_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Lucene默认打分算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="chapter-2/22_README.html">
+            
+                
+                    <a href="../chapter-2/22_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        查询重写机制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="chapter-2/23_README.html">
+            
+                
+                    <a href="../chapter-2/23_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        重排序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="chapter-2/24_README.html">
+            
+                
+                    <a href="../chapter-2/24_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        批处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="chapter-2/25_README.html">
+            
+                
+                    <a href="../chapter-2/25_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        查询结果的排序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="chapter-2/26_README.html">
+            
+                
+                    <a href="../chapter-2/26_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        Update API
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="chapter-2/27_README.html">
+            
+                
+                    <a href="../chapter-2/27_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                        使用filters优化查询
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="chapter-2/28_README.html">
+            
+                
+                    <a href="../chapter-2/28_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.8.</b>
+                        
+                        filters和scope在ElasticSearch Faceting模块的应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="chapter-2/29_README.html">
+            
+                
+                    <a href="../chapter-2/29_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.9.</b>
+                        
+                        本章小结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="chapter-3/index.html">
+            
+                
+                    <a href="../chapter-3/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        第3章 索引底层控制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="chapter-4/index.html">
+            
+                
+                    <a href="../chapter-4/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        第4章 探究分布式索引架构
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="chapter-4/41_README.html">
+            
+                
+                    <a href="../chapter-4/41_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        选择恰当的分片数量和分片副本数量
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="chapter-4/42_README.html">
+            
+                
+                    <a href="../chapter-4/42_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        路由功能浅谈
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="chapter-4/44_README.html">
+            
+                
+                    <a href="../chapter-4/44_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        调整集群的分片分配
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="chapter-4/43_README.html">
+            
+                
+                    <a href="../chapter-4/43_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        改变分片的默认分配方式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="chapter-4/45_README.html">
+            
+                
+                    <a href="../chapter-4/45_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        查询的execution preference
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="chapter-4/46_README.html">
+            
+                
+                    <a href="../chapter-4/46_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        学以致用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="chapter-4/47_README.html">
+            
+                
+                    <a href="../chapter-4/47_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        本章小结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="chapter-5/index.html">
+            
+                
+                    <a href="../chapter-5/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        第5章 管理Elasticsearch
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="chapter-5/51_README.html">
+            
+                
+                    <a href="../chapter-5/51_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        选择正确的directory实现类——存储模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="chapter-5/52_README.html">
+            
+                
+                    <a href="../chapter-5/52_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        Discovery模块的配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.3" data-path="chapter-5/53_README.html">
+            
+                
+                    <a href="../chapter-5/53_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        索引段数据统计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="chapter-5/54_README.html">
+            
+                
+                    <a href="../chapter-5/54_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        理解ElasticSearch的缓存
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="chapter-5/55_README.html">
+            
+                
+                    <a href="../chapter-5/55_README.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        本章小结
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="chapter-6/index.html">
+            
+                
+                    <a href="../chapter-6/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        第6章 应对突发事件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="chapter-7/index.html">
+            
+                
+                    <a href="../chapter-7/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        第7章 优化用户体验
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="chapter-8/index.html">
+            
+                
+                    <a href="../chapter-8/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        第8章 ElasticSearch Java API
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="chapter-9/index.html">
+            
+                
+                    <a href="../chapter-9/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        第9章 开发ElasticSearch插件
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Mastering Elasticsearch 中文版</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="&#x7D22;&#x5F15;&#x6BB5;&#x6570;&#x636E;&#x7684;&#x7EDF;&#x8BA1;">&#x7D22;&#x5F15;&#x6BB5;&#x6570;&#x636E;&#x7684;&#x7EDF;&#x8BA1;</h2>
+<div style="text-indent:2em;">
+<p>&#x5728;<i>&#x7B2C;3&#x7AE0; &#x7D22;&#x5F15;&#x5E95;&#x5C42;&#x63A7;&#x5236;</i>&#x4E2D; <i>&#x63A7;&#x5236;&#x6BB5;&#x5408;&#x5E76;</i> &#x4E00;&#x8282;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x63A2;&#x8BA8;&#x4E86;&#x8C03;&#x6574;Apache Lucene&#x7D22;&#x5F15;&#x6BB5;&#x5408;&#x5E76;&#x8FC7;&#x7A0B;&#x6765;&#x6EE1;&#x8DB3;&#x4E1A;&#x52A1;&#x9700;&#x6C42;&#x7684;&#x53EF;&#x80FD;&#x6027;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x5728;<i>&#x7B2C;6&#x7AE0; &#x5E94;&#x5BF9;&#x7A81;&#x53D1;&#x4E8B;&#x4EF6;</i>&#x7684;<i>&#x5F53;I/O&#x8FC7;&#x4E8E;&#x7E41;&#x5FD9;&#x2014;&#x2014;&#x8282;&#x6D41;&#x529F;&#x80FD;&#x8BE6;&#x89E3;</i>&#x4E00;&#x8282;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x8BA8;&#x8BBA;&#x66F4;&#x591A;&#x529F;&#x80FD;&#x7684;&#x53C2;&#x6570;&#x914D;&#x7F6E;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x4E3A;&#x4E86;&#x4E86;&#x89E3;&#x9700;&#x8981;&#x8C03;&#x6574;&#x54EA;&#x4E9B;&#x65B9;&#x9762;&#xFF0C;&#x81F3;&#x5C11;&#x5148;&#x5F97;&#x770B;&#x770B;&#x7D22;&#x5F15;&#x6216;&#x8005;&#x7D22;&#x5F15;&#x5206;&#x7247;&#x4E2D;&#x7D22;&#x5F15;&#x6BB5;&#x7684;&#x7ED3;&#x6784;&#x3002; </p>
+
+<h4 id="&#x6BB5;&#x64CD;&#x4F5C;&#x76F8;&#x5173;&#x7684;api&#x4ECB;&#x7ECD;">&#x6BB5;&#x64CD;&#x4F5C;&#x76F8;&#x5173;&#x7684;API&#x4ECB;&#x7ECD;</h4>
+<p>&#x4E3A;&#x4E86;&#x66F4;&#x6DF1;&#x5165;&#x5730;&#x4E86;&#x89E3;Lucene&#x7684;&#x7D22;&#x5F15;&#x6BB5;&#xFF0C;ElasticSearch&#x63D0;&#x4F9B;&#x4E86;&#x6BB5;&#x64CD;&#x4F5C;&#x76F8;&#x5173;&#x7684;API&#xFF0C;&#x901A;&#x8FC7;&#x5728;&#x6267;&#x884C;&#x7684;HTTP GET&#x8BF7;&#x6C42;&#x4E2D;&#x9644;&#x5E26;\_segments REST&#x7AEF;&#x70B9;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x76F8;&#x5173;&#x7684;API&#x4E86;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x6211;&#x4EEC;&#x60F3;&#x4E86;&#x89E3;&#x96C6;&#x7FA4;&#x5206;&#x7247;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x7684;&#x6BB5;&#x4FE1;&#x606F;&#xFF0C;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x5982;&#x4E0B;&#x7684;&#x547D;&#x4EE4;&#xFF1A;
+<blockquote>curl -XGET &apos;localhost:9200/_segments&apos;</blockquote>
+&#x5982;&#x679C;&#x60F3;&#x67E5;&#x770B;mastering&#x7D22;&#x5F15;&#x7684;&#x6BB5;&#x4FE1;&#x606F;&#xFF0C;&#x5C31;&#x5E94;&#x8BE5;&#x6267;&#x884C;&#x5982;&#x4E0B;&#x7684;&#x547D;&#x4EE4;&#xFF1A;
+<blockquote>curl -XGET &apos;localhost:9200/mastering/_segments&apos;</blockquote>
+&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x67E5;&#x770B;&#x591A;&#x4E2A;&#x7D22;&#x5F15;&#x7684;&#x6BB5;&#x4FE1;&#x606F;&#xFF0C;&#x901A;&#x8FC7;&#x5982;&#x4E0B;&#x7684;&#x547D;&#x4EE4;&#x5373;&#x53EF;&#xFF1A;
+<blockquote>curl -XGET &apos;localhost:9200/mastering,books/_segments&apos;</blockquote>
+</p>
+<h4 id="&#x8FD4;&#x56DE;&#x4FE1;&#x606F;">&#x8FD4;&#x56DE;&#x4FE1;&#x606F;</h4>
+<p>&#x8C03;&#x7528;segments API&#x7684;&#x8FD4;&#x56DE;&#x4FE1;&#x606F;&#x90FD;&#x662F;&#x57FA;&#x4E8E;&#x5206;&#x7247;&#x7684;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x7684;&#x7D22;&#x5F15;&#x90FD;&#x662F;&#x7531;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5206;&#x7247;(&#x4EE5;&#x53CA;&#x5206;&#x7247;&#x526F;&#x672C;)&#x7EC4;&#x6210;&#xFF0C;&#x800C;&#x4E14;&#x4F17;&#x6240;&#x5468;&#x77E5;&#x6BCF;&#x4E2A;&#x5206;&#x7247;&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;Apache Lucene&#x7684;&#x7269;&#x7406;&#x7D22;&#x5F15;&#x3002;&#x6211;&#x4EEC;&#x5047;&#x5B9A;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;mastering&#x7684;&#x7D22;&#x5F15;&#xFF0C;&#x800C;&#x4E14;&#x7D22;&#x5F15;&#x4E2D;&#x6709;&#x4E00;&#x4E9B;&#x6587;&#x6863;&#x3002;&#x5728;&#x7D22;&#x5F15;&#x521B;&#x5EFA;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6307;&#x5B9A;&#x7D22;&#x5F15;&#x7531;&#x5355;&#x4E2A;&#x5206;&#x7247;&#x6784;&#x6210;&#xFF0C;&#x800C;&#x4E14;&#x6CA1;&#x6709;&#x5206;&#x7247;&#x526F;&#x672C;&#xFF1A;&#x7531;&#x4E8E;&#x53EA;&#x662F;&#x7528;&#x4E8E;&#x6D4B;&#x8BD5;&#x7684;&#x7D22;&#x5F15;&#xFF0C;&#x8FD9;&#x6837;&#x505A;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#x3002;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#xFF0C;&#x6267;&#x884C;&#x5982;&#x4E0B;&#x7684;&#x547D;&#x4EE4;&#x540E;&#xFF0C;&#x7D22;&#x5F15;&#x6BB5;&#x4FE1;&#x606F;&#x4F1A;&#x662F;&#x4EC0;&#x4E48;&#x6837;&#xFF1A;
+<blockquote>curl -XGET &apos;localhost:9200/_segments?pretty&apos;</blockquote>
+&#x8FD4;&#x56DE;&#x7684;JSON&#x683C;&#x5F0F;&#x4FE1;&#x606F;&#x5982;&#x4E0B;(&#x6709;&#x90E8;&#x5206;&#x5220;&#x51CF;)&#xFF1A;
+<blockquote>
+{
+&quot;ok&quot; : true,
+&quot;_shards&quot; : {
+&quot;total&quot; : 1,
+&quot;successful&quot; : 1,
+&quot;failed&quot; : 0
+},
+&quot;indices&quot; : {
+&quot;mastring&quot; : {
+&quot;shards&quot; : {
+&quot;0&quot; : [ {
+&quot;routing&quot; : {
+&quot;state&quot; : &quot;STARTED&quot;,
+&quot;primary&quot; : true,
+&quot;node&quot; : &quot;Cz4RFYP5RnudkXzSwe-WGw&quot;
+},
+&quot;num\_committed\_segments&quot; : 1,
+&quot;num\_search\_segments&quot; : 8,
+&quot;segments&quot; : {
+&quot;_0&quot; : {
+&quot;generation&quot; : 0,
+&quot;num_docs&quot; : 62,
+&quot;deleted_docs&quot; : 0,
+&quot;size&quot; : &quot;5.7kb&quot;,
+&quot;size\_in\_bytes&quot; : 5842,
+&quot;committed&quot; : true,
+&quot;search&quot; : true,
+&quot;version&quot; : &quot;4.3&quot;,
+&quot;compound&quot; : false
+},
+...
+&quot;_7&quot; : {
+&quot;generation&quot; : 7,
+&quot;num_docs&quot; : 1,
+&quot;deleted_docs&quot; : 0,
+&quot;size&quot; : &quot;1.4kb&quot;,
+&quot;size\_in_bytes&quot; : 1482,
+&quot;committed&quot; : false,
+&quot;search&quot; : true,
+&quot;version&quot; : &quot;4.3&quot;,
+&quot;compound&quot; : false
+}
+}
+} ]
+}
+}
+}
+}
+</blockquote>
+&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;ElasticSearch&#x8FD4;&#x56DE;&#x4E86;&#x5927;&#x91CF;&#x53EF;&#x4F9B;&#x5206;&#x6790;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x6700;&#x9876;&#x5C42;&#x7684;&#x606F;&#x662F;&#x7D22;&#x5F15;&#x540D;&#x79F0;&#x548C;&#x548C;&#x5206;&#x7247;&#x3002;&#x5728;&#x672C;&#x4F8B;&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;&#x8FD4;&#x56DE;&#x4FE1;&#x606F;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;&#x7F16;&#x53F7;&#x4E3A;0&#x7684;&#x5206;&#x7247;&#xFF0C;&#x8BE5;&#x5206;&#x7247;&#x5DF2;&#x7ECF;&#x542F;&#x52A8;&#x800C;&#x4E14;&#x6B63;&#x5728;&#x8FD0;&#x884C;(&quot;state&quot; : &quot;STARTED&quot; ) &#xFF0C;&#x8BE5;&#x5206;&#x7247;&#x662F;&#x4E00;&#x4E2A;&#x4E3B;&#x5206;&#x7247; (&quot;primary&quot; : true) ,&#x8BE5;&#x5206;&#x7247;&#x4F4D;&#x4E8E;id&#x4E3A; Cz4RFYP5RnudkXzSwe-WGw&#x7684;&#x8282;&#x70B9;&#x4E0A;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x4FE1;&#x606F;&#x662F;&#x5173;&#x4E8E;&#x5DF2;&#x63D0;&#x4EA4;&#x6BB5;&#x7684;&#x6570;&#x91CF;(&#x901A;&#x8FC7;num\_commited\_segments&#x5C5E;&#x6027;)&#x548C;&#x641C;&#x7D22;&#x6BB5;&#x7684;&#x6570;&#x91CF;(num\_search\_segments&#x5C5E;&#x6027;)&#x3002;&#x5DF2;&#x63D0;&#x4EA4;&#x6BB5;&#x8868;&#x793A;&#x8BE5;&#x6BB5;&#x4E0A;&#x9762;&#x8FD0;&#x884C;&#x4E86;&#x4E00;&#x4E2A;&#x63D0;&#x4EA4;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x5373;&#x6BB5;&#x6570;&#x636E;&#x5DF2;&#x7ECF;&#x6301;&#x4E45;&#x5316;&#x5230;&#x786C;&#x76D8;&#xFF0C;&#x800C;&#x4E14;&#x662F;&#x53EA;&#x8BFB;&#x7684;&#x4E86;&#x3002;&#x641C;&#x7D22;&#x6BB5;&#x5373;&#x53EF;&#x7528;&#x4E8E;&#x641C;&#x7D22;&#x7684;&#x6BB5;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x662F;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x6BB5;&#x4FE1;&#x606F;&#xFF0C;&#x6BCF;&#x4E2A;&#x6BB5;&#x4E2D;&#x5305;&#x542B;&#x7684;&#x4FE1;&#x606F;&#x5982;&#x4E0B;&#xFF1A;
+<ul>
+<li>number:&#x8BE5;&#x5C5E;&#x6027;&#x4E3A;&#x6BB5;&#x6307;&#x5B9A;&#x4E86;&#x4E00;&#x4E2A;&#x7F16;&#x53F7;&#xFF0C;&#x4F5C;&#x4E3A;&#x591A;&#x4E2A;&#x6BB5;&#x5206;&#x7EC4;&#x65F6;&#x5F97;&#x5230;&#x7684;JSON&#x5BF9;&#x8C61;&#x7684;&#x540D;&#x79F0;&#x3002;(&#x6BD4;&#x5982;&#xFF0C;\_0,\_1,&#x7B49;&#x7B49;)</li>
+<li>generation:&#x8BE5;&#x5C5E;&#x6027;&#x6307;&#x5B9A;&#x7684;&#x6BB5;&#x5728;&#x7D22;&#x5F15;&#x4E2D;&#x5C5E;&#x4E8E;&#x7B2C;&#x51E0;&#x4EE3;&#xFF0C;&#x7528;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x6765;&#x8868;&#x793A;&#x6BB5;&#x7684;&#x201C;&#x8001;&#x5E74;&#x5316;&#x201D;&#x7A0B;&#x5EA6;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x521B;&#x5EFA;&#x7684;&#x6BB5;&#x5C31;&#x662F;&#x7B2C;0&#x4EE3;&#xFF0C;&#x968F;&#x540E;&#x521B;&#x5EFA;&#x7684;&#x6BB5;&#x5C31;&#x662F;&#x7B2C;1&#x4EE3;&#xFF0C;&#x4EE5;&#x6B64;&#x7C7B;&#x63A8;&#x3002;</li>
+<li>num_docs:&#x8BE5;&#x5C5E;&#x6027;&#x8868;&#x660E;&#x8BE5;&#x6BB5;&#x4E2D;&#x7D22;&#x5F15;&#x7684;&#x6587;&#x6863;&#x6570;&#x3002;</li>
+<li>deleted_docs:&#x8BE5;&#x5C5E;&#x6027;&#x8868;&#x793A;&#x8BE5;&#x6BB5;&#x4E2D;&#x88AB;&#x6807;&#x8BB0;&#x4E3A;&#x5220;&#x9664;&#x7684;&#x6587;&#x6863;&#x6570;&#x3002;&#x8FD9;&#x4E9B;&#x6807;&#x8BB0;&#x4E3A;&#x5220;&#x9664;&#x7684;&#x6587;&#x6863;&#x5C06;&#x5728;&#x6BB5;&#x5408;&#x5E76;&#x7684;&#x65F6;&#x5019;&#x88AB;&#x771F;&#x6B63;&#x5730;&#x5220;&#x9664;&#x3002;</li>
+<li>size:&#x8BE5;&#x5C5E;&#x6027;&#x8868;&#x660E;&#x6BB5;&#x5728;&#x786C;&#x76D8;&#x4E0A;&#x5360;&#x7528;&#x7684;&#x7A7A;&#x95F4;&#x5927;&#x5C0F;&#x3002;</li>
+<li>size\_in\_bytes:&#x8BE5;&#x5C5E;&#x6027;&#x8868;&#x660E;&#x6BB5;&#x7684;&#x5927;&#x5C0F;&#x7528;byte&#x6765;&#x8868;&#x793A;&#x65F6;&#x7684;&#x6570;&#x503C;&#x3002;</li>
+<li>committed: &#x5982;&#x679C;&#x6BB5;&#x5DF2;&#x7ECF;&#x63D0;&#x4EA4;&#xFF0C;&#x5219;&#x8BE5;&#x5C5E;&#x6027;&#x503C;&#x4E3A;true&#xFF1B;&#x5426;&#x5219;&#x8BE5;&#x5C5E;&#x6027;&#x503C;&#x4E3A;false.</li>
+<li>search:&#x8BE5;&#x5C5E;&#x6027;&#x8868;&#x793A;&#x53EF;&#x641C;&#x7D22;&#x6BB5;&#x7684;&#x4E2A;&#x6570;&#x3002;</li>
+<li>version:&#x8BE5;&#x5C5E;&#x6027;&#x8868;&#x793A;&#x521B;&#x5EFA;&#x7D22;&#x5F15;&#x65F6;&#x4F7F;&#x7528;&#x7684;Lucene&#x7684;&#x7248;&#x672C;&#x3002;&#x8FB9;&#x6CE8;&#xFF1A;&#x5C3D;&#x7BA1;&#x6BCF;&#x4E2A;&#x7279;&#x5B9A;&#x7248;&#x672C;&#x7684;ElasticSearch&#x90FD;&#x53EA;&#x4F7F;&#x7528;&#x7279;&#x5B9A;&#x7248;&#x672C;&#x7684;Lucene&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x662F;&#x53EF;&#x80FD;&#x53D1;&#x751F;&#x4E0D;&#x540C;&#x7684;&#x7D22;&#x5F15;&#x6BB5;&#x7531;&#x4E0D;&#x540C;&#x7684;Lucene&#x7248;&#x672C;&#x521B;&#x5EFA;&#x8FD9;&#x4E00;&#x60C5;&#x51B5;&#x3002;&#x50CF;&#x5347;&#x7EA7;ElasticSearch&#x7248;&#x672C;&#xFF0C;&#x800C;&#x4E14;&#x6B63;&#x597D;&#x4E24;&#x4E2A;&#x7248;&#x672C;&#x7684;ElasticSearch&#x4F7F;&#x7528;&#x4E86;&#x4E0D;&#x540C;&#x7248;&#x672C;&#x7684;Lucene&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;&#x4E0A;&#x9762;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x9762;&#x5BF9;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x65E7;&#x7248;&#x672C;&#x7684;&#x7D22;&#x5F15;&#x6BB5;&#x4F1A;&#x5728;&#x7D22;&#x5F15;&#x5408;&#x5E76;&#x64CD;&#x4F5C;&#x65F6;&#x8FDB;&#x884C;&#x91CD;&#x5199;&#x64CD;&#x4F5C;&#x3002;</li>
+<li>compound:&#x8BE5;&#x5C5E;&#x6027;&#x6307;&#x5B9A;&#x4E86;&#x6BB5;&#x7684;&#x683C;&#x5F0F;&#x662F;&#x5426;&#x662F;&#x7EC4;&#x5408;&#x7684;(&#x6240;&#x6709;&#x7684;&#x6BB5;&#x4FE1;&#x606F;&#x90FD;&#x5B58;&#x50A8;&#x5728;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;)</li>
+</ul>
+</p>
+<h4 id="&#x6BB5;&#x4FE1;&#x606F;&#x53EF;&#x89C6;&#x5316;">&#x6BB5;&#x4FE1;&#x606F;&#x53EF;&#x89C6;&#x5316;</h4>
+<p>&#x5F53;&#x770B;&#x5230;segments API&#x8FD4;&#x56DE;&#x7684;JSON&#x683C;&#x5F0F;&#x7684;&#x6587;&#x672C;&#x4FE1;&#x606F;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5927;&#x8111;&#x4E2D;&#x5192;&#x51FA;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x60F3;&#x6CD5;&#x53EF;&#x80FD;&#x662F;&#xFF1A;&#x5982;&#x679C;&#x4FE1;&#x606F;&#x662F;&#x53EF;&#x89C6;&#x5316;&#x7684;&#xFF0C;&#x90A3;&#x5C31;&#x5F88;&#x76F4;&#x89C2;&#x660E;&#x4E86;&#x4E86;&#x3002;&#x5982;&#x679C;&#x60F3;&#x5B9E;&#x73B0;&#x8FD9;&#x79CD;&#x60F3;&#x6CD5;&#xFF0C;&#x968F;&#x65F6;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x53BB;&#x505A;&#x3002;&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x6709;&#x4E00;&#x4E2A;&#x73B0;&#x6210;&#x7684;&#x540D;&#x4E3A;SegmentSpy&#x7684;&#x63D2;&#x4EF6;(https://github.com/polyfractal/elasticsearch-segmentspy )&#x5229;&#x7528;&#x6211;&#x4EEC;&#x524D;&#x9762;&#x63D0;&#x5230;&#x7684;API&#x5B9E;&#x73B0;&#x4E86;&#x6BB5;&#x4FE1;&#x606F;&#x7684;&#x53EF;&#x89C6;&#x5316;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x5B89;&#x88C5;&#x8BE5;&#x63D2;&#x4EF6;&#x540E;&#xFF0C;&#x5C06;Web&#x6D4F;&#x89C8;&#x5668;&#x6307;&#x5411;&#x5230;http://localhost:9200/_plugin/segmentspy/ &#xFF0C;&#x7136;&#x540E;&#x9009;&#x62E9;&#x76EE;&#x6807;&#x7D22;&#x5F15;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x7C7B;&#x4F3C;&#x5982;&#x4E0B;&#x7684;&#x5C4F;&#x5E55;&#x622A;&#x56FE;
+</p>
+<center><img src="../54-segments.png"> </center>
+<p>&#x6B63;&#x5982;&#x8BFB;&#x8005;&#x6240;&#x89C1;&#xFF0C;&#x8BE5;&#x63D2;&#x4EF6;&#x5C06;segments API&#x8FD4;&#x56DE;&#x7684;&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x4E86;&#x53EF;&#x89C6;&#x5316;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x8BDD;&#x60F3;&#x67E5;&#x770B;&#x6BB5;&#x4FE1;&#x606F;&#x65F6;&#x5C31;&#x80FD;&#x591F;&#x7528;&#x5F97;&#x4E0A;&#x4E86;&#x3002;&#x53EA;&#x662F;&#x8BE5;&#x63D2;&#x4EF6;&#x6CA1;&#x6709;&#x89E3;&#x6790;ElasticSearch&#x8FD4;&#x56DE;&#x7684;JSON&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x4FE1;&#x606F;&#x3002; </p>
+</div>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../chapter-5/52_README.html" class="navigation navigation-prev " aria-label="Previous page: Discovery模块的配置"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../chapter-5/54_README.html" class="navigation navigation-next " aria-label="Next page: 理解ElasticSearch的缓存"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

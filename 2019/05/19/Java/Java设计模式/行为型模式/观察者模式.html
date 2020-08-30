@@ -1,0 +1,196 @@
+<hr>
+<p>title: 观察者模式<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2020-01-04 22:13:20<br>
+tags:</p>
+<ul>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h2 id="观察者模式"><a class="header-anchor" href="#观察者模式">¶</a>观察者模式</h2>
+<h3 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h3>
+<blockquote>
+<p>Define a one-to-many dependency between objects so that when one object changes state,all its dependents are notified and updated automatically.<br>
+定义对象间一种一对多的依赖关系，使得每当一个对象改变状态，则所有依赖于它的对象都会得到通知并被自动更新。</p>
+</blockquote>
+<h3 id="解释"><a class="header-anchor" href="#解释">¶</a>解释</h3>
+<p>观察者模式主要有两个角色，一个被观察者，多个观察者，这个被观察者是与多个观察者关联在一起的。<br>
+当这个被观察者执行任务后，数据会被更新，所有观察者会被唤醒，自动更新被监控观察者的信息。</p>
+<h3 id="代码实现"><a class="header-anchor" href="#代码实现">¶</a>代码实现</h3>
+<h4 id="准备"><a class="header-anchor" href="#准备">¶</a>准备</h4>
+<p>现在我们输入一个十进制数字，它会被存入被观察者实体中，而这时会将转换为二进制，八进制，十六进制的观察者唤醒。这样输入一个数字，就回打印出这个数字对应的二进制，八进制，十六进制。</p>
+<h4 id="被观察者"><a class="header-anchor" href="#被观察者">¶</a>被观察者</h4>
+<ol>
+<li>Subject类</li>
+</ol>
+<pre><code class="language-Java">package org.example.observer;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 被观察者实体类
+ */
+public class Subject {
+    private List&lt;Observer&gt; observers = new ArrayList&lt;&gt;();
+    private int state ;
+
+    public int getState(){
+        return state ;
+    }
+
+    /**
+     * 这是被观察者需要做的动作
+     * @param state
+     */
+    public void setState(int state){
+        System.out.println(&quot;输入数字:&quot; + state);
+        this.state = state ;
+        notifyAllObservers(); // 这个是当被观察者开始有动作了，那就自动更新所有的观察者
+    }
+
+    /**
+     * 将观察者加入观察者列表中，这里就包含了所有监控被观察者的观察者。
+     * @param observer
+     */
+    public void attach(Observer observer){
+        observers.add(observer);
+    }
+
+    /**
+     * 唤醒观察者，让观察者自动更新信息
+     */
+    public void notifyAllObservers(){
+        for (Observer observer : observers){
+            observer.update();
+        }
+    }
+}
+
+</code></pre>
+<h4 id="观察者"><a class="header-anchor" href="#观察者">¶</a>观察者</h4>
+<ol>
+<li>观察者抽象类</li>
+</ol>
+<pre><code class="language-Java">package org.example.observer;
+
+/**
+ * 观察者抽象类
+ */
+public abstract class Observer {
+    protected Subject subject ;
+    public abstract void update();
+}
+</code></pre>
+<ol start="2">
+<li>转换为二进制的观察者</li>
+</ol>
+<pre><code class="language-Java">package org.example.observer;
+
+public class BinaryObserver extends Observer{
+    public BinaryObserver(Subject subject){
+        this.subject = subject ;
+        // 将当前观察者加入被观察者的观察者列表中
+        this.subject.attach(this);
+    }
+    @Override
+    public void update() {
+        System.out.println(&quot;输入数字的二进制：&quot;+Integer.toBinaryString(this.subject.getState()));
+    }
+}
+</code></pre>
+<ol start="3">
+<li>转换为八进制的观察者</li>
+</ol>
+<pre><code class="language-Java">package org.example.observer;
+
+public class OctalObserver extends Observer {
+    public  OctalObserver(Subject subject){
+        this.subject = subject ;
+        // 将当前观察者加入被观察者的观察者列表中
+        this.subject.attach(this);
+    }
+    @Override
+    public void update() {
+        System.out.println(&quot;输入数字的八进制：&quot;+Integer.toOctalString(this.subject.getState()));
+    }
+}
+</code></pre>
+<ol start="4">
+<li>转换为十六进制的观察者</li>
+</ol>
+<pre><code class="language-Java">package org.example.observer;
+
+public class HexObserver extends Observer{
+    public HexObserver(Subject subject){
+        this.subject = subject ;
+        // 将当前观察者加入被观察者的观察者列表中
+        this.subject.attach(this);
+    }
+    @Override
+    public void update() {
+        System.out.println(&quot;输入数字的十六进制：&quot;+Integer.toHexString(this.subject.getState()));
+    }
+}
+</code></pre>
+<h4 id="场景实现"><a class="header-anchor" href="#场景实现">¶</a>场景实现</h4>
+<pre><code class="language-Java">public class App {
+    /**
+     * 观察者模式
+     * @param args
+     */
+    public static void main(String[] args) {
+        // 创建一个被观察者
+        Subject subject = new Subject();
+
+        // 创建三个观察者，这三个被观察者实例会被放入被观察者的观察者列表中
+        new HexObserver(subject);
+        new OctalObserver(subject);
+        new BinaryObserver(subject);
+
+        // 当被观察者开始执行，所有的观察者会被唤醒，自动更新
+        subject.setState(10);
+        System.out.println();
+        subject.setState(20);
+    }
+}
+</code></pre>
+<h3 id="观察者模式扩展"><a class="header-anchor" href="#观察者模式扩展">¶</a>观察者模式扩展</h3>
+<p>被观察者可以被抽象出来，使得其具有良好的扩展性。</p>
+<h3 id="应用场景"><a class="header-anchor" href="#应用场景">¶</a>应用场景</h3>
+<ol>
+<li>关联行为场景，每个行为之间是关联的。一个行为的触发会影响其他行为。</li>
+<li>事件的多级触发。</li>
+<li>跨系统的消息交换。比如远程调用就需要观察者模式。</li>
+</ol>
+<h3 id="观察者模式优缺点"><a class="header-anchor" href="#观察者模式优缺点">¶</a>观察者模式优缺点</h3>
+<h4 id="优点"><a class="header-anchor" href="#优点">¶</a>优点</h4>
+<ol>
+<li>观察者和被观察者之间是抽象耦合的，这使得观察者和被观察者都很容易的扩展。</li>
+<li>观察者模式建立了一套触发机制，观察者模式每个观察者与被观察者都遵循单一职责，当被观察者被执行，就回触发观察者，这就形成一个触发链。</li>
+</ol>
+<h4 id="缺点"><a class="header-anchor" href="#缺点">¶</a>缺点</h4>
+<ol>
+<li>观察者模式需要考虑开发效率和运行效率。java中消息通知是顺序执行，一个观察者失败会影响整体效率，一般采用异步。</li>
+</ol>
+<h4 id="注意事项"><a class="header-anchor" href="#注意事项">¶</a>注意事项</h4>
+<ol>
+<li>广播链问题。观察者模型形成的触发链不能太长，如果太长，触发链中的一个产生错误，整个触发链就毁了。因此在一个观察者模式中最多出现一个对象既是观察者又是被观察者，也就是消息最多转发一次(传递两次)。</li>
+<li>异步处理需要考虑线程安全和队列问题。</li>
+</ol>

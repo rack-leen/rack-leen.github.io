@@ -1,0 +1,1375 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>运行和控制Nginx | Nginx 中文官方文档</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.5">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../Text/1.5_notation.html" />
+    
+    
+    <link rel="prev" href="../Text/1.3_install.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="1.4"
+        data-chapter-title="运行和控制Nginx"
+        data-filepath="Text/1.4_nginxchscommandline.md"
+        data-basepath=".."
+        data-revision="Mon Dec 14 2015 06:00:19 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/nginx-doc" target="blank" class="custom-link">Nginx 中文官方文档</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="Text/1.html">
+            
+                
+                    <a href="../Text/1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        主要文档
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="Text/1.1_overview.html">
+            
+                
+                    <a href="../Text/1.1_overview.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Nginx功能概述
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="Text/1.2_nginxchswhyuseit.html">
+            
+                
+                    <a href="../Text/1.2_nginxchswhyuseit.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        为什么选择Nginx
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="Text/1.3_install.html">
+            
+                
+                    <a href="../Text/1.3_install.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        Nginx安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="Text/1.4_nginxchscommandline.html">
+            
+                
+                    <a href="../Text/1.4_nginxchscommandline.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        运行和控制Nginx
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="Text/1.5_notation.html">
+            
+                
+                    <a href="../Text/1.5_notation.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        配置符号参考
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="Text/1.6_optimizations.html">
+            
+                
+                    <a href="../Text/1.6_optimizations.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        优化 Nginx
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="Text/1.7_faq.html">
+            
+                
+                    <a href="../Text/1.7_faq.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.</b>
+                        
+                        常见问题(FAQ)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="Text/1.8_debug.html">
+            
+                
+                    <a href="../Text/1.8_debug.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.8.</b>
+                        
+                        调试 nginx
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="Text/2.html">
+            
+                
+                    <a href="../Text/2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        核心模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="Text/2.1_mainmodule.html">
+            
+                
+                    <a href="../Text/2.1_mainmodule.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Nginx主模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="Text/2.2_events.html">
+            
+                
+                    <a href="../Text/2.2_events.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Nginx事件模块
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="Text/3.html">
+            
+                
+                    <a href="../Text/3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        基本模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="Text/3.1_httpcore.html">
+            
+                
+                    <a href="../Text/3.1_httpcore.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        http核心模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="Text/3.2_httpupstream.html">
+            
+                
+                    <a href="../Text/3.2_httpupstream.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        HttpIndex模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="Text/3.3_httpaccess.html">
+            
+                
+                    <a href="../Text/3.3_httpaccess.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        HttpAccess模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="Text/3.4_httpauthbasic.html">
+            
+                
+                    <a href="../Text/3.4_httpauthbasic.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        HttpAuthBasic模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="Text/3.5_httpautoindex.html">
+            
+                
+                    <a href="../Text/3.5_httpautoindex.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        HttpAutoindex模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="Text/3.6_browser.html">
+            
+                
+                    <a href="../Text/3.6_browser.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        Browser模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="Text/3.7_charset.html">
+            
+                
+                    <a href="../Text/3.7_charset.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        Charset模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="Text/3.8_httpemptygif.html">
+            
+                
+                    <a href="../Text/3.8_httpemptygif.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        HttpEmptyGif模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="Text/3.9_httpfcgi.html">
+            
+                
+                    <a href="../Text/3.9_httpfcgi.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.</b>
+                        
+                        HttpFcgi模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="Text/3.10_geo.html">
+            
+                
+                    <a href="../Text/3.10_geo.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.10.</b>
+                        
+                        Geo模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="Text/3.11_httpgzip.html">
+            
+                
+                    <a href="../Text/3.11_httpgzip.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.11.</b>
+                        
+                        HttpGzip模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="Text/3.12_httpheaders.html">
+            
+                
+                    <a href="../Text/3.12_httpheaders.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.12.</b>
+                        
+                        HttpHeaders模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="Text/3.13_httpindex.html">
+            
+                
+                    <a href="../Text/3.13_httpindex.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.13.</b>
+                        
+                        HttpIndex模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="Text/3.14_httpreferer.html">
+            
+                
+                    <a href="../Text/3.14_httpreferer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.14.</b>
+                        
+                        HttpReferer模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="Text/3.15_httplimitzone.html">
+            
+                
+                    <a href="../Text/3.15_httplimitzone.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.15.</b>
+                        
+                        HttpLimit zone
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="Text/3.16_httplimitrequest.html">
+            
+                
+                    <a href="../Text/3.16_httplimitrequest.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.16.</b>
+                        
+                        HttpLimitReqest模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="Text/3.17_httplog.html">
+            
+                
+                    <a href="../Text/3.17_httplog.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.17.</b>
+                        
+                        HttpLog模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="Text/3.18_map.html">
+            
+                
+                    <a href="../Text/3.18_map.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.18.</b>
+                        
+                        map
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="Text/3.19_memcached.html">
+            
+                
+                    <a href="../Text/3.19_memcached.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.19.</b>
+                        
+                        Memcached
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.20" data-path="Text/3.20_httpproxy.html">
+            
+                
+                    <a href="../Text/3.20_httpproxy.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.20.</b>
+                        
+                        HttpProxy模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="Text/3.21_rewrite.html">
+            
+                
+                    <a href="../Text/3.21_rewrite.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.21.</b>
+                        
+                        HttpRewrite模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.22" data-path="Text/3.22_httpssi.html">
+            
+                
+                    <a href="../Text/3.22_httpssi.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.22.</b>
+                        
+                        HttpSSI模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.23" data-path="Text/3.23_userid.html">
+            
+                
+                    <a href="../Text/3.23_userid.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.23.</b>
+                        
+                        HttpUserId
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="Text/4.html">
+            
+                
+                    <a href="../Text/4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        其他模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="Text/4.1_addition.html">
+            
+                
+                    <a href="../Text/4.1_addition.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        Addition模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="Text/4.2_embeddedperl.html">
+            
+                
+                    <a href="../Text/4.2_embeddedperl.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        EmbeddedPerl
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="Text/4.3_flv.html">
+            
+                
+                    <a href="../Text/4.3_flv.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        flv
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="Text/4.4_gzipstatic.html">
+            
+                
+                    <a href="../Text/4.4_gzipstatic.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        HttpGzipStatic
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="Text/4.5_randomindex.html">
+            
+                
+                    <a href="../Text/4.5_randomindex.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        RandomIndex
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="Text/4.6_geoip.html">
+            
+                
+                    <a href="../Text/4.6_geoip.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        HttpGeoIP
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="Text/4.7_realip.html">
+            
+                
+                    <a href="../Text/4.7_realip.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        HttpRealIp
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="Text/4.8_ssl.html">
+            
+                
+                    <a href="../Text/4.8_ssl.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        HttpSSL
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="Text/4.9_stubstatus.html">
+            
+                
+                    <a href="../Text/4.9_stubstatus.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.</b>
+                        
+                        StubStatus模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="Text/4.10_sub.html">
+            
+                
+                    <a href="../Text/4.10_sub.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.</b>
+                        
+                        HttpSubstitution
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="Text/4.11_httpdav.html">
+            
+                
+                    <a href="../Text/4.11_httpdav.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.</b>
+                        
+                        HttpDav模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12" data-path="Text/4.12_googleperftools.html">
+            
+                
+                    <a href="../Text/4.12_googleperftools.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.12.</b>
+                        
+                        GooglePerftools
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.13" data-path="Text/4.13_xslt.html">
+            
+                
+                    <a href="../Text/4.13_xslt.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.13.</b>
+                        
+                        HttpXSLT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.14" data-path="Text/4.14_securelink.html">
+            
+                
+                    <a href="../Text/4.14_securelink.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.14.</b>
+                        
+                        HttpSecureLink
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.15" data-path="Text/4.15_imagefilter.html">
+            
+                
+                    <a href="../Text/4.15_imagefilter.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.15.</b>
+                        
+                        HttpImageFilter
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="Text/5.html">
+            
+                
+                    <a href="../Text/5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        mail模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="Text/5.1_mailcore.html">
+            
+                
+                    <a href="../Text/5.1_mailcore.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        MailCore
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="Text/5.2_mailauth.html">
+            
+                
+                    <a href="../Text/5.2_mailauth.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        MailAuth
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="Text/5.3_mailproxy.html">
+            
+                
+                    <a href="../Text/5.3_mailproxy.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        MailProxy
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="Text/5.4_mailssl.html">
+            
+                
+                    <a href="../Text/5.4_mailssl.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        MailSSL
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="Text/6.html">
+            
+                
+                    <a href="../Text/6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        安装
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="Text/6.1_nginx_windows.html">
+            
+                
+                    <a href="../Text/6.1_nginx_windows.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        nginx在windows上的安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="Text/6.2_nginx_freebsd.html">
+            
+                
+                    <a href="../Text/6.2_nginx_freebsd.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        nginx在freebsd上的安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="Text/6.3_nginx_ubuntu.html">
+            
+                
+                    <a href="../Text/6.3_nginx_ubuntu.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        nginx在ubuntu上的安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="Text/6.4_nginx_fedora.html">
+            
+                
+                    <a href="../Text/6.4_nginx_fedora.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        nginx在fedora上的安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="Text/6.5_nginx_php_fpm.html">
+            
+                
+                    <a href="../Text/6.5_nginx_php_fpm.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        nginx php-fpm安装配置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="Text/7.html">
+            
+                
+                    <a href="../Text/7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        配置示例和方法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="Text/7.1_fullexample.html">
+            
+                
+                    <a href="../Text/7.1_fullexample.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        完整例子
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="Text/7.2_fullexample2.html">
+            
+                
+                    <a href="../Text/7.2_fullexample2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        完整例子2
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="Text/7.3_virtualhost.html">
+            
+                
+                    <a href="../Text/7.3_virtualhost.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        虚拟主机
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="Text/7.4_loadbalance.html">
+            
+                
+                    <a href="../Text/7.4_loadbalance.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        负载均衡
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="Text/7.5_doorchain.html">
+            
+                
+                    <a href="../Text/7.5_doorchain.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        nginx防盗链
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="Text/7.6_checkerrors.html">
+            
+                
+                    <a href="../Text/7.6_checkerrors.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.6.</b>
+                        
+                        HWLoadbalancerCheckErrors
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Nginx 中文官方文档</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h3 id="&#x8FD0;&#x884C;&#x548C;&#x63A7;&#x5236;nginx">&#x8FD0;&#x884C;&#x548C;&#x63A7;&#x5236;Nginx</h3>
+<h3 id="nginx&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;">nginx&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;</h3>
+<p>&#x4E0D;&#x50CF;&#x8BB8;&#x591A;&#x5176;&#x4ED6;&#x8F6F;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;Nginx &#x4EC5;&#x6709;&#x51E0;&#x4E2A;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#xFF0C;&#x5B8C;&#x5168;&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x6765;&#x914D;&#x7F6E;</p>
+<p>-c &lt;/path/to/config&gt; <strong>&#x4E3A; Nginx &#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x6765;&#x4EE3;&#x66FF;&#x7F3A;&#x7701;&#x7684;&#x3002;</strong></p>
+<p><strong>-t</strong> &#x4E0D;&#x8FD0;&#x884C;&#xFF0C;&#x800C;&#x4EC5;&#x4EC5;&#x6D4B;&#x8BD5;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;nginx &#x5C06;&#x68C0;&#x67E5;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x8BED;&#x6CD5;&#x7684;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x5E76;&#x5C1D;&#x8BD5;&#x6253;&#x5F00;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x6240;&#x5F15;&#x7528;&#x5230;&#x7684;&#x6587;&#x4EF6;&#x3002;</p>
+<p><strong>-v</strong> &#x663E;&#x793A; nginx &#x7684;&#x7248;&#x672C;&#x3002;</p>
+<p><strong>-V</strong> &#x663E;&#x793A; nginx &#x7684;&#x7248;&#x672C;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x7248;&#x672C;&#x548C;&#x914D;&#x7F6E;&#x53C2;&#x6570;&#x3002;</p>
+<h3 id="nginx&#x63A7;&#x5236;&#x4FE1;&#x53F7;">nginx&#x63A7;&#x5236;&#x4FE1;&#x53F7;</h3>
+<p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4FE1;&#x53F7;&#x7CFB;&#x7EDF;&#x6765;&#x63A7;&#x5236;&#x4E3B;&#x8FDB;&#x7A0B;&#x3002;&#x9ED8;&#x8BA4;&#xFF0C;nginx &#x5C06;&#x5176;&#x4E3B;&#x8FDB;&#x7A0B;&#x7684; pid &#x5199;&#x5165;&#x5230; /usr/local/nginx/nginx.pid &#x6587;&#x4EF6;&#x4E2D;&#x3002;&#x901A;&#x8FC7;&#x4F20;&#x9012;&#x53C2;&#x6570;&#x7ED9; ./configure &#x6216;&#x4F7F;&#x7528; <strong>pid</strong> &#x6307;&#x4EE4;&#xFF0C;&#x6765;&#x6539;&#x53D8;&#x8BE5;&#x6587;&#x4EF6;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x4E3B;&#x8FDB;&#x7A0B;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x4EE5;&#x4E0B;&#x7684;&#x4FE1;&#x53F7;&#xFF1A;</p>
+<table><tbody><tr><td>TERM, INT</td>          <td>&#x5FEB;&#x901F;&#x5173;&#x95ED;</td>        </tr><tr><td>QUIT</td>          <td>&#x4ECE;&#x5BB9;&#x5173;&#x95ED;</td>        </tr><tr><td>HUP</td>          <td>&#x91CD;&#x8F7D;&#x914D;&#x7F6E;<br>          &#x7528;&#x65B0;&#x7684;&#x914D;&#x7F6E;&#x5F00;&#x59CB;&#x65B0;&#x7684;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;<br>          &#x4ECE;&#x5BB9;&#x5173;&#x95ED;&#x65E7;&#x7684;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;</td>        </tr><tr><td>USR1</td>          <td>&#x91CD;&#x65B0;&#x6253;&#x5F00;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;</td>        </tr><tr><td>USR2</td>          <td>&#x5E73;&#x6ED1;&#x5347;&#x7EA7;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x3002;</td>        </tr><tr><td>WINCH</td>          <td>&#x4ECE;&#x5BB9;&#x5173;&#x95ED;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;</td>        </tr></tbody></table>
+
+<p>&#x5C3D;&#x7BA1;&#x4F60;&#x4E0D;&#x5FC5;&#x81EA;&#x5DF1;&#x64CD;&#x4F5C;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x5B83;&#x4EEC;&#x4E5F;&#x652F;&#x6301;&#x4E00;&#x4E9B;&#x4FE1;&#x53F7;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>TERM, INT</th>
+<th>&#x5FEB;&#x901F;&#x5173;&#x95ED;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QUIT</td>
+<td>&#x4ECE;&#x5BB9;&#x5173;&#x95ED;</td>
+</tr>
+<tr>
+<td>USR1</td>
+<td>&#x91CD;&#x65B0;&#x6253;&#x5F00;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nginx-&#x542F;&#x52A8;&#x3001;&#x505C;&#x6B62;&#x3001;&#x91CD;&#x542F;&#x547D;&#x4EE4;">nginx &#x542F;&#x52A8;&#x3001;&#x505C;&#x6B62;&#x3001;&#x91CD;&#x542F;&#x547D;&#x4EE4;</h3>
+<p><strong>nginx&#x542F;&#x52A8;</strong></p>
+<p>sudo /usr/local/nginx/nginx (nginx&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;&#x5B9E;&#x9645;&#x51B3;&#x5B9A;)</p>
+<p><strong>nginx&#x4ECE;&#x5BB9;&#x505C;&#x6B62;&#x547D;&#x4EE4;&#xFF0C;&#x7B49;&#x6240;&#x6709;&#x8BF7;&#x6C42;&#x7ED3;&#x675F;&#x540E;&#x5173;&#x95ED;&#x670D;&#x52A1;</strong></p>
+<p>ps -ef |grep nginx</p>
+<p>kill -QUIT nginx&#x4E3B;&#x8FDB;&#x7A0B;&#x53F7;</p>
+<p><strong>nginx &#x5FEB;&#x901F;&#x505C;&#x6B62;&#x547D;&#x4EE4;&#xFF0C;&#x7ACB;&#x523B;&#x5173;&#x95ED;nginx&#x8FDB;&#x7A0B;</strong></p>
+<p>ps -ef |grep nginx</p>
+<p>kill -TERM nginx&#x4E3B;&#x8FDB;&#x7A0B;&#x53F7;</p>
+<p><strong>&#x5982;&#x679C;&#x4EE5;&#x4E0A;&#x547D;&#x4EE4;&#x4E0D;&#x7BA1;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x5F3A;&#x5236;&#x505C;&#x6B62;</strong></p>
+<p>kill -9 nginx&#x4E3B;&#x8FDB;&#x7A0B;&#x53F7;</p>
+<p>&#x5982;&#x679C;&#x5ACC;&#x9EBB;&#x70E6;&#x53EF;&#x4EE5;&#x4E0D;&#x7528;&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x53F7;&#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x547D;&#x4EE4;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;<br> &#x5176;&#x4E2D;/usr/local/nginx/nginx.pid &#x4E3A;nginx.conf&#x4E2D;pid&#x547D;&#x4EE4;&#x8BBE;&#x7F6E;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x7528;&#x6765;&#x5B58;&#x653E;nginx&#x4E3B;&#x8FDB;&#x7A0B;&#x53F7;&#x7684;&#x6587;&#x4EF6;<br>kill -&#x4FE1;&#x53F7;&#x7C7B;&#x578B;(HUP|TERM|QUIT) <code>cat /usr/local/nginx/nginx.pid</code><br>&#x4F8B;&#x5982;</p>
+<pre><code>kill -QUIT `cat /usr/local/nginx/nginx.pid`
+</code></pre><p><strong>nginx&#x91CD;&#x542F;&#x547D;&#x4EE4;</strong></p>
+<p>nginx&#x91CD;&#x542F;&#x53EF;&#x4EE5;&#x5206;&#x6210;&#x51E0;&#x79CD;&#x7C7B;&#x578B;</p>
+<p>1.&#x7B80;&#x5355;&#x578B;&#xFF0C;&#x5148;&#x5173;&#x95ED;&#x8FDB;&#x7A0B;&#xFF0C;&#x4FEE;&#x6539;&#x4F60;&#x7684;&#x914D;&#x7F6E;&#x540E;&#xFF0C;&#x91CD;&#x542F;&#x8FDB;&#x7A0B;&#x3002;<br>kill -QUIT <code>cat /usr/local/nginx/nginx.pid</code><br>sudo /usr/local/nginx/nginx<br> 2.<a href="#">&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x4E0D;&#x91CD;&#x542F;&#x8FDB;&#x7A0B;&#xFF0C;&#x4E0D;&#x4F1A;&#x505C;&#x6B62;&#x5904;&#x7406;&#x8BF7;&#x6C42;</a><br> 3.<a href="#">&#x5E73;&#x6ED1;&#x66F4;&#x65B0;nginx&#x4E8C;&#x8FDB;&#x5236;&#xFF0C;&#x4E0D;&#x4F1A;&#x505C;&#x6B62;&#x5904;&#x7406;&#x8BF7;&#x6C42;</a></p>
+<h3 id="&#x4F7F;&#x7528;&#x4FE1;&#x53F7;&#x52A0;&#x8F7D;&#x65B0;&#x7684;&#x914D;&#x7F6E;">&#x4F7F;&#x7528;&#x4FE1;&#x53F7;&#x52A0;&#x8F7D;&#x65B0;&#x7684;&#x914D;&#x7F6E;</h3>
+<p>Nginx &#x652F;&#x6301;&#x51E0;&#x4E2A;&#x4FE1;&#x53F7;&#xFF0C;&#x80FD;&#x5728;&#x5B83;&#x8FD0;&#x884C;&#x65F6;&#x63A7;&#x5236;&#x5176;&#x64CD;&#x4F5C;&#x3002;&#x5176;&#x4E2D;&#x6700;&#x666E;&#x901A;&#x7684;&#x662F; 15 &#xFF0C;&#x7528;&#x6765;&#x4E2D;&#x6B62;&#x8FD0;&#x884C;&#x7684;&#x8FDB;&#x7A0B;&#xFF1A;</p>
+<pre><code># &lt;strong&gt;ps aux | egrep &apos;(PID|nginx)&apos;&lt;/strong&gt;
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root      2213  0.0  0.0   6784  2036 ?        Ss   03:01   0:00 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
+# &lt;strong&gt;kill -15 2213&lt;/strong&gt;
+</code></pre><p>&#x800C;&#x6700;&#x6709;&#x8DA3;&#x7684;&#x662F;&#x80FD;&#x5E73;&#x6ED1;&#x6539;&#x53D8; nginx &#x914D;&#x7F6E;&#x7684;&#x9009;&#x9879;&#xFF08;&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x5728;&#x91CD;&#x8F7D;&#x524D;&#xFF0C;&#x8981;&#x5148;&#x6D4B;&#x8BD5;&#x4E00;&#x4E0B;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF09;&#xFF1A;</p>
+<pre><code>#&lt;strong&gt; nginx -t -c /etc/nginx/nginx.conf&lt;/strong&gt;
+2006/09/16 13:07:10 [info] 15686#0: the configuration file /etc/nginx/nginx.conf syntax is ok
+2006/09/16 13:07:10 [info] 15686#0: the configuration file /etc/nginx/nginx.conf was tested successfully
+#&lt;strong&gt; ps aux | egrep &apos;(PID|nginx)&apos;&lt;/strong&gt;
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root      2213  0.0  0.0   6784  2036 ?        Ss   03:01   0:00 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
+&lt;strong&gt;# kill -HUP 2213&lt;/strong&gt;
+</code></pre><p>&#x5F53; nginx &#x63A5;&#x6536;&#x5230; HUP &#x4FE1;&#x53F7;&#xFF0C;&#x5B83;&#x4F1A;&#x5C1D;&#x8BD5;&#x5148;&#x89E3;&#x6790;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF08;&#x5982;&#x679C;&#x6307;&#x5B9A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x5C31;&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684;&#xFF0C;&#x5426;&#x5219;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684;&#xFF09;&#xFF0C;&#x6210;&#x529F;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x5E94;&#x7528;&#x65B0;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF08;&#x4F8B;&#x5982;&#xFF1A;&#x91CD;&#x65B0;&#x6253;&#x5F00;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x6216;&#x76D1;&#x542C;&#x7684;&#x5957;&#x63A5; &#x5B57;&#xFF09;&#x3002;&#x4E4B;&#x540E;&#xFF0C;nginx &#x8FD0;&#x884C;&#x65B0;&#x7684;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;&#x5E76;&#x4ECE;&#x5BB9;&#x5173;&#x95ED;&#x65E7;&#x7684;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;&#x3002;&#x901A;&#x77E5;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;&#x5173;&#x95ED;&#x76D1;&#x542C;&#x5957;&#x63A5;&#x5B57;&#x4F46;&#x662F;&#x7EE7;&#x7EED;&#x4E3A;&#x5F53;&#x524D;&#x8FDE;&#x63A5;&#x7684;&#x5BA2;&#x6237;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x3002;&#x6240;&#x6709;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x670D;&#x52A1;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x65E7;&#x7684;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;&#x88AB;&#x5173;&#x95ED;&#x3002; &#x5982;&#x679C;&#x65B0;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5E94;&#x7528;&#x5931;&#x8D25;&#xFF0C;nginx &#x5C06;&#x7EE7;&#x7EED;&#x4F7F;&#x7528;&#x65E7;&#x7684;&#x914D;&#x7F6E;&#x8FDB;&#x884C;&#x5DE5;&#x4F5C;&#x3002;</p>
+<h3 id="&#x5E73;&#x6ED1;&#x5347;&#x7EA7;&#x5230;&#x65B0;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x4EE3;&#x7801;">&#x5E73;&#x6ED1;&#x5347;&#x7EA7;&#x5230;&#x65B0;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x4EE3;&#x7801;</h3>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x4E2D;&#x65AD;&#x670D;&#x52A1;&#x7684;&#x60C5;&#x51B5;&#x4E0B; - &#x65B0;&#x7684;&#x8BF7;&#x6C42;&#x4E5F;&#x4E0D;&#x4F1A;&#x4E22;&#x5931;&#xFF0C;&#x4F7F;&#x7528;&#x65B0;&#x7684; nginx &#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x66FF;&#x6362;&#x65E7;&#x7684;&#xFF08;&#x5F53;&#x5347;&#x7EA7;&#x65B0;&#x7248;&#x672C;&#x6216;&#x6DFB;&#x52A0;/&#x5220;&#x9664;&#x670D;&#x52A1;&#x5668;&#x6A21;&#x5757;&#x65F6;&#xFF09;&#x3002;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x4F7F;&#x7528;&#x65B0;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x66FF;&#x6362;&#x65E7;&#x7684;&#xFF08;&#x6700;&#x597D;&#x505A;&#x597D;&#x5907;&#x4EFD;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#xFF0C;&#x53D1;&#x9001; USR2 (kill -USR2 pid)&#x4FE1;&#x53F7;&#x7ED9;&#x4E3B;&#x8FDB;&#x7A0B;&#x3002;&#x4E3B;&#x8FDB;&#x7A0B;&#x5C06;&#x91CD;&#x547D;&#x540D;&#x5B83;&#x7684; <strong>.pid</strong> &#x6587;&#x4EF6;&#x4E3A; <strong>.oldbin</strong> (&#x6BD4;&#x5982;&#xFF1A;<strong>/usr/local/nginx/logs/nginx.pid.oldbin</strong>)&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C;&#x65B0;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#xFF0C;&#x4F9D;&#x6B21;&#x542F;&#x52A8;&#x65B0;&#x7684;&#x4E3B;&#x8FDB;&#x7A0B;&#x548C;&#x65B0;&#x7684;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;&#xFF1A;</p>
+<pre><code>  PID  PPID USER    %CPU   VSZ WCHAN  COMMAND
+33126     1 root     0.0  1164 pause  nginx: master process /usr/local/nginx/sbin/nginx
+33134 33126 nobody   0.0  1368 kqread nginx: worker process (nginx)
+33135 33126 nobody   0.0  1380 kqread nginx: worker process (nginx)
+33136 33126 nobody   0.0  1368 kqread nginx: worker process (nginx)
+36264 33126 root     0.0  1148 pause  nginx: master process /usr/local/nginx/sbin/nginx
+36265 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+36266 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+36267 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+</code></pre><p>&#x5728;&#x8FD9;&#x65F6;&#xFF0C;&#x4E24;&#x4E2A; nginx &#x5B9E;&#x4F8B;&#x4F1A;&#x540C;&#x65F6;&#x8FD0;&#x884C;&#xFF0C;&#x4E00;&#x8D77;&#x5904;&#x7406;&#x8F93;&#x5165;&#x7684;&#x8BF7;&#x6C42;&#x3002;&#x8981;&#x9010;&#x6B65;&#x505C;&#x6B62;&#x65E7;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x4F60;&#x5FC5;&#x987B;&#x53D1;&#x9001; WINCH &#x4FE1;&#x53F7;&#x7ED9;&#x65E7;&#x7684;&#x4E3B;&#x8FDB;&#x7A0B;&#xFF0C;&#x7136;&#x540E;&#xFF0C;&#x5B83;&#x7684;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;&#x5C31;&#x5C06;&#x5F00;&#x59CB;&#x4ECE;&#x5BB9;&#x5173;&#x95ED;&#xFF1A;</p>
+<pre><code>  PID  PPID USER    %CPU   VSZ WCHAN  COMMAND
+33126     1 root     0.0  1164 pause  nginx: master process /usr/local/nginx/sbin/nginx
+33135 33126 nobody   0.0  1380 kqread nginx: worker process is shutting down (nginx)
+36264 33126 root     0.0  1148 pause  nginx: master process /usr/local/nginx/sbin/nginx
+36265 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+36266 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+36267 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+</code></pre><p>&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x540E;&#xFF0C;&#x65E7;&#x7684;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;&#x5904;&#x7406;&#x4E86;&#x6240;&#x6709;&#x5DF2;&#x8FDE;&#x63A5;&#x7684;&#x8BF7;&#x6C42;&#x540E;&#x9000;&#x51FA;&#xFF0C;&#x5C31;&#x4EC5;&#x7531;&#x65B0;&#x7684;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;&#x6765;&#x5904;&#x7406;&#x8F93;&#x5165;&#x7684;&#x8BF7;&#x6C42;&#x4E86;&#xFF1A;</p>
+<pre><code>  PID  PPID USER    %CPU   VSZ WCHAN  COMMAND
+33126     1 root     0.0  1164 pause  nginx: master process /usr/local/nginx/sbin/nginx
+36264 33126 root     0.0  1148 pause  nginx: master process /usr/local/nginx/sbin/nginx
+36265 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+36266 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+36267 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+</code></pre><p>&#x8FD9;&#x65F6;&#xFF0C;&#x56E0;&#x4E3A;&#x65E7;&#x7684;&#x670D;&#x52A1;&#x5668;&#x8FD8;&#x5C1A;&#x672A;&#x5173;&#x95ED;&#x5B83;&#x76D1;&#x542C;&#x7684;&#x5957;&#x63A5;&#x5B57;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x7684;&#x51E0;&#x6B65;&#xFF0C;&#x4F60;&#x4ECD;&#x53EF;&#x4EE5;&#x6062;&#x590D;&#x65E7;&#x7684;&#x670D;&#x52A1;&#x5668;&#xFF1A;</p>
+<ul>
+<li>&#x53D1;&#x9001; HUP &#x4FE1;&#x53F7;&#x7ED9;&#x65E7;&#x7684;&#x4E3B;&#x8FDB;&#x7A0B; - &#x5B83;&#x5C06;&#x5728;&#x4E0D;&#x91CD;&#x8F7D;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x542F;&#x52A8;&#x5B83;&#x7684;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;</li>
+<li>&#x53D1;&#x9001; QUIT &#x4FE1;&#x53F7;&#x7ED9;&#x65B0;&#x7684;&#x4E3B;&#x8FDB;&#x7A0B;&#xFF0C;&#x8981;&#x6C42;&#x5176;&#x4ECE;&#x5BB9;&#x5173;&#x95ED;&#x5176;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;</li>
+<li>&#x53D1;&#x9001; TERM &#x4FE1;&#x53F7;&#x7ED9;&#x65B0;&#x7684;&#x4E3B;&#x8FDB;&#x7A0B;&#xFF0C;&#x8FEB;&#x4F7F;&#x5176;&#x9000;&#x51FA;</li>
+<li>&#x5982;&#x679C;&#x56E0;&#x4E3A;&#x67D0;&#x4E9B;&#x539F;&#x56E0;&#x65B0;&#x7684;&#x5DE5;&#x4F5C;&#x8FDB;&#x7A0B;&#x4E0D;&#x80FD;&#x9000;&#x51FA;&#xFF0C;&#x5411;&#x5176;&#x53D1;&#x9001; KILL &#x4FE1;&#x53F7;</li>
+</ul>
+<p>&#x65B0;&#x7684;&#x4E3B;&#x8FDB;&#x7A0B;&#x9000;&#x51FA;&#x540E;&#xFF0C;&#x65E7;&#x7684;&#x4E3B;&#x8FDB;&#x7A0B;&#x4F1A;&#x7531;&#x79FB;&#x9664; <strong>.oldbin</strong> &#x524D;&#x7F00;&#xFF0C;&#x6062;&#x590D;&#x4E3A;&#x5B83;&#x7684; <strong>.pid</strong> &#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x6837;&#xFF0C;&#x4E00;&#x5207;&#x5C31;&#x90FD;&#x6062;&#x590D;&#x5230;&#x5347;&#x7EA7;&#x4E4B;&#x524D;&#x4E86;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5C1D;&#x8BD5;&#x5347;&#x7EA7;&#x6210;&#x529F;&#xFF0C;&#x800C;&#x4F60;&#x4E5F;&#x5E0C;&#x671B;&#x4FDD;&#x7559;&#x65B0;&#x7684;&#x670D;&#x52A1;&#x5668;&#x65F6;&#xFF0C;&#x53D1;&#x9001; QUIT &#x4FE1;&#x53F7;&#x7ED9;&#x65E7;&#x7684;&#x4E3B;&#x8FDB;&#x7A0B;&#x4F7F;&#x5176;&#x9000;&#x51FA;&#x800C;&#x53EA;&#x7559;&#x4E0B;&#x65B0;&#x7684;&#x670D;&#x52A1;&#x5668;&#x8FD0;&#x884C;&#xFF1A;</p>
+<pre><code>      PID  PPID USER    %CPU   VSZ WCHAN  COMMAND
+    36264     1 root     0.0  1148 pause  nginx: master process /usr/local/nginx/sbin/nginx
+    36265 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+    36266 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+    36267 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+</code></pre>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../Text/1.3_install.html" class="navigation navigation-prev " aria-label="Previous page: Nginx安装"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../Text/1.5_notation.html" class="navigation navigation-next " aria-label="Next page: 配置符号参考"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

@@ -1,0 +1,3858 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>23.2 X Server 配置文件解析与设置 | 鸟哥的 Linux 私房菜：基础学习篇 第四版</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./204.html" />
+    
+    
+    <link rel="prev" href="./202.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="25.2"
+        data-chapter-title="23.2 X Server 配置文件解析与设置"
+        data-filepath="203.md"
+        data-basepath="."
+        data-revision="Fri May 13 2016 07:09:20 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/vbird-linux-basic-4e" target="blank" class="custom-link">鸟哥的 Linux 私房菜：基础学习篇 第四版</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        鸟哥的Linux私房菜：基础学习篇 第四版
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="1.html">
+            
+                
+                    <a href="./1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        目录及概述
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        第零章、计算机概论
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        0.1 电脑：辅助人脑的好工具
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        0.2 个人电脑架构与相关设备元件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        0.3 数据表示方式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        0.4 软件程序运行
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        0.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="8.html">
+            
+                
+                    <a href="./8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.6.</b>
+                        
+                        0.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="9.html">
+            
+                
+                    <a href="./9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.7.</b>
+                        
+                        0.7 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="10.html">
+            
+                
+                    <a href="./10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        第一章、Linux是什么与如何学习
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="11.html">
+            
+                
+                    <a href="./11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        1.1 Linux是什么
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="12.html">
+            
+                
+                    <a href="./12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        1.2 Torvalds的Linux发展
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="13.html">
+            
+                
+                    <a href="./13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        1.3 Linux当前应用的角色
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="14.html">
+            
+                
+                    <a href="./14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        1.4 Linux 该如何学习
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="15.html">
+            
+                
+                    <a href="./15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        1.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="16.html">
+            
+                
+                    <a href="./16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        1.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="17.html">
+            
+                
+                    <a href="./17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        1.7 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="18.html">
+            
+                
+                    <a href="./18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        第二章、主机规划与磁盘分区
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="19.html">
+            
+                
+                    <a href="./19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        2.1 Linux与硬件的搭配
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="20.html">
+            
+                
+                    <a href="./20.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        2.2 磁盘分区
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="21.html">
+            
+                
+                    <a href="./21.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        2.3 安装Linux前的规划
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="22.html">
+            
+                
+                    <a href="./22.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        2.4 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="23.html">
+            
+                
+                    <a href="./23.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        2.5 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="24.html">
+            
+                
+                    <a href="./24.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        2.6 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="25.html">
+            
+                
+                    <a href="./25.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        第三章、安装 CentOS7.x
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="26.html">
+            
+                
+                    <a href="./26.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        3.1 本练习机的规划--尤其是分区参数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="27.html">
+            
+                
+                    <a href="./27.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        3.2 开始安装CentOS 7
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="28.html">
+            
+                
+                    <a href="./28.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        3.3 多重开机安装流程与管理（Option）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="29.html">
+            
+                
+                    <a href="./29.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        3.4 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="30.html">
+            
+                
+                    <a href="./30.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        3.5 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="31.html">
+            
+                
+                    <a href="./31.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.6.</b>
+                        
+                        3.6 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="32.html">
+            
+                
+                    <a href="./32.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        第四章、首次登陆与线上求助
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="33.html">
+            
+                
+                    <a href="./33.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        4.1 首次登陆系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="34.html">
+            
+                
+                    <a href="./34.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        4.2 文字模式下指令的下达
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="35.html">
+            
+                
+                    <a href="./35.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        4.3 Linux系统的线上求助man page与info page
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="36.html">
+            
+                
+                    <a href="./36.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        4.4 超简单文书编辑器： nano
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="37.html">
+            
+                
+                    <a href="./37.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        4.5 正确的关机方法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="38.html">
+            
+                
+                    <a href="./38.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.</b>
+                        
+                        4.6 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="39.html">
+            
+                
+                    <a href="./39.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.</b>
+                        
+                        4.7 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.8" data-path="40.html">
+            
+                
+                    <a href="./40.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.8.</b>
+                        
+                        4.8 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="41.html">
+            
+                
+                    <a href="./41.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        第五章、Linux 的文件权限与目录配置
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="42.html">
+            
+                
+                    <a href="./42.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        5.1 使用者与群组
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="43.html">
+            
+                
+                    <a href="./43.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        5.2 Linux 文件权限概念
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="44.html">
+            
+                
+                    <a href="./44.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        5.3 Linux目录配置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="45.html">
+            
+                
+                    <a href="./45.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        5.4 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="46.html">
+            
+                
+                    <a href="./46.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        5.5 本章练习
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="47.html">
+            
+                
+                    <a href="./47.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.6.</b>
+                        
+                        5.6 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="48.html">
+            
+                
+                    <a href="./48.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        第六章、Linux 文件与目录管理
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="49.html">
+            
+                
+                    <a href="./49.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        6.1 目录与路径
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="50.html">
+            
+                
+                    <a href="./50.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        6.2 文件与目录管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="51.html">
+            
+                
+                    <a href="./51.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        6.3 文件内容查阅
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="52.html">
+            
+                
+                    <a href="./52.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        6.4 文件与目录的默认权限与隐藏权限
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="53.html">
+            
+                
+                    <a href="./53.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        6.5 指令与文件的搜寻
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="54.html">
+            
+                
+                    <a href="./54.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.6.</b>
+                        
+                        6.6 极重要的复习！权限与指令间的关系
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.7" data-path="55.html">
+            
+                
+                    <a href="./55.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.7.</b>
+                        
+                        6.7 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.8" data-path="56.html">
+            
+                
+                    <a href="./56.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.8.</b>
+                        
+                        6.8 本章习题：
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.9" data-path="57.html">
+            
+                
+                    <a href="./57.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.9.</b>
+                        
+                        6.9 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="58.html">
+            
+                
+                    <a href="./58.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        第七章、Linux 磁盘与文件系统管理
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="59.html">
+            
+                
+                    <a href="./59.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        7.1 认识 Linux 文件系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="60.html">
+            
+                
+                    <a href="./60.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        7.2 文件系统的简单操作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="61.html">
+            
+                
+                    <a href="./61.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        7.3 磁盘的分区、格式化、检验与挂载
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="62.html">
+            
+                
+                    <a href="./62.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        7.4 设置开机挂载
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="63.html">
+            
+                
+                    <a href="./63.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                        7.5 内存交换空间（swap）之创建
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" data-path="64.html">
+            
+                
+                    <a href="./64.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        7.6 文件系统的特殊观察与操作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="65.html">
+            
+                
+                    <a href="./65.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.7.</b>
+                        
+                        7.7 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.8" data-path="66.html">
+            
+                
+                    <a href="./66.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.8.</b>
+                        
+                        7.8 本章习题 - 第一题一定要做
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.9" data-path="67.html">
+            
+                
+                    <a href="./67.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.9.</b>
+                        
+                        7.9 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="68.html">
+            
+                
+                    <a href="./68.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        第八章、文件与文件系统的压缩,打包与备份
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="69.html">
+            
+                
+                    <a href="./69.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        8.1 压缩文件的用途与技术
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="70.html">
+            
+                
+                    <a href="./70.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        8.2 Linux 系统常见的压缩指令
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="71.html">
+            
+                
+                    <a href="./71.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        8.3 打包指令： tar
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="72.html">
+            
+                
+                    <a href="./72.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        8.4 XFS 文件系统的备份与还原
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="73.html">
+            
+                
+                    <a href="./73.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.5.</b>
+                        
+                        8.5 光盘写入工具
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="74.html">
+            
+                
+                    <a href="./74.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.6.</b>
+                        
+                        8.6 其他常见的压缩与备份工具
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7" data-path="75.html">
+            
+                
+                    <a href="./75.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.7.</b>
+                        
+                        8.7 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8" data-path="76.html">
+            
+                
+                    <a href="./76.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.8.</b>
+                        
+                        8.8 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.9" data-path="77.html">
+            
+                
+                    <a href="./77.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.9.</b>
+                        
+                        8.9 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="78.html">
+            
+                
+                    <a href="./78.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        第九章、vim 程序编辑器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="79.html">
+            
+                
+                    <a href="./79.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        9.1 vi 与 vim
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="80.html">
+            
+                
+                    <a href="./80.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        9.2 vi 的使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="81.html">
+            
+                
+                    <a href="./81.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.</b>
+                        
+                        9.3 vim 的额外功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="82.html">
+            
+                
+                    <a href="./82.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.4.</b>
+                        
+                        9.4 其他 vim 使用注意事项
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.5" data-path="83.html">
+            
+                
+                    <a href="./83.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.5.</b>
+                        
+                        9.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.6" data-path="84.html">
+            
+                
+                    <a href="./84.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.6.</b>
+                        
+                        9.6 本章练习
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.7" data-path="85.html">
+            
+                
+                    <a href="./85.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.7.</b>
+                        
+                        9.7 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="86.html">
+            
+                
+                    <a href="./86.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        第十章、认识与学习BASH
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="87.html">
+            
+                
+                    <a href="./87.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        10.1 认识 BASH 这个 Shell
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="88.html">
+            
+                
+                    <a href="./88.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        10.2 Shell 的变量功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="89.html">
+            
+                
+                    <a href="./89.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        10.3 命令别名与历史命令
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="90.html">
+            
+                
+                    <a href="./90.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.4.</b>
+                        
+                        10.4 Bash Shell 的操作环境：
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="91.html">
+            
+                
+                    <a href="./91.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.</b>
+                        
+                        10.5 数据流重导向
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.6" data-path="92.html">
+            
+                
+                    <a href="./92.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.6.</b>
+                        
+                        10.6 管线命令 （pipe）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.7" data-path="93.html">
+            
+                
+                    <a href="./93.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.7.</b>
+                        
+                        10.7 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.8" data-path="94.html">
+            
+                
+                    <a href="./94.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.8.</b>
+                        
+                        10.8 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.9" data-path="95.html">
+            
+                
+                    <a href="./95.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.9.</b>
+                        
+                        10.9 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="96.html">
+            
+                
+                    <a href="./96.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        第十一章、正则表达式与文件格式化处理
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1" data-path="97.html">
+            
+                
+                    <a href="./97.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        11.1 开始之前：什么是正则表达式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="98.html">
+            
+                
+                    <a href="./98.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        11.2 基础正则表达式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="99.html">
+            
+                
+                    <a href="./99.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        11.3 延伸正则表达式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" data-path="100.html">
+            
+                
+                    <a href="./100.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.4.</b>
+                        
+                        11.4 文件的格式化与相关处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" data-path="101.html">
+            
+                
+                    <a href="./101.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.5.</b>
+                        
+                        11.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.6" data-path="102.html">
+            
+                
+                    <a href="./102.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.6.</b>
+                        
+                        11.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.7" data-path="103.html">
+            
+                
+                    <a href="./103.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.7.</b>
+                        
+                        11.7 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="104.html">
+            
+                
+                    <a href="./104.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        第十二章、学习 Shell Scripts
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1" data-path="105.html">
+            
+                
+                    <a href="./105.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.1.</b>
+                        
+                        12.1 什么是 Shell scripts
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" data-path="106.html">
+            
+                
+                    <a href="./106.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.2.</b>
+                        
+                        12.2 简单的 shell script 练习
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.3" data-path="107.html">
+            
+                
+                    <a href="./107.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.3.</b>
+                        
+                        12.3 善用判断式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.4" data-path="108.html">
+            
+                
+                    <a href="./108.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.4.</b>
+                        
+                        12.4 条件判断式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.5" data-path="109.html">
+            
+                
+                    <a href="./109.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.5.</b>
+                        
+                        12.5 循环 （loop）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.6" data-path="110.html">
+            
+                
+                    <a href="./110.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.6.</b>
+                        
+                        12.6 shell script 的追踪与 debug
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.7" data-path="111.html">
+            
+                
+                    <a href="./111.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.7.</b>
+                        
+                        12.7 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.8" data-path="112.html">
+            
+                
+                    <a href="./112.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.8.</b>
+                        
+                        12.8 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="113.html">
+            
+                
+                    <a href="./113.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        第十三章、Linux 帐号管理与 ACL 权限设置
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="15.1" data-path="114.html">
+            
+                
+                    <a href="./114.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.1.</b>
+                        
+                        13.1 Linux 的帐号与群组
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" data-path="115.html">
+            
+                
+                    <a href="./115.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.2.</b>
+                        
+                        13.2 帐号管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.3" data-path="116.html">
+            
+                
+                    <a href="./116.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.3.</b>
+                        
+                        13.3 主机的细部权限规划：ACL 的使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.4" data-path="117.html">
+            
+                
+                    <a href="./117.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.4.</b>
+                        
+                        13.4 使用者身份切换
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.5" data-path="118.html">
+            
+                
+                    <a href="./118.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.5.</b>
+                        
+                        13.5 使用者的特殊 shell 与 PAM 模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.6" data-path="119.html">
+            
+                
+                    <a href="./119.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.6.</b>
+                        
+                        13.6 Linux 主机上的使用者讯息传递
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.7" data-path="120.html">
+            
+                
+                    <a href="./120.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.7.</b>
+                        
+                        13.7 CentOS 7 环境下大量创建帐号的方法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.8" data-path="121.html">
+            
+                
+                    <a href="./121.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.8.</b>
+                        
+                        13.8 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.9" data-path="122.html">
+            
+                
+                    <a href="./122.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.9.</b>
+                        
+                        13.9 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.10" data-path="123.html">
+            
+                
+                    <a href="./123.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.10.</b>
+                        
+                        13.10 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="124.html">
+            
+                
+                    <a href="./124.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        第十四章、磁盘配额（Quota）与进阶文件系统管理
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1" data-path="125.html">
+            
+                
+                    <a href="./125.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.1.</b>
+                        
+                        14.1 磁盘配额 （Quota） 的应用与实作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.2" data-path="126.html">
+            
+                
+                    <a href="./126.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.2.</b>
+                        
+                        14.2 软件磁盘阵列 （Software RAID）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.3" data-path="127.html">
+            
+                
+                    <a href="./127.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.3.</b>
+                        
+                        14.3 逻辑卷轴管理员 （Logical Volume Manager）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.4" data-path="128.html">
+            
+                
+                    <a href="./128.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.4.</b>
+                        
+                        14.4 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.5" data-path="129.html">
+            
+                
+                    <a href="./129.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.5.</b>
+                        
+                        14.5 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.6" data-path="130.html">
+            
+                
+                    <a href="./130.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.6.</b>
+                        
+                        14.6 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="131.html">
+            
+                
+                    <a href="./131.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        第十五章、例行性工作调度（crontab）
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="17.1" data-path="132.html">
+            
+                
+                    <a href="./132.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.1.</b>
+                        
+                        15.1 什么是例行性工作调度
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.2" data-path="133.html">
+            
+                
+                    <a href="./133.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.2.</b>
+                        
+                        15.2 仅执行一次的工作调度
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.3" data-path="134.html">
+            
+                
+                    <a href="./134.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.3.</b>
+                        
+                        15.3 循环执行的例行性工作调度
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.4" data-path="135.html">
+            
+                
+                    <a href="./135.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.4.</b>
+                        
+                        15.4 可唤醒停机期间的工作任务
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.5" data-path="136.html">
+            
+                
+                    <a href="./136.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.5.</b>
+                        
+                        15.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.6" data-path="137.html">
+            
+                
+                    <a href="./137.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.6.</b>
+                        
+                        15.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="18" data-path="138.html">
+            
+                
+                    <a href="./138.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.</b>
+                        
+                        第十六章、程序管理与 SELinux 初探
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="18.1" data-path="139.html">
+            
+                
+                    <a href="./139.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.1.</b>
+                        
+                        16.1 什么是程序 （process）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.2" data-path="140.html">
+            
+                
+                    <a href="./140.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.2.</b>
+                        
+                        16.2 工作管理 （job control）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.3" data-path="141.html">
+            
+                
+                    <a href="./141.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.3.</b>
+                        
+                        16.3 程序管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.4" data-path="142.html">
+            
+                
+                    <a href="./142.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.4.</b>
+                        
+                        16.4 特殊文件与程序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.5" data-path="143.html">
+            
+                
+                    <a href="./143.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.5.</b>
+                        
+                        16.5 SELinux 初探
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.6" data-path="144.html">
+            
+                
+                    <a href="./144.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.6.</b>
+                        
+                        16.6 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.7" data-path="145.html">
+            
+                
+                    <a href="./145.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.7.</b>
+                        
+                        16.7 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.8" data-path="146.html">
+            
+                
+                    <a href="./146.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.8.</b>
+                        
+                        16.8 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="19" data-path="147.html">
+            
+                
+                    <a href="./147.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.</b>
+                        
+                        第十七章、认识系统服务 （daemons）
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="19.1" data-path="148.html">
+            
+                
+                    <a href="./148.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.1.</b>
+                        
+                        17.1 什么是 daemon 与服务 （service）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.2" data-path="149.html">
+            
+                
+                    <a href="./149.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.2.</b>
+                        
+                        17.2 通过 systemctl 管理服务
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.3" data-path="150.html">
+            
+                
+                    <a href="./150.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.3.</b>
+                        
+                        17.3 systemctl 针对 service 类型的配置文件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.4" data-path="151.html">
+            
+                
+                    <a href="./151.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.4.</b>
+                        
+                        17.4 systemctl 针对 timer 的配置文件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.5" data-path="152.html">
+            
+                
+                    <a href="./152.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.5.</b>
+                        
+                        17.5 CentOS 7.x 默认启动的服务简易说明
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.6" data-path="153.html">
+            
+                
+                    <a href="./153.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.6.</b>
+                        
+                        17.6 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.7" data-path="154.html">
+            
+                
+                    <a href="./154.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.7.</b>
+                        
+                        17.7 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.8" data-path="155.html">
+            
+                
+                    <a href="./155.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.8.</b>
+                        
+                        17.8 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="20" data-path="156.html">
+            
+                
+                    <a href="./156.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.</b>
+                        
+                        第十八章、认识与分析登录文件
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="20.1" data-path="157.html">
+            
+                
+                    <a href="./157.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.1.</b>
+                        
+                        18.1 什么是登录文件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.2" data-path="158.html">
+            
+                
+                    <a href="./158.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.2.</b>
+                        
+                        18.2 rsyslog.service ：记录登录文件的服务
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.3" data-path="159.html">
+            
+                
+                    <a href="./159.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.3.</b>
+                        
+                        18.3 登录文件的轮替（logrotate）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.4" data-path="160.html">
+            
+                
+                    <a href="./160.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.4.</b>
+                        
+                        18.4 systemd-journald.service 简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.5" data-path="161.html">
+            
+                
+                    <a href="./161.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.5.</b>
+                        
+                        18.5 分析登录文件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.6" data-path="162.html">
+            
+                
+                    <a href="./162.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.6.</b>
+                        
+                        18.6 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.7" data-path="163.html">
+            
+                
+                    <a href="./163.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.7.</b>
+                        
+                        18.7 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.8" data-path="164.html">
+            
+                
+                    <a href="./164.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.8.</b>
+                        
+                        18.8 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="21" data-path="165.html">
+            
+                
+                    <a href="./165.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.</b>
+                        
+                        第十九章、开机流程、模块管理与 Loader
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="21.1" data-path="166.html">
+            
+                
+                    <a href="./166.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.1.</b>
+                        
+                        19.1 Linux 的开机流程分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.2" data-path="167.html">
+            
+                
+                    <a href="./167.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.2.</b>
+                        
+                        19.2 核心与核心模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.3" data-path="168.html">
+            
+                
+                    <a href="./168.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.3.</b>
+                        
+                        19.3 Boot Loader: Grub2
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.4" data-path="169.html">
+            
+                
+                    <a href="./169.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.4.</b>
+                        
+                        19.4 开机过程的问题解决
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.5" data-path="170.html">
+            
+                
+                    <a href="./170.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.5.</b>
+                        
+                        19.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.6" data-path="171.html">
+            
+                
+                    <a href="./171.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.6.</b>
+                        
+                        19.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.7" data-path="172.html">
+            
+                
+                    <a href="./172.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.7.</b>
+                        
+                        19.7 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="22" data-path="173.html">
+            
+                
+                    <a href="./173.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.</b>
+                        
+                        第二十章、基础系统设置与备份策略
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="22.1" data-path="174.html">
+            
+                
+                    <a href="./174.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.1.</b>
+                        
+                        20.1 系统基本设置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.2" data-path="175.html">
+            
+                
+                    <a href="./175.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.2.</b>
+                        
+                        20.2 服务器硬件数据的收集
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.3" data-path="176.html">
+            
+                
+                    <a href="./176.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.3.</b>
+                        
+                        20.3 备份要点
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.4" data-path="177.html">
+            
+                
+                    <a href="./177.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.4.</b>
+                        
+                        20.4 备份的种类、频率与工具的选择
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.5" data-path="178.html">
+            
+                
+                    <a href="./178.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.5.</b>
+                        
+                        20.5 鸟哥的备份策略
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.6" data-path="179.html">
+            
+                
+                    <a href="./179.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.6.</b>
+                        
+                        20.6 灾难复原的考虑
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.7" data-path="180.html">
+            
+                
+                    <a href="./180.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.7.</b>
+                        
+                        20.7 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.8" data-path="181.html">
+            
+                
+                    <a href="./181.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.8.</b>
+                        
+                        20.8 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.9" data-path="182.html">
+            
+                
+                    <a href="./182.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.9.</b>
+                        
+                        20.9 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="23" data-path="183.html">
+            
+                
+                    <a href="./183.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.</b>
+                        
+                        第二十一章、软件安装：源代码与 Tarball
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="23.1" data-path="184.html">
+            
+                
+                    <a href="./184.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.1.</b>
+                        
+                        20.1 开放源码的软件安装与升级简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="23.2" data-path="185.html">
+            
+                
+                    <a href="./185.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.2.</b>
+                        
+                        21.2 使用传统程序语言进行编译的简单范例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="23.3" data-path="186.html">
+            
+                
+                    <a href="./186.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.3.</b>
+                        
+                        21.3 用 make 进行宏编译
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="23.4" data-path="187.html">
+            
+                
+                    <a href="./187.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.4.</b>
+                        
+                        21.4 Tarball 的管理与建议
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="23.5" data-path="188.html">
+            
+                
+                    <a href="./188.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.5.</b>
+                        
+                        21.5 函数库管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="23.6" data-path="189.html">
+            
+                
+                    <a href="./189.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.6.</b>
+                        
+                        21.6 检验软件正确性
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="23.7" data-path="190.html">
+            
+                
+                    <a href="./190.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.7.</b>
+                        
+                        21.7 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="23.8" data-path="191.html">
+            
+                
+                    <a href="./191.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.8.</b>
+                        
+                        21.8 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="23.9" data-path="192.html">
+            
+                
+                    <a href="./192.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.9.</b>
+                        
+                        21.9 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="24" data-path="193.html">
+            
+                
+                    <a href="./193.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.</b>
+                        
+                        第二十二章、软件安装 RPM, SRPM 与 YUM
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="24.1" data-path="194.html">
+            
+                
+                    <a href="./194.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.1.</b>
+                        
+                        22.1 软件管理员简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.2" data-path="195.html">
+            
+                
+                    <a href="./195.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.2.</b>
+                        
+                        22.2 RPM 软件管理程序： rpm
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.3" data-path="196.html">
+            
+                
+                    <a href="./196.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.3.</b>
+                        
+                        22.3 YUM 线上升级机制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.4" data-path="197.html">
+            
+                
+                    <a href="./197.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.4.</b>
+                        
+                        22.4 SRPM 的使用 ： rpmbuild （Optional）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.5" data-path="198.html">
+            
+                
+                    <a href="./198.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.5.</b>
+                        
+                        22.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.6" data-path="199.html">
+            
+                
+                    <a href="./199.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.6.</b>
+                        
+                        22.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.7" data-path="200.html">
+            
+                
+                    <a href="./200.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.7.</b>
+                        
+                        22.7 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="25" data-path="201.html">
+            
+                
+                    <a href="./201.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.</b>
+                        
+                        第二十三章、X Window 设置介绍
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="25.1" data-path="202.html">
+            
+                
+                    <a href="./202.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.1.</b>
+                        
+                        23.1 什么是 X Window System
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="25.2" data-path="203.html">
+            
+                
+                    <a href="./203.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.2.</b>
+                        
+                        23.2 X Server 配置文件解析与设置
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.3" data-path="204.html">
+            
+                
+                    <a href="./204.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.3.</b>
+                        
+                        23.3 显卡驱动程序安装范例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.4" data-path="205.html">
+            
+                
+                    <a href="./205.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.4.</b>
+                        
+                        23.4 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.5" data-path="206.html">
+            
+                
+                    <a href="./206.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.5.</b>
+                        
+                        23.5 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.6" data-path="207.html">
+            
+                
+                    <a href="./207.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.6.</b>
+                        
+                        23.6 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="26" data-path="208.html">
+            
+                
+                    <a href="./208.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.</b>
+                        
+                        第二十四章、Linux 核心编译与管理
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="26.1" data-path="209.html">
+            
+                
+                    <a href="./209.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.1.</b>
+                        
+                        24.1 编译前的任务：认识核心与取得核心源代码
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.2" data-path="210.html">
+            
+                
+                    <a href="./210.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.2.</b>
+                        
+                        24.2 核心编译的前处理与核心功能选择
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.3" data-path="211.html">
+            
+                
+                    <a href="./211.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.3.</b>
+                        
+                        24.3 核心的编译与安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.4" data-path="212.html">
+            
+                
+                    <a href="./212.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.4.</b>
+                        
+                        24.4 额外（单一）核心模块编译
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.5" data-path="213.html">
+            
+                
+                    <a href="./213.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.5.</b>
+                        
+                        24.5 以最新核心版本编译 CentOS 7.x 的核心
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.6" data-path="214.html">
+            
+                
+                    <a href="./214.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.6.</b>
+                        
+                        24.6 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.7" data-path="215.html">
+            
+                
+                    <a href="./215.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.7.</b>
+                        
+                        24.7 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.8" data-path="216.html">
+            
+                
+                    <a href="./216.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.8.</b>
+                        
+                        24.8 参考资料与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >鸟哥的 Linux 私房菜：基础学习篇 第四版</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="232-x-server-&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x89E3;&#x6790;&#x4E0E;&#x8BBE;&#x7F6E;">23.2 X Server &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x89E3;&#x6790;&#x4E0E;&#x8BBE;&#x7F6E;</h2>
+<p>&#x4ECE;&#x524D;&#x9762;&#x7684;&#x8BF4;&#x660E;&#x6765;&#x770B;&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x4E00;&#x4E2A; X &#x7A97;&#x53E3;&#x7CFB;&#x7EDF;&#x80FD;&#x4E0D;&#x80FD;&#x6210;&#x529F;&#x542F;&#x52A8;&#xFF0C;&#x5176;&#x5B9E;&#x4E0E; X Server &#x6709;&#x5F88;&#x5927;&#x7684;&#x5173;&#x7CFB;&#x7684;&#x3002;&#x56E0;&#x4E3A; X Server &#x8D1F;&#x8D23;&#x7684;&#x662F;&#x6574;&#x4E2A;&#x753B;&#x9762;&#x7684;&#x63CF;&#x7ED8;&#xFF0C;&#x6240;&#x4EE5;&#x6CA1;&#x6709;&#x6210;&#x529F;&#x542F;&#x52A8; X Server &#x7684;&#x8BDD;&#xFF0C;&#x5373;&#x4F7F;&#x6709;&#x542F;&#x52A8; X Client &#x4E5F;&#x65E0;&#x6CD5;&#x5C06;&#x56FE;&#x6837;&#x663E;&#x793A;&#x51FA;&#x6765;&#x554A;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5C31;&#x9488;&#x5BF9; X Server &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x6765;&#x505A;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x8BF4;&#x660E;&#xFF0C;&#x597D;&#x8BA9;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x6210;&#x529F;&#x7684;&#x542F;&#x52A8; X Window System &#x554A;&#x3002;</p>
+<p>&#x57FA;&#x672C;&#x4E0A;&#xFF0C; X Server &#x7BA1;&#x7406;&#x7684;&#x662F;&#x663E;&#x5361;&#x3001;&#x5C4F;&#x5E55;&#x5206;&#x8FA8;&#x7387;&#x3001;&#x9F20;&#x6807;&#x6309;&#x952E;&#x5BF9;&#x5E94;&#x7B49;&#x7B49;&#xFF0C;&#x5C24;&#x5176;&#x662F;&#x663E;&#x5361;&#x82AF;&#x7247;&#x7684;&#x8BA4;&#x8BC6;&#xFF0C;&#x771F;&#x662F;&#x91CD;&#x8981;&#x554A;&#x3002; &#x6B64;&#x5916;&#xFF0C;&#x8FD8;&#x6709;&#x663E;&#x793A;&#x7684;&#x5B57;&#x4F53;&#x4E5F;&#x662F; X Server &#x7BA1;&#x7406;&#x7684;&#x4E00;&#x73AF;&#x3002;&#x57FA;&#x672C;&#x4E0A;&#xFF0C;X server &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x90FD;&#x662F;&#x9ED8;&#x8BA4;&#x653E;&#x7F6E;&#x5728; /etc/X11 &#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x800C;&#x76F8;&#x5173;&#x7684;&#x663E;&#x793A;&#x6A21;&#x5757;&#x6216;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x603B;&#x603B;&#x6A21;&#x5757;&#xFF0C;&#x5219;&#x4E3B;&#x8981;&#x653E;&#x7F6E;&#x5728; /usr/lib64/xorg/modules &#x4E0B;&#x9762;&#x3002;&#x6BD4;&#x8F83;&#x91CD;&#x8981;&#x7684;&#x662F;&#x5B57;&#x4F53;&#x6587;&#x4EF6;&#x4E0E;&#x82AF;&#x7247;&#x7EC4;&#xFF0C;&#x5979;&#x4EEC;&#x4E3B;&#x8981;&#x653E;&#x7F6E;&#x5728;:</p>
+<ul>
+<li>&#x63D0;&#x4F9B;&#x7684;&#x5C4F;&#x5E55;&#x5B57;&#x4F53;: /usr/share/X11/fonts/</li>
+<li>&#x663E;&#x5361;&#x7684;&#x82AF;&#x7247;&#x7EC4;: /usr/lib64/xorg/modules/drivers/</li>
+</ul>
+<p>&#x5728; CentOS &#x4E0B;&#x9762;&#xFF0C;&#x8FD9;&#x4E9B;&#x90FD;&#x8981;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x7EDF;&#x4E00;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x6765;&#x89C4;&#x8303;&#xFF0C;&#x90A3;&#x5C31;&#x662F; X server &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5566;&#x3002;&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x5C31;&#x662F; /etc/X11/xorg.conf &#x5594;&#xFF01;</p>
+<h3 id="2321-&#x89E3;&#x6790;-xorgconf-&#x8BBE;&#x7F6E;">23.2.1 &#x89E3;&#x6790; xorg.conf &#x8BBE;&#x7F6E;</h3>
+<p>&#x5982;&#x540C;&#x524D;&#x51E0;&#x4E2A;&#x5C0F;&#x8282;&#x8C08;&#x5230;&#x7684;&#xFF0C;&#x5728; Xorg &#x57FA;&#x91D1;&#x4F1A;&#x91CC;&#x9762;&#x7684; X11 &#x7248;&#x672C;&#x4E3A; X11R7.N &#xFF0C;&#x90A3;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x77E5;&#x9053;&#x5230;&#x5E95;&#x4F60;&#x7528;&#x7684; X Server &#x7248;&#x672C;&#x662F;&#x7B2C;&#x51E0;&#x7248;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; X &#x6307;&#x4EE4;&#x6765;&#x68C0;&#x67E5;&#x5594;&#xFF01;&#xFF08;&#x4F60;&#x5FC5;&#x987B;&#x4EE5; root &#x7684;&#x8EAB;&#x5206;&#x6267;&#x884C;&#x4E0B;&#x5217;&#x6307;&#x4EE4;&#xFF09;</p>
+<pre><code>[root@study ~]# X -version
+X.Org X Server 1.15.0
+Release Date: 2013-12-27
+X Protocol Version 11, Revision 0
+Build Operating System:  2.6.32-220.17.1.el6.x86_64
+Current Operating System: Linux study.centos.vbird 3.10.0-229.el7.x86_64 #1 SMP Fri Mar 
+  6 11:36:42 UTC 2015 x86_64
+Kernel command line: BOOT_IMAGE=/vmlinuz-3.10.0-229.el7.x86_64 root=/dev/mapper/centos-
+  root ro rd.lvm.lv=centos/root rd.lvm.lv=centos/swap crashkernel=auto rhgb quiet
+Build Date: 10 April 2015  11:44:42AM
+Build ID: xorg-x11-server 1.15.0-33.el7_1
+Current version of pixman: 0.32.4
+        Before reporting problems, check http://wiki.x.org
+        to make sure that you have the latest version.
+</code></pre><p>&#x7531;&#x4E0A;&#x9762;&#x7684;&#x51E0;&#x4E2A;&#x5173;&#x952E;&#x5B57;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#xFF0C;&#x76EE;&#x524D;&#x9E1F;&#x54E5;&#x7684;&#x8FD9;&#x90E8;&#x6D4B;&#x8BD5;&#x673A;&#x4F7F;&#x7528;&#x7684; X server &#x662F; Xorg &#x8BA1;&#x5212;&#x6240;&#x63D0;&#x4F9B;&#x7684; X11 &#x7248;&#xFF0C; &#x4E0D;&#x8FC7;&#x770B;&#x8D77;&#x6765; Xorg &#x5DF2;&#x7ECF;&#x5C06;&#x6240;&#x8C13;&#x7684; X11R7 &#x90A3;&#x4E2A; R7 &#x7684;&#x7248;&#x6B21;&#x79FB;&#x9664;&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x662F; Xorg &#x81EA;&#x5DF1;&#x7684;&#x7248;&#x6B21;&#x4E86;&#xFF01;&#x6240;&#x4EE5;&#x662F; Xorg 1.15.0 &#x7248;&#x672C;&#xFF01; &#x6B64;&#x5916;&#xFF0C;&#x82E5;&#x6709;&#x95EE;&#x9898;&#x5219;&#x53EF;&#x4EE5;&#x5230; <a href="http://wiki.x.org" target="_blank">http://wiki.x.org</a> &#x53BB;&#x67E5;&#x8BE2;&#xFF5E;&#x56E0;&#x4E3A;&#x662F; Xorg &#x8FD9;&#x4E2A; X server &#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x6587;&#x4EF6;&#x540D;&#x4E3A; /etc/X11/xorg.conf &#x8FD9;&#x4E00;&#x4E2A;&#x54E9;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x7406;&#x89E3;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;&#x5BF9;&#x4E8E; X server &#x7684;&#x529F;&#x80FD;&#x6765;&#x8BF4;&#xFF0C;&#x662F;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x3002;</p>
+<p>&#x6BD4;&#x8F83;&#x9700;&#x8981;&#x7559;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x4ECE; CentOS 6 &#x4EE5;&#x540E; &#xFF08;&#x5F53;&#x7136;&#x5305;&#x542B; CentOS 7&#xFF09;&#xFF0C;X server &#x5728;&#x6BCF;&#x6B21;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x81EA;&#x884C;&#x4FA6;&#x6D4B;&#x7CFB;&#x7EDF;&#x4E0A;&#x9762;&#x7684;&#x663E;&#x793A;&#x82AF;&#x7247;&#x3001;&#x5C4F;&#x5E55;&#x7C7B;&#x578B;&#x7B49;&#x7B49;&#xFF0C; &#x7136;&#x540E;&#x81EA;&#x884C;&#x642D;&#x914D;&#x6700;&#x4F18;&#x5316;&#x7684;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x8F7D;&#x5165;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x8FD9;&#x4E2A; /etc/X11/xorg.conf &#x5DF2;&#x7ECF;&#x4E0D;&#x518D;&#x88AB;&#x9700;&#x8981;&#x4E86;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x559C;&#x6B22; X &#x7CFB;&#x7EDF;&#x81EA;&#x884C;&#x4FA6;&#x6D4B;&#x7684;&#x8BBE;&#x7F6E;&#x503C;&#xFF0C; &#x90A3;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x521B;&#x5EFA; xorg.conf &#x5C31;&#x662F;&#x4E86;&#x3002;</p>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x53EA;&#x60F3;&#x8981;&#x52A0;&#x5165;&#x6216;&#x8005;&#x662F;&#x4FEE;&#x6539;&#x90E8;&#x4EFD;&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x6BCF;&#x4E2A;&#x5143;&#x4EF6;&#x90FD;&#x8981;&#x81EA;&#x884C;&#x8BBE;&#x7F6E;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x5728; /etc/X11/xorg.conf.d/ &#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x6587;&#x4EF6;&#x540D;&#x4E3A; .conf &#x7684;&#x6587;&#x4EF6;&#xFF0C; &#x5C06;&#x4F60;&#x9700;&#x8981;&#x7684;&#x989D;&#x5916;&#x9879;&#x76EE;&#x52A0;&#x8FDB;&#x53BB;&#x5373;&#x53EF;&#x5594;&#xFF01;&#x90A3;&#x5C31;&#x4E0D;&#x4F1A;&#x6BCF;&#x4E2A;&#x8BBE;&#x7F6E;&#x90FD;&#x4EE5;&#x4F60;&#x7684; xorg.conf &#x4E3A;&#x4E3B;&#x4E86;&#xFF01;&#x4E86;&#x89E3;&#x4E4E;&#xFF1F;</p>
+<p><img src="img/vbird_face.gif" alt="&#x9E1F;&#x54E5;&#x7684;&#x56FE;&#x793A;" title="&#x9E1F;&#x54E5;&#x7684;&#x56FE;&#x793A;"></p>
+<p><strong>Tips</strong> &#x90A3;&#x6211;&#x600E;&#x4E48;&#x77E5;&#x9053;&#x7CFB;&#x7EDF;&#x7528;&#x7684;&#x662F;&#x54EA;&#x4E00;&#x4E2A;&#x8BBE;&#x7F6E;&#x5462;&#xFF1F;&#x53EF;&#x4EE5;&#x53C2;&#x8003; /var/log/Xorg.0.log &#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x8BE5;&#x6587;&#x4EF6;&#x524D;&#x51E0;&#x884C;&#x4F1A;&#x544A;&#x8BC9;&#x4F60;&#x4F7F;&#x7528;&#x7684;&#x8BBE;&#x7F6E;&#x6587;&#x4EF6;&#x662F;&#x6765;&#x81EA;&#x4E8E;&#x54EA;&#x91CC;&#x7684;&#x5594;&#xFF01;</p>
+<p>&#x6CE8;&#x610F;&#x4E00;&#x4E0B;&#xFF0C;&#x5728;&#x4FEE;&#x6539;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4E4B;&#x524D;&#xFF0C;&#x52A1;&#x5FC5;&#x5C06;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x7ED9;&#x5B83;&#x5907;&#x4EFD;&#x4E0B;&#x6765;&#xFF0C;&#x514D;&#x7684;&#x6539;&#x9519;&#x4E86;&#x4EC0;&#x4E48;&#x4E1C;&#x897F;&#x5BFC;&#x81F4;&#x8FDE; X server &#x90FD;&#x65E0;&#x6CD5;&#x542F;&#x52A8;&#x7684;&#x95EE;&#x9898;&#x554A;&#x3002;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;&#x662F;&#x5206;&#x6210;&#x6570;&#x4E2A;&#x6BB5;&#x843D;&#x7684;&#xFF0C;&#x6BCF;&#x4E2A;&#x6BB5;&#x843D;&#x4EE5; Section &#x5F00;&#x59CB;&#xFF0C;&#x4EE5; EndSection &#x7ED3;&#x675F;&#xFF0C; &#x91CC;&#x9762;&#x542B;&#x6709;&#x8BE5; Section &#xFF08;&#x6BB5;&#x843D;&#xFF09; &#x7684;&#x76F8;&#x5173;&#x8BBE;&#x7F6E;&#x503C;&#xFF0C;&#x4F8B;&#x5982;:</p>
+<pre><code>Section  &quot;section name&quot;
+&#x2026;&#x2026; &amp;lt;== &#x4E0E;&#x8FD9;&#x4E2A; section name &#x6709;&#x5173;&#x7684;&#x8BBE;&#x7F6E;&#x9879;&#x76EE;
+&#x2026;&#x2026;
+EndSection
+</code></pre><p>&#x81F3;&#x4E8E;&#x5E38;&#x89C1;&#x7684; section name &#x4E3B;&#x8981;&#x6709;:</p>
+<ol>
+<li>Module: &#x88AB;&#x8F7D;&#x5165;&#x5230; X Server &#x5F53;&#x4E2D;&#x7684;&#x6A21;&#x5757; &#xFF08;&#x67D0;&#x4E9B;&#x529F;&#x80FD;&#x7684;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#xFF09;&#xFF1B;</li>
+<li>InputDevice: &#x5305;&#x62EC;&#x8F93;&#x5165;&#x7684; 1. &#x952E;&#x76D8;&#x7684;&#x683C;&#x5F0F; 2. &#x9F20;&#x6807;&#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x4EE5;&#x53CA;&#x5176;&#x4ED6;&#x76F8;&#x5173;&#x8F93;&#x5165;&#x8BBE;&#x5907;&#xFF1B;</li>
+<li>Files: &#x8BBE;&#x7F6E;&#x5B57;&#x4F53;&#x6240;&#x5728;&#x7684;&#x76EE;&#x5F55;&#x4F4D;&#x7F6E;&#x7B49;&#xFF1B;</li>
+<li>Monitor: &#x76D1;&#x89C6;&#x5668;&#x7684;&#x683C;&#x5F0F;&#xFF0C; &#x4E3B;&#x8981;&#x662F;&#x8BBE;&#x7F6E;&#x6C34;&#x5E73;&#x3001;&#x5782;&#x76F4;&#x7684;&#x66F4;&#x65B0;&#x9891;&#x7387;&#xFF0C;&#x4E0E;&#x786C;&#x4EF6;&#x6709;&#x5173;&#xFF1B;</li>
+<li>Device: &#x8FD9;&#x4E2A;&#x91CD;&#x8981;&#xFF0C;&#x5C31;&#x662F;&#x663E;&#x5361;&#x82AF;&#x7247;&#x7EC4;&#x7684;&#x76F8;&#x5173;&#x8BBE;&#x7F6E;&#x4E86;&#xFF1B;</li>
+<li>Screen: &#x8FD9;&#x4E2A;&#x662F;&#x5728;&#x5C4F;&#x5E55;&#x4E0A;&#x663E;&#x793A;&#x7684;&#x76F8;&#x5173;&#x5206;&#x8FA8;&#x7387;&#x4E0E;&#x8272;&#x5F69;&#x6DF1;&#x5EA6;&#x7684;&#x8BBE;&#x7F6E;&#x9879;&#x76EE;&#xFF0C;&#x4E0E;&#x663E;&#x793A;&#x7684;&#x884C;&#x4E3A;&#x6709;&#x5173;&#xFF1B;</li>
+<li>ServerLayout: &#x4E0A;&#x8FF0;&#x7684;&#x6BCF;&#x4E2A;&#x9879;&#x76EE;&#x90FD;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x8BBE;&#x7F6E;&#xFF0C;&#x8FD9;&#x91CC;&#x5219;&#x662F;&#x6B64;&#x4E00; X server &#x8981;&#x53D6;&#x7528;&#x7684;&#x54EA;&#x4E2A;&#x9879;&#x76EE;&#x503C;&#x7684;&#x8BBE;&#x7F6E;&#x5570;&#x3002;</li>
+</ol>
+<p>&#x524D;&#x9762;&#x8BF4;&#x4E86;&#xFF0C;xorg.conf &#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5DF2;&#x7ECF;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x600E;&#x4E48;&#x5B66;&#x4E60;&#x5462;&#xFF1F;&#x6CA1;&#x5173;&#x7CFB;&#xFF0C;Xorg &#x6709;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x8BA9;&#x6211;&#x4EEC;&#x6765;&#x91CD;&#x5EFA;&#x8FD9;&#x4E2A; xorg.conf &#x6587;&#x4EF6;&#xFF01; &#x540C;&#x65F6;&#xFF0C;&#x8FD9;&#x53EF;&#x80FD;&#x4E5F;&#x662F; X &#x81EA;&#x884C;&#x4FA6;&#x6D4B; GPU &#x6240;&#x4EA7;&#x751F;&#x7684;&#x6700;&#x4F18;&#x5316;&#x8BBE;&#x7F6E;&#x5594;&#xFF01;&#x600E;&#x4E48;&#x5904;&#x7406;&#x5462;&#xFF1F;&#x5047;&#x8BBE;&#x4F60;&#x662F;&#x5728; multi-user.target &#x7684;&#x73AF;&#x5883;&#x4E0B;&#xFF0C;&#x90A3;&#x5C31;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x4F5C;&#x6765;&#x4EA7;&#x751F; xorg.conf &#x5594;&#xFF01;</p>
+<pre><code>[root@study ~]# Xorg -configure
+.....&#xFF08;&#x524D;&#x9762;&#x7701;&#x7565;&#xFF09;.....
+Markers: &#xFF08;--&#xFF09; probed, &#xFF08;**&#xFF09; from config file, &#xFF08;==&#xFF09; default setting,
+        &#xFF08;++&#xFF09; from command line, &#xFF08;!!&#xFF09; notice, &#xFF08;II&#xFF09; informational,
+        &#xFF08;WW&#xFF09; warning, &#xFF08;EE&#xFF09; error, &#xFF08;NI&#xFF09; not implemented, &#xFF08;??&#xFF09; unknown.
+&#xFF08;==&#xFF09; Log file: &quot;/var/log/Xorg.0.log&quot;, Time: Wed Sep 16 10:13:57 2015
+List of video drivers:   # &#x8FD9;&#x91CC;&#x5728;&#x8BF4;&#x660E;&#x76EE;&#x524D;&#x8FD9;&#x4E2A;&#x7CFB;&#x7EDF;&#x4E0A;&#x9762;&#x6709;&#x7684;&#x663E;&#x5361;&#x82AF;&#x7247;&#x7EC4;&#x7684;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x6709;&#x54EA;&#x4E9B;&#x7684;&#x610F;&#x601D;
+        qxl
+        vmware
+        v4l
+        ati
+        radeon
+        intel
+        nouveau
+        dummy
+        modesetting
+        fbdev
+        vesa
+&#xFF08;++&#xFF09; Using config file: &quot;/root/xorg.conf.new&quot;        # &#x4F7F;&#x7528;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;
+&#xFF08;==&#xFF09; Using config directory: &quot;/etc/X11/xorg.conf.d&quot;  # &#x989D;&#x5916;&#x8BBE;&#x7F6E;&#x9879;&#x76EE;&#x7684;&#x4F4D;&#x7F6E;
+&#xFF08;==&#xFF09; Using system config directory &quot;/usr/share/X11/xorg.conf.d&quot;
+&#xFF08;II&#xFF09; [KMS] Kernel modesetting enabled.
+
+.....&#xFF08;&#x4E2D;&#x95F4;&#x7701;&#x7565;&#xFF09;.....
+
+Your xorg.conf file is /root/xorg.conf.new           # &#x6700;&#x7EC8;&#x65B0;&#x7684;&#x6587;&#x4EF6;&#x51FA;&#x73B0;&#x4E86;&#xFF01;
+
+To test the server, run &apos;X -config /root/xorg.conf.new&apos; # &#x6D4B;&#x8BD5;&#x624B;&#x6BB5;&#xFF01;
+</code></pre><p>&#x8FD9;&#x6837;&#x5C31;&#x5728;&#x4F60;&#x7684; root &#x4E3B;&#x6587;&#x4EF6;&#x5939;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x65B0;&#x7684; xorg.conf.new &#x5570;&#xFF01;&#x597D;&#x4E86;&#xFF0C;&#x76F4;&#x63A5;&#x6765;&#x770B;&#x770B;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;&#x5427;&#xFF01;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x9ED8;&#x8BA4;&#x7684;&#x60C5;&#x51B5;&#x662F;&#x53D6;&#x6D88;&#x5F88;&#x591A;&#x8BBE;&#x7F6E;&#x503C;&#x7684;&#xFF0C; &#x6240;&#x4EE5;&#x4F60;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x53EF;&#x80FD;&#x4E0D;&#x4F1A;&#x770B;&#x5230;&#x8FD9;&#x4E48;&#x591A;&#x7684;&#x8BBE;&#x7F6E;&#x9879;&#x76EE;&#x3002;&#x4E0D;&#x8981;&#x7D27;&#x7684;&#xFF0C;&#x540E;&#x7EED;&#x7684;&#x7AE0;&#x8282;&#x4F1A;&#x4EA4;&#x4EE3;&#x5982;&#x4F55;&#x8BBE;&#x7F6E;&#x8FD9;&#x4E9B;&#x9879;&#x76EE;&#x7684;&#x5594;&#xFF01;</p>
+<pre><code>[root@study ~]# vim xorg.conf.new
+Section &quot;ServerLayout&quot;                             # &#x76EE;&#x524D; X &#x51B3;&#x5B9A;&#x4F7F;&#x7528;&#x7684;&#x8BBE;&#x7F6E;&#x9879;&#x76EE;
+        Identifier     &quot;X.org Configured&quot;
+        Screen      0  &quot;Screen0&quot; 0 0               # &#x4F7F;&#x7528;&#x7684;&#x5C4F;&#x5E55;&#x4E3A; Screen0 &#x8FD9;&#x4E00;&#x4E2A; &#xFF08;&#x540E;&#x9762;&#x4F1A;&#x89E3;&#x91CA;&#xFF09;
+        InputDevice    &quot;Mouse0&quot; &quot;CorePointer&quot;      # &#x4F7F;&#x7528;&#x7684;&#x9F20;&#x6807;&#x8BBE;&#x7F6E;&#x4E3A; Mouse0
+        InputDevice    &quot;Keyboard0&quot; &quot;CoreKeyboard&quot;  # &#x4F7F;&#x7528;&#x7684;&#x952E;&#x76D8;&#x8BBE;&#x7F6E;&#x4E3A; Keyboard0
+EndSection
+# &#x7CFB;&#x7EDF;&#x53EF;&#x80FD;&#x6709;&#x591A;&#x7EC4;&#x7684;&#x8BBE;&#x7F6E;&#x503C;&#xFF0C;&#x5305;&#x62EC;&#x591A;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x952E;&#x76D8;&#x3001;&#x9F20;&#x6807;&#x3001;&#x663E;&#x793A;&#x82AF;&#x7247;&#x7B49;&#x7B49;&#xFF0C;&#x800C;&#x6700;&#x7EC8; X &#x4F7F;&#x7528;&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;
+# &#x5C31;&#x662F;&#x5728;&#x8FD9;&#x4E2A; ServerLayout &#x9879;&#x76EE;&#x4E2D;&#x6765;&#x5904;&#x7406;&#x7684;&#xFF01;&#x56E0;&#x6B64;&#xFF0C;&#x4F60;&#x8FD8;&#x5F97;&#x8981;&#x53BB;&#x4E0B;&#x9762;&#x627E;&#x51FA; Screen0 &#x662F;&#x5565;
+
+Section &quot;Files&quot;
+        ModulePath   &quot;/usr/lib64/xorg/modules&quot;
+        FontPath     &quot;catalogue:/etc/X11/fontpath.d&quot;
+        FontPath     &quot;built-ins&quot;
+EndSection
+# &#x6211;&#x4EEC;&#x7684; X Server &#x5F88;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x70B9;&#x5C31;&#x662F;&#x5FC5;&#x987B;&#x8981;&#x63D0;&#x4F9B;&#x5B57;&#x4F53;&#xFF0C;&#x8FD9;&#x4E2A; Files &#x7684;&#x9879;&#x76EE;&#x5C31;&#x662F;&#x5728;&#x8BBE;&#x7F6E;&#x5B57;&#x4F53;&#xFF0C;
+# &#x5F53;&#x7136;&#x5566;&#xFF0C;&#x4F60;&#x7684;&#x4E3B;&#x673A;&#x5FC5;&#x987B;&#x8981;&#x6709;&#x5B57;&#x4F53;&#x6587;&#x4EF6;&#x624D;&#x884C;&#x3002;&#x4E00;&#x822C;&#x5B57;&#x4F53;&#x6587;&#x4EF6;&#x5728;&#xFF1A;/usr/share/X11/fonts/ &#x76EE;&#x5F55;&#x4E2D;&#x3002;
+# &#x4F46;&#x662F; Xorg &#x4F1A;&#x53BB;&#x8BFB;&#x53D6;&#x7684;&#x5219;&#x662F;&#x5728; /etc/X11/fontpath.d &#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x8BBE;&#x7F6E;&#x5594;&#xFF01;
+
+Section &quot;Module&quot;
+        Load  &quot;glx&quot;
+EndSection
+# &#x4E0A;&#x9762;&#x8FD9;&#x4E9B;&#x6A21;&#x5757;&#x662F; X Server &#x542F;&#x52A8;&#x65F6;&#xFF0C;&#x5E0C;&#x671B;&#x80FD;&#x591F;&#x989D;&#x5916;&#x83B7;&#x5F97;&#x7684;&#x76F8;&#x5173;&#x652F;&#x6301;&#x7684;&#x6A21;&#x5757;&#x3002;
+# &#x5173;&#x4E8E;&#x66F4;&#x591A;&#x6A21;&#x5757;&#x53EF;&#x4EE5;&#x641C;&#x5BFB;&#x4E00;&#x4E0B; /usr/lib64/xorg/modules/extensions/ &#x8FD9;&#x4E2A;&#x76EE;&#x5F55;
+
+Section &quot;InputDevice&quot;
+        Identifier  &quot;Keyboard0&quot;
+        Driver      &quot;kbd&quot;
+EndSection
+# &#x5C31;&#x662F;&#x952E;&#x76D8;&#xFF0C;&#x5728; ServerLayout &#x9879;&#x76EE;&#x4E2D;&#x6709;&#x51FA;&#x73B0;&#x8FD9;&#x4E2A; Keyboard0 &#x5427;&#xFF01;&#x4E3B;&#x8981;&#x662F;&#x8BBE;&#x7F6E;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#xFF01;
+
+Section &quot;InputDevice&quot;
+        Identifier  &quot;Mouse0&quot;
+        Driver      &quot;mouse&quot;
+        Option      &quot;Protocol&quot; &quot;auto&quot;
+        Option      &quot;Device&quot; &quot;/dev/input/mice&quot;
+        Option      &quot;ZAxisMapping&quot; &quot;4 5 6 7&quot;   # &#x652F;&#x6301;&#x78D9;&#x8F6E;&#x529F;&#x80FD;&#xFF01;
+EndSection
+# &#x8FD9;&#x4E2A;&#x5219;&#x4E3B;&#x8981;&#x5728;&#x8BBE;&#x7F6E;&#x9F20;&#x6807;&#x529F;&#x80FD;&#xFF0C;&#x91CD;&#x70B9;&#x5728;&#x90A3;&#x4E2A; Protocol &#x9879;&#x76EE;&#xFF0C;
+# &#x90A3;&#x4E2A;&#x662F;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x9F20;&#x6807;&#x63A5;&#x53E3;&#x7684;&#x8BBE;&#x7F6E;&#x503C;&#xFF0C;&#x6211;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x81EA;&#x52A8;&#x4FA6;&#x6D4B;&#xFF01;&#x4E0D;&#x8BBA;&#x662F; USB/PS2&#x3002;
+
+Section &quot;Monitor&quot;
+        Identifier   &quot;Monitor0&quot;
+        VendorName   &quot;Monitor Vendor&quot;
+        ModelName    &quot;Monitor Model&quot;
+EndSection
+# &#x5C4F;&#x5E55;&#x76D1;&#x89C6;&#x5668;&#x7684;&#x8BBE;&#x7F6E;&#x4EC5;&#x6709;&#x4E00;&#x4E2A;&#x5730;&#x65B9;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x5782;&#x76F4;&#x4E0E;&#x6C34;&#x5E73;&#x7684;&#x66F4;&#x65B0;&#x9891;&#x7387;&#xFF0C;&#x5E38;&#x89C1;&#x8BBE;&#x7F6E;&#x5982;&#x4E0B;&#xFF1A;
+#       HorizSync    30.0 - 80.0
+#       VertRefresh  50.0 - 100.0
+# &#x5728;&#x4E0A;&#x9762;&#x7684; HorizSync &#x4E0E; VerRefresh &#x7684;&#x8BBE;&#x7F6E;&#x4E0A;&#xFF0C;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x4E0D;&#x8981;&#x8BBE;&#x7F6E;&#x592A;&#x9AD8;&#xFF0C;
+# &#x8FD9;&#x4E2A;&#x73A9;&#x610F;&#x513F;&#x4E0E;&#x5B9E;&#x9645;&#x7684;&#x76D1;&#x89C6;&#x5668;&#x529F;&#x80FD;&#x6709;&#x5173;&#xFF0C;&#x8BF7;&#x67E5;&#x8BE2;&#x4F60;&#x7684;&#x76D1;&#x89C6;&#x5668;&#x624B;&#x518C;&#x8BF4;&#x660E;&#x6765;&#x8BBE;&#x7F6E;&#x5427;&#xFF01;
+# &#x4F20;&#x7EDF; CRT &#x5C4F;&#x5E55;&#x8BBE;&#x7F6E;&#x592A;&#x9AD8;&#x7684;&#x8BDD;&#xFF0C;&#x636E;&#x8BF4;&#x4F1A;&#x8BA9; monitor &#x70E7;&#x6BC1;&#x5462;&#xFF0C;&#x8981;&#x5F88;&#x6CE8;&#x610F;&#x554A;&#x3002;
+
+Section &quot;Device&quot;     # &#x663E;&#x5361;&#x82AF;&#x7247; &#xFF08;GPU&#xFF09; &#x7684;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#xFF01;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x8BBE;&#x7F6E;&#xFF01;
+        Identifier  &quot;Card0&quot;
+        Driver      &quot;qxl&quot;        # &#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x7684;&#x663E;&#x5361;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#xFF01;
+        BusID       &quot;PCI:0:2:0&quot;
+EndSection
+# &#x8FD9;&#x5730;&#x65B9;&#x91CD;&#x8981;&#x4E86;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x663E;&#x5361;&#x7684;&#x82AF;&#x7247;&#x6A21;&#x5757;&#x8F7D;&#x5165;&#x7684;&#x8BBE;&#x7F6E;&#x533A;&#x57DF;&#x3002;&#x7531;&#x4E8E;&#x9E1F;&#x54E5;&#x4F7F;&#x7528; Linux KVM
+# &#x4EFF;&#x771F;&#x5668;&#x4EFF;&#x771F;&#x8FD9;&#x4E2A;&#x6D4B;&#x8BD5;&#x673A;&#xFF0C;&#x56E0;&#x6B64;&#x8FD9;&#x4E2A;&#x5730;&#x65B9;&#x663E;&#x793A;&#x7684;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x4E3A; qxl &#x6A21;&#x5757;&#x3002;
+# &#x66F4;&#x591A;&#x7684;&#x663E;&#x793A;&#x82AF;&#x7247;&#x6A21;&#x5757;&#x53EF;&#x4EE5;&#x53C2;&#x8003; /usr/lib64/xorg/modules/drivers/
+
+Section &quot;Screen&quot;                # &#x4E0E;&#x663E;&#x793A;&#x7684;&#x753B;&#x9762;&#x6709;&#x5173;&#xFF0C;&#x5206;&#x8FA8;&#x7387;&#x4E0E;&#x8272;&#x5F69;&#x6DF1;&#x5EA6;
+        Identifier &quot;Screen0&quot;    # &#x5C31;&#x662F; ServerLayout &#x91CC;&#x9762;&#x7528;&#x5230;&#x7684;&#x90A3;&#x4E2A;&#x5C4F;&#x5E55;&#x8BBE;&#x7F6E;
+        Device     &quot;Card0&quot;      # &#x4F7F;&#x7528;&#x54EA;&#x4E00;&#x4E2A;&#x663E;&#x5361;&#x7684;&#x610F;&#x601D;&#xFF01;
+        Monitor    &quot;Monitor0&quot;   # &#x4F7F;&#x7528;&#x54EA;&#x4E00;&#x4E2A;&#x5C4F;&#x5E55;&#x7684;&#x610F;&#x601D;&#xFF01;
+        SubSection &quot;Display&quot;    # &#x6B64;&#x9636;&#x6BB5;&#x7684;&#x9644;&#x5C5E;&#x8BBE;&#x7F6E;&#x9879;&#x76EE;
+                Viewport   0 0
+                Depth     1     # &#x5C31;&#x662F;&#x8272;&#x5F69;&#x6DF1;&#x5EA6;&#x7684;&#x610F;&#x601D;&#xFF01;
+        EndSubSection
+        SubSection &quot;Display&quot;
+                Viewport   0 0
+                Depth     16
+        EndSubSection
+        SubSection &quot;Display&quot;
+                Viewport   0 0
+                Depth     24
+        EndSubSection
+EndSection
+# Monitor &#x4E0E;&#x5B9E;&#x9645;&#x7684;&#x663E;&#x793A;&#x5668;&#x6709;&#x5173;&#xFF0C;&#x800C; Screen &#x5219;&#x662F;&#x4E0E;&#x663E;&#x793A;&#x7684;&#x753B;&#x9762;&#x5206;&#x8FA8;&#x7387;&#x3001;&#x8272;&#x5F69;&#x6DF1;&#x5EA6;&#x6709;&#x5173;&#x3002;
+# &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x591A;&#x4E2A;&#x5206;&#x8FA8;&#x7387;&#xFF0C;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x65F6;&#x53EF;&#x4EE5;&#x8BA9;&#x4F7F;&#x7528;&#x8005;&#x81EA;&#x884C;&#x9009;&#x62E9;&#x60F3;&#x8981;&#x7684;&#x5206;&#x8FA8;&#x7387;&#x6765;&#x5448;&#x73B0;&#xFF0C;&#x8BBE;&#x7F6E;&#x5982;&#x4E0B;&#xFF1A;
+#        Modes    &quot;1024x768&quot; &quot;800x600&quot; &quot;640x480&quot; &amp;lt;==&#x5206;&#x8FA8;&#x7387;
+# &#x4E0A;&#x8FF0;&#x7684; Modes &#x662F;&#x5728; &quot;Display&quot; &#x4E0B;&#x9762;&#x7684;&#x5B50;&#x8BBE;&#x7F6E;&#x3002;
+# &#x4E0D;&#x8FC7;&#xFF0C;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x56F0;&#x6270;&#xFF0C;&#x9E1F;&#x54E5;&#x901A;&#x5E38;&#x53EA;&#x6307;&#x5B9A;&#x4E00;&#x5230;&#x4E24;&#x4E2A;&#x5206;&#x8FA8;&#x7387;&#x800C;&#x5DF2;&#x3002;
+</code></pre><p>&#x4E0A;&#x9762;&#x8BBE;&#x7F6E;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x7B49;&#x4E8E;&#x5C06;&#x6574;&#x4E2A; X Server &#x8BBE;&#x7F6E;&#x59A5;&#x5F53;&#x4E86;&#xFF0C;&#x5F88;&#x7B80;&#x5355;&#x5427;&#x3002;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x66F4;&#x65B0;&#x5176;&#x4ED6;&#x7684;&#x4F8B;&#x5982;&#x663E;&#x793A;&#x82AF;&#x7247;&#x7684;&#x6A21;&#x5757;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x5F97;&#x8981;&#x53BB;&#x786C;&#x4EF6;&#x5F00;&#x53D1;&#x5546;&#x7684;&#x7F51;&#x7AD9;&#x4E0B;&#x8F7D;&#x539F;&#x59CB;&#x6587;&#x4EF6;&#x6765;&#x7F16;&#x8BD1;&#x624D;&#x884C;&#x3002; &#x8BBE;&#x7F6E;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#xFF0C;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x542F;&#x52A8; X Server &#x8BD5;&#x770B;&#x770B;&#x5570;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x8BF7;&#x5C06; xorg.conf.new &#x66F4;&#x540D;&#x6210;&#x7C7B;&#x4F3C; 00-vbird.conf &#x4E4B;&#x7C7B;&#x7684;&#x6587;&#x4EF6;&#x540D;&#xFF0C; &#x518D;&#x5C06;&#x8BE5;&#x6587;&#x4EF6;&#x79FB;&#x52A8;&#x5230; /etc/X11/xorg.conf.d/ &#x91CC;&#x9762;&#x53BB;&#xFF0C;&#x8FD9;&#x6837;&#x5C31; OK &#x4E86;&#xFF01;</p>
+<pre><code># &#x6D4B;&#x8BD5; X server &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x662F;&#x5426;&#x6B63;&#x5E38;&#xFF1A;
+[root@study ~]# startx    &amp;lt;==&#x76F4;&#x63A5;&#x5728; multi-user.target &#x542F;&#x52A8; X &#x770B;&#x770B;
+[root@study ~]# Xorg :1   &amp;lt;==&#x5728; tty3 &#x5355;&#x72EC;&#x542F;&#x52A8; X server &#x770B;&#x770B;
+</code></pre><p>&#x5F53;&#x7136;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x5229;&#x7528; systemctl isolate graphical.target &#x8FD9;&#x4E2A;&#x6307;&#x4EE4;&#x76F4;&#x63A5;&#x5207;&#x6362;&#x5230;&#x56FE;&#x5F62;&#x63A5;&#x53E3;&#x7684;&#x767B;&#x9646;&#x6765;&#x8BD5;&#x770B;&#x770B;&#x5570;&#x3002;</p>
+<p><img src="img/vbird_face.gif" alt="&#x9E1F;&#x54E5;&#x7684;&#x56FE;&#x793A;" title="&#x9E1F;&#x54E5;&#x7684;&#x56FE;&#x793A;"></p>
+<p><strong>Tips</strong> &#x7ECF;&#x7531;&#x8BA8;&#x8BBA;&#x533A;&#x7F51;&#x53CB;&#x7684;&#x8BF4;&#x660E;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x53D1;&#x73B0;&#x660E;&#x660E;&#x6709;&#x6349;&#x5230;&#x663E;&#x5361;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x5374;&#x8001;&#x662F;&#x65E0;&#x6CD5;&#x987A;&#x5229;&#x542F;&#x52A8; X &#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x53BB;&#x5B98;&#x7F51;&#x53D6;&#x5F97;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x6765;&#x5B89;&#x88C5;&#xFF0C; &#x4E5F;&#x80FD;&#x591F;&#x5C06;&#x201C;Device&#x201D;&#x9636;&#x6BB5;&#x7684;&#x201C;Driver&#x201D;&#x4FEE;&#x6539;&#x6210;&#x9ED8;&#x8BA4;&#x7684;&#x201C;Driver &quot;vesa&quot;&#x201D;&#xFF0C;&#x4F7F;&#x7528;&#x8BE5;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x6765;&#x6682;&#x65F6;&#x542F;&#x52A8; X &#x5185;&#x7684;&#x663E;&#x5361;&#x5594;&#xFF01;</p>
+<h3 id="2322-&#x5B57;&#x4F53;&#x7BA1;&#x7406;">23.2.2 &#x5B57;&#x4F53;&#x7BA1;&#x7406;</h3>
+<p>&#x6211;&#x4EEC; Xorg &#x6240;&#x4F7F;&#x7528;&#x7684;&#x5B57;&#x4F53;&#x5927;&#x90E8;&#x5206;&#x90FD;&#x662F;&#x653E;&#x7F6E;&#x4E8E;&#x4E0B;&#x9762;&#x7684;&#x76EE;&#x5F55;&#x4E2D;&#xFF1A;</p>
+<ul>
+<li>/usr/share/X11/fonts/</li>
+<li>/usr/share/fonts/</li>
+</ul>
+<p>&#x4E0D;&#x8FC7; Xorg &#x9ED8;&#x8BA4;&#x4F1A;&#x8F7D;&#x5165;&#x7684;&#x5B57;&#x4F53;&#x5219;&#x662F;&#x8BB0;&#x5F55;&#x4E8E; /etc/X11/fontpath.d/ &#x76EE;&#x5F55;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x94FE;&#x63A5;&#x6587;&#x4EF6;&#x7684;&#x6A21;&#x5F0F;&#x6765;&#x8FDB;&#x884C;&#x94FE;&#x63A5;&#x7684;&#x52A8;&#x4F5C;&#x800C;&#x5DF2;&#x3002; &#x4F60;&#x5E94;&#x8BE5;&#x8FD8;&#x8BB0;&#x5F97; xorg.conf &#x91CC;&#x9762;&#x6709;&#x4E2A;&#x201C; Flies &#x201D;&#x7684;&#x8BBE;&#x7F6E;&#x9879;&#x76EE;&#x5427;&#xFF1F;&#x8BE5;&#x9879;&#x76EE;&#x91CC;&#x9762;&#x5C31;&#x6709;&#x6307;&#x5B9A;&#x5230;&#x201C; FontPath &quot;catalogue:/etc/X11/fontpath.d&quot; &#x201D; &#x5BF9;&#x5427;&#xFF01;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x9ED8;&#x8BA4;&#x7684; Xorg &#x4F7F;&#x7528;&#x7684;&#x5B57;&#x4F53;&#x5C31;&#x662F;&#x53D6;&#x81EA;&#x4E8E; /etc/X11/fontpath.d &#x5570;&#xFF01;</p>
+<p>&#x9E1F;&#x54E5;&#x67E5;&#x4E86;&#x4E00;&#x4E0B; CentOS 7 &#x9488;&#x5BF9;&#x4E2D;&#x6587;&#x5B57;&#x4F53; &#xFF08;chinese&#xFF09; &#x6765;&#x8BF4;&#xFF0C;&#x6709;&#x6977;&#x4E66;&#x4E0E;&#x660E;&#x4F53;&#xFF0C;&#x660E;&#x4F53;&#x9ED8;&#x8BA4;&#x5B89;&#x88C5;&#x4E86;&#xFF0C;&#x4E0D;&#x8FC7;&#x6977;&#x4E66;&#x5374;&#x6CA1;&#x6709;&#x5B89;&#x88C5;&#x8036;&#xFF5E; &#x90A3;&#x6211;&#x4EEC;&#x80FD;&#x4E0D;&#x80FD;&#x5B89;&#x88C5;&#x4E86;&#x6977;&#x4E66;&#x4E4B;&#x540E;&#xFF0C;&#x5C06;&#x6977;&#x4E66;&#x4E5F;&#x5217;&#x4E3A;&#x9ED8;&#x8BA4;&#x7684;&#x5B57;&#x4F53;&#x4E4B;&#x4E00;&#x5462;&#xFF1F;&#x6765;&#x77A7;&#x4E00;&#x77A7;&#x6211;&#x4EEC;&#x600E;&#x4E48;&#x4F5C;&#x7684;&#x597D;&#x4E86;&#xFF1A;</p>
+<pre><code># 1\. &#x68C0;&#x67E5;&#x4E2D;&#x6587;&#x5B57;&#x4F53;&#xFF0C;&#x5E76;&#x4E14;&#x5B89;&#x88C5;&#x4E2D;&#x6587;&#x5B57;&#x4F53;&#x4E0E;&#x68C0;&#x9A8C;&#x6709;&#x6CA1;&#x6709;&#x653E;&#x7F6E;&#x5230; fontpath.d &#x76EE;&#x5F55;&#x4E2D;&#xFF01;
+[root@study ~]# ll -d /usr/share/fonts/cjk*
+drwxr-xr-x. 2 root root 22 May  4 17:54 /usr/share/fonts/cjkuni-uming
+
+[root@study ~]# yum install cjkuni-ukai-fonts
+[root@study ~]# ll -d /usr/share/fonts/cjk*
+drwxr-xr-x. 2 root root 21 Sep 16 11:48 /usr/share/fonts/cjkuni-ukai  # &#x8FD9;&#x5C31;&#x662F;&#x6977;&#x4E66;&#xFF01;
+drwxr-xr-x. 2 root root 22 May  4 17:54 /usr/share/fonts/cjkuni-uming
+
+[root@study ~]# ll /etc/X11/fontpath.d/ lrwxrwxrwx. 1 root root 29 Sep 16 11:48 cjkuni-ukai-fonts -&amp;gt; /usr/share/fonts/cjkuni-ukai/
+lrwxrwxrwx. 1 root root 30 May  4 17:54 cjkuni-uming-fonts -&amp;gt; /usr/share/fonts/cjkuni-uming/
+lrwxrwxrwx. 1 root root 36 May  4 17:52 default-ghostscript -&amp;gt; /usr/share/fonts/default/ghostscript
+lrwxrwxrwx. 1 root root 30 May  4 17:52 fonts-default -&amp;gt; /usr/share/fonts/default/Type1
+lrwxrwxrwx. 1 root root 27 May  4 17:51 liberation-fonts -&amp;gt; /usr/share/fonts/liberation
+lrwxrwxrwx. 1 root root 27 Sep 15 17:10 xorg-x11-fonts-100dpi:unscaled:pri=30 -&amp;gt; /usr/share/X11/fonts/100dpi
+lrwxrwxrwx. 1 root root 26 Sep 15 17:10 xorg-x11-fonts-75dpi:unscaled:pri=20 -&amp;gt; /usr/share/X11/fonts/75dpi
+lrwxrwxrwx. 1 root root 26 May  4 17:52 xorg-x11-fonts-Type1 -&amp;gt; /usr/share/X11/fonts/Type1
+# &#x7ADF;&#x7136;&#x4F1A;&#x81EA;&#x52A8;&#x7684;&#x5C06;&#x8BE5;&#x5B57;&#x4F53;&#x52A0;&#x5165;&#x5230; fontpath.d &#x5F53;&#x4E2D;&#xFF01;&#x592A;&#x597D;&#x4E86;&#xFF01; ^_^
+
+# 2\. &#x521B;&#x5EFA;&#x8BE5;&#x5B57;&#x4F53;&#x7684;&#x5B57;&#x4F53;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x771F;&#x7684;&#x53D6;&#x7528;&#x4E86;&#xFF1F;
+[root@study ~]# fc-cache -v &amp;#124; grep ukai
+/usr/share/fonts/cjkuni-ukai: skipping, existing cache is valid: 4 fonts, 0 dirs
+
+[root@study ~]# fc-list &amp;#124; grep ukai
+/usr/share/fonts/cjkuni-ukai/ukai.ttc: AR PL UKai TW:style=Book
+/usr/share/fonts/cjkuni-ukai/ukai.ttc: AR PL UKai HK:style=Book
+/usr/share/fonts/cjkuni-ukai/ukai.ttc: AR PL UKai CN:style=Book
+/usr/share/fonts/cjkuni-ukai/ukai.ttc: AR PL UKai TW MBE:style=Book
+
+# 3\. &#x91CD;&#x65B0;&#x542F;&#x52A8; Xorg&#xFF0C;&#x6216;&#x8005;&#x662F;&#x5F3A;&#x5236;&#x91CD;&#x65B0;&#x8FDB;&#x5165; graphical.target
+[root@study ~]# systemctl isolate multi-user.target; systemctl isolate graphical.target
+</code></pre><p>&#x5982;&#x679C;&#x4E0A;&#x8FF0;&#x7684;&#x52A8;&#x4F5C;&#x6CA1;&#x6709;&#x95EE;&#x9898;&#x7684;&#x8BDD;&#xFF0C;&#x73B0;&#x5728;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x56FE;&#x5F62;&#x754C;&#x9762;&#x4E0B;&#x9762;&#xFF0C;&#x901A;&#x8FC7;&#x201C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x201D; --&gt; &#x201C;&#x516C;&#x7528;&#x7A0B;&#x5E8F;&#x201D; --&gt; &#x201C;&#x5B57;&#x4F53;&#x68C0;&#x89C6;&#x7A0B;&#x5E8F;&#x201D;&#x5F53;&#x4E2D;&#x627E;&#x5230;&#x4E00;&#x4E2A;&#x540D;&#x4E3A; &#x201C;AR PL UKai CN, Book&#x201D;&#x5B57;&#x6837;&#x7684;&#x5B57;&#x4F53;&#xFF0C;&#x70B9;&#x4E0B;&#x53BB;&#x5C31;&#x4F1A;&#x770B;&#x5230;&#x5982;&#x4E0B;&#x7684;&#x56FE;&#x793A;&#xFF0C;&#x90A3;&#x5C31;&#x4EE3;&#x8868;&#x8BE5;&#x5B57;&#x4F53;&#x5DF2;&#x7ECF;&#x53EF;&#x4EE5;&#x88AB;&#x4F7F;&#x7528;&#x4E86;&#x3002;&#x4E0D;&#x8FC7;&#x67D0;&#x4E9B;&#x7A0B;&#x5E8F;&#x53EF;&#x80FD;&#x8FD8;&#x5F97;&#x8981;&#x989D;&#x5916;&#x7684;&#x52A0;&#x5DE5;&#x5C31;&#x662F;&#x4E86;&#xFF5E;<a href="#ps4">[4]</a></p>
+<p><img src="img/centos7_font_1.jpg" alt="&#x5B89;&#x88C5;&#x6977;&#x4E66;&#x5B57;&#x4F53;&#x7684;&#x7ED3;&#x679C;">&#x56FE;23.2.1&#x3001;&#x5B89;&#x88C5;&#x6977;&#x4E66;&#x5B57;&#x4F53;&#x7684;&#x7ED3;&#x679C;</p>
+<p>&#x9E1F;&#x54E5;&#x6BD4;&#x8F83;&#x597D;&#x5947;&#x7684;&#x662F;&#xFF0C;&#x8FD9;&#x4E2A;&#x5B57;&#x4F53;&#x7684;&#x5F00;&#x53D1;&#x8005;&#x600E;&#x4E48;&#x8FD9;&#x4E48;&#x6709;&#x8DA3;&#xFF01;&#x5217;&#x51FA;&#x6765;&#x7684;&#x793A;&#x610F;&#x5B57;&#x4F53;&#x7ADF;&#x7136;&#x662F;&#x5403;&#x4E86;&#x73BB;&#x7483;&#x4F1A;&#x8EAB;&#x4F53;&#x5934;&#x597D;&#x58EE;&#x58EE;&#xFF5E;&#x8FD9;...&#x4F1A;&#x4E0D;&#x4F1A;&#x6559;&#x574F;&#x5C0F;&#x5B69;&#x554A;&#xFF1F;&#x5475;&#x5475;&#x5475;&#x5475;&#xFF5E;</p>
+<ul>
+<li>&#x8BA9;&#x7A97;&#x53E3;&#x7BA1;&#x7406;&#x5458;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x989D;&#x5916;&#x7684;&#x5B57;&#x4F53;</li>
+</ul>
+<p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x4F7F;&#x7528;&#x989D;&#x5916;&#x7684;&#x5B57;&#x4F53;&#x7684;&#x8BDD;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x53D6;&#x5F97;&#x67D0;&#x4E9B;&#x5B57;&#x4F53;&#x6765;&#x5904;&#x7406;&#x7684;&#x3002;&#x9E1F;&#x54E5;&#x8FD9;&#x8FB9;&#x4ECE; Windows &#x5FAE;&#x8F6F;&#x6B63;&#x9ED1;&#x4F53;&#x3001;Times new Romans &#x4E24;&#x79CD;&#x5B57;&#x4F53;&#x52A0;&#x4E0A;&#x7C97;&#x3001;&#x659C;&#x4F53;&#x7B49;&#x5171;&#x516D;&#x4E2A;&#x6587;&#x4EF6;&#x6765;&#x5904;&#x7406;&#x5B57;&#x4F53;&#x7684;&#x5B89;&#x88C5;&#xFF5E; &#x8FD9;&#x8FB9;&#x5F97;&#x6CE8;&#x660E;&#x4E00;&#x4E0B;&#x662F;&#x7EAF;&#x7CB9;&#x7684;&#x6D4B;&#x8BD5;&#xFF0C;&#x6D4B;&#x8BD5;&#x5B8C;&#x6BD5;&#x540E;&#x6587;&#x4EF6;&#x5C31;&#x7ED9;&#x5B83;&#x62FF;&#x6389;&#x4E86;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x6301;&#x7EED;&#x4F7F;&#x7528;&#x5594;&#xFF01;&#x5E76;&#x6CA1;&#x6709;&#x60F3;&#x8981;&#x8FDD;&#x6CD5;&#x7684;&#x610F;&#x601D;&#x5566;&#xFF5E;&#x5927;&#x5BB6;&#x53C2;&#x8003;&#x770B;&#x770B;&#x5C31;&#x597D;&#x4E86;&#x3002; &#x90A3;&#x5C31;&#x6765;&#x770B;&#x770B;&#x5982;&#x4F55;&#x589E;&#x52A0;&#x5B57;&#x4F53;&#x5427;&#xFF01;&#xFF08;&#x5047;&#x8BBE;&#x4E0A;&#x8FF0;&#x7684;&#x5B57;&#x4F53;&#x6587;&#x4EF6;&#x662F;&#x653E;&#x7F6E;&#x5728; /root/font &#x4E2D;&#xFF09;</p>
+<pre><code># 1\. &#x5C06;&#x5B57;&#x4F53;&#x6587;&#x4EF6;&#x653E;&#x7F6E;&#x5230;&#x7CFB;&#x7EDF;&#x8BBE;&#x7F6E;&#x76EE;&#x5F55;&#xFF0C;&#x4EA6;&#x5373;&#x4E0B;&#x9762;&#x7684;&#x76EE;&#x5F55;&#x4E2D;&#xFF1A;
+[root@study ~]# cd /usr/share/fonts/
+[root@study ~]# mkdir windows
+[root@study ~]# cp /root/font/*.ttf /usr/share/fonts/windows/
+
+# 2\. &#x4F7F;&#x7528; fc-cache &#x5C06;&#x4E0A;&#x8FF0;&#x7684;&#x6587;&#x4EF6;&#x52A0;&#x5165;&#x5B57;&#x4F53;&#x7684;&#x652F;&#x6301;&#x4E2D;&#xFF1A;
+[root@study ~]# fc-cache -f -v
+....&#xFF08;&#x524D;&#x9762;&#x7701;&#x7565;&#xFF09;....
+/usr/share/fonts/windows: caching, new cache contents: 6 fonts, 0 dirs
+....&#xFF08;&#x540E;&#x9762;&#x7701;&#x7565;&#xFF09;....
+# -v &#x4EC5;&#x662F;&#x5217;&#x51FA;&#x76EE;&#x524D;&#x7684;&#x5B57;&#x4F53;&#x6570;&#x636E;&#xFF0C; -f &#x5219;&#x662F;&#x5F3A;&#x5236;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#x5B57;&#x4F53;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#xFF01;
+
+# 3\. &#x901A;&#x8FC7; fc-list &#x5217;&#x51FA;&#x5DF2;&#x7ECF;&#x88AB;&#x4F7F;&#x7528;&#x7684;&#x6587;&#x4EF6;&#x770B;&#x770B;&#xFF1A;
+[root@study ~]# fc-list : file &amp;#124; grep window  &amp;lt;==&#x627E;&#x51FA;&#x88AB;&#x9AD8;&#x901F;&#x7F13;&#x5B58;&#x4F4F;&#x7684;&#x6587;&#x4EF6;&#x540D;
+/usr/share/fonts/windows/timesbi.ttf:
+/usr/share/fonts/windows/timesi.ttf:
+/usr/share/fonts/windows/msjh.ttf:
+/usr/share/fonts/windows/times.ttf:
+/usr/share/fonts/windows/msjhbd.ttf:
+/usr/share/fonts/windows/timesbd.ttf:
+</code></pre><p>&#x4E4B;&#x540E;&#x5728;&#x5B57;&#x4F53;&#x68C0;&#x89C6;&#x5668;&#x91CC;&#x9762;&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#x6709;&#x591A;&#x4E86;&#x201C;Microsoft JhengHei, Times New Roman&#x201D;&#x7B49;&#x7B49;&#x7684;&#x5B57;&#x4F53;&#x53EF;&#x4EE5;&#x7528;&#x5570;&#xFF01;</p>
+<h3 id="2323-&#x663E;&#x793A;&#x5668;&#x53C2;&#x6570;&#x5FAE;&#x8C03;">23.2.3 &#x663E;&#x793A;&#x5668;&#x53C2;&#x6570;&#x5FAE;&#x8C03;</h3>
+<p>&#x6709;&#x4E9B;&#x670B;&#x53CB;&#x5076;&#x800C;&#x4F1A;&#x8FD9;&#x6837;&#x95EE;&#xFF1A;&#x201C;&#x6211;&#x7684;&#x663E;&#x793A;&#x5668;&#x660E;&#x660E;&#x8FD8;&#x4E0D;&#x9519;&#xFF0C;&#x4F46;&#x662F;&#x5C4F;&#x5E55;&#x5206;&#x8FA8;&#x7387;&#x5374;&#x6C38;&#x8FDC;&#x53EA;&#x80FD;&#x8FBE;&#x5230; 800x600 &#x800C;&#x5DF2;&#xFF0C; &#x8FD9;&#x8BE5;&#x5982;&#x4F55;&#x5904;&#x7406;&#xFF1F;&#x201D;&#xFF0C;&#x5C4F;&#x5E55;&#x7684;&#x5206;&#x8FA8;&#x7387;&#x5E94;&#x8BE5;&#x4E0E;&#x663E;&#x5361;&#x76F8;&#x5173;&#x6027;&#x4E0D;&#x9AD8;&#xFF0C;&#x800C;&#x662F;&#x4E0E;&#x663E;&#x793A;&#x5668;&#x7684;&#x66F4;&#x65B0;&#x9891;&#x7387;&#x6709;&#x5173;&#xFF01;</p>
+<p>&#x6240;&#x8C13;&#x7684;&#x66F4;&#x65B0;&#x9891;&#x7387;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x5728;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#x5C4F;&#x5E55;&#x91CD;&#x65B0;&#x7ED8;&#x5236;&#x753B;&#x9762;&#x7684;&#x901F;&#x5EA6;&#x3002;&#x4E3E;&#x4F8B;&#x6765;&#x8BF4;&#xFF0C; 60Hz &#x7684;&#x66F4;&#x65B0;&#x9891;&#x7387;&#xFF0C; &#x6307;&#x7684;&#x662F;&#x6BCF;&#x79D2;&#x949F;&#x753B;&#x9762;&#x66F4;&#x65B0; 60 &#x6B21;&#x7684;&#x610F;&#x601D;&#x3002;&#x90A3;&#x4E48;&#x5173;&#x4E8E;&#x663E;&#x793A;&#x5668;&#x7684;&#x66F4;&#x65B0;&#x9891;&#x7387;&#x8BE5;&#x5982;&#x4F55;&#x8C03;&#x6574;&#x5462;&#xFF1F; &#x4F60;&#x5F97;&#x5148;&#x53BB;&#x627E;&#x5230;&#x4F60;&#x7684;&#x663E;&#x793A;&#x5668;&#x7684;&#x4F7F;&#x7528;&#x8BF4;&#x660E;&#x4E66; &#xFF08;&#x6216;&#x8005;&#x662F;&#x7F51;&#x7AD9;&#x4F1A;&#x6709;&#x89C4;&#x683C;&#x4ECB;&#x7ECD;&#xFF09;&#xFF0C;&#x53D6;&#x5F97;&#x6700;&#x9AD8;&#x7684;&#x66F4;&#x65B0;&#x7387;&#x540E;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x9009;&#x62E9;&#x4F60;&#x60F3;&#x8981;&#x7684;&#x5206;&#x8FA8;&#x7387;&#xFF0C; &#x7136;&#x540E;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A; gtf &#x7684;&#x6307;&#x4EE4;&#x529F;&#x80FD;&#x6765;&#x8C03;&#x6574;&#xFF1A;</p>
+<p><img src="img/vbird_face.gif" alt="&#x9E1F;&#x54E5;&#x7684;&#x56FE;&#x793A;" title="&#x9E1F;&#x54E5;&#x7684;&#x56FE;&#x793A;"></p>
+<p><strong>Tips</strong> &#x57FA;&#x672C;&#x4E0A;&#xFF0C;&#x73B0;&#x5728;&#x65B0;&#x7684; Linux distribution &#x7684; X server &#x5927;&#x591A;&#x4F7F;&#x7528;&#x81EA;&#x884C;&#x4FA6;&#x6D4B;&#x65B9;&#x5F0F;&#x6765;&#x5904;&#x7406;&#x6240;&#x6709;&#x7684;&#x8BBE;&#x7F6E;&#x4E86;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C; &#x9664;&#x975E;&#x4F60;&#x7684;&#x5C4F;&#x5E55;&#x7279;&#x522B;&#x65B0;&#x6216;&#x8005;&#x662F;&#x7279;&#x522B;&#x602A;&#xFF0C;&#x5426;&#x5219;&#x5E94;&#x8BE5;&#x4E0D;&#x592A;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5230; gtf &#x7684;&#x529F;&#x80FD;&#x5570;&#xFF01;</p>
+<pre><code># 1\. &#x5148;&#x6765;&#x6D4B;&#x8BD5;&#x4E00;&#x4E0B;&#x4F60;&#x76EE;&#x524D;&#x7684;&#x5C4F;&#x5E55;&#x642D;&#x914D;&#x663E;&#x5361;&#x6240;&#x80FD;&#x591F;&#x5904;&#x7406;&#x7684;&#x5206;&#x8FA8;&#x7387;&#x4E0E;&#x66F4;&#x65B0;&#x9891;&#x7387; &#xFF08;&#x987B;&#x5728; X &#x73AF;&#x5883;&#x4E0B;&#xFF09;
+[root@study ~]# xrandr
+Screen 0: minimum 320 x 200, current 1440 x 900, maximum 8192 x 8192
+Virtual-0 connected primary 1440x900+0+0 0mm x 0mm
+   1024x768       59.9 +
+   1920x1200      59.9
+   1920x1080      60.0
+   1600x1200      59.9
+   1680x1050      60.0
+   1400x1050      60.0
+   1280x1024      59.9
+   1440x900       59.9*
+   1280x960       59.9
+   1280x854       59.9
+   1280x800       59.8
+   1280x720       59.9
+   1152x768       59.8
+   800x600        59.9
+   848x480        59.7
+   720x480        59.7
+   640x480        59.4
+# &#x4E0A;&#x9762;&#x663E;&#x793A;&#x73B0;&#x5728;&#x7684;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;&#x6D4B;&#x8BD5;&#x8FC7;&#x6700;&#x9AD8;&#x5206;&#x8FA8;&#x7387;&#x5927;&#x6982;&#x662F; 1920x1200 &#xFF0C;&#x4F46;&#x76EE;&#x524D;&#x662F; 1440x900 &#xFF08;*&#xFF09;
+# &#x82E5;&#x9700;&#x8981;&#x8C03;&#x6574;&#x6210; 1280*800 &#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x8C03;&#x6574;&#x5594;&#xFF01;
+
+[root@study ~]# xrandr -s 1280x800
+
+# 2\. &#x82E5;&#x60F3;&#x5F3A;&#x8FEB; X server &#x66F4;&#x6539;&#x5C4F;&#x5E55;&#x7684;&#x5206;&#x8FA8;&#x7387;&#x4E0E;&#x66F4;&#x65B0;&#x9891;&#x7387;&#xFF0C;&#x5219;&#x9700;&#x8981;&#x4FEE;&#x8BA2; xorg.conf &#x7684;&#x8BBE;&#x7F6E;&#x3002;&#x5148;&#x6765;&#x4FA6;&#x6D4B;&#xFF1A;
+[root@study ~]# gtf &#x6C34;&#x5E73;&#x50CF;&#x7D20; &#x5782;&#x76F4;&#x50CF;&#x7D20; &#x66F4;&#x65B0;&#x9891;&#x7387; [-xv]
+&#x9009;&#x9879;&#x4E0E;&#x53C2;&#x6570;&#xFF1A;
+&#x6C34;&#x5E73;&#x50CF;&#x7D20;&#xFF1A;&#x5C31;&#x662F;&#x5206;&#x8FA8;&#x7387;&#x7684; X &#x8F74;
+&#x5782;&#x76F4;&#x50CF;&#x7D20;&#xFF1A;&#x5C31;&#x662F;&#x5206;&#x8FA8;&#x7387;&#x7684; Y &#x8F74;
+&#x66F4;&#x65B0;&#x9891;&#x7387;&#xFF1A;&#x4E0E;&#x663E;&#x793A;&#x5668;&#x6709;&#x5173;&#xFF0C;&#x4E00;&#x822C;&#x53EF;&#x4EE5;&#x9009;&#x62E9; 60, 75, 80, 85 &#x7B49;&#x9891;&#x7387;
+-x      &#xFF1A;&#x4F7F;&#x7528; Xorg &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x6A21;&#x5F0F;&#x8F93;&#x51FA;&#xFF0C;&#x8FD9;&#x662F;&#x9ED8;&#x8BA4;&#x503C;
+-v      &#xFF1A;&#x663E;&#x793A;&#x4FA6;&#x6D4B;&#x7684;&#x8FC7;&#x7A0B;
+
+# 1\. &#x4F7F;&#x7528; 1024x768 &#x7684;&#x5206;&#x8FA8;&#x7387;&#xFF0C;75 Hz &#x7684;&#x66F4;&#x65B0;&#x9891;&#x7387;&#x6765;&#x53D6;&#x5F97;&#x663E;&#x793A;&#x5668;&#x5185;&#x5BB9;
+[root@study ~]# gtf 1024 768 75 -x
+# 1024x768 @ 75.00 Hz &#xFF08;GTF&#xFF09; hsync: 60.15 kHz; pclk: 81.80 MHz
+Modeline &quot;1024x768_75.00&quot;  81.80  1024 1080 1192 1360  768 769 772 802  -HSync +Vsync
+# &#x91CD;&#x70B9;&#x662F; Modeline &#x90A3;&#x4E00;&#x884C;&#xFF01;&#x90A3;&#x884C;&#x7ED9;&#x4ED6;&#x6284;&#x4E0B;&#x6765;
+
+# 2\. &#x5C06;&#x4E0A;&#x8FF0;&#x7684;&#x6570;&#x636E;&#x8F93;&#x5165; xorg.conf.d/*.conf &#x5185;&#x7684; Monitor &#x9879;&#x76EE;&#x4E2D;&#xFF1A;
+[root@study ~]# vim /etc/X11/xorg.conf.d/00-vbird.conf
+Section &quot;Monitor&quot;
+    Identifier   &quot;Monitor0&quot;
+    VendorName   &quot;Monitor Vendor&quot;
+    ModelName    &quot;Monitor Model&quot;
+    Modeline &quot;1024x768_75.00&quot;  81.80  1024 1080 1192 1360  768 769 772 802  -HSync +Vsync
+EndSection
+# &#x5C31;&#x662F;&#x65B0;&#x589E;&#x4E0A;&#x8FF0;&#x7684;&#x90A3;&#x884C;&#x7279;&#x6B8A;&#x5B57;&#x4F53;&#x90E8;&#x5206;&#x5230; Monitor &#x7684;&#x9879;&#x76EE;&#x4E2D;&#x5373;&#x53EF;&#x3002;
+</code></pre><p>&#x7136;&#x540E;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#x4F60;&#x7684; X &#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x80FD;&#x591F;&#x9009;&#x62E9;&#x65B0;&#x7684;&#x5206;&#x8FA8;&#x7387;&#x5570;&#xFF01;&#x90A3;&#x5982;&#x4F55;&#x91CD;&#x65B0;&#x542F;&#x52A8; X &#x5462;&#xFF1F;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C; &#x4E00;&#x4E2A;&#x662F;&#x201C; systemctl isolate multi-user.target; systemctl isolate graphical.target &#x201D;&#x4ECE;&#x6587;&#x5B57;&#x6A21;&#x5F0F;&#x4E0E;&#x56FE;&#x5F62;&#x6A21;&#x5F0F;&#x7684;&#x6267;&#x884C;&#x7B49;&#x7EA7;&#x53BB;&#x5207;&#x6362;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C; &#x5982;&#x679C;&#x539F;&#x672C;&#x5C31;&#x662F; graphical.target &#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x5728; X &#x7684;&#x753B;&#x9762;&#x4E2D;&#x6309;&#x4E0B;&#x201C; [alt] + [crtl] + [backspace] &#x201D;&#x4E09;&#x4E2A;&#x7EC4;&#x5408;&#x6309;&#x952E;&#xFF0C; &#x5C31;&#x80FD;&#x591F;&#x91CD;&#x65B0;&#x542F;&#x52A8; X &#x7A97;&#x53E3;&#x5570;&#xFF01;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./202.html" class="navigation navigation-prev " aria-label="Previous page: 23.1 什么是 X Window System"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./204.html" class="navigation navigation-next " aria-label="Next page: 23.3 显卡驱动程序安装范例"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

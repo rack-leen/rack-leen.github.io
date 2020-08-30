@@ -1,0 +1,165 @@
+<hr>
+<p>title: 适配器模式<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2019-5-19 22:05:03<br>
+tags:</p>
+<ul>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>结构型模式<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>结构型模式<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h2 id="适配器模式"><a class="header-anchor" href="#适配器模式">¶</a>适配器模式</h2>
+<h3 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h3>
+<blockquote>
+<p>Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn’t otherwise because of incompatible interfaces.<br>
+将一个类的接口变换成客户端所期待的另一种接口，从而使原本因接口不匹配而无法在一起工作的两个类能够在一起工作。</p>
+</blockquote>
+<h3 id="适配器模式示意图"><a class="header-anchor" href="#适配器模式示意图">¶</a>适配器模式示意图</h3>
+<p><img src="%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F.png" alt="适配器模式"></p>
+<h3 id="流程"><a class="header-anchor" href="#流程">¶</a>流程</h3>
+<ol>
+<li>有一个与目标不兼容的适配者，我们可以在目标与适配者之间加一个适配器。</li>
+<li>让适配者连接适配器，让目标连接适配器。</li>
+<li>这样就能让目标与适配者间接连接。</li>
+</ol>
+<h3 id="需求"><a class="header-anchor" href="#需求">¶</a>需求</h3>
+<p>现在我们有一部没电的手机，我们需要充电。<br>
+这里有两个充电器，一个是手机原配充电器，另一个是与手机不兼容的充电器。<br>
+我们需要让不兼容的充电器让手机能充电。</p>
+<h3 id="代码实现"><a class="header-anchor" href="#代码实现">¶</a>代码实现</h3>
+<h4 id="创建目标"><a class="header-anchor" href="#创建目标">¶</a>创建目标</h4>
+<ol>
+<li>首先创建手机抽象类，作为所有类型手机的模板</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 这是所有手机都要实现的接口
+ */
+public interface Phone {
+    /* 手机请求充电 */
+    public void requestCharger();
+
+    /* 充电完成 */
+    public void ok();
+}
+</code></pre>
+<ol start="2">
+<li>创建iphone手机</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 这里有一个苹果手机
+ */
+public class IPhone implements Phone {
+    @Override
+    public void requestCharger() {
+        System.out.println(&quot;IPhone请求充电&quot;);
+    }
+
+    @Override
+    public void ok() {
+        System.out.println(&quot;IPhone充电完成&quot;);
+    }
+}
+</code></pre>
+<h4 id="创建适配者-充电器"><a class="header-anchor" href="#创建适配者-充电器">¶</a>创建适配者(充电器)</h4>
+<ol>
+<li>先创建充电器抽象类，作为所有充电器类型的接口</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 这是都需要实现的接口，这里有所有充电器都需要的功能
+ */
+public interface BatterCharger {
+
+    /* 充电 */
+    public void recvCharger();
+}
+</code></pre>
+<ol start="2">
+<li>创建一个安卓手机充电器</li>
+</ol>
+<pre><code class="language-Java">public class AndroidBatterCharger implements BatterCharger {
+    @Override
+    public void recvCharger() {
+        System.out.println(&quot;Android手机充电器&quot;);
+    }
+}
+</code></pre>
+<ol start="3">
+<li>创建一个苹果手机充电器</li>
+</ol>
+<pre><code class="language-Java">public class IPhoneBatterCharger implements BatterCharger {
+    @Override
+    public void recvCharger() {
+        System.out.println(&quot;IPhone手机充电器&quot;);
+    }
+}
+</code></pre>
+<h4 id="创建适配器"><a class="header-anchor" href="#创建适配器">¶</a>创建适配器</h4>
+<ol>
+<li>创建一个适配器抽象类</li>
+</ol>
+<pre><code class="language-Java">public abstract class Adapter {
+    public abstract void charger();
+}
+</code></pre>
+<ol start="2">
+<li>现在我们为苹果手机创建一个适配器，适配一个需要的充电器。这个适配器需要对接手机和充电器两方，这样才能将手机和充电器连接，进行充电。因此，我们需要继承苹果类，实现充电器接口</li>
+</ol>
+<pre><code class="language-Java">public class IPhoneAdapter extends IPhone implements BatterCharger {
+    @Override
+    public void recvCharger() {
+        System.out.println(&quot;获取IPhone充电器,开始充电&quot;);
+    }
+}
+</code></pre>
+<h4 id="场景类"><a class="header-anchor" href="#场景类">¶</a>场景类</h4>
+<p>我们需要给苹果手机充电，这里有苹果和安卓两个充电器，有一个苹果手机和一个适配器。<br>
+我们先将苹果和安卓充电器对外提供接口与适配器连接，让适配器可以自由选择连接哪个充电器。<br>
+然后将适配器与苹果手机连接。这就可以进行充电了。</p>
+<pre><code class="language-Java">public class Test{
+	public static void main(String[] args) {
+		/* 创建一个iphone手机 */
+        Phone phone = new IPhone();
+        /* 请求充电器 */
+        phone.requestCharger();
+
+        /* 创建一个iphone手机充电器 */
+        IPhoneAdapter iPhoneAdapter = new IPhoneAdapter();
+        /* 开始充电 */
+        iPhoneAdapter.recvCharger();
+
+        /* 充电完成 */
+        phone.ok();
+	}
+}
+</code></pre>
+<h3 id="应用场景"><a class="header-anchor" href="#应用场景">¶</a>应用场景</h3>
+<ol>
+<li>我们的项目已经存在，并且与我们的需求不兼容，才需要进行适配。</li>
+</ol>
+<h3 id="适配器模式优点和注意事项"><a class="header-anchor" href="#适配器模式优点和注意事项">¶</a>适配器模式优点和注意事项</h3>
+<h4 id="优点"><a class="header-anchor" href="#优点">¶</a>优点</h4>
+<ol>
+<li>适配器能让两个没有任何关联的类在一起运行，只需要让适配器作为中转。</li>
+<li>增加了类的透明性。我们访问的是目标角色，但是我们将具体实现委托给了适配者，而这些模块对高层模块是透明的。</li>
+<li>提供了类的复用度。适配者可以在不变的情况下再与新的目标连接。</li>
+<li>灵活性非常好。适配者和目标是分离的，两者想删除就可以删除。</li>
+</ol>
+<h4 id="注意事项"><a class="header-anchor" href="#注意事项">¶</a>注意事项</h4>
+<ol>
+<li>适配器模式适用于已经存在的项目，因为项目存在且需要，但是与我们不兼容才进行适配。如果项目还在详细设计阶段，就不用考虑了，因为没有兼容问题，不需要适配器。</li>
+</ol>

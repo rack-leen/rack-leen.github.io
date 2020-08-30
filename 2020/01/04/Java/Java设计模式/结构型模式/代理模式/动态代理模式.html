@@ -1,0 +1,214 @@
+<hr>
+<p>title: 动态代理模式<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2019-05-19 21:40:11<br>
+tags:</p>
+<ul>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>代理模式<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>代理模式<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h3 id="动态代理模式"><a class="header-anchor" href="#动态代理模式">¶</a>动态代理模式</h3>
+<h4 id="引言"><a class="header-anchor" href="#引言">¶</a>引言</h4>
+<blockquote>
+<p>用的最广泛的设计模式</p>
+</blockquote>
+<h4 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h4>
+<p>在实现阶段不用关心代理的是那个，在运行阶段才指定具体的代理。</p>
+<!-- more -->
+<h4 id="实现原理"><a class="header-anchor" href="#实现原理">¶</a>实现原理</h4>
+<p>动态代理技术中的代理能够做比静态代理技术中的代理更多，更广的事。动态代理能够根据被代理类提供的操作动态生成相对应的操作而替代被代理类实现。<br>
+可以这样比喻，动态代理就是一个集代购电子产品，服装，化妆品，食品等业务于一身的综合代购，被代理者(用户)不管你想进行那类操作，代购都能对应的帮你完成。<br>
+动态代理是jdk的技术，使用java.lang.reflect包下提供的Proxy类和InvacationHandler接口，可以生成一个动态代理类和代理对象。<br>
+InvacationHandler接口需要被实现而重写invoke(target,method,args)方法，将被代理者需要进行的操作(通过method.invoke()方法获取相对应操作)和代购需要进行的操作合并，形成代理需要进行的操作。  Proxy类则将被代理者的对象类加载器，被代理者实现的接口以及代理需要进行的操作三者进行合并，用代理者对象类加载器和其实现的接口作为模板，生成相对应的代理类(有共同的接口和相似的类结构),将代理需要进行的操作合并到代理类中，形成新生成的代理类的具体操作。<br>
+<img src="%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E5%9B%BE.png" alt="动态代理模式图"></p>
+<h4 id="实现步骤"><a class="header-anchor" href="#实现步骤">¶</a>实现步骤</h4>
+<h5 id="第一步-创建实体类"><a class="header-anchor" href="#第一步-创建实体类">¶</a>第一步，创建实体类</h5>
+<p>{% codeblock lang:java %}<br>
+package com.test.bean;</p>
+<p>/**</p>
+<ul>
+<li>
+<p>动态代理需要的被代理对象<br>
+*/<br>
+public class User {<br>
+private int id ;<br>
+private String name ;<br>
+private int age ;<br>
+private String sex ;</p>
+<p>public User() {<br>
+}</p>
+<p>public User(int id, String name, int age, String sex) {<br>
+<a href="http://this.id" target="_blank" rel="noopener">this.id</a> = id;<br>
+<a href="http://this.name" target="_blank" rel="noopener">this.name</a> = name;<br>
+this.age = age;<br>
+this.sex = sex;<br>
+}</p>
+<p>public int getId() {<br>
+return id;<br>
+}</p>
+<p>public void setId(int id) {<br>
+<a href="http://this.id" target="_blank" rel="noopener">this.id</a> = id;<br>
+}</p>
+<p>public String getName() {<br>
+return name;<br>
+}</p>
+<p>public void setName(String name) {<br>
+<a href="http://this.name" target="_blank" rel="noopener">this.name</a> = name;<br>
+}</p>
+<p>public int getAge() {<br>
+return age;<br>
+}</p>
+<p>public void setAge(int age) {<br>
+this.age = age;<br>
+}</p>
+<p>public String getSex() {<br>
+return sex;<br>
+}</p>
+<p>public void setSex(String sex) {<br>
+this.sex = sex;<br>
+}</p>
+<p>@Override<br>
+public String toString() {<br>
+return “User{” +<br>
+“id=” + id +<br>
+&quot;, name=’&quot; + name + ‘’’ +<br>
+&quot;, age=&quot; + age +<br>
+&quot;, sex=’&quot; + sex + ‘’’ +<br>
+’}’;<br>
+}<br>
+}</p>
+</li>
+</ul>
+<p>{% endcodeblock %}</p>
+<h5 id="第二步-创建事务类"><a class="header-anchor" href="#第二步-创建事务类">¶</a>第二步，创建事务类</h5>
+<p>{% codeblock lang:java %}<br>
+package com.test.transaction;</p>
+<p>public class MyTransaction {<br>
+public void before(){<br>
+System.out.println(“打开事务”);<br>
+}</p>
+<pre><code>public void after(){
+    System.out.println(&quot;关闭事务&quot;);
+}
+</code></pre>
+<p>}</p>
+<p>{% endcodeblock %}</p>
+<h5 id="第三步-创建共同接口"><a class="header-anchor" href="#第三步-创建共同接口">¶</a>第三步，创建共同接口</h5>
+<p>{% codeblock lang:java %}<br>
+package com.test.service;</p>
+<p>import com.test.bean.User;</p>
+<p>/**</p>
+<ul>
+<li>动态代理需要的公共接口<br>
+*/<br>
+public interface UserService {<br>
+public void addUser(User u);<br>
+public void delete(int id);<br>
+}</li>
+</ul>
+<p>{% endcodeblock %}</p>
+<h5 id="第四步-创建被代理者的操作"><a class="header-anchor" href="#第四步-创建被代理者的操作">¶</a>第四步，创建被代理者的操作</h5>
+<p>{% codeblock lang:java %}<br>
+package com.test.serviceImpl;</p>
+<p>import com.test.bean.User;<br>
+import com.test.service.UserService;</p>
+<p>/**</p>
+<ul>
+<li>
+<p>被代理对象需要做的动作<br>
+*/<br>
+public class UserServiceImpl implements UserService {<br>
+public void addUser(User u) {<br>
+System.out.println(“增加用户”);<br>
+}</p>
+<p>public void delete(int id) {<br>
+System.out.println(“删除用户”);<br>
+}<br>
+}</p>
+</li>
+</ul>
+<p>{% endcodeblock %}</p>
+<h5 id="第五步-创建动态代理的抽象操作"><a class="header-anchor" href="#第五步-创建动态代理的抽象操作">¶</a>第五步，创建动态代理的抽象操作</h5>
+<p>{% codeblock lang:java %}<br>
+package com.test.serviceImpl;</p>
+<p>import com.test.transaction.MyTransaction;</p>
+<p>import java.lang.reflect.InvocationHandler;<br>
+import java.lang.reflect.Method;</p>
+<p>/**</p>
+<ul>
+<li>
+<p>动态代理的关键部分，通过实现InvocationHandler，用于表示在执行某个方法之前或者之后需要加入的代码</p>
+</li>
+<li>
+<p>这里放置代理对象的执行过程<br>
+*/<br>
+public class ObjectIntercepter implements InvocationHandler {<br>
+private Object target ;<br>
+private MyTransaction myTransaction ;</p>
+<p>public ObjectIntercepter() {<br>
+}</p>
+<p>public ObjectIntercepter(Object target, MyTransaction myTransaction) {<br>
+this.target = target;<br>
+this.myTransaction = myTransaction;<br>
+}</p>
+<p>public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {<br>
+this.myTransaction.before();//开启事务<br>
+method.invoke(this.target , args); //获取需要代理的对象需要执行的操作<br>
+this.myTransaction.after();//提交事务<br>
+return null;<br>
+}<br>
+}</p>
+</li>
+</ul>
+<p>{% endcodeblock %}</p>
+<h5 id="第六步-测试"><a class="header-anchor" href="#第六步-测试">¶</a>第六步，测试</h5>
+<p>{% codeblock lang:java %}<br>
+import com.test.bean.User;<br>
+import com.test.service.UserService;<br>
+import com.test.serviceImpl.ObjectIntercepter;<br>
+import com.test.serviceImpl.UserServiceImpl;<br>
+import com.test.transaction.MyTransaction;<br>
+import org.junit.Test;</p>
+<p>import java.lang.reflect.Proxy;</p>
+<p>public class test {<br>
+UserService us = new UserServiceImpl();<br>
+MyTransaction mt = new MyTransaction();<br>
+ObjectIntercepter oi = new ObjectIntercepter(us,mt);</p>
+<pre><code>/**
+ * 这里使用Proxy类来创建一个代理实例，它通过获取被代理类的类加载器和接口，这样就能为新创建的代理类和被代理类有共同的接口
+ * 代理类创建之后，需要通过oi(动态勾连需要的操作)获取对应的操作
+ * oi传入目标对象(被代理类)和事务(需要的前置和后置条件),通过invoke函数将他们合并，形成代理类最终的操作
+ *
+ * 上述可获取代理类和匹配被代理类需要代理类完成的操作
+ */
+
+@Test
+public void test(){
+    UserService userService = (UserService)Proxy.newProxyInstance(us.getClass().getClassLoader(), us.getClass().getInterfaces(), oi);
+    userService.delete(1);
+}
+</code></pre>
+<p>}</p>
+<p>{% endcodeblock %}</p>
+<h4 id="总结"><a class="header-anchor" href="#总结">¶</a>总结</h4>
+<p>动态代理技术就相当于一个自动化工厂，将一个个不同型号的零部件适配组装成不同类型的产品。<br>
+理解动态代理，可以与静态代理相结合。动态代理的出现就是解决静态代理的缺陷。知道动态代理的功能后，顺藤摸瓜，就能知道动态代理的实现原理。</p>
+<h4 id="自然言语"><a class="header-anchor" href="#自然言语">¶</a>自然言语</h4>
+<p>忙了几天，终于抽出时间把动态代理这块给理清了。加上这个已经理清两个设计模式，有朝一日我要把java的23种设计模式都弄出来。<br>
+剩余:21种。</p>

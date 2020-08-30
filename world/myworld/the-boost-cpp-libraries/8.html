@@ -1,0 +1,830 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>第 8 章 进程间通讯 | Boost C++ 库</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./9.html" />
+    
+    
+    <link rel="prev" href="./7.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="9"
+        data-chapter-title="第 8 章 进程间通讯"
+        data-filepath="8.md"
+        data-basepath="."
+        data-revision="Mon Feb 29 2016 11:32:07 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/the-boost-cpp-libraries" target="blank" class="custom-link">Boost C++ 库</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="0.html">
+            
+                
+                    <a href="./0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Boost C++ 库
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="1.html">
+            
+                
+                    <a href="./1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        第 1 章 简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        第 2 章 智能指针
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        第 3 章 函数对象
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        第 4 章 事件处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        第 5 章 字符串处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        第 6 章 多线程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        第 7 章 异步输入输出
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="9" data-path="8.html">
+            
+                
+                    <a href="./8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        第 8 章 进程间通讯
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="9.html">
+            
+                
+                    <a href="./9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        第 9 章 文件系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="10.html">
+            
+                
+                    <a href="./10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        第 10 章 日期与时间
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="11.html">
+            
+                
+                    <a href="./11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        第 11 章 序列化
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="12.html">
+            
+                
+                    <a href="./12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        第 12 章 词法分析器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="13.html">
+            
+                
+                    <a href="./13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        第 13 章 容器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="14.html">
+            
+                
+                    <a href="./14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        第 14 章 数据结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="15.html">
+            
+                
+                    <a href="./15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        第 15 章 错误处理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="16.html">
+            
+                
+                    <a href="./16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        第 16 章 类型转换操作符
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >Boost C++ 库</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x7B2C;-8-&#x7AE0;-&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x8BAF;">&#x7B2C; 8 &#x7AE0; &#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x8BAF;</h1>
+<h3 id="&#x76EE;&#x5F55;">&#x76EE;&#x5F55;</h3>
+<ul>
+<li><a href="interprocesscommunication.html#interprocesscommunication_general">8.1 &#x6982;&#x8FF0;</a></li>
+<li><a href="interprocesscommunication.html#interprocesscommunication_shared_memory">8.2 &#x5171;&#x4EAB;&#x5185;&#x5B58;</a></li>
+<li><a href="interprocesscommunication.html#interprocesscommunication_managed_shared_memory">8.3 &#x6258;&#x7BA1;&#x5171;&#x4EAB;&#x5185;&#x5B58;</a></li>
+<li><a href="interprocesscommunication.html#interprocesscommunication_synchronization">8.4 &#x540C;&#x6B65;</a></li>
+<li><a href="interprocesscommunication.html#interprocesscommunication_exercises">8.5 &#x7EC3;&#x4E60;</a></li>
+</ul>
+<p><a href="http://creativecommons.org/licenses/by-nc-nd/3.0/de/deed.zh" target="_blank"><img src="img/88x31_cc_logo.gif" alt=""></a> &#x8BE5;&#x4E66;&#x91C7;&#x7528; <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/de/deed.zh" target="_blank">Creative Commons License</a> &#x6388;&#x6743;</p>
+<h2 id="81-&#x6982;&#x8FF0;">8.1. &#x6982;&#x8FF0;</h2>
+<p>&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x8BAF;&#x63CF;&#x8FF0;&#x7684;&#x662F;&#x540C;&#x4E00;&#x53F0;&#x8BA1;&#x7B97;&#x673A;&#x7684;&#x4E0D;&#x540C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x4EA4;&#x6362;&#x673A;&#x5236;&#x3002; &#x4F46;&#x4E0D;&#x5305;&#x62EC;&#x7F51;&#x7EDC;&#x901A;&#x8BAF;&#x65B9;&#x5F0F;&#x3002; &#x5982;&#x679C;&#x9700;&#x8981;&#x7ECF;&#x7531;&#x7F51;&#x7EDC;&#xFF0C;&#x5728;&#x5F7C;&#x6B64;&#x8FD0;&#x884C;&#x5728;&#x4E0D;&#x540C;&#x8BA1;&#x7B97;&#x673A;&#x4E0A;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E4B;&#x95F4;&#x4EA4;&#x6362;&#x6570;&#x636E;&#xFF0C;&#x8BF7;&#x770B;<a href="asio.html" title="&#x7B2C; 7 &#x7AE0; &#x5F02;&#x6B65;&#x8F93;&#x5165;&#x8F93;&#x51FA;">&#x7B2C; 7 &#x7AE0; <em>&#x5F02;&#x6B65;&#x8F93;&#x5165;&#x8F93;&#x51FA;</em></a>&#xFF0C;&#x8BE5;&#x7AE0;&#x8BB2;&#x8FF0;&#x4E86; Boost.Asio &#x5E93;&#x3002;</p>
+<p>&#x672C;&#x7AE0;&#x5C55;&#x793A;&#x4E86; <a href="http://www.boost.org/libs/interprocess/" target="_blank">Boost.Interprocess</a> &#x5E93;&#xFF0C;&#x5B83;&#x5305;&#x62EC;&#x4F17;&#x591A;&#x7684;&#x7C7B;&#xFF0C;&#x8FD9;&#x4E9B;&#x7C7B;&#x63D0;&#x4F9B;&#x4E86;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x76F8;&#x5173;&#x7684;&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x8BAF;&#x63A5;&#x53E3;&#x7684;&#x62BD;&#x8C61;&#x5C42;&#x3002; &#x867D;&#x7136;&#x4E0D;&#x540C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x8BAF;&#x6982;&#x5FF5;&#x975E;&#x5E38;&#x76F8;&#x8FD1;&#xFF0C;&#x4F46;&#x63A5;&#x53E3;&#x7684;&#x53D8;&#x5316;&#x5374;&#x5F88;&#x5927;&#x3002; Boost.Interprocess &#x5E93;&#x4F7F;&#x901A;&#x8FC7;C++&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x529F;&#x80FD;&#x6210;&#x4E3A;&#x53EF;&#x80FD;&#x3002;</p>
+<p>&#x867D;&#x7136; Boost.Asio &#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5728;&#x540C;&#x4E00;&#x53F0;&#x8BA1;&#x7B97;&#x673A;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x95F4;&#x4EA4;&#x6362;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x4F7F;&#x7528; Boost.Interprocess &#x5E93;&#x901A;&#x5E38;&#x6027;&#x80FD;&#x66F4;&#x597D;&#x3002; Boost.Interprocess &#x5E93;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4F7F;&#x7528;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x529F;&#x80FD;&#x4F18;&#x5316;&#x4E86;&#x540C;&#x4E00;&#x53F0;&#x8BA1;&#x7B97;&#x673A;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E4B;&#x95F4;&#x6570;&#x636E;&#x4EA4;&#x6362;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x5E94;&#x8BE5;&#x662F;&#x4EFB;&#x4F55;&#x4E0D;&#x9700;&#x8981;&#x7F51;&#x7EDC;&#x65F6;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x95F4;&#x6570;&#x636E;&#x4EA4;&#x6362;&#x7684;&#x9996;&#x9009;&#x3002;</p>
+<h2 id="82-&#x5171;&#x4EAB;&#x5185;&#x5B58;">8.2. &#x5171;&#x4EAB;&#x5185;&#x5B58;</h2>
+<p>&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x901A;&#x5E38;&#x662F;&#x8FDB;&#x7A0B;&#x95F4;&#x901A;&#x8BAF;&#x6700;&#x5FEB;&#x7684;&#x5F62;&#x5F0F;&#x3002; &#x5B83;&#x63D0;&#x4F9B;&#x4E00;&#x5757;&#x5728;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x95F4;&#x5171;&#x4EAB;&#x7684;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x3002; &#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x80FD;&#x591F;&#x5728;&#x53E6;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x65F6;&#x5199;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x8FD9;&#x6837;&#x4E00;&#x5757;&#x5185;&#x5B58;&#x533A;&#x7528; Boost.Interprocess &#x7684; <code>boost::interprocess::shared_memory_object</code> &#x7C7B;&#x8868;&#x793A;&#x3002; &#x4E3A;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x7C7B;&#xFF0C;&#x9700;&#x8981;&#x5305;&#x542B; <code>boost/interprocess/shared_memory_object.hpp</code> &#x5934;&#x6587;&#x4EF6;&#x3002;</p>
+<pre><code>#include &lt;boost/interprocess/shared_memory_object.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::shared_memory_object shdmem(boost::interprocess::open_or_create, &quot;Highscore&quot;, boost::interprocess::read_write); 
+  shdmem.truncate(1024); 
+  std::cout &lt;&lt; shdmem.get_name() &lt;&lt; std::endl; 
+  boost::interprocess::offset_t size; 
+  if (shdmem.get_size(size)) 
+    std::cout &lt;&lt; size &lt;&lt; std::endl; 
+}
+</code></pre><ul>
+<li><a href="src/8.2.1/main.cpp">&#x4E0B;&#x8F7D;&#x6E90;&#x4EE3;&#x7801;</a></li>
+</ul>
+<p><code>boost::interprocess::shared_memory_object</code> &#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x9700;&#x8981;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x3002; &#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x662F;&#x8981;&#x521B;&#x5EFA;&#x6216;&#x6253;&#x5F00;&#x3002; &#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x6307;&#x5B9A;&#x4E86;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;&#x7528; <code>boost::interprocess::open_or_create</code> &#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x5982;&#x679C;&#x5B58;&#x5728;&#x5C31;&#x5C06;&#x5176;&#x6253;&#x5F00;&#xFF0C;&#x5426;&#x5219;&#x521B;&#x5EFA;&#x4E4B;&#x3002;</p>
+<p>&#x5047;&#x8BBE;&#x4E4B;&#x524D;&#x5DF2;&#x7ECF;&#x521B;&#x5EFA;&#x4E86;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x73B0;&#x6253;&#x5F00;&#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x521B;&#x5EFA;&#x7684;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x3002; &#x4E3A;&#x4E86;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x4E00;&#x5757;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x9700;&#x8981;&#x4E3A;&#x5176;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x540D;&#x79F0;&#xFF0C;&#x4F20;&#x9012;&#x7ED9; <code>boost::interprocess::shared_memory_object</code> &#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x6307;&#x5B9A;&#x4E86;&#x8FD9;&#x4E2A;&#x540D;&#x79F0;&#x3002;</p>
+<p>&#x7B2C;&#x4E09;&#x4E2A;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x6307;&#x793A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5982;&#x4F55;&#x8BBF;&#x95EE;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x3002; &#x4F8B;&#x5B50;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x80FD;&#x591F;&#x8BFB;&#x5199;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x6700;&#x540E;&#x7684;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F; <code>boost::interprocess::read_write</code>&#x3002;</p>
+<p>&#x5728;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <code>boost::interprocess::shared_memory_object</code> &#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x540E;&#xFF0C;&#x76F8;&#x5E94;&#x7684;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x5C31;&#x5728;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E2D;&#x5EFA;&#x7ACB;&#x4E86;&#x3002; &#x53EF;&#x662F;&#x6B64;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x7684;&#x5927;&#x5C0F;&#x88AB;&#x521D;&#x59CB;&#x5316;&#x4E3A;0.&#x4E3A;&#x4E86;&#x4F7F;&#x7528;&#x8FD9;&#x5757;&#x533A;&#x57DF;&#xFF0C;&#x9700;&#x8981;&#x8C03;&#x7528; <code>truncate()</code> &#x51FD;&#x6570;&#xFF0C;&#x4EE5;&#x5B57;&#x8282;&#x4E3A;&#x5355;&#x4F4D;&#x4F20;&#x9012;&#x8BF7;&#x6C42;&#x7684;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7684;&#x5927;&#x5C0F;&#x3002; &#x5BF9;&#x4E8E;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x63D0;&#x4F9B;&#x4E86;1,024&#x5B57;&#x8282;&#x7684;&#x7A7A;&#x95F4;&#x3002;</p>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;<code>truncate()</code> &#x51FD;&#x6570;&#x53EA;&#x80FD;&#x5728;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4EE5; <code>boost::interprocess::read_write</code> &#x65B9;&#x5F0F;&#x6253;&#x5F00;&#x65F6;&#x8C03;&#x7528;&#x3002; &#x5982;&#x679C;&#x4E0D;&#x662F;&#x4EE5;&#x6B64;&#x65B9;&#x5F0F;&#x6253;&#x5F00;&#xFF0C;&#x5C06;&#x629B;&#x51FA; <code>boost::interprocess::interprocess_exception</code> &#x5F02;&#x5E38;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x8C03;&#x6574;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7684;&#x5927;&#x5C0F;&#xFF0C;<code>truncate()</code> &#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x88AB;&#x91CD;&#x590D;&#x8C03;&#x7528;&#x3002;</p>
+<p>&#x5728;&#x521B;&#x5EFA;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x540E;&#xFF0C;<code>get_name()</code> &#x548C; <code>get_size()</code> &#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x5206;&#x522B;&#x7528;&#x6765;&#x67E5;&#x8BE2;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7684;&#x540D;&#x79F0;&#x548C;&#x5927;&#x5C0F;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x88AB;&#x7528;&#x4E8E;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E4B;&#x95F4;&#x4EA4;&#x6362;&#x6570;&#x636E;&#xFF0C;&#x6240;&#x4EE5;&#x6BCF;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x6620;&#x5C04;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x5230;&#x81EA;&#x5DF1;&#x7684;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x4E0A;&#xFF0C;&#x8FD9;&#x662F;&#x901A;&#x8FC7; <code>boost::interprocess::mapped_region</code> &#x7C7B;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<p>&#x4F60;&#x4E5F;&#x8BB8;&#x6709;&#x4E9B;&#x5947;&#x602A;&#xFF0C;&#x4E3A;&#x4E86;&#x8BBF;&#x95EE;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x8981;&#x4F7F;&#x7528;&#x4E24;&#x4E2A;&#x7C7B;&#x3002; &#x662F;&#x7684;&#xFF0C;<code>boost::interprocess::mapped_region</code> &#x8FD8;&#x80FD;&#x6620;&#x5C04;&#x4E0D;&#x540C;&#x7684;&#x5BF9;&#x8C61;&#x5230;&#x5177;&#x4F53;&#x5E94;&#x7528;&#x7684;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x3002; &#x5982; Boost.Interprocess &#x63D0;&#x4F9B; <code>boost::interprocess::file_mapping</code> &#x7C7B;&#x5B9E;&#x9645;&#x4E0A;&#x4EE3;&#x8868;&#x7279;&#x5B9A;&#x6587;&#x4EF6;&#x7684;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x3002; &#x6240;&#x4EE5; <code>boost::interprocess::file_mapping</code> &#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x3002; &#x5411;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x5199;&#x5165;&#x7684;&#x6570;&#x636E;&#x5C06;&#x81EA;&#x52A8;&#x4FDD;&#x5B58;&#x5173;&#x8054;&#x7684;&#x7269;&#x7406;&#x6587;&#x4EF6;&#x4E0A;&#x3002; &#x7531;&#x4E8E; <code>boost::interprocess::file_mapping</code> &#x4E0D;&#x5FC5;&#x52A0;&#x8F7D;&#x6574;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x4F46;&#x5374;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>boost::interprocess::mapped_region</code> &#x5C06;&#x4EFB;&#x610F;&#x90E8;&#x5206;&#x6620;&#x5C04;&#x5230;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x80FD;&#x5904;&#x7406;&#x51E0;&#x4E2A;GB&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x800C;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5728;32&#x4F4D;&#x7CFB;&#x7EDF;&#x4E0A;&#x662F;&#x4E0D;&#x80FD;&#x5168;&#x90E8;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#x4E0A;&#x7684;&#x3002;</p>
+<pre><code>#include &lt;boost/interprocess/shared_memory_object.hpp&gt; 
+#include &lt;boost/interprocess/mapped_region.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::shared_memory_object shdmem(boost::interprocess::open_or_create, &quot;Highscore&quot;, boost::interprocess::read_write); 
+  shdmem.truncate(1024); 
+  boost::interprocess::mapped_region region(shdmem, boost::interprocess::read_write); 
+  std::cout &lt;&lt; std::hex &lt;&lt; &quot;0x&quot; &lt;&lt; region.get_address() &lt;&lt; std::endl; 
+  std::cout &lt;&lt; std::dec &lt;&lt; region.get_size() &lt;&lt; std::endl; 
+  boost::interprocess::mapped_region region2(shdmem, boost::interprocess::read_only); 
+  std::cout &lt;&lt; std::hex &lt;&lt; &quot;0x&quot; &lt;&lt; region2.get_address() &lt;&lt; std::endl; 
+  std::cout &lt;&lt; std::dec &lt;&lt; region2.get_size() &lt;&lt; std::endl; 
+}
+</code></pre><ul>
+<li><a href="src/8.2.2/main.cpp">&#x4E0B;&#x8F7D;&#x6E90;&#x4EE3;&#x7801;</a></li>
+</ul>
+<p>&#x4E3A;&#x4E86;&#x4F7F;&#x7528; <code>boost::interprocess::mapped_region</code> &#x7C7B;&#xFF0C;&#x9700;&#x8981;&#x5305;&#x542B; <code>boost/interprocess/mapped_region.hpp</code> &#x5934;&#x6587;&#x4EF6;&#x3002; <code>boost::interprocess::mapped_region</code> &#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x5FC5;&#x987B;&#x662F; <code>boost::interprocess::shared_memory_object</code> &#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x3002; &#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x6307;&#x793A;&#x6B64;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x5BF9;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6765;&#x8BF4;&#xFF0C;&#x662F;&#x53EA;&#x8BFB;&#x6216;&#x662F;&#x53EF;&#x5199;&#x7684;&#x3002;</p>
+<p>&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x521B;&#x5EFA;&#x4E86;&#x4E24;&#x4E2A; <code>boost::interprocess::mapped_region</code> &#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x3002; &#x540D;&#x4E3A;&quot;Highscore&quot;&#x7684;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x88AB;&#x6620;&#x5C04;&#x5230;&#x8FDB;&#x7A0B;&#x7684;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x4E24;&#x6B21;&#x3002; &#x901A;&#x8FC7; <code>get_address()</code> &#x548C; <code>get_size()</code> &#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x83B7;&#x5F97;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7684;&#x5730;&#x5740;&#x548C;&#x5927;&#x5C0F;&#x5199;&#x5230;&#x6807;&#x51C6;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x6D41;&#x4E2D;&#x3002; &#x5728;&#x8FD9;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<code>get_size()</code> &#x7684;&#x8FD4;&#x56DE;&#x503C;&#x90FD;&#x662F;<code>1024</code>&#xFF0C;&#x800C; <code>get_address()</code> &#x7684;&#x8FD4;&#x56DE;&#x503C;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4F7F;&#x7528;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x5199;&#x5165;&#x5E76;&#x8BFB;&#x53D6;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#x3002;</p>
+<pre><code>#include &lt;boost/interprocess/shared_memory_object.hpp&gt; 
+#include &lt;boost/interprocess/mapped_region.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::shared_memory_object shdmem(boost::interprocess::open_or_create, &quot;Highscore&quot;, boost::interprocess::read_write); 
+  shdmem.truncate(1024); 
+  boost::interprocess::mapped_region region(shdmem, boost::interprocess::read_write); 
+  int *i1 = static_cast&lt;int*&gt;(region.get_address()); 
+  *i1 = 99; 
+  boost::interprocess::mapped_region region2(shdmem, boost::interprocess::read_only); 
+  int *i2 = static_cast&lt;int*&gt;(region2.get_address()); 
+  std::cout &lt;&lt; *i2 &lt;&lt; std::endl; 
+}
+</code></pre><ul>
+<li><a href="src/8.2.3/main.cpp">&#x4E0B;&#x8F7D;&#x6E90;&#x4EE3;&#x7801;</a></li>
+</ul>
+<p>&#x901A;&#x8FC7;&#x53D8;&#x91CF; <code>region</code>, &#x6570;&#x503C; 99 &#x88AB;&#x5199;&#x5230;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7684;&#x5F00;&#x59CB;&#x5904;&#x3002; &#x7136;&#x540E;&#x53D8;&#x91CF; <code>region2</code> &#x8BBF;&#x95EE;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7684;&#x540C;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#xFF0C;&#x5E76;&#x5C06;&#x6570;&#x503C;&#x5199;&#x5165;&#x5230;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x6D41;&#x4E2D;&#x3002; &#x6B63;&#x5982;&#x524D;&#x9762;&#x4F8B;&#x5B50;&#x7684; <code>get_address()</code> &#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x6240;&#x89C1;&#xFF0C;&#x867D;&#x7136;&#x53D8;&#x91CF; <code>region</code> &#x548C; <code>region2</code> &#x8868;&#x793A;&#x7684;&#x662F;&#x8BE5;&#x8FDB;&#x7A0B;&#x5185;&#x4E0D;&#x540C;&#x7684;&#x5185;&#x5B58;&#x533A;&#x57DF;&#xFF0C;&#x4F46;&#x7531;&#x4E8E;&#x4E24;&#x4E2A;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x5E95;&#x5C42;&#x5B9E;&#x9645;&#x8BBF;&#x95EE;&#x7684;&#x662F;&#x540C;&#x4E00;&#x5757;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x6240;&#x4EE5;&#x7A0B;&#x5E8F;&#x6253;&#x5370;&#x51FA;<code>99</code>&#x3002;</p>
+<p>&#x901A;&#x5E38;&#xFF0C;&#x4E0D;&#x4F1A;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5185;&#x4F7F;&#x7528;&#x591A;&#x4E2A; <code>boost::interprocess::mapped_region</code> &#x8BBF;&#x95EE;&#x540C;&#x4E00;&#x5757;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x3002; &#x5B9E;&#x9645;&#x4E0A;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5185;&#x5C06;&#x540C;&#x4E00;&#x4E2A;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x6620;&#x5C04;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x4E0A;&#x6CA1;&#x6709;&#x591A;&#x5927;&#x7684;&#x610F;&#x4E49;&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x53EA;&#x7528;&#x4E8E;&#x8BF4;&#x660E;&#x7684;&#x76EE;&#x7684;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x5220;&#x9664;&#x6307;&#x5B9A;&#x7684;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;<code>boost::interprocess::shared_memory_object</code> &#x5BF9;&#x8C61;&#x63D0;&#x4F9B;&#x4E86;&#x9759;&#x6001;&#x7684; <code>remove()</code> &#x51FD;&#x6570;&#xFF0C;&#x6B64;&#x51FD;&#x6570;&#x5E26;&#x6709;&#x4E00;&#x4E2A;&#x8981;&#x88AB;&#x5220;&#x9664;&#x7684;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x540D;&#x79F0;&#x7684;&#x53C2;&#x6570;&#x3002;</p>
+<p>Boost.Interprocess &#x7C7B;&#x7684;RAII&#x6982;&#x5FF5;&#x652F;&#x6301;&#xFF0C;&#x660E;&#x663E;&#x6765;&#x81EA;&#x5173;&#x4E8E;&#x667A;&#x80FD;&#x6307;&#x9488;&#x7684;&#x7AE0;&#x8282;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;&#x4E86;&#x53E6;&#x5916;&#x7684;&#x4E00;&#x4E2A;&#x7C7B;&#x540D;&#x79F0; <code>boost::interprocess::remove_shared_memory_on_destroy</code>&#x3002; &#x5B83;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#x7684;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7684;&#x540D;&#x79F0;&#x3002; &#x5982;&#x679C;&#x8FD9;&#x4E2A;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#x88AB;&#x9500;&#x6BC1;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x6790;&#x6784;&#x51FD;&#x6570;&#x4E2D;&#x4F1A;&#x81EA;&#x52A8;&#x5220;&#x9664;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7684;&#x5BB9;&#x5668;&#x3002;</p>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#x6784;&#x9020;&#x51FD;&#x6570;&#x5E76;&#x4E0D;&#x521B;&#x5EFA;&#x6216;&#x6253;&#x5F00;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x8FD9;&#x4E2A;&#x7C7B;&#x5E76;&#x4E0D;&#x662F;&#x5178;&#x578B;RAII&#x6982;&#x5FF5;&#x7684;&#x4EE3;&#x8868;&#x3002;</p>
+<pre><code>#include &lt;boost/interprocess/shared_memory_object.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  bool removed = boost::interprocess::shared_memory_object::remove(&quot;Highscore&quot;); 
+  std::cout &lt;&lt; removed &lt;&lt; std::endl; 
+}
+</code></pre><ul>
+<li><a href="src/8.2.4/main.cpp">&#x4E0B;&#x8F7D;&#x6E90;&#x4EE3;&#x7801;</a></li>
+</ul>
+<p>&#x5982;&#x679C; <code>remove()</code> &#x6CA1;&#x6709;&#x88AB;&#x8C03;&#x7528;, &#x90A3;&#x4E48;&#xFF0C;&#x5373;&#x4F7F;&#x8FDB;&#x7A0B;&#x7EC8;&#x6B62;&#xFF0C;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x8FD8;&#x4F1A;&#x4E00;&#x76F4;&#x5B58;&#x5728;&#xFF0C;&#x800C;&#x4E0D;&#x8BBA;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7684;&#x5220;&#x9664;&#x662F;&#x5426;&#x4F9D;&#x8D56;&#x5E95;&#x5C42;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x3002; &#x591A;&#x6570;Unix&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF0C;&#x5305;&#x62EC;Linux&#xFF0C;&#x4E00;&#x65E6;&#x7CFB;&#x7EDF;&#x91CD;&#x65B0;&#x542F;&#x52A8;&#xFF0C;&#x90FD;&#x4F1A;&#x81EA;&#x52A8;&#x5220;&#x9664;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x5728; Windows &#x6216; Mac OS X&#x4E0A;&#xFF0C;<code>remove()</code> &#x5FC5;&#x987B;&#x8C03;&#x7528;&#xFF0C;&#x8FD9;&#x4E24;&#x79CD;&#x7CFB;&#x7EDF;&#x5B9E;&#x9645;&#x4E0A;&#x5C06;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x5B58;&#x50A8;&#x5728;&#x6301;&#x4E45;&#x5316;&#x7684;&#x6587;&#x4EF6;&#x4E0A;&#xFF0C;&#x6B64;&#x6587;&#x4EF6;&#x5728;&#x7CFB;&#x7EDF;&#x91CD;&#x542F;&#x540E;&#x8FD8;&#x662F;&#x5B58;&#x5728;&#x7684;&#x3002;</p>
+<p>Windows &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x7279;&#x522B;&#x7684;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x5728;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x4F7F;&#x7528;&#x5B83;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7EC8;&#x6B62;&#x540E;&#x81EA;&#x52A8;&#x5220;&#x9664;&#x3002; &#x4E3A;&#x4E86;&#x4F7F;&#x7528;&#x5B83;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86; <code>boost::interprocess::windows_shared_memory</code> &#x7C7B;&#xFF0C;&#x5B9A;&#x4E49;&#x5728; <code>boost/interprocess/windows_shared_memory.hpp</code> &#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
+<pre><code>#include &lt;boost/interprocess/windows_shared_memory.hpp&gt; 
+#include &lt;boost/interprocess/mapped_region.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::windows_shared_memory shdmem(boost::interprocess::open_or_create, &quot;Highscore&quot;, boost::interprocess::read_write, 1024); 
+  boost::interprocess::mapped_region region(shdmem, boost::interprocess::read_write); 
+  int *i1 = static_cast&lt;int*&gt;(region.get_address()); 
+  *i1 = 99; 
+  boost::interprocess::mapped_region region2(shdmem, boost::interprocess::read_only); 
+  int *i2 = static_cast&lt;int*&gt;(region2.get_address()); 
+  std::cout &lt;&lt; *i2 &lt;&lt; std::endl; 
+}
+</code></pre><ul>
+<li><a href="src/8.2.5/main.cpp">&#x4E0B;&#x8F7D;&#x6E90;&#x4EE3;&#x7801;</a></li>
+</ul>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;<code>boost::interprocess::windows_shared_memory</code> &#x7C7B;&#x6CA1;&#x6709;&#x63D0;&#x4F9B; <code>truncate()</code> &#x51FD;&#x6570;&#xFF0C;&#x800C;&#x662F;&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x56DB;&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7684;&#x5927;&#x5C0F;&#x3002;</p>
+<p>&#x5373;&#x4F7F; <code>boost::interprocess::windows_shared_memory</code> &#x7C7B;&#x662F;&#x4E0D;&#x53EF;&#x79FB;&#x690D;&#x7684;&#xFF0C;&#x4E14;&#x53EA;&#x80FD;&#x7528;&#x4E8E;Windows&#x7CFB;&#x7EDF;&#xFF0C;&#x4F46;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x7279;&#x522B;&#x7684;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x5728;&#x4E0D;&#x540C;&#x5E94;&#x7528;&#x4E4B;&#x95F4;&#x4EA4;&#x6362;&#x6570;&#x636E;&#xFF0C;&#x5B83;&#x8FD8;&#x662F;&#x975E;&#x5E38;&#x6709;&#x7528;&#x7684;&#x3002;</p>
+<h2 id="83-&#x6258;&#x7BA1;&#x5171;&#x4EAB;&#x5185;&#x5B58;">8.3. &#x6258;&#x7BA1;&#x5171;&#x4EAB;&#x5185;&#x5B58;</h2>
+<p>&#x4E0A;&#x4E00;&#x8282;&#x4ECB;&#x7ECD;&#x4E86;&#x7528;&#x6765;&#x521B;&#x5EFA;&#x548C;&#x7BA1;&#x7406;&#x5171;&#x4EAB;&#x7684; <code>boost::interprocess::shared_memory_object</code> &#x7C7B;&#x3002; &#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x7531;&#x4E8E;&#x8FD9;&#x4E2A;&#x7C7B;&#x9700;&#x8981;&#x6309;&#x5355;&#x4E2A;&#x5B57;&#x8282;&#x7684;&#x65B9;&#x5F0F;&#x8BFB;&#x5199;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x7C7B;&#x51E0;&#x4E4E;&#x4E0D;&#x7528;&#x3002; &#x6982;&#x5FF5;&#x4E0A;&#x6765;&#x8BB2;&#xFF0C;C++&#x6539;&#x5584;&#x4E86;&#x7C7B;&#x5BF9;&#x8C61;&#x7684;&#x521B;&#x5EFA;&#x5E76;&#x9690;&#x85CF;&#x4E86;&#x5B83;&#x4EEC;&#x5B58;&#x50A8;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x54EA;&#x91CC;&#xFF0C;&#x662F;&#x600E;&#x4EEC;&#x5B58;&#x50A8;&#x7684;&#x8FD9;&#x4E9B;&#x7EC6;&#x8282;&#x3002;</p>
+<p>Boost.Interprocess &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;&#x201C;&#x6258;&#x7BA1;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x201D;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x901A;&#x8FC7;&#x5B9A;&#x4E49;&#x5728; <code>boost/interprocess/managed_shared_memory.hpp</code> &#x6587;&#x4EF6;&#x4E2D;&#x7684; <code>boost::interprocess::managed_shared_memory</code> &#x7C7B;&#x63D0;&#x4F9B;&#x3002; &#x8FD9;&#x4E2A;&#x7C7B;&#x7684;&#x76EE;&#x7684;&#x662F;&#xFF0C;&#x5BF9;&#x4E8E;&#x9700;&#x8981;&#x5206;&#x914D;&#x5230;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E0A;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5B83;&#x80FD;&#x591F;&#x4EE5;&#x5185;&#x5B58;&#x7533;&#x8BF7;&#x7684;&#x65B9;&#x5F0F;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5E76;&#x4F7F;&#x5176;&#x81EA;&#x52A8;&#x4E3A;&#x4F7F;&#x7528;&#x540C;&#x4E00;&#x4E2A;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7684;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53EF;&#x7528;&#x3002;</p>
+<pre><code>#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::shared_memory_object::remove(&quot;Highscore&quot;); 
+  boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, &quot;Highscore&quot;, 1024); 
+  int *i = managed_shm.construct&lt;int&gt;(&quot;Integer&quot;)(99); 
+  std::cout &lt;&lt; *i &lt;&lt; std::endl; 
+  std::pair&lt;int*, std::size_t&gt; p = managed_shm.find&lt;int&gt;(&quot;Integer&quot;); 
+  if (p.first) 
+    std::cout &lt;&lt; *p.first &lt;&lt; std::endl; 
+}
+</code></pre><ul>
+<li><a href="src/8.3.1/main.cpp">&#x4E0B;&#x8F7D;&#x6E90;&#x4EE3;&#x7801;</a></li>
+</ul>
+<p>&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x6253;&#x5F00;&#x540D;&#x4E3A; &quot;Highscore&quot; &#x5927;&#x5C0F;&#x4E3A;1,024 &#x5B57;&#x8282;&#x7684;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x5982;&#x679C;&#x5B83;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5B83;&#x4F1A;&#x88AB;&#x81EA;&#x52A8;&#x5730;&#x521B;&#x5EFA;&#x3002;</p>
+<p>&#x5728;&#x5E38;&#x89C4;&#x7684;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x4E3A;&#x4E86;&#x8BFB;&#x5199;&#x6570;&#x636E;&#xFF0C;&#x5355;&#x4E2A;&#x5B57;&#x8282;&#x88AB;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#xFF0C;&#x6258;&#x7BA1;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x8BF8;&#x5982; <code>construct()</code> &#x51FD;&#x6570;&#xFF0C;&#x6B64;&#x51FD;&#x6570;&#x8981;&#x6C42;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4F5C;&#x4E3A;&#x6A21;&#x677F;&#x53C2;&#x6570;&#xFF0C;&#x6B64;&#x4F8B;&#x4E2D;&#x58F0;&#x660E;&#x7684;&#x662F; <code>int</code> &#x7C7B;&#x578B;&#xFF0C;&#x51FD;&#x6570;&#x7F3A;&#x7701;&#x8981;&#x6C42;&#x4E00;&#x4E2A;&#x540D;&#x79F0;&#x6765;&#x8868;&#x793A;&#x5728;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E2D;&#x521B;&#x5EFA;&#x7684;&#x5BF9;&#x8C61;&#x3002; &#x6B64;&#x4F8B;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x540D;&#x79F0;&#x662F; &quot;Integer&quot;&#x3002;</p>
+<p>&#x7531;&#x4E8E; <code>construct()</code> &#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#xFF0C;&#x4E3A;&#x4E86;&#x521D;&#x59CB;&#x5316;&#x521B;&#x5EFA;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x4F20;&#x9012;&#x53C2;&#x6570;&#x7ED9;&#x6B64;&#x51FD;&#x6570;&#x3002; &#x8BED;&#x6CD5;&#x770B;&#x4E0A;&#x53BB;&#x50CF;&#x8C03;&#x7528;&#x4E00;&#x4E2A;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002; &#x8FD9;&#x5C31;&#x786E;&#x4FDD;&#x4E86;&#x5BF9;&#x8C61;&#x4E0D;&#x4EC5;&#x80FD;&#x5728;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E0A;&#x521B;&#x5EFA;&#xFF0C;&#x8FD8;&#x80FD;&#x591F;&#x6309;&#x9700;&#x8981;&#x7684;&#x65B9;&#x5F0F;&#x521D;&#x59CB;&#x5316;&#x5B83;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x8BBF;&#x95EE;&#x6258;&#x7BA1;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x7279;&#x5B9A;&#x5BF9;&#x8C61;&#xFF0C;&#x7528; <code>find()</code> &#x51FD;&#x6570;&#x3002; &#x901A;&#x8FC7;&#x4F20;&#x9012;&#x8981;&#x67E5;&#x627E;&#x5BF9;&#x8C61;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x8FD4;&#x56DE;&#x6216;&#x8005;&#x662F;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x8FD9;&#x4E2A;&#x7279;&#x5B9A;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x6216;&#x8005;&#x662F;0&#x8868;&#x793A;&#x7ED9;&#x5B9A;&#x540D;&#x79F0;&#x7684;&#x5BF9;&#x8C61;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x3002;</p>
+<p>&#x6B63;&#x5982;&#x524D;&#x9762;&#x4F8B;&#x5B50;&#x4E2D;&#x6240;&#x89C1;&#xFF0C;<code>find()</code> &#x5B9E;&#x9645;&#x8FD4;&#x56DE;&#x7684;&#x662F; <code>std::pair</code> &#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;<code>first</code> &#x5C5E;&#x6027;&#x63D0;&#x4F9B;&#x7684;&#x662F;&#x6307;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x90A3;&#x4E48; <code>second</code> &#x5C5E;&#x6027;&#x63D0;&#x4F9B;&#x7684;&#x662F;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;</p>
+<pre><code>#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::shared_memory_object::remove(&quot;Highscore&quot;); 
+  boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, &quot;Highscore&quot;, 1024); 
+  int *i = managed_shm.construct&lt;int&gt;(&quot;Integer&quot;)[10](99); 
+  std::cout &lt;&lt; *i &lt;&lt; std::endl; 
+  std::pair&lt;int*, std::size_t&gt; p = managed_shm.find&lt;int&gt;(&quot;Integer&quot;); 
+  if (p.first) 
+  { 
+    std::cout &lt;&lt; *p.first &lt;&lt; std::endl; 
+    std::cout &lt;&lt; p.second &lt;&lt; std::endl; 
+  } 
+}
+</code></pre><ul>
+<li><a href="src/8.3.2/main.cpp">&#x4E0B;&#x8F7D;&#x6E90;&#x4EE3;&#x7801;</a></li>
+</ul>
+<p>&#x8FD9;&#x6B21;&#xFF0C;&#x901A;&#x8FC7;&#x5728; <code>construct()</code> &#x51FD;&#x6570;&#x540E;&#x9762;&#x7ED9;&#x4EE5;&#x7528;&#x65B9;&#x62EC;&#x53F7;&#x62EC;&#x4F4F;&#x7684;&#x6570;&#x5B57;10&#xFF0C;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;10&#x4E2A;&#x5143;&#x7D20;&#x7684; <code>int</code> &#x7C7B;&#x578B;&#x7684;&#x6570;&#x7EC4;&#x3002; &#x5C06; <code>second</code> &#x5C5E;&#x6027;&#x5199;&#x5230;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x6D41;&#xFF0C;&#x540C;&#x6837;&#x662F;&#x8FD9;&#x4E2A;&#x6570;&#x5B57;<code>10</code>&#x3002; &#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;<code>find()</code> &#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x5BF9;&#x8C61;&#x80FD;&#x591F;&#x533A;&#x5206;&#x662F;&#x5355;&#x4E2A;&#x5BF9;&#x8C61;&#x8FD8;&#x662F;&#x6570;&#x7EC4;&#x5BF9;&#x8C61;&#x3002; &#x5BF9;&#x4E8E;&#x524D;&#x8005;&#xFF0C;<code>second</code> &#x7684;&#x503C;&#x662F;1&#xFF0C;&#x800C;&#x5BF9;&#x4E8E;&#x540E;&#x8005;&#xFF0C;&#x5B83;&#x7684;&#x503C;&#x662F;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x7684;&#x4E2A;&#x6570;&#x3002;</p>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5143;&#x7D20;&#x88AB;&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x6570;&#x503C;99&#x3002; &#x4E0D;&#x53EF;&#x80FD;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x4E0D;&#x540C;&#x7684;&#x503C;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x7ED9;&#x5B9A;&#x540D;&#x79F0;&#x7684;&#x5BF9;&#x8C61;&#x5DF2;&#x7ECF;&#x5728;&#x6258;&#x7BA1;&#x7684;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E2D;&#x5B58;&#x5728;&#xFF0C;&#x90A3;&#x4E48; <code>construct()</code> &#x5C06;&#x4F1A;&#x5931;&#x8D25;&#x3002; &#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;<code>construct()</code> &#x8FD4;&#x56DE;&#x503C;&#x662F;0&#x3002; &#x5982;&#x679C;&#x5B58;&#x5728;&#x7684;&#x5BF9;&#x8C61;&#x5373;&#x4F7F;&#x5B58;&#x5728;&#x4E5F;&#x53EF;&#x4EE5;&#x88AB;&#x91CD;&#x7528;&#xFF0C;<code>find_or_construct()</code> &#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#xFF0C;&#x6B64;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x5B83;&#x627E;&#x5230;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;&#x3002; &#x6B64;&#x65F6;&#x6CA1;&#x6709;&#x521D;&#x59CB;&#x5316;&#x52A8;&#x4F5C;&#x53D1;&#x751F;&#x3002;</p>
+<p>&#x5176;&#x4ED6;&#x53EF;&#x4EE5;&#x5BFC;&#x81F4; <code>construct()</code> &#x5931;&#x8D25;&#x7684;&#x60C5;&#x51B5;&#x5982;&#x4E0B;&#x4F8B;&#x6240;&#x793A;&#x3002;</p>
+<pre><code>#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  try 
+  { 
+    boost::interprocess::shared_memory_object::remove(&quot;Highscore&quot;); 
+    boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, &quot;Highscore&quot;, 1024); 
+    int *i = managed_shm.construct&lt;int&gt;(&quot;Integer&quot;)[4096](99); 
+  } 
+  catch (boost::interprocess::bad_alloc &amp;ex) 
+  { 
+    std::cerr &lt;&lt; ex.what() &lt;&lt; std::endl; 
+  } 
+}
+</code></pre><ul>
+<li><a href="src/8.3.3/main.cpp">&#x4E0B;&#x8F7D;&#x6E90;&#x4EE3;&#x7801;</a></li>
+</ul>
+<p>&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5C1D;&#x8BD5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <code>int</code> &#x7C7B;&#x578B;&#x7684;&#xFF0C;&#x5305;&#x542B;4,096&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x6570;&#x7EC4;&#x3002; &#x7136;&#x800C;&#xFF0C;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x53EA;&#x6709;1,024 &#x5B57;&#x8282;&#xFF0C;&#x4E8E;&#x662F;&#x7531;&#x4E8E;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E0D;&#x80FD;&#x63D0;&#x4F9B;&#x8BF7;&#x6C42;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x800C;&#x629B;&#x51FA; <code>boost::interprocess::bad_alloc</code> &#x7C7B;&#x578B;&#x7684;&#x5F02;&#x5E38;&#x3002;</p>
+<p>&#x4E00;&#x65E6;&#x5BF9;&#x8C61;&#x5DF2;&#x7ECF;&#x5728;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E2D;&#x521B;&#x5EFA;&#xFF0C;&#x5B83;&#x4EEC;&#x53EF;&#x4EE5;&#x7528; <code>destroy()</code> &#x51FD;&#x6570;&#x5220;&#x9664;&#x3002;</p>
+<pre><code>#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::shared_memory_object::remove(&quot;Highscore&quot;); 
+  boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, &quot;Highscore&quot;, 1024); 
+  int *i = managed_shm.find_or_construct&lt;int&gt;(&quot;Integer&quot;)(99); 
+  std::cout &lt;&lt; *i &lt;&lt; std::endl; 
+  managed_shm.destroy&lt;int&gt;(&quot;Integer&quot;); 
+  std::pair&lt;int*, std::size_t&gt; p = managed_shm.find&lt;int&gt;(&quot;Integer&quot;); 
+  std::cout &lt;&lt; p.first &lt;&lt; std::endl; 
+}
+</code></pre><ul>
+<li><a href="src/8.3.4/main.cpp">&#x4E0B;&#x8F7D;&#x6E90;&#x4EE3;&#x7801;</a></li>
+</ul>
+<p>&#x7531;&#x4E8E;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#xFF0C;&#x8981;&#x88AB;&#x5220;&#x9664;&#x5BF9;&#x8C61;&#x7684;&#x540D;&#x79F0;&#x4F20;&#x9012;&#x7ED9; <code>destroy()</code> &#x51FD;&#x6570;&#x3002; &#x5982;&#x679C;&#x9700;&#x8981;&#xFF0C;&#x53EF;&#x4EE5;&#x68C0;&#x67E5;&#x6B64;&#x51FD;&#x6570;&#x7684; <code>bool</code> &#x7C7B;&#x578B;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4EE5;&#x786E;&#x5B9A;&#x662F;&#x5426;&#x7ED9;&#x5B9A;&#x7684;&#x5BF9;&#x8C61;&#x88AB;&#x627E;&#x5230;&#x5E76;&#x6210;&#x529F;&#x5220;&#x9664;&#x3002; &#x7531;&#x4E8E;&#x5BF9;&#x8C61;&#x5982;&#x679C;&#x88AB;&#x627E;&#x5230;&#x603B;&#x662F;&#x88AB;&#x5220;&#x9664;&#xFF0C;&#x6240;&#x4EE5;&#x8FD4;&#x56DE;&#x503C; <code>false</code> &#x8868;&#x793A;&#x7ED9;&#x5B9A;&#x540D;&#x79F0;&#x7684;&#x5BF9;&#x8C61;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x3002;</p>
+<p>&#x9664;&#x4E86; <code>destroy()</code> &#x51FD;&#x6570;&#xFF0C;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x51FD;&#x6570; <code>destroy_ptr()</code>&#xFF0C;&#x5B83;&#x80FD;&#x591F;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x6258;&#x7BA1;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x5B83;&#x4E5F;&#x80FD;&#x7528;&#x6765;&#x5220;&#x9664;&#x6570;&#x7EC4;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x6258;&#x7BA1;&#x5185;&#x5B58;&#x5F88;&#x5BB9;&#x6613;&#x7528;&#x6765;&#x5B58;&#x50A8;&#x5728;&#x4E0D;&#x540C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E4B;&#x95F4;&#x5171;&#x4EAB;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x90A3;&#x4E48;&#x5F88;&#x81EA;&#x7136;&#x5C31;&#x4F1A;&#x4F7F;&#x7528;&#x5230;&#x6765;&#x81EA;C++&#x6807;&#x51C6;&#x6A21;&#x677F;&#x5E93;&#x7684;&#x5BB9;&#x5668;&#x4E86;&#x3002; &#x8FD9;&#x4E9B;&#x5BB9;&#x5668;&#x9700;&#x8981;&#x7528; <code>new</code> &#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x5206;&#x914D;&#x5404;&#x81EA;&#x9700;&#x8981;&#x7684;&#x5185;&#x5B58;&#x3002; &#x4E3A;&#x4E86;&#x5728;&#x6258;&#x7BA1;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E0A;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x5BB9;&#x5668;&#xFF0C;&#x8FD9;&#x5C31;&#x9700;&#x8981;&#x66F4;&#x52A0;&#x4ED4;&#x7EC6;&#x5730;&#x5728;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E0A;&#x5206;&#x914D;&#x5185;&#x5B58;&#x3002;</p>
+<p>&#x53EF;&#x60DC;&#x7684;&#x662F;&#xFF0C;&#x8BB8;&#x591A;C++&#x6807;&#x51C6;&#x6A21;&#x677F;&#x5E93;&#x7684;&#x5B9E;&#x73B0;&#x5E76;&#x4E0D;&#x592A;&#x7075;&#x6D3B;&#xFF0C;&#x4E0D;&#x80FD;&#x591F;&#x63D0;&#x4F9B; Boost.Interprocess &#x4F7F;&#x7528; <code>std::string</code> &#x6216; <code>std::list</code> &#x7684;&#x5BB9;&#x5668;&#x3002; &#x79FB;&#x690D;&#x5230; Microsoft Visual Studio 2008 &#x7684;&#x6807;&#x51C6;&#x6A21;&#x677F;&#x5E93;&#x5B9E;&#x73B0;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x5141;&#x8BB8;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x6709;&#x540D;&#x7684;&#x6765;&#x81EA;C++&#x6807;&#x51C6;&#x7684;&#x5BB9;&#x5668;&#xFF0C;Boost.Interprocess &#x5728;&#x547D;&#x540D;&#x7A7A;&#x95F4; <code>boost::interprocess</code> &#x4E0B;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x5B83;&#x4EEC;&#x7684;&#x66F4;&#x7075;&#x6D3B;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x3002; &#x5982;&#xFF0C;<code>boost::interprocess::string</code> &#x7684;&#x884C;&#x4E3A;&#x5B9E;&#x9645;&#x4E0A;&#x5BF9;&#x5E94;&#x7684;&#x662F; <code>std::string</code>&#xFF0C;&#x4F18;&#x70B9;&#x662F;&#x5B83;&#x7684;&#x5BF9;&#x8C61;&#x80FD;&#x591F;&#x5B89;&#x5168;&#x5730;&#x5B58;&#x50A8;&#x5728;&#x6258;&#x7BA1;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E0A;&#x3002;</p>
+<pre><code>#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;boost/interprocess/allocators/allocator.hpp&gt; 
+#include &lt;boost/interprocess/containers/string.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::shared_memory_object::remove(&quot;Highscore&quot;); 
+  boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, &quot;Highscore&quot;, 1024); 
+  typedef boost::interprocess::allocator&lt;char, boost::interprocess::managed_shared_memory::segment_manager&gt; CharAllocator; 
+  typedef boost::interprocess::basic_string&lt;char, std::char_traits&lt;char&gt;, CharAllocator&gt; string; 
+  string *s = managed_shm.find_or_construct&lt;string&gt;(&quot;String&quot;)(&quot;Hello!&quot;, managed_shm.get_segment_manager()); 
+  s-&gt;insert(5, &quot;, world&quot;); 
+  std::cout &lt;&lt; *s &lt;&lt; std::endl; 
+}
+</code></pre><ul>
+<li><a href="src/8.3.5/main.cpp">&#x4E0B;&#x8F7D;&#x6E90;&#x4EE3;&#x7801;</a></li>
+</ul>
+<p>&#x4E3A;&#x4E86;&#x521B;&#x5EFA;&#x5728;&#x6258;&#x7BA1;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E0A;&#x7533;&#x8BF7;&#x5185;&#x5B58;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5FC5;&#x987B;&#x4E3A; Boost.Interprocess &#x63D0;&#x4F9B;&#x7684;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x5206;&#x914D;&#x5668;&#x5B9A;&#x4E49;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4F7F;&#x7528;C++&#x6807;&#x51C6;&#x63D0;&#x4F9B;&#x7684;&#x7F3A;&#x7701;&#x5206;&#x914D;&#x5668;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x8FD9;&#x4E2A;&#x76EE;&#x7684;&#xFF0C;Boost.Interprocess &#x5728; <code>boost/interprocess/allocators/allocator.hpp</code> &#x6587;&#x4EF6;&#x4E2D;&#x63D0;&#x4F9B;&#x4E86; <code>boost::interprocess::allocator</code> &#x7C7B;&#x7684;&#x5B9A;&#x4E49;&#x3002; &#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x7C7B;&#xFF0C;&#x53EF;&#x4EE5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5206;&#x914D;&#x5668;&#xFF0C;&#x6B64;&#x5206;&#x914D;&#x5668;&#x7684;&#x5185;&#x90E8;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x201C;&#x6258;&#x7BA1;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x6BB5;&#x7BA1;&#x7406;&#x5668;&#x201D;&#x3002; &#x6BB5;&#x7BA1;&#x7406;&#x5668;&#x8D1F;&#x8D23;&#x7BA1;&#x7406;&#x4F4D;&#x4E8E;&#x6258;&#x7BA1;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E4B;&#x5185;&#x7684;&#x5185;&#x5B58;&#x3002; &#x4F7F;&#x7528;&#x65B0;&#x5EFA;&#x7684;&#x5206;&#x914D;&#x5668;&#xFF0C;&#x4E0E; string &#x76F8;&#x5E94;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x88AB;&#x5B9A;&#x4E49;&#x4E86;&#x3002; &#x5982;&#x4E0A;&#x9762;&#x6240;&#x793A;&#xFF0C;&#x5B83;&#x4F7F;&#x7528; <code>boost::interprocess::basic_string</code> &#x800C;&#x4E0D;&#x662F; <code>std::basic_string</code>&#x3002; &#x4E0A;&#x9762;&#x4F8B;&#x5B50;&#x4E2D;&#x7684;&#x65B0;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7B80;&#x5355;&#x5730;&#x547D;&#x540D;&#x4E3A; <code>string</code>&#xFF0C;&#x5B83;&#x662F;&#x57FA;&#x4E8E; <code>boost::interprocess::basic_string</code> &#x5E76;&#x7ECF;&#x8FC7;&#x5206;&#x914D;&#x5668;&#x8BBF;&#x95EE;&#x6BB5;&#x7BA1;&#x7406;&#x5668;&#x3002; &#x4E3A;&#x4E86;&#x8BA9;&#x901A;&#x8FC7; <code>find_or_construct()</code> &#x521B;&#x5EFA;&#x7684; <code>string</code> &#x7279;&#x5B9A;&#x5B9E;&#x4F8B;&#xFF0C;&#x77E5;&#x9053;&#x54EA;&#x4E2A;&#x6BB5;&#x7BA1;&#x7406;&#x5668;&#x5E94;&#x8BE5;&#x88AB;&#x8BBF;&#x95EE;&#xFF0C;&#x76F8;&#x5E94;&#x7684;&#x6BB5;&#x7BA1;&#x7406;&#x5668;&#x7684;&#x6307;&#x9488;&#x4F20;&#x9012;&#x7ED9;&#x6784;&#x9020;&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x3002;</p>
+<p>&#x4E0E; <code>boost::interprocess::string</code> &#x4E00;&#x8D77;, Boost.Interprocess &#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x8BB8;&#x591A;&#x5176;&#x4ED6;C++&#x6807;&#x51C6;&#x4E2D;&#x5DF2;&#x77E5;&#x7684;&#x5BB9;&#x5668;&#x3002; &#x5982;, <code>boost::interprocess::vector</code> &#x548C; <code>boost::interprocess::map</code>&#xFF0C;&#x5206;&#x522B;&#x5B9A;&#x4E49;&#x5728; <code>boost/interprocess/containers/vector.hpp</code> &#x548C; <code>boost/interprocess/containers/map.hpp</code>&#x6587;&#x4EF6;&#x4E2D;</p>
+<p>&#x65E0;&#x8BBA;&#x4F55;&#x65F6;&#x540C;&#x4E00;&#x4E2A;&#x6258;&#x7BA1;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x88AB;&#x4E0D;&#x540C;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#xFF0C;&#x8BF8;&#x5982;&#x521B;&#x5EFA;&#xFF0C;&#x67E5;&#x627E;&#x548C;&#x9500;&#x6BC1;&#x5BF9;&#x8C61;&#x7684;&#x64CD;&#x4F5C;&#x662F;&#x81EA;&#x52A8;&#x540C;&#x6B65;&#x7684;&#x3002; &#x5982;&#x679C;&#x4E24;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5C1D;&#x8BD5;&#x5728;&#x6258;&#x7BA1;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E0A;&#x521B;&#x5EFA;&#x4E0D;&#x540C;&#x540D;&#x79F0;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x8BBF;&#x95EE;&#x76F8;&#x5E94;&#x5730;&#x88AB;&#x4E32;&#x884C;&#x5316;&#x4E86;&#x3002; &#x4E3A;&#x4E86;&#x7ACB;&#x523B;&#x6267;&#x884C;&#x591A;&#x4E2A;&#x64CD;&#x4F5C;&#x800C;&#x4E0D;&#x88AB;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x64CD;&#x4F5C;&#x6253;&#x65AD;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>atomic_func()</code> &#x51FD;&#x6570;&#x3002;</p>
+<pre><code>#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;boost/bind.hpp&gt; 
+#include &lt;iostream&gt; 
+
+void construct_objects(boost::interprocess::managed_shared_memory &amp;managed_shm) 
+{ 
+  managed_shm.construct&lt;int&gt;(&quot;Integer&quot;)(99); 
+  managed_shm.construct&lt;float&gt;(&quot;Float&quot;)(3.14); 
+} 
+
+int main() 
+{ 
+  boost::interprocess::shared_memory_object::remove(&quot;Highscore&quot;); 
+  boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, &quot;Highscore&quot;, 1024); 
+  managed_shm.atomic_func(boost::bind(construct_objects, boost::ref(managed_shm))); 
+  std::cout &lt;&lt; *managed_shm.find&lt;int&gt;(&quot;Integer&quot;).first &lt;&lt; std::endl; 
+  std::cout &lt;&lt; *managed_shm.find&lt;float&gt;(&quot;Float&quot;).first &lt;&lt; std::endl; 
+}
+</code></pre><ul>
+<li><a href="src/8.3.6/main.cpp">&#x4E0B;&#x8F7D;&#x6E90;&#x4EE3;&#x7801;</a></li>
+</ul>
+<p><code>atomic_func()</code> &#x9700;&#x8981;&#x4E00;&#x4E2A;&#x65E0;&#x53C2;&#x6570;&#xFF0C;&#x65E0;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x5B83;&#x7684;&#x53C2;&#x6570;&#x3002; &#x88AB;&#x4F20;&#x9012;&#x7684;&#x51FD;&#x6570;&#x5C06;&#x4EE5;&#x4EE5;&#x4E00;&#x79CD;&#x786E;&#x4FDD;&#x6392;&#x4ED6;&#x8BBF;&#x95EE;&#x6258;&#x7BA1;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7684;&#x65B9;&#x5F0F;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x4F46;&#x4EC5;&#x9650;&#x4E8E;&#x5BF9;&#x8C61;&#x7684;&#x521B;&#x5EFA;&#xFF0C;&#x67E5;&#x627E;&#x548C;&#x9500;&#x6BC1;&#x64CD;&#x4F5C;&#x3002; &#x5982;&#x679C;&#x53E6;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6709;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x6258;&#x7BA1;&#x5185;&#x5B58;&#x4E2D;&#x5BF9;&#x8C61;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x5B83;&#x8FD8;&#x662F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x6307;&#x9488;&#x4FEE;&#x6539;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x3002;</p>
+<p>Boost.Interprocess &#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x540C;&#x6B65;&#x5BF9;&#x8C61;&#x7684;&#x8BBF;&#x95EE;&#x3002; &#x7531;&#x4E8E; Boost.Interprocess &#x4E0D;&#x77E5;&#x9053;&#x5728;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x70B9;&#x8C01;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x6240;&#x4EE5;&#x540C;&#x6B65;&#x9700;&#x8981;&#x660E;&#x786E;&#x7684;&#x72B6;&#x6001;&#x6807;&#x5FD7;&#xFF0C;&#x4E0B;&#x4E00;&#x8282;&#x4ECB;&#x7ECD;&#x8FD9;&#x4E9B;&#x7C7B;&#x63D0;&#x4F9B;&#x7684;&#x540C;&#x6B65;&#x65B9;&#x5F0F;&#x3002;</p>
+<h2 id="84-&#x540C;&#x6B65;">8.4. &#x540C;&#x6B65;</h2>
+<p>Boost.Interprocess &#x5141;&#x8BB8;&#x591A;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5E76;&#x53D1;&#x4F7F;&#x7528;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x3002; &#x7531;&#x4E8E;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x88AB;&#x5B9A;&#x4E49;&#x4E3A;&#x5728;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E4B;&#x95F4;&#x201C;&#x5171;&#x4EAB;&#x201D;&#xFF0C;&#x6240;&#x4EE5; Boost.Interprocess &#x9700;&#x8981;&#x652F;&#x6301;&#x4E00;&#x4E9B;&#x540C;&#x6B65;&#x65B9;&#x5F0F;&#x3002;</p>
+<p>&#x5F53;&#x8003;&#x8651;&#x5230;&#x540C;&#x6B65;&#x7684;&#x65F6;&#x5019;&#xFF0C;Boost.Thread &#x5F53;&#x7136;&#x6D6E;&#x73B0;&#x5728;&#x8111;&#x6D77;&#x91CC;&#x3002; &#x6B63;&#x5982;&#x5728; <a href="multithreading.html" title="&#x7B2C; 6 &#x7AE0; &#x591A;&#x7EBF;&#x7A0B;">&#x7B2C; 6 &#x7AE0; <em>&#x591A;&#x7EBF;&#x7A0B;</em></a> &#x6240;&#x89C1;&#xFF0C;Boost.Thread &#x786E;&#x5B9E;&#x63D0;&#x4F9B;&#x4E86;&#x5404;&#x79CD;&#x6982;&#x5FF5;&#xFF0C;&#x5982;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x548C;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x6765;&#x540C;&#x6B65;&#x7EBF;&#x7A0B;&#x3002; &#x53EF;&#x60DC;&#x7684;&#x662F;&#xFF0C;&#x8FD9;&#x4E9B;&#x7C7B;&#x53EA;&#x80FD;&#x7528;&#x6765;&#x540C;&#x6B65;&#x540C;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5185;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x5B83;&#x4EEC;&#x4E0D;&#x652F;&#x6301;&#x540C;&#x6B65;&#x4E0D;&#x540C;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002; &#x7531;&#x4E8E;&#x4E8C;&#x8005;&#x9762;&#x4E34;&#x7684;&#x95EE;&#x9898;&#x76F8;&#x540C;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x6982;&#x5FF5;&#x4E0A;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x5DEE;&#x522B;&#x3002;</p>
+<p>&#x5F53;&#x8BF8;&#x5982;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x548C;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x7B49;&#x540C;&#x6B65;&#x5BF9;&#x8C61;&#x4F4D;&#x4E8E;&#x4E00;&#x4E2A;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x540C;&#x4E00;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x5185;&#x65F6;&#xFF0C;&#x5F53;&#x7136;&#x5B83;&#x4EEC;&#x5BF9;&#x4E8E;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x90FD;&#x662F;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x7684;&#xFF0C;&#x800C;&#x5728;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x65B9;&#x9762;&#x7684;&#x95EE;&#x9898;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x5728;&#x5F7C;&#x6B64;&#x4E4B;&#x95F4;&#x6B63;&#x786E;&#x5730;&#x5171;&#x4EAB;&#x8FD9;&#x4E9B;&#x5BF9;&#x8C61;&#x3002; &#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#xFF0C;&#x5B83;&#x6709;&#x65F6;&#x5019;&#x9700;&#x8981;&#x4ECE;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x6B64;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>Boost.Interprocess &#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x79CD;&#x540C;&#x6B65;&#x5BF9;&#x8C61;&#xFF0C;&#x533F;&#x540D;&#x5BF9;&#x8C61;&#x88AB;&#x76F4;&#x63A5;&#x5B58;&#x50A8;&#x5728;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E0A;&#xFF0C;&#x8FD9;&#x4F7F;&#x5F97;&#x4ED6;&#x4EEC;&#x81EA;&#x52A8;&#x5BF9;&#x6240;&#x6709;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53EF;&#x7528;&#x3002; &#x547D;&#x540D;&#x5BF9;&#x8C61;&#x7531;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7BA1;&#x7406;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x4EEC;&#x4E0D;&#x5B58;&#x50A8;&#x5728;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E0A;&#xFF0C;&#x5B83;&#x4EEC;&#x53EF;&#x4EE5;&#x88AB;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x901A;&#x8FC7;&#x540D;&#x79F0;&#x8BBF;&#x95EE;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x4F8B;&#x5B50;&#x901A;&#x8FC7; <code>boost::interprocess::named_mutex</code> &#x521B;&#x5EFA;&#x5E76;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x547D;&#x540D;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#xFF0C;&#x6B64;&#x7C7B;&#x5B9A;&#x4E49;&#x5728; <code>boost/interprocess/sync/named_mutex.hpp</code> &#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
+<pre><code>#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;boost/interprocess/sync/named_mutex.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, &quot;shm&quot;, 1024); 
+  int *i = managed_shm.find_or_construct&lt;int&gt;(&quot;Integer&quot;)(); 
+  boost::interprocess::named_mutex named_mtx(boost::interprocess::open_or_create, &quot;mtx&quot;); 
+  named_mtx.lock(); 
+  ++(*i); 
+  std::cout &lt;&lt; *i &lt;&lt; std::endl; 
+  named_mtx.unlock(); 
+}
+</code></pre><ul>
+<li><a href="src/8.4.1/main.cpp">&#x4E0B;&#x8F7D;&#x6E90;&#x4EE3;&#x7801;</a></li>
+</ul>
+<p>&#x9664;&#x4E86;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x7528;&#x6765;&#x6307;&#x5B9A;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x662F;&#x88AB;&#x521B;&#x5EFA;&#x6216;&#x8005;&#x6253;&#x5F00;&#x4E4B;&#x5916;&#xFF0C;<code>boost::interprocess::named_mutex</code> &#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x8FD8;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x540D;&#x79F0;&#x53C2;&#x6570;&#x3002; &#x6BCF;&#x4E2A;&#x77E5;&#x9053;&#x6B64;&#x540D;&#x79F0;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x80FD;&#x591F;&#x8BBF;&#x95EE;&#x8FD9;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x3002; &#x4E3A;&#x4E86;&#x83B7;&#x5F97;&#x5BF9;&#x4F4D;&#x4E8E;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E2D;&#x6570;&#x636E;&#x7684;&#x8BBF;&#x95EE;&#xFF0C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x8C03;&#x7528; <code>lock()</code> &#x51FD;&#x6570;&#x83B7;&#x5F97;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x7684;&#x62E5;&#x6709;&#x5173;&#x7CFB;&#x3002; &#x7531;&#x4E8E;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x5728;&#x4EFB;&#x610F;&#x65F6;&#x523B;&#x53EA;&#x80FD;&#x88AB;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x62E5;&#x6709;&#xFF0C;&#x5176;&#x4ED6;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x7B49;&#x5F85;&#xFF0C;&#x76F4;&#x5230;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x88AB;&#x7B2C;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F7F;&#x7528; <code>lock()</code> &#x51FD;&#x6570;&#x91CA;&#x653E;&#x3002; &#x4E00;&#x65E6;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x83B7;&#x5F97;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x6743;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x4FDD;&#x62A4;&#x7684;&#x8D44;&#x6E90;&#x7684;&#x6392;&#x4ED6;&#x8BBF;&#x95EE;&#x3002; &#x5728;&#x4E0A;&#x9762;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x8D44;&#x6E90;&#x662F;<code>int</code>&#x7C7B;&#x7684;&#x53D8;&#x91CF;&#x88AB;&#x9012;&#x589E;&#x5E76;&#x5199;&#x5230;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x6D41;&#x4E2D;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x88AB;&#x542F;&#x52A8;&#x591A;&#x6B21;&#xFF0C;&#x6BCF;&#x4E2A;&#x5B9E;&#x4F8B;&#x90FD;&#x4F1A;&#x6253;&#x5370;&#x51FA;&#x548C;&#x524D;&#x4E00;&#x4E2A;&#x503C;&#x6BD4;&#x8F83;&#x9012;&#x589E;1&#x7684;&#x503C;&#x3002; &#x611F;&#x8C22;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#xFF0C;&#x8BBF;&#x95EE;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x548C;&#x53D8;&#x91CF;&#x672C;&#x8EAB;&#x5728;&#x591A;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E4B;&#x95F4;&#x662F;&#x540C;&#x6B65;&#x7684;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F7F;&#x7528;&#x4E86;&#x5B9A;&#x4E49;&#x5728; <code>boost/interprocess/sync/interprocess_mutex.hpp</code> &#x6587;&#x4EF6;&#x4E2D;&#x7684; <code>boost::interprocess::interprocess_mutex</code> &#x7C7B;&#x7684;&#x533F;&#x540D;&#x5BF9;&#x8C61;&#x3002; &#x4E3A;&#x4E86;&#x53EF;&#x4EE5;&#x88AB;&#x6240;&#x6709;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#xFF0C;&#x5B83;&#x5B58;&#x50A8;&#x5728;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E2D;&#x3002;</p>
+<pre><code>#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;boost/interprocess/sync/interprocess_mutex.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, &quot;shm&quot;, 1024); 
+  int *i = managed_shm.find_or_construct&lt;int&gt;(&quot;Integer&quot;)(); 
+  boost::interprocess::interprocess_mutex *mtx = managed_shm.find_or_construct&lt;boost::interprocess::interprocess_mutex&gt;(&quot;mtx&quot;)(); 
+  mtx-&gt;lock(); 
+  ++(*i); 
+  std::cout &lt;&lt; *i &lt;&lt; std::endl; 
+  mtx-&gt;unlock(); 
+}
+</code></pre><ul>
+<li><a href="src/8.4.2/main.cpp">&#x4E0B;&#x8F7D;&#x6E90;&#x4EE3;&#x7801;</a></li>
+</ul>
+<p>&#x8FD9;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x884C;&#x4E3A;&#x786E;&#x5B9E;&#x548C;&#x524D;&#x4E00;&#x4E2A;&#x6709;&#x70B9;&#x50CF;&#x3002; &#x552F;&#x4E00;&#x7684;&#x4E0D;&#x540C;&#x662F;&#x8FD9;&#x6B21;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x901A;&#x8FC7;&#x7528; <code>boost::interprocess::managed_shared_memory</code> &#x7C7B;&#x7684; <code>construct()</code> &#x6216; <code>find_or_construct()</code> &#x51FD;&#x6570;&#x88AB;&#x76F4;&#x63A5;&#x5B58;&#x50A8;&#x5728;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E2D;&#x3002;</p>
+<p>&#x9664;&#x4E86; <code>lock()</code> &#x51FD;&#x6570;&#xFF0C;<code>boost::interprocess::named_mutex</code> &#x548C; <code>boost::interprocess::interprocess_mutex</code> &#x8FD8;&#x63D0;&#x4F9B;&#x4E86; <code>try_lock()</code> &#x548C; <code>timed_lock()</code> &#x51FD;&#x6570;&#x3002; &#x5B83;&#x4EEC;&#x7684;&#x884C;&#x4E3A;&#x548C;Boost.Thread&#x63D0;&#x4F9B;&#x7684;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x76F8;&#x5BF9;&#x5E94;&#x3002;</p>
+<p>&#x5728;&#x9700;&#x8981;&#x9012;&#x5F52;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#xFF0C;Boost.Interprocess &#x63D0;&#x4F9B; <code>boost::interprocess::named_recursive_mutex</code> &#x548C; <code>boost::interprocess::interprocess_mutex</code> &#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x53EF;&#x4F9B;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x5728;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x4FDD;&#x8BC1;&#x5171;&#x4EAB;&#x8D44;&#x6E90;&#x7684;&#x6392;&#x4ED6;&#x8BBF;&#x95EE;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x63A7;&#x5236;&#x4E86;&#x5728;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#xFF0C;&#x8C01;&#x5FC5;&#x987B;&#x5177;&#x6709;&#x6392;&#x4ED6;&#x8BBF;&#x95EE;&#x6743;&#x3002; &#x4E00;&#x822C;&#x6765;&#x8BB2;&#xFF0C;Boost.Interprocess &#x548C; Boost.Thread &#x63D0;&#x4F9B;&#x7684;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x5DE5;&#x4F5C;&#x65B9;&#x5F0F;&#x76F8;&#x540C;&#x3002; &#x5B83;&#x4EEC;&#x6709;&#x975E;&#x5E38;&#x76F8;&#x4F3C;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x4F7F;&#x719F;&#x6089; Boost.Thread &#x7684;&#x7528;&#x6237;&#x5728;&#x4F7F;&#x7528; Boost.Interprocess &#x7684;&#x8FD9;&#x4E9B;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x65F6;&#x7ACB;&#x523B;&#x6709;&#x4E00;&#x79CD;&#x81EA;&#x5728;&#x7684;&#x611F;&#x89C9;&#x3002;</p>
+<pre><code>#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;boost/interprocess/sync/named_mutex.hpp&gt; 
+#include &lt;boost/interprocess/sync/named_condition.hpp&gt; 
+#include &lt;boost/interprocess/sync/scoped_lock.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, &quot;shm&quot;, 1024); 
+  int *i = managed_shm.find_or_construct&lt;int&gt;(&quot;Integer&quot;)(0); 
+  boost::interprocess::named_mutex named_mtx(boost::interprocess::open_or_create, &quot;mtx&quot;); 
+  boost::interprocess::named_condition named_cnd(boost::interprocess::open_or_create, &quot;cnd&quot;); 
+  boost::interprocess::scoped_lock&lt;boost::interprocess::named_mutex&gt; lock(named_mtx); 
+  while (*i &lt; 10) 
+  { 
+    if (*i % 2 == 0) 
+    { 
+      ++(*i); 
+      named_cnd.notify_all(); 
+      named_cnd.wait(lock); 
+    } 
+    else 
+    { 
+      std::cout &lt;&lt; *i &lt;&lt; std::endl; 
+      ++(*i); 
+      named_cnd.notify_all(); 
+      named_cnd.wait(lock); 
+    } 
+  } 
+  named_cnd.notify_all(); 
+  boost::interprocess::shared_memory_object::remove(&quot;shm&quot;); 
+  boost::interprocess::named_mutex::remove(&quot;mtx&quot;); 
+  boost::interprocess::named_condition::remove(&quot;cnd&quot;); 
+}
+</code></pre><ul>
+<li><a href="src/8.4.3/main.cpp">&#x4E0B;&#x8F7D;&#x6E90;&#x4EE3;&#x7801;</a></li>
+</ul>
+<p>&#x4F8B;&#x5B50;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B; <code>boost::interprocess::named_condition</code>&#xFF0C;&#x5B9A;&#x4E49;&#x5728; <code>boost/interprocess/sync/named_condition.hpp</code> &#x6587;&#x4EF6;&#x4E2D;&#x3002; &#x7531;&#x4E8E;&#x5B83;&#x662F;&#x547D;&#x540D;&#x53D8;&#x91CF;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x4E0D;&#x9700;&#x8981;&#x5B58;&#x50A8;&#x5728;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x3002;</p>
+<p>&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F7F;&#x7528; <code>while</code> &#x5FAA;&#x73AF;&#x9012;&#x589E;&#x4E00;&#x4E2A;&#x5B58;&#x50A8;&#x5728;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E2D;&#x7684; <code>int</code> &#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x800C;&#x53D8;&#x91CF;&#x662F;&#x5728;&#x6BCF;&#x4E2A;&#x5FAA;&#x73AF;&#x5185;&#x91CD;&#x590D;&#x9012;&#x589E;&#xFF0C;&#x800C;&#x5B83;&#x53EA;&#x5728;&#x6BCF;&#x4E24;&#x4E2A;&#x5FAA;&#x73AF;&#x65F6;&#x5199;&#x51FA;&#x5230;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x4E2D;&#xFF1A;&#x5199;&#x51FA;&#x7684;&#x53EA;&#x80FD;&#x662F;&#x5947;&#x6570;&#x3002;</p>
+<p>&#x6BCF;&#x6B21;&#xFF0C;&#x5728;&#x53D8;&#x91CF;&#x9012;&#x589E;1&#x4E4B;&#x540E;&#xFF0C;&#x6761;&#x4EF6;&#x53D8;&#x91CF; <code>named_cnd</code> &#x7684; <code>wait ()</code>&#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#x3002; &#x4E00;&#x4E2A;&#x79F0;&#x4F5C;&#x9501;&#xFF0C;&#x5728;&#x6B64;&#x4F8B;&#x4E2D;&#x662F;&#x53D8;&#x91CF; <code>lock</code> &#x88AB;&#x4F20;&#x9012;&#x7ED9;&#x6B64;&#x51FD;&#x6570;&#x3002; &#x8FD9;&#x4E2A;&#x9501;&#x548C; Boost.Thread &#x4E2D;&#x7684;&#x9501;&#x542B;&#x4E49;&#x76F8;&#x540C;&#xFF1A;&#x57FA;&#x4E8E;RAII&#x6982;&#x5FF5;&#x7684;&#x5728;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#x83B7;&#x5F97;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x6743;,&#x5E76;&#x5728;&#x6790;&#x6784;&#x51FD;&#x6570;&#x4E2D;&#x91CA;&#x653E;&#x5B83;&#x3002;</p>
+<p>&#x5728; <code>while</code> &#x4E4B;&#x524D;&#x521B;&#x5EFA;&#x7684;&#x9501;&#x56E0;&#x800C;&#x5728;&#x6574;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x671F;&#x95F4;&#x62E5;&#x6709;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x6743;&#x3002; &#x53EF;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9; <code>wait()</code> &#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x4F1A;&#x88AB;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x3002;</p>
+<p>&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x5E38;&#x5E38;&#x7528;&#x6765;&#x7B49;&#x5F85;&#x4E00;&#x4E2A;&#x4FE1;&#x53F7;&#xFF0C;&#x6B64;&#x4FE1;&#x53F7;&#x4F1A;&#x6307;&#x793A;&#x7B49;&#x5F85;&#x73B0;&#x5728;&#x5230;&#x4E86;&#x3002; &#x540C;&#x6B65;&#x662F;&#x901A;&#x8FC7; <code>wait()</code> &#x548C; <code>notify_all()</code> &#x51FD;&#x6570;&#x63A7;&#x5236;&#x7684;&#x3002; &#x5982;&#x679C;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8C03;&#x7528; <code>wait()</code> &#x51FD;&#x6570;&#xFF0C;&#x4E00;&#x76F4;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x7684; <code>notify_all()</code> &#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x76F8;&#x5E94;&#x7684;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x6743;&#x624D;&#x4F1A;&#x88AB;&#x88AB;&#x91CA;&#x653E;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x542F;&#x52A8;&#x6B64;&#x7A0B;&#x5E8F;&#xFF0C;&#x5B83;&#x770B;&#x4E0A;&#x53BB;&#x4EC0;&#x4E48;&#x4E5F;&#x6CA1;&#x505A;&#xFF1A;&#x800C;&#x53EA;&#x662F;&#x53D8;&#x91CF;&#x5728; <code>while</code> &#x5FAA;&#x73AF;&#x5185;&#x4ECE;0&#x9012;&#x589E;&#x5230;1&#xFF0C;&#x7136;&#x540E;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F7F;&#x7528; <code>wait()</code> &#x7B49;&#x5F85;&#x4FE1;&#x53F7;&#x3002; &#x4E3A;&#x4E86;&#x63D0;&#x4F9B;&#x8FD9;&#x4E2A;&#x4FE1;&#x53F7;&#xFF0C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x518D;&#x542F;&#x52A8;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002;</p>
+<p>&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B9E;&#x4F8B;&#x5C06;&#x4F1A;&#x5728;&#x8FDB;&#x5165; <code>while</code> &#x5FAA;&#x73AF;&#x4E4B;&#x524D;&#xFF0C;&#x5C1D;&#x8BD5;&#x83B7;&#x5F97;&#x540C;&#x4E00;&#x4E2A;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x6743;&#x3002; &#x8FD9;&#x80AF;&#x5B9A;&#x662F;&#x6210;&#x529F;&#x7684;&#xFF0C;&#x7531;&#x4E8E;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x901A;&#x8FC7;&#x8C03;&#x7528; <code>wait()</code> &#x91CA;&#x653E;&#x4E86;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x6743;&#x3002; &#x56E0;&#x4E3A;&#x53D8;&#x91CF;&#x5DF2;&#x7ECF;&#x9012;&#x589E;&#x4E86;&#x4E00;&#x6B21;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B9E;&#x4F8B;&#x73B0;&#x5728;&#x4F1A;&#x6267;&#x884C; <code>if</code> &#x8868;&#x8FBE;&#x5F0F;&#x7684; <code>else</code> &#x5206;&#x652F;&#xFF0C;&#x8FD9;&#x4F7F;&#x5F97;&#x5728;&#x9012;&#x589E;1&#x4E4B;&#x524D;&#x5C06;&#x5F53;&#x524D;&#x503C;&#x5199;&#x5230;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x6D41;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B9E;&#x4F8B;&#x4E5F;&#x8C03;&#x7528;&#x4E86; <code>wait()</code> &#x51FD;&#x6570;&#xFF0C;&#x53EF;&#x662F;&#xFF0C;&#x5728;&#x8C03;&#x7528;&#x4E4B;&#x524D;,&#x5B83;&#x8C03;&#x7528;&#x4E86; <code>notify_all()</code> &#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x5BF9;&#x4E8E;&#x4E24;&#x4E2A;&#x5B9E;&#x4F8B;&#x6B63;&#x786E;&#x534F;&#x4F5C;&#x662F;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x7684;&#x987A;&#x5E8F;&#x3002; &#x7B2C;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x88AB;&#x901A;&#x77E5;&#x5E76;&#x518D;&#x6B21;&#x5C1D;&#x8BD5;&#x83B7;&#x5F97;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x6743;&#xFF0C;&#x867D;&#x7136;&#x73B0;&#x5728;&#x5B83;&#x8FD8;&#x88AB;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B9E;&#x4F8B;&#x6240;&#x62E5;&#x6709;&#x3002; &#x7531;&#x4E8E;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B9E;&#x4F8B;&#x5728;&#x8C03;&#x7528; <code>notify_all()</code> &#x4E4B;&#x540E;&#x8C03;&#x7528;&#x4E86; <code>wait()</code>&#xFF0C;&#x8FD9;&#x81EA;&#x52A8;&#x91CA;&#x653E;&#x4E86;&#x6240;&#x6709;&#x6743;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x6B64;&#x65F6;&#x80FD;&#x591F;&#x83B7;&#x5F97;&#x6240;&#x6709;&#x6743;&#x3002;</p>
+<p>&#x4E24;&#x4E2A;&#x5B9E;&#x4F8B;&#x4EA4;&#x66FF;&#x5730;&#x9012;&#x589E;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x53D8;&#x91CF;&#x3002; &#x4EC5;&#x6709;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x5C06;&#x53D8;&#x91CF;&#x503C;&#x5199;&#x5230;&#x6807;&#x51C6;&#x8F93;&#x51FA;&#x6D41;&#x3002; &#x53EA;&#x8981;&#x53D8;&#x91CF;&#x503C;&#x5230;&#x8FBE;10&#xFF0C;<code>while</code> &#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#x3002; &#x4E3A;&#x4E86;&#x8BA9;&#x5176;&#x4ED6;&#x5B9E;&#x4F8B;&#x4E0D;&#x5FC5;&#x6C38;&#x8FDC;&#x7B49;&#x5F85;&#x4FE1;&#x53F7;&#xFF0C; <code>notify_all()</code> &#x51FD;&#x6570;&#x5728;&#x5FAA;&#x73AF;&#x4E4B;&#x540E;&#x53C8;&#x88AB;&#x8C03;&#x7528;&#x4E86;&#x4E00;&#x6B21;&#x3002; &#x5728;&#x7EC8;&#x6B62;&#x4E4B;&#x524D;&#xFF0C;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x548C;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x90FD;&#x88AB;&#x9500;&#x6BC1;&#x3002;</p>
+<p>&#x5C31;&#x50CF;&#x6709;&#x4E24;&#x79CD;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#xFF0C;&#x5373;&#x5FC5;&#x987B;&#x5B58;&#x50A8;&#x5728;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E2D;&#x533F;&#x540D;&#x7C7B;&#x578B;&#x548C;&#x547D;&#x540D;&#x7C7B;&#x578B;&#xFF0C;&#x4E5F;&#x5B58;&#x5728;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x3002; &#x73B0;&#x5728;&#x7528;&#x533F;&#x540D;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x91CD;&#x5199;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x3002;</p>
+<pre><code>#include &lt;boost/interprocess/managed_shared_memory.hpp&gt; 
+#include &lt;boost/interprocess/sync/interprocess_mutex.hpp&gt; 
+#include &lt;boost/interprocess/sync/interprocess_condition.hpp&gt; 
+#include &lt;boost/interprocess/sync/scoped_lock.hpp&gt; 
+#include &lt;iostream&gt; 
+
+int main() 
+{ 
+  try 
+  { 
+    boost::interprocess::managed_shared_memory managed_shm(boost::interprocess::open_or_create, &quot;shm&quot;, 1024); 
+    int *i = managed_shm.find_or_construct&lt;int&gt;(&quot;Integer&quot;)(0); 
+    boost::interprocess::interprocess_mutex *mtx = managed_shm.find_or_construct&lt;boost::interprocess::interprocess_mutex&gt;(&quot;mtx&quot;)(); 
+    boost::interprocess::interprocess_condition *cnd = managed_shm.find_or_construct&lt;boost::interprocess::interprocess_condition&gt;(&quot;cnd&quot;)(); 
+    boost::interprocess::scoped_lock&lt;boost::interprocess::interprocess_mutex&gt; lock(*mtx); 
+    while (*i &lt; 10) 
+    { 
+      if (*i % 2 == 0) 
+      { 
+        ++(*i); 
+        cnd-&gt;notify_all(); 
+        cnd-&gt;wait(lock); 
+      } 
+      else 
+      { 
+        std::cout &lt;&lt; *i &lt;&lt; std::endl; 
+        ++(*i); 
+        cnd-&gt;notify_all(); 
+        cnd-&gt;wait(lock); 
+      } 
+    } 
+    cnd-&gt;notify_all(); 
+  } 
+  catch (...) 
+  { 
+  } 
+  boost::interprocess::shared_memory_object::remove(&quot;shm&quot;); 
+}
+</code></pre><ul>
+<li><a href="src/8.4.4/main.cpp">&#x4E0B;&#x8F7D;&#x6E90;&#x4EE3;&#x7801;</a></li>
+</ul>
+<p>&#x8FD9;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x5DE5;&#x4F5C;&#x5B8C;&#x5168;&#x548C;&#x524D;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x4E00;&#x6837;&#xFF0C;&#x4E3A;&#x4E86;&#x9012;&#x589E;&#x53D8;&#x91CF;10&#x6B21;&#xFF0C;&#x56E0;&#x800C;&#x4E5F;&#x9700;&#x8981;&#x542F;&#x52A8;&#x4E24;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002; &#x4E24;&#x4E2A;&#x4F8B;&#x5B50;&#x4E4B;&#x95F4;&#x7684;&#x5DEE;&#x522B;&#x5F88;&#x5C0F;&#x3002; &#x4E0E;&#x662F;&#x5426;&#x4F7F;&#x7528;&#x533F;&#x540D;&#x6216;&#x547D;&#x540D;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x6839;&#x672C;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x5173;&#x7CFB;&#x3002;</p>
+<p>&#x5904;&#x7406;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x548C;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#xFF0C;Boost.Interprocess &#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x53EB;&#x505A;&#x4FE1;&#x53F7;&#x91CF;&#x548C;&#x6587;&#x4EF6;&#x9501;&#x3002; &#x4FE1;&#x53F7;&#x91CF;&#x7684;&#x884C;&#x4E3A;&#x548C;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x76F8;&#x4F3C;&#xFF0C;&#x9664;&#x4E86;&#x5B83;&#x4E0D;&#x80FD;&#x533A;&#x522B;&#x4E24;&#x79CD;&#x72B6;&#x6001;&#xFF0C;&#x4F46;&#x5B83;&#x786E;&#x662F;&#x57FA;&#x4E8E;&#x8BA1;&#x6570;&#x5668;&#x7684;&#x3002; &#x6587;&#x4EF6;&#x9501;&#x6709;&#x4E9B;&#x50CF;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#xFF0C;&#x867D;&#x7136;&#x5B83;&#x4EEC;&#x4E0D;&#x662F;&#x5173;&#x4E8E;&#x5185;&#x5B58;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4F46;&#x5B83;&#x4EEC;&#x786E;&#x662F;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E0A;&#x5173;&#x4E8E;&#x6587;&#x4EF6;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x5C31;&#x50CF; Boost.Thread &#x80FD;&#x591F;&#x533A;&#x5206;&#x4E0D;&#x540C;&#x7684;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x548C;&#x9501;&#xFF0C;Boost.Interprocess &#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x51E0;&#x4E2A;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x548C;&#x9501;&#x3002; &#x4F8B;&#x5982;&#xFF0C;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x4E0D;&#x4EC5;&#x80FD;&#x88AB;&#x6392;&#x4ED6;&#x5730;&#x62E5;&#x6709;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4E0D;&#x6392;&#x4ED6;&#x5730;&#x6240;&#x6709;&#x3002; &#x8FD9;&#x5728;&#x591A;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x9700;&#x8981;&#x540C;&#x65F6;&#x8BFB;&#x800C;&#x6392;&#x4ED6;&#x5199;&#x7684;&#x65F6;&#x5019;&#x975E;&#x5E38;&#x6709;&#x7528;&#x3002; &#x5BF9;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x5177;&#x6709;RAII&#x6982;&#x5FF5;&#x7684;&#x9501;&#x7C7B;&#x3002;</p>
+<p>&#x8BF7;&#x6CE8;&#x610F;&#x5982;&#x679C;&#x4E0D;&#x4F7F;&#x7528;&#x533F;&#x540D;&#x540C;&#x6B65;&#x5BF9;&#x8C61;&#xFF0C;&#x90A3;&#x4E48;&#x540D;&#x79F0;&#x5E94;&#x8BE5;&#x662F;&#x552F;&#x4E00;&#x7684;&#x3002; &#x867D;&#x7136;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x548C;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x662F;&#x57FA;&#x4E8E;&#x4E0D;&#x540C;&#x7C7B;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x4F46;&#x4E5F;&#x4E0D;&#x5FC5;&#x603B;&#x662F;&#x8BA4;&#x4E3A;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x72EC;&#x7ACB;&#x7684;&#x63A5;&#x53E3;&#x662F;&#x7531; Boost.Interprocess &#x533A;&#x522B;&#x5BF9;&#x5F85;&#x7684;&#x3002; &#x5728;Windows&#x7CFB;&#x7EDF;&#x4E0A;&#xFF0C;&#x4E92;&#x65A5;&#x5BF9;&#x8C61;&#x548C;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x4F7F;&#x7528;&#x540C;&#x6837;&#x7684;&#x7CFB;&#x7EDF;&#x51FD;&#x6570;&#x3002; &#x5982;&#x679C;&#x8FD9;&#x4E24;&#x79CD;&#x5BF9;&#x8C61;&#x4F7F;&#x7528;&#x76F8;&#x540C;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x90A3;&#x4E48;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5728;Windows&#x4E0A;&#x5C06;&#x4E0D;&#x4F1A;&#x6B63;&#x786E;&#x5730;&#x5740;&#x6267;&#x884C;&#x3002;</p>
+<h2 id="85-&#x7EC3;&#x4E60;">8.5. &#x7EC3;&#x4E60;</h2>
+<p>You can buy <a href="http://en.highscore.de/shop/index.php?p=boost-solution" target="_blank">solutions to all exercises</a> in this book as a ZIP file.</p>
+<ol>
+<li>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x901A;&#x8FC7;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x901A;&#x8BAF;&#x7684;&#x5BA2;&#x6237;&#x7AEF;/&#x670D;&#x52A1;&#x5668;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002; &#x6587;&#x4EF6;&#x540D;&#x79F0;&#x5E94;&#x8BE5;&#x4F5C;&#x4E3A;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002; &#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5B58;&#x50A8;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x7684;&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5E94;&#x7ECF;&#x7531;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x53D1;&#x9001;&#x7ED9;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;</li>
+</ol>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./7.html" class="navigation navigation-prev " aria-label="Previous page: 第 7 章 异步输入输出"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./9.html" class="navigation navigation-next " aria-label="Next page: 第 9 章 文件系统"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

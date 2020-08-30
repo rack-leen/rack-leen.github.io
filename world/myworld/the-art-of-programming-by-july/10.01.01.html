@@ -1,0 +1,1584 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>sift算法的编译与实现 | 编程之法：面试和算法心得</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.5">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./10.01.02.html" />
+    
+    
+    <link rel="prev" href="./ch10.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="13.1"
+        data-chapter-title="sift算法的编译与实现"
+        data-filepath="10.01.01.md"
+        data-basepath="."
+        data-revision="Thu Jan 14 2016 10:53:03 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/the-art-of-programming-by-july" target="blank" class="custom-link">编程之法：面试和算法心得</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="00.01.html">
+            
+                
+                    <a href="./00.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        程序员如何准备面试中的算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="part1.html">
+            
+                
+                    <a href="./part1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        第一部分 数据结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="ch1.html">
+            
+                
+                    <a href="./ch1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        第一章 字符串
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="01.00.html">
+            
+                
+                    <a href="./01.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        1.0 本章导读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="01.01.html">
+            
+                
+                    <a href="./01.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        1.1 旋转字符串
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="01.02.html">
+            
+                
+                    <a href="./01.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        1.2 字符串包含
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="01.03.html">
+            
+                
+                    <a href="./01.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        1.3 字符串转换成整数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="01.04.html">
+            
+                
+                    <a href="./01.04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        1.4 回文判断
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="01.05.html">
+            
+                
+                    <a href="./01.05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        1.5 最长回文子串
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="01.06.html">
+            
+                
+                    <a href="./01.06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        1.6 字符串的全排列
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="01.10.html">
+            
+                
+                    <a href="./01.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        1.10 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="ch2.html">
+            
+                
+                    <a href="./ch2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        第二章 数组
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="02.00.html">
+            
+                
+                    <a href="./02.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        2.0 本章导读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="02.01.html">
+            
+                
+                    <a href="./02.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        2.1 寻找最小的 k 个数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="02.02.html">
+            
+                
+                    <a href="./02.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        2.2 寻找和为定值的两个数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="02.03.html">
+            
+                
+                    <a href="./02.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        2.3 寻找和为定值的多个数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="02.04.html">
+            
+                
+                    <a href="./02.04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        2.4 最大连续子数组和
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="02.05.html">
+            
+                
+                    <a href="./02.05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        2.5 跳台阶
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="02.06.html">
+            
+                
+                    <a href="./02.06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        2.6 奇偶排序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="02.07.html">
+            
+                
+                    <a href="./02.07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        2.7 荷兰国旗
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="02.08.html">
+            
+                
+                    <a href="./02.08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.</b>
+                        
+                        2.8 矩阵相乘
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="02.09.html">
+            
+                
+                    <a href="./02.09.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.</b>
+                        
+                        2.9 完美洗牌
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="02.15.html">
+            
+                
+                    <a href="./02.15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.</b>
+                        
+                        2.15 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="ch3.html">
+            
+                
+                    <a href="./ch3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        第三章 树
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="03.00.html">
+            
+                
+                    <a href="./03.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        3.0 本章导读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="03.01.html">
+            
+                
+                    <a href="./03.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        3.1 红黑树
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="03.02.html">
+            
+                
+                    <a href="./03.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        3.2 B树
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="03.03.html">
+            
+                
+                    <a href="./03.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        3.3 最近公共祖先LCA
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="03.10.html">
+            
+                
+                    <a href="./03.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        3.10 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="part2.html">
+            
+                
+                    <a href="./part2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        第二部分 算法心得
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="ch4.html">
+            
+                
+                    <a href="./ch4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        第四章 查找匹配
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="04.01.html">
+            
+                
+                    <a href="./04.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        4.1 有序数组的查找
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="04.02.html">
+            
+                
+                    <a href="./04.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        4.2 行列递增矩阵的查找
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="04.03.html">
+            
+                
+                    <a href="./04.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        4.3 出现次数超过一半的数字
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="ch5.html">
+            
+                
+                    <a href="./ch5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        第五章 动态规划
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="05.00.html">
+            
+                
+                    <a href="./05.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        5.0 本章导读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="05.01.html">
+            
+                
+                    <a href="./05.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        5.1 最大连续乘积子串
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="05.02.html">
+            
+                
+                    <a href="./05.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        5.2 字符串编辑距离
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="05.03.html">
+            
+                
+                    <a href="./05.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        5.3 格子取数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="05.04.html">
+            
+                
+                    <a href="./05.04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        5.4 交替字符串
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="05.10.html">
+            
+                
+                    <a href="./05.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.6.</b>
+                        
+                        5.10 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="part3.html">
+            
+                
+                    <a href="./part3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        第三部分 综合演练
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="ch6.html">
+            
+                
+                    <a href="./ch6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        第六章 海量数据处理
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="06.00.html">
+            
+                
+                    <a href="./06.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        6.0 本章导读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="06.01.html">
+            
+                
+                    <a href="./06.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        6.1 关联式容器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="06.02.html">
+            
+                
+                    <a href="./06.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        6.2 分而治之
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="06.03.html">
+            
+                
+                    <a href="./06.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        6.3 simhash算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="06.04.html">
+            
+                
+                    <a href="./06.04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.5.</b>
+                        
+                        6.4 外排序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="06.05.html">
+            
+                
+                    <a href="./06.05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.6.</b>
+                        
+                        6.5 MapReduce
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7" data-path="06.06.html">
+            
+                
+                    <a href="./06.06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.7.</b>
+                        
+                        6.6 多层划分
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8" data-path="06.07.html">
+            
+                
+                    <a href="./06.07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.8.</b>
+                        
+                        6.7 Bitmap
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.9" data-path="06.08.html">
+            
+                
+                    <a href="./06.08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.9.</b>
+                        
+                        6.8 Bloom filter
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.10" data-path="06.09.html">
+            
+                
+                    <a href="./06.09.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.10.</b>
+                        
+                        6.9 Trie树
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.11" data-path="06.10.html">
+            
+                
+                    <a href="./06.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.11.</b>
+                        
+                        6.10 数据库
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.12" data-path="06.11.html">
+            
+                
+                    <a href="./06.11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.12.</b>
+                        
+                        6.11 倒排索引
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.13" data-path="06.15.html">
+            
+                
+                    <a href="./06.15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.13.</b>
+                        
+                        6.15 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="ch7.html">
+            
+                
+                    <a href="./ch7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        第七章 机器学习
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="07.01.html">
+            
+                
+                    <a href="./07.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        7.1 K 近邻算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="07.02.svm.html">
+            
+                
+                    <a href="./07.02.svm.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        7.2 支持向量机
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="ch8.html">
+            
+                
+                    <a href="./ch8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        附录 更多题型
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="08.00.html">
+            
+                
+                    <a href="./08.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        附录A 语言基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="08.01.html">
+            
+                
+                    <a href="./08.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        附录B 概率统计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="08.02.html">
+            
+                
+                    <a href="./08.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        附录C 智力逻辑
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="08.03.html">
+            
+                
+                    <a href="./08.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.4.</b>
+                        
+                        附录D 系统设计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="08.04.html">
+            
+                
+                    <a href="./08.04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.</b>
+                        
+                        附录E 操作系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.6" data-path="08.05.html">
+            
+                
+                    <a href="./08.05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.6.</b>
+                        
+                        附录F 网络协议
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="ch10.html">
+            
+                
+                    <a href="./ch10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        sift算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="13.1" data-path="10.01.01.html">
+            
+                
+                    <a href="./10.01.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        sift算法的编译与实现
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="10.01.02.html">
+            
+                
+                    <a href="./10.01.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        教你一步一步用c语言实现sift算法、上
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="10.01.03.html">
+            
+                
+                    <a href="./10.01.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        教你一步一步用c语言实现sift算法、下
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="part4.html">
+            
+                
+                    <a href="./part4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        其它
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1" data-path="a.1.html">
+            
+                
+                    <a href="./a.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.1.</b>
+                        
+                        40亿个数中快速查找
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" data-path="a.2.html">
+            
+                
+                    <a href="./a.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.2.</b>
+                        
+                        hash表算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.3" data-path="a.3.html">
+            
+                
+                    <a href="./a.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.3.</b>
+                        
+                        一致性哈希算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.4" data-path="a.4.html">
+            
+                
+                    <a href="./a.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.4.</b>
+                        
+                        倒排索引关键词不重复Hash编码
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.5" data-path="a.5.html">
+            
+                
+                    <a href="./a.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.5.</b>
+                        
+                        傅里叶变换算法、上
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.6" data-path="a.6.html">
+            
+                
+                    <a href="./a.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.6.</b>
+                        
+                        傅里叶变换算法、下
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.7" data-path="a.7.html">
+            
+                
+                    <a href="./a.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.7.</b>
+                        
+                        后缀树
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.8" data-path="a.8.html">
+            
+                
+                    <a href="./a.8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.8.</b>
+                        
+                        基于给定的文档生成倒排索引的编码与实践
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.9" data-path="a.9.html">
+            
+                
+                    <a href="./a.9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.9.</b>
+                        
+                        搜索关键词智能提示suggestion
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.10" data-path="a.10.html">
+            
+                
+                    <a href="./a.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.10.</b>
+                        
+                        最小操作数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.11" data-path="a.11.html">
+            
+                
+                    <a href="./a.11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.11.</b>
+                        
+                        最短摘要的生成
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.12" data-path="a.12.html">
+            
+                
+                    <a href="./a.12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.12.</b>
+                        
+                        最长公共子序列
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.13" data-path="a.13.html">
+            
+                
+                    <a href="./a.13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.13.</b>
+                        
+                        木块砌墙原稿
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.14" data-path="a.14.html">
+            
+                
+                    <a href="./a.14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.14.</b>
+                        
+                        附近地点搜索
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.15" data-path="a.15.html">
+            
+                
+                    <a href="./a.15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.15.</b>
+                        
+                        随机取出其中之一元素
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >编程之法：面试和算法心得</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="sift&#x7B97;&#x6CD5;&#x7684;&#x7F16;&#x8BD1;&#x4E0E;&#x5B9E;&#x73B0;">sift&#x7B97;&#x6CD5;&#x7684;&#x7F16;&#x8BD1;&#x4E0E;&#x5B9E;&#x73B0;</h2>
+<p>&#x4EE3;&#x7801;&#xFF1A;Rob Hess&#x7EF4;&#x62A4;&#x7684;sift &#x5E93;&#x3002;<br>&#x73AF;&#x5883;&#xFF1A;windows xp+vc6.0&#x3002;<br>&#x6761;&#x4EF6;&#xFF1A;opencv1.0&#x3001;gsl-1.8.exe</p>
+<p>&#x6628;&#x65E5;&#xFF0C;&#x4E0B;&#x8F7D;&#x4E86;Rob Hess&#x7684;sift&#x5E93;&#xFF0C;&#x5C06;&#x5176;&#x6E90;&#x7801;&#x7C97;&#x7565;&#x7684;&#x770B;&#x4E86;&#x770B;&#xFF0C;&#x60F3;&#x8981;&#x7F16;&#x8BD1;&#x65F6;&#xFF0C;&#x9047;&#x5230;&#x4E86;&#x4E0D;&#x5C11;&#x95EE;&#x9898;&#xFF0C;&#x5148;&#x4FEE;&#x6539;&#x4E86;&#x4E0B;&#x4EE3;&#x7801;&#xFF0C;&#x7136;&#x540E;&#x4E0B;&#x8F7D;opencv&#x3001;gsl&#x3002;&#x6700;&#x540E;&#xFF0C;&#x51E0;&#x7ECF;&#x5468;&#x6298;&#xFF0C;&#x624D;&#x6700;&#x7EC8;&#x7F16;&#x8BD1;&#x6210;&#x529F;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x4FBF;&#x662F;sift&#x6E90;&#x7801;&#x5E93;&#x7F16;&#x8BD1;&#x540E;&#x7684;&#x6548;&#x679C;&#x56FE;&#xFF1A;</p>
+<p><img src="../images/10-1-1/1.jpg" alt=""></p>
+<p><img src="../images/10-1-1/2.jpg" alt=""></p>
+<p><img src="../images/10-1-1/3.jpg" alt=""></p>
+<p>&#x4E3A;&#x4E86;&#x7ED9;&#x6709;&#x5174;&#x8DA3;&#x5B9E;&#x73B0;sift&#x7B97;&#x6CD5;&#x7684;&#x670B;&#x53CB;&#x63D0;&#x4F9B;&#x4E2A;&#x53C2;&#x8003;&#xFF0C;&#x7279;&#x6574;&#x7406;&#x6B64;&#x6587;&#x5982;&#x4E0B;&#x3002;&#x8981;&#x4E86;&#x89E3;&#x4EC0;&#x4E48;&#x662F;sift&#x7B97;&#x6CD5;&#xFF0C;&#x8BF7;&#x53C2;&#x8003;&#xFF1A;<a href="http://blog.csdn.net/v_JULY_v/article/details/6186942" target="_blank">&#x4E5D;&#x3001;&#x56FE;&#x50CF;&#x7279;&#x5F81;&#x63D0;&#x53D6;&#x4E0E;&#x5339;&#x914D;&#x4E4B;SIFT&#x7B97;&#x6CD5;</a>&#x3002;ok&#xFF0C;&#x54B1;&#x4EEC;&#x4E0B;&#x9762;&#xFF0C;&#x5C31;&#x6765;&#x5229;&#x7528;Rob Hess&#x7EF4;&#x62A4;&#x7684;sift &#x5E93;&#x6765;&#x5B9E;&#x73B0;sift&#x7B97;&#x6CD5;&#xFF1A;</p>
+<p>&#x9996;&#x5148;&#xFF0C;&#x8BF7;&#x4E0B;&#x8F7D;Rob Hess&#x7EF4;&#x62A4;&#x7684;sift &#x5E93;&#xFF1A;<br><a href="http://blogs.oregonstate.edu/hess/code/sift" target="_blank">http://blogs.oregonstate.edu/hess/code/sift</a><br>&#x4E0B;&#x8F7D;Rob Hess&#x7684;&#x8FD9;&#x4E2A;&#x538B;&#x7F29;&#x5305;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x76F4;&#x63A5;&#x89E3;&#x538B;&#x7F29;&#xFF0C;&#x76F4;&#x63A5;&#x7F16;&#x8BD1;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x51FA;&#x73B0;&#x4E0B;&#x9762;&#x7684;&#x9519;&#x8BEF;&#x63D0;&#x793A;&#xFF1A;  </p>
+<pre><code>&#x7F16;&#x8BD1;&#x63D0;&#x793A;:error C1083: Cannot open include file: &apos;cxcore.h&apos;: No such file or directory&#xFF0C;&#x627E;&#x4E0D;&#x5230;&#x8FD9;&#x4E2A;&#x5934;&#x6587;&#x4EF6;&#x3002;
+</code></pre><p>&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x4F60;&#x8FD8;&#x6CA1;&#x6709;&#x5B89;&#x88C5;opencv&#xFF0C;&#x56E0;&#x4E3A;&#xFF1A;cxcore.h&#x548C;cv.h&#x662F;&#x5F00;&#x6E90;&#x7684;OPEN CV&#x5934;&#x6587;&#x4EF6;,&#x4E0D;&#x662F;VC++&#x7684;&#x9ED8;&#x8BA4;&#x5B89;&#x88C5;&#x6587;&#x4EF6;,&#x6240;&#x4EE5;&#x4F60;&#x8FD8;&#x5F97;&#x4E0B;&#x8F7D;OpenCV&#x5E76;&#x8FDB;&#x884C;&#x5B89;&#x88C5;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;OpenCV&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x627E;&#x5230;&#x4F60;&#x6240;&#x9700;&#x8981;&#x7684;&#x5934;&#x6587;&#x4EF6;&#x4E86;&#x3002;</p>
+<p>&#x636E;&#x7F51;&#x53CB;&#x79F0;&#xFF0C;&#x622A;&#x6B62;2010&#x5E74;4&#x6708;4&#x65E5;&#xFF0C;&#x8FD8;&#x6CA1;&#x6709;&#x5728;VC6.0&#x4E0B;&#x6210;&#x529F;&#x4F7F;&#x7528;opencv2.0&#x7684;&#x6848;&#x4F8B;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x662F;VC6.0&#x7684;&#x7528;&#x6237;&#x8BF7;&#x4E0B;&#x8F7D;opencv1.0&#x7248;&#x672C;&#x3002;vs&#x7684;&#x8BDD;&#xFF0C;opencv2.0,1.0&#x4EFB;&#x610F;&#x4E0B;&#x8F7D;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#xFF0C;&#x54B1;&#x4EEC;&#x5C31;&#x4EE5;<strong>vc6.0&#x4E3A;&#x5E73;&#x53F0;&#x4E3E;&#x4F8B;&#xFF0C;&#x4E0B;&#x8F7D;&#x5E76;&#x5B89;&#x88C5;opencv1.0&#x7248;&#x672C;&#x3001;gsl</strong>&#x7B49;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;vs&#x7F16;&#x8BD1;&#xFF0C;&#x540C;&#x6837;&#x4E0B;&#x8F7D;opencv&#xFF08;&#x5177;&#x4F53;&#x7248;&#x672C;&#x4E0D;&#x53D7;&#x9650;&#x5236;&#xFF09;&#x3001;gsl&#x7B49;&#x3002;</p>
+<p>&#x8BF7;&#x6309;&#x4EE5;&#x4E0B;&#x6B65;&#x9AA4;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<h3 id="&#x4E00;&#x3001;&#x4E0B;&#x8F7D;opencv10">&#x4E00;&#x3001;&#x4E0B;&#x8F7D;opencv1.0</h3>
+<p><a href="http://sourceforge.net/projects/opencvlibrary/files/opencv-win/1.0/OpenCV_1.0.exe/download" target="_blank">http://sourceforge.net/projects/opencvlibrary/files/opencv-win/1.0/OpenCV_1.0.exe/download</a></p>
+<h3 id="&#x4E8C;&#x3001;&#x5B89;&#x88C5;opencv10&#xFF0C;&#x914D;&#x7F6E;windows&#x73AF;&#x5883;&#x53D8;&#x91CF;">&#x4E8C;&#x3001;&#x5B89;&#x88C5;opencv1.0&#xFF0C;&#x914D;&#x7F6E;Windows&#x73AF;&#x5883;&#x53D8;&#x91CF;</h3>
+<ol>
+<li><p><strong>&#x5B89;&#x88C5;&#x6CE8;&#x610F;&#xFF1A;</strong>&#x5047;&#x5982;&#x4F60;&#x662F;&#x5C06;OpenCV&#x5B89;&#x88C5;&#x5230;<strong>C</strong>:/Program Files/OpenCV&#xFF08;<strong>&#x5982;&#x679C;&#x4F60;&#x5B89;&#x88C5;&#x7684;&#x65F6;&#x5019;&#x9009;&#x62E9;&#x4E0D;&#x662F;&#x5B89;&#x88C5;&#x5728;C&#x76D8;&#xFF0C;&#x5219;&#x4E0B;&#x9762;&#x6240;&#x6709;&#x5BF9;&#x5E94;&#x7684;C&#x76D8;&#x90FD;&#x6539;&#x4E3A;&#x4F60;&#x6240;&#x5B89;&#x88C5;&#x5728;&#x7684;&#x90A3;&#x4E2A;&#x201C;X&#x76D8;&#x201D;&#xFF0C;&#x5373;&#x53EF;</strong>&#xFF09;&#xFF0C;&#x5728;&#x5B89;&#x88C5;&#x65F6;&#x9009;&#x62E9;&quot;&#x5C06;/OpenCV/bin&#x52A0;&#x5165;&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;&quot;&#xFF0C;&#x6253;&#x4E0A;&#x201C;&#x52FE;&#x201D;&#x3002;&#xFF08;Add/OpenCV/bin to the systerm PATH&#x3002;<strong>&#x8FD9;&#x4E00;&#x6B65;&#x786E;&#x8BA4;&#x9009;&#x4E0A;&#x4E86;&#x4E4B;&#x540E;&#xFF0C;&#x4E0B;&#x9762;&#x7684;&#x68C0;&#x67E5;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x7684;&#x6B65;&#x9AA4;&#xFF0C;&#x4FBF;&#x53EF;&#x514D;&#x53BB;</strong>&#xFF09;</p>
+<p> <img src="../images/10-1-1/4.png" alt=""></p>
+</li>
+<li><p><strong>&#x68C0;&#x67E5;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x3002;</strong>&#x4E3A;&#x4E86;&#x786E;&#x4FDD;&#x4E0A;&#x8FF0;&#x6B65;&#x9AA4;&#x4E2D;&#xFF0C;&#x52A0;&#x5165;&#x4E86;&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;&#xFF0C;&#x5728;&#x5B89;&#x88C5;opencv1.0&#x6210;&#x529F;&#x540E;&#xFF0C;&#x8FD8;&#x5F97;&#x68C0;&#x67E5;C:/Program Files/OpenCV/bin&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x88AB;&#x52A0;&#x5165;&#x5230;&#x73AF;&#x5883;&#x53D8;&#x91CF;PATH&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#xFF0C;&#x8BF7;&#x52A0;&#x5165;&#x3002;</p>
+</li>
+<li><p><strong>&#x6700;&#x540E;&#x662F;&#x914D;&#x7F6E;Visual C++ 6.0&#x3002;</strong>  </p>
+</li>
+<li><p>&#x5168;&#x5C40;&#x8BBE;&#x7F6E;<br>&#x83DC;&#x5355;Tools-&gt;Options-&gt;Directories&#xFF1A;&#x5148;&#x8BBE;&#x7F6E;lib&#x8DEF;&#x5F84;&#xFF0C;&#x9009;&#x62E9;Library files&#xFF0C;&#x5728;&#x4E0B;&#x65B9;&#x586B;&#x5165;&#x8DEF;&#x5F84;&#xFF1A;<br><strong>C:/Program Files/OpenCV/lib</strong><br>&#x7136;&#x540E;&#x9009;&#x62E9;include files&#xFF0C;&#x5728;&#x4E0B;&#x65B9;&#x586B;&#x5165;&#x8DEF;&#x5F84;(&#x53C2;&#x8003;&#x4E0B;&#x56FE;)&#xFF1A;<br><strong>C:/Program Files/OpenCV/cxcore/include</strong><br><strong>C:/Program Files/OpenCV/cv/include</strong><br><strong>C:/Program Files/OpenCV/cvaux/include</strong><br><strong>C:/Program Files/OpenCV/ml/include</strong><br><strong>C:/Program Files/OpenCV/otherlibs/highgui</strong><br><strong>C:/Program Files/OpenCV/otherlibs/cvcam/include</strong><br>  <img src="../images/10-1-1/5.png" alt=""><br>&#x6700;&#x540E;&#x9009;&#x62E9;source files&#xFF0C;&#x5728;&#x4E0B;&#x65B9;&#x586B;&#x5165;&#x8DEF;&#x5F84;&#xFF1A;<br><strong>C:/Program Files/OpenCV/cv/src</strong><br><strong>C:/Program Files/OpenCV/cxcore/src</strong><br><strong>C:/Program Files/OpenCV/cvaux/src</strong><br><strong>C:/Program Files/OpenCV/otherlibs/highgui</strong><br><strong>C:/Program Files/OpenCV/otherlibs/cvcam/src/windows</strong>  </p>
+</li>
+<li><p>&#x9879;&#x76EE;&#x8BBE;&#x7F6E;
+&#x6BCF;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5C06;&#x8981;&#x4F7F;&#x7528;OpenCV&#x7684;VC Project&#xFF0C;&#x90FD;&#x9700;&#x8981;&#x7ED9;&#x5B83;&#x6307;&#x5B9A;&#x9700;&#x8981;&#x7684;lib&#x3002;&#x83DC;&#x5355;&#xFF1A;Project-&gt;Settings&#xFF0C;&#x7136;&#x540E;&#x5C06;Setting for&#x9009;&#x4E3A;All Configurations&#xFF0C;&#x7136;&#x540E;&#x9009;&#x62E9;&#x53F3;&#x8FB9;&#x7684;link&#x6807;&#x7B7E;&#xFF0C;&#x5728;Object/library modules&#x9644;&#x52A0;&#x4E0A;&#xFF1A;
+cxcore.lib cv.lib ml.lib cvaux.lib highgui.lib cvcam.lib
+&#x5F53;&#x7136;&#xFF0C;&#x4F60;&#x4E0D;&#x9700;&#x8981;&#x8FD9;&#x4E48;&#x591A;lib&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x53EA;&#x6DFB;&#x52A0;&#x4F60;&#x9700;&#x8981;&#x7684;lib(&#x89C1;&#x4E0B;&#x56FE;)</p>
+</li>
+</ol>
+<p><img src="../images/10-1-1/6.png" alt=""></p>
+<h3 id="&#x4E09;&#x3001;&#x4E0B;&#x8F7D;gsl&#xFF0C;gsl&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x5E93;&#xFF0C;&#x4E5F;&#x9700;&#x8981;&#x4E0B;&#x8F7D;&#xFF1A;">&#x4E09;&#x3001;&#x4E0B;&#x8F7D;gsl&#xFF0C;gsl&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x5E93;&#xFF0C;&#x4E5F;&#x9700;&#x8981;&#x4E0B;&#x8F7D;&#xFF1A;</h3>
+<p><a href="http://sourceforge.net/projects/gnuwin32/files/gsl/1.8/gsl-1.8.exe/download" target="_blank">http://sourceforge.net/projects/gnuwin32/files/gsl/1.8/gsl-1.8.exe/download</a>&#x3002;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x5019;GSL&#x4E5F;&#x662F;&#x548C;OpenCV&#x4E00;&#x6837;&#x8981;&#x628A;&#x5934;&#x6587;&#x4EF6;&#x548C;lib&#x7684;&#x8DEF;&#x5F84;&#x6307;&#x5B9A;&#x597D;&#x3002;</p>
+<h3 id="&#x56DB;&#x3001;&#x914D;&#x7F6E;gsl">&#x56DB;&#x3001;&#x914D;&#x7F6E;gsl</h3>
+<p>&#x5C06;C:/WinGsl/bin&#x4E2D;&#x7684;WinGsl.dll&#x548C;WinGslD.dll&#x590D;&#x5236;&#x5230;C:/VC6.0/Bin&#xFF1B;&#x5C06;&#x6574;&#x4E2A;Gsl&#x76EE;&#x5F55;&#x590D;&#x5236;&#x5230;C:/VC6.0/Bin&#x4E0B;&#xFF1B;lib&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6240;&#x6709;.lib&#x6587;&#x4EF6;&#x5168;&#x90E8;&#x590D;&#x5236;&#x5230;C:/VC6.0/Lib&#x4E0B;&#x3002;<br>&#x7136;&#x540E;&#xFF0C;&#x5728;tools&#xFF0D;options&#xFF0D;directories&#x4E2D;&#xFF0C;&#x5C06;C:/WinGsl&#x4E0B;&#x7684;lib&#xFF0C;gsl&#x5206;&#x522B;&#x52A0;&#x5165;&#x5230;&#x5E93;&#x6587;&#x4EF6;&#x548C;&#x5934;&#x6587;&#x4EF6;&#x7684;&#x641C;&#x7D22;&#x8DEF;&#x5F84;&#x4E2D;&#x3002;</p>
+<p><strong>&#x4EE5;&#x4E0B;&#x662F;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x7684;&#x9519;&#x8BEF;&#x60C5;&#x51B5;&#x5904;&#x7406;&#xFF1A;</strong></p>
+<ol>
+<li><p>OpenCV&#x5B89;&#x88C5;&#x540E;&#x201C;&#x6CA1;&#x6709;&#x627E;&#x5230;cxcore100.dll&#x201D;&#x7684;&#x9519;&#x8BEF;&#x5904;&#x7406;
+&#x5728;&#x5B89;&#x88C5;&#x65F6;&#x9009;&#x62E9;&#x201C;&#x5C06;/OpenCV/bin&#x52A0;&#x5165;&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;&#x201D;&#xFF08;Add/OpenCV/bin to the systerm PATH&#xFF09;&#x3002; &#x4F46;&#x8BE5;&#x9009;&#x9879;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x80FD;&#x6210;&#x529F;&#x6DFB;&#x52A0;&#x5230;&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;&#xFF0C;&#x5982;&#x679C;&#x7F16;&#x5199;&#x7684;&#x7A0B;&#x5E8F;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x51FA;&#x73B0;&#x201C;&#x6CA1;&#x6709;&#x627E;&#x5230;cxcore100.dll&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x672A;&#x80FD;&#x542F;&#x52A8;&#x3002;&#x91CD;&#x65B0;&#x5B89;&#x88C5;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53EF;&#x80FD;&#x4F1A;&#x4FEE;&#x590D;&#x6B64;&#x95EE;&#x9898;&#x3002;&#x201D;&#x7684;&#x9519;&#x8BEF;&#x3002;
+&#x624B;&#x52A8;&#x5728;&#x6211;&#x7684;&#x7535;&#x8111;-&gt;&#x5C5E;&#x6027;-&gt;&#x9AD8;&#x7EA7;-&gt;&#x73AF;&#x5883;&#x53D8;&#x91CF;-&gt;&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;-&gt;path&#x6DFB;&#x52A0;c:/program files/opencv/bin;&#x6DFB;&#x52A0;&#x5B8C;&#x6210;&#x540E;&#x9700;&#x8981;&#x91CD;&#x542F;&#x8BA1;&#x7B97;&#x673A;&#x3002;</p>
+</li>
+<li><p>vc6.0&#x4E0B;&#x914D;&#x7F6E;&#x4E86;&#x4E00;&#x4E0B;&#xFF0C;&#x53EF;&#x662F;&#x7F16;&#x8BD1;&#x7A0B;&#x5E8F;&#x65F6;&#x9047;&#x5230;&#x5982;&#x4E0B;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#xFF1A; 
+Linking... LINK : fatal error LNK1104: cannot open file&quot;odbccp32.libcxcore.lib&quot; 
+&#x53EF;&#x80FD;&#x662F;&#xFF1A;&#x5728;&#x5DE5;&#x7A0B;&#x8BBE;&#x7F6E;&#x7684;&#x65F6;&#x5019;&#x6DFB;&#x52A0;&#x8FDE;&#x63A5;&#x5E93;&#x65F6;&#x6CA1;&#x52A0;&#x7A7A;&#x683C;&#x6216;.&#x6765;&#x628A;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#x540D;&#xFF08;odbccp32.lib cxcore.lib&#xFF09;&#x5206;&#x5F00;&#x3002;&#x6CE8;&#x610F;&#x6BCF;&#x4E00;&#x6B21;&#x64CD;&#x4F5C;&#x540E;&#xFF0C;&#x8BB0;&#x5F97;&#x4FDD;&#x5B58;&#x3002;</p>
+</li>
+</ol>
+<p>&#x82E5;&#x7ECF;&#x8FC7;&#x4EE5;&#x4E0A;&#x6240;&#x6709;&#x7684;&#x6B65;&#x9AA4;&#x4E4B;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x8FD8;&#x4E0D;&#x80FD;&#x6B63;&#x5E38;&#x7F16;&#x8BD1;&#xFF0C;&#x90A3;&#x5C31;&#x662F;&#x8FD8;&#x8981;&#x7A0D;&#x5FAE;&#x4FEE;&#x6539;&#x4E0B;&#x4F60;&#x4E0B;&#x8F7D;&#x7684;Rob Hess&#x4EE3;&#x7801;&#x3002;ok&#xFF0C;&#x65E5;&#x540E;&#xFF0C;&#x82E5;&#x6709;&#x7A7A;&#xFF0C;&#x518D;&#x597D;&#x597D;&#x8BE6;&#x7EC6;&#x5256;&#x6790;&#x4E0B;&#x6B64;sift&#x7684;&#x6E90;&#x7801;&#x3002;&#x6700;&#x540E;&#xFF0C;&#x795D;&#x4F60;&#x7F16;&#x8BD1;&#x987A;&#x5229;&#x3002;</p>
+<p>updated</p>
+<p>&#x4ECA;&#x5929;&#x4E0B;&#x5348;&#x8BD5;&#x4E86;&#x4E0B;sift + KD + BBF&#xFF0C;&#x7136;&#x540E;&#x7528;&#x4E24;&#x5E45;&#x4E0D;&#x540C;&#x7684;&#x56FE;&#x7247;&#x505A;&#x4E86;&#x4E0B;&#x5339;&#x914D;&#xFF08;&#x5F53;&#x7136;&#xFF0C;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x663E;&#x793A;&#x662F;&#x4E0D;&#x5339;&#x914D;&#x7684;&#xFF09;&#xFF0C;&#x6548;&#x679C;&#x8FD8;&#x4E0D;&#x9519;&#xFF1A;<a href="http://weibo.com/1580904460/yDmzAEwcV#1348475194313" target="_blank">http://weibo.com/1580904460/yDmzAEwcV#1348475194313</a>! </p>
+<p><img src="../images/10-1-1/7.jpg" alt=""></p>
+<p>&#x540C;&#x65F6;&#xFF0C;&#x7F16;&#x8BD1;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x76F4;&#x63A5;&#x7528;&#x7684;VS2010 + opencv&#xFF08;&#x5E76;&#x6CA1;&#x4E0B;gsl&#xFF09;&#x3002;2012.09.24&#x3002;&#x5B8C;&#x3002; </p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./ch10.html" class="navigation navigation-prev " aria-label="Previous page: sift算法"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./10.01.02.html" class="navigation navigation-next " aria-label="Next page: 教你一步一步用c语言实现sift算法、上"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

@@ -1,0 +1,263 @@
+<hr>
+<p>title: 责任链模式<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2019-5-19 22:12:56<br>
+tags:</p>
+<ul>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>行为型模式<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h2 id="责任链模式"><a class="header-anchor" href="#责任链模式">¶</a>责任链模式</h2>
+<h3 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h3>
+<blockquote>
+<p>Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the request.Chain the receiving objects and pass the request along the chain until an object handles it.<br>
+使多个对象都有机会处理请求，从而避免了请求的发送者和接受者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有对象处理它为止。</p>
+</blockquote>
+<h3 id="责任链模式示意图"><a class="header-anchor" href="#责任链模式示意图">¶</a>责任链模式示意图</h3>
+<p><img src="%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F.png" alt="责任链模式"></p>
+<h3 id="流程"><a class="header-anchor" href="#流程">¶</a>流程</h3>
+<ol>
+<li>定义一个请求以及这个请求对应的处理器标识。</li>
+<li>创建一个抽象处理器，用来封装所有处理器的相同部分，所有实体处理器都要继承这个抽象类。</li>
+<li>我们定义的请求会访问抽象处理器(使用多态)，所有的处理器组成一个责任链条，我们的请求会从责任链条头部一个个节点的比对处理器标识，如果处理器标识比对成功，就获取对应处理器。</li>
+<li>获取到对应处理器后，处理器就开始响应这个请求。</li>
+</ol>
+<h3 id="代码实现"><a class="header-anchor" href="#代码实现">¶</a>代码实现</h3>
+<h4 id="处理器"><a class="header-anchor" href="#处理器">¶</a>处理器</h4>
+<ol>
+<li>Handler(抽象处理器)</li>
+</ol>
+<pre><code class="language-Java">package org.example.chain;
+
+/**
+ * 抽象处理器，所有的处理器实体都要集成这个处理器
+ */
+public abstract class Handler {
+
+    /**
+     * 处理器需要处理的请求等级
+     */
+    public final static int GET_REQUEST = 0 ;
+    public final static int POST_REQUEST = 1 ;
+    public final static int OTHER_REQUEST = 2 ;
+
+    private int handlerCount = 0 ;
+    
+    /**
+     * 成员变量
+     */
+    private Handler nextHandler ;
+    private int level ;
+
+    /**
+     * 处理器用来初始化输入请求的等级
+     * @param level
+     */
+    public Handler(int level){
+        this.level = level ;
+    }
+
+    /**
+     * 处理器处理请求的业务逻辑
+     * @param request
+     */
+    public void handlerMessage(Request request){
+        // 如果请求等级相同
+        if (this.level == request.getType()){
+            this.response(request); // 那么就使用当前处理器
+        }else {
+            // 如果还有下一个处理器，就将请求交给下一个处理器处理
+            if (nextHandler != null){
+                this.nextHandler.handlerMessage(request); // 使用下一个处理器
+            }else { // 如果没有处理器了，就不处理该请求
+                System.out.println(&quot;没有适合的处理器处理请求。&quot;);
+            }
+        }
+    }
+
+    /**
+     * 将各个处理器连接起来，形成一个责任链条
+     * @param handler
+     */
+    public void setNextHandler(Handler handler){
+        if (handlerCount &lt; 5){
+            this.nextHandler = handler ;
+            handlerCount++ ;
+        }else {
+            System.out.println(&quot;责任链条超出阈值&quot;);
+        }
+    }
+
+    /**
+     * 处理器响应请求
+     * @param request
+     */
+    protected abstract void response(Request request);
+}
+</code></pre>
+<ol start="2">
+<li>GetHandler(get请求处理器)</li>
+</ol>
+<pre><code class="language-Java">package org.example.chain;
+
+/**
+ * get请求的处理器
+ */
+public class GetHandler extends Handler {
+
+    /**
+     * 初始化get请求的等级
+     */
+    public GetHandler(){
+        super(Handler.GET_REQUEST);
+    }
+    // 表示获取的请求是一个get请求
+    @Override
+    protected void response(Request request) {
+        System.out.println(&quot;开始处理GET请求:&quot;+request.getRequest());
+    }
+}
+</code></pre>
+<ol start="3">
+<li>PostHandler(post请求处理器)</li>
+</ol>
+<pre><code class="language-Java">package org.example.chain;
+
+/**
+ *
+ */
+public class PostHandler extends Handler {
+    /**
+     * 初始化post请求的等级
+     */
+    public PostHandler(){
+        super(Handler.POST_REQUEST);
+    }
+
+    /**
+     * 处理器响应post请求
+     * @param request
+     */
+    @Override
+    protected void response(Request request) {
+        System.out.println(&quot;开始处理POST请求：&quot;+request.getRequest());
+    }
+}
+</code></pre>
+<ol start="4">
+<li>OtherHandler(其他请求处理器)</li>
+</ol>
+<pre><code class="language-Java">package org.example.chain;
+
+public class OtherHandler extends Handler {
+    public OtherHandler(){
+        super(Handler.OTHER_REQUEST);
+    }
+    @Override
+    protected void response(Request request) {
+        System.out.println(&quot;开始处理其他请求：&quot;+request.getRequest());
+    }
+}
+</code></pre>
+<h4 id="请求"><a class="header-anchor" href="#请求">¶</a>请求</h4>
+<ol>
+<li>Request(请求实体)</li>
+</ol>
+<pre><code class="language-Java">package org.example.chain;
+
+/**
+ * 请求角色，为请求设置等级，用来匹配责任链中的处理器
+ */
+public class Request {
+
+    private int type ;
+    private String request ;
+
+    /**
+     * type = 0 表示是GET请求
+     * type = 1 表示是POST请求
+     */
+    public Request(int type , String request){
+        this.type = type ;
+        switch (type){
+            case 0 :
+                this.request = request+&quot;是一个GET请求&quot;;
+                break;
+            case 1 :
+                this.request = request+&quot;是一个POST请求&quot;;
+                break;
+            case 2 :
+                this.request = request+&quot;是一个未知请求&quot;;
+                break;
+        }
+    }
+
+    public int getType(){
+        return this.type ;
+    }
+
+    public String getRequest(){
+        return this.request ;
+    }
+}
+</code></pre>
+<h4 id="场景实现"><a class="header-anchor" href="#场景实现">¶</a>场景实现</h4>
+<pre><code class="language-Java">public class App {
+    /**
+     * 责任链模式
+     * @param args
+     */
+    public static void main(String[] args) {
+        // 先创建一个get请求
+        Request request = new Request(0 , &quot;http://example.com/get?a=b&quot;);
+        // 创建一个post请求
+        Request request1 = new Request(1, &quot;http://example.com/post&quot;);
+        Request request2 = new Request(2, &quot;http://example.com/other&quot;);
+
+        // 创建责任链节点
+        GetHandler getHandler = new GetHandler();
+        PostHandler postHandler = new PostHandler();
+        OtherHandler otherHandler = new OtherHandler();
+
+        // 将责任链的各个节点连接起来，形成一个链条
+        getHandler.setNextHandler(postHandler);
+        postHandler.setNextHandler(otherHandler);
+
+        // 请求开始通过责任链进行判断
+        getHandler.handlerMessage(request);
+        getHandler.handlerMessage(request1);
+        getHandler.handlerMessage(request2);
+    }
+}
+</code></pre>
+<h3 id="应用场景"><a class="header-anchor" href="#应用场景">¶</a>应用场景</h3>
+<h3 id="责任链模式的优缺点"><a class="header-anchor" href="#责任链模式的优缺点">¶</a>责任链模式的优缺点</h3>
+<h4 id="优点"><a class="header-anchor" href="#优点">¶</a>优点</h4>
+<ol>
+<li>将请求和处理分开，两者解耦。</li>
+</ol>
+<h4 id="缺点"><a class="header-anchor" href="#缺点">¶</a>缺点</h4>
+<ol>
+<li>性能问题。每次请求都要从头开始遍历，如果请求匹配的处理器都是在末尾，非常耗费性能。</li>
+<li>调试不方便。采用了递归方式，调试时逻辑比较复杂。</li>
+</ol>
+<h4 id="注意事项"><a class="header-anchor" href="#注意事项">¶</a>注意事项</h4>
+<ol>
+<li>责任链中的节点需要控制数量，责任链不能太长。一般做法是在抽象处理器中设置责任链最大节点数。</li>
+</ol>

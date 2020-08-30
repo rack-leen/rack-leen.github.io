@@ -1,0 +1,3132 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>9.4 单机防火墙的一个实例 | 鸟哥的Linux私房菜：服务器架设篇 第三版</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./62.html" />
+    
+    
+    <link rel="prev" href="./60.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="12.4"
+        data-chapter-title="9.4 单机防火墙的一个实例"
+        data-filepath="61.md"
+        data-basepath="."
+        data-revision="Fri May 13 2016 13:40:53 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/vbird-linux-server-3e" target="blank" class="custom-link">鸟哥的Linux私房菜：服务器架设篇 第三版</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        鸟哥的Linux私房菜：服务器架设篇 第三版
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="part1.html">
+            
+                
+                    <a href="./part1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        第一部份：架站前的进修专区
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="0.html">
+            
+                
+                    <a href="./0.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        作者序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="1.html">
+            
+                
+                    <a href="./1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        第一章、架设服务器前的准备工作
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="2.html">
+            
+                
+                    <a href="./2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        1.1 前言： Linux 有啥功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="3.html">
+            
+                
+                    <a href="./3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        1.2 基本架设服务器流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="4.html">
+            
+                
+                    <a href="./4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        1.3 自我评估是否已经具有架站的能力
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="5.html">
+            
+                
+                    <a href="./5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        1.4 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="6.html">
+            
+                
+                    <a href="./6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        第二章、基础网络概念
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="7.html">
+            
+                
+                    <a href="./7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        2.1 网络是个什么玩意儿
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="8.html">
+            
+                
+                    <a href="./8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        2.2 TCP/IP 的链结层相关协议
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="9.html">
+            
+                
+                    <a href="./9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        2.3 TCP/IP 的网络层相关封包与数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="10.html">
+            
+                
+                    <a href="./10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        2.4 TCP/IP 的传输层相关封包与数据
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="11.html">
+            
+                
+                    <a href="./11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        2.5 连上 Internet 前的准备事项
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="12.html">
+            
+                
+                    <a href="./12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        2.6 重点回顾：
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="13.html">
+            
+                
+                    <a href="./13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        2.7 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="14.html">
+            
+                
+                    <a href="./14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        2.8 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="15.html">
+            
+                
+                    <a href="./15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        第三章、局域网络架构简介
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="16.html">
+            
+                
+                    <a href="./16.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        3.1 局域网络的联机
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="17.html">
+            
+                
+                    <a href="./17.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        3.2 本书使用的内部联机网络参数与通讯协议
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="18.html">
+            
+                
+                    <a href="./18.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        第四章、连上 Internet
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="19.html">
+            
+                
+                    <a href="./19.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        4.1 Linux 连上 Internet 前的注意事项
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="20.html">
+            
+                
+                    <a href="./20.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        4.2 连上 Internet 的设定方法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="21.html">
+            
+                
+                    <a href="./21.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        4.3 无线网络--以笔记本电脑为例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="22.html">
+            
+                
+                    <a href="./22.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        4.4 常见问题说明
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="23.html">
+            
+                
+                    <a href="./23.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        4.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="24.html">
+            
+                
+                    <a href="./24.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.6.</b>
+                        
+                        4.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="25.html">
+            
+                
+                    <a href="./25.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.7.</b>
+                        
+                        4.7 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="26.html">
+            
+                
+                    <a href="./26.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        第五章、 Linux 常用网络指令
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="27.html">
+            
+                
+                    <a href="./27.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        5.1 网络参数设定使用的指令
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="28.html">
+            
+                
+                    <a href="./28.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        5.2 网络侦错与观察指令
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="29.html">
+            
+                
+                    <a href="./29.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        5.3 远程联机指令与实时通讯软件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="30.html">
+            
+                
+                    <a href="./30.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        5.4 文字接口网页浏览
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="31.html">
+            
+                
+                    <a href="./31.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        5.5 封包撷取功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="32.html">
+            
+                
+                    <a href="./32.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.6.</b>
+                        
+                        5.6 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.7" data-path="33.html">
+            
+                
+                    <a href="./33.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.7.</b>
+                        
+                        5.7 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.8" data-path="34.html">
+            
+                
+                    <a href="./34.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.8.</b>
+                        
+                        5.8 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="35.html">
+            
+                
+                    <a href="./35.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        第六章、 Linux 网络侦错
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="36.html">
+            
+                
+                    <a href="./36.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        6.1 无法联机原因分析
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="37.html">
+            
+                
+                    <a href="./37.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        6.2 处理流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="38.html">
+            
+                
+                    <a href="./38.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        6.3 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="39.html">
+            
+                
+                    <a href="./39.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        6.4 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="part2.html">
+            
+                
+                    <a href="./part2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        第二部分：主机的简易资安防护措施
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="40.html">
+            
+                
+                    <a href="./40.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        第七章、网络安全与主机基本防护：限制端口, 网络升级与 SELinux
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="41.html">
+            
+                
+                    <a href="./41.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        7.1 网络封包联机进入主机的流程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="42.html">
+            
+                
+                    <a href="./42.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        7.2 网络自动升级软件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="43.html">
+            
+                
+                    <a href="./43.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        7.3 限制联机埠口 (port)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="44.html">
+            
+                
+                    <a href="./44.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        7.4 SELinux 管理原则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="45.html">
+            
+                
+                    <a href="./45.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.5.</b>
+                        
+                        7.5 被攻击后的主机修复工作
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="46.html">
+            
+                
+                    <a href="./46.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.6.</b>
+                        
+                        7.6 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7" data-path="47.html">
+            
+                
+                    <a href="./47.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.7.</b>
+                        
+                        7.7 课后练习
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8" data-path="48.html">
+            
+                
+                    <a href="./48.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.8.</b>
+                        
+                        7.8 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="49.html">
+            
+                
+                    <a href="./49.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        第八章、路由观念与路由器设定
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="50.html">
+            
+                
+                    <a href="./50.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        8.1 路由
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="51.html">
+            
+                
+                    <a href="./51.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        8.2 路由器架设
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="52.html">
+            
+                
+                    <a href="./52.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.3.</b>
+                        
+                        8.3 动态路由器架设：quagga (zebra + ripd)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="53.html">
+            
+                
+                    <a href="./53.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.4.</b>
+                        
+                        8.4 特殊状况：路由器两边界面是同一个 IP 网段： ARP Proxy
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.5" data-path="54.html">
+            
+                
+                    <a href="./54.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.5.</b>
+                        
+                        8.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.6" data-path="55.html">
+            
+                
+                    <a href="./55.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.6.</b>
+                        
+                        8.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.7" data-path="56.html">
+            
+                
+                    <a href="./56.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.7.</b>
+                        
+                        8.7 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="57.html">
+            
+                
+                    <a href="./57.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        第九章、防火墙与 NAT 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="58.html">
+            
+                
+                    <a href="./58.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        9.1 认识防火墙
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="59.html">
+            
+                
+                    <a href="./59.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        9.2 TCP Wrappers
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="60.html">
+            
+                
+                    <a href="./60.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        9.3 Linux 的封包过滤软件：iptables
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="12.4" data-path="61.html">
+            
+                
+                    <a href="./61.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.4.</b>
+                        
+                        9.4 单机防火墙的一个实例
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="62.html">
+            
+                
+                    <a href="./62.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.</b>
+                        
+                        9.5 NAT 服务器的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.6" data-path="63.html">
+            
+                
+                    <a href="./63.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.6.</b>
+                        
+                        9.6 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.7" data-path="64.html">
+            
+                
+                    <a href="./64.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.7.</b>
+                        
+                        9.7 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.8" data-path="65.html">
+            
+                
+                    <a href="./65.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.8.</b>
+                        
+                        9.8 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="66.html">
+            
+                
+                    <a href="./66.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        第十章、申请合法的主机名
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1" data-path="67.html">
+            
+                
+                    <a href="./67.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        10.1 为何需要主机名
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="68.html">
+            
+                
+                    <a href="./68.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        10.2 注册一个合法的主机名
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="69.html">
+            
+                
+                    <a href="./69.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        10.3 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" data-path="70.html">
+            
+                
+                    <a href="./70.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.4.</b>
+                        
+                        10.4 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" data-path="71.html">
+            
+                
+                    <a href="./71.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.5.</b>
+                        
+                        10.5 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="part3.html">
+            
+                
+                    <a href="./part3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        第三部分：局域网络内常见的服务器架设
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15" data-path="72.html">
+            
+                
+                    <a href="./72.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.</b>
+                        
+                        第十一章、远程联机服务器SSH / XDMCP / VNC / RDP
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="15.1" data-path="73.html">
+            
+                
+                    <a href="./73.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.1.</b>
+                        
+                        11.1 远程联机服务器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" data-path="74.html">
+            
+                
+                    <a href="./74.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.2.</b>
+                        
+                        11.2 文字接口联机服务器： SSH 服务器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.3" data-path="75.html">
+            
+                
+                    <a href="./75.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.3.</b>
+                        
+                        11.3 最原始图形接口： Xdmcp 服务的启用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.4" data-path="76.html">
+            
+                
+                    <a href="./76.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.4.</b>
+                        
+                        11.4 华丽的图形接口： VNC 服务器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.5" data-path="77.html">
+            
+                
+                    <a href="./77.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.5.</b>
+                        
+                        11.5 仿真的远程桌面系统： XRDP 服务器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.6" data-path="78.html">
+            
+                
+                    <a href="./78.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.6.</b>
+                        
+                        11.6 SSH 服务器的进阶应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.7" data-path="79.html">
+            
+                
+                    <a href="./79.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.7.</b>
+                        
+                        11.7 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.8" data-path="80.html">
+            
+                
+                    <a href="./80.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.8.</b>
+                        
+                        11.8 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="15.9" data-path="81.html">
+            
+                
+                    <a href="./81.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>15.9.</b>
+                        
+                        11.9 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="16" data-path="82.html">
+            
+                
+                    <a href="./82.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.</b>
+                        
+                        第十二章、网络参数控管者： DHCP 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="16.1" data-path="83.html">
+            
+                
+                    <a href="./83.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.1.</b>
+                        
+                        12.1 DHCP 运作的原理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.2" data-path="84.html">
+            
+                
+                    <a href="./84.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.2.</b>
+                        
+                        12.2 DHCP 服务器端的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.3" data-path="85.html">
+            
+                
+                    <a href="./85.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.3.</b>
+                        
+                        12.3 DHCP 客户端的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.4" data-path="86.html">
+            
+                
+                    <a href="./86.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.4.</b>
+                        
+                        12.4 DHCP 服务器端进阶观察与使用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.5" data-path="87.html">
+            
+                
+                    <a href="./87.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.5.</b>
+                        
+                        12.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.6" data-path="88.html">
+            
+                
+                    <a href="./88.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.6.</b>
+                        
+                        12.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="16.7" data-path="89.html">
+            
+                
+                    <a href="./89.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>16.7.</b>
+                        
+                        12.7 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="17" data-path="90.html">
+            
+                
+                    <a href="./90.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.</b>
+                        
+                        第十三章、文件服务器之一：NFS 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="17.1" data-path="91.html">
+            
+                
+                    <a href="./91.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.1.</b>
+                        
+                        13.1 NFS 的由来与其功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.2" data-path="92.html">
+            
+                
+                    <a href="./92.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.2.</b>
+                        
+                        13.2 NFS Server 端的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.3" data-path="93.html">
+            
+                
+                    <a href="./93.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.3.</b>
+                        
+                        13.3 NFS 客户端的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.4" data-path="94.html">
+            
+                
+                    <a href="./94.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.4.</b>
+                        
+                        13.4 案例演练
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.5" data-path="95.html">
+            
+                
+                    <a href="./95.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.5.</b>
+                        
+                        13.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.6" data-path="96.html">
+            
+                
+                    <a href="./96.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.6.</b>
+                        
+                        13.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="17.7" data-path="97.html">
+            
+                
+                    <a href="./97.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>17.7.</b>
+                        
+                        13.7 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="18" data-path="98.html">
+            
+                
+                    <a href="./98.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.</b>
+                        
+                        第十四章、账号控管： NIS 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="18.1" data-path="99.html">
+            
+                
+                    <a href="./99.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.1.</b>
+                        
+                        14.1 NIS 的由来与功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.2" data-path="100.html">
+            
+                
+                    <a href="./100.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.2.</b>
+                        
+                        14.2 NIS Server 端的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.3" data-path="101.html">
+            
+                
+                    <a href="./101.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.3.</b>
+                        
+                        14.3 NIS Client 端的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.4" data-path="102.html">
+            
+                
+                    <a href="./102.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.4.</b>
+                        
+                        14.4 NIS 搭配 NFS 的设定在丛集计算机上的应用
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.5" data-path="103.html">
+            
+                
+                    <a href="./103.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.5.</b>
+                        
+                        14.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.6" data-path="104.html">
+            
+                
+                    <a href="./104.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.6.</b>
+                        
+                        14.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="18.7" data-path="105.html">
+            
+                
+                    <a href="./105.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>18.7.</b>
+                        
+                        14.7 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="19" data-path="106.html">
+            
+                
+                    <a href="./106.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.</b>
+                        
+                        第十五章、时间服务器： NTP 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="19.1" data-path="107.html">
+            
+                
+                    <a href="./107.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.1.</b>
+                        
+                        15.1 关于时区与网络校时的通讯协议
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.2" data-path="108.html">
+            
+                
+                    <a href="./108.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.2.</b>
+                        
+                        15.2 NTP 服务器的安装与设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.3" data-path="109.html">
+            
+                
+                    <a href="./109.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.3.</b>
+                        
+                        15.3 客户端的时间更新方式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.4" data-path="110.html">
+            
+                
+                    <a href="./110.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.4.</b>
+                        
+                        15.4 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.5" data-path="111.html">
+            
+                
+                    <a href="./111.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.5.</b>
+                        
+                        15.5 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="19.6" data-path="112.html">
+            
+                
+                    <a href="./112.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>19.6.</b>
+                        
+                        15.6 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="20" data-path="113.html">
+            
+                
+                    <a href="./113.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.</b>
+                        
+                        第十六章、文件服务器之二： SAMBA 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="20.1" data-path="114.html">
+            
+                
+                    <a href="./114.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.1.</b>
+                        
+                        16.1 什么是 SAMBA
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.2" data-path="115.html">
+            
+                
+                    <a href="./115.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.2.</b>
+                        
+                        16.2 SAMBA 服务器的基础设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.3" data-path="116.html">
+            
+                
+                    <a href="./116.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.3.</b>
+                        
+                        16.3 Samba 客户端软件功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.4" data-path="117.html">
+            
+                
+                    <a href="./117.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.4.</b>
+                        
+                        16.4 以 PDC 服务器提供账号管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.5" data-path="118.html">
+            
+                
+                    <a href="./118.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.5.</b>
+                        
+                        16.5 服务器简单维护与管理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.6" data-path="119.html">
+            
+                
+                    <a href="./119.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.6.</b>
+                        
+                        16.6 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.7" data-path="120.html">
+            
+                
+                    <a href="./120.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.7.</b>
+                        
+                        16.7 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="20.8" data-path="121.html">
+            
+                
+                    <a href="./121.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>20.8.</b>
+                        
+                        16.8 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="21" data-path="122.html">
+            
+                
+                    <a href="./122.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.</b>
+                        
+                        第十七章、区网控制者： Proxy 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="21.1" data-path="123.html">
+            
+                
+                    <a href="./123.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.1.</b>
+                        
+                        17.1 什么是代理服务器 (Proxy)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.2" data-path="124.html">
+            
+                
+                    <a href="./124.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.2.</b>
+                        
+                        17.2 Proxy 服务器的基础设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.3" data-path="125.html">
+            
+                
+                    <a href="./125.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.3.</b>
+                        
+                        17.3 客户端的使用与测试
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.4" data-path="126.html">
+            
+                
+                    <a href="./126.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.4.</b>
+                        
+                        17.4 服务器的其他应用设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.5" data-path="127.html">
+            
+                
+                    <a href="./127.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.5.</b>
+                        
+                        17.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.6" data-path="128.html">
+            
+                
+                    <a href="./128.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.6.</b>
+                        
+                        17.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="21.7" data-path="129.html">
+            
+                
+                    <a href="./129.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>21.7.</b>
+                        
+                        17.7 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="22" data-path="130.html">
+            
+                
+                    <a href="./130.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.</b>
+                        
+                        第十八章、网络驱动器装置： iSCSI 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="22.1" data-path="131.html">
+            
+                
+                    <a href="./131.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.1.</b>
+                        
+                        18.1 网络文件系统还是网络驱动器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.2" data-path="132.html">
+            
+                
+                    <a href="./132.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.2.</b>
+                        
+                        18.2 iSCSI target 的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.3" data-path="133.html">
+            
+                
+                    <a href="./133.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.3.</b>
+                        
+                        18.3 iSCSI initiator 的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.4" data-path="134.html">
+            
+                
+                    <a href="./134.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.4.</b>
+                        
+                        18.4 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.5" data-path="135.html">
+            
+                
+                    <a href="./135.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.5.</b>
+                        
+                        18.5 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="22.6" data-path="136.html">
+            
+                
+                    <a href="./136.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>22.6.</b>
+                        
+                        18.6 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="23" data-path="part4.html">
+            
+                
+                    <a href="./part4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>23.</b>
+                        
+                        第四部分：常见因特网服务器架设
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24" data-path="137.html">
+            
+                
+                    <a href="./137.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.</b>
+                        
+                        第十九章、主机名控制者： DNS 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="24.1" data-path="138.html">
+            
+                
+                    <a href="./138.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.1.</b>
+                        
+                        19.1 什么是 DNS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.2" data-path="139.html">
+            
+                
+                    <a href="./139.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.2.</b>
+                        
+                        19.2 Client 端的设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.3" data-path="140.html">
+            
+                
+                    <a href="./140.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.3.</b>
+                        
+                        19.3 DNS 服务器的软件、种类与 cache only DNS 服务器设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.4" data-path="141.html">
+            
+                
+                    <a href="./141.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.4.</b>
+                        
+                        19.4 DNS 服务器的详细设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.5" data-path="142.html">
+            
+                
+                    <a href="./142.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.5.</b>
+                        
+                        19.5 协同工作的 DNS： Slave DNS 及子域授权设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.6" data-path="143.html">
+            
+                
+                    <a href="./143.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.6.</b>
+                        
+                        19.6 DNS 服务器的进阶设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.7" data-path="144.html">
+            
+                
+                    <a href="./144.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.7.</b>
+                        
+                        19.7 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.8" data-path="145.html">
+            
+                
+                    <a href="./145.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.8.</b>
+                        
+                        19.8 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="24.9" data-path="146.html">
+            
+                
+                    <a href="./146.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>24.9.</b>
+                        
+                        19.9 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="25" data-path="147.html">
+            
+                
+                    <a href="./147.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.</b>
+                        
+                        第二十章、WWW 伺服器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="25.1" data-path="148.html">
+            
+                
+                    <a href="./148.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.1.</b>
+                        
+                        20.1 WWW 的簡史、資源以及伺服器軟體
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.2" data-path="149.html">
+            
+                
+                    <a href="./149.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.2.</b>
+                        
+                        20.2 WWW (LAMP) 伺服器基本設定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.3" data-path="150.html">
+            
+                
+                    <a href="./150.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.3.</b>
+                        
+                        20.3 Apache 伺服器的進階設定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.4" data-path="151.html">
+            
+                
+                    <a href="./151.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.4.</b>
+                        
+                        20.4 登錄檔分析以及 PHP 強化模組
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.5" data-path="152.html">
+            
+                
+                    <a href="./152.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.5.</b>
+                        
+                        20.5 建立連線加密網站 (https) 及防砍站腳本
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.6" data-path="153.html">
+            
+                
+                    <a href="./153.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.6.</b>
+                        
+                        20.6 重點回顧
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.7" data-path="154.html">
+            
+                
+                    <a href="./154.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.7.</b>
+                        
+                        20.7 本章習題
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="25.8" data-path="155.html">
+            
+                
+                    <a href="./155.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>25.8.</b>
+                        
+                        20.8 參考資料與延伸閱讀
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="26" data-path="156.html">
+            
+                
+                    <a href="./156.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.</b>
+                        
+                        第二十一章、文件服务器之三： FTP 服务器
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="26.1" data-path="157.html">
+            
+                
+                    <a href="./157.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.1.</b>
+                        
+                        21.1 FTP 的数据链路原理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.2" data-path="158.html">
+            
+                
+                    <a href="./158.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.2.</b>
+                        
+                        21.2 vsftpd 服务器基础设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.3" data-path="159.html">
+            
+                
+                    <a href="./159.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.3.</b>
+                        
+                        21.3 客户端的图形接口 FTP 联机软件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.4" data-path="160.html">
+            
+                
+                    <a href="./160.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.4.</b>
+                        
+                        21.4 让 vsftpd 增加 SSL 的加密功能
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.5" data-path="161.html">
+            
+                
+                    <a href="./161.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.5.</b>
+                        
+                        21.5 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.6" data-path="162.html">
+            
+                
+                    <a href="./162.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.6.</b>
+                        
+                        21.6 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="26.7" data-path="163.html">
+            
+                
+                    <a href="./163.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>26.7.</b>
+                        
+                        21.7 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="27" data-path="164.html">
+            
+                
+                    <a href="./164.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.</b>
+                        
+                        第二十二章、邮件服务器： Postfix
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="27.1" data-path="165.html">
+            
+                
+                    <a href="./165.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.1.</b>
+                        
+                        22.1 邮件服务器的功能与运作原理
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27.2" data-path="166.html">
+            
+                
+                    <a href="./166.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.2.</b>
+                        
+                        22.2 MTA 服务器： Postfix 基础设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27.3" data-path="167.html">
+            
+                
+                    <a href="./167.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.3.</b>
+                        
+                        22.3 MRA 服务器： dovecot 设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27.4" data-path="168.html">
+            
+                
+                    <a href="./168.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.4.</b>
+                        
+                        22.4 MUA 软件：客户端的收发信软件
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27.5" data-path="169.html">
+            
+                
+                    <a href="./169.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.5.</b>
+                        
+                        22.5 邮件服务器的进阶设定
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27.6" data-path="170.html">
+            
+                
+                    <a href="./170.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.6.</b>
+                        
+                        22.6 重点回顾
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27.7" data-path="171.html">
+            
+                
+                    <a href="./171.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.7.</b>
+                        
+                        22.7 本章习题
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="27.8" data-path="172.html">
+            
+                
+                    <a href="./172.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>27.8.</b>
+                        
+                        22.8 参考数据与延伸阅读
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >鸟哥的Linux私房菜：服务器架设篇 第三版</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h2 id="94-&#x5355;&#x673A;&#x9632;&#x706B;&#x5899;&#x7684;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;">9.4 &#x5355;&#x673A;&#x9632;&#x706B;&#x5899;&#x7684;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;</h2>
+<p>&#x4ECB;&#x7ECD;&#x4E86;&#x8FD9;&#x4E48;&#x591A;&#x7684;&#x9632;&#x706B;&#x5899;&#x8BED;&#x6CD5;&#x4E0E;&#x76F8;&#x5173;&#x7684;&#x6CE8;&#x610F;&#x4E8B;&#x9879;&#x540E;&#xFF0C;&#x7EC8;&#x4E8E;&#x8981;&#x6765;&#x67B6;&#x8BBE;&#x9632;&#x706B;&#x5899;&#x4E86;&#x3002;&#x9E1F;&#x54E5;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x504F;&#x597D;&#x4F7F;&#x7528;&#x811A;&#x672C;&#x6765;&#x64B0;&#x5199;&#x9632;&#x706B;&#x5899;&#xFF0C; &#x7136;&#x540E;&#x900F;&#x8FC7;&#x6700;&#x7EC8;&#x7684; /etc/init.d/iptables save &#x6765;&#x5C06;&#x7ED3;&#x679C;&#x50A8;&#x5B58;&#x5230; /etc/sysconfig/iptables &#x53BB;&#xFF01; &#x800C;&#x4E14;&#x6B64;&#x4E00;&#x7279;&#x8272;&#x8FD8;&#x53EF;&#x4EE5;&#x7528;&#x5728;&#x547C;&#x53EB;&#x5176;&#x4ED6;&#x7684; scripts &#xFF0C;&#x53EF;&#x4EE5;&#x8BA9;&#x9632;&#x706B;&#x5899;&#x89C4;&#x5219;&#x5177;&#x6709;&#x8F83;&#x4E3A;&#x7075;&#x6D3B;&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x3002; &#x597D;&#x4E86;&#xFF0C;&#x90A3;&#x5C31;&#x6765;&#x8C08;&#x8C08;&#x5982;&#x4F55;&#x8BBE;&#x5B9A;&#x54B1;&#x4EEC;&#x7684;&#x9632;&#x706B;&#x5899;&#x89C4;&#x5219;&#x5427;&#xFF01;</p>
+<hr>
+<h3 id="941-&#x89C4;&#x5219;&#x8349;&#x62DF;">9.4.1 &#x89C4;&#x5219;&#x8349;&#x62DF;</h3>
+<p>&#x9E1F;&#x54E5;&#x5E95;&#x4E0B;&#x4ECB;&#x7ECD;&#x7684;&#x8FD9;&#x4E2A;&#x9632;&#x706B;&#x5899;&#xFF0C;&#x5176;&#x5B9E;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x4F5C;&#x4E3A;&#x8DEF;&#x7531;&#x5668;&#x4E0A;&#x7684;&#x9632;&#x706B;&#x5899;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x4F5C;&#x4E3A;&#x672C;&#x673A;&#x7684;&#x9632;&#x706B;&#x5899;&#x3002; &#x5047;&#x8BBE;&#x786C;&#x4EF6;&#x8054;&#x673A;&#x5982;&#x540C;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF0C; Linux &#x4E3B;&#x673A;&#x672C;&#x8EAB;&#x4E5F;&#x662F;&#x5185;&#x90E8; LAN &#x7684;&#x8DEF;&#x7531;&#x5668;&#xFF01;&#x4EA6;&#x5373;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684; IP &#x5206;&#x4EAB;&#x5668;&#x7684;&#x529F;&#x80FD;&#x5566;&#xFF01;&#x4F9D;&#x636E;&#x7B2C;&#x4E09;&#x7AE0;&#x7684;<a href="http://linux.vbird.org/linux_server/0120intranet.php#fig3.2-1" target="_blank">&#x56FE; 3.2-1</a> &#x5047;&#x8BBE;&#x9E1F;&#x54E5;&#x7F51;&#x7EDC;&#x63A5;&#x53E3;&#x6709;&#x5E95;&#x4E0B;&#x8FD9;&#x4E9B;&#xFF1A;</p>
+<ul>
+<li>&#x5916;&#x90E8;&#x7F51;&#x7EDC;&#x4F7F;&#x7528; eth0 (&#x5982;&#x679C;&#x662F;&#x62E8;&#x63A5;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x662F; ppp0&#xFF0C;&#x8BF7;&#x9488;&#x5BF9;&#x4F60;&#x7684;&#x73AF;&#x5883;&#x6765;&#x8BBE;&#x5B9A;)&#xFF1B;</li>
+<li>&#x5185;&#x90E8;&#x7F51;&#x7EDC;&#x4F7F;&#x7528; eth1 &#xFF0C;&#x4E14;&#x5185;&#x90E8;&#x4F7F;&#x7528; 192.168.100.0/24 &#x8FD9;&#x4E2A; Class &#xFF1B;</li>
+<li>&#x4E3B;&#x673A;&#x9ED8;&#x8BA4;&#x5F00;&#x653E;&#x7684;&#x670D;&#x52A1;&#x6709; WWW, SSH, https &#x7B49;&#x7B49;&#xFF1B;</li>
+</ul>
+<p><img src="img/centos_6_real_case.gif" alt="">
+&#x56FE; 9.4-1&#x3001;&#x4E00;&#x4E2A;&#x5C40;&#x57DF;&#x7F51;&#x7EDC;&#x7684;&#x8DEF;&#x7531;&#x5668;&#x67B6;&#x6784;&#x793A;&#x610F;&#x56FE;</p>
+<p>&#x7531;&#x4E8E;&#x5E0C;&#x671B;&#x5C06;&#x4FE1;&#x4EFB;&#x7F51;&#x57DF; (LAN) &#x4E0E;&#x4E0D;&#x4FE1;&#x4EFB;&#x7F51;&#x57DF; (Internet) &#x6574;&#x4E2A;&#x5206;&#x5F00;&#x7684;&#x5B8C;&#x6574;&#x4E00;&#x70B9;&#xFF0C; &#x6240;&#x4EE5;&#x5E0C;&#x671B;&#x4F60;&#x53EF;&#x4EE5;&#x5728; Linux &#x4E0A;&#x9762;&#x5B89;&#x88C5;&#x4E24;&#x5757;&#x4EE5;&#x4E0A;&#x7684;&#x5B9E;&#x4F53;&#x7F51;&#x5361;&#xFF0C;&#x5C06;&#x4E24;&#x5757;&#x7F51;&#x5361;&#x63A5;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x7F51;&#x57DF;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x5F88;&#x591A;&#x95EE;&#x9898;&#x3002; &#x81F3;&#x4E8E;&#x6700;&#x91CD;&#x8981;&#x7684;&#x9632;&#x706B;&#x5899;&#x653F;&#x7B56;&#x662F;&#xFF1A;&#x300E;&#x5173;&#x95ED;&#x6240;&#x6709;&#x7684;&#x8054;&#x673A;&#xFF0C;&#x4EC5;&#x5F00;&#x653E;&#x7279;&#x5B9A;&#x7684;&#x670D;&#x52A1;&#x300F;&#x6A21;&#x5F0F;&#x3002; &#x800C;&#x4E14;&#x5047;&#x8BBE;&#x5185;&#x90E8;&#x4F7F;&#x7528;&#x8005;&#x5DF2;&#x7ECF;&#x53D7;&#x8FC7;&#x826F;&#x597D;&#x7684;&#x8BAD;&#x7EC3;&#xFF0C;&#x56E0;&#x6B64;&#x5728; filter table &#x7684;&#x4E09;&#x6761;&#x94FE;&#x4E2A;&#x9884;&#x8BBE;&#x653F;&#x7B56;&#x662F;&#xFF1A;</p>
+<ul>
+<li>INPUT &#x4E3A; DROP</li>
+<li>OUTPUT &#x53CA; FORWARD &#x4E3A; ACCEPT</li>
+</ul>
+<p>&#x9E1F;&#x54E5;&#x5E95;&#x4E0B;&#x9884;&#x8BA1;&#x63D0;&#x4F9B;&#x7684;&#x9632;&#x706B;&#x5899;&#x6D41;&#x7A0B;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<p><img src="img/simple_firewall.png" alt="">
+&#x56FE; 9.4-2&#x3001;&#x672C;&#x673A;&#x7684;&#x9632;&#x706B;&#x5899;&#x89C4;&#x5219;&#x6D41;&#x7A0B;&#x793A;&#x610F;&#x56FE;</p>
+<p>&#x539F;&#x5219;&#x4E0A;&#xFF0C;&#x5185;&#x90E8; LAN &#x4E3B;&#x673A;&#x4E0E;&#x4E3B;&#x673A;&#x672C;&#x8EAB;&#x7684;&#x5F00;&#x653E;&#x5EA6;&#x5F88;&#x9AD8;&#xFF0C;&#x56E0;&#x4E3A; Output &#x4E0E; Forward &#x662F;&#x5B8C;&#x5168;&#x5F00;&#x653E;&#x4E0D;&#x7406;&#x7684;&#xFF01;&#x5BF9;&#x4E8E;&#x5C0F;&#x5BB6;&#x5EAD;&#x7684;&#x4E3B;&#x673A;&#x662F;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x5185;&#x90E8;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x6570;&#x91CF;&#x4E0D;&#x591A;&#xFF0C;&#x800C;&#x4E14;&#x4EBA;&#x5458;&#x90FD;&#x662F;&#x719F;&#x6089;&#x7684;&#xFF0C; &#x6240;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x7279;&#x522B;&#x52A0;&#x4EE5;&#x63A7;&#x7BA1;&#xFF01;&#x4F46;&#x662F;&#xFF1A;&#x300E;&#x5728;&#x5927;&#x4F01;&#x4E1A;&#x7684;&#x5185;&#x90E8;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x89C4;&#x5212;&#x662F;&#x5F88;&#x4E0D;&#x5408;&#x683C;&#x7684;&#xFF0C; &#x56E0;&#x4E3A;&#x4F60;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x5185;&#x90E8;&#x6240;&#x6709;&#x7684;&#x4EBA;&#x90FD;&#x53EF;&#x4EE5;&#x6309;&#x7167;&#x4F60;&#x7684;&#x89C4;&#x5B9A;&#x6765;&#x4F7F;&#x7528; Network &#xFF01;&#x300F;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x300E;&#x5BB6;&#x8D3C;&#x96BE;&#x9632;&#x300F;&#x5440;&#xFF01; &#x56E0;&#x6B64;&#xFF0C;&#x90A3;&#x6837;&#x7684;&#x73AF;&#x5883;&#x8FDE; Output &#x4E0E; Forward &#x90FD;&#x9700;&#x8981;&#x7279;&#x522B;&#x52A0;&#x4EE5;&#x7BA1;&#x7406;&#x624D;&#x884C;&#xFF01;</p>
+<hr>
+<h3 id="942-&#x5B9E;&#x9645;&#x8BBE;&#x5B9A;">9.4.2 &#x5B9E;&#x9645;&#x8BBE;&#x5B9A;</h3>
+<p>&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x8BBE;&#x5B9A;&#x9632;&#x706B;&#x5899;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x592A;&#x53EF;&#x80FD;&#x4F1A;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x6307;&#x4EE4;&#x7684;&#x8F93;&#x5165;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x5229;&#x7528; shell scripts &#x6765;&#x5E2E;&#x6211;&#x4EEC;&#x8FBE;&#x6210;&#x8FD9;&#x6837;&#x7684;&#x529F;&#x80FD;&#x5436;&#xFF01;&#x5E95;&#x4E0B;&#x662F;&#x5229;&#x7528;&#x4E0A;&#x9762;&#x7684;&#x6D41;&#x7A0B;&#x56FE;&#x6240;&#x89C4;&#x5212;&#x51FA;&#x6765;&#x7684;&#x9632;&#x706B;&#x5899;&#x811A;&#x672C;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x770B;&#x770B;&#xFF0C; &#x4F46;&#x662F;&#x4F60;&#x9700;&#x8981;&#x5C06;&#x73AF;&#x5883;&#x4FEE;&#x6539;&#x6210;&#x9002;&#x5408;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x73AF;&#x5883;&#x624D;&#x884C;&#x5594;&#xFF01;&#x6B64;&#x5916;&#xFF0C;&#x4E3A;&#x4E86;&#x672A;&#x6765;&#x4FEE;&#x6539;&#x7EF4;&#x62A4;&#x7684;&#x65B9;&#x4FBF;&#xFF0C;&#x9E1F;&#x54E5;&#x5C06;&#x6574;&#x4E2A; script &#x62C6;&#x6210;&#x4E09;&#x90E8;&#x5206;&#xFF0C;&#x5206;&#x522B;&#x662F;&#xFF1A;</p>
+<ul>
+<li>iptables.rule&#xFF1A;&#x8BBE;&#x5B9A;&#x6700;&#x57FA;&#x672C;&#x7684;&#x89C4;&#x5219;&#xFF0C;&#x5305;&#x62EC;&#x6E05;&#x9664;&#x9632;&#x706B;&#x5899;&#x89C4;&#x5219;&#x3001;&#x52A0;&#x8F7D;&#x6A21;&#x5757;&#x3001;&#x8BBE;&#x5B9A;&#x670D;&#x52A1;&#x53EF;&#x63A5;&#x53D7;&#x7B49;&#xFF1B;</li>
+<li>iptables.deny&#xFF1A;&#x8BBE;&#x5B9A;&#x62B5;&#x6321;&#x67D0;&#x4E9B;&#x6076;&#x610F;&#x4E3B;&#x673A;&#x7684;&#x8FDB;&#x5165;&#xFF1B;</li>
+<li>iptables.allow&#xFF1A;&#x8BBE;&#x5B9A;&#x5141;&#x8BB8;&#x67D0;&#x4E9B;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x540E;&#x95E8;&#x6765;&#x6E90;&#x4E3B;&#x673A;&#xFF01;</li>
+</ul>
+<p>&#x9E1F;&#x54E5;&#x4E2A;&#x4EBA;&#x4E60;&#x60EF;&#x662F;&#x5C06;&#x8FD9;&#x4E2A;&#x811A;&#x672C;&#x653E;&#x7F6E;&#x5230; /usr/local/virus/iptables &#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x653E;&#x7F6E;&#x5230;&#x81EA;&#x5DF1;&#x4E60;&#x60EF;&#x7684;&#x4F4D;&#x7F6E;&#x53BB;&#x3002; &#x90A3;&#x5E95;&#x4E0B;&#x5C31;&#x6765;&#x77A7;&#x77A7;&#x8FD9;&#x652F;&#x811A;&#x672C;&#x662F;&#x600E;&#x4E48;&#x5199;&#x7684;&#x5427;&#xFF01;</p>
+<pre><code>[root@www ~]# mkdir -p /usr/local/virus/iptables
+[root@www ~]# cd /usr/local/virus/iptables
+[root@www iptables]# vim iptables.rule
+#!/bin/bash
+
+# &#x8BF7;&#x5148;&#x8F93;&#x5165;&#x60A8;&#x7684;&#x76F8;&#x5173;&#x53C2;&#x6570;&#xFF0C;&#x4E0D;&#x8981;&#x8F93;&#x5165;&#x9519;&#x8BEF;&#x4E86;&#xFF01;
+  EXTIF=&quot;eth0&quot;             # &#x8FD9;&#x4E2A;&#x662F;&#x53EF;&#x4EE5;&#x8FDE;&#x4E0A; Public IP &#x7684;&#x7F51;&#x7EDC;&#x63A5;&#x53E3;
+  INIF=&quot;eth1&quot;              # &#x5185;&#x90E8; LAN &#x7684;&#x8FDE;&#x63A5;&#x63A5;&#x53E3;&#xFF1B;&#x82E5;&#x65E0;&#x5219;&#x5199;&#x6210; INIF=&quot;&quot;
+  INNET=&quot;192.168.100.0/24&quot; # &#x82E5;&#x65E0;&#x5185;&#x90E8;&#x7F51;&#x57DF;&#x63A5;&#x53E3;&#xFF0C;&#x8BF7;&#x586B;&#x5199;&#x6210; INNET=&quot;&quot;
+  export EXTIF INIF INNET
+
+# &#x7B2C;&#x4E00;&#x90E8;&#x4EFD;&#xFF0C;&#x9488;&#x5BF9;&#x672C;&#x673A;&#x7684;&#x9632;&#x706B;&#x5899;&#x8BBE;&#x5B9A;&#xFF01;##########################################
+# 1\. &#x5148;&#x8BBE;&#x5B9A;&#x597D;&#x6838;&#x5FC3;&#x7684;&#x7F51;&#x7EDC;&#x529F;&#x80FD;&#xFF1A;
+  echo &quot;1&quot; &amp;gt; /proc/sys/net/ipv4/tcp_syncookies
+  echo &quot;1&quot; &amp;gt; /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
+  for i in /proc/sys/net/ipv4/conf/*/{rp_filter,log_martians}; do
+        echo &quot;1&quot; &amp;gt; $i
+  done
+  for i in /proc/sys/net/ipv4/conf/*/{accept_source_route,accept_redirects,\
+send_redirects}; do
+        echo &quot;0&quot; &amp;gt; $i
+  done
+
+# 2\. &#x6E05;&#x9664;&#x89C4;&#x5219;&#x3001;&#x8BBE;&#x5B9A;&#x9ED8;&#x8BA4;&#x653F;&#x7B56;&#x53CA;&#x5F00;&#x653E; lo &#x4E0E;&#x76F8;&#x5173;&#x7684;&#x8BBE;&#x5B9A;&#x503C;
+  PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/sbin:/usr/local/bin; export PATH
+  iptables -F
+  iptables -X
+  iptables -Z
+  iptables -P INPUT   DROP
+  iptables -P OUTPUT  ACCEPT
+  iptables -P FORWARD ACCEPT
+  iptables -A INPUT -i lo -j ACCEPT
+  iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+# 3\. &#x542F;&#x52A8;&#x989D;&#x5916;&#x7684;&#x9632;&#x706B;&#x5899; script &#x6A21;&#x5757;
+  if [ -f /usr/local/virus/iptables/iptables.deny ]; then
+        sh /usr/local/virus/iptables/iptables.deny
+  fi
+  if [ -f /usr/local/virus/iptables/iptables.allow ]; then
+        sh /usr/local/virus/iptables/iptables.allow
+  fi
+  if [ -f /usr/local/virus/httpd-err/iptables.http ]; then
+        sh /usr/local/virus/httpd-err/iptables.http
+  fi
+
+# 4\. &#x5141;&#x8BB8;&#x67D0;&#x4E9B;&#x7C7B;&#x578B;&#x7684; ICMP &#x5C01;&#x5305;&#x8FDB;&#x5165;
+  AICMP=&quot;0 3 3/4 4 11 12 14 16 18&quot;
+  for tyicmp in $AICMP
+  do
+    iptables -A INPUT -i $EXTIF -p icmp --icmp-type $tyicmp -j ACCEPT
+  done
+
+# 5\. &#x5141;&#x8BB8;&#x67D0;&#x4E9B;&#x670D;&#x52A1;&#x7684;&#x8FDB;&#x5165;&#xFF0C;&#x8BF7;&#x4F9D;&#x7167;&#x4F60;&#x81EA;&#x5DF1;&#x7684;&#x73AF;&#x5883;&#x5F00;&#x542F;
+# iptables -A INPUT -p TCP -i $EXTIF --dport  21 --sport 1024:65534 -j ACCEPT # FTP
+# iptables -A INPUT -p TCP -i $EXTIF --dport  22 --sport 1024:65534 -j ACCEPT # SSH
+# iptables -A INPUT -p TCP -i $EXTIF --dport  25 --sport 1024:65534 -j ACCEPT # SMTP
+# iptables -A INPUT -p UDP -i $EXTIF --dport  53 --sport 1024:65534 -j ACCEPT # DNS
+# iptables -A INPUT -p TCP -i $EXTIF --dport  53 --sport 1024:65534 -j ACCEPT # DNS
+# iptables -A INPUT -p TCP -i $EXTIF --dport  80 --sport 1024:65534 -j ACCEPT # WWW
+# iptables -A INPUT -p TCP -i $EXTIF --dport 110 --sport 1024:65534 -j ACCEPT # POP3
+# iptables -A INPUT -p TCP -i $EXTIF --dport 443 --sport 1024:65534 -j ACCEPT # HTTPS
+
+# &#x7B2C;&#x4E8C;&#x90E8;&#x4EFD;&#xFF0C;&#x9488;&#x5BF9;&#x540E;&#x7AEF;&#x4E3B;&#x673A;&#x7684;&#x9632;&#x706B;&#x5899;&#x8BBE;&#x5B9A;&#xFF01;###############################
+# 1\. &#x5148;&#x52A0;&#x8F7D;&#x4E00;&#x4E9B;&#x6709;&#x7528;&#x7684;&#x6A21;&#x5757;
+  modules=&quot;ip_tables iptable_nat ip_nat_ftp ip_nat_irc ip_conntrack 
+ip_conntrack_ftp ip_conntrack_irc&quot;
+  for mod in $modules
+  do
+      testmod=`lsmod &amp;#124; grep &quot;^${mod} &quot; &amp;#124; awk &apos;{print $1}&apos;`
+      if [ &quot;$testmod&quot; == &quot;&quot; ]; then
+            modprobe $mod
+      fi
+  done
+
+# 2\. &#x6E05;&#x9664; NAT table &#x7684;&#x89C4;&#x5219;&#x5427;&#xFF01;
+  iptables -F -t nat
+  iptables -X -t nat
+  iptables -Z -t nat
+  iptables -t nat -P PREROUTING  ACCEPT
+  iptables -t nat -P POSTROUTING ACCEPT
+  iptables -t nat -P OUTPUT      ACCEPT
+
+# 3\. &#x82E5;&#x6709;&#x5185;&#x90E8;&#x63A5;&#x53E3;&#x7684;&#x5B58;&#x5728; (&#x53CC;&#x7F51;&#x5361;) &#x5F00;&#x653E;&#x6210;&#x4E3A;&#x8DEF;&#x7531;&#x5668;&#xFF0C;&#x4E14;&#x4E3A; IP &#x5206;&#x4EAB;&#x5668;&#xFF01;
+  if [ &quot;$INIF&quot; != &quot;&quot; ]; then
+    iptables -A INPUT -i $INIF -j ACCEPT
+    echo &quot;1&quot; &amp;gt; /proc/sys/net/ipv4/ip_forward
+    if [ &quot;$INNET&quot; != &quot;&quot; ]; then
+        for innet in $INNET
+        do
+            iptables -t nat -A POSTROUTING -s $innet -o $EXTIF -j MASQUERADE
+        done
+    fi
+  fi
+ # &#x5982;&#x679C;&#x4F60;&#x7684; MSN &#x4E00;&#x76F4;&#x65E0;&#x6CD5;&#x8054;&#x673A;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x67D0;&#x4E9B;&#x7F51;&#x7AD9; OK &#x67D0;&#x4E9B;&#x7F51;&#x7AD9;&#x4E0D; OK&#xFF0C;
+  # &#x53EF;&#x80FD;&#x662F; MTU &#x7684;&#x95EE;&#x9898;&#xFF0C;&#x90A3;&#x4F60;&#x53EF;&#x4EE5;&#x5C06;&#x5E95;&#x4E0B;&#x8FD9;&#x4E00;&#x884C;&#x7ED9;&#x4ED6;&#x53D6;&#x6D88;&#x6279;&#x6CE8;&#x6765;&#x542F;&#x52A8; MTU &#x9650;&#x5236;&#x8303;&#x56F4;
+  # iptables -A FORWARD -p tcp -m tcp --tcp-flags SYN,RST SYN -m tcpmss \
+  #          --mss 1400:1536 -j TCPMSS --clamp-mss-to-pmtu
+
+# 4\. NAT &#x670D;&#x52A1;&#x5668;&#x540E;&#x7AEF;&#x7684; LAN &#x5185;&#x5BF9;&#x5916;&#x4E4B;&#x670D;&#x52A1;&#x5668;&#x8BBE;&#x5B9A;
+# iptables -t nat -A PREROUTING -p tcp -i $EXTIF --dport 80 \
+#          -j DNAT --to-destination 192.168.1.210:80 # WWW
+
+# 5\. &#x7279;&#x6B8A;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5305;&#x62EC; Windows &#x8FDC;&#x7A0B;&#x684C;&#x9762;&#x6240;&#x4EA7;&#x751F;&#x7684;&#x89C4;&#x5219;&#xFF0C;&#x5047;&#x8BBE;&#x684C;&#x9762;&#x4E3B;&#x673A;&#x4E3A; 1.2.3.4
+# iptables -t nat -A PREROUTING -p tcp -s 1.2.3.4  --dport 6000 \
+#          -j DNAT --to-destination 192.168.100.10
+# iptables -t nat -A PREROUTING -p tcp -s 1.2.3.4  --sport 3389 \
+#          -j DNAT --to-destination 192.168.100.20
+
+# 6\. &#x6700;&#x7EC8;&#x5C06;&#x8FD9;&#x4E9B;&#x529F;&#x80FD;&#x50A8;&#x5B58;&#x4E0B;&#x6765;&#x5427;&#xFF01;
+  /etc/init.d/iptables save
+</code></pre><p>&#x7279;&#x522B;&#x7559;&#x610F;&#x4E0A;&#x9762;&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#x7684;&#x7279;&#x6B8A;&#x5B57;&#x4F53;&#x90E8;&#x5206;&#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#xFF0C;&#x4F60;&#x53EA;&#x8981;&#x4FEE;&#x6539;&#x4E00;&#x4E0B;&#x6700;&#x4E0A;&#x65B9;&#x7684;&#x63A5;&#x53E3;&#x90E8;&#x5206;&#xFF0C; &#x5E94;&#x8BE5;&#x5C31;&#x80FD;&#x591F;&#x8FD0;&#x4F5C;&#x8FD9;&#x4E2A;&#x9632;&#x706B;&#x5899;&#x4E86;&#x3002;&#x4E0D;&#x8FC7;&#x56E0;&#x4E3A;&#x6BCF;&#x4E2A;&#x4EBA;&#x7684;&#x73AF;&#x5883;&#x90FD;&#x4E0D;&#x76F8;&#x540C;&#xFF0C; &#x56E0;&#x6B64;&#x4F60;&#x5728;&#x8BBE;&#x5B9A;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x4F9D;&#x65E7;&#x9700;&#x8981;&#x6D4B;&#x8BD5;&#x4E00;&#x4E0B;&#x624D;&#x884C;&#x5594;&#xFF01;&#x4E0D;&#x7136;&#xFF0C;&#x51FA;&#x4E86;&#x95EE;&#x9898;&#x4E0D;&#x8981;&#x602A;&#x6211;&#x554A;&#xFF01;.... &#x518D;&#x6765;&#x770B;&#x4E00;&#x4E0B;&#x5173;&#x4E8E; iptables.allow &#x7684;&#x5185;&#x5BB9;&#x662F;&#x5982;&#x4F55;&#xFF1F;&#x5047;&#x5982;&#x6211;&#x8981;&#x8BA9;&#x4E00;&#x4E2A; 140.116.44.0/24 &#x8FD9;&#x4E2A;&#x7F51;&#x57DF;&#x7684;&#x6240;&#x6709;&#x4E3B;&#x673A;&#x6765;&#x6E90;&#x53EF;&#x4EE5;&#x8FDB;&#x5165;&#x6211;&#x7684;&#x4E3B;&#x673A;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9;&#x4E2A;&#x6863;&#x6848;&#x7684;&#x5185;&#x5BB9;&#x53EF;&#x4EE5;&#x5199;&#x6210;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code>[root@www iptables]# vim iptables.allow
+#!/bin/bash
+# &#x5E95;&#x4E0B;&#x5219;&#x586B;&#x5199;&#x4F60;&#x5141;&#x8BB8;&#x8FDB;&#x5165;&#x672C;&#x673A;&#x7684;&#x5176;&#x4ED6;&#x7F51;&#x57DF;&#x6216;&#x4E3B;&#x673A;&#x554A;&#xFF01;
+  iptables -A INPUT -i $EXTIF -s 140.116.44.0/24 -j ACCEPT
+
+# &#x5E95;&#x4E0B;&#x5219;&#x662F;&#x5173;&#x4E8E;&#x62B5;&#x6321;&#x7684;&#x6863;&#x6848;&#x8BBE;&#x5B9A;&#x6CD5;&#xFF01;
+[root@www iptables]# vim iptables.deny
+#!/bin/bash
+# &#x5E95;&#x4E0B;&#x586B;&#x5199;&#x7684;&#x662F;&#x300E;&#x4F60;&#x8981;&#x62B5;&#x6321;&#x7684;&#x90A3;&#x4E2A;&#x549A;&#x549A;&#xFF01;&#x300F;
+  iptables -A INPUT -i $EXTIF -s 140.116.44.254 -j DROP
+
+[root@www iptables]# chmod 700 iptables.*
+</code></pre><p>&#x5C06;&#x8FD9;&#x4E09;&#x4E2A;&#x6863;&#x6848;&#x7684;&#x6743;&#x9650;&#x8BBE;&#x5B9A;&#x4E3A; 700 &#x4E14;&#x53EA;&#x5C5E;&#x4E8E; root &#x7684;&#x6743;&#x9650;&#x540E;&#xFF0C;&#x5C31;&#x80FD;&#x591F;&#x76F4;&#x63A5;&#x6267;&#x884C; iptables.rule &#x5570;&#xFF01; &#x4E0D;&#x8FC7;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5728;&#x4E0A;&#x9762;&#x7684;&#x6848;&#x4F8B;&#x5F53;&#x4E2D;&#xFF0C;&#x9E1F;&#x54E5;&#x9884;&#x8BBE;&#x5C06;&#x6240;&#x6709;&#x7684;&#x670D;&#x52A1;&#x7684;&#x901A;&#x9053;&#x90FD;&#x662F;&#x5173;&#x95ED;&#x7684;&#xFF01; &#x6240;&#x4EE5;&#x4F60;&#x5FC5;&#x987B;&#x8981;&#x5230;<a href="#script_daemon">&#x672C;&#x673A;&#x9632;&#x706B;&#x5899;&#x7684;&#x7B2C; 5 &#x6B65;&#x9AA4;</a>&#x5904;&#x5C06;&#x4E00;&#x4E9B;&#x6279;&#x6CE8;&#x7B26;&#x53F7; (#) &#x89E3;&#x5F00;&#x624D;&#x884C;&#x3002; &#x540C;&#x6837;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5176;&#x4ED6;&#x66F4;&#x591A;&#x7684; port &#x60F3;&#x8981;&#x5F00;&#x542F;&#x65F6;&#xFF0C;&#x4E00;&#x6837;&#x9700;&#x8981;&#x589E;&#x52A0;&#x989D;&#x5916;&#x7684;&#x89C4;&#x5219;&#x624D;&#x884C;&#x5594;&#xFF01;</p>
+<p>&#x4E0D;&#x8FC7;&#xFF0C;&#x8FD8;&#x662F;&#x5982;&#x540C;&#x524D;&#x9762;&#x6211;&#x4EEC;&#x6240;&#x8BF4;&#x7684;&#xFF0C;&#x8FD9;&#x4E2A; firewall &#x4EC5;&#x80FD;&#x63D0;&#x4F9B;&#x57FA;&#x672C;&#x7684;&#x5B89;&#x5168;&#x9632;&#x62A4;&#xFF0C;&#x5176;&#x4ED6;&#x7684;&#x76F8;&#x5173;&#x95EE;&#x9898;&#x8FD8;&#x9700;&#x8981;&#x518D;&#x6D4B;&#x8BD5;&#x6D4B;&#x8BD5;&#x5462;&#xFF01; &#x6B64;&#x5916;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x5E0C;&#x671B;&#x4E00;&#x5F00;&#x673A;&#x5C31;&#x81EA;&#x52A8;&#x6267;&#x884C;&#x8FD9;&#x4E2A; script &#x7684;&#x8BDD;&#xFF0C;&#x8BF7;&#x5C06;&#x8FD9;&#x4E2A;&#x6863;&#x6848;&#x7684;&#x5B8C;&#x6574;&#x6863;&#x540D;&#x5199;&#x5165; /etc/rc.d/rc.local &#x5F53;&#x4E2D;&#xFF0C;&#x6709;&#x70B9;&#x50CF;&#x5E95;&#x4E0B;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code>[root@www ~]# vim /etc/rc.d/rc.local
+....(&#x5176;&#x4ED6;&#x7701;&#x7565;)....
+# 1\. Firewall
+/usr/local/virus/iptables/iptables.rule
+</code></pre><p>&#x4E8B;&#x5B9E;&#x4E0A;&#xFF0C;&#x8FD9;&#x4E2A;&#x811A;&#x672C;&#x7684;&#x6700;&#x5E95;&#x4E0B;&#x5DF2;&#x7ECF;&#x52A0;&#x5165;&#x5199;&#x5165;&#x9632;&#x706B;&#x5899;&#x9ED8;&#x8BA4;&#x89C4;&#x5219;&#x6587;&#x4EF6;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x53EA;&#x8981;&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF0C;&#x5C31;&#x62E5;&#x6709;&#x6700;&#x6B63;&#x786E;&#x7684;&#x89C4;&#x5219;&#x4E86;&#xFF01; &#x4E0A;&#x8FF0;&#x7684; rc.local &#x4EC5;&#x662F;&#x9884;&#x9632;&#x4E07;&#x4E00;&#x800C;&#x5DF2;&#x3002; ^_^&#xFF01;&#x4E0A;&#x8FF0;&#x4E09;&#x4E2A;&#x6863;&#x6848;&#x8BF7;&#x4F60;&#x4E0D;&#x8981;&#x5728; Windows &#x7CFB;&#x7EDF;&#x4E0A;&#x9762;&#x7F16;&#x8F91;&#x540E;&#x624D;&#x4F20;&#x9001;&#x5230; Linux &#x4E0A;&#x8FD0;&#x4F5C;&#xFF0C;&#x56E0;&#x4E3A; Windows &#x7CFB;&#x7EDF;&#x7684;&#x65AD;&#x884C;&#x5B57;&#x7B26;&#x95EE;&#x9898;&#xFF0C;&#x5C06;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x8BE5;&#x6863;&#x6848;&#x65E0;&#x6CD5;&#x6267;&#x884C;&#x3002;&#x5EFA;&#x8BAE;&#x4F60;&#x76F4;&#x63A5;&#x5230;&#x5E95;&#x4E0B;&#x53BB;&#x4E0B;&#x8F7D;&#xFF0C;&#x4F20;&#x9001;&#x5230; Linux &#x540E;&#x53EF;&#x4EE5;&#x5229;&#x7528; <a href="http://linux.vbird.org/linux_basic/0310vi.php#dos2unix" target="_blank">dos2unix</a> &#x6307;&#x4EE4;&#x53BB;&#x8F6C;&#x6362;&#x65AD;&#x884C;&#x5B57;&#x7B26;&#xFF01;&#x5C31;&#x4E0D;&#x4F1A;&#x6709;&#x95EE;&#x9898;&#xFF01;</p>
+<ul>
+<li><a href="http://linux.vbird.org/download/index.php?action=detail&amp;fileid=43" target="_blank">http://linux.vbird.org/download/index.php?action=detail&amp;fileid=43</a></li>
+</ul>
+<p>&#x8FD9;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6700;&#x7B80;&#x5355;&#x3001;&#x9633;&#x6625;&#x7684;&#x9632;&#x706B;&#x5899;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x9632;&#x706B;&#x5899;&#x8FD8;&#x53EF;&#x4EE5;&#x5177;&#x6709;&#x6700;&#x9633;&#x6625;&#x7684; IP &#x5206;&#x4EAB;&#x5668;&#x7684;&#x529F;&#x80FD;&#x5462;&#xFF01; &#x4E5F;&#x5C31;&#x662F;&#x5728; <a href="#iptables.rule">iptables.rule</a> &#x8FD9;&#x4E2A;&#x6863;&#x6848;&#x5F53;&#x4E2D;&#x7684;&#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#x4E86;&#x3002; &#x8FD9;&#x90E8;&#x5206;&#x6211;&#x4EEC;&#x5728;&#x4E0B;&#x4E00;&#x8282;&#x4F1A;&#x518D;&#x7EE7;&#x7EED;&#x4ECB;&#x7ECD;&#x7684;&#x3002;</p>
+<hr>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./60.html" class="navigation navigation-prev " aria-label="Previous page: 9.3 Linux 的封包过滤软件：iptables"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./62.html" class="navigation navigation-next " aria-label="Next page: 9.5 NAT 服务器的设定"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

@@ -1,0 +1,432 @@
+<hr>
+<p>title: 工厂模式<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2020-01-04 22:03:50<br>
+tags:</p>
+<ul>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>创建型模式<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>创建型模式<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h2 id="工厂模式"><a class="header-anchor" href="#工厂模式">¶</a>工厂模式</h2>
+<h3 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h3>
+<h4 id="工厂方法定义"><a class="header-anchor" href="#工厂方法定义">¶</a>工厂方法定义</h4>
+<blockquote>
+<p>Define an interface for creating an object,but let subclasses decide which class to instantiate.Factory Method lets a class defer instantiation to subclasses.<br>
+定义一个用于创建对象的接口，让子类决定实例化哪一个类。工厂方法使一个类的实例化延迟到其子类。</p>
+</blockquote>
+<h4 id="抽象工厂定义"><a class="header-anchor" href="#抽象工厂定义">¶</a>抽象工厂定义</h4>
+<blockquote>
+<p>Provide an interface for creating families of related or dependent objects without specifying their concrete classes.<br>
+为创建一组相关或相互依赖的对象提供一个接口，而且无需指定它们的具体类。</p>
+</blockquote>
+<h3 id="工厂模式种类"><a class="header-anchor" href="#工厂模式种类">¶</a>工厂模式种类</h3>
+<ol>
+<li>简单工厂(静态工厂)</li>
+<li>工厂方法</li>
+<li>多工厂方法</li>
+<li>单例工厂</li>
+<li>抽象工厂<br>
+工厂模式主要分为工厂方法模式和抽象工厂模式。其他的模式是工厂方法的延伸。</li>
+</ol>
+<p>工厂模式的多个种类可以看作是一个升级路线: 简单工厂–&gt;工厂方法–&gt;多工厂方法–&gt;抽象方法<br>
+简单方法是工厂类没有抽象工厂。不能进行扩展，并且创建方法是静态方法。<br>
+工厂方法是简单工厂的升级版，增加了抽象工厂类，创建方法也是成员方法。工厂方法只能生产一类的产品。<br>
+多工厂方法是工厂方法的升级版，多工厂方法能够生产多个种类的产品，但是每个种类的产品都需要创建一个匹配的工厂。<br>
+抽象工厂则是工厂方法的升级版，抽象工厂能将多个种类的产品放在一个工厂中生产。</p>
+<h3 id="工厂模式实现"><a class="header-anchor" href="#工厂模式实现">¶</a>工厂模式实现</h3>
+<p>现在我们需要创建尼安德特人，直立人和智人三个人种。<br>
+按照工厂模式，我们需要抽象人，具体人种，抽象工厂，具体工厂四个类。<br>
+使用简单工厂，不需要抽象工厂，直接通过具体工厂的静态方法生产出对应人种。<br>
+使用工厂方法，通过实现抽象工厂，为每个人种创建对应的工厂，每个工厂创建一个种类。<br>
+使用抽象方法，通过实现抽象工厂，为多个具有相同特征的人种建立一个工厂，创建一条生产线，直接生产出需要的人种族。</p>
+<h3 id="代码实现"><a class="header-anchor" href="#代码实现">¶</a>代码实现</h3>
+<h4 id="产品准备"><a class="header-anchor" href="#产品准备">¶</a>产品准备</h4>
+<ol>
+<li>抽象出人出来</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 这是所有人种的能力
+ */
+public interface Human {
+    /* 人能说 */
+    public void talk();
+
+    /* 人能使用工具 */
+    public void useTools();
+
+    /* 人能双脚走路 */
+    public void walkOnTwoFeet();
+}
+</code></pre>
+<ol start="2">
+<li>尼安德特人类</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 尼安德特人，从12万年前开始生活在欧洲，亚洲西部以及非洲北部，在2.4万年前消失了，有学者认为他们是被智人(现代人)灭绝的
+ */
+public class HomoNeanderthalensis implements Human{
+  @Override
+    public void talk() {
+      System.out.println(&quot;尼安德特人能说话&quot;);
+    }
+
+  @Override
+    public void useTools() {
+      System.out.println(&quot;尼安德特人能使用工具&quot;);
+    }
+
+  @Override
+    public void walkOnTwoFeet() {
+      System.out.println(&quot;尼安德特人能用两只脚走路&quot;);
+    }
+}
+</code></pre>
+<ol start="3">
+<li>直立人</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 直立人，生活在距今180万-300万年的非洲、欧洲、和亚洲的人种
+ */
+public class HomoErectus implements Human{
+  @Override
+    public void talk() {
+      System.out.println(&quot;直立人能说话&quot;);
+    }
+
+  @Override
+    public void useTools() {
+      System.out.println(&quot;直立人能使用工具&quot;);
+    }
+
+  @Override
+    public void walkOnTwoFeet() {
+      System.out.println(&quot;直立人能用两只脚走路&quot;);
+    }
+}
+</code></pre>
+<ol start="4">
+<li>智人</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 智人，现代人种的祖先，距今25万-4万年前。与尼安德特人，直立人同属于人属的人种
+ */
+public class HomoSapiens implements Human{
+  @Override
+    public void talk() {
+      System.out.println(&quot;智人能说话&quot;);
+    }
+
+  @Override
+    public void useTools() {
+      System.out.println(&quot;智人能使用工具&quot;);
+    }
+
+  @Override
+    public void walkOnTwoFeet() {
+      System.out.println(&quot;智人能用两只脚走路&quot;);
+    }
+}
+</code></pre>
+<h4 id="简单工厂"><a class="header-anchor" href="#简单工厂">¶</a>简单工厂</h4>
+<ol>
+<li>创建一个简单工厂</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 简单工厂模式
+ * 前面已经有了三个人种类
+ * 这里有一个工厂，用来创建人种。现在我们需要获取我们需要的人种对象，直接通过工厂来进行创建
+ * 这个工厂使用反射来创建对象实例
+ *
+ * 工厂方法与简单工厂之间区别就是，简单工厂没有父类，不能进行扩展。并且创建方法是静态方法，简化了类的创建过程
+ */
+public class SimpleFactory {
+  public static &lt;T extends Human&gt; T createHuman(Class&lt;T&gt; c) {
+    Human human = null ;
+    try {
+      human = (Human)Class.forName(c.getName()).newInstance();
+    } catch (Exception e) {
+      System.out.println(&quot;人种生成错误&quot;);
+    }
+    return (T) human ;
+  }
+}
+</code></pre>
+<h4 id="工厂方法"><a class="header-anchor" href="#工厂方法">¶</a>工厂方法</h4>
+<ol>
+<li>创建一个抽象工厂</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 创建一个抽象工厂
+ */
+public abstract class AbstractHumanFactory {
+    public abstract &lt;T extends Human&gt; T createHuman(Class&lt;T&gt; c);
+}
+</code></pre>
+<ol start="2">
+<li>创建一个具体工厂</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 工厂方法模式
+ */
+public class MethodFactory extends AbstractHumanFactory{
+  @Override
+    public &lt;T extends Human&gt; T createHuman(Class&lt;T&gt; c) {
+      Human human = null ;
+      try {
+        human = (Human) Class.forName(c.getName()).newInstance();
+      } catch (Exception e) {
+        System.out.println(&quot;人种生成错误&quot;);
+      }
+      return (T) human ;
+    }
+}
+</code></pre>
+<h4 id="多工厂方法"><a class="header-anchor" href="#多工厂方法">¶</a>多工厂方法</h4>
+<ol>
+<li>创建一个抽象工厂</li>
+</ol>
+<pre><code class="language-Java">public abstract class AbstractHumanFactory1 {
+    public abstract Human createHuman();
+}
+</code></pre>
+<ol start="2">
+<li>为各个人种(产品)创建各自的工厂<br>
+直立人</li>
+</ol>
+<pre><code class="language-Java">public class HomoErectusFactory extends AbstractHumanFactory1 {
+  @Override
+    public Human createHuman() {
+      return new HomoErectus();
+    }
+}
+</code></pre>
+<p>尼安德特人</p>
+<pre><code class="language-Java">public class HomoNeanderthalensisFactory extends AbstractHumanFactory1 {
+  @Override
+    public Human createHuman() {
+      return new HomoNeanderthalensis();
+    }
+}
+</code></pre>
+<p>智人</p>
+<pre><code class="language-Java">public class HomoSapiensFactory extends AbstractHumanFactory1 {
+  @Override
+    public Human createHuman() {
+      return new HomoSapiens();
+    }
+}
+</code></pre>
+<h4 id="单例工厂"><a class="header-anchor" href="#单例工厂">¶</a>单例工厂</h4>
+<ol>
+<li>创建人</li>
+</ol>
+<pre><code class="language-Java">public class SingleTonHuman implements Human {
+  private SingleTonHuman(){
+
+  }
+
+  @Override
+    public void talk() {
+      System.out.println(&quot;人能说话&quot;);
+    }
+
+  @Override
+    public void useTools() {
+      System.out.println(&quot;人能使用工具&quot;);
+    }
+
+  @Override
+    public void walkOnTwoFeet() {
+      System.out.println(&quot;人能用两只脚走路&quot;);
+    }
+}
+</code></pre>
+<ol start="2">
+<li>创建单例工厂</li>
+</ol>
+<pre><code class="language-Java">public class SingleTonHumanFactory {
+  private static SingleTonHuman singleTonHuman ;
+  static {
+    try {
+      Class c = Class.forName(SingleTonHuman.class.getName());
+      Constructor constructor = c.getDeclaredConstructor();
+      constructor.setAccessible(true);
+      singleTonHuman = (SingleTonHuman)constructor.newInstance();
+    } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public SingleTonHuman getInstance(){
+    return singleTonHuman ;
+  }
+}
+</code></pre>
+<h4 id="抽象工厂"><a class="header-anchor" href="#抽象工厂">¶</a>抽象工厂</h4>
+<ol>
+<li>创建一个抽象工厂，其中定义了一个产品族(生产线)</li>
+</ol>
+<pre><code class="language-Java">public interface AbstractFactory {
+    public HomoSapiens createHomoSapiens();
+    public HomoErectus createHomoErectus();
+    public HomoNeanderthalensis createHomoNeanderthalensis();
+}
+</code></pre>
+<ol start="2">
+<li>创建一个产品线工厂</li>
+</ol>
+<pre><code class="language-Java">public class HumanFactory implements AbstractFactory {
+    @Override
+    public HomoSapiens createHomoSapiens() {
+            return new HomoSapiens();
+        }
+
+    @Override
+    public HomoErectus createHomoErectus() {
+            return new HomoErectus();
+        }
+
+    @Override
+    public HomoNeanderthalensis createHomoNeanderthalensis() {
+            return new HomoNeanderthalensis();
+        }
+}
+</code></pre>
+<h4 id="各个工厂的场景实现"><a class="header-anchor" href="#各个工厂的场景实现">¶</a>各个工厂的场景实现</h4>
+<pre><code class="language-Java">public class App
+{
+  /**
+   * 简单工厂
+   */
+  /*public static void main( String[] args )
+    {
+    Human human = SimpleFactory.createHuman(HomoErectus.class);
+    human.talk();
+    human.useTools();
+    }*/
+
+  /**
+   * 工厂方法
+   * 一个工厂生产一个产品
+   */
+  /*public static void main(String[] args) {
+    MethodFactory factory = new MethodFactory();
+    HomoSapiens human = factory.createHuman(HomoSapiens.class);
+    human.talk();
+    human.useTools();
+    human.walkOnTwoFeet();
+    }*/
+
+  /**
+   * 多工厂
+   * 工厂方法的延伸，多个工厂生产多个产品
+   * @param args
+   */
+  /*public static void main(String[] args) {
+    Human homoErectus = new HomoErectusFactory().createHuman();
+    homoErectus.useTools();
+    homoErectus.talk();
+    homoErectus.walkOnTwoFeet();
+
+    Human homoSapiens = new HomoSapiensFactory().createHuman();
+    homoSapiens.useTools();
+    homoSapiens.talk();
+    homoSapiens.walkOnTwoFeet();
+
+    Human homoNeanderthalensis = new HomoNeanderthalensisFactory().createHuman();
+    homoNeanderthalensis.useTools();
+    homoNeanderthalensis.talk();
+    homoNeanderthalensis.walkOnTwoFeet();
+    }*/
+
+  /**
+   * 单例工厂
+   * @param args
+   */
+  /*public static void main(String[] args) {
+    SingleTonHumanFactory factory = new SingleTonHumanFactory();
+    SingleTonHuman instance = factory.getInstance();
+    instance.useTools();
+    instance.talk();
+    instance.walkOnTwoFeet();
+    }*/
+
+  /**
+   * 抽象工厂
+   * 一个共产能生产多个产品
+   * @param args
+   */
+  public static void main(String[] args) {
+    /* 建设人类生产线 */
+    HumanFactory humanFactory = new HumanFactory();
+
+    /**
+     * 抽象工厂只需要一个工厂就能生产出需要的所有人种，而工厂方法如果想要生产人种，需要为每个人种创建一个工厂来进行生产
+     * 抽象工厂将需要的产品创建方法抽象出来，之后只需要创建一个实体工厂就能创建需要的产品族
+     */
+    /* 创建一个人种 */
+    HomoErectus homoErectus = humanFactory.createHomoErectus();
+    homoErectus.useTools();
+    homoErectus.talk();
+    homoErectus.walkOnTwoFeet();
+
+    HomoNeanderthalensis homoNeanderthalensis = humanFactory.createHomoNeanderthalensis();
+    homoNeanderthalensis.useTools();
+    homoNeanderthalensis.talk();
+    homoNeanderthalensis.walkOnTwoFeet();
+
+    HomoSapiens homoSapiens = humanFactory.createHomoSapiens();
+    homoSapiens.useTools();
+    homoSapiens.talk();
+    homoSapiens.walkOnTwoFeet();
+
+  }
+}
+</code></pre>
+<h3 id="应用场景"><a class="header-anchor" href="#应用场景">¶</a>应用场景</h3>
+<h4 id="工厂方法模式"><a class="header-anchor" href="#工厂方法模式">¶</a>工厂方法模式</h4>
+<ol>
+<li>工厂方法模式可以作为new一个对象的替代品。</li>
+<li>工厂方法可以用在需要灵活的、可扩展框架的地方。</li>
+<li>工厂方法也可以用在异构项目中。</li>
+<li>可以用在驱动开发的框架下。</li>
+</ol>
+<h4 id="抽象工厂模式"><a class="header-anchor" href="#抽象工厂模式">¶</a>抽象工厂模式</h4>
+<ol>
+<li>对一个对象族都有相同的约束。</li>
+</ol>
+<h3 id="工厂模式优缺点"><a class="header-anchor" href="#工厂模式优缺点">¶</a>工厂模式优缺点</h3>
+<h4 id="工厂方法模式优缺点"><a class="header-anchor" href="#工厂方法模式优缺点">¶</a>工厂方法模式优缺点</h4>
+<h5 id="优点"><a class="header-anchor" href="#优点">¶</a>优点</h5>
+<ol>
+<li>良好的封装性，代码结构清晰。</li>
+<li>工厂方法模式的扩展性很好。</li>
+<li>可以屏蔽产品类，我们只需要让工厂帮我们生产产品就行了。</li>
+<li>工厂方法是典型的解耦。</li>
+</ol>
+<h4 id="抽象工厂模式优缺点"><a class="header-anchor" href="#抽象工厂模式优缺点">¶</a>抽象工厂模式优缺点</h4>
+<h5 id="优点-v2"><a class="header-anchor" href="#优点-v2">¶</a>优点</h5>
+<ol>
+<li>封装性，我们只需要关心接口就行了，不关心产品是怎样创建的，工厂帮我们创建。</li>
+<li>产品族内的约束为非公开约束，我们不需要知道知道这个约束，我们只需要得到产品就可以了。</li>
+</ol>
+<h5 id="缺点"><a class="header-anchor" href="#缺点">¶</a>缺点</h5>
+<ol>
+<li>抽象工厂可以生产一个产品族，但是产品族的扩展很困难。</li>
+</ol>

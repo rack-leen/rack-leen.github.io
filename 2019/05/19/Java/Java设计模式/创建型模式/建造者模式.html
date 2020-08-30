@@ -1,0 +1,301 @@
+<hr>
+<p>title: 建造者模式<br>
+author: rack-leen<br>
+avatar: /images/favicon.png<br>
+authorDesc: 脱发典范<br>
+comments: true<br>
+copyright: true<br>
+date: 2019-5-19 00:00:00<br>
+tags:</p>
+<ul>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>创建型模式<br>
+authorAbout:<br>
+authorLink:<br>
+categories:</li>
+<li>Java</li>
+<li>Java设计模式</li>
+<li>创建型模式<br>
+series:<br>
+keywords:<br>
+description:<br>
+photos:</li>
+</ul>
+<hr>
+<h2 id="建造者模式"><a class="header-anchor" href="#建造者模式">¶</a>建造者模式</h2>
+<h3 id="定义"><a class="header-anchor" href="#定义">¶</a>定义</h3>
+<blockquote>
+<p>Separate the construction of a complex object from its representation so that the same construction process can create different representations.<br>
+将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
+</blockquote>
+<h3 id="建造者模式示意图"><a class="header-anchor" href="#建造者模式示意图">¶</a>建造者模式示意图</h3>
+<p><img src="%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F.png" alt="建造者模式"></p>
+<h3 id="流程"><a class="header-anchor" href="#流程">¶</a>流程</h3>
+<ol>
+<li>客户想要对象实例，需要知会指挥者，给指挥者提需求。</li>
+<li>指挥者获取到客户需求（需要创建对象实例）,将需求解构，分配给相应的建造者进行建造。</li>
+<li>建造者之间相互独立，建造各自的需求，最终组装成具体的产品。</li>
+<li>产品就是最终的对象实例，返回给客户。</li>
+</ol>
+<h3 id="需求"><a class="header-anchor" href="#需求">¶</a>需求</h3>
+<p>现在客户需要订购东风，奔驰，宝马三种汽车各100辆。四种车的生产顺序是一样的。<br>
+客户的需求给指挥者，指挥者将这四种车分别分配给四个建造者建造。</p>
+<h3 id="代码实现"><a class="header-anchor" href="#代码实现">¶</a>代码实现</h3>
+<ol>
+<li>先通过模板方法模式创建出三种汽车实例,这里先创建汽车模板</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 建造者模式的这个抽象类有模板方法模式的影子
+ */
+public abstract class Car {
+    private ArrayList&lt;String&gt; sequence = new ArrayList&lt;&gt;();
+    protected abstract void start();
+    protected abstract void stop();
+    protected abstract void alarm();
+    protected abstract void engineBoom();
+
+    /**
+     * 加了final关键字表示run方法和setSequense方法都不能被继承或重写
+     *
+     * run方法就是模板方法模式中的功能一样，这个更灵活，能自定义执行顺序
+     */
+    final public void run(){
+        for (int i=0 ; i&lt;sequence.size() ; i++){
+            String name = this.sequence.get(i);
+            if (&quot;start&quot;.equals(name)){
+                this.start();
+            }else if (&quot;stop&quot;.equalsIgnoreCase(name)){
+                this.stop();
+            }else if (&quot;alarm&quot;.equalsIgnoreCase(name)){
+                this.alarm();
+            }else if (&quot;engineBoom&quot;.equalsIgnoreCase(name)){
+                this.engineBoom();
+            }
+        }
+    }
+
+    /**
+     * 从外界传进入执行顺序
+     * @param sequence
+     */
+    final public void setSequence(ArrayList&lt;String&gt; sequence){
+        this.sequence = sequence ;
+    }
+}
+</code></pre>
+<ol start="2">
+<li>然后通过汽车模板创建出三个以这个模板构建的功能相同的不同种类的汽车类<br>
+奔驰汽车</li>
+</ol>
+<pre><code class="language-Java">public class Benz extends Car {
+    @Override
+    protected void start() {
+        System.out.println(&quot;奔驰是这样启动的&quot;);
+    }
+
+    @Override
+    protected void stop() {
+        System.out.println(&quot;奔驰是这样停下来的&quot;);
+    }
+
+    @Override
+    protected void alarm() {
+        System.out.println(&quot;奔驰的喇叭声音是这样的&quot;);
+    }
+
+    @Override
+    protected void engineBoom() {
+        System.out.println(&quot;奔驰的引擎声音是这样的&quot;);
+    }
+}
+</code></pre>
+<p>宝马汽车</p>
+<pre><code class="language-Java">public class BMW extends Car {
+    @Override
+    protected void start() {
+        System.out.println(&quot;宝马是这样启动的&quot;);
+    }
+
+    @Override
+    protected void stop() {
+        System.out.println(&quot;宝马是这样停下来的&quot;);
+    }
+
+    @Override
+    protected void alarm() {
+        System.out.println(&quot;宝马的喇叭声音是这样的&quot;);
+    }
+
+    @Override
+    protected void engineBoom() {
+        System.out.println(&quot;宝马的引擎声音是这样的&quot;);
+    }
+}
+</code></pre>
+<p>东风汽车</p>
+<pre><code class="language-Java">public class Dongfeng extends Car{
+    @Override
+    protected void start() {
+        System.out.println(&quot;东风是这样启动的&quot;);
+    }
+
+    @Override
+    protected void stop() {
+        System.out.println(&quot;东风是这样停下来的&quot;);
+    }
+
+    @Override
+    protected void alarm() {
+        System.out.println(&quot;东风的喇叭声音是这样的&quot;);
+    }
+
+    @Override
+    protected void engineBoom() {
+        System.out.println(&quot;东风的引擎声音是这样的&quot;);
+    }
+}
+</code></pre>
+<ol start="3">
+<li>根据不同的汽车类，为它们分配不同的建造者<br>
+奔驰汽车的建造者</li>
+</ol>
+<pre><code class="language-Java">public class BenzBuilder extends CarBuilder {
+    /* 这里先创建一个产品 */
+    private Benz benz = new Benz();
+
+    /*然后为产品设置制造顺序*/
+    @Override
+    public void setSequense(ArrayList&lt;String&gt; sequense) {
+        this.benz.setSequence(sequense);
+    }
+
+    /* 产品创建完成就返回这个产品 */
+    @Override
+    public Car getCar() {
+        return this.benz;
+    }
+}
+</code></pre>
+<p>宝马汽车的建造者</p>
+<pre><code class="language-Java">public class BMWBuilder extends CarBuilder {
+    private BMW bmw = new BMW();
+    @Override
+    public void setSequense(ArrayList&lt;String&gt; sequense) {
+        this.bmw.setSequence(sequense);
+    }
+
+    @Override
+    public Car getCar() {
+        return this.bmw;
+    }
+}
+</code></pre>
+<p>东风汽车的建造者</p>
+<pre><code class="language-Java">public class DongFengBuilder extends CarBuilder {
+    private Dongfeng dongfeng = new Dongfeng();
+    @Override
+    public void setSequense(ArrayList&lt;String&gt; sequense) {
+        this.dongfeng.setSequence(sequense);
+    }
+
+    @Override
+    public Car getCar() {
+        return this.dongfeng;
+    }
+}
+</code></pre>
+<ol start="4">
+<li>建造者要建造汽车，需要有总指挥分配需求，进行调度，这里需要有一个总指挥</li>
+</ol>
+<pre><code class="language-Java">/**
+ * 这是所有建造者的指挥者，它来只会建造者建造产品
+ */
+public class Director {
+    private ArrayList&lt;String&gt; sequense = new ArrayList&lt;&gt;();
+    private BenzBuilder benzBuilder = new BenzBuilder();
+    private BMWBuilder bmwBuilder = new BMWBuilder();
+    private DongFengBuilder dongFengBuilder = new DongFengBuilder();
+
+    /**
+     * 宝马模型
+     */
+    public BMW getBMW(){
+        this.sequense.clear();
+        this.sequense.add(&quot;start&quot;);
+        this.sequense.add(&quot;stop&quot;);
+
+        this.bmwBuilder.setSequense(this.sequense);
+        return (BMW) this.bmwBuilder.getCar();
+    }
+    /**
+     * 奔驰模型
+     */
+    public Benz getBenz(){
+        this.sequense.clear();
+        this.sequense.add(&quot;start&quot;);
+        this.sequense.add(&quot;alarm&quot;);
+        this.sequense.add(&quot;stop&quot;);
+
+        this.benzBuilder.setSequense(this.sequense);
+        return (Benz) this.benzBuilder.getCar();
+    }
+    /**
+     * 东风模型
+     */
+    public Dongfeng getDongFeng(){
+        this.sequense.clear();
+        this.sequense.add(&quot;start&quot;);
+        this.sequense.add(&quot;engineBoom&quot;);
+        this.sequense.add(&quot;stop&quot;);
+
+        this.dongFengBuilder.setSequense(this.sequense);
+        return (Dongfeng) this.dongFengBuilder.getCar();
+    }
+
+}
+</code></pre>
+<ol start="5">
+<li>最后，任务分配成功，开始为我们的客户建造需要的产品，场景实现</li>
+</ol>
+<pre><code class="language-Java">public class Test {
+
+    public static void main(String[] args) {
+        Director director = new Director();
+        /**
+         * 我们这里是通过指挥者操作建造者建造的产品实例
+         */
+        /* 奔驰建造 */
+        for (int i=0 ; i&lt;100 ; i++){
+            director.getBenz().run();
+        }
+        /* 宝马建造 */
+        for (int i=0 ; i&lt;100 ; i++){
+            director.getBMW().run();
+        }
+        /* 东风建造 */
+        for (int i=0 ; i&lt;100 ; i++){
+            director.getDongFeng().run();
+        }
+    }
+
+}
+</code></pre>
+<h3 id="应用场景"><a class="header-anchor" href="#应用场景">¶</a>应用场景</h3>
+<ol>
+<li>相同的功能，不同的执行顺序，产生不同结果。</li>
+<li>多个部件或零件，可以装配到一个对象，但产生结果又不相同。</li>
+<li>产品类非常复杂，调用其顺序不同会产生不同结果。</li>
+<li>在创建对象时会使用系统的其他对象，这些对象在产品创建过程中不易得到。</li>
+</ol>
+<h3 id="建造者模式的优点和注意事项"><a class="header-anchor" href="#建造者模式的优点和注意事项">¶</a>建造者模式的优点和注意事项</h3>
+<h4 id="优点"><a class="header-anchor" href="#优点">¶</a>优点</h4>
+<ol>
+<li>建造者模式可以使客户不需要知道生产产品的细节，只需要将需求给指挥者就行了，指挥者会让建造者根据产品模型进行建造。这就使得封装性很好。</li>
+<li>一个建造者对应一个产品类型，建造者之间是互相独立的，如果需要新增一个产品类型，只需要新增一个建造者就能扩展。这使得其扩展性很好。</li>
+<li>由于产品对象实例是由建造者建造，我们可以对建造过程进行细化，而不对其他模块产生影响。</li>
+</ol>
+<h4 id="注意事项"><a class="header-anchor" href="#注意事项">¶</a>注意事项</h4>
+<ol>
+<li>建造者注重工艺顺序，与工厂模式的注重点不同。</li>
+</ol>

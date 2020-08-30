@@ -1,0 +1,2315 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>基于给定的文档生成倒排索引的编码与实践 | 编程之法：面试和算法心得</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.5">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./a.9.html" />
+    
+    
+    <link rel="prev" href="./a.7.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="14.8"
+        data-chapter-title="基于给定的文档生成倒排索引的编码与实践"
+        data-filepath="a.8.md"
+        data-basepath="."
+        data-revision="Thu Jan 14 2016 10:53:03 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/the-art-of-programming-by-july" target="blank" class="custom-link">编程之法：面试和算法心得</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="00.01.html">
+            
+                
+                    <a href="./00.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        程序员如何准备面试中的算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="part1.html">
+            
+                
+                    <a href="./part1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        第一部分 数据结构
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="ch1.html">
+            
+                
+                    <a href="./ch1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        第一章 字符串
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="01.00.html">
+            
+                
+                    <a href="./01.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        1.0 本章导读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="01.01.html">
+            
+                
+                    <a href="./01.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        1.1 旋转字符串
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="01.02.html">
+            
+                
+                    <a href="./01.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        1.2 字符串包含
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="01.03.html">
+            
+                
+                    <a href="./01.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        1.3 字符串转换成整数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="01.04.html">
+            
+                
+                    <a href="./01.04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        1.4 回文判断
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="01.05.html">
+            
+                
+                    <a href="./01.05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        1.5 最长回文子串
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="01.06.html">
+            
+                
+                    <a href="./01.06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        1.6 字符串的全排列
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="01.10.html">
+            
+                
+                    <a href="./01.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        1.10 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="ch2.html">
+            
+                
+                    <a href="./ch2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        第二章 数组
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="02.00.html">
+            
+                
+                    <a href="./02.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        2.0 本章导读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="02.01.html">
+            
+                
+                    <a href="./02.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        2.1 寻找最小的 k 个数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="02.02.html">
+            
+                
+                    <a href="./02.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        2.2 寻找和为定值的两个数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="02.03.html">
+            
+                
+                    <a href="./02.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        2.3 寻找和为定值的多个数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="02.04.html">
+            
+                
+                    <a href="./02.04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        2.4 最大连续子数组和
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="02.05.html">
+            
+                
+                    <a href="./02.05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        2.5 跳台阶
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="02.06.html">
+            
+                
+                    <a href="./02.06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        2.6 奇偶排序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="02.07.html">
+            
+                
+                    <a href="./02.07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        2.7 荷兰国旗
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="02.08.html">
+            
+                
+                    <a href="./02.08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.</b>
+                        
+                        2.8 矩阵相乘
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="02.09.html">
+            
+                
+                    <a href="./02.09.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.</b>
+                        
+                        2.9 完美洗牌
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="02.15.html">
+            
+                
+                    <a href="./02.15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.</b>
+                        
+                        2.15 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="ch3.html">
+            
+                
+                    <a href="./ch3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        第三章 树
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="03.00.html">
+            
+                
+                    <a href="./03.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        3.0 本章导读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="03.01.html">
+            
+                
+                    <a href="./03.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        3.1 红黑树
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="03.02.html">
+            
+                
+                    <a href="./03.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        3.2 B树
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="03.03.html">
+            
+                
+                    <a href="./03.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        3.3 最近公共祖先LCA
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="03.10.html">
+            
+                
+                    <a href="./03.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.5.</b>
+                        
+                        3.10 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="part2.html">
+            
+                
+                    <a href="./part2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        第二部分 算法心得
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="ch4.html">
+            
+                
+                    <a href="./ch4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        第四章 查找匹配
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="04.01.html">
+            
+                
+                    <a href="./04.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        4.1 有序数组的查找
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="04.02.html">
+            
+                
+                    <a href="./04.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        4.2 行列递增矩阵的查找
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="04.03.html">
+            
+                
+                    <a href="./04.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        4.3 出现次数超过一半的数字
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="ch5.html">
+            
+                
+                    <a href="./ch5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        第五章 动态规划
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="05.00.html">
+            
+                
+                    <a href="./05.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        5.0 本章导读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="05.01.html">
+            
+                
+                    <a href="./05.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        5.1 最大连续乘积子串
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="05.02.html">
+            
+                
+                    <a href="./05.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        5.2 字符串编辑距离
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.4" data-path="05.03.html">
+            
+                
+                    <a href="./05.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.4.</b>
+                        
+                        5.3 格子取数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.5" data-path="05.04.html">
+            
+                
+                    <a href="./05.04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.5.</b>
+                        
+                        5.4 交替字符串
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.6" data-path="05.10.html">
+            
+                
+                    <a href="./05.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.6.</b>
+                        
+                        5.10 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="9" data-path="part3.html">
+            
+                
+                    <a href="./part3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>9.</b>
+                        
+                        第三部分 综合演练
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10" data-path="ch6.html">
+            
+                
+                    <a href="./ch6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.</b>
+                        
+                        第六章 海量数据处理
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="10.1" data-path="06.00.html">
+            
+                
+                    <a href="./06.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.1.</b>
+                        
+                        6.0 本章导读
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="06.01.html">
+            
+                
+                    <a href="./06.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.2.</b>
+                        
+                        6.1 关联式容器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.3" data-path="06.02.html">
+            
+                
+                    <a href="./06.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.3.</b>
+                        
+                        6.2 分而治之
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.4" data-path="06.03.html">
+            
+                
+                    <a href="./06.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.4.</b>
+                        
+                        6.3 simhash算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.5" data-path="06.04.html">
+            
+                
+                    <a href="./06.04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.5.</b>
+                        
+                        6.4 外排序
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.6" data-path="06.05.html">
+            
+                
+                    <a href="./06.05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.6.</b>
+                        
+                        6.5 MapReduce
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.7" data-path="06.06.html">
+            
+                
+                    <a href="./06.06.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.7.</b>
+                        
+                        6.6 多层划分
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.8" data-path="06.07.html">
+            
+                
+                    <a href="./06.07.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.8.</b>
+                        
+                        6.7 Bitmap
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.9" data-path="06.08.html">
+            
+                
+                    <a href="./06.08.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.9.</b>
+                        
+                        6.8 Bloom filter
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.10" data-path="06.09.html">
+            
+                
+                    <a href="./06.09.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.10.</b>
+                        
+                        6.9 Trie树
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.11" data-path="06.10.html">
+            
+                
+                    <a href="./06.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.11.</b>
+                        
+                        6.10 数据库
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.12" data-path="06.11.html">
+            
+                
+                    <a href="./06.11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.12.</b>
+                        
+                        6.11 倒排索引
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="10.13" data-path="06.15.html">
+            
+                
+                    <a href="./06.15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>10.13.</b>
+                        
+                        6.15 本章习题
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="11" data-path="ch7.html">
+            
+                
+                    <a href="./ch7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.</b>
+                        
+                        第七章 机器学习
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="11.1" data-path="07.01.html">
+            
+                
+                    <a href="./07.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.1.</b>
+                        
+                        7.1 K 近邻算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="07.02.svm.html">
+            
+                
+                    <a href="./07.02.svm.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>11.2.</b>
+                        
+                        7.2 支持向量机
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="12" data-path="ch8.html">
+            
+                
+                    <a href="./ch8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.</b>
+                        
+                        附录 更多题型
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="12.1" data-path="08.00.html">
+            
+                
+                    <a href="./08.00.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.1.</b>
+                        
+                        附录A 语言基础
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="08.01.html">
+            
+                
+                    <a href="./08.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.2.</b>
+                        
+                        附录B 概率统计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="08.02.html">
+            
+                
+                    <a href="./08.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.3.</b>
+                        
+                        附录C 智力逻辑
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="08.03.html">
+            
+                
+                    <a href="./08.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.4.</b>
+                        
+                        附录D 系统设计
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="08.04.html">
+            
+                
+                    <a href="./08.04.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.5.</b>
+                        
+                        附录E 操作系统
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="12.6" data-path="08.05.html">
+            
+                
+                    <a href="./08.05.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>12.6.</b>
+                        
+                        附录F 网络协议
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="13" data-path="ch10.html">
+            
+                
+                    <a href="./ch10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.</b>
+                        
+                        sift算法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="13.1" data-path="10.01.01.html">
+            
+                
+                    <a href="./10.01.01.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.1.</b>
+                        
+                        sift算法的编译与实现
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="10.01.02.html">
+            
+                
+                    <a href="./10.01.02.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.2.</b>
+                        
+                        教你一步一步用c语言实现sift算法、上
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="10.01.03.html">
+            
+                
+                    <a href="./10.01.03.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>13.3.</b>
+                        
+                        教你一步一步用c语言实现sift算法、下
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="14" data-path="part4.html">
+            
+                
+                    <a href="./part4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.</b>
+                        
+                        其它
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="14.1" data-path="a.1.html">
+            
+                
+                    <a href="./a.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.1.</b>
+                        
+                        40亿个数中快速查找
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" data-path="a.2.html">
+            
+                
+                    <a href="./a.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.2.</b>
+                        
+                        hash表算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.3" data-path="a.3.html">
+            
+                
+                    <a href="./a.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.3.</b>
+                        
+                        一致性哈希算法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.4" data-path="a.4.html">
+            
+                
+                    <a href="./a.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.4.</b>
+                        
+                        倒排索引关键词不重复Hash编码
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.5" data-path="a.5.html">
+            
+                
+                    <a href="./a.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.5.</b>
+                        
+                        傅里叶变换算法、上
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.6" data-path="a.6.html">
+            
+                
+                    <a href="./a.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.6.</b>
+                        
+                        傅里叶变换算法、下
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.7" data-path="a.7.html">
+            
+                
+                    <a href="./a.7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.7.</b>
+                        
+                        后缀树
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="14.8" data-path="a.8.html">
+            
+                
+                    <a href="./a.8.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.8.</b>
+                        
+                        基于给定的文档生成倒排索引的编码与实践
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.9" data-path="a.9.html">
+            
+                
+                    <a href="./a.9.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.9.</b>
+                        
+                        搜索关键词智能提示suggestion
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.10" data-path="a.10.html">
+            
+                
+                    <a href="./a.10.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.10.</b>
+                        
+                        最小操作数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.11" data-path="a.11.html">
+            
+                
+                    <a href="./a.11.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.11.</b>
+                        
+                        最短摘要的生成
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.12" data-path="a.12.html">
+            
+                
+                    <a href="./a.12.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.12.</b>
+                        
+                        最长公共子序列
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.13" data-path="a.13.html">
+            
+                
+                    <a href="./a.13.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.13.</b>
+                        
+                        木块砌墙原稿
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.14" data-path="a.14.html">
+            
+                
+                    <a href="./a.14.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.14.</b>
+                        
+                        附近地点搜索
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="14.15" data-path="a.15.html">
+            
+                
+                    <a href="./a.15.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>14.15.</b>
+                        
+                        随机取出其中之一元素
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >编程之法：面试和算法心得</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x57FA;&#x4E8E;&#x7ED9;&#x5B9A;&#x7684;&#x6587;&#x6863;&#x751F;&#x6210;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x7684;&#x7F16;&#x7801;&#x4E0E;&#x5B9E;&#x8DF5;">&#x57FA;&#x4E8E;&#x7ED9;&#x5B9A;&#x7684;&#x6587;&#x6863;&#x751F;&#x6210;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x7684;&#x7F16;&#x7801;&#x4E0E;&#x5B9E;&#x8DF5;</h1>
+<p>&#x4F5C;&#x8005;&#xFF1A;July&#x3001;yansha&#x3002;</p>
+<p>&#x51FA;&#x5904;&#xFF1A;&#x7ED3;&#x6784;&#x4E4B;&#x6CD5;&#x7B97;&#x6CD5;&#x4E4B;&#x9053;</p>
+<h2 id="&#x5F15;&#x8A00;">&#x5F15;&#x8A00;</h2>
+<p>&#x672C;&#x5468;&#x5B9E;&#x73B0;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x3002;&#x5B9E;&#x73B0;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5BFB;&#x627E;&#x8D44;&#x6599;&#xFF0C;&#x7ED3;&#x679C;&#x53D1;&#x73B0;&#x627E;&#x4EFD;&#x8D44;&#x6599;&#x8BF8;&#x591A;&#x4E0D;&#x6613;&#xFF1A;1&#x3001;&#x7F51;&#x4E0A;&#x641C;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x5B9E;&#x73B0;&#xFF0C;&#x7ED3;&#x679C;&#x5343;&#x7BC7;&#x4E00;&#x5F8B;&#xFF0C;&#x4F8B;&#x5B50;&#x90FD;&#x662F;&#x90A3;&#x51E0;&#x4E2A;&#x540C;&#x6837;&#x7684;&#x5355;&#x8BCD;&#xFF1B;2&#x3001;&#x5230;&#x8C37;&#x6B4C;&#x5B66;&#x672F;&#x4E0A;&#x60F3;&#x627E;&#x70B9;&#x7A0D;&#x5FAE;&#x6709;&#x4EF7;&#x503C;&#x6C34;&#x5E73;&#x7684;&#x8D44;&#x6599;&#xFF0C;&#x7ED3;&#x679C;&#x4E0B;&#x7BC7;&#x8BBA;&#x6587;&#x8FD8;&#x6536;&#x8D39;&#x6216;&#x8005;&#x8981;&#x6C42;&#x6CE8;&#x518C;&#x4E4B;&#x7C7B;&#xFF1B;3&#x3001;&#x5927;&#x90E8;&#x5206;&#x6280;&#x672F;&#x4E66;&#x7C4D;&#x53EA;&#x6709;&#x7406;&#x8BBA;&#xFF0C;&#x6CA1;&#x6709;&#x5B9E;&#x8DF5;&#x3002;&#x4E8E;&#x662F;&#xFF0C;&#x670B;&#x53CB;&#x620F;&#x8A00;&#xFF1A;&#x7F51;&#x4E0A;&#x4E00;&#x822C;&#x6709;&#x4EF7;&#x503C;&#x7684;&#x4E1C;&#x897F;&#x4E0D;&#x591A;&#x3002;&#x5E0C;&#x671B;&#xFF0C;&#x672C;blog&#x7684;&#x51FA;&#x73B0;&#x80FD;&#x6539;&#x53D8;&#x6B64;&#x73B0;&#x72B6;&#x3002;</p>
+<p>&#x5728;&#x7B2C;&#x4E8C;&#x5341;&#x56DB;&#x7AE0;&#x3001;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x5173;&#x952E;&#x8BCD;&#x4E0D;&#x91CD;&#x590D;Hash&#x7F16;&#x7801;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x9488;&#x5BF9;&#x4E00;&#x4E2A;&#x7ED9;&#x5B9A;&#x7684;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#xFF0C;&#x63D0;&#x53D6;&#x51FA;&#x5176;&#x4E2D;&#x7684;&#x5173;&#x952E;&#x8BCD;&#xFF0C;&#x7136;&#x540E;&#x9488;&#x5BF9;&#x8FD9;&#x4E9B;&#x5173;&#x952E;&#x8BCD;&#x8FDB;&#x884C;Hash&#x4E0D;&#x91CD;&#x590D;&#x7F16;&#x7801;&#x3002;&#x672C;&#x7AE0;&#xFF0C;&#x54B1;&#x4EEC;&#x518D;&#x5012;&#x9000;&#x4E00;&#x6B65;&#xFF0C;&#x5373;&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x6B63;&#x6392;&#x6587;&#x6863;&#xFF08;&#x6682;&#x7565;&#x8FC7;&#x6587;&#x672C;&#x89E3;&#x6790;&#xFF0C;&#x5206;&#x8BCD;&#x7B49;&#x6B65;&#x9AA4;&#xFF0C;&#x65E5;&#x540E;&#x4F1A;&#x6162;&#x6162;&#x8003;&#x8651;&#x8FD9;&#x4E9B;&#x4E14;&#x4E00;&#x5E76;&#x4E88;&#x4EE5;&#x5B9E;&#x73B0;&#xFF09;&#xFF0C;&#x8981;&#x6C42;&#x751F;&#x6210;&#x5BF9;&#x5E94;&#x7684;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x672C;&#x7AE0;&#x8FD8;&#x662F;&#x57FA;&#x4E8E;Hash&#x7D22;&#x5F15;&#x4E4B;&#x4E0A;&#xFF08;&#x8FD0;&#x7528;&#x66B4;&#x96EA;&#x7684;Hash&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x6BD4;&#x8F83;&#x5B8C;&#x7F8E;&#x7684;&#x89E3;&#x51B3;&#x5927;&#x6570;&#x636E;&#x91CF;&#x4E0B;&#x7684;&#x51B2;&#x7A81;&#x95EE;&#x9898;&#xFF09;&#xFF0C;&#x65E5;&#x540E;&#x81EA;&#x4F1A;&#x5B9E;&#x73B0;B+&#x6811;&#x7D22;&#x5F15;&#x3002;</p>
+<p>&#x4E0E;&#x6B64;&#x540C;&#x65F6;&#xFF0C;&#x672C;&#x7F16;&#x7A0B;&#x827A;&#x672F;&#x7CFB;&#x5217;&#x9010;&#x6B65;&#x4ECE;&#x4E3A;&#x9762;&#x8BD5;&#x670D;&#x52A1;&#x800C;&#x8F6C;&#x5230;&#x5B9E;&#x6218;&#x6027;&#x7684;&#x7F16;&#x7A0B;&#x5F53;&#x4E2D;&#x4E86;&#xFF0C;&#x6559;&#x521D;&#x5B66;&#x8005;&#x5982;&#x4F55;&#x7F16;&#x7A0B;&#xFF0C;&#x5982;&#x4F55;&#x8FD0;&#x7528;&#x9AD8;&#x6548;&#x7684;&#x7B97;&#x6CD5;&#x89E3;&#x51B3;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x7F16;&#x7A0B;&#x95EE;&#x9898;&#xFF0C;&#x5C06;&#x9010;&#x6B65;&#x6210;&#x4E3A;&#x672C;&#x7F16;&#x7A0B;&#x827A;&#x672F;&#x7CFB;&#x5217;&#x7684;&#x4E3B;&#x65E8;&#x4E4B;&#x4E00;&#x3002;</p>
+<p>OK&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x54B1;&#x4EEC;&#x9488;&#x5BF9;&#x7ED9;&#x5B9A;&#x7684;&#x6B63;&#x6392;&#x6587;&#x6863;&#x4E00;&#x6B65;&#x4E00;&#x6B65;&#x6765;&#x751F;&#x6210;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#xFF0C;&#x6709;&#x4EFB;&#x4F55;&#x95EE;&#x9898;&#xFF0C;&#x6B22;&#x8FCE;&#x968F;&#x65F6;&#x4E0D;&#x541D;&#x8D50;&#x6559;&#x6216;&#x6279;&#x8BC4;&#x6307;&#x6B63;&#x3002;&#x8C22;&#x8C22;&#x3002;</p>
+<h2 id="&#x7B2C;&#x4E00;&#x8282;&#x3001;&#x7D22;&#x5F15;&#x7684;&#x6784;&#x5EFA;&#x65B9;&#x6CD5;">&#x7B2C;&#x4E00;&#x8282;&#x3001;&#x7D22;&#x5F15;&#x7684;&#x6784;&#x5EFA;&#x65B9;&#x6CD5;</h2>
+<ul>
+<li>&#x6839;&#x636E;&#x4FE1;&#x606F;&#x68C0;&#x7D22;&#x5BFC;&#x8BBA;&#xFF08;Christtopher D.Manning&#x7B49;&#x8457;&#xFF0C;&#x738B;&#x658C;&#x8BD1;&#xFF09;&#x4E00;&#x4E66;&#x7ED9;&#x7684;&#x63D0;&#x793A;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x4E24;&#x79CD;&#x6784;&#x5EFA;&#x7D22;&#x5F15;&#x7684;&#x7B97;&#x6CD5;&#xFF1A;BSBI&#x7B97;&#x6CD5;&#xFF0C;&#x4E0E;SPIMI&#x7B97;&#x6CD5;&#x3002;</li>
+</ul>
+<p>BSBI&#x7B97;&#x6CD5;&#xFF0C;&#x57FA;&#x4E8E;&#x78C1;&#x76D8;&#x7684;&#x5916;&#x90E8;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#xFF0C;&#x6B64;&#x7B97;&#x6CD5;&#x9996;&#x5148;&#x5C06;&#x8BCD;&#x9879;&#x6620;&#x5C04;&#x6210;&#x5176;ID&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x5982;Hash&#x6620;&#x5C04;&#x3002;&#x800C;&#x540E;&#x5C06;&#x6587;&#x6863;&#x89E3;&#x6790;&#x6210;&#x8BCD;&#x9879;ID-&#x6587;&#x6863;ID&#x5BF9;&#xFF0C;&#x5E76;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x4E00;&#x76F4;&#x5904;&#x7406;&#xFF0C;&#x76F4;&#x5230;&#x7D2F;&#x79EF;&#x81F3;&#x653E;&#x6EE1;&#x4E00;&#x4E2A;&#x56FA;&#x5B9A;&#x5927;&#x5C0F;&#x7684;&#x5757;&#x7A7A;&#x95F4;&#x4E3A;&#x6B62;&#xFF0C;&#x6211;&#x4EEC;&#x9009;&#x62E9;&#x5408;&#x9002;&#x7684;&#x5757;&#x5927;&#x5C0F;&#xFF0C;&#x4F7F;&#x4E4B;&#x80FD;&#x65B9;&#x4FBF;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#x5E76;&#x5141;&#x8BB8;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x5FEB;&#x901F;&#x6392;&#x5E8F;&#xFF0C;&#x5FEB;&#x901F;&#x6392;&#x5E8F;&#x540E;&#x7684;&#x5757;&#x8F6C;&#x6362;&#x6210;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x683C;&#x5F0F;&#x540E;&#x5199;&#x5165;&#x78C1;&#x76D8;&#x3002;</p>
+<p>&#x5EFA;&#x7ACB;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x7684;&#x6B65;&#x9AA4;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x5C06;&#x6587;&#x6863;&#x5206;&#x5272;&#x6210;&#x51E0;&#x4E2A;&#x5927;&#x5C0F;&#x76F8;&#x7B49;&#x7684;&#x90E8;&#x5206;&#xFF1B;</li>
+<li>&#x5BF9;&#x8BCD;&#x9879;ID-&#x6587;&#x6863;ID&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF1B;</li>
+<li>&#x5C06;&#x5177;&#x6709;&#x540C;&#x4E00;&#x8BCD;&#x9879;ID&#x7684;&#x6240;&#x6709;&#x6587;&#x6863;ID&#x653E;&#x5230;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#x4E2D;&#xFF0C;&#x5176;&#x4E2D;&#x6BCF;&#x6761;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x4EC5;&#x4EC5;&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x6863;ID&#xFF1B;</li>
+<li>&#x5C06;&#x57FA;&#x4E8E;&#x5757;&#x7684;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x4E0A;&#x3002;</li>
+</ul>
+<p>&#x6B64;&#x7B97;&#x6CD5;&#x5047;&#x5982;&#x8BF4;&#x6700;&#x540E;&#x53EF;&#x80FD;&#x4F1A;&#x4EA7;&#x751F;10&#x4E2A;&#x5757;&#x3002;&#x5176;&#x4F2A;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>BSBI NDEXConSTRUCTION()
+n &lt;- 0
+while(all documents have not been processed)
+    do n&lt;-n+1
+        block &lt;- PARSENEXTBLOCK()    //&#x6587;&#x6863;&#x5206;&#x6790;
+        BSBI-INVERT(block)
+        WRITEBLOCKTODISK(block,fn)
+        MERGEBLOCKS(f1,...,fn;fmerged)
+</code></pre><p>&#xFF08;&#x57FA;&#x4E8E;&#x5757;&#x7684;&#x6392;&#x5E8F;&#x7D22;&#x5F15;&#x7B97;&#x6CD5;&#xFF0C;&#x8BE5;&#x7B97;&#x6CD5;&#x5C06;&#x6BCF;&#x4E2A;&#x5757;&#x7684;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#x5B58;&#x5165;&#x6587;&#x4EF6;f1,...,fn&#x4E2D;&#xFF0C;&#x6700;&#x540E;&#x5408;&#x5E76;&#x6210;fmerged
+&#x5982;&#x679C;&#x8BE5;&#x7B97;&#x6CD5;&#x5E94;&#x7528;&#x6700;&#x540E;&#x4E00;&#x6B65;&#x4EA7;&#x751F;&#x4E86;10&#x4E2A;&#x5757;&#xFF0C;&#x90A3;&#x4E48;&#x63A5;&#x4E0B;&#x6765;&#x4FBF;&#x4F1A;&#x5C06;10&#x4E2A;&#x5757;&#x7D22;&#x5F15;&#x540C;&#x65F6;&#x5408;&#x5E76;&#x6210;&#x4E00;&#x4E2A;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#x3002;&#xFF09;</p>
+<p>&#x5408;&#x5E76;&#x65F6;&#xFF0C;&#x540C;&#x65F6;&#x6253;&#x5F00;&#x6240;&#x6709;&#x5757;&#x5BF9;&#x5E94;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x5185;&#x5B58;&#x4E2D;&#x7EF4;&#x62A4;&#x4E86;&#x4E3A;10&#x4E2A;&#x5757;&#x51C6;&#x5907;&#x7684;&#x8BFB;&#x7F13;&#x51B2;&#x533A;&#x548C;&#x4E00;&#x4E2A;&#x4E3A;&#x6700;&#x7EC8;&#x5408;&#x5E76;&#x7D22;&#x5F15;&#x51C6;&#x5907;&#x7684;&#x5199;&#x7F13;&#x51B2;&#x533A;&#x3002;&#x6BCF;&#x6B21;&#x8FED;&#x4EE3;&#x4E2D;&#xFF0C;&#x5229;&#x7528;&#x4F18;&#x5148;&#x7EA7;&#x961F;&#x5217;&#xFF08;&#x5982;&#x5806;&#x7ED3;&#x6784;&#x6216;&#x7C7B;&#x4F3C;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF09;&#x9009;&#x62E9;&#x6700;&#x5C0F;&#x7684;&#x672A;&#x5904;&#x7406;&#x7684;&#x8BCD;&#x9879;ID&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF08;&#x56FE;&#x7247;&#x5F15;&#x81EA;&#x6DF1;&#x5165;&#x641C;&#x7D22;&#x5F15;&#x64CE;--&#x6D77;&#x91CC;&#x4FE1;&#x606F;&#x7684;&#x538B;&#x7F29;&#x3001;&#x7D22;&#x5F15;&#x548C;&#x67E5;&#x8BE2;&#xFF0C;&#x6881;&#x658C;&#x8BD1;&#xFF09;&#xFF0C;&#x5206;&#x5757;&#x7D22;&#x5F15;&#xFF0C;&#x5206;&#x5757;&#x6392;&#x5E8F;&#xFF0C;&#x6700;&#x7EC8;&#x5168;&#x90E8;&#x5408;&#x5E76;&#xFF08;&#x8BF4;&#x5B9E;&#x8BDD;&#xFF0C;&#x8DDF;MapReduce&#x8FD8;&#x662F;&#x6709;&#x4E9B;&#x7C7B;&#x4F3C;&#x7684;&#xFF09;&#xFF1A;</p>
+<p><img src="../images/26/26.1.gif" alt=""></p>
+<p>&#x8BFB;&#x5165;&#x8BE5;&#x8BCD;&#x9879;&#x7684;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#x5E76;&#x5408;&#x5E76;&#xFF0C;&#x5408;&#x5E76;&#x7ED3;&#x679C;&#x5199;&#x56DE;&#x78C1;&#x76D8;&#x4E2D;&#x3002;&#x9700;&#x8981;&#x65F6;&#xFF0C;&#x518D;&#x6B21;&#x4ECE;&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x5165;&#x6570;&#x636E;&#x5230;&#x6BCF;&#x4E2A;&#x8BFB;&#x7F13;&#x51B2;&#x533A;&#x3002;</p>
+<p>BSBI&#x7B97;&#x6CD5;&#x4E3B;&#x8981;&#x7684;&#x65F6;&#x95F4;&#x6D88;&#x8017;&#x5728;&#x6392;&#x5E8F;&#x4E0A;&#xFF0C;&#x9009;&#x62E9;&#x4EC0;&#x4E48;&#x6392;&#x5E8F;&#x65B9;&#x6CD5;&#x5462;&#xFF0C;&#x7B80;&#x5355;&#x7684;&#x5FEB;&#x901F;&#x6392;&#x5E8F;&#x8DB3;&#x77E3;&#xFF0C;&#x5176;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x4E3A;O&#xFF08;N*logN&#xFF09;&#xFF0C;&#x5176;&#x4E2D;N&#x662F;&#x6240;&#x9700;&#x8981;&#x6392;&#x5E8F;&#x7684;&#x9879;&#xFF08;&#x8BCD;&#x9879;ID-&#x6587;&#x6863;ID&#x5BF9;&#xFF09;&#x7684;&#x6570;&#x76EE;&#x7684;&#x4E0A;&#x754C;&#x3002;</p>
+<p>SPIMI&#x7B97;&#x6CD5;&#xFF0C;&#x5185;&#x5B58;&#x5F0F;&#x5355;&#x904D;&#x626B;&#x63CF;&#x7D22;&#x5F15;&#x7B97;&#x6CD5;</p>
+<p>&#x4E0E;&#x4E0A;&#x8FF0;BSBI&#x7B97;&#x6CD5;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF1A;SPIMI&#x4F7F;&#x7528;&#x8BCD;&#x9879;&#x800C;&#x4E0D;&#x662F;&#x5176;ID&#xFF0C;&#x5B83;&#x5C06;&#x6BCF;&#x4E2A;&#x5757;&#x7684;&#x8BCD;&#x5178;&#x5199;&#x5165;&#x78C1;&#x76D8;&#xFF0C;&#x5BF9;&#x4E8E;&#x5199;&#x4E00;&#x5757;&#x5219;&#x91CD;&#x65B0;&#x91C7;&#x7528;&#x65B0;&#x7684;&#x8BCD;&#x5178;&#xFF0C;&#x53EA;&#x8981;&#x786C;&#x76D8;&#x7A7A;&#x95F4;&#x8DB3;&#x591F;&#x5927;&#xFF0C;&#x5B83;&#x80FD;&#x7D22;&#x5F15;&#x4EFB;&#x4F55;&#x5927;&#x5C0F;&#x7684;&#x6587;&#x6863;&#x96C6;&#x3002;</p>
+<p>&#x5012;&#x6392;&#x7D22;&#x5F15; = &#x8BCD;&#x5178;&#xFF08;&#x5173;&#x952E;&#x8BCD;&#x6216;&#x8BCD;&#x9879;+&#x8BCD;&#x9879;&#x9891;&#x7387;&#xFF09;+&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#x3002;&#x5EFA;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x7684;&#x6B65;&#x9AA4;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x4ECE;&#x5934;&#x5F00;&#x59CB;&#x626B;&#x63CF;&#x6BCF;&#x4E00;&#x4E2A;&#x8BCD;&#x9879;-&#x6587;&#x6863;ID&#xFF08;&#x4FE1;&#x606F;&#xFF09;&#x5BF9;&#xFF0C;&#x9047;&#x4E00;&#x8BCD;&#xFF0C;&#x6784;&#x5EFA;&#x7D22;&#x5F15;&#xFF1B;</li>
+<li>&#x7EE7;&#x7EED;&#x626B;&#x63CF;&#xFF0C;&#x82E5;&#x9047;&#x4E00;&#x65B0;&#x8BCD;&#xFF0C;&#x5219;&#x518D;&#x5EFA;&#x4E00;&#x65B0;&#x7D22;&#x5F15;&#x5757;&#xFF08;&#x52A0;&#x5165;&#x8BCD;&#x5178;&#xFF0C;&#x901A;&#x8FC7;Hash&#x8868;&#x5B9E;&#x73B0;&#xFF0C;&#x540C;&#x65F6;&#xFF0C;&#x5EFA;&#x4E00;&#x65B0;&#x7684;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#xFF09;&#xFF1B;&#x82E5;&#x9047;&#x4E00;&#x65E7;&#x8BCD;&#xFF0C;&#x5219;&#x627E;&#x5230;&#x5176;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x6DFB;&#x52A0;&#x5176;&#x540E;</li>
+<li>&#x5728;&#x5185;&#x5B58;&#x5185;&#x57FA;&#x4E8E;&#x5206;&#x5757;&#x5B8C;&#x6210;&#x6392;&#x5E8F;&#xFF0C;&#x540E;&#x5408;&#x5E76;&#x5206;&#x5757;&#xFF1B;</li>
+<li>&#x5199;&#x5165;&#x78C1;&#x76D8;&#x3002;</li>
+</ul>
+<p>&#x5176;&#x4F2A;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>SPIMI-Invert(Token_stream)
+output.file=NEWFILE()
+dictionary = NEWHASH()
+while (free memory available)
+    do token &lt;-next(token_stream) //&#x9010;&#x4E00;&#x5904;&#x7406;&#x6BCF;&#x4E2A;&#x8BCD;&#x9879;-&#x6587;&#x6863;ID&#x5BF9;
+        if term(token) !(- dictionary
+           /*&#x5982;&#x679C;&#x8BCD;&#x9879;&#x662F;&#x7B2C;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&#xFF0C;&#x90A3;&#x4E48;&#x52A0;&#x5165;hash&#x8BCD;&#x5178;&#xFF0C;&#x540C;&#x65F6;&#xFF0C;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x8868;*/
+           then postings_list = AddToDictionary(dictionary,term(token))
+        /*&#x5982;&#x679C;&#x4E0D;&#x662F;&#x7B2C;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&#xFF0C;&#x90A3;&#x4E48;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x5176;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#xFF0C;&#x5728;&#x4E0B;&#x9762;&#x6DFB;&#x52A0;&#x5176;&#x540E;*/
+        else postings_list = GetPostingList(dictionary,term(token))
+    if full(postings_list)
+        then postings_list =DoublePostingList(dictionary,term(token))
+    /*SPIMI&#x4E0E;BSBI&#x7684;&#x533A;&#x522B;&#x5C31;&#x5728;&#x4E8E;&#x6B64;&#xFF0C;&#x524D;&#x8005;&#x76F4;&#x63A5;&#x5728;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#x4E2D;&#x589E;&#x52A0;&#x6B64;&#x9879;&#x65B0;&#x7EAA;&#x5F55;*/
+    AddToPosTingsList (postings_list,docID(token))
+sorted_terms &lt;- SortTerms(dictionary)
+WriteBlockToDisk(sorted_terms,dictionary,output_file)
+return output_file
+</code></pre><p><strong>SPIMI&#x4E0E;BSBI&#x7684;&#x4E3B;&#x8981;&#x533A;&#x522B;&#xFF1A;</strong></p>
+<p>SPIMI&#x5F53;&#x53D1;&#x73B0;&#x5173;&#x952E;&#x8BCD;&#x662F;&#x7B2C;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&#x65F6;&#xFF0C;&#x4F1A;&#x76F4;&#x63A5;&#x5728;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#x4E2D;&#x589E;&#x52A0;&#x4E00;&#x9879;&#xFF08;&#x4E0E;BSBI&#x7B97;&#x6CD5;&#x4E0D;&#x540C;&#xFF09;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x4E0E;BSBI&#x7B97;&#x6CD5;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x6574;&#x7406;&#x51FA;&#x6240;&#x6709;&#x7684;&#x8BCD;&#x9879;ID-&#x6587;&#x6863;ID&#xFF0C;&#x5E76;&#x5BF9;&#x5B83;&#x4EEC;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#x7684;&#x505A;&#x6CD5;&#x4E0D;&#x540C;&#xFF08;&#x800C;&#x8FD9;&#x6070;&#x6070;&#x662F;BSBI&#x7684;&#x505A;&#x6CD5;&#xFF09;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x6BCF;&#x4E2A;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#x90FD;&#x662F;&#x52A8;&#x6001;&#x589E;&#x957F;&#x7684;&#xFF08;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#x7684;&#x5927;&#x5C0F;&#x4F1A;&#x4E0D;&#x65AD;&#x8C03;&#x6574;&#xFF09;&#xFF0C;&#x540C;&#x65F6;&#xFF0C;&#x626B;&#x63CF;&#x4E00;&#x904D;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5168;&#x4F53;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#x7684;&#x6536;&#x96C6;&#x3002;</p>
+<p><strong>SPIMI&#x8FD9;&#x6837;&#x505A;&#x6709;&#x4E24;&#x70B9;&#x597D;&#x5904;:</strong></p>
+<p>&#x7531;&#x4E8E;&#x4E0D;&#x9700;&#x8981;&#x6392;&#x5E8F;&#x64CD;&#x4F5C;&#xFF0C;&#x56E0;&#x6B64;&#x5904;&#x7406;&#x7684;&#x901F;&#x5EA6;&#x66F4;&#x5FEB;&#xFF0C;
+&#x7531;&#x4E8E;&#x4FDD;&#x7559;&#x4E86;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#x5BF9;&#x8BCD;&#x9879;&#x7684;&#x5F52;&#x5C5E;&#x5173;&#x7CFB;&#xFF0C;&#x56E0;&#x6B64;&#x80FD;&#x8282;&#x7701;&#x5185;&#x5B58;&#xFF0C;&#x8BCD;&#x9879;&#x7684;ID&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x6BCF;&#x6B21;&#x5355;&#x72EC;&#x7684;SPIMI-Invert&#x8C03;&#x7528;&#x80FD;&#x591F;&#x5904;&#x7406;&#x7684;&#x5757;&#x5927;&#x5C0F;&#x53EF;&#x4EE5;&#x975E;&#x5E38;&#x5927;&#xFF0C;&#x6574;&#x4E2A;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x7684;&#x6784;&#x5EFA;&#x8FC7;&#x7A0B;&#x4E5F;&#x53EF;&#x4EE5;&#x975E;&#x5E38;&#x9AD8;&#x6548;&#x3002;</p>
+<p>&#x4F46;&#x4E0D;&#x5F97;&#x4E0D;&#x63D0;&#x7684;&#x662F;&#xFF0C;&#x7531;&#x4E8E;&#x4E8B;&#x5148;&#x5E76;&#x4E0D;&#x77E5;&#x9053;&#x6BCF;&#x4E2A;&#x8BCD;&#x9879;&#x7684;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#x5927;&#x5C0F;&#xFF0C;&#x7B97;&#x6CD5;&#x4E00;&#x5F00;&#x59CB;&#x53EA;&#x80FD;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x8F83;&#x5C0F;&#x7684;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#x7A7A;&#x95F4;&#xFF0C;&#x6BCF;&#x6B21;&#x5F53;&#x8BE5;&#x7A7A;&#x95F4;&#x653E;&#x6EE1;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x4F1A;&#x7533;&#x8BF7;&#x52A0;&#x500D;&#x7684;&#x7A7A;&#x95F4;&#xFF0C;</p>
+<p>&#x4E0E;&#x6B64;&#x540C;&#x65F6;&#xFF0C;&#x81EA;&#x7136;&#x800C;&#x7136;&#x4FBF;&#x4F1A;&#x6D6A;&#x8D39;&#x4E00;&#x90E8;&#x5206;&#x7A7A;&#x95F4;&#xFF08;&#x5F53;&#x7136;&#xFF0C;&#x6B64;&#x524D;&#x56E0;&#x4E3A;&#x4E0D;&#x4FDD;&#x5B58;&#x8BCD;&#x9879;ID&#xFF0C;&#x5012;&#x4E5F;&#x7701;&#x4E0B;&#x4E00;&#x70B9;&#x7A7A;&#x95F4;&#xFF0C;&#x603B;&#x4F53;&#x800C;&#x8A00;&#xFF0C;&#x7B97;&#x4F5C;&#x662F;&#x62B5;&#x9500;&#x4E86;&#xFF09;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#xFF0C;&#x81F3;&#x5C11;SPIMI&#x6240;&#x7528;&#x7684;&#x7A7A;&#x95F4;&#x4F1A;&#x6BD4;BSBI&#x6240;&#x7528;&#x7A7A;&#x95F4;&#x5C11;&#x3002;&#x5F53;&#x5185;&#x5B58;&#x8017;&#x5C3D;&#x540E;&#xFF0C;&#x5305;&#x62EC;&#x8BCD;&#x5178;&#x548C;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#x7684;&#x5757;&#x7D22;&#x5F15;&#x5C06;&#x88AB;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x4E0A;&#xFF0C;&#x4F46;&#x5728;&#x6B64;&#x4E4B;&#x524D;&#xFF0C;&#x4E3A;&#x4F7F;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#x6309;&#x7167;&#x8BCD;&#x5178;&#x987A;&#x5E8F;&#x6765;&#x52A0;&#x5FEB;&#x6700;&#x540E;&#x7684;&#x5408;&#x5E76;&#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x5BF9;&#x8BCD;&#x9879;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x5C0F;&#x6570;&#x636E;&#x91CF;&#x4E0E;&#x5927;&#x6570;&#x636E;&#x91CF;&#x7684;&#x533A;&#x522B;</p>
+<ul>
+<li>&#x5728;&#x5C0F;&#x6570;&#x636E;&#x91CF;&#x65F6;&#xFF0C;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x5185;&#x5B58;&#x4FDD;&#x8BC1;&#x8BE5;&#x521B;&#x5EFA;&#x8FC7;&#x7A0B;&#x53EF;&#x4EE5;&#x4E00;&#x6B21;&#x5B8C;&#x6210;&#xFF1B;</li>
+<li>&#x6570;&#x636E;&#x89C4;&#x6A21;&#x589E;&#x5927;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x5206;&#x7EC4;&#x7D22;&#x5F15;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x5F52;&#x5E76;&#x7D22; &#x5F15;&#x7684;&#x7B56;&#x7565;&#x3002;&#x8BE5;&#x7B56;&#x7565;&#x662F;&#xFF0C;</li>
+</ul>
+<p>&#x5EFA;&#x7ACB;&#x7D22;&#x5F15;&#x7684;&#x6A21;&#x5757;&#x6839;&#x636E;&#x5F53;&#x65F6;&#x8FD0;&#x884C;&#x7CFB;&#x7EDF;&#x6240;&#x5728;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x7684;&#x5185;&#x5B58;&#x5927;&#x5C0F;&#xFF0C;&#x5C06;&#x7D22;&#x5F15;&#x5206;&#x4E3A; k &#x7EC4;&#xFF0C;&#x4F7F;&#x5F97;&#x6BCF;&#x7EC4;&#x8FD0;&#x7B97;&#x6240;&#x9700;&#x5185;&#x5B58;&#x90FD;&#x5C0F;&#x4E8E;&#x7CFB;&#x7EDF;&#x80FD;&#x591F;&#x63D0;&#x4F9B;&#x7684;&#x6700;&#x5927;&#x4F7F;&#x7528;&#x5185;&#x5B58;&#x7684;&#x5927;&#x5C0F;&#x3002;
+&#x6309;&#x7167;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x7684;&#x751F;&#x6210;&#x7B97;&#x6CD5;&#xFF0C;&#x751F;&#x6210; k &#x7EC4;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x3002;
+&#x7136;&#x540E;&#x5C06;&#x8FD9; k &#x7EC4;&#x7D22;&#x5F15;&#x5F52;&#x5E76;&#xFF0C;&#x5373;&#x5C06;&#x76F8;&#x540C;&#x7D22;&#x5F15;&#x8BCD;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#x5408;&#x5E76;&#x5230;&#x4E00;&#x8D77;&#xFF0C;&#x5C31;&#x5F97;&#x5230;&#x4E86;&#x4EE5;&#x7D22;&#x5F15;&#x8BCD;&#x4E3A;&#x4E3B;&#x952E;&#x7684;&#x6700;&#x7EC8;&#x7684;&#x5012;&#x6392;&#x6587;&#x4EF6;&#x7D22;&#x5F15;&#xFF0C;&#x5373;&#x53CD;&#x5411;&#x7D22;&#x5F15;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x6D4B;&#x8BD5;&#x7684;&#x65B9;&#x4FBF;&#xFF0C;&#x672C;&#x6587;&#x9488;&#x5BF9;&#x5C0F;&#x6570;&#x636E;&#x91CF;&#x8FDB;&#x884C;&#x4ECE;&#x6B63;&#x6392;&#x6587;&#x6863;&#x5230;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#x7684;&#x5B9E;&#x73B0;&#x3002;&#x800C;&#x4E14;&#x9488;&#x5BF9;&#x5927;&#x6570;&#x91CF;&#x7684;K&#x8DEF;&#x5F52;&#x5E76;&#x7B97;&#x6CD5;&#x6216;&#x57FA;&#x4E8E;&#x78C1;&#x76D8;&#x7684;&#x5916;&#x90E8;&#x6392;&#x5E8F;&#x7B97;&#x6CD5;&#x672C;&#x7F16;&#x7A0B;&#x827A;&#x672F;&#x7CFB;&#x5217;&#x7B2C;&#x5341;&#x7AE0;&#x4E2D;&#x5DF2;&#x6709;&#x8BE6;&#x7EC6;&#x9610;&#x8FF0;&#x3002;</p>
+<h2 id="&#x7B2C;&#x4E8C;&#x8282;&#x3001;hash&#x8868;&#x7684;&#x6784;&#x5EFA;&#x4E0E;&#x5B9E;&#x73B0;">&#x7B2C;&#x4E8C;&#x8282;&#x3001;Hash&#x8868;&#x7684;&#x6784;&#x5EFA;&#x4E0E;&#x5B9E;&#x73B0;</h2>
+<p>&#x5982;&#x4E0B;&#xFF0C;&#x7ED9;&#x5B9A;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x7684;&#x6B63;&#x6392;&#x6587;&#x6863;&#xFF0C;&#x6BCF;&#x4E00;&#x884C;&#x7684;&#x4FE1;&#x606F;&#x5206;&#x522B;&#x4E3A;&#xFF08;&#x4E2D;&#x95F4;&#x7528;##########&#x9694;&#x5F00;&#xFF09;&#xFF1A;&#x6587;&#x6863;ID&#x3001;&#x8BA2;&#x9605;&#x6E90;&#xFF08;&#x5B50;&#x9891;&#x9053;&#xFF09;&#x3001; &#x9891;&#x9053;&#x5206;&#x7C7B;&#x3001; &#x7F51;&#x7AD9;&#x7C7B;ID&#xFF08;&#x5927;&#x9891;&#x9053;&#xFF09;&#x3001;&#x65F6;&#x95F4;&#x3001; md5&#x3001;&#x6587;&#x6863;&#x6743;&#x503C;&#x3001;&#x5173;&#x952E;&#x8BCD;&#x3001;&#x4F5C;&#x8005;&#x7B49;&#x7B49;&#x3002;
+<img src="../images/26/26.2.gif" alt=""></p>
+<p>&#x8981;&#x6C42;&#x57FA;&#x4E8E;&#x7ED9;&#x5B9A;&#x7684;&#x4E0A;&#x8FF0;&#x6B63;&#x6392;&#x6587;&#x6863;&#x3002;&#x751F;&#x6210;&#x5982;&#x7B2C;&#x4E8C;&#x5341;&#x56DB;&#x7AE0;&#x6240;&#x793A;&#x7684;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#xFF08;&#x6CE8;&#xFF0C;&#x5173;&#x952E;&#x8BCD;&#x6240;&#x5728;&#x7684;&#x6587;&#x7AE0;&#x5982;&#x679C;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x65E5;&#x671F;&#x7684;&#x8BDD;&#xFF0C;&#x662F;&#x6328;&#x5728;&#x540C;&#x4E00;&#x884C;&#x7684;&#xFF0C;&#x7528;&#x201C;#&#x201D;&#x7B26;&#x53F7;&#x9694;&#x5F00;&#xFF09;&#xFF1A;
+<img src="../images/26/26.3.gif" alt=""></p>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF1A;&#x4E3A;&#x7F51;&#x9875;&#x5EFA;&#x7ACB;&#x5168;&#x6587;&#x7D22;&#x5F15;&#x662F;&#x7F51;&#x9875;&#x9884;&#x5904;&#x7406;&#x7684;&#x6838;&#x5FC3;&#x90E8;&#x5206;&#xFF0C;&#x5305;&#x62EC;&#x5206;&#x6790;&#x7F51;&#x9875;&#x548C;&#x5EFA;&#x7ACB;&#x5012;&#x6392;&#x6587;&#x4EF6;&#x3002;&#x4E8C;&#x8005;&#x662F;&#x987A;&#x5E8F;&#x8FDB;&#x884C;&#xFF0C;&#x5148;&#x5206;&#x6790;&#x7F51;&#x9875;&#xFF0C;&#x540E;&#x5EFA;&#x7ACB;&#x5012;&#x6392;&#x6587;&#x4EF6;&#xFF08;&#x4E5F;&#x79F0;&#x4E3A;&#x53CD;&#x5411;&#x7D22;&#x5F15;&#xFF09;&#xFF0C;&#x5982;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="../images/26/26.4.gif" alt=""></p>
+<p>&#x6B63;&#x5982;&#x4E0A;&#x56FE;&#x7C97;&#x7565;&#x6240;&#x793A;&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x521B;&#x5EFA;&#x7684;&#x8FC7;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x5199;&#x722C;&#x866B;&#x6293;&#x53D6;&#x76F8;&#x5173;&#x7684;&#x7F51;&#x9875;&#xFF0C;&#x800C;&#x540E;&#x63D0;&#x53D6;&#x76F8;&#x5173;&#x7F51;&#x9875;&#x6216;&#x6587;&#x7AE0;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x5173;&#x952E;&#x8BCD;&#xFF1B;</li>
+<li>&#x5206;&#x8BCD;&#xFF0C;&#x627E;&#x51FA;&#x6240;&#x6709;&#x5355;&#x8BCD;&#xFF1B;</li>
+<li>&#x8FC7;&#x6EE4;&#x4E0D;&#x76F8;&#x5E72;&#x7684;&#x4FE1;&#x606F;&#xFF08;&#x5982;&#x5E7F;&#x544A;&#x7B49;&#x4FE1;&#x606F;&#xFF09;&#xFF1B;</li>
+<li>&#x6784;&#x5EFA;&#x5012;&#x6392;&#x7D22;&#x5F15;&#xFF0C;&#x5173;&#x952E;&#x8BCD;=&gt;&#xFF08;&#x6587;&#x7AE0;ID &#x51FA;&#x73B0;&#x6B21;&#x6570; &#x51FA;&#x73B0;&#x7684;&#x4F4D;&#x7F6E;&#xFF09;&#x751F;&#x6210;&#x8BCD;&#x5178;&#x6587;&#x4EF6; &#x9891;&#x7387;&#x6587;&#x4EF6; &#x4F4D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1B;</li>
+<li>&#x538B;&#x7F29;&#x3002;</li>
+</ul>
+<p>&#x56E0;&#x4E3A;&#x5DF2;&#x7ECF;&#x7ED9;&#x5B9A;&#x4E86;&#x6B63;&#x6392;&#x6587;&#x6863;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x54B1;&#x4EEC;&#x8DF3;&#x8FC7;&#x4E00;&#x7CFB;&#x5217;&#x6587;&#x672C;&#x89E3;&#x6790;&#xFF0C;&#x5206;&#x8BCD;&#x7B49;&#x4E2D;&#x95F4;&#x6B65;&#x9AA4;&#xFF0C;&#x76F4;&#x63A5;&#x6839;&#x636E;&#x6B63;&#x6392;&#x6587;&#x6863;&#x751F;&#x6210;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x6587;&#x6863;&#xFF08;&#x5E78;&#x4E8F;&#x6709;yansha&#x76F8;&#x52A9;&#xFF0C;&#x4E0D;&#x7136;&#xFF0C;&#x5BF8;&#x6B65;&#x96BE;&#x884C;&#xFF0C;&#x5176;&#x5FAE;&#x535A;&#x5730;&#x5740;&#x4E3A;&#xFF1A;<a href="http://weibo.com/yanshazi" target="_blank">http://weibo.com/yanshazi</a>&#xFF0C;&#x6B22;&#x8FCE;&#x5173;&#x6CE8;&#x4ED6;&#xFF09;&#x3002;</p>
+<p>OK&#xFF0C;&#x95F2;&#x4E0D;&#x591A;&#x8BF4;&#xFF0C;&#x54B1;&#x4EEC;&#x6765;&#x4E00;&#x6B65;&#x4E00;&#x6B65;&#x5B9E;&#x73B0;&#x5427;&#x3002;</p>
+<p>&#x5EFA;&#x76F8;&#x5173;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;</p>
+<p>&#x6839;&#x636E;&#x7ED9;&#x5B9A;&#x7684;&#x6B63;&#x6392;&#x6587;&#x6863;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5EFA;&#x7ACB;&#x5982;&#x4E0B;&#x7684;&#x4E24;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x8868;&#x793A;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#xFF1A;&#x6587;&#x6863;ID&#x3001;&#x8BA2;&#x9605;&#x6E90;&#xFF08;&#x5B50;&#x9891;&#x9053;&#xFF09;&#x3001; &#x9891;&#x9053;&#x5206;&#x7C7B;&#x3001; &#x7F51;&#x7AD9;&#x7C7B;ID&#xFF08;&#x5927;&#x9891;&#x9053;&#xFF09;&#x3001;&#x65F6;&#x95F4;&#x3001; md5&#x3001;&#x6587;&#x6863;&#x6743;&#x503C;&#x3001;&#x5173;&#x952E;&#x8BCD;&#x3001;&#x4F5C;&#x8005;&#x7B49;&#x7B49;&#x3002;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> key_node
+{
+    <span class="hljs-keyword">char</span> *pkey;     <span class="hljs-comment">// &#x5173;&#x952E;&#x8BCD;&#x5B9E;&#x4F53;</span>
+    <span class="hljs-keyword">int</span> count;      <span class="hljs-comment">// &#x5173;&#x952E;&#x8BCD;&#x51FA;&#x73B0;&#x6B21;&#x6570;</span>
+    <span class="hljs-keyword">int</span> pos;        <span class="hljs-comment">// &#x5173;&#x952E;&#x8BCD;&#x5728;hash&#x8868;&#x4E2D;&#x4F4D;&#x7F6E;</span>
+    <span class="hljs-keyword">struct</span> doc_node *next;  <span class="hljs-comment">// &#x6307;&#x5411;&#x6587;&#x6863;&#x7ED3;&#x70B9;</span>
+}KEYNODE, *key_list;
+
+key_list key_array[TABLE_SIZE];
+
+<span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> doc_node
+{
+    <span class="hljs-keyword">char</span> id[WORD_MAX_LEN];  <span class="hljs-comment">//&#x6587;&#x6863;ID</span>
+    <span class="hljs-keyword">int</span> classOne;           <span class="hljs-comment">//&#x8BA2;&#x9605;&#x6E90;&#xFF08;&#x5B50;&#x9891;&#x9053;&#xFF09;</span>
+    <span class="hljs-keyword">char</span> classTwo[WORD_MAX_LEN];    <span class="hljs-comment">//&#x9891;&#x9053;&#x5206;&#x7C7B;</span>
+    <span class="hljs-keyword">int</span> classThree;                 <span class="hljs-comment">//&#x7F51;&#x7AD9;&#x7C7B;ID&#xFF08;&#x5927;&#x9891;&#x9053;&#xFF09;</span>
+    <span class="hljs-keyword">char</span> time[WORD_MAX_LEN];        <span class="hljs-comment">//&#x65F6;&#x95F4;</span>
+    <span class="hljs-keyword">char</span> md5[WORD_MAX_LEN];         <span class="hljs-comment">//md5</span>
+    <span class="hljs-keyword">int</span> weight;                     <span class="hljs-comment">//&#x6587;&#x6863;&#x6743;&#x503C;</span>
+    <span class="hljs-keyword">struct</span> doc_node *next;
+}DOCNODE, *doc_list;
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x901A;&#x8FC7;&#x7B2C;&#x4E8C;&#x5341;&#x56DB;&#x7AE0;&#x7684;&#x66B4;&#x96EA;&#x7684;Hash&#x8868;&#x7B97;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x6BD4;&#x8F83;&#x597D;&#x7684;&#x907F;&#x514D;&#x76F8;&#x5173;&#x51B2;&#x7A81;&#x7684;&#x95EE;&#x9898;&#x3002;&#x4E0B;&#x9762;&#xFF0C;&#x6211;&#x4EEC;&#x518D;&#x6B21;&#x5F15;&#x7528;&#x5176;&#x4EE3;&#x7801;&#xFF1A;
+&#x57FA;&#x4E8E;&#x66B4;&#x96EA;&#x7684;Hash&#x4E4B;&#x4E0A;&#x7684;&#x6539;&#x9020;&#x7B97;&#x6CD5;</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x51FD;&#x6570;prepareCryptTable&#x4EE5;&#x4E0B;&#x7684;&#x51FD;&#x6570;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x957F;&#x5EA6;&#x4E3A;0x100&#x7684;cryptTable[0x100]</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">PrepareCryptTable</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> seed = <span class="hljs-number">0x00100001</span>, index1 = <span class="hljs-number">0</span>, index2 = <span class="hljs-number">0</span>, i;
+
+    <span class="hljs-keyword">for</span>( index1 = <span class="hljs-number">0</span>; index1 &lt;<span class="hljs-number">0x100</span>; index1++ )
+    {
+        <span class="hljs-keyword">for</span>( index2 = index1, i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++, index2 += <span class="hljs-number">0x100</span>)
+        {
+            <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> temp1, temp2;
+            seed = (seed * <span class="hljs-number">125</span> + <span class="hljs-number">3</span>) % <span class="hljs-number">0x2AAAAB</span>;
+            temp1 = (seed &amp; <span class="hljs-number">0xFFFF</span>)&lt;&lt;<span class="hljs-number">0x10</span>;
+            seed = (seed * <span class="hljs-number">125</span> + <span class="hljs-number">3</span>) % <span class="hljs-number">0x2AAAAB</span>;
+            temp2 = (seed &amp; <span class="hljs-number">0xFFFF</span>);
+            cryptTable[index2] = ( temp1 | temp2 );
+        }
+    }
+}
+
+<span class="hljs-comment">//&#x51FD;&#x6570;HashString&#x4EE5;&#x4E0B;&#x51FD;&#x6570;&#x8BA1;&#x7B97;lpszFileName &#x5B57;&#x7B26;&#x4E32;&#x7684;hash&#x503C;&#xFF0C;&#x5176;&#x4E2D;dwHashType &#x4E3A;hash&#x7684;&#x7C7B;&#x578B;&#xFF0C;</span>
+<span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-title">HashString</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *lpszkeyName, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> dwHashType )</span>
+</span>{
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *key  = (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *)lpszkeyName;
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> seed1 = <span class="hljs-number">0x7FED7FED</span>;
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> seed2 = <span class="hljs-number">0xEEEEEEEE</span>;
+    <span class="hljs-keyword">int</span> ch;
+
+    <span class="hljs-keyword">while</span>( *key != <span class="hljs-number">0</span> )
+    {
+        ch = *key++;
+        seed1 = cryptTable[(dwHashType&lt;&lt;<span class="hljs-number">8</span>) + ch] ^ (seed1 + seed2);
+        seed2 = ch + seed1 + seed2 + (seed2&lt;&lt;<span class="hljs-number">5</span>) + <span class="hljs-number">3</span>;
+    }
+    <span class="hljs-keyword">return</span> seed1;
+}
+
+<span class="hljs-comment">//&#x6309;&#x5173;&#x952E;&#x5B57;&#x67E5;&#x8BE2;&#xFF0C;&#x5982;&#x679C;&#x6210;&#x529F;&#x8FD4;&#x56DE;hash&#x8868;&#x4E2D;&#x7D22;&#x5F15;&#x4F4D;&#x7F6E;</span>
+<span class="hljs-function">key_list <span class="hljs-title">SearchByString</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *string_in)</span>
+</span>{
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> HASH_OFFSET = <span class="hljs-number">0</span>, HASH_C = <span class="hljs-number">1</span>, HASH_D = <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> nHash = HashString(string_in, HASH_OFFSET);
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> nHashC = HashString(string_in, HASH_C);
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> nHashD = HashString(string_in, HASH_D);
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> nHashStart = nHash % TABLE_SIZE;
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> nHashPos = nHashStart;
+
+    <span class="hljs-keyword">while</span> (HashTable[nHashPos].bExists)
+    {
+        <span class="hljs-keyword">if</span> (HashATable[nHashPos] == (<span class="hljs-keyword">int</span>) nHashC &amp;&amp; HashBTable[nHashPos] == (<span class="hljs-keyword">int</span>) nHashD)
+        {
+            <span class="hljs-keyword">break</span>;
+            <span class="hljs-comment">//&#x67E5;&#x8BE2;&#x4E0E;&#x63D2;&#x5165;&#x4E0D;&#x540C;&#xFF0C;&#x6B64;&#x5904;&#x4E0D;&#x9700;&#x4FEE;&#x6539;</span>
+        }
+        <span class="hljs-keyword">else</span>
+        {
+            nHashPos = (nHashPos + <span class="hljs-number">1</span>) % TABLE_SIZE;
+        }
+
+        <span class="hljs-keyword">if</span> (nHashPos == nHashStart)
+        {
+            <span class="hljs-keyword">break</span>;
+        }
+    }
+
+    <span class="hljs-keyword">if</span>( key_array[nHashPos] &amp;&amp; <span class="hljs-built_in">strlen</span>(key_array[nHashPos]-&gt;pkey))
+    {
+        <span class="hljs-keyword">return</span> key_array[nHashPos];
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;
+}
+
+<span class="hljs-comment">//&#x6309;&#x7D22;&#x5F15;&#x67E5;&#x8BE2;&#xFF0C;&#x5982;&#x679C;&#x6210;&#x529F;&#x8FD4;&#x56DE;&#x5173;&#x952E;&#x5B57;&#xFF08;&#x6B64;&#x51FD;&#x6570;&#x5728;&#x672C;&#x7AE0;&#x4E2D;&#x6CA1;&#x6709;&#x88AB;&#x7528;&#x5230;&#xFF0C;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#xFF09;</span>
+<span class="hljs-function">key_list <span class="hljs-title">SearchByIndex</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> nIndex)</span>
+</span>{
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> nHashPos = nIndex;
+    <span class="hljs-keyword">if</span> (nIndex &lt; TABLE_SIZE)
+    {
+        <span class="hljs-keyword">if</span>(key_array[nHashPos] &amp;&amp; <span class="hljs-built_in">strlen</span>(key_array[nHashPos]-&gt;pkey))
+        {
+            <span class="hljs-keyword">return</span> key_array[nHashPos];
+        }
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;
+}
+
+<span class="hljs-comment">//&#x63D2;&#x5165;&#x5173;&#x952E;&#x5B57;&#xFF0C;&#x5982;&#x679C;&#x6210;&#x529F;&#x8FD4;&#x56DE;hash&#x503C;</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">InsertString</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *str)</span>
+</span>{
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> HASH_OFFSET = <span class="hljs-number">0</span>, HASH_A = <span class="hljs-number">1</span>, HASH_B = <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> nHash = HashString(str, HASH_OFFSET);
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> nHashA = HashString(str, HASH_A);
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> nHashB = HashString(str, HASH_B);
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> nHashStart = nHash % TABLE_SIZE;
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> nHashPos = nHashStart;
+    <span class="hljs-keyword">int</span> len;
+
+    <span class="hljs-keyword">while</span> (HashTable[nHashPos].bExists)
+    {
+        nHashPos = (nHashPos + <span class="hljs-number">1</span>) % TABLE_SIZE;
+
+        <span class="hljs-keyword">if</span> (nHashPos == nHashStart)
+            <span class="hljs-keyword">break</span>;
+    }
+
+    len = <span class="hljs-built_in">strlen</span>(str);
+    <span class="hljs-keyword">if</span> (!HashTable[nHashPos].bExists &amp;&amp; (len &lt; WORD_MAX_LEN))
+    {
+        HashATable[nHashPos] = nHashA;
+        HashBTable[nHashPos] = nHashB;
+
+        key_array[nHashPos] = (KEYNODE *) <span class="hljs-built_in">malloc</span> (<span class="hljs-keyword">sizeof</span>(KEYNODE) * <span class="hljs-number">1</span>);
+        <span class="hljs-keyword">if</span>(key_array[nHashPos] == <span class="hljs-literal">NULL</span>)
+        {
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;10000 EMS ERROR !!!!\n&quot;</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        }
+
+        key_array[nHashPos]-&gt;pkey = (<span class="hljs-keyword">char</span> *)<span class="hljs-built_in">malloc</span>(len+<span class="hljs-number">1</span>);
+        <span class="hljs-keyword">if</span>(key_array[nHashPos]-&gt;pkey == <span class="hljs-literal">NULL</span>)
+        {
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;10000 EMS ERROR !!!!\n&quot;</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        }
+
+        <span class="hljs-built_in">memset</span>(key_array[nHashPos]-&gt;pkey, <span class="hljs-number">0</span>, len+<span class="hljs-number">1</span>);
+        <span class="hljs-built_in">strncpy</span>(key_array[nHashPos]-&gt;pkey, str, len);
+        *((key_array[nHashPos]-&gt;pkey)+len) = <span class="hljs-number">0</span>;
+        key_array[nHashPos]-&gt;pos = nHashPos;
+        key_array[nHashPos]-&gt;count = <span class="hljs-number">1</span>;
+        key_array[nHashPos]-&gt;next = <span class="hljs-literal">NULL</span>;
+        HashTable[nHashPos].bExists = <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">return</span> nHashPos;
+    }
+
+    <span class="hljs-keyword">if</span>(HashTable[nHashPos].bExists)
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;30000 in the hash table %s !!!\n&quot;</span>, str);
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;90000 strkey error !!!\n&quot;</span>);
+    <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+}
+</code></pre>
+<p>&#x6709;&#x4E86;&#x8FD9;&#x4E2A;Hash&#x8868;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x628A;&#x8BCD;&#x63D2;&#x5165;Hash&#x8868;&#x8FDB;&#x884C;&#x5B58;&#x50A8;&#x4E86;&#x3002;</p>
+<h2 id="&#x7B2C;&#x4E09;&#x8282;&#x3001;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#x7684;&#x751F;&#x6210;&#x4E0E;&#x5B9E;&#x73B0;">&#x7B2C;&#x4E09;&#x8282;&#x3001;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#x7684;&#x751F;&#x6210;&#x4E0E;&#x5B9E;&#x73B0;</h2>
+<p>Hash&#x8868;&#x5B9E;&#x73B0;&#x4E86;&#xFF08;&#x5B58;&#x4E8E;HashSearch.h&#x4E2D;&#xFF09;&#xFF0C;&#x8FD8;&#x5F97;&#x7F16;&#x5199;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF08;&#x6240;&#x6709;&#x4EE3;&#x7801;&#x8FD8;&#x53EA;&#x662F;&#x521D;&#x6B65;&#x5B9E;&#x73B0;&#x4E86;&#x529F;&#x80FD;&#xFF0C;&#x7A0D;&#x540E;&#x5728;&#x7B2C;&#x56DB;&#x90E8;&#x5206;&#x4E2D;&#x5C06;&#x4E88;&#x4EE5;&#x6539;&#x8FDB;&#x4E0E;&#x4F18;&#x5316;&#xFF09;&#xFF1A;</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x5904;&#x7406;&#x7A7A;&#x767D;&#x5B57;&#x7B26;&#x548C;&#x7A7A;&#x767D;&#x884C;</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">GetRealString</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *pbuf)</span>
+</span>{
+    <span class="hljs-keyword">int</span> len = <span class="hljs-built_in">strlen</span>(pbuf) - <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span> (len &gt; <span class="hljs-number">0</span> &amp;&amp; (pbuf[len] == (<span class="hljs-keyword">char</span>)<span class="hljs-number">0x0d</span> || pbuf[len] == (<span class="hljs-keyword">char</span>)<span class="hljs-number">0x0a</span> || pbuf[len] == <span class="hljs-string">&apos; &apos;</span> || pbuf[len] == <span class="hljs-string">&apos;\t&apos;</span>))
+    {
+        len--;
+    }
+
+    <span class="hljs-keyword">if</span> (len &lt; <span class="hljs-number">0</span>)
+    {
+        *pbuf = <span class="hljs-string">&apos;\0&apos;</span>;
+        <span class="hljs-keyword">return</span> len;
+    }
+    pbuf[len+<span class="hljs-number">1</span>] = <span class="hljs-string">&apos;\0&apos;</span>;
+    <span class="hljs-keyword">return</span> len + <span class="hljs-number">1</span>;
+}
+
+<span class="hljs-comment">//&#x91CD;&#x65B0;strcoll&#x5B57;&#x7B26;&#x4E32;&#x6BD4;&#x8F83;&#x51FD;&#x6570;</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">strcoll</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *s1, <span class="hljs-keyword">const</span> <span class="hljs-keyword">void</span> *s2)</span>
+</span>{
+    <span class="hljs-keyword">char</span> *c_s1 = (<span class="hljs-keyword">char</span> *)s1;
+    <span class="hljs-keyword">char</span> *c_s2 = (<span class="hljs-keyword">char</span> *)s2;
+    <span class="hljs-keyword">while</span> (*c_s1 == *c_s2++)
+    {
+        <span class="hljs-keyword">if</span> (*c_s1++ == <span class="hljs-string">&apos;\0&apos;</span>)
+        {
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        }
+    }
+
+    <span class="hljs-keyword">return</span> *c_s1 - *--c_s2;
+}
+
+<span class="hljs-comment">//&#x4ECE;&#x884C;&#x7F13;&#x51B2;&#x4E2D;&#x5F97;&#x5230;&#x5404;&#x9879;&#x4FE1;&#x606F;&#xFF0C;&#x5C06;&#x5176;&#x5199;&#x5165;items&#x6570;&#x7EC4;</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">GetItems</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *&amp;move, <span class="hljs-keyword">int</span> &amp;count, <span class="hljs-keyword">int</span> &amp;wordnum)</span>
+</span>{
+    <span class="hljs-keyword">char</span> *front = move;
+    <span class="hljs-keyword">bool</span> flag = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">int</span> len;
+    move = <span class="hljs-built_in">strstr</span>(move, <span class="hljs-string">&quot;#####&quot;</span>);
+    <span class="hljs-keyword">if</span> (*(move + <span class="hljs-number">5</span>) == <span class="hljs-string">&apos;#&apos;</span>)
+    {
+        flag = <span class="hljs-literal">true</span>;
+    }
+
+    <span class="hljs-keyword">if</span> (move)
+    {
+        len = move - front;
+        <span class="hljs-built_in">strncpy</span>(items[count], front, len);
+    }
+    items[count][len] = <span class="hljs-string">&apos;\0&apos;</span>;
+    count++;
+
+    <span class="hljs-keyword">if</span> (flag)
+    {
+        move = move + <span class="hljs-number">10</span>;
+    } <span class="hljs-keyword">else</span>
+    {
+        move = move + <span class="hljs-number">5</span>;
+    }
+}
+
+<span class="hljs-comment">//&#x4FDD;&#x5B58;&#x5173;&#x952E;&#x5B57;&#x76F8;&#x5E94;&#x7684;&#x6587;&#x6863;&#x5185;&#x5BB9;</span>
+<span class="hljs-function">doc_list <span class="hljs-title">SaveItems</span><span class="hljs-params">()</span>
+</span>{
+    doc_list infolist = (doc_list) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(DOCNODE));
+    strcpy_s(infolist-&gt;id, items[<span class="hljs-number">0</span>]);
+    infolist-&gt;classOne = atoi(items[<span class="hljs-number">1</span>]);
+    strcpy_s(infolist-&gt;classTwo, items[<span class="hljs-number">2</span>]);
+    infolist-&gt;classThree = atoi(items[<span class="hljs-number">3</span>]);
+    strcpy_s(infolist-&gt;time, items[<span class="hljs-number">4</span>]);
+    strcpy_s(infolist-&gt;md5, items[<span class="hljs-number">5</span>]);
+    infolist-&gt;weight = atoi(items[<span class="hljs-number">6</span>]);
+    <span class="hljs-keyword">return</span> infolist;
+}
+
+<span class="hljs-comment">//&#x5F97;&#x5230;&#x76EE;&#x5F55;&#x4E0B;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x540D;</span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">GetFileName</span><span class="hljs-params">(<span class="hljs-keyword">char</span> filename[][FILENAME_MAX_LEN])</span>
+</span>{
+    <span class="hljs-keyword">_finddata_t</span> file;
+    <span class="hljs-keyword">long</span> handle;
+    <span class="hljs-keyword">int</span> filenum = <span class="hljs-number">0</span>;
+    <span class="hljs-comment">//C:\Users\zhangxu\Desktop\CreateInvertedIndex\data</span>
+    <span class="hljs-keyword">if</span> ((handle = _findfirst(<span class="hljs-string">&quot;C:\\Users\\zhangxu\\Desktop\\CreateInvertedIndex\\data\\*.txt&quot;</span>, &amp;file)) == -<span class="hljs-number">1</span>)
+    {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Not Found\n&quot;</span>);
+    }
+    <span class="hljs-keyword">else</span>
+    {
+        <span class="hljs-keyword">do</span>
+        {
+            strcpy_s(filename[filenum++], file.name);
+        } <span class="hljs-keyword">while</span> (!_findnext(handle, &amp;file));
+    }
+    _findclose(handle);
+    <span class="hljs-keyword">return</span> filenum;
+}
+
+<span class="hljs-comment">//&#x4EE5;&#x8BFB;&#x65B9;&#x5F0F;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x6210;&#x529F;&#x8FD4;&#x56DE;&#x6587;&#x4EF6;&#x6307;&#x9488;</span>
+<span class="hljs-function">FILE* <span class="hljs-title">OpenReadFile</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index, <span class="hljs-keyword">char</span> filename[][FILENAME_MAX_LEN])</span>
+</span>{
+    <span class="hljs-keyword">char</span> *abspath;
+    <span class="hljs-keyword">char</span> dirpath[] = {<span class="hljs-string">&quot;data\\&quot;</span>};
+    abspath = (<span class="hljs-keyword">char</span> *)<span class="hljs-built_in">malloc</span>(ABSPATH_MAX_LEN);
+    strcpy_s(abspath, ABSPATH_MAX_LEN, dirpath);
+    strcat_s(abspath, FILENAME_MAX_LEN, filename[index]);
+
+    FILE *fp = fopen (abspath, <span class="hljs-string">&quot;r&quot;</span>);
+    <span class="hljs-keyword">if</span> (fp == <span class="hljs-literal">NULL</span>)
+    {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;open read file error!\n&quot;</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;
+    }
+    <span class="hljs-keyword">else</span>
+    {
+        <span class="hljs-keyword">return</span> fp;
+    }
+}
+
+<span class="hljs-comment">//&#x4EE5;&#x5199;&#x65B9;&#x5F0F;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x6210;&#x529F;&#x8FD4;&#x56DE;&#x6587;&#x4EF6;&#x6307;&#x9488;</span>
+<span class="hljs-function">FILE* <span class="hljs-title">OpenWriteFile</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *in_file_path)</span>
+</span>{
+    <span class="hljs-keyword">if</span> (in_file_path == <span class="hljs-literal">NULL</span>)
+    {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;output file path error!\n&quot;</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;
+    }
+
+    FILE *fp = fopen(in_file_path, <span class="hljs-string">&quot;w+&quot;</span>);
+    <span class="hljs-keyword">if</span> (fp == <span class="hljs-literal">NULL</span>)
+    {
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;open write file error!\n&quot;</span>);
+    }
+    <span class="hljs-keyword">return</span> fp;
+}
+</code></pre>
+<p>&#x6700;&#x540E;&#xFF0C;&#x4E3B;&#x51FD;&#x6570;&#x7F16;&#x5199;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    key_list keylist;
+    <span class="hljs-keyword">char</span> *pbuf, *move;
+    <span class="hljs-keyword">int</span> filenum = GetFileName(filename);
+    FILE *fr;
+    pbuf = (<span class="hljs-keyword">char</span> *)<span class="hljs-built_in">malloc</span>(BUF_MAX_LEN);
+    <span class="hljs-built_in">memset</span>(pbuf, <span class="hljs-number">0</span>, BUF_MAX_LEN);
+
+    FILE *fw = OpenWriteFile(<span class="hljs-string">&quot;index.txt&quot;</span>);
+    <span class="hljs-keyword">if</span> (fw == <span class="hljs-literal">NULL</span>)
+    {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    }
+
+    PrepareCryptTable();    <span class="hljs-comment">//&#x521D;&#x59CB;&#x5316;Hash&#x8868;</span>
+
+    <span class="hljs-keyword">int</span> wordnum = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; filenum; i++)
+    {
+        fr = OpenReadFile(i, filename);
+        <span class="hljs-keyword">if</span> (fr == <span class="hljs-literal">NULL</span>)
+        {
+            <span class="hljs-keyword">break</span>;
+        }
+
+        <span class="hljs-comment">// &#x6BCF;&#x6B21;&#x8BFB;&#x53D6;&#x4E00;&#x884C;&#x5904;&#x7406;</span>
+        <span class="hljs-keyword">while</span> (fgets(pbuf, BUF_MAX_LEN, fr))
+        {
+            <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+            move = pbuf;
+            <span class="hljs-keyword">if</span> (GetRealString(pbuf) &lt;= <span class="hljs-number">1</span>)
+                <span class="hljs-keyword">continue</span>;
+
+            <span class="hljs-keyword">while</span> (move != <span class="hljs-literal">NULL</span>)
+            {
+                <span class="hljs-comment">// &#x627E;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;&#x975E;&apos;#&apos;&#x7684;&#x5B57;&#x7B26;</span>
+                <span class="hljs-keyword">while</span> (*move == <span class="hljs-string">&apos;#&apos;</span>)
+                    move++;
+
+                <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">strcmp</span>(move, <span class="hljs-string">&quot;&quot;</span>))
+                    <span class="hljs-keyword">break</span>;
+
+                GetItems(move, count, wordnum);
+            }
+
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">7</span>; i &lt; count; i++)
+            {
+                <span class="hljs-comment">// &#x5C06;&#x5173;&#x952E;&#x5B57;&#x5BF9;&#x5E94;&#x7684;&#x6587;&#x6863;&#x5185;&#x5BB9;&#x52A0;&#x5165;&#x6587;&#x6863;&#x7ED3;&#x70B9;&#x94FE;&#x8868;&#x4E2D;</span>
+                <span class="hljs-keyword">if</span> (keylist = SearchByString(items[i]))     <span class="hljs-comment">//&#x5230;hash&#x8868;&#x5185;&#x67E5;&#x8BE2;</span>
+                {
+                    doc_list infolist = SaveItems();
+                    infolist-&gt;next = keylist-&gt;next;
+                    keylist-&gt;count++;
+                    keylist-&gt;next = infolist;
+                }
+                <span class="hljs-keyword">else</span>
+                {
+                    <span class="hljs-comment">// &#x5982;&#x679C;&#x5173;&#x952E;&#x5B57;&#x7B2C;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&#xFF0C;&#x5219;&#x5C06;&#x5176;&#x52A0;&#x5165;hash&#x8868;</span>
+                    <span class="hljs-keyword">int</span> pos = InsertString(items[i]);       <span class="hljs-comment">//&#x63D2;&#x5165;hash&#x8868;</span>
+                    keylist = key_array[pos];
+                    doc_list infolist = SaveItems();
+                    infolist-&gt;next = <span class="hljs-literal">NULL</span>;
+                    keylist-&gt;next = infolist;
+                    <span class="hljs-keyword">if</span> (pos != -<span class="hljs-number">1</span>)
+                    {
+                        strcpy_s(words[wordnum++], items[i]);
+                    }
+                }
+            }
+        }
+    }
+
+    <span class="hljs-comment">// &#x901A;&#x8FC7;&#x5FEB;&#x6392;&#x5BF9;&#x5173;&#x952E;&#x5B57;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</span>
+    qsort(words, WORD_MAX_NUM, WORD_MAX_LEN, strcoll);
+
+    <span class="hljs-comment">// &#x904D;&#x5386;&#x5173;&#x952E;&#x5B57;&#x6570;&#x7EC4;&#xFF0C;&#x5C06;&#x5173;&#x952E;&#x5B57;&#x53CA;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x6587;&#x6863;&#x5185;&#x5BB9;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x4E2D;</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; WORD_MAX_NUM; i++)
+    {
+        keylist = SearchByString(words[i]);
+        <span class="hljs-keyword">if</span> (keylist != <span class="hljs-literal">NULL</span>)
+        {
+            <span class="hljs-built_in">fprintf</span>(fw, <span class="hljs-string">&quot;%s %d\n&quot;</span>, words[i], keylist-&gt;count);
+            doc_list infolist = keylist-&gt;next;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; keylist-&gt;count; j++)
+            {
+                <span class="hljs-comment">//&#x6587;&#x6863;ID&#xFF0C;&#x8BA2;&#x9605;&#x6E90;&#xFF08;&#x5B50;&#x9891;&#x9053;&#xFF09; &#x9891;&#x9053;&#x5206;&#x7C7B; &#x7F51;&#x7AD9;&#x7C7B;ID&#xFF08;&#x5927;&#x9891;&#x9053;&#xFF09; &#x65F6;&#x95F4;  md5&#xFF0C;&#x6587;&#x6863;&#x6743;&#x503C;</span>
+                <span class="hljs-built_in">fprintf</span>(fw, <span class="hljs-string">&quot;%s %d %s %d %s %s %d\n&quot;</span>, infolist-&gt;id, infolist-&gt;classOne,
+                    infolist-&gt;classTwo, infolist-&gt;classThree, infolist-&gt;time, infolist-&gt;md5, infolist-&gt;weight);
+                infolist = infolist-&gt;next;
+            }
+        }
+    }
+
+    <span class="hljs-built_in">free</span>(pbuf);
+    fclose(fr);
+    fclose(fw);
+    system(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>&#x7A0B;&#x5E8F;&#x7F16;&#x8BD1;&#x8FD0;&#x884C;&#x540E;&#xFF0C;&#x751F;&#x6210;&#x7684;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#x4E3A;index.txt&#xFF0C;&#x5176;&#x4E0E;&#x539F;&#x6765;&#x7ED9;&#x5B9A;&#x7684;&#x6B63;&#x6392;&#x6587;&#x6863;&#x5BF9;&#x7167;&#x5982;&#x4E0B;&#xFF1A;
+<img src="../images/26/26.5.gif" alt=""></p>
+<p>&#x6709;&#x6CA1;&#x6709;&#x53D1;&#x73B0;&#x5173;&#x952E;&#x8BCD;&#x5965;&#x6070;&#x6D1B;&#x592B;&#x51FA;&#x73B0;&#x5728;&#x7684;&#x4E09;&#x7BC7;&#x6587;&#x7AE0;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x65E5;&#x671F;1210&#x7684;&#xFF0C;&#x8C8C;&#x4F3C;&#x4E0E;&#x672C;&#x6587;&#x5F00;&#x5934;&#x6307;&#x5B9A;&#x7684;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x683C;&#x5F0F;&#x8981;&#x6C42;&#x4E0D;&#x7B26;&#xFF1F;&#x56E0;&#x4E3A;&#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#x5F00;&#x5934;&#x4E2D;&#xFF0C;&#x5DF2;&#x660E;&#x786E;&#x8BF4;&#x660E;&#xFF1A;&#x201C;&#x6CE8;&#xFF0C;&#x5173;&#x952E;&#x8BCD;&#x6240;&#x5728;&#x7684;&#x6587;&#x7AE0;&#x5982;&#x679C;&#x662F;&#x540C;&#x4E00;&#x4E2A;&#x65E5;&#x671F;&#x7684;&#x8BDD;&#xFF0C;&#x662F;&#x6328;&#x5728;&#x540C;&#x4E00;&#x884C;&#x7684;&#xFF0C;&#x7528;&#x201C;#&#x201D;&#x7B26;&#x53F7;&#x9694;&#x5F00;&#x201D;&#x3002;OK&#xFF0C;&#x6709;&#x7591;&#x95EE;&#x662F;&#x597D;&#x4E8B;&#xFF0C;&#x4EE3;&#x8868;&#x4F60;&#x601D;&#x8003;&#x4E86;&#xFF0C;&#x8BF7;&#x76F4;&#x63A5;&#x8F6C;&#x81F3;&#x4E0B;&#x6587;&#x7B2C;4&#x90E8;&#x5206;&#x3002;</p>
+<h2 id="&#x7B2C;&#x56DB;&#x8282;&#x3001;&#x7A0B;&#x5E8F;&#x9700;&#x6C42;&#x529F;&#x80FD;&#x7684;&#x6539;&#x8FDB;">&#x7B2C;&#x56DB;&#x8282;&#x3001;&#x7A0B;&#x5E8F;&#x9700;&#x6C42;&#x529F;&#x80FD;&#x7684;&#x6539;&#x8FDB;</h2>
+<h3 id="&#x5BF9;&#x76F8;&#x540C;&#x65E5;&#x671F;&#x4E0E;&#x4E0D;&#x540C;&#x65E5;&#x671F;&#x7684;&#x5904;&#x7406;">&#x5BF9;&#x76F8;&#x540C;&#x65E5;&#x671F;&#x4E0E;&#x4E0D;&#x540C;&#x65E5;&#x671F;&#x7684;&#x5904;&#x7406;</h3>
+<p>&#x7EC6;&#x5FC3;&#x7684;&#x8BFB;&#x8005;&#x53EF;&#x80FD;&#x8FD8;&#x662F;&#x4F1A;&#x6CE8;&#x610F;&#x5230;&#xFF1A;&#x5728;&#x7B2C;&#x4E8C;&#x90E8;&#x5206;&#x5F00;&#x5934;&#x4E2D;&#xFF0C;&#x8981;&#x6C42;&#x57FA;&#x4E8E;&#x7ED9;&#x5B9A;&#x7684;&#x4E0A;&#x8FF0;&#x6B63;&#x6392;&#x6587;&#x6863;&#x3002;&#x751F;&#x6210;&#x5982;&#x7B2C;&#x4E8C;&#x5341;&#x56DB;&#x7AE0;&#x6240;&#x793A;&#x7684;&#x5012;&#x6392;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#x662F;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x5B50;&#x7684;&#xFF0C;&#x5373;&#x662F;&#xFF1A;
+<img src="../images/26/26.6.gif" alt=""></p>
+<p>&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x4E0A;&#x9762;&#x5EFA;&#x7D22;&#x5F15;&#x7684;&#x8FC7;&#x7A0B;&#x672C;&#x8BE5;&#x662F;&#x5982;&#x4E0B;&#x7684;&#xFF1A;
+<img src="../images/26/26.7.gif" alt=""></p>
+<p>&#x4E0E;&#x7B2C;&#x4E00;&#x90E8;&#x5206;&#x6240;&#x8FF0;&#x7684;SMIPI&#x7B97;&#x6CD5;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;&#x5BF9;&#x7684;&#xFF0C;&#x5C31;&#x5728;&#x4E8E;&#x5BF9;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x65E5;&#x671F;&#x7684;&#x51FA;&#x73B0;&#x7684;&#x5173;&#x952E;&#x8BCD;&#x7684;&#x5904;&#x7406;&#x3002;&#x5982;&#x679C;&#x662F;&#x9047;&#x4E00;&#x65E7;&#x8BCD;&#xFF0C;&#x5219;&#x627E;&#x5230;&#x5176;&#x5012;&#x6392;&#x8BB0;&#x5F55;&#x8868;&#x7684;&#x4F4D;&#x7F6E;&#xFF1A;&#x76F8;&#x540C;&#x65E5;&#x671F;&#xFF0C;&#x6DFB;&#x52A0;&#x5230;&#x4E4B;&#x524D;&#x540C;&#x4E00;&#x65E5;&#x671F;&#x7684;&#x8BB0;&#x5F55;&#x4E4B;&#x540E;&#xFF08;&#x7B2C;&#x4E00;&#x4E2A;&#x8BB0;&#x5F55;&#x7684;&#x540E;&#x9762;&#x8BB0;&#x4E0B;&#x540C;&#x4E00;&#x65E5;&#x671F;&#x7684;&#x8BB0;&#x5F55;&#x6570;&#x76EE;&#xFF09;&#xFF1B;&#x4E0D;&#x540C;&#x65E5;&#x671F;&#xFF0C;&#x53E6;&#x8D77;&#x4E00;&#x884C;&#x65B0;&#x589E;&#x8BB0;&#x5F55;&#x3002;</p>
+<ul>
+<li>&#x76F8;&#x540C;&#xFF08;&#x5355;&#x4E2A;&#xFF09;&#x65E5;&#x671F;&#xFF0C;&#x6839;&#x636E;&#x6587;&#x6863;&#x6743;&#x503C;&#x6392;&#x5E8F;</li>
+<li>&#x4E0D;&#x540C;&#x65E5;&#x671F;&#xFF0C;&#x6839;&#x636E;&#x65F6;&#x95F4;&#x6392;&#x5E8F;</li>
+</ul>
+<p>&#x4EE3;&#x7801;&#x4E3B;&#x8981;&#x4FEE;&#x6539;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">//function: &#x5BF9;&#x94FE;&#x8868;&#x8FDB;&#x884C;&#x5192;&#x6CE1;&#x6392;&#x5E8F;</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ListSort</span><span class="hljs-params">(key_list keylist)</span>
+</span>{
+    doc_list p = keylist-&gt;next;
+    doc_list final = <span class="hljs-literal">NULL</span>;
+    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)
+    {
+        <span class="hljs-keyword">bool</span> isfinish = <span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">while</span> (p-&gt;next != final) {
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(p-&gt;time, p-&gt;next-&gt;time) &lt; <span class="hljs-number">0</span>)
+            {
+                SwapDocNode(p);
+                isfinish = <span class="hljs-literal">false</span>;
+            }
+            p = p-&gt;next;
+        }
+        final = p;
+        p = keylist-&gt;next;
+        <span class="hljs-keyword">if</span> (isfinish || p-&gt;next == final) {
+            <span class="hljs-keyword">break</span>;
+        }
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
+</span>{
+    key_list keylist;
+    <span class="hljs-keyword">char</span> *pbuf, *move;
+    <span class="hljs-keyword">int</span> filenum = GetFileName(filename);
+    FILE *frp;
+    pbuf = (<span class="hljs-keyword">char</span> *)<span class="hljs-built_in">malloc</span>(BUF_MAX_LEN);
+    <span class="hljs-built_in">memset</span>(pbuf, <span class="hljs-number">0</span>, BUF_MAX_LEN);
+
+    FILE *fwp = OpenWriteFile(<span class="hljs-string">&quot;index.txt&quot;</span>);
+    <span class="hljs-keyword">if</span> (fwp == <span class="hljs-literal">NULL</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    }
+
+    PrepareCryptTable();
+
+    <span class="hljs-keyword">int</span> wordnum = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; filenum; i++)
+    {
+        frp = OpenReadFile(i, filename);
+        <span class="hljs-keyword">if</span> (frp == <span class="hljs-literal">NULL</span>) {
+            <span class="hljs-keyword">break</span>;
+        }
+
+        <span class="hljs-comment">// &#x6BCF;&#x6B21;&#x8BFB;&#x53D6;&#x4E00;&#x884C;&#x5904;&#x7406;</span>
+        <span class="hljs-keyword">while</span> (fgets(pbuf, BUF_MAX_LEN, frp))
+        {
+            <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;
+            move = pbuf;
+            <span class="hljs-keyword">if</span> (GetRealString(pbuf) &lt;= <span class="hljs-number">1</span>)
+                <span class="hljs-keyword">continue</span>;
+
+            <span class="hljs-keyword">while</span> (move != <span class="hljs-literal">NULL</span>)
+            {
+                <span class="hljs-comment">// &#x627E;&#x5230;&#x7B2C;&#x4E00;&#x4E2A;&#x975E;&apos;#&apos;&#x7684;&#x5B57;&#x7B26;</span>
+                <span class="hljs-keyword">while</span> (*move == <span class="hljs-string">&apos;#&apos;</span>)
+                    move++;
+
+                <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">strcmp</span>(move, <span class="hljs-string">&quot;&quot;</span>))
+                    <span class="hljs-keyword">break</span>;
+
+                GetItems(move, count, wordnum);
+            }
+
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">7</span>; i &lt; count; i++) {
+                <span class="hljs-comment">// &#x5C06;&#x5173;&#x952E;&#x5B57;&#x5BF9;&#x5E94;&#x7684;&#x6587;&#x6863;&#x5185;&#x5BB9;&#x52A0;&#x5165;&#x6587;&#x6863;&#x7ED3;&#x70B9;&#x94FE;&#x8868;&#x4E2D;</span>
+                <span class="hljs-comment">// &#x5982;&#x679C;&#x5173;&#x952E;&#x5B57;&#x7B2C;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&#xFF0C;&#x5219;&#x5C06;&#x5176;&#x52A0;&#x5165;hash&#x8868;</span>
+                <span class="hljs-keyword">if</span> (keylist = SearchByString(items[i])) {
+                    doc_list infolist = SaveItems();
+                    infolist-&gt;next = keylist-&gt;next;
+                    keylist-&gt;count++;
+                    keylist-&gt;next = infolist;
+                } <span class="hljs-keyword">else</span> {
+                    <span class="hljs-keyword">int</span> pos = InsertString(items[i]);
+                    keylist = key_array[pos];
+                    doc_list infolist = SaveItems();
+                    infolist-&gt;next = <span class="hljs-literal">NULL</span>;
+                    keylist-&gt;next = infolist;
+                    <span class="hljs-keyword">if</span> (pos != -<span class="hljs-number">1</span>) {
+                        strcpy_s(words[wordnum++], items[i]);
+                    }
+                }
+            }
+        }
+    }
+
+    <span class="hljs-comment">// &#x901A;&#x8FC7;&#x5FEB;&#x6392;&#x5BF9;&#x5173;&#x952E;&#x5B57;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</span>
+    qsort(words, WORD_MAX_NUM, WORD_MAX_LEN, strcoll);
+
+    <span class="hljs-comment">// &#x904D;&#x5386;&#x5173;&#x952E;&#x5B57;&#x6570;&#x7EC4;&#xFF0C;&#x5C06;&#x5173;&#x952E;&#x5B57;&#x53CA;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x6587;&#x6863;&#x5185;&#x5BB9;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x4E2D;</span>
+    <span class="hljs-keyword">int</span> rownum = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; WORD_MAX_NUM; i++) {
+        keylist = SearchByString(words[i]);
+        <span class="hljs-keyword">if</span> (keylist != <span class="hljs-literal">NULL</span>) {
+            doc_list infolist = keylist-&gt;next;
+
+            <span class="hljs-keyword">char</span> date[<span class="hljs-number">9</span>];
+
+            <span class="hljs-comment">// &#x622A;&#x53D6;&#x5E74;&#x6708;&#x65E5;</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; keylist-&gt;count; j++)
+            {
+                strncpy_s(date, infolist-&gt;time, <span class="hljs-number">8</span>);
+                date[<span class="hljs-number">8</span>] = <span class="hljs-string">&apos;\0&apos;</span>;
+                strncpy_s(infolist-&gt;time, date, <span class="hljs-number">9</span>);
+                infolist = infolist-&gt;next;
+            }
+
+            <span class="hljs-comment">// &#x5BF9;&#x94FE;&#x8868;&#x6839;&#x636E;&#x65F6;&#x95F4;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</span>
+            ListSort(keylist);
+
+            infolist = keylist-&gt;next;
+            <span class="hljs-keyword">int</span> *count = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[WORD_MAX_NUM];
+            <span class="hljs-built_in">memset</span>(count, <span class="hljs-number">0</span>, WORD_MAX_NUM);
+            strcpy_s(date, infolist-&gt;time);
+            <span class="hljs-keyword">int</span> num = <span class="hljs-number">0</span>;
+            <span class="hljs-comment">// &#x5F97;&#x5230;&#x5355;&#x4E2A;&#x65E5;&#x671F;&#x7684;&#x6587;&#x6863;&#x6570;&#x76EE;</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; keylist-&gt;count; j++)
+            {
+                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(date, infolist-&gt;time) == <span class="hljs-number">0</span>) {
+                    count[num]++;
+                } <span class="hljs-keyword">else</span> {
+                    count[++num]++;
+                }
+                strcpy_s(date, infolist-&gt;time);
+                infolist = infolist-&gt;next;
+            }
+            <span class="hljs-built_in">fprintf</span>(fwp, <span class="hljs-string">&quot;%s %d %d\n&quot;</span>, words[i], num + <span class="hljs-number">1</span>, rownum);
+            WriteFile(keylist, num, fwp, count);
+            rownum++;
+        }
+    }
+
+    <span class="hljs-built_in">free</span>(pbuf);
+<span class="hljs-comment">//  fclose(frp);</span>
+    fclose(fwp);
+    system(<span class="hljs-string">&quot;pause&quot;</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<p>&#x4FEE;&#x6539;&#x540E;&#x7F16;&#x8BD1;&#x8FD0;&#x884C;&#xFF0C;&#x751F;&#x6210;&#x7684;index.txt&#x6587;&#x4EF6;&#x5982;&#x4E0B;&#xFF1A;
+<img src="../images/26/26.8.gif" alt=""></p>
+<h3 id="&#x4E3A;&#x5173;&#x952E;&#x8BCD;&#x6DFB;&#x4E0A;&#x7F16;&#x7801;">&#x4E3A;&#x5173;&#x952E;&#x8BCD;&#x6DFB;&#x4E0A;&#x7F16;&#x7801;</h3>
+<p>&#x5982;&#x4E0A;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x5DF2;&#x7ECF;&#x6EE1;&#x8DB3;&#x9700;&#x6C42;&#x4E86;&#x3002;&#x4F46;&#x53EF;&#x4EE5;&#x518D;&#x5728;&#x6BCF;&#x4E2A;&#x5173;&#x952E;&#x8BCD;&#x7684;&#x80CC;&#x540E;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x8BA1;&#x6570;&#x8868;&#x793A;&#x7D22;&#x5F15;&#x5230;&#x4E86;&#x7B2C;&#x591A;&#x5C11;&#x4E2A;&#x5173;&#x952E;&#x8BCD;&#xFF1A;
+<img src="../images/26/26.9.gif" alt=""></p>
+<h2 id="&#x7B2C;&#x4E94;&#x8282;&#x3001;&#x7B97;&#x6CD5;&#x7684;&#x4E8C;&#x6B21;&#x6539;&#x8FDB;">&#x7B2C;&#x4E94;&#x8282;&#x3001;&#x7B97;&#x6CD5;&#x7684;&#x4E8C;&#x6B21;&#x6539;&#x8FDB;</h2>
+<h3 id="&#x7701;&#x53BB;&#x4E8C;&#x6B21;hash">&#x7701;&#x53BB;&#x4E8C;&#x6B21;Hash</h3>
+<p>&#x9488;&#x5BF9;&#x672C;&#x6587;&#x8BC4;&#x8BBA;&#x4E0B;&#x8BFB;&#x8005;&#x7684;&#x7559;&#x8A00;&#xFF0C;&#x505A;&#x4E86;&#x4E0B;&#x601D;&#x8003;&#xFF0C;&#x81EA;&#x89C9;&#x53EF;&#x4EE5;&#x7701;&#x53BB;&#x4E8C;&#x6B21;hash&#xFF1A;</p>
+<pre><code class="lang-cpp">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">7</span>; i &lt; count; i++)
+        {
+            <span class="hljs-comment">// &#x5C06;&#x5173;&#x952E;&#x5B57;&#x5BF9;&#x5E94;&#x7684;&#x6587;&#x6863;&#x5185;&#x5BB9;&#x52A0;&#x5165;&#x6587;&#x6863;&#x7ED3;&#x70B9;&#x94FE;&#x8868;&#x4E2D;</span>
+            <span class="hljs-comment">//&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5F53;&#x67E5;&#x8BE2;&#x5230;hash&#x8868;&#x4E2D;&#x6CA1;&#x6709;&#x67D0;&#x4E2A;&#x5173;&#x952E;&#x8BCD;&#x4E4B;,&#x540E;&#x4FBF;&#x4F1A;&#x63D2;&#x5165;</span>
+            <span class="hljs-comment">//&#x800C;&#x67E5;&#x8BE2;&#x7684;&#x65F6;&#x5019;&#xFF0C;search&#x4F1A;&#x8C03;&#x7528;hashstring&#xFF0C;&#x5F97;&#x5230;&#x4E86;nHashC &#xFF0C;nHashD</span>
+            <span class="hljs-comment">//&#x63D2;&#x5165;&#x7684;&#x65F6;&#x5019;&#x53C8;&#x8C03;&#x7528;&#x4E86;&#x4E00;&#x6B21;hashstring&#xFF0C;&#x5F97;&#x5230;&#x4E86;nHashA&#xFF0C;nHashB</span>
+            <span class="hljs-comment">//&#x800C;&#x5982;&#x679C;&#x67E5;&#x8BE2;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x662F;&#x9488;&#x5BF9;&#x540C;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x8BCD;&#x67E5;&#x8BE2;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;nHashC&amp;nHashD&#xFF0C;&#x4E0E;nHashA&amp;nHashB&#x662F;&#x76F8;&#x540C;&#x7684;&#xFF0C;&#x65E0;&#x9700;&#x4E8C;&#x6B21;hash</span>
+            <span class="hljs-comment">//&#x6240;&#x4EE5;&#xFF0C;&#x82E5;&#x8981;&#x6539;&#x8FDB;&#xFF0C;&#x6539;&#x7684;&#x4E5F;&#x5C31;&#x662F;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;if~else&#x8BED;&#x53E5;&#x91CC;&#x5934;&#x3002;July&#xFF0C;2011.12.30&#x3002;</span>
+            <span class="hljs-keyword">if</span> (keylist = SearchByString(items[i]))     <span class="hljs-comment">//&#x5230;hash&#x8868;&#x5185;&#x67E5;&#x8BE2;</span>
+            {
+                doc_list infolist = SaveItems();
+                infolist-&gt;next = keylist-&gt;next;
+                keylist-&gt;count++;
+                keylist-&gt;next = infolist;
+            }
+            <span class="hljs-keyword">else</span>
+            {
+                <span class="hljs-comment">// &#x5982;&#x679C;&#x5173;&#x952E;&#x5B57;&#x7B2C;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&#xFF0C;&#x5219;&#x5C06;&#x5176;&#x52A0;&#x5165;hash&#x8868;</span>
+                <span class="hljs-keyword">int</span> pos = InsertString(items[i]);       <span class="hljs-comment">//&#x63D2;&#x5165;hash&#x8868;</span>
+                keylist = key_array[pos];
+                doc_list infolist = SaveItems();
+                infolist-&gt;next = <span class="hljs-literal">NULL</span>;
+                keylist-&gt;next = infolist;
+                <span class="hljs-keyword">if</span> (pos != -<span class="hljs-number">1</span>)
+                {
+                    strcpy_s(words[wordnum++], items[i]);
+                }
+            }
+        }
+    }
+}
+<span class="hljs-comment">// &#x901A;&#x8FC7;&#x5FEB;&#x6392;&#x5BF9;&#x5173;&#x952E;&#x5B57;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</span>
+qsort(words, WORD_MAX_NUM, WORD_MAX_LEN, strcoll);
+</code></pre>
+<h3 id="&#x9664;&#x53BB;&#x6392;&#x5E8F;&#xFF0C;&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x65E5;&#x671F;&#x7684;&#x8BB0;&#x5F55;&#x76F4;&#x63A5;&#x63D2;&#x5165;">&#x9664;&#x53BB;&#x6392;&#x5E8F;&#xFF0C;&#x9488;&#x5BF9;&#x4E0D;&#x540C;&#x65E5;&#x671F;&#x7684;&#x8BB0;&#x5F55;&#x76F4;&#x63A5;&#x63D2;&#x5165;</h3>
+<pre><code class="lang-cpp"><span class="hljs-comment">//&#x5BF9;&#x94FE;&#x8868;&#x8FDB;&#x884C;&#x5192;&#x6CE1;&#x6392;&#x5E8F;&#x3002;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x6539;&#x6210;&#x5FEB;&#x901F;&#x6392;&#x5E8F;&#xFF1A;&#x7B49;&#x5230;&#x7EDF;&#x8BA1;&#x5B8C;&#x6240;&#x6709;&#x6709;&#x5173;&#x8FD9;&#x4E2A;&#x5173;&#x952E;&#x8BCD;&#x7684;&#x6587;&#x7AE0;&#x4E4B;&#x540E;&#xFF0C;&#x624D;&#x80FD;&#x5BF9;&#x4ED6;&#x96C6;&#x4F53;&#x5FEB;&#x6392;&#x3002;</span>
+<span class="hljs-comment">//&#x4F46;&#x5176;&#x5B9E;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x7528;&#x63D2;&#x5165;&#x6392;&#x5E8F;&#xFF0C;&#x4E0D;&#x540C;&#x65E5;&#x671F;&#x7684;&#xFF0C;&#x6839;&#x636E;&#x65F6;&#x95F4;&#x7684;&#x5148;&#x540E;&#x627E;&#x5230;&#x63D2;&#x5165;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x63D2;&#x5165;&#xFF1A;</span>
+<span class="hljs-comment">//&#x5047;&#x5982;&#x8BF4;&#x5DF2;&#x6709;&#x4E09;&#x6761;&#x4E0D;&#x540C;&#x65E5;&#x671F;&#x7684;&#x8BB0;&#x5F55; A B C</span>
+<span class="hljs-comment">//&#x6765;&#x4E86;D&#x540E;&#xFF0C;&#x53D1;&#x73B0;D&#x5728;C&#x4E4B;&#x524D;&#xFF0C;B&#x4E4B;&#x540E;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x5FC5;&#x987B;&#x4E3A;&#x5B83;&#x627E;&#x5230;B C&#x4E4B;&#x95F4;&#x7684;&#x63D2;&#x5165;&#x4F4D;&#x7F6E;&#xFF0C;</span>
+<span class="hljs-comment">//A B D C&#x3002;July&#x3001;2011.12.31&#x3002;</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ListSort</span><span class="hljs-params">(key_list keylist)</span>
+</span>{
+    doc_list p = keylist-&gt;next;
+    doc_list final = <span class="hljs-literal">NULL</span>;
+    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)
+    {
+        <span class="hljs-keyword">bool</span> isfinish = <span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">while</span> (p-&gt;next != final) {
+            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(p-&gt;time, p-&gt;next-&gt;time) &lt; <span class="hljs-number">0</span>) <span class="hljs-comment">//&#x4E0D;&#x540C;&#x65E5;&#x671F;&#x7684;&#x6309;&#x6700;&#x65E9;&#x5230;&#x6700;&#x665A;&#x6392;&#x5E8F;</span>
+            {
+                SwapDocNode(p);
+                isfinish = <span class="hljs-literal">false</span>;
+            }
+            p = p-&gt;next;
+        }
+        final = p;
+        p = keylist-&gt;next;
+        <span class="hljs-keyword">if</span> (isfinish || p-&gt;next == final) {
+            <span class="hljs-keyword">break</span>;
+        }
+    }
+}
+</code></pre>
+<p>&#x7EFC;&#x4E0A;&#x4E24;&#x8282;&#x514D;&#x53BB;&#x5192;&#x6CE1;&#x6392;&#x5E8F;&#x548C;&#xFF0C;&#x7701;&#x53BB;&#x4E8C;&#x6B21;hash&#x548C;&#x514D;&#x53BB;&#x5192;&#x6CE1;&#x6392;&#x5E8F;&#xFF0C;&#x4FEE;&#x6539;&#x540E;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-cpp">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">7</span>; i &lt; count; i++) {
+            <span class="hljs-comment">// &#x5C06;&#x5173;&#x952E;&#x5B57;&#x5BF9;&#x5E94;&#x7684;&#x6587;&#x6863;&#x5185;&#x5BB9;&#x52A0;&#x5165;&#x6587;&#x6863;&#x7ED3;&#x70B9;&#x94FE;&#x8868;&#x4E2D;</span>
+            <span class="hljs-comment">// &#x5982;&#x679C;&#x5173;&#x952E;&#x5B57;&#x7B2C;&#x4E00;&#x6B21;&#x51FA;&#x73B0;&#xFF0C;&#x5219;&#x5C06;&#x5176;&#x52A0;&#x5165;hash&#x8868;</span>
+            InitHashValue(items[i], hashvalue);
+            <span class="hljs-keyword">if</span> (keynode = SearchByString(items[i], hashvalue)) {
+                doc_list infonode = SaveItems();
+                doc_list p = keynode-&gt;next;
+                <span class="hljs-comment">// &#x6839;&#x636E;&#x65F6;&#x95F4;&#x7531;&#x65E9;&#x5230;&#x665A;&#x6392;&#x5E8F;</span>
+                <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(infonode-&gt;time, p-&gt;time) &lt; <span class="hljs-number">0</span>) {
+                    <span class="hljs-comment">//&#x8003;&#x8651;infonode&#x63D2;&#x5165;keynode&#x540E;&#x7684;&#x60C5;&#x51B5;</span>
+                    infonode-&gt;next = p;
+                    keynode-&gt;next = infonode;
+                } <span class="hljs-keyword">else</span> {
+                    <span class="hljs-comment">//&#x8003;&#x8651;&#x5176;&#x4ED6;&#x60C5;&#x51B5;</span>
+                    doc_list pre = p;
+                    p = p-&gt;next;
+                    <span class="hljs-keyword">while</span> (p)
+                    {
+                        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(infonode-&gt;time, p-&gt;time) &gt; <span class="hljs-number">0</span>) {
+                            p = p-&gt;next;
+                            pre = pre-&gt;next;
+                        } <span class="hljs-keyword">else</span> {
+                            <span class="hljs-keyword">break</span>;
+                        }
+                    }
+                    infonode-&gt;next = p;
+                    pre-&gt;next = infonode;
+                }
+                keynode-&gt;count++;
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">int</span> pos = InsertString(items[i], hashvalue);
+                keynode = key_array[pos];
+                doc_list infolist = SaveItems();
+                infolist-&gt;next = <span class="hljs-literal">NULL</span>;
+                keynode-&gt;next = infolist;
+                <span class="hljs-keyword">if</span> (pos != -<span class="hljs-number">1</span>) {
+                    strcpy_s(words[wordnum++], items[i]);
+                }
+            }
+        }
+    }
+}
+
+<span class="hljs-comment">// &#x901A;&#x8FC7;&#x5FEB;&#x6392;&#x5BF9;&#x5173;&#x952E;&#x5B57;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</span>
+qsort(words, WORD_MAX_NUM, WORD_MAX_LEN, strcoll);
+</code></pre>
+<p>&#x4FEE;&#x6539;&#x540E;&#x7F16;&#x8BD1;&#x8FD0;&#x884C;&#x7684;&#x6548;&#x679C;&#x56FE;&#x5982;&#x4E0B;&#xFF08;&#x7528;&#x4E86;&#x53E6;&#x5916;&#x4E00;&#x4EFD;&#x66F4;&#x5927;&#x7684;&#x6570;&#x636E;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#xFF09;&#xFF1A;
+<img src="../images/26/26.10.gif" alt=""></p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./a.7.html" class="navigation navigation-prev " aria-label="Previous page: 后缀树"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./a.9.html" class="navigation navigation-next " aria-label="Next page: 搜索关键词智能提示suggestion"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

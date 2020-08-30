@@ -1,0 +1,1613 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>HttpProxy模块 | Nginx 中文官方文档</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.5">
+        <meta name="author" content="wizardforcel">
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-comment/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../Text/3.21_rewrite.html" />
+    
+    
+    <link rel="prev" href="../Text/3.19_memcached.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="3.20"
+        data-chapter-title="HttpProxy模块"
+        data-filepath="Text/3.20_httpproxy.md"
+        data-basepath=".."
+        data-revision="Mon Dec 14 2015 06:00:19 GMT+0000 (UTC)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+                
+                <li>
+                    <a href="https://www.gitbook.com/book/wizardforcel/nginx-doc" target="blank" class="custom-link">Nginx 中文官方文档</a>
+                </li>
+            
+            
+
+            
+            <li class="divider"></li>
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        介紹
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="Text/1.html">
+            
+                
+                    <a href="../Text/1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        主要文档
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="Text/1.1_overview.html">
+            
+                
+                    <a href="../Text/1.1_overview.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Nginx功能概述
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="Text/1.2_nginxchswhyuseit.html">
+            
+                
+                    <a href="../Text/1.2_nginxchswhyuseit.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        为什么选择Nginx
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="Text/1.3_install.html">
+            
+                
+                    <a href="../Text/1.3_install.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        Nginx安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="Text/1.4_nginxchscommandline.html">
+            
+                
+                    <a href="../Text/1.4_nginxchscommandline.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        运行和控制Nginx
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="Text/1.5_notation.html">
+            
+                
+                    <a href="../Text/1.5_notation.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        配置符号参考
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="Text/1.6_optimizations.html">
+            
+                
+                    <a href="../Text/1.6_optimizations.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        优化 Nginx
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="Text/1.7_faq.html">
+            
+                
+                    <a href="../Text/1.7_faq.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.</b>
+                        
+                        常见问题(FAQ)
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="Text/1.8_debug.html">
+            
+                
+                    <a href="../Text/1.8_debug.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.8.</b>
+                        
+                        调试 nginx
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="Text/2.html">
+            
+                
+                    <a href="../Text/2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        核心模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="Text/2.1_mainmodule.html">
+            
+                
+                    <a href="../Text/2.1_mainmodule.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Nginx主模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="Text/2.2_events.html">
+            
+                
+                    <a href="../Text/2.2_events.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Nginx事件模块
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="Text/3.html">
+            
+                
+                    <a href="../Text/3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        基本模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="Text/3.1_httpcore.html">
+            
+                
+                    <a href="../Text/3.1_httpcore.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        http核心模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="Text/3.2_httpupstream.html">
+            
+                
+                    <a href="../Text/3.2_httpupstream.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        HttpIndex模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="Text/3.3_httpaccess.html">
+            
+                
+                    <a href="../Text/3.3_httpaccess.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.3.</b>
+                        
+                        HttpAccess模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="Text/3.4_httpauthbasic.html">
+            
+                
+                    <a href="../Text/3.4_httpauthbasic.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.4.</b>
+                        
+                        HttpAuthBasic模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="Text/3.5_httpautoindex.html">
+            
+                
+                    <a href="../Text/3.5_httpautoindex.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.5.</b>
+                        
+                        HttpAutoindex模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="Text/3.6_browser.html">
+            
+                
+                    <a href="../Text/3.6_browser.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.6.</b>
+                        
+                        Browser模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="Text/3.7_charset.html">
+            
+                
+                    <a href="../Text/3.7_charset.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.7.</b>
+                        
+                        Charset模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="Text/3.8_httpemptygif.html">
+            
+                
+                    <a href="../Text/3.8_httpemptygif.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.8.</b>
+                        
+                        HttpEmptyGif模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.9" data-path="Text/3.9_httpfcgi.html">
+            
+                
+                    <a href="../Text/3.9_httpfcgi.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.9.</b>
+                        
+                        HttpFcgi模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.10" data-path="Text/3.10_geo.html">
+            
+                
+                    <a href="../Text/3.10_geo.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.10.</b>
+                        
+                        Geo模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.11" data-path="Text/3.11_httpgzip.html">
+            
+                
+                    <a href="../Text/3.11_httpgzip.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.11.</b>
+                        
+                        HttpGzip模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.12" data-path="Text/3.12_httpheaders.html">
+            
+                
+                    <a href="../Text/3.12_httpheaders.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.12.</b>
+                        
+                        HttpHeaders模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.13" data-path="Text/3.13_httpindex.html">
+            
+                
+                    <a href="../Text/3.13_httpindex.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.13.</b>
+                        
+                        HttpIndex模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.14" data-path="Text/3.14_httpreferer.html">
+            
+                
+                    <a href="../Text/3.14_httpreferer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.14.</b>
+                        
+                        HttpReferer模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.15" data-path="Text/3.15_httplimitzone.html">
+            
+                
+                    <a href="../Text/3.15_httplimitzone.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.15.</b>
+                        
+                        HttpLimit zone
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.16" data-path="Text/3.16_httplimitrequest.html">
+            
+                
+                    <a href="../Text/3.16_httplimitrequest.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.16.</b>
+                        
+                        HttpLimitReqest模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.17" data-path="Text/3.17_httplog.html">
+            
+                
+                    <a href="../Text/3.17_httplog.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.17.</b>
+                        
+                        HttpLog模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.18" data-path="Text/3.18_map.html">
+            
+                
+                    <a href="../Text/3.18_map.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.18.</b>
+                        
+                        map
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.19" data-path="Text/3.19_memcached.html">
+            
+                
+                    <a href="../Text/3.19_memcached.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.19.</b>
+                        
+                        Memcached
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.20" data-path="Text/3.20_httpproxy.html">
+            
+                
+                    <a href="../Text/3.20_httpproxy.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.20.</b>
+                        
+                        HttpProxy模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.21" data-path="Text/3.21_rewrite.html">
+            
+                
+                    <a href="../Text/3.21_rewrite.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.21.</b>
+                        
+                        HttpRewrite模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.22" data-path="Text/3.22_httpssi.html">
+            
+                
+                    <a href="../Text/3.22_httpssi.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.22.</b>
+                        
+                        HttpSSI模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.23" data-path="Text/3.23_userid.html">
+            
+                
+                    <a href="../Text/3.23_userid.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.23.</b>
+                        
+                        HttpUserId
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="Text/4.html">
+            
+                
+                    <a href="../Text/4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        其他模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="Text/4.1_addition.html">
+            
+                
+                    <a href="../Text/4.1_addition.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        Addition模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="Text/4.2_embeddedperl.html">
+            
+                
+                    <a href="../Text/4.2_embeddedperl.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        EmbeddedPerl
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="Text/4.3_flv.html">
+            
+                
+                    <a href="../Text/4.3_flv.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        flv
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="Text/4.4_gzipstatic.html">
+            
+                
+                    <a href="../Text/4.4_gzipstatic.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        HttpGzipStatic
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="Text/4.5_randomindex.html">
+            
+                
+                    <a href="../Text/4.5_randomindex.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        RandomIndex
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="Text/4.6_geoip.html">
+            
+                
+                    <a href="../Text/4.6_geoip.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        HttpGeoIP
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="Text/4.7_realip.html">
+            
+                
+                    <a href="../Text/4.7_realip.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        HttpRealIp
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="Text/4.8_ssl.html">
+            
+                
+                    <a href="../Text/4.8_ssl.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        HttpSSL
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="Text/4.9_stubstatus.html">
+            
+                
+                    <a href="../Text/4.9_stubstatus.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.</b>
+                        
+                        StubStatus模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="Text/4.10_sub.html">
+            
+                
+                    <a href="../Text/4.10_sub.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.</b>
+                        
+                        HttpSubstitution
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="Text/4.11_httpdav.html">
+            
+                
+                    <a href="../Text/4.11_httpdav.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.</b>
+                        
+                        HttpDav模块
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12" data-path="Text/4.12_googleperftools.html">
+            
+                
+                    <a href="../Text/4.12_googleperftools.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.12.</b>
+                        
+                        GooglePerftools
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.13" data-path="Text/4.13_xslt.html">
+            
+                
+                    <a href="../Text/4.13_xslt.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.13.</b>
+                        
+                        HttpXSLT
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.14" data-path="Text/4.14_securelink.html">
+            
+                
+                    <a href="../Text/4.14_securelink.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.14.</b>
+                        
+                        HttpSecureLink
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.15" data-path="Text/4.15_imagefilter.html">
+            
+                
+                    <a href="../Text/4.15_imagefilter.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.15.</b>
+                        
+                        HttpImageFilter
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="Text/5.html">
+            
+                
+                    <a href="../Text/5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        mail模块
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="Text/5.1_mailcore.html">
+            
+                
+                    <a href="../Text/5.1_mailcore.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        MailCore
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="Text/5.2_mailauth.html">
+            
+                
+                    <a href="../Text/5.2_mailauth.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.2.</b>
+                        
+                        MailAuth
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="Text/5.3_mailproxy.html">
+            
+                
+                    <a href="../Text/5.3_mailproxy.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.3.</b>
+                        
+                        MailProxy
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="Text/5.4_mailssl.html">
+            
+                
+                    <a href="../Text/5.4_mailssl.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.4.</b>
+                        
+                        MailSSL
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="Text/6.html">
+            
+                
+                    <a href="../Text/6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        安装
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1" data-path="Text/6.1_nginx_windows.html">
+            
+                
+                    <a href="../Text/6.1_nginx_windows.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.1.</b>
+                        
+                        nginx在windows上的安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="Text/6.2_nginx_freebsd.html">
+            
+                
+                    <a href="../Text/6.2_nginx_freebsd.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.2.</b>
+                        
+                        nginx在freebsd上的安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="Text/6.3_nginx_ubuntu.html">
+            
+                
+                    <a href="../Text/6.3_nginx_ubuntu.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.3.</b>
+                        
+                        nginx在ubuntu上的安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="Text/6.4_nginx_fedora.html">
+            
+                
+                    <a href="../Text/6.4_nginx_fedora.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.4.</b>
+                        
+                        nginx在fedora上的安装
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="Text/6.5_nginx_php_fpm.html">
+            
+                
+                    <a href="../Text/6.5_nginx_php_fpm.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.5.</b>
+                        
+                        nginx php-fpm安装配置
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="Text/7.html">
+            
+                
+                    <a href="../Text/7.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        配置示例和方法
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1" data-path="Text/7.1_fullexample.html">
+            
+                
+                    <a href="../Text/7.1_fullexample.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.1.</b>
+                        
+                        完整例子
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="Text/7.2_fullexample2.html">
+            
+                
+                    <a href="../Text/7.2_fullexample2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.2.</b>
+                        
+                        完整例子2
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.3" data-path="Text/7.3_virtualhost.html">
+            
+                
+                    <a href="../Text/7.3_virtualhost.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.3.</b>
+                        
+                        虚拟主机
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.4" data-path="Text/7.4_loadbalance.html">
+            
+                
+                    <a href="../Text/7.4_loadbalance.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.4.</b>
+                        
+                        负载均衡
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.5" data-path="Text/7.5_doorchain.html">
+            
+                
+                    <a href="../Text/7.5_doorchain.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.5.</b>
+                        
+                        nginx防盗链
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7.6" data-path="Text/7.6_checkerrors.html">
+            
+                
+                    <a href="../Text/7.6_checkerrors.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.6.</b>
+                        
+                        HWLoadbalancerCheckErrors
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    本書使用 GitBook 釋出
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Nginx 中文官方文档</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h3 id="httpproxy&#x6A21;&#x5757;">HttpProxy&#x6A21;&#x5757;</h3>
+<p>This module makes it possible to transfer requests to another server. &#x6B64;&#x6A21;&#x5757;&#x4E13;&#x4F3A;&#x5C06;&#x8BF7;&#x6C42;&#x5BFC;&#x5411;&#x5176;&#x5B83;&#x670D;&#x52A1;.</p>
+<p>It is an HTTP/1.0 proxy without the ability for keep-alive requests yet. &#x8FD9;&#x662F;&#x79CD; HTTP/1.0 &#x7248;&#x672C;&#x7684;&#x65E0;&#x8BF7;&#x6C42;&#x4FDD;&#x6301;&#x4EE3;&#x7406;.</p>
+<p>(As a result, backend connections are created and destroyed on every request.) Nginx talks HTTP/1.1 to the browser and HTTP/1.0 to the backend server. As such it handles keep-alive to the browser.</p>
+<p>(&#x56E0;&#x4E3A;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x90FD;&#x662F;&#x5728;&#x540E;&#x53F0;&#x8FDE;&#x63A5;&#x4E2D;&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;&#x7684;) Nginx &#x548C;&#x6D4F;&#x89C8;&#x5668;&#x4F7F;&#x7528; HTTP/1.1 &#x8FDB;&#x884C;&#x5BF9;&#x8BDD;&#xFF0C;&#x800C;&#x5728;&#x540E;&#x53F0;&#x670D;&#x52A1;&#x4E2D;&#x4F7F;&#x7528; HTTP/1.0;</p>
+<p><strong>&#x793A;&#x4F8B;</strong></p>
+<pre><code>location / {
+: proxy_pass        http://localhost:8000;
+: proxy_set_header  X-Real-IP  $remote_addr;
+}
+</code></pre><p>&#x6CE8;&#x610F;&#x4E00;&#x70B9;,&#x5F53;&#x4F7F;&#x7528;HTTP PROXY &#x6A21;&#x5757;&#x65F6;(&#x6216;&#x8005;&#x751A;&#x81F3;&#x662F;&#x4F7F;&#x7528;FastCGI&#x65F6;),&#x7528;&#x6237;&#x7684;&#x6574;&#x4E2A;&#x8BF7;&#x6C42;&#x4F1A;&#x5728;nginx&#x4E2D;&#x7F13;&#x51B2;&#x76F4;&#x81F3;&#x4F20;&#x9001;&#x7ED9;&#x540E;&#x7AEF;&#x88AB;&#x4EE3;&#x7406;&#x7684;&#x670D;&#x52A1;&#x5668;.&#x56E0;&#x6B64;,&#x4E0A;&#x4F20;&#x8FDB;&#x5EA6;&#x7684;&#x6D4B;&#x7B97;&#x5C31;&#x4F1A;&#x8FD0;&#x4F5C;&#x5F97;&#x4E0D;&#x6B63;&#x786E;,&#x5982;&#x679C;&#x5B83;&#x4EEC;&#x901A;&#x8FC7;&#x6D4B;&#x7B97;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#x5668;&#x6536;&#x5230;&#x7684;&#x6570;&#x636E;&#x6765;&#x5DE5;&#x4F5C;&#x7684;&#x8BDD;</p>
+<h3 id="&#x5B9A;&#x5411;&#x5668;-directives">&#x5B9A;&#x5411;&#x5668;. Directives</h3>
+<ul>
+<li>[#proxy_buffer_size proxy_buffer_size]</li>
+<li>[#proxy_buffering proxy_buffering]</li>
+<li>[#proxy_buffers proxy_buffers]</li>
+<li>[#proxy_busy_buffers_size proxy_busy_buffers_size]</li>
+<li>[#proxy_connect_timeout proxy_connect_timeout]</li>
+<li>[#proxy_headers_hash_bucket_size proxy_headers_hash_bucket_size]</li>
+<li>[#proxy_headers_hash_max_size proxy_headers_hash_max_size]</li>
+<li>[#proxy_hide_header proxy_hide_header]</li>
+<li>[#proxy_ignore_client_abort proxy_ignore_client_abort]</li>
+<li>[#proxy_intercept_errors proxy_intercept_errors]</li>
+<li>[#proxy_max_temp_file_size proxy_max_temp_file_size]</li>
+<li>[#proxy_method proxy_method]</li>
+<li>[#proxy_next_upstream proxy_next_upstream]</li>
+<li>[#proxy_pass proxy_pass]</li>
+<li>[#proxy_pass_header proxy_pass_header]</li>
+<li>[#proxy_pass_request_body proxy_pass_request_body]</li>
+<li>[#proxy_pass_request_headers proxy_pass_request_headers]</li>
+<li>[#proxy_redirect proxy_redirect]</li>
+<li>[#proxy_read_timeout proxy_read_timeout]</li>
+<li>[#proxy_redirect_errors proxy_redirect_errors]</li>
+<li>[#proxy_send_lowat proxy_send_lowat]</li>
+<li>[#proxy_send_timeout proxy_send_timeout]</li>
+<li>[#proxy_set_body proxy_set_body]</li>
+<li>[#proxy_set_header proxy_set_header]</li>
+<li>[#proxy_store proxy_store]</li>
+<li>[#proxy_store_access proxy_store_access]</li>
+<li>[#proxy_temp_file_write_size proxy_temp_file_write_size]</li>
+<li>[#proxy_temp_path proxy_temp_path]</li>
+<li>[#proxy_upstream_fail_timeout proxy_upstream_fail_timeout]</li>
+<li>[#proxy_upstream_max_fails proxy_upstream_max_fails]</li>
+</ul>
+<h3 id="&#x53C2;&#x6570;variables">&#x53C2;&#x6570;.Variables</h3>
+<ul>
+<li>[#var_proxy_host var_proxy_host]</li>
+<li>[#var_proxy_port var_proxy_port]</li>
+<li>[#var_proxy_add_x_forwarded_for var_proxy_add_x_forwarded_for]</li>
+<li>[#var_proxy_remote_addr var_proxy_remote_addr]</li>
+</ul>
+<h3 id="proxybuffersize">proxy_buffer_size</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_buffer_size the_size*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_buffer_size 4k/8k*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>&#x8BE5;&#x6307;&#x4EE4;&#x8BBE;&#x7F6E;&#x7F13;&#x51B2;&#x533A;&#x5927;&#x5C0F;,&#x4ECE;&#x88AB;&#x4EE3;&#x7406;&#x7684;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#x5668;&#x53D6;&#x5F97;&#x7684;&#x54CD;&#x5E94;&#x5185;&#x5BB9;,&#x4F1A;&#x5148;&#x8BFB;&#x53D6;&#x653E;&#x7F6E;&#x5230;&#x8FD9;&#x91CC;.</p>
+<p>&#x5C0F;&#x7684;&#x54CD;&#x5E94;header&#x901A;&#x5E38;&#x4F4D;&#x4E8E;&#x8FD9;&#x90E8;&#x5206;&#x54CD;&#x5E94;&#x5185;&#x5BB9;&#x91CC;&#x8FB9;.</p>
+<p>&#x9ED8;&#x8BA4;&#x6765;&#x8BF4;,&#x8BE5;&#x7F13;&#x51B2;&#x533A;&#x5927;&#x5C0F;&#x7B49;&#x4E8E;&#x6307;&#x4EE4; <code>proxy_buffers</code>&#x6240;&#x8BBE;&#x7F6E;&#x7684;;&#x4F46;&#x662F;,&#x4F60;&#x53EF;&#x4EE5;&#x628A;&#x5B83;&#x8BBE;&#x7F6E;&#x5F97;&#x66F4;&#x5C0F;.</p>
+<h3 id="proxybuffering">proxy_buffering</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_buffering on|off*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_buffering on*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>&#x8BE5;&#x6307;&#x4EE4;&#x5F00;&#x542F;&#x4ECE;&#x540E;&#x7AEF;&#x88AB;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x7684;&#x54CD;&#x5E94;&#x5185;&#x5BB9;&#x7F13;&#x51B2;.</p>
+<p>&#x5982;&#x679C;&#x7F13;&#x51B2;&#x533A;&#x5F00;&#x542F;,nginx&#x5047;&#x5B9A;&#x88AB;&#x4EE3;&#x7406;&#x7684;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#x5668;&#x4F1A;&#x4EE5;&#x6700;&#x5FEB;&#x901F;&#x5EA6;&#x54CD;&#x5E94;,&#x5E76;&#x628A;&#x5185;&#x5BB9;&#x4FDD;&#x5B58;&#x5728;&#x7531;&#x6307;&#x4EE4;<code>proxy_buffer_size</code> &#x548C; <code>proxy_buffers</code>&#x6307;&#x5B9A;&#x7684;&#x7F13;&#x51B2;&#x533A;&#x91CC;&#x8FB9;.</p>
+<p>&#x5982;&#x679C;&#x54CD;&#x5E94;&#x5185;&#x5BB9;&#x65E0;&#x6CD5;&#x653E;&#x5728;&#x5185;&#x5B58;&#x91CC;&#x8FB9;,&#x90A3;&#x4E48;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x4F1A;&#x88AB;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x4E0A;.</p>
+<p>&#x5982;&#x679C;&#x7F13;&#x51B2;&#x533A;&#x88AB;&#x5173;&#x95ED;&#x4E86;,&#x90A3;&#x4E48;&#x54CD;&#x5E94;&#x5185;&#x5BB9;&#x4F1A;&#x6309;&#x7167;&#x83B7;&#x53D6;&#x5185;&#x5BB9;&#x7684;&#x591A;&#x5C11;&#x7ACB;&#x523B;&#x540C;&#x6B65;&#x4F20;&#x9001;&#x5230;&#x5BA2;&#x6237;&#x7AEF;</p>
+<p>nginx&#x4E0D;&#x5C1D;&#x8BD5;&#x8BA1;&#x7B97;&#x88AB;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#x5668;&#x6574;&#x4E2A;&#x54CD;&#x5E94;&#x5185;&#x5BB9;&#x7684;&#x5927;&#x5C0F;,nginx&#x80FD;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x63A5;&#x53D7;&#x7684;&#x6700;&#x5927;&#x6570;&#x636E;,&#x662F;&#x7531;&#x6307;&#x4EE4;<code>proxy_buffer_size</code>&#x6307;&#x5B9A;&#x7684;.</p>
+<h3 id="proxybuffers">proxy_buffers</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_buffers the_number is_size;*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_buffers 8 4k/8k;*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>&#x8BE5;&#x6307;&#x4EE4;&#x8BBE;&#x7F6E;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x5927;&#x5C0F;&#x548C;&#x6570;&#x91CF;,&#x4ECE;&#x88AB;&#x4EE3;&#x7406;&#x7684;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#x5668;&#x53D6;&#x5F97;&#x7684;&#x54CD;&#x5E94;&#x5185;&#x5BB9;,&#x4F1A;&#x653E;&#x7F6E;&#x5230;&#x8FD9;&#x91CC;. &#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;,&#x4E00;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x5927;&#x5C0F;&#x7B49;&#x4E8E;&#x9875;&#x9762;&#x5927;&#x5C0F;,&#x53EF;&#x80FD;&#x662F;4K&#x4E5F;&#x53EF;&#x80FD;&#x662F;8K,&#x8FD9;&#x53D6;&#x51B3;&#x4E8E;&#x5E73;&#x53F0;</p>
+<h3 id="proxybusybufferssize">proxy_busy_buffers_size</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_busy_buffers_size size;*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_busy_buffers_size proxy_buffer_size <em> 2;</em></p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location, if*</p>
+<p>TODO: Description.</p>
+<h3 id="proxyconnecttimeout">proxy_connect_timeout</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_connect_timeout timeout_in_seconds*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>This directive assigns a timeout for the connection to the proxyserver. This is not the time until the server returns the pages, this is the [#proxy_read_timeout proxy_read_timeout] statement. If your proxyserver is up, but hanging (e.g. it does not have enough threads to process your request so it puts you in the pool of connections to deal with later), then this statement will not help as the connection to the server has been made. It is necessary to keep in mind that this time out cannot be more than 75 seconds.</p>
+<h3 id="proxyheadershashbucketsize">proxy_headers_hash_bucket_size</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_headers_hash_bucket_size size;*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_headers_hash_bucket_size 64;*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location, if*</p>
+<p>This directive sets the bucket size of the hashtable.<br> TODO: Better description</p>
+<h3 id="proxyheadershashmaxsize">proxy_headers_hash_max_size</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_headers_hash_max_size size;*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_headers_hash_max_size 512;*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location, if*</p>
+<p>This directive sets the maximum size of the hashtable.<br> TODO: Better description</p>
+<h3 id="proxyhideheader">proxy_hide_header</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_hide_header the_header*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>nginx does not transfer the &quot;Date&quot;, &quot;Server&quot;, &quot;X-Pad&quot; and &quot;X-Accel-...&quot; header lines from the proxied server response. The <code>proxy_hide_header</code> directive allows to hide some additional header lines. But if on the contrary the header lines must be passed, then the <code>proxy_pass_header</code> should be used. For example if you want to hide the MS-OfficeWebserver and the AspNet-Version:</p>
+<pre><code>location / {
+: proxy_hide_header X-AspNet-Version;
+: proxy_hide_header MicrosoftOfficeWebServer;
+}
+</code></pre><p>This directive can also be very helpful when using X-Accel-Redirect. For example, you may have one set of backend servers which return the headers for a file download, which includes X-Accel-Redirect to the actual file, as well as the correct Content-Type. However, the Redirect URL points to a filleserver which hosts the actual file you wish to serve, and that server sends its own Content-Type header, which might be incorrect, and overrides the header sent by the original backend servers. You can avoid this by adding the proxy_hide_header directive to the fileserver. Example:</p>
+<pre><code>location / {
+: proxy_pass http://backend_servers;
+}
+
+location /files/ {
+: proxy_pass http://fileserver;
+: proxy_hide_header Content-Type;
+}
+</code></pre><h3 id="proxyignoreclientabort">proxy_ignore_client_abort</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_ignore_client_abort [ on|off ]*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_ignore_client_abort off*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>Available since: 0.3.36<br> &#x5982;&#x679C;&#x5BA2;&#x6237;&#x7AEF;&#x65AD;&#x5F00;&#x8BF7;&#x6C42;,&#x4E5F;&#x4FDD;&#x6301;&#x540E;&#x7AEF;&#x7684;&#x4E0B;&#x8F7D;</p>
+<h3 id="proxyintercepterrors">proxy_intercept_errors</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_intercept_errors [ on|off ]*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_intercept_errors off*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>This directive decides if nginx will intercept responses with HTTP status codes of 400 and higher.</p>
+<p>By default all responses will be sent as-is from the proxied server.</p>
+<p>If you set this to <code>on</code> then nginx will intercept status codes that are explicitly handled by an <code>error_page</code> directive. Responses with status codes that do not match an <code>error_page</code> directive will be sent as-is from the proxied server.</p>
+<h3 id="proxymaxtempfilesize">proxy_max_temp_file_size</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_max_temp_file_size size;*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_max_temp_file_size 1G;*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location, if*</p>
+<p>Available since: 0.1.8<br> TODO: Description.</p>
+<h3 id="proxymethod">proxy_method</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_method [method]*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>None*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>Used to allow the proxying of additional HTTP methods.</p>
+<p>Note: at this time, Nginx only appears to allow a single instance of this directive and it only accepts a single argument (method) so it&apos;s not clear how useful this might be for proxying to things like Subversion.</p>
+<p>Example:</p>
+<pre><code>: proxy_method PROPFIND;
+</code></pre><h3 id="proxynextupstream">proxy_next_upstream</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_next_upstream [error|timeout|invalid_header|http_500|http_503|http_404|off]*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_next_upstream error timeout*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>Directive determines, in what cases the request will be transmitted to the next server:</p>
+<ul>
+<li>error &#x2014; an error has occurred while connecting to the server, sending a request to it, or reading its response;</li>
+<li>timeout &#x2014; occurred timeout during the connection with the server, transfer the requst or while reading response from the server;</li>
+<li>invalid_header &#x2014; server returned a empty or incorrect answer;</li>
+<li>http_500 &#x2014; server returned answer with code 500</li>
+<li>http_503 &#x2014; server returned answer with code 503</li>
+<li>http_404 &#x2014; server returned answer with code 404</li>
+<li>off &#x2014; it forbids the request transfer to the next server</li>
+</ul>
+<p>Transferring the request to the next server is only possible when nothing has been transferred to the client -- that is, if an error or timeout arises in the middle of the transfer of the request, then it is not possible to retry the current request on a different server.</p>
+<h3 id="proxypass">proxy_pass</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_pass URL*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>no*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>location, if in location*</p>
+<p>This directive sets the port or socket, on which listens to the proxied server, and the URI, to which will be reflected location.</p>
+<p>Port can be indicated in the form of the name of hostname or address and port, for example,</p>
+<pre><code>proxy_pass http://localhost:8000/uri /;
+</code></pre><p>and socket -- in the form of unix of socket:</p>
+<pre><code>proxy_pass http://unix:/tmp/backend.socket:/uri /;
+</code></pre><p>Path is indicated after the word <code>unix</code> and is concluded between two colons.</p>
+<p>With the transfer of request to server part URI, which corresponds to location, is substituted to URI, indicated in directive proxy_pass.</p>
+<p>But there are two exceptions to this rule, when it is not possible to determine that replaced location:</p>
+<ul>
+<li>if the location is assigned by regular expression;</li>
+<li>if inside proxied location with the help of directive rewrite changes URI and with this configuration will be precisely processed request (break):</li>
+</ul>
+<pre><code>location  /name/ {
+: rewrite      /name/([^/] +)  /users?name=$1  break;
+: proxy_pass   http://127.0.0.1;
+}
+</code></pre><p>For these cases of URI it is transferred without the mapping.</p>
+<p>Furthermore, it is possible to indicate so that URI demand it would be transferred in the same form, as it sent client, but not v in the processed form.</p>
+<p>During the working:</p>
+<ul>
+<li>two or by more slashes are converted into one slash: &quot;//&quot; -- &quot;/&quot;;</li>
+<li>references to the current directory are removed: &quot;/./&quot; -- &quot;/&quot;;</li>
+<li>references to the previous catalog are removed: &quot;/dir /../&quot; -- &quot;/&quot;.</li>
+</ul>
+<p>If on server it is necessary to transmit URI in the unprocessed form, then for this in directive proxy_pass it is necessary to indicate URL server without URI:</p>
+<pre><code>location  /some/path/ {
+: proxy_pass   http://127.0.0.1;
+}
+</code></pre><h3 id="proxypassheader">proxy_pass_header</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_pass_header the_name*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>This directive allows transferring header-lines forbidden for response.</p>
+<p>For example:</p>
+<pre><code>location / {
+: proxy_pass_header Server;
+: proxy_pass_header X-MyHeader;
+}
+</code></pre><h3 id="proxypassrequestbody">proxy_pass_request_body</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_pass_request_body [ on | off ] ;*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_pass_request_body on;*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>Available since: 0.1.29<br> TODO: Description.</p>
+<h3 id="proxypassrequestheaders">proxy_pass_request_headers</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_pass_request_headers [ on | off ] ;*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_pass_request_headers on;*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>Available since: 0.1.29<br> TODO: Description.</p>
+<h3 id="proxyredirect">proxy_redirect</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_redirect [ default|off|redirect replacement ]*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_redirect default*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>This directive sets the text, which must be changed in response-header &quot;Location&quot; and &quot;Refresh&quot; in the response of the proxied server.</p>
+<p>Let us suppose the proxied server returned line <code>Location: http://localhost:8000/two/some/uri/</code>.</p>
+<p>The directive</p>
+<pre><code>
+proxy_redirect   http://localhost:8000/two/   http://frontend/one/;
+</code></pre><p>will rewrite this line in the form <code>Location: http://frontend/one/some/uri/</code>.</p>
+<p>In the replaceable line it is possible not to indicate the name of the server:</p>
+<pre><code>
+proxy_redirect http://localhost:8000/two/ /;
+</code></pre><p>then the basic name of server and port is set, if it is different from 80.</p>
+<p>The change by default, given by the parameter &quot;default&quot;, uses the parameters of directives location and proxy_pass.</p>
+<p>Therefore two following configurations are equivalent:</p>
+<pre><code>location /one/ {
+: proxy_pass       http://upstream:port/two/;
+: proxy_redirect   default;
+}
+
+location /one/ {
+: proxy_pass       http://upstream:port/two/;
+: proxy_redirect   http://upstream:port/two/   /one/;
+}
+</code></pre><p>In the replace line, it is possible to use some variables:</p>
+<pre><code>proxy_redirect   http://localhost:8000/    http://$host:$server_port/;
+</code></pre><p>This directive repeated some times:</p>
+<pre><code>
+: proxy_redirect   default;
+: proxy_redirect   http://localhost:8000/    /;
+: proxy_redirect   http://www.example.com/   /;
+</code></pre><p>The parameter <code>off</code> forbids all <code>proxy_redirect</code> directives at this level:</p>
+<pre><code>: proxy_redirect   off;
+: proxy_redirect   default;
+: proxy_redirect   http://localhost:8000/    /;
+: proxy_redirect   http://www.example.com/   /;
+</code></pre><p>With the help of this directive it is possible to add the name of host for relative redirect, issued by the proxied server:</p>
+<pre><code>proxy_redirect   /   /;
+</code></pre><h3 id="proxyreadtimeout">proxy_read_timeout</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_read_timeout the_time*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_read_timeout 60*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>This directive sets the read timeout for the response of the proxied server. It determines how long NGINX will wait to get the response to a request. The timeout is established not for entire response, but only between two operations of reading.</p>
+<p>In contrast to [#proxy_connect_timeout proxy_connect_timeout] , this timeout will catch a server that puts you in it&apos;s connection pool but does not respond to you with anything beyond that. Be careful though not to set this too low, as your proxyserver might take a longer time to respond to requests on purpose (e.g. when serving you a report page that takes some time to compute). You are able though to have a different setting per location, which enables you to have a higher proxy_read_timeout for the report page&apos;s location.</p>
+<p>If the proxied server nothing will communicate after this time, then nginx is shut connection.</p>
+<h3 id="proxyredirecterrors">proxy_redirect_errors</h3>
+<p>Deprecated. Use <code>proxy_intercept_errors</code>.</p>
+<h3 id="proxysendlowat">proxy_send_lowat</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_send_lowat [ on | off ]*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_send_lowat off;*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location, if*</p>
+<p>This directive set SO_SNDLOWAT.<br> This directive is only available on FreeBSD</p>
+<h3 id="proxysendtimeout">proxy_send_timeout</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_send_timeout time_in_seconds*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_send_timeout 60*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>This directive assigns timeout with the transfer of request to the proxy server. Time out is established not on entire transfer of request, but only between two operations of record. If after this time the proxy server will not take new data, then nginx is shut the connection</p>
+<h3 id="proxysendlowat">proxy_send_lowat</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_set_body [ on | off ]*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_set_body off;*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location, if*</p>
+<p>Available since: 0.3.10<br> TODO: Description.</p>
+<h3 id="proxysetheader">proxy_set_header</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_set_header header value*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>Host and Connection*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>This directive allows to redefine and to add some request header lines which will be transferred to the proxied server.</p>
+<p>As the value it is possible to use a text, variables and their combination.</p>
+<p>This directive is inherited from the previous level when at this level are not described their directives <code>proxy_set_header</code>.</p>
+<p>By default only two lines will be redefined:</p>
+<pre><code>proxy_set_header Host $proxy_host;
+proxy_set_header Connection Close;
+</code></pre><p>The unchanged request-header &quot;Host&quot; can be transmitted like this:</p>
+<pre><code>
+proxy_set_header Host $http_host;
+</code></pre><p>However, if this line is absent from the client request, then nothing will be transferred.</p>
+<p>In this case it is better to use variable $host, it&apos;s value is equal to the name of server in the request-header &quot;Host&quot; or to the basic name of server, if there is no line:</p>
+<pre><code>proxy_set_header Host $host;
+</code></pre><p>Furthermore, it is possible to transmit the name of server together with the port of the proxied server:</p>
+<pre><code>proxy_set_header Host $host:$proxy_port;
+</code></pre><h3 id="proxystore">proxy_store</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_store [on | off | path]*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_store off*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>This directive sets the path in which upstream files are stored. The parameter &quot;on&quot; preserves files in accordance with path specified in directives <em>alias</em> or <em>root</em>. The parameter &quot;off&quot; forbids storing. Furthermore, the name of the path can be clearly assigned with the aid of the line with the variables:</p>
+<pre><code>proxy_store   /data/www$original_uri;
+</code></pre><p>The time of modification for the file will be set to the date of &quot;Last-Modified&quot; header in the response. To be able to safe files in this directory it is necessary that the path is under the directory with temporary files, given by directive proxy_temp_path for the data location.</p>
+<p>This directive can be used for creating the local copies for dynamic output of the backend which is not very often changed, for example:</p>
+<pre><code>location /images/ {
+: root                 /data/www;
+: error_page           404 = /fetch$uri;
+}
+
+location /fetch {
+: internal;
+
+: proxy_pass           http://backend;
+: proxy_store          on;
+: proxy_store_access   user:rw  group:rw  all:r;
+: proxy_temp_path      /data/temp;
+
+: alias                /data/www;
+}
+</code></pre><p>To be clear proxy_store is not a cache, it&apos;s rather mirror on demand.</p>
+<h3 id="proxystoreaccess">proxy_store_access</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_store_access users:permissions [users:permission ...]*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_store_access user:rw*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>This directive assigns the permissions for the created files and directories, for example:</p>
+<pre><code>proxy_store_access  user:rw  group:rw  all:r;
+</code></pre><p>If any rights for groups or all are assigned, then it is not necessary to assign rights for user:</p>
+<pre><code>proxy_store_access  group:rw  all:r;
+</code></pre><h3 id="proxytempfilewritesize">proxy_temp_file_write_size</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_temp_file_write_size size;*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>proxy_temp_file_write_size proxy_buffer_size <em> 2;</em></p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location, if*</p>
+<p>TODO: Description.</p>
+<h3 id="proxytemppath">proxy_temp_path</h3>
+<p><strong>&#x8BED;&#x6CD5;:*</strong>proxy_temp_path dir-path [ level1 [ level2 [ level3 ]  ;*</p>
+<p><strong>&#x9ED8;&#x8BA4;&#x503C;:*</strong>$NGX_PREFIX/proxy_temp controlled by --http-proxy-temp-path at ./configure stage*</p>
+<p><strong>&#x4E0A;&#x4E0B;&#x6587;:*</strong>http, server, location*</p>
+<p>This directive works like client_body_temp_path to specify a location to buffer large proxied requests to the filesystem.</p>
+<h3 id="proxyupstreamfailtimeout">proxy_upstream_fail_timeout</h3>
+<p>Changed in 0.5.0 to deprecated.<br> Please use the <em>fail_timeout</em> parameter of server Directive from the upstream module.</p>
+<h3 id="proxyupstreammaxfails">proxy_upstream_max_fails</h3>
+<p>Changed in 0.5.0 to deprecated.<br> Please use the <em>max_fails</em> parameter of server Directive from the upstream module.</p>
+<h3 id="variables">Variables</h3>
+<p>In module ngx_http_proxy_module there are some built-in variables, which can be used for the creation of headers with the help of the <code>proxy_set_header</code> directive:</p>
+<p>$proxy_host:: the name of proxied host and port;</p>
+<p>$proxy_port:: the port of proxied host;</p>
+<p>$proxy_add_x_forwarded_for:: equivalent to client request-header &quot;X-Forwarded-For&quot; and to variable added to it through the comma</p>
+<p>$remote_addr:: But if there is no line &quot;X-Forwarded-For&quot; in the client request, then variable <code>$proxy_add_x_forwarded_for</code> is equal to variable <code>$remote_addr</code>.</p>
+<h3 id="references">References</h3>
+<p><a href="http://sysoev.ru/nginx/docs/http/ngx_http_proxy_module.html" title="http://sysoev.ru/nginx/docs/http/ngx_http_proxy_module.html" target="_blank">Original Documentation</a></p>
+<h3 id="questions">Questions</h3>
+<ul>
+<li><p>Is it possible to have the proxy use a client SSL certificate to communicate with the server being proxied? I am in the situation where I want to secure the proxy &lt;-&gt; application server connection. Another solution could be to use SSL only with a custom header checked at each connection in the application server, but doing it at the protocol level would be nicer.</p>
+</li>
+<li><p>NginxHttpProxyModule#preview &#x539F;&#x6587;</p>
+</li>
+</ul>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../Text/3.19_memcached.html" class="navigation navigation-prev " aria-label="Previous page: Memcached"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../Text/3.21_rewrite.html" class="navigation navigation-next " aria-label="Next page: HttpRewrite模块"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-comment/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"comment":{"highlightCommented":true},"autocover":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
